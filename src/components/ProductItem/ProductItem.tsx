@@ -19,11 +19,13 @@ const ProductItem = ( { img, title, units, price }: ProductItemPropsType ) => {
           />,
         ) }
       </div>
-      <div>
-        <p>{ `${ price } BYN` }</p>
-        <div>
+      <div className={style.priceBlock}>
+        <p className={style.price}>{ `${ price } BYN` }</p>
+        <div className={style.basket}>
           <p>+</p>
-          <img src={ basketIcon } alt="basketIcon"/>
+          <div className={style.imageWrapper}>
+              <img src={ basketIcon } alt="basketIcon"/>
+          </div>
         </div>
       </div>
       <button>Купить в 1 клик</button>
