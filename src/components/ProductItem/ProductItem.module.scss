@@ -8,12 +8,11 @@
   border-radius: 5px;
   padding: 8px;
 
-  & img{
-    width: 100%;
-    height: 130px;
+  & img {
+    @include size(100%, 130px);
   }
 
-  .title{
+  .title {
     font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 600;
@@ -22,7 +21,8 @@
     color: #000000;
   }
 
-  .unitGroup{
+  .unitGroup {
+    width: 100%;
 
   }
 }
