@@ -1,0 +1,26 @@
+@import "../../../styles/Mixins";
+@import "../../../styles/Variables";
+
+.logoBlock{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & img {
+    @include size(20.5px, 24px);
+    margin-right: 9.5px;
+  }
+
+  & p {
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+
+    & span {
+      color: $successColor;
+    }
+  }
+}

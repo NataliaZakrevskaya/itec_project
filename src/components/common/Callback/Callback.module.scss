@@ -1,0 +1,8 @@
+@import "src/styles/Mixins";
+@import "src/styles/Variables";
+
+.callback{
+  @include text();
+  color: $mainColor;
+  cursor: pointer;
+}

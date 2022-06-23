@@ -1,0 +1,17 @@
+@mixin flex ($flexDirection, $justifyContent, $alignItems) {
+  display: flex;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+@mixin text () {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+@mixin size ($width, $height) {
+  width: $width;
+  height: $height;
+}

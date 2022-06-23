@@ -1,0 +1,14 @@
+@import "src/styles/Mixins";
+
+.animalType {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  @include size(214px, 84px);
+  background-color: white;
+  border: 1px solid red;
+  margin: 24px 0;
+  & img{
+    @include size(85px, 85px);
+  }
+}

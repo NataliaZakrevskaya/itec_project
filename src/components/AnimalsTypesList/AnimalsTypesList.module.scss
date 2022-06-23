@@ -1,0 +1,5 @@
+@import "src/styles/Mixins";
+
+.animalTypesBlock{
+  @include flex(row, space-between, center);
+}

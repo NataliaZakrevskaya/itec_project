@@ -1,0 +1,10 @@
+@import "src/styles/Mixins";
+
+.basketLink {
+  @include size(60px, 36px);
+  background-color: #FFFFFF;
+
+  & img {
+  @include size(18px, 20px)
+  }
+}

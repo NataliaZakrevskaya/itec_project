@@ -1,0 +1,32 @@
+@import "src/styles/Mixins.scss";
+
+.scheduleBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+
+  & img {
+    @include size(12.8px, 12.8px);
+    margin-right: 7.6px;
+  }
+
+  .scheduleText{
+    margin-right: 13.5px;
+  }
+
+  .scheduleText::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: 2px;
+    left: 157px;
+    width: 1.5px;
+    height: 13px;
+    background-color: #8C9196;
+  }
+
+  & p {
+    @include text();
+  }
+}

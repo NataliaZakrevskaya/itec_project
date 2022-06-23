@@ -1,0 +1,45 @@
+@import "src/styles/Mixins";
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .navbar{
+    @include flex(row, space-between, center);
+    height: 24px;
+  }
+ & hr {
+   display: block;
+   height: 1px;
+   margin: 16px 0;
+   background-color: #D2D5D8;
+   opacity: 0.25;
+ }
+  .address{
+    @include flex(row, space-between, center);
+    height: 24px;
+    margin-bottom: 20px;
+  }
+  .siteInfo{
+    @include flex(row, space-between, center);
+    height: 24px;
+     & p{
+       @include text();
+       color: #8C9196;
+     }
+
+    .designerInfo{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      & a{
+        @include text();
+        line-height: 24px;
+        color: #2C6ECB;
+        margin-left: 6px;
+      }
+    }
+  }
+}

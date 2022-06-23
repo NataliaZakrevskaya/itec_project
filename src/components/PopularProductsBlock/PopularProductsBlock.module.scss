@@ -1,0 +1,11 @@
+@import "src/styles/Mixins";
+
+.popularProductsBlock {
+  background-color: white;
+  width: 100%;
+
+  .productsList {
+@include flex(row, space-between, center)
+  }
+}
+

@@ -1,0 +1,39 @@
+@import "../../styles/Mixins";
+@import "../../styles/Variables";
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .contactInfo {
+    @include flex(row, space-between, center);
+    height: 44px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    .instaPhoneNumber {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      & img {
+        margin-left: 14.3px;
+      }
+    }
+  }
+
+  .navBarContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 54px;
+    background-color: $mainColor;
+
+    .navBar {
+      @include flex(row, space-between, center);
+      margin: auto;
+    }
+  }
+}

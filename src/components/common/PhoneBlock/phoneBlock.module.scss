@@ -1,0 +1,16 @@
+@import "src/styles/Mixins.scss";
+
+.phoneBlock{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & img {
+    @include size(11.2px, 16px)
+  }
+
+  & p{
+    @include text();
+    margin-left: 10.4px;
+  }
+}
