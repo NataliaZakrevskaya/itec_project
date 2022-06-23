@@ -1,0 +1,28 @@
+@import "src/styles/Mixins";
+
+.discount {
+  @include flex(row, space-between, center);
+  @include size(569px, 153px);
+  background: #FFD79D;
+  border-radius: 5px;
+  padding: 24px;
+
+  .titlePart {
+    @include flex(column, space-between, flex-start);
+
+    & p{
+      font-family: 'SF Pro Display';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 130%;
+      color: #202223;
+    }
+  }
+
+  & img {
+    @include size(149px, 149px);
+    object-fit: contain;
+  }
+
+}

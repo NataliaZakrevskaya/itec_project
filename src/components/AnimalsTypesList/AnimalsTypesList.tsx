@@ -10,7 +10,7 @@ const AnimalsTypesList = () => {
 
   return (
     <div className={ `${ commonStyle.container } ${style.animalTypesBlock}`}>
-      { animalTypes.map( (type: any) =>
+      { animalTypes.map( (type: AnimalPropsType) =>
         <AnimalType key={type.id} name={type.name} img={type.img}/>,
       ) }
     </div>

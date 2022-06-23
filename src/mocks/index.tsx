@@ -22,7 +22,7 @@ export const getAnimalTypes = () => {
     },
     {
       id: 5,
-      title: 'Рыбки',
+      name: 'Рыбки',
       img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
   ];
@@ -106,6 +106,19 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
   ];
 };
+
+export const getDiscounts = (): Array<DiscountType> => {
+  return [
+    { id: 1, title: 'Скидка 25% на первый заказ любого товара на сумму от 50BYN', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg'},
+    { id: 2, title: 'Получите игрушку в подарок при сумме заказа от 200BYN', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg'},
+  ]
+}
+
+export type DiscountType = {
+  id: number,
+  title: string,
+  img: string
+}
 
 export type BrandType = {
   id: number,

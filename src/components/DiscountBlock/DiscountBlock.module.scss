@@ -1,0 +1,6 @@
+@import "src/styles/Mixins";
+
+.discountBlock{
+  @include flex(row, space-between, center);
+  margin: 56px 0;
+}
