@@ -20,7 +20,7 @@ const Header = () => {
         <Schedule/>
         <div className={ style.instaPhoneNumber }>
           <PhoneBlock/>
-          <a href={ 'https://www.instagram.com/' } target={ '_blank' }>
+          <a href={ 'https://www.instagram.com/' } target={ '_blank' } rel={ 'noreferrer' }>
             <img src={ instagramIcon } alt={ 'instagramIcon' }/>
           </a>
         </div>

@@ -37,12 +37,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' ],
-      price: 95,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг.' },
-        {id: 2, count: 0.8, name: 'кг.' },
-        {id: 3, count: 1.2, name: 'кг.' }]
+        {id: 1, count: 0.4, name: 'кг.', price: 125 },
+        {id: 2, count: 0.8, name: 'кг.', price: 125 },
+        {id: 3, count: 1.2, name: 'кг.', price: 125 }]
     },
     {
       id: 2,
@@ -52,12 +51,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' ],
-      price: 124,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг.' },
-        {id: 2, count: 0.8, name: 'кг.' },
-        {id: 3, count: 1.2, name: 'кг.' }]
+        {id: 1, count: 0.4, name: 'кг.', price: 125 },
+        {id: 2, count: 0.8, name: 'кг.', price: 125 },
+        {id: 3, count: 1.2, name: 'кг.', price: 125 }]
     },
     {
       id: 3,
@@ -67,12 +65,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' ],
-      price: 67,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг.' },
-        {id: 2, count: 0.8, name: 'кг.' },
-        {id: 3, count: 1.2, name: 'кг.' }]
+        {id: 1, count: 0.4, name: 'кг.', price: 125 },
+        {id: 2, count: 0.8, name: 'кг.', price: 125 },
+        {id: 3, count: 1.2, name: 'кг.', price: 125 }]
     },
     {
       id: 4,
@@ -82,12 +79,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' ],
-      price: 35,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг.' },
-        {id: 2, count: 0.8, name: 'кг.' },
-        {id: 3, count: 1.2, name: 'кг.' }]
+        {id: 1, count: 0.4, name: 'кг.', price: 125 },
+        {id: 2, count: 0.8, name: 'кг.', price: 125 },
+        {id: 3, count: 1.2, name: 'кг.', price: 125 }]
     },
     {
       id: 5,
@@ -97,12 +93,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
         'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' ],
-      price: 105,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг.' },
-        {id: 2, count: 0.8, name: 'кг.' },
-        {id: 3, count: 1.2, name: 'кг.' }]
+        {id: 1, count: 0.4, name: 'кг.', price: 125 },
+        {id: 2, count: 0.8, name: 'кг.', price: 125 },
+        {id: 3, count: 1.2, name: 'кг.', price: 125 }]
     },
   ];
 };
@@ -128,14 +123,14 @@ export type BrandType = {
 export type UnitType = {
   id: number,
   count: number,
-  name: string
+  name: string,
+  price: number,
 }
 
 export type ProductItemType = {
   id: number,
   title: string,
   img: Array<string>,
-  price: number,
   brand: BrandType,
   units: Array<UnitType>
 }

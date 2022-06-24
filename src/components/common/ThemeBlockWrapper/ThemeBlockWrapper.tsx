@@ -1,5 +1,4 @@
 import { ProductItemType } from '../../../mocks';
-import style from '../../PopularProductsBlock/PopularProductsBlock.module.scss';
 import commonStyle from '../../../styles/common/Container.module.scss';
 import prevIcon from '../../../Images/prevIcon.svg';
 import nextIcon from '../../../Images/nextIcon.svg';
@@ -7,28 +6,25 @@ import ProductItem from '../../ProductItem/ProductItem';
 import Button from '../Button/Button';
 import React from 'react';
 
-const LightBlock = ({title, onButtonClick, onPrevButtonClick, onNextButtonClick, itemsForBlock}: LightBlockPropsType) => {
+const ThemeBlockWrapper = ( {title, onButtonClick, itemsForBlock, blockTheme}: ThemeBlockWrapperPropsType ) => {
 
-/*
-  const onButtonClick = () => {
-    alert('переход на каталог с установленной сортировкой по популярности')
-  }*/
+  const {productsBlock, sectionsBlock, productItem} = blockTheme
 
   return (
-    <div className={ style.popularProductsBlock }>
+    <div className={ `${commonStyle.productsBlock} ${ productsBlock }` }>
       <div className={ commonStyle.container }>
-        <div className={ style.navigationInfoBlock }>
+        <div className={ commonStyle.navigationInfoBlock }>
           <h2>{ title }</h2>
-          <div className={ style.sectionsBlock }>
-            <div onClick={onPrevButtonClick}>
+          <div className={ `${commonStyle.sectionsBlock} ${sectionsBlock}` }>
+            <div onClick={() => alert('prev')}>
               <img src={ prevIcon } alt="prevIcon"/>
             </div>
-            <div  onClick={onNextButtonClick}>
+            <div  onClick={() => alert('next')}>
               <img src={ nextIcon } alt="nextIcon"/>
             </div>
           </div>
         </div>
-        <div className={ style.productsList }>
+        <div className={ commonStyle.productsList }>
           {
             itemsForBlock
               .map( (item: any) =>
@@ -38,7 +34,8 @@ const LightBlock = ({title, onButtonClick, onPrevButtonClick, onNextButtonClick,
                   img={ item.img[ 0 ] }
                   title={ item.title }
                   units={ item.units }
-                  price={ item.price }
+                  price={ item.units[0].price }
+                  classNameForDarkItem={productItem}
                 />,
               )
           }
@@ -49,10 +46,11 @@ const LightBlock = ({title, onButtonClick, onPrevButtonClick, onNextButtonClick,
   );
 };
 
-type LightBlockPropsType = {
+export default ThemeBlockWrapper;
+
+type ThemeBlockWrapperPropsType = {
   title: string,
   onButtonClick: () => void,
-  onPrevButtonClick: () => void,
-  onNextButtonClick: () => void,
-  itemsForBlock: Array<ProductItemType>
+  itemsForBlock: Array<ProductItemType>,
+  blockTheme: any
 }

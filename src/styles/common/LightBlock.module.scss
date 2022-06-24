@@ -1,0 +1,13 @@
+.productsBlock {
+  background-color: white;
+
+  .sectionsBlock {
+    & div {
+      background-color: #f6f6f7;
+    }
+  }
+}
+
+.productItem{
+  background-color: #FAFBFB;
+}

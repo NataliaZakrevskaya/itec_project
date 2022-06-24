@@ -6,14 +6,14 @@ import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 
-const ProductItem = ( { img, title, units, price, id }: ProductItemPropsType ) => {
+const ProductItem = ( { img, title, units, price, id, classNameForDarkItem }: ProductItemPropsType ) => {
 
   const isKilo = units[0].name === 'кг.'
   const navigate = useNavigate()
 
   return (
-    <div className={style.productItem}>
-      <img src={ img } alt={ 'product image' }/>
+    <div className={`${style.productItem} ${classNameForDarkItem}`}>
+      <img src={ img } alt={ 'product' }/>
       <p className={style.title} onClick={() => navigate(`${routesPathsEnum.CATALOG}/${id}`)}>{ title }</p>
       <div className={style.unitGroup}>
         { units.map( unit =>
@@ -46,5 +46,6 @@ type ProductItemPropsType = {
   img: string,
   title: string,
   units: Array<UnitType>,
-  price: number
+  price: number,
+  classNameForDarkItem?: string,
 }
