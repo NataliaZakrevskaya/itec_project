@@ -9,16 +9,15 @@ import style from './MainPage.module.scss';
 import LatestBlock from '../../components/LatestBlock/LatestBlock';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import GreetingBlock from '../../components/GreetingBlock/GreetingBlock';
+import AdvertisingBlock from '../../components/AdvertisingBlock/AdvertisingBlock';
 
 
 const MainPage = () => {
 
-
-
   return (
     <div className={ style.mainPage }>
       <AnimalsTypesList/>
-      Рекламный баннер
+      <AdvertisingBlock/>
       <PopularProductsBlock/>
       <DiscountBlock/>
       <LatestBlock/>
