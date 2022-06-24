@@ -8,10 +8,10 @@ import React from 'react';
 
 const ThemeBlockWrapper = ( {title, onButtonClick, itemsForBlock, blockTheme}: ThemeBlockWrapperPropsType ) => {
 
-  const {productsBlock, sectionsBlock, productItem} = blockTheme
+  const {block, sectionsBlock, productItem} = blockTheme
 
   return (
-    <div className={ `${commonStyle.productsBlock} ${ productsBlock }` }>
+    <div className={ `${commonStyle.block} ${ block }` }>
       <div className={ commonStyle.container }>
         <div className={ commonStyle.navigationInfoBlock }>
           <h2>{ title }</h2>

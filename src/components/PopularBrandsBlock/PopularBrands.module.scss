@@ -1,0 +1,13 @@
+@import "src/styles/Mixins";
+
+.popularBrandsBlock{
+  width: 100%;
+  padding: 56px 0;
+
+  .brandsContainer{
+    @include flex (row, space-between, center);
+    box-sizing: border-box;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}

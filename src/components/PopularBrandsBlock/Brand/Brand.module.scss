@@ -1,0 +1,16 @@
+@import "src/styles/Mixins";
+
+.brand{
+  @include flex(column, center, center);
+  padding: 14px 20px;
+  width: 174px;
+  height: 115.55px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  margin: 12px 0;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}

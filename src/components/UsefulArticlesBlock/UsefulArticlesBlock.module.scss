@@ -1,0 +1,8 @@
+@import "src/styles/Mixins";
+
+
+.articles {
+  width: 100%;
+  @include flex(row, space-between, center);
+  margin: 24px 0;
+}

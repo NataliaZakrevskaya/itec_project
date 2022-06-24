@@ -108,6 +108,36 @@ export const getDiscounts = (): Array<DiscountType> => {
     { id: 2, title: 'Получите игрушку в подарок при сумме заказа от 200BYN', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg'},
   ]
 }
+export const getArticles = (): Array<ArticleType> => {
+  return [
+    { id: 1, title: 'Обзор корма Hills (Хиллс) для собак', description: 'Продукция чешской компании «Хиллс» известна многим владельцам четвероногих питомцев. Она давно зарекомендовала себя на отечественном рынке. Рационы представлены...', timeForReading: 5, date: '17 марта 2022', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg'},
+    { id: 2, title: 'Обзор корма Hills (Хиллс) для собак', description: 'Продукция чешской компании «Хиллс» известна многим владельцам четвероногих питомцев. Она давно зарекомендовала себя на отечественном рынке. Рационы представлены...', timeForReading: 5, date: '17 марта 2022', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg'},
+    { id: 3, title: 'Обзор корма Hills (Хиллс) для собак', description: 'Продукция чешской компании «Хиллс» известна многим владельцам четвероногих питомцев. Она давно зарекомендовала себя на отечественном рынке. Рационы представлены...', timeForReading: 5, date: '17 марта 2022', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg'},
+    { id: 4, title: 'Обзор корма Hills (Хиллс) для собак', description: 'Продукция чешской компании «Хиллс» известна многим владельцам четвероногих питомцев. Она давно зарекомендовала себя на отечественном рынке. Рационы представлены...', timeForReading: 5, date: '17 марта 2022', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg'},
+  ]
+}
+export const getBrands = (): Array<BrandType> => {
+  return [
+    { id: 1, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 2, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 3, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 4, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 5, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 6, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 7, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 8, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 9, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 10, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 11, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 12, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 13, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 14, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 15, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 16, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 17, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+    { id: 18, name: 'PURINA', img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg' },
+  ]
+}
 
 export type DiscountType = {
   id: number,
@@ -117,7 +147,8 @@ export type DiscountType = {
 
 export type BrandType = {
   id: number,
-  name: string
+  name: string,
+  img?: string
 }
 
 export type UnitType = {
@@ -133,4 +164,13 @@ export type ProductItemType = {
   img: Array<string>,
   brand: BrandType,
   units: Array<UnitType>
+}
+
+export type ArticleType = {
+  id: number,
+  title: string,
+  description: string,
+  timeForReading: number,
+  date: string //todo пока стринг, потом нужно будет с бэка переводить,
+  img: string
 }
