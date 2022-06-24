@@ -1,0 +1,10 @@
+@import "src/styles/Mixins";
+
+.greetingBlock{
+  width: 100%;
+  background-color: white;
+
+  .greetingBlockContainer{
+    @include flex(row, space-between, center);
+  }
+}
