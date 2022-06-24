@@ -11,16 +11,20 @@ const PopularProductsBlock = () => {
 
   const productItems = getProductItems();
 
+  const onButtonClick = () => {
+    alert('переход на каталог с установленной сортировкой по популярности')
+  }
+
   return (
     <div className={ style.popularProductsBlock }>
       <div className={ commonStyle.container }>
         <div className={ style.navigationInfoBlock }>
-          <h2>Новинки</h2>
+          <h2>Популярные товары</h2>
           <div className={ style.sectionsBlock }>
-            <div>
+            <div onClick={() => alert('prev')}>
               <img src={ prevIcon } alt="prevIcon"/>
             </div>
-            <div>
+            <div  onClick={() => alert('next')}>
               <img src={ nextIcon } alt="nextIcon"/>
             </div>
           </div>
@@ -32,6 +36,7 @@ const PopularProductsBlock = () => {
               .map( item =>
                 <ProductItem
                   key={ item.id }
+                  id={item.id}
                   img={ item.img[ 0 ] }
                   title={ item.title }
                   units={ item.units }
@@ -40,7 +45,7 @@ const PopularProductsBlock = () => {
               )
           }
         </div>
-          <Button title={ 'Смотреть больше товаров' }/>
+          <Button title={ 'Смотреть больше товаров' } onClick={onButtonClick}/>
       </div>
     </div>
   );

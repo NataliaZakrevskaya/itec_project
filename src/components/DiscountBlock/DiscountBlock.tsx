@@ -9,7 +9,7 @@ const DiscountBlock = () => {
   const discounts = getDiscounts()
 
   return (
-    <div className={ `${ commonStyle.container } ${style.discountBlock}`}>
+    <div className={ `${ commonStyle.container } ${style.discountBlock}`} id={'discounts'}>
       {discounts.map(discount =>
       <Discount key={discount.id} title={discount.title} img={discount.img}/>
       )}

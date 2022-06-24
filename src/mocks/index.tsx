@@ -40,9 +40,9 @@ export const getProductItems = (): Array<ProductItemType> => {
       price: 95,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг' },
-        {id: 2, count: 0.8, name: 'кг' },
-        {id: 3, count: 1.2, name: 'кг' }]
+        {id: 1, count: 0.4, name: 'кг.' },
+        {id: 2, count: 0.8, name: 'кг.' },
+        {id: 3, count: 1.2, name: 'кг.' }]
     },
     {
       id: 2,
@@ -55,9 +55,9 @@ export const getProductItems = (): Array<ProductItemType> => {
       price: 124,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг' },
-        {id: 2, count: 0.8, name: 'кг' },
-        {id: 3, count: 1.2, name: 'кг' }]
+        {id: 1, count: 0.4, name: 'кг.' },
+        {id: 2, count: 0.8, name: 'кг.' },
+        {id: 3, count: 1.2, name: 'кг.' }]
     },
     {
       id: 3,
@@ -70,9 +70,9 @@ export const getProductItems = (): Array<ProductItemType> => {
       price: 67,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг' },
-        {id: 2, count: 0.8, name: 'кг' },
-        {id: 3, count: 1.2, name: 'кг' }]
+        {id: 1, count: 0.4, name: 'кг.' },
+        {id: 2, count: 0.8, name: 'кг.' },
+        {id: 3, count: 1.2, name: 'кг.' }]
     },
     {
       id: 4,
@@ -85,9 +85,9 @@ export const getProductItems = (): Array<ProductItemType> => {
       price: 35,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг' },
-        {id: 2, count: 0.8, name: 'кг' },
-        {id: 3, count: 1.2, name: 'кг' }]
+        {id: 1, count: 0.4, name: 'кг.' },
+        {id: 2, count: 0.8, name: 'кг.' },
+        {id: 3, count: 1.2, name: 'кг.' }]
     },
     {
       id: 5,
@@ -100,9 +100,9 @@ export const getProductItems = (): Array<ProductItemType> => {
       price: 105,
       brand: { id: 1, name: 'ROYAL CANIN' },
       units: [
-        {id: 1, count: 0.4, name: 'кг' },
-        {id: 2, count: 0.8, name: 'кг' },
-        {id: 3, count: 1.2, name: 'кг' }]
+        {id: 1, count: 0.4, name: 'кг.' },
+        {id: 2, count: 0.8, name: 'кг.' },
+        {id: 3, count: 1.2, name: 'кг.' }]
     },
   ];
 };

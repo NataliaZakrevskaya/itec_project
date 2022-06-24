@@ -7,7 +7,7 @@ const Navbar = () => {
     <div style={{display: "flex", justifyContent: "space-between", width: 250}}>
       <NavLink to={routesPathsEnum.MAIN}>Главная</NavLink>
       <NavLink to={routesPathsEnum.CATALOG}>Каталог</NavLink>
-      <NavLink to={routesPathsEnum.DISCOUNT}>Акции</NavLink>
+      <a href={'#discounts'}>Акции</a>
       <NavLink to={routesPathsEnum.ARTICLES}>Статьи</NavLink>
     </div>
   );

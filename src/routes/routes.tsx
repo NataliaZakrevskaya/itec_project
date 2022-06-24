@@ -9,7 +9,6 @@ import ArticlePage from '../pages/ArticlePage';
 import BasketPage from '../pages/BasketPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import NotFoundPage from '../pages/NotFoundPage';
-import DiscountPage from '../pages/DiscountPage';
 
 const AppRoutes = () => {
   return (
@@ -19,7 +18,6 @@ const AppRoutes = () => {
         <Route path={ routesPathsEnum.PRODUCT_WITH_ID } element={ <ProductPage/> }/>
         <Route path={ routesPathsEnum.ARTICLES } element={ <ArticlesPage/> }/>
         <Route path={ routesPathsEnum.ARTICLE_WITH_ID } element={ <ArticlePage/> }/>
-        <Route path={ routesPathsEnum.DISCOUNT } element={ <DiscountPage/> }/>
         <Route path={ routesPathsEnum.BASKET } element={ <BasketPage/> }/>
         <Route path={ routesPathsEnum.CHECKOUT } element={ <CheckoutPage/> }/>
         <Route path={ '*' } element={ <NotFoundPage/> }/>

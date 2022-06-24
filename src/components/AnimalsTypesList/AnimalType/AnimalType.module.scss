@@ -8,6 +8,7 @@
   background-color: white;
   margin: 24px 0;
   border-radius: 5px;
+  cursor: pointer;
   & img{
     @include size(85px, 85px);
   }

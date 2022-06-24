@@ -25,6 +25,7 @@
         height: 40px;
         border-radius: 50%;
         background-color: white;
+        cursor: pointer;
         @include flex(row, center, center);
 
         &:last-child {
@@ -34,11 +35,13 @@
     }
   }
 
-
   .productsList {
     @include flex(row, space-between, center);
     margin: 20px 0;
     width: 100%;
+  }
+  & button {
+    cursor: pointer;
   }
 }
 
