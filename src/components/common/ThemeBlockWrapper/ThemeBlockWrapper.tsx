@@ -5,6 +5,8 @@ import nextIcon from '../../../Images/nextIcon.svg';
 import ProductItem from '../../ProductItem/ProductItem';
 import Button from '../Button/Button';
 import React from 'react';
+import PrevSectionButton from '../prevSectionButton/prevSectionButton';
+import NextSectionButton from '../nextSectionButton/nextSectionButton';
 
 const ThemeBlockWrapper = ( {title, onButtonClick, itemsForBlock, blockTheme}: ThemeBlockWrapperPropsType ) => {
 
@@ -16,12 +18,8 @@ const ThemeBlockWrapper = ( {title, onButtonClick, itemsForBlock, blockTheme}: T
         <div className={ commonStyle.navigationInfoBlock }>
           <h2>{ title }</h2>
           <div className={ `${commonStyle.sectionsBlock} ${sectionsBlock}` }>
-            <div onClick={() => alert('prev')}>
-              <img src={ prevIcon } alt="prevIcon"/>
-            </div>
-            <div  onClick={() => alert('next')}>
-              <img src={ nextIcon } alt="nextIcon"/>
-            </div>
+            <PrevSectionButton onClick={() => alert('prev')}/>
+            <NextSectionButton onClick={() => alert('next')}/>
           </div>
         </div>
         <div className={ commonStyle.productsList }>

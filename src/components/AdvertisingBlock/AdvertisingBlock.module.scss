@@ -1,4 +1,9 @@
-.advertisingBlock{
+.advertisingBlockContainer{
   width: 100%;
   background-color: white;
+
+  .advertisingBlock{
+    display: flex;
+    flex-direction: row;
+  }
 }
