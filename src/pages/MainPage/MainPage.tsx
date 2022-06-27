@@ -11,21 +11,20 @@ import PopularProductsBlock from '../../components/PopularProductsBlock/PopularP
 import GreetingBlock from '../../components/GreetingBlock/GreetingBlock';
 import AdvertisingBlock from '../../components/AdvertisingBlock/AdvertisingBlock';
 
-
 const MainPage = () => {
 
   return (
     <div className={ style.mainPage }>
-      <AnimalsTypesList/>
-      <AdvertisingBlock/>
-      <PopularProductsBlock/>
-      <DiscountBlock/>
-      <LatestBlock/>
-      <PopularBrandsBlock/>
-      <ReviewsBlock/>
-      <UsefulArticlesBlock/>
-      <GreetingBlock/>
-      <ContactBlock/>
+        <AnimalsTypesList/>
+        <AdvertisingBlock/>
+        <PopularProductsBlock/>
+        <DiscountBlock/>
+        <LatestBlock/>
+        <PopularBrandsBlock/>
+        <ReviewsBlock/>
+        <UsefulArticlesBlock/>
+        <GreetingBlock/>
+        <ContactBlock/>
     </div>
   );
 };

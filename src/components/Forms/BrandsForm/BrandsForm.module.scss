@@ -1,0 +1,10 @@
+.brandsForm {
+  background-color: white;
+  padding: 16px;
+
+  .checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

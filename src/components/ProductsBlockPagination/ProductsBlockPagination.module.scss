@@ -1,0 +1,13 @@
+@import "src/styles/Variables";
+@import "src/styles/Mixins";
+
+.paginationBlock {
+  width: 100%;
+  color: $mainColor;
+  @include flex(row, space-between, center);
+  .navigationBlock{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

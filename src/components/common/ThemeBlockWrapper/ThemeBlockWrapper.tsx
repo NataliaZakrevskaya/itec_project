@@ -1,7 +1,5 @@
 import { ProductItemType } from '../../../mocks';
 import commonStyle from '../../../styles/common/Container.module.scss';
-import prevIcon from '../../../Images/prevIcon.svg';
-import nextIcon from '../../../Images/nextIcon.svg';
 import ProductItem from '../../ProductItem/ProductItem';
 import Button from '../Button/Button';
 import React from 'react';
@@ -16,7 +14,7 @@ const ThemeBlockWrapper = ( {title, onButtonClick, itemsForBlock, blockTheme}: T
     <div className={ `${commonStyle.block} ${ block }` }>
       <div className={ commonStyle.container }>
         <div className={ commonStyle.navigationInfoBlock }>
-          <h2>{ title }</h2>
+          <h2>{ title }</h2> {/*//todo меняется в зависимости от выбора типа животного*/}
           <div className={ `${commonStyle.sectionsBlock} ${sectionsBlock}` }>
             <PrevSectionButton onClick={() => alert('prev')}/>
             <NextSectionButton onClick={() => alert('next')}/>
@@ -38,7 +36,7 @@ const ThemeBlockWrapper = ( {title, onButtonClick, itemsForBlock, blockTheme}: T
               )
           }
         </div>
-        <Button title={ 'Смотреть больше товаров' } onClick={onButtonClick}/>
+        <Button title={ 'Смотреть больше товаров' } onClick={onButtonClick}/> {/*//todo не отображается, если находится в каталоге*/}
       </div>
     </div>
   );

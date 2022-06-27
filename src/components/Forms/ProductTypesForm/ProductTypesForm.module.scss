@@ -1,0 +1,12 @@
+@import "src/styles/Mixins";
+
+
+.productTypesForm{
+  background-color: white;
+  padding: 16px;
+  .radioGroup{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { routesPathsEnum } from './enums';
 import { Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage/MainPage';
-import CatalogPage from '../pages/CatalogPage';
+import CatalogPage from '../pages/CatalogPage/CatalogPage';
 import ProductPage from '../pages/ProductPage';
 import ArticlesPage from '../pages/ArticlesPage';
 import ArticlePage from '../pages/ArticlePage';
