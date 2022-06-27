@@ -1,7 +1,79 @@
+@import "src/styles/Mixins";
+
 .productPage {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   background-color: #f6f6f7;
+
+  .navigationBlock {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+
+  .productInfo {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .imgAndOrderBlock{
+      display: flex;
+      flex-direction: row;
+      .imageBlock{
+        display: flex;
+        flex-direction: row;
+
+        .mainImg{
+          width: 470px;
+          height: 392px;
+        }
+
+        .restImagesBlock{
+          display: flex;
+          flex-direction: column;
+          .restImage{
+            width: 92px;
+            height: 92px;
+          }
+        }
+      }
+      .orderBlock{
+        display: flex;
+        flex-direction: column;
+
+        .unitsGroup{
+          display: flex;
+          flex-direction: row;
+        }
+        .orderInfo{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+        .orderInfoForPayment{
+          @include flex(row, space-between, center);
+        }
+        .basketInterface{
+          @include flex(row, space-between, center);
+
+          .quantityManagementBlock{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  .descriptionBlock{
+    display: flex;
+    flex-direction: row;
+    .mainDescription{
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
