@@ -1,7 +1,7 @@
 import React from 'react';
 import Address from '../common/Address/Address';
 import Schedule from '../common/Schedule/Schedule';
-import PhoneBlock from '../common/PhoneBlock/PhoneBlock';
+import Phone from '../common/PhoneBlock/Phone';
 import instagramIcon from '../../Images/instagramIcon.svg';
 import Navbar from '../Navbar/Navbar';
 import BasketLink from '../BasketLink/BasketLink';
@@ -19,7 +19,7 @@ const Header = () => {
         <Address/>
         <Schedule/>
         <div className={ style.instaPhoneNumber }>
-          <PhoneBlock/>
+          <Phone/>
           <a href={ 'https://www.instagram.com/' } target={ '_blank' } rel={ 'noreferrer' }>
             <img src={ instagramIcon } alt={ 'instagramIcon' }/>
           </a>

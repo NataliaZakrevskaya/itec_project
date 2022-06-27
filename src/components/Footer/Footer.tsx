@@ -4,7 +4,7 @@ import commonStyle from '../../styles/common/Container.module.scss';
 import FooterLogo from '../Logo/footerLogo/FooterLogo';
 import Navbar from '../Navbar/Navbar';
 import Address from '../common/Address/Address';
-import PhoneBlock from '../common/PhoneBlock/PhoneBlock';
+import Phone from '../common/PhoneBlock/Phone';
 import Schedule from '../common/Schedule/Schedule';
 import Callback from '../common/Callback/Callback';
 
@@ -19,7 +19,7 @@ const Footer = () => {
         <hr/>
         <div className={ style.address }>
           <Address/>
-          <PhoneBlock/>
+          <Phone/>
           <Schedule/>
           <Callback/>
         </div>
