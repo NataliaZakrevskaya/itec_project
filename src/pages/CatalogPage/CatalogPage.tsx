@@ -12,7 +12,6 @@ import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArti
 import ProductsBlockPagination from '../../components/ProductsBlockPagination/ProductsBlockPagination';
 
 const CatalogPage = () => {
-  const navigation = useLocation().pathname === '/products' && 'Каталог';
   const products = getProductItems();
 
   return (
@@ -20,7 +19,7 @@ const CatalogPage = () => {
       <div className={ style.navigationBlock }>
         <p>Главная
           <img src={ nextIcon } alt="nextIcon"/>
-          { navigation }
+          Каталог
         </p>
       </div>
       <AnimalsTypesList/>
