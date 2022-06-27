@@ -3,7 +3,7 @@ import { routesPathsEnum } from './enums';
 import { Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage/MainPage';
 import CatalogPage from '../pages/CatalogPage/CatalogPage';
-import ProductPage from '../pages/ProductPage';
+import ProductPage from '../pages/ProductPage/ProductPage';
 import ArticlesPage from '../pages/ArticlesPage';
 import ArticlePage from '../pages/ArticlePage';
 import BasketPage from '../pages/BasketPage';
