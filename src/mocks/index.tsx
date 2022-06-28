@@ -284,7 +284,7 @@ export type BrandType = {
 export type UnitType = {
   id: number,
   count: number,
-  name: string,
+  name: string, // ед изм будут по-другому
   price: number,
 }
 
@@ -294,7 +294,7 @@ export type ProductItemType = {
   img: Array<string>,
   brand: BrandType,
   units: Array<UnitType>,
-  description: string,
+  description: string, // Олег даст обратную связь, возможно по-другому
   keyFeatures: Array<{id: number, value: string}>,
   restDescription: string,
   composition: string,
