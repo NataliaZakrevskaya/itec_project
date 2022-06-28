@@ -18,7 +18,7 @@ const ProductPage = () => {
   const totalSum = 234; //todo позже будет получаться из стора
   const totalWeight = 0.542; //todo позже будет получаться из стора
   const productId = Number( useParams().productId ) - 1;
-  const product = getProductItems()[ productId ];
+  const product = getProductItems()[ productId ]; //todo позже будет просто запрос по апи
   const { brand, title, img, units } = product;
 
   const onDecrementBtnClick = () => {
