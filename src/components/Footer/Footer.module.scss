@@ -29,7 +29,6 @@
     height: 24px;
     width: 100%;
      & p{
-       @include text();
        color: #8C9196;
      }
 
@@ -38,7 +37,6 @@
       flex-direction: row;
       align-items: center;
       & a{
-        @include text();
         line-height: 24px;
         color: #2C6ECB;
         margin-left: 6px;

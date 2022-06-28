@@ -16,7 +16,6 @@
 
   & h6 {
     margin: 0;
-    font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -25,7 +24,6 @@
   }
 
   & p {
-    font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -46,7 +44,6 @@
       }
 
       & p {
-        @include text();
         color: #8C9196;
       }
       &:last-child{

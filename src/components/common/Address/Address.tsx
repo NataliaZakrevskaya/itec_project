@@ -7,7 +7,7 @@ const Address = () => {
   return (
     <div className={style.addressBlock} style={{display: "flex", flexDirection: "row"}}>
       <img className={style.navigateIcon} src={navigateIcon} alt={"navigateIcon"}/>
-      <p className={style.textStyle} >Минск, ул. Чюрлёниса, 6.</p>
+      <p className={ style.textStyle} >Минск, ул. Чюрлёниса, 6.</p>
       <img className={style.metroIcon} src={metroIcon} alt={"metroIcon"}/>
       <p>Малиновка</p>
     </div>

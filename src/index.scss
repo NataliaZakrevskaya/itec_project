@@ -1,6 +1,12 @@
+@import "styles/fonts";
+
+:root {
+    font-family: "SFProDisplay-Light", sans-serif;
+}
+
 body {
     margin: 0;
-    font-family: "SF Pro Text", sans-serif;
+    font-family: "SFProDisplay-Light", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
