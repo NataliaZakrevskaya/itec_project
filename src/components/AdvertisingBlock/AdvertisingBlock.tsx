@@ -30,11 +30,10 @@ const AdvertisingBlock = () => {
                 </p>
               </div>
             </div>
-            <Button title={ 'Выбрать товар' } onClick={ () => navigate( routesPathsEnum.CATALOG ) }/>
+            <button onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать товар</button>
           </div>
           <div className={style.mainImage}>
             <img src={frame} alt="frame"/>
-
           </div>
         </div>
       </div>
