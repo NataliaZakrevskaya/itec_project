@@ -20,12 +20,23 @@
 }
 .subTitleWrapper{
   display: flex;
-  font-family: 'SF Pro Text';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 130%;
-  color: #202223;
+  & p {
+    width: 220px;
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #202223;
+  }
+  & span{
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 130%;
+    color: #202223;
+  }
   margin-bottom: 33px;
 }
 .mainWrapper{

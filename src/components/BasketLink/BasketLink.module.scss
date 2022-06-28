@@ -9,6 +9,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: #202223;
 
   & img {
   @include size(18px, 20px);
