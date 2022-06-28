@@ -3,7 +3,7 @@ import Address from '../common/Address/Address';
 import Schedule from '../common/Schedule/Schedule';
 import Phone from '../common/PhoneBlock/Phone';
 import instagramIcon from '../../Images/instagramIcon.svg';
-import Navbar from '../Navbar/Navbar';
+import NavbarForHeader from '../Navbar/NavbarForHeader/NavbarForHeader';
 import BasketLink from '../BasketLink/BasketLink';
 import style from './Header.module.scss';
 import SearchInput from '../SearchInput/SearchInput';
@@ -30,7 +30,7 @@ const Header = () => {
         <div className={ `${ style.navBar } ${ commonStyle.container } ` }>
           <HeaderLogo/>
           <SearchInput/>
-          <Navbar/>
+          <NavbarForHeader/>
           <BasketLink/>
         </div>
       </div>

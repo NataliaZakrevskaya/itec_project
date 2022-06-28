@@ -2,11 +2,12 @@ import React from 'react';
 import style from './Footer.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import FooterLogo from '../Logo/footerLogo/FooterLogo';
-import Navbar from '../Navbar/Navbar';
+import NavbarForHeader from '../Navbar/NavbarForHeader/NavbarForHeader';
 import Address from '../common/Address/Address';
 import Phone from '../common/PhoneBlock/Phone';
 import Schedule from '../common/Schedule/Schedule';
 import Callback from '../common/Callback/Callback';
+import NavbarForFooter from '../Navbar/NavbarForFooter/NavbarForFooter';
 
 const Footer = () => {
   return (
@@ -14,7 +15,7 @@ const Footer = () => {
       <div className={ commonStyle.container }>
         <div className={ style.navbar }>
           <FooterLogo/>
-          <Navbar/>
+          <NavbarForFooter/>
         </div>
         <hr/>
         <div className={ style.address }>
