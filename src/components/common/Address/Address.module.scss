@@ -18,7 +18,16 @@
     }
 
     & p {
-        @include text();
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        /* identical to box height, or 143% */
+
+
+        /* Text/Default */
+
+        color: #202223
     }
 }
 

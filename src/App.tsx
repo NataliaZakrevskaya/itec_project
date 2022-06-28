@@ -3,6 +3,7 @@ import AppRoutes from './routes/routes';
 import Footer from './components/Footer/Footer';
 
 const App = () => {
+
   return (
     <>
       <Header/>

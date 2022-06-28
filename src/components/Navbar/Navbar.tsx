@@ -1,10 +1,11 @@
 import React from 'react';
 import { routesPathsEnum } from '../../routes/enums';
 import { NavLink } from 'react-router-dom';
+import style from './Navbar.module.scss';
 
 const Navbar = () => {
   return (
-    <div style={{display: "flex", justifyContent: "space-between", width: 250}}>
+    <div className={style.navBar} >
       <NavLink to={routesPathsEnum.MAIN}>Главная</NavLink>
       <NavLink to={routesPathsEnum.CATALOG}>Каталог</NavLink>
       <a href={'#discounts'}>Акции</a>

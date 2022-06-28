@@ -6,13 +6,13 @@ const SearchInput = () => {
   const [ value, setValue ] = useState( '' );
 
   return (
-    <input
-      className={ style.searchInput }
-      placeholder={ 'Search' }
-      type="text"
-      value={ value }
-      onChange={ e => setValue( e.target.value ) }
-    />
+      <input
+        className={ style.searchInput }
+        placeholder={ `Search` }
+        type="text"
+        value={ value }
+        onChange={ e => setValue( e.target.value ) }
+      />
   );
 };
 
