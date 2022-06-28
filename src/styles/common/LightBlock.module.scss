@@ -1,9 +1,15 @@
 .block {
   background-color: white;
+  padding-top: 28px;
+  padding-bottom: 25px;
 
   .sectionsBlock {
     & div {
       background-color: #f6f6f7;
+    }
+    & div:hover{
+      background: #00A0AC;
+      border-radius: 40px;
     }
   }
 }

@@ -8,7 +8,7 @@
   padding: 24px;
 
   .titlePart {
-    @include flex(column, space-between, flex-start);
+    //@include flex(column, space-between, flex-start);
 
     & p{
       font-family: 'SF Pro Display';
@@ -17,9 +17,15 @@
       font-size: 20px;
       line-height: 130%;
       color: #202223;
+      margin-bottom: 17px;
     }
     & button {
       cursor: pointer;
+      width: 214px;
+      height: 36px;
+      background: #FFFFFF;
+      border: 1px solid #8C9196;
+      border-radius: 4px;
     }
   }
 

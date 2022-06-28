@@ -20,30 +20,27 @@ const AdvertisingBlock = () => {
     <div className={ style.advertisingBlockContainer }>
       <div className={ commonStyle.container }>
         <div className={style.advertisingBlock}>
-          <div>
-            <h1>Всё, что нужно вашему питомцу в 9 мин от метро Малиновка</h1>
-            <div>
-              <p>
-                <span>Более 5000 товаров </span>
-                для животных в наличии
-              </p>
-            </div>
-            <div>
-              <p>
-                <span>Вкусные сюрпризы </span>
-                для ваших питомцев в магазине
-              </p>
+          <div className={style.mainWrapper}>
+            <h1 className={style.mainTitle}>Всё, что нужно вашему питомцу в 9 мин от метро Малиновка</h1>
+            <div className={style.subTitleWrapper}>
+              <div className={style.subTitleOne}>
+                <p>
+                  <span>Более 5000 товаров </span>
+                  для животных в наличии
+                </p>
+              </div>
+              <div className={style.subTitleTwo}>
+                <p>
+                  <span>Вкусные сюрпризы </span>
+                  для ваших питомцев в магазине
+                </p>
+              </div>
             </div>
             <Button title={ 'Выбрать товар' } onClick={ () => navigate( routesPathsEnum.CATALOG ) }/>
           </div>
-          <div>
-            <img src={ feed } alt="feed"/>
-            <img src={ catsHouse } alt="catsHouse"/>
-            <img src={ fishBowl } alt="fishBowl"/>
-            <img src={ dogFood } alt="dogFood"/>
-            <img src={ litterBox } alt="litterBox"/>
-            <img src={ parrot } alt="parrot"/>
-            <img src={ parrotFood } alt="parrotFood"/>
+          <div className={style.mainImage}>
+            <img src="../Images/Frame 119.png" alt=""/>
+
           </div>
         </div>
       </div>

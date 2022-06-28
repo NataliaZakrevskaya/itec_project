@@ -13,8 +13,10 @@ const ProductItem = ( { img, title, units, price, id, classNameForDarkItem }: Pr
 
   return (
     <div className={`${style.productItem} ${classNameForDarkItem}`}>
-      <img src={ img } alt={ 'product' }/>
-      <p className={style.title} onClick={() => navigate(`${routesPathsEnum.CATALOG}/${id}`)}>{ title }</p>
+        <div className={style.productItemWrapper}>
+            <img className={style.mainProductItemImage} src={ img } alt={ 'product' }/>
+            <p className={style.title} onClick={() => navigate(`${routesPathsEnum.CATALOG}/${id}`)}>{ title }</p>
+        </div>
       <div className={style.unitGroup}>
         { units.map( unit =>
           <ProductItemUnit
@@ -25,16 +27,18 @@ const ProductItem = ( { img, title, units, price, id, classNameForDarkItem }: Pr
         ) }
         {isKilo && <span onClick={() => alert('Переход на страницу товара с активным блоком задания веса')}>Задать свой вес</span>}
       </div>
-      <div className={style.priceBlock}>
-        <p className={style.price}>{ `${ price } BYN` }</p>
-        <div className={style.basket} onClick={() => alert('добавить в корзину')}>
-          <p>+</p>
-          <div className={style.imageWrapper}>
-              <img src={ basketIcon } alt="basketIcon"/>
-          </div>
+        <div className={style.priceBlockWrapper}>
+            <div className={style.priceBlock}>
+                <p className={style.price}>{ `${ price } BYN` }</p>
+                <div className={style.basket} onClick={() => alert('добавить в корзину')}>
+                    <p>+</p>
+                    <div className={style.imageWrapper}>
+                        <img src={ basketIcon } alt="basketIcon"/>
+                    </div>
+                </div>
+            </div>
+            <button onClick={() => alert('Модалка "купить в 1 клик"')}>Купить в 1 клик</button>
         </div>
-      </div>
-      <button onClick={() => alert('Модалка "купить в 1 клик"')}>Купить в 1 клик</button>
     </div>
   );
 };

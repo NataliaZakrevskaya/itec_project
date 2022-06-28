@@ -8,7 +8,7 @@ const SearchInput = () => {
   return (
       <input
         className={ style.searchInput }
-        placeholder={ `Search` }
+        placeholder={ `Поиск` }
         type="text"
         value={ value }
         onChange={ e => setValue( e.target.value ) }

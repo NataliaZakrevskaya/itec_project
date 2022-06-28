@@ -1,9 +1,81 @@
 .advertisingBlockContainer{
   width: 100%;
   background-color: white;
+  padding: 24.75px 0px 40.75px 0px;
 
   .advertisingBlock{
     display: flex;
     flex-direction: row;
+  }
+}
+.mainTitle{
+  padding-top: 42.25px;
+  margin-bottom: 32px;
+  width: 512px;
+  font-family: 'SF Pro Display';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 120%;
+}
+.subTitleWrapper{
+  display: flex;
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
+  color: #202223;
+  margin-bottom: 33px;
+}
+.mainWrapper{
+  & button{
+    background: #00A0AC;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 153px;
+    height: 44px;
+    font-family: 'SF Pro Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    border: none;
+  }
+  & button:hover{
+    background: #347C84;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+}
+.subTitleOne{
+  display: flex;
+}
+.subTitleOne:before{
+  content: '';
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: #98C6CD;
+  margin-right: 8px;
+}
+.subTitleTwo{
+  display: flex;
+}
+.subTitleTwo:before{
+  content: '';
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: #98C6CD;
+  margin-right: 8px;
+}
+.mainImage{
+  width: 573px;
+  height: 377px;
+  & img {
+    width: 100%;
+    height: 100%;
   }
 }

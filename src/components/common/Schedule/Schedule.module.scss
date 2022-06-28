@@ -11,21 +11,24 @@
     margin-right: 7.6px;
   }
 
-  .scheduleText{
-    margin-right: 13.5px;
-  }
 
-  .scheduleText::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    top: 2px;
-    left: 157px;
-    width: 1.5px;
-    height: 13px;
-    background-color: #8C9196;
-  }
 
+  //.scheduleText::after {
+  //  content: "";
+  //  position: absolute;
+  //  bottom: 0;
+  //  top: 2px;
+  //  left: 157px;
+  //  width: 1.5px;
+  //  height: 13px;
+  //  background-color: #8C9196;
+  //}
+.headerStrip{
+  width: 1.5px;
+  height: 13px;
+  background: #8C9196;
+  margin: 0 6px;
+}
   & p {
     @include text();
   }

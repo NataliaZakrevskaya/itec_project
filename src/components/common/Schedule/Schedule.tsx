@@ -7,6 +7,7 @@ const Schedule = () => {
     <div className={style.scheduleBlock}>
       <img src={ timeIcon } alt={ 'timeIcon' }/>
       <p className={style.scheduleText}>Пон.-Пят. 10:00-21:00</p>
+        <div className={style.headerStrip}></div>
       <p>Суб.-Вос. 10:00-20:00</p>
     </div>
   );

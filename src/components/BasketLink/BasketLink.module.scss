@@ -2,9 +2,16 @@
 
 .basketLink {
   @include size(60px, 36px);
-  background-color: #FFFFFF;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
   & img {
-  @include size(18px, 20px)
+  @include size(18px, 20px);
+    margin-right: 5px;
   }
 }
