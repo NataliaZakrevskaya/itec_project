@@ -4,13 +4,6 @@ import commonStyle from '../../styles/common/Container.module.scss';
 import Button from '../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import feed from '../../Images/feed.svg';
-import fishBowl from '../../Images/fishBowl.svg';
-import catsHouse from '../../Images/catsHouse.svg';
-import dogFood from '../../Images/dogFood.svg';
-import litterBox from '../../Images/litterBox.svg';
-import parrot from '../../Images/parrot.svg';
-import parrotFood from '../../Images/parrotFood.svg';
 
 const AdvertisingBlock = () => {
 
