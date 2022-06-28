@@ -1,17 +1,34 @@
-@mixin flex ($flexDirection, $justifyContent, $alignItems) {
+@import "fonts";
+
+@mixin flex($flexDirection, $justifyContent, $alignItems) {
   display: flex;
   flex-direction: $flexDirection;
   justify-content: $justifyContent;
   align-items: $alignItems;
 }
-@mixin text () {
 
+@mixin SFTextRegular() {
+  font-family: "SF Text Regular";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
 }
-@mixin size ($width, $height) {
+@mixin SFTextMedium() {
+  font-family: "SF Text Medium";
+  font-style: normal;
+  font-weight: 500;
+}
+@mixin SFDisplaySemibold() {
+  font-family: "SF Display Semibold";
+  font-style: normal;
+  font-weight: 600;
+}
+@mixin SFDisplayBold() {
+  font-family: "SF Display Bold";
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin size($width, $height) {
   width: $width;
   height: $height;
 }
