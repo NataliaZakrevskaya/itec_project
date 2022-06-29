@@ -1,3 +1,6 @@
+@import "src/styles/Mixins";
+
+
 .advertisingBlockContainer{
   width: 100%;
   background-color: white;
@@ -12,6 +15,7 @@
   padding-top: 42.25px;
   margin-bottom: 32px;
   width: 512px;
+  @include SFDisplayBold();
   font-family: 'SF Pro Display';
   font-style: normal;
   font-weight: 700;
@@ -23,6 +27,7 @@
   & p {
     width: 220px;
     font-family: 'SF Pro Text';
+    @include SFTextRegular();
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -31,6 +36,7 @@
   }
   & span{
     font-family: 'SF Pro Text';
+    @include SFDisplayBold();
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -47,6 +53,7 @@
     width: 153px;
     height: 44px;
     font-family: 'SF Pro Text';
+    @include SFDisplaySemibold();
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

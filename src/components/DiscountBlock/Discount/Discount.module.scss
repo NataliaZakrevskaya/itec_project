@@ -15,6 +15,7 @@
       font-style: normal;
       font-weight: 700;
       font-size: 20px;
+      @include SFDisplayBold();
       line-height: 130%;
       color: #202223;
       margin-bottom: 17px;

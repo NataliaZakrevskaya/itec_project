@@ -6,7 +6,7 @@ const Phone = () => {
   return (
     <div className={style.phoneBlock}>
       <img src={ phoneIcon } alt={ 'phoneIcon' }/>
-      <p>+ 375 (44) 501 03 55</p>
+      <a href='#'>+ 375 (44) 501 03 55</a>
     </div>
   );
 };

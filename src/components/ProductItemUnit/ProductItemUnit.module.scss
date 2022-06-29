@@ -1,9 +1,13 @@
+@import "src/styles/Mixins";
+
+
 .oneUnitBlock {
   padding: 2px 8px;
   background: #E4E5E7;
   border-radius: 2px;
   font-style: normal;
   font-weight: 500;
+  @include SFTextMedium();
   font-size: 14px;
   line-height: 20px;
   color: #202223;

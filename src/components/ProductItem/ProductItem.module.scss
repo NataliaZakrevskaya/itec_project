@@ -21,6 +21,7 @@
       border-radius: 6px;
       background: #FFFFFF;
       font-family: 'SF Pro Text';
+      @include SFTextMedium();
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -40,6 +41,7 @@
   & .price {
     margin-right: 17px;
     font-family: 'SF Pro Text';
+    @include SFDisplayBold();
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -76,6 +78,7 @@
     font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 600;
+    @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 130%;
     color: #000000;
@@ -98,6 +101,7 @@
       font-family: 'SF Pro Text';
       font-style: normal;
       font-weight: 500;
+      @include SFTextMedium();
       font-size: 14px;
       line-height: 20px;
       color: #202223;

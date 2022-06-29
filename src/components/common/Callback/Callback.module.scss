@@ -5,6 +5,7 @@
   color: $mainColor;
   cursor: pointer;
   font-family: 'SF Pro Text';
+  @include SFTextRegular();
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
