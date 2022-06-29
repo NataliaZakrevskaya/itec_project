@@ -1,0 +1,12 @@
+.brandsFormGroup {
+  background-color: white;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .brandsFormGroup {
+    display: flex;
+    flex-direction: row;
+  }
+}

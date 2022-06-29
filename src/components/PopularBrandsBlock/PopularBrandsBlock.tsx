@@ -19,7 +19,7 @@ const PopularBrandsBlock = () => {
           <div className={ style.brandsContainer }>
             {
               brands.map( brand =>
-                <Brand key={ brand.id } img={ brand.img }/>,
+                <Brand key={ brand.id } image={ brand.image }/>,
               )
             }
         </div>

@@ -1,10 +1,9 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
-import ProductTypesForm from '../../components/Forms/ProductTypesForm/ProductTypesForm';
-import BrandsForm from '../../components/Forms/BrandsForm/BrandsForm';
+import ProductTypesForm from '../../components/ProductTypesForm/ProductTypesForm';
+import BrandsForm from '../../components/BrandsForm/BrandsForm';
 import { getProductItems } from '../../mocks';
 import ProductItem from '../../components/ProductItem/ProductItem';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';

@@ -1,16 +1,13 @@
 import React from 'react';
-import prevIcon from '../../../Images/prevIcon.svg';
 
-const PrevSectionButton = ({onClick}: PrevSectionButton) => {
+const PrevSectionButton = ({onClick}: PrevSectionButtonPropsType) => {
   return (
-    <div onClick={onClick}>
-
-    </div>
+    <div onClick={onClick}/>
   );
 };
 
 export default PrevSectionButton;
 
-type PrevSectionButton = {
+type PrevSectionButtonPropsType = {
   onClick: () => void
 }
