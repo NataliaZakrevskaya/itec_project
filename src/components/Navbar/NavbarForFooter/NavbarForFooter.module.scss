@@ -1,0 +1,18 @@
+@import "src/styles/Mixins";
+
+.navBar {
+  width: 302px;
+  display: flex;
+  justify-content: space-between;
+
+  & a {
+    @include SFTextMedium();
+    font-size: 14px;
+    line-height: 20px;
+    color: #202223;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+}

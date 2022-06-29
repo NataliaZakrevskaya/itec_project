@@ -5,6 +5,9 @@ import { getProductItems } from '../../mocks';
 import ProductItemForBasket from '../../components/ProductItemForBasket/ProductItemForBasket';
 import boxIcon from '../../Images/boxIcon.svg';
 import navigateIcon from '../../Images/navigateIcon.svg';
+import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
+import PreviouslyProductsBlock from '../../components/PreviouslyProductsBlock/PreviouslyProductsBlock';
+import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 
 const BasketPage = () => {
 
@@ -47,6 +50,9 @@ const BasketPage = () => {
           <button onClick={() => alert('Переход на модалку оформления заказ')}>Оформить заказ</button>
         </div>
       </div>
+      <PopularProductsBlock/>
+      <PreviouslyProductsBlock/>
+      <UsefulArticlesBlock/>
     </div>
   );
 };

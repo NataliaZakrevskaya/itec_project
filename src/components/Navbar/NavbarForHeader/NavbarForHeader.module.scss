@@ -1,5 +1,3 @@
-@import "src/styles/Mixins";
-
 .navBar{
   width: 302px;
   display: flex;
@@ -7,7 +5,6 @@
   & a:first-child{
     font-family: 'SF Pro Text';
     font-style: normal;
-    @include SFTextMedium();
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
@@ -17,7 +14,6 @@
     font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 500;
-    @include SFTextMedium();
     font-size: 14px;
     line-height: 20px;
     color: #FFFFFF;

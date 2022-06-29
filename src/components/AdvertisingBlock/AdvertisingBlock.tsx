@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './AdvertisingBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
-import Button from '../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import frame from '../../Images/Frame 119.svg';
