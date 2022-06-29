@@ -50,10 +50,10 @@ const CatalogPage = () => {
                 <ProductItem
                   key={ item.id }
                   id={ item.id }
-                  img={ item.img[ 0 ] }
-                  title={ item.title }
-                  units={ item.units }
-                  price={ item.units[ 0 ].price }
+                  image={ item.images[ 0 ].image }
+                  name={ item.name }
+                  options={ item.options }
+                  unit={item.unit}
                 />,
               )
             }

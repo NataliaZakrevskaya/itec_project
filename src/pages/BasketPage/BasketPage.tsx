@@ -28,7 +28,12 @@ const BasketPage = () => {
         <div className={style.productsItemsBlockContainer}>
           {
             productsInBasket.map(item =>
-              <ProductItemForBasket img={item.img[0]} title={item.title} units={item.units}/>
+              <ProductItemForBasket
+                product={item}
+                image={item.images[0].image}
+                name={item.name}
+                options={item.options}
+              />
             )
           }
         </div>

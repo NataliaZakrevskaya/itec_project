@@ -1,9 +1,9 @@
 import React from 'react';
 
-const UnitsForBasket = ( { count, name, price }: UnitsForBasketPropsType ) => {
+const UnitsForBasket = ( { size, unit, price }: UnitsForBasketPropsType ) => {
   return (
     <div>
-      <p>{ count } { name }</p>
+      <p>{ size } { unit }</p>
       <p>{ price }</p>
     </div>
   );
@@ -12,7 +12,7 @@ const UnitsForBasket = ( { count, name, price }: UnitsForBasketPropsType ) => {
 export default UnitsForBasket;
 
 type UnitsForBasketPropsType = {
-  count: number,
-  name: string,
+  size: number,
+  unit: string
   price: number
 }

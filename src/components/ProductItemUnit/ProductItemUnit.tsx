@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './ProductItemUnit.module.scss';
 
-const ProductItemUnit = ({count, name}: ProductItemUnitPropsType) => {
+const ProductItemUnit = ({count, unit}: ProductItemUnitPropsType) => {
   return (
     <span onClick={() => alert('отправлять в стор выбранное значение, подтягивать измененную цену')} className={style.oneUnitBlock}>
-      {count} {name}
+      {count} {unit}
     </span>
   );
 };
@@ -13,5 +13,5 @@ export default ProductItemUnit;
 
 type ProductItemUnitPropsType = {
   count: number,
-  name: string
+  unit: string
 }
