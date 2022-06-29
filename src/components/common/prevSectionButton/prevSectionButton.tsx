@@ -4,7 +4,7 @@ import prevIcon from '../../../Images/prevIcon.svg';
 const PrevSectionButton = ({onClick}: PrevSectionButton) => {
   return (
     <div onClick={onClick}>
-      <img src={ prevIcon } alt="prevIcon"/>
+
     </div>
   );
 };

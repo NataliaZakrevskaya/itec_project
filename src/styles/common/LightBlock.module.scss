@@ -4,8 +4,33 @@
   padding-bottom: 25px;
 
   .sectionsBlock {
-    & div {
-      background-color: #f6f6f7;
+    & div:last-child{
+      background: url("../../Images/nextIcon.svg");
+      background-repeat: no-repeat;
+      background-size: 7px 12px;
+      background-position: 50% 50%;
+      background-color: #F6F6F7;
+    }
+    & div:last-child:hover{
+      background: url("../../Images/whiteNextArrow.svg"), #00A0AC;
+      background-repeat: no-repeat;
+      background-size: 7px 12px;
+      background-position: 50% 50%;
+
+    }
+    & div:first-child{
+      background: url("../../Images/prevIcon.svg");
+      background-repeat: no-repeat;
+      background-size: 7px 12px;
+      background-position: 50% 50%;
+      background-color: #F6F6F7;
+      &:hover{
+        background: url("../../Images/whiteNextArrow.svg"), #00A0AC;
+        background-repeat: no-repeat;
+        transform: rotate(-180deg);
+        background-position: 50% 50%;
+        background-size: 7px 12px;
+      }
     }
     & div:hover{
       background: #00A0AC;

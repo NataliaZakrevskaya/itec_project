@@ -18,9 +18,7 @@
     }
 
     & p {
-        font-family: 'SF Pro Text';
-        font-style: normal;
-        font-weight: 400;
+
         @include SFTextRegular();
         font-size: 14px;
         line-height: 20px;

@@ -16,9 +16,6 @@
   margin-bottom: 32px;
   width: 512px;
   @include SFDisplayBold();
-  font-family: 'SF Pro Display';
-  font-style: normal;
-  font-weight: 700;
   font-size: 42px;
   line-height: 120%;
 }
@@ -26,19 +23,13 @@
   display: flex;
   & p {
     width: 220px;
-    font-family: 'SF Pro Text';
     @include SFTextRegular();
-    font-style: normal;
-    font-weight: 400;
     font-size: 14px;
     line-height: 140%;
     color: #202223;
   }
   & span{
-    font-family: 'SF Pro Text';
     @include SFDisplayBold();
-    font-style: normal;
-    font-weight: 700;
     font-size: 16px;
     line-height: 130%;
     color: #202223;
@@ -52,10 +43,7 @@
     border-radius: 4px;
     width: 153px;
     height: 44px;
-    font-family: 'SF Pro Text';
     @include SFDisplaySemibold();
-    font-style: normal;
-    font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     color: #FFFFFF;

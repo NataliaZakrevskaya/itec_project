@@ -2,13 +2,37 @@
   background-color: #f6f6f7;
 
   .sectionsBlock {
-    & div {
+    & div:last-child{
+      background: url("../../Images/nextIcon.svg");
+      background-repeat: no-repeat;
+      background-size: 7px 12px;
+      background-position: 50% 50%;
       background-color: white;
+    }
+    & div:last-child:hover{
+      background: url("../../Images/whiteNextArrow.svg"), #00A0AC;
+      background-repeat: no-repeat;
+      background-size: 7px 12px;
+      background-position: 50% 50%;
+
+    }
+    & div:first-child{
+      background: url("../../Images/prevIcon.svg");
+      background-repeat: no-repeat;
+      background-size: 7px 12px;
+      background-position: 50% 50%;
+      background-color: white;
+      &:hover{
+        background: url("../../Images/whiteNextArrow.svg"), #00A0AC;
+        transform: rotate(-180deg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+
+      }
     }
     & div:hover{
       background: #00A0AC;
       border-radius: 40px;
-
     }
   }
 }

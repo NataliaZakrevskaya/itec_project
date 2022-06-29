@@ -4,6 +4,7 @@ import { getProductItems } from '../../mocks';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import dark from '../../styles/common/DarkBlock.module.scss';
+import style from './PopularProductsBlock.module.css'
 
 const PopularProductsBlock = () => {
 
@@ -14,12 +15,14 @@ const PopularProductsBlock = () => {
   };
 
   return (
-    <ThemeBlockWrapper
-      title={ 'Популярные товары' }
-      onButtonClick={ goToPopularProducts }
-      itemsForBlock={ popularProducts }
-      blockTheme={ dark }
-    />
+      <div className={style.popularProductsWrapper}>
+        <ThemeBlockWrapper
+            title={ 'Популярные товары' }
+            onButtonClick={ goToPopularProducts }
+            itemsForBlock={ popularProducts }
+            blockTheme={ dark }
+        />
+      </div>
   );
 };
 

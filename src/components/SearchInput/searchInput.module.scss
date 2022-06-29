@@ -13,9 +13,7 @@
     background-position: 2%;
   }
   & ::placeholder{
-    font-family: 'SF Pro Text';
-    font-style: normal;
-    font-weight: 400;
+    @include SFTextRegular();
     font-size: 15px;
     line-height: 20px;
     color: #6D7175;

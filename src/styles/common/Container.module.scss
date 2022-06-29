@@ -18,7 +18,6 @@
   .navigationInfoBlock {
     @include flex(row, space-between, center);
     width: 100%;
-    margin-top: 60px;
 
     & h2 {
       font-family: 'SF Pro Display';
