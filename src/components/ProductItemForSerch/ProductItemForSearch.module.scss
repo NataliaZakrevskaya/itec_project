@@ -1,0 +1,14 @@
+@import "src/styles/Mixins";
+
+.productItemFroSearch{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 8px 16px;
+  gap: 8px;
+
+  & img{
+    @include size(40px, 40px);
+    object-fit: contain;
+  }
+}
