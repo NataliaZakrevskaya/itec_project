@@ -1,0 +1,29 @@
+.articlePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #f6f6f7;
+
+  .navigationBlock {
+    width: 80%;
+  }
+
+  .articleInfo {
+    display: flex;
+    flex-direction: row;
+
+    & div {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .articleImage {
+
+    & img {
+      width: 100%;
+      height: 306px;
+    }
+  }
+}
