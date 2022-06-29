@@ -24,6 +24,11 @@
       font-size: 14px;
       line-height: 20px;
       color: #202223;
+      &:hover{
+        background: #00A0AC;
+        color: #FFFFFF;
+        border: none;
+      }
     }
   }
 
@@ -78,6 +83,9 @@
     color: #000000;
     cursor: pointer;
     //margin-bottom: 16px;
+    &:hover{
+      color: #00A0AC;
+    }
   }
 
   .unitGroup {
