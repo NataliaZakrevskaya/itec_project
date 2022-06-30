@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import basket from '../../Images/basket.svg';
-import { UnitType } from '../../mocks';
+import { OptionType, ProductItemType } from '../../mocks';
 import ProductItemUnit from '../ProductItemUnit/ProductItemUnit';
 import style from './ProductItemForBasket.module.scss';
 
-const ProductItemForBasket = ({units, title, img}: ProductItemForBasketPropsType) => {
+const ProductItemForBasket = ({options, name, image, product}: ProductItemForBasketPropsType) => {
 
   const [ countOfProduct, setCountOfProduct ] = useState( 1 );
   const onDecrementBtnClick = () => {
@@ -17,16 +17,20 @@ const ProductItemForBasket = ({units, title, img}: ProductItemForBasketPropsType
   return (
     <div className={style.productItemForBasketContainer}>
       <div>
-        <img className={style.productItemImg} src={img} alt="product"/>
+        <img className={style.productItemImg} src={image} alt="product"/>
       </div>
       <div>
         <h3>
-          { title }
+          { name }
         </h3>
         <div>
           {
-            units.map(unit =>
-              <ProductItemUnit key={unit.id} count={unit.count} name={unit.name}/>
+            options.map(option =>
+              <ProductItemUnit
+                key={option.id}
+                count={option.count}
+                unit={product.unit}
+              />
             )
           }
         </div>
@@ -45,7 +49,8 @@ const ProductItemForBasket = ({units, title, img}: ProductItemForBasketPropsType
 export default ProductItemForBasket;
 
 type ProductItemForBasketPropsType = {
-  units: Array<UnitType>,
-  title: string,
-  img: string
+  product: ProductItemType
+  options: Array<OptionType>,
+  name: string,
+  image: string
 }

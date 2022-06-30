@@ -23,15 +23,15 @@ const ThemeBlockWrapper = ( {title, onButtonClick, itemsForBlock, blockTheme}: T
         <div className={ commonStyle.productsList }>
           {
             itemsForBlock
-              .map( (item: any) =>
+              .map( (item: ProductItemType) =>
                 <ProductItem
                   key={ item.id }
                   id={item.id}
-                  img={ item.img[ 0 ] }
-                  title={ item.title }
-                  units={ item.units }
-                  price={ item.units[0].price }
+                  image={ item.images[ 0 ].image }
+                  name={ item.name }
+                  options={ item.options }
                   classNameForDarkItem={productItem}
+                  unit={item.unit}
                 />,
               )
           }

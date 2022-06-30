@@ -71,7 +71,7 @@
   .descriptionBlock{
     display: flex;
     flex-direction: row;
-    .mainDescription{
+    & div{
       display: flex;
       flex-direction: column;
     }

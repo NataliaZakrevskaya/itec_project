@@ -4,7 +4,7 @@ import style from './Brand.module.scss';
 const Brand = ( props: BrandPropsType ) => {
   return (
     <div className={ style.brand }>
-      <img src={ props.img } alt={ 'brand' }/>
+      <img src={ props.image } alt={ 'brand' }/>
     </div>
   );
 };
@@ -12,5 +12,5 @@ const Brand = ( props: BrandPropsType ) => {
 export default Brand;
 
 type BrandPropsType = {
-  img?: string
+  image: string
 }

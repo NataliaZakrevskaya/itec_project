@@ -1,11 +1,12 @@
 import React from 'react';
-import { AnimalPropsType } from '../AnimalsTypesList';
 import style from './AnimalType.module.scss';
+import { AnimalTypesPropsType } from './types';
 
-const AnimalType = ( props: AnimalPropsType ) => {
+const AnimalType = ( props: AnimalTypesPropsType ) => {
   return (
-    <div className={ style.animalType } onClick={() => alert('переход на каталог товаров для выбранного вида животного')}>
-      <img src={ props.img } alt={ 'animal img' }/>
+    <div className={ style.animalType }
+         onClick={ () => alert( 'переход на каталог товаров для выбранного вида животного' ) }>
+      <img src={ props.image } alt={ 'animal img' }/>
       <span>{ props.name }</span>
     </div>
   );

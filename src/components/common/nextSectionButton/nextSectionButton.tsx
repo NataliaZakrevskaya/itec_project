@@ -1,17 +1,14 @@
 import React from 'react';
-import nextIcon from '../../../Images/nextIcon.svg';
-import style from './nextSectionButton.module.scss'
+import style from './nextSectionButton.module.scss';
 
-const NextSectionButton = ({onClick}: NextSectionButtonType) => {
+const NextSectionButton = ({onClick}: NextSectionButtonPropsType) => {
   return (
-    <div className={style.nextSectionButtonArrow}  onClick={() => alert('next')}>
-
-    </div>
+    <div className={style.nextSectionButtonArrow}  onClick={onClick}/>
   );
 };
 
 export default NextSectionButton;
 
-type NextSectionButtonType = {
+type NextSectionButtonPropsType = {
   onClick: () => void
 }

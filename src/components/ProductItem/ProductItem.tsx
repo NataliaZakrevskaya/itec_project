@@ -1,28 +1,29 @@
 import React from 'react';
-import { UnitType } from '../../mocks';
+import { OptionType } from '../../mocks';
 import ProductItemUnit from '../ProductItemUnit/ProductItemUnit';
 import basketIcon from '../../Images/basketIcon.svg';
 import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 
-const ProductItem = ( { img, title, units, price, id, classNameForDarkItem }: ProductItemPropsType ) => {
+const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem }: ProductItemPropsType ) => {
 
-  const isKilo = units[0].name === 'кг.'
+  const isKilo = unit === 'кг.' //todo пока заглушка
+  const price = 325 // будет выводиться в зависимости от выбранного option, приходить из редюсера
   const navigate = useNavigate()
 
   return (
     <div className={`${style.productItem} ${classNameForDarkItem}`}>
         <div className={style.productItemWrapper}>
-            <img className={style.mainProductItemImage} src={ img } alt={ 'product' }/>
-            <p className={style.title} onClick={() => navigate(`${routesPathsEnum.CATALOG}/${id}`)}>{ title }</p>
+            <img className={style.mainProductItemImage} src={ image } alt={ 'product' }/>
+            <p className={style.title} onClick={() => navigate(`${routesPathsEnum.CATALOG}/${id}`)}>{ name }</p>
         </div>
       <div className={style.unitGroup}>
-        { units.map( unit =>
+        { options.map( option =>
           <ProductItemUnit
-            key={ unit.id }
-            count={ unit.count }
-            name={ unit.name }
+            key={ option.id }
+            count={ option.size }
+            unit={ unit }
           />,
         ) }
         {isKilo && <span onClick={() => alert('Переход на страницу товара с активным блоком задания веса')}>Задать свой вес</span>}
@@ -47,9 +48,9 @@ export default ProductItem;
 
 type ProductItemPropsType = {
   id: number,
-  img: string,
-  title: string,
-  units: Array<UnitType>,
-  price: number,
+  image: string,
+  name: string,
+  options: Array<OptionType>,
   classNameForDarkItem?: string,
+  unit: string
 }

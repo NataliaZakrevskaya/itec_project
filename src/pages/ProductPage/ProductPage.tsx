@@ -19,7 +19,7 @@ const ProductPage = () => {
   const totalWeight = 0.542; //todo позже будет получаться из стора
   const productId = Number( useParams().productId ) - 1;
   const product = getProductItems()[ productId ]; //todo позже будет просто запрос по апи
-  const { brand, title, img, units } = product;
+  const { brand, name, images, options } = product;
 
   const onDecrementBtnClick = () => {
     setCountOfProduct( () => countOfProduct - 1 );
@@ -35,24 +35,24 @@ const ProductPage = () => {
           <img src={ nextIcon } alt="nextIcon"/>
           Каталог
           <img src={ nextIcon } alt="nextIcon"/>
-          <span>{ product.title }</span>
+          <span>{ product.name }</span>
         </p>
       </div>
       <div className={ style.productInfo }>
-        <h2>{ title }</h2>
+        <h2>{ name }</h2>
         <p>Смотреть все товары бренда { brand.name } </p>
         <div className={ style.imgAndOrderBlock }>
           <div className={ style.imageBlock }>
             <div>
-              <img src={ img[ 0 ] } alt="product" className={ style.mainImg }/>
+              <img src={ images[ 0 ].image } alt="product" className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
               {
-                img
+                images
                   .filter( ( img, index ) =>
                     index > 0 )
                   .map( img =>
-                    <img src={ img } alt="product" className={ style.restImage }/>,
+                    <img src={ img.image } alt="product" className={ style.restImage }/>,
                   )
               }
             </div>
@@ -62,12 +62,12 @@ const ProductPage = () => {
               Варианты фасовки. Выберите удобный вес
             </h3>
             <div className={ style.unitsGroup }>
-              { units.map( unit =>
+              { options.map( option =>
                 <UnitsForBasket
-                  key={ unit.id }
-                  count={ unit.count }
-                  name={ unit.name }
-                  price={ unit.price }
+                  key={ option.id }
+                  size={ option.count }
+                  price={+option.price}
+                  unit={ product.unit }
                 />,
               ) }
             </div>
@@ -88,7 +88,7 @@ const ProductPage = () => {
                 { totalSum }
                 BYN
               </h2>
-              <p>Общий вес: { totalWeight } { units[ 0 ].name }</p>
+              <p>Общий вес: { totalWeight } { product.unit }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
@@ -104,39 +104,15 @@ const ProductPage = () => {
           </div>
         </div>
         <h2>Описание</h2>
-        <div className={ style.descriptionBlock }>
+        <div className={ style.descriptionBlock }> {/*//todo придет уже отредактированное с бэка*/}
           <div className={ style.mainDescription }>
             <p>{ product.description }</p>
-            <h5>Ключевые особенности:</h5>
-            <ul>
-              {
-                product.keyFeatures.map( features =>
-                  <li key={ features.id }>{ features.value }</li>,
-                )
-              }
-            </ul>
-            <p>{ product.restDescription }</p>
-            <h5>Состав:</h5>
+            <p>{product.features}</p>
             <p>{ product.composition }</p>
-            <p>{ product.explanation }</p>
           </div>
           <div>
-            <h5>Гарантированный анализ:</h5>
-            <ul>
-              {
-                product.guaranteedAnalysis.map( analysis =>
-                  <li key={ analysis.id }>{ analysis.value }</li>,
-                )
-              }
-            </ul>
-            <h5>Пищевые добавки:</h5>
-            <div>
-              {
-                product.foodAdditives.map( additives =>
-                  <p key={ additives.id }>{ additives.value }</p>,
-                )
-              }
-            </div>
+            <p>{ product.analysis }</p>
+            <p>{ product.additives} </p>
           </div>
         </div>
       </div>

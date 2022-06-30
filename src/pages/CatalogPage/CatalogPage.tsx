@@ -1,10 +1,9 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
-import ProductTypesForm from '../../components/Forms/ProductTypesForm/ProductTypesForm';
-import BrandsForm from '../../components/Forms/BrandsForm/BrandsForm';
+import ProductTypesForm from '../../components/ProductTypesForm/ProductTypesForm';
+import BrandsForm from '../../components/BrandsForm/BrandsForm';
 import { getProductItems } from '../../mocks';
 import ProductItem from '../../components/ProductItem/ProductItem';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
@@ -52,10 +51,10 @@ const CatalogPage = () => {
                 <ProductItem
                   key={ item.id }
                   id={ item.id }
-                  img={ item.img[ 0 ] }
-                  title={ item.title }
-                  units={ item.units }
-                  price={ item.units[ 0 ].price }
+                  image={ item.images[ 0 ].image }
+                  name={ item.name }
+                  options={ item.options }
+                  unit={item.unit}
                 />,
               )
             }

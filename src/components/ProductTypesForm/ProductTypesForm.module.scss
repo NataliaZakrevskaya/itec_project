@@ -1,9 +1,10 @@
-@import "src/styles/Mixins";
+@import "../../styles/Mixins";
 
 
-.productTypesForm{
+.productTypesBlock{
   background-color: white;
   padding: 16px;
+  margin-bottom: 24px;
   .radioGroup{
     display: flex;
     flex-direction: column;

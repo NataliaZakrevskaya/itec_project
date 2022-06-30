@@ -4,7 +4,7 @@ import light from '../../styles/common/LightBlock.module.scss';
 import { getProductItems } from '../../mocks';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import style from "./LatestBlock.module.scss"
+import style from './LatestBlock.module.scss';
 
 const LatestBlock = () => {
 
