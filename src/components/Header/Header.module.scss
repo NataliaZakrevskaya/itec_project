@@ -33,6 +33,7 @@
     .navBar {
       @include flex(row, space-between, center);
       margin:0 auto;
+      gap: 41px;
     }
   }
 }

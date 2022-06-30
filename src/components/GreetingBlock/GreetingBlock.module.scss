@@ -3,8 +3,48 @@
 .greetingBlock{
   width: 100%;
   background-color: white;
+  margin-top: 57px;
 
   .greetingBlockContainer{
     @include flex(row, space-between, center);
   }
+}
+.greetingBlockTitle{
+  @include SFDisplaySemibold();
+  width: 597px;
+  font-size: 28px;
+  line-height: 32px;
+  color: #202223;
+  margin-bottom: 12px;
+}
+.greetingBlockText{
+  @include SFTextRegular();
+  max-width: 597px;
+  font-size: 16px;
+  line-height: 125%;
+  color: #202223;
+}
+
+.greetingBlockWrapperTitle{
+  @include SFDisplayBold();
+  font-size: 16px;
+  line-height: 125%;
+  color: #202223;
+  margin-bottom: 8px;
+}
+.greetingBlockTextWrapper{
+  margin-bottom: 24px;
+}
+.greetingBlockWrapper{
+  display: flex;
+  margin-bottom: 24px;
+}
+.greetingBlockWrapper:before{
+  content: "";
+  display: block;
+  width: 2px;
+  height: 88px;
+  background: #98C6CD;
+  border-radius: 2px;
+  margin-right: 12px;
 }

@@ -5,11 +5,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 16px;
   @include size(214px, 84px);
   background-color: white;
   margin: 24px 0;
   border-radius: 5px;
   cursor: pointer;
+  padding: 5px;
   & span {
     @include SFDisplaySemibold();
     font-size: 16px;
@@ -19,7 +21,6 @@
   }
   & img{
     @include size(85px, 85px);
-    margin-right: 16px;
   }
 }
 .animalType:hover{

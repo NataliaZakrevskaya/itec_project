@@ -13,7 +13,7 @@ const ReviewsBlock = () => {
   return (
     <div className={ commonStyle.container }>
       <div className={ style.reviewsBlock }>
-        <h2>Отзывы о магазине</h2>
+        <h2 className={style.reviewsBlockTitle}>Отзывы о магазине</h2>
         <Review
           key={ reviews[ 0 ].id }
           id={ reviews[ 0 ].id }

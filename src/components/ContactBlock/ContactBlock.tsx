@@ -12,20 +12,28 @@ const ContactBlock = () => {
     <div className={ style.contactBlockContainer }>
       <div className={commonStyle.container}>
         <div className={style.contactBlock}>
-          <div>
+          <div className={style.contactBlockImageWrapper}>
             <img src={map} alt="map"/> {/*//todo заглушка карты*/}
           </div>
-          <div>
-            <h3>Бесплатно проконсультируем по любому вопросу связанному с вашим любимцем</h3>
-            <Address />
-            <p>Время работы</p>
-            <Schedule />
-            <p>Телефон</p>
-            <Phone />
-            <p>Пишите нам в социальных сетях</p>
-            <a href={ 'https://www.instagram.com/' } target={ '_blank' } rel={ 'noreferrer' }>
-              <img src={ instagramIcon } alt={ 'instagramIcon' }/>
-            </a>
+          <div className={style.contactBlockWrapper}>
+            <h3 className={style.contactBlockWrapperTitle}>Бесплатно проконсультируем по любому вопросу связанному с вашим любимцем</h3>
+            <div className={style.contactBlockWrapperDirection}>
+              <Address />
+            </div>
+            <div className={style.contactBlockWrapperTimeWork}>
+              <p className={style.timeWork}>Время работы</p>
+              <Schedule />
+            </div>
+            <div className={style.contactBlockWrapperTel}>
+              <p className={style.tel}>Телефон</p>
+              <Phone />
+            </div>
+            <div className={style.contactBlockWrapperSocial}>
+              <p className={style.socialTitle}>Пишите нам в социальных сетях</p>
+              <a href={ 'https://www.instagram.com/' } target={ '_blank' } rel={ 'noreferrer' }>
+                <img src={ instagramIcon } alt={ 'instagramIcon' }/>
+              </a>
+            </div>
           </div>
         </div>
       </div>

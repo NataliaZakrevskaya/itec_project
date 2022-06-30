@@ -2,4 +2,6 @@
 
 .animalTypesBlock{
   @include flex(row, space-between, center);
+  gap: 24px;
+  overflow: hidden;
 }

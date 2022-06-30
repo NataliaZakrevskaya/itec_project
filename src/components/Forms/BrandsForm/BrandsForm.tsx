@@ -16,7 +16,7 @@ const BrandsForm = () => (
       { () => (
         <Form>
           <div role="group" aria-labelledby="my-radio-group" className={ style.checkboxGroup }>
-            <Field type="text" name="picked" value="" placeholder={ 'Название бренда' }/>
+            <Field className={style.brandsFormFirstInput} type="text" name="picked" value="" placeholder={ 'Название бренда' }/>
             <label>
               <Field type="checkbox" name="picked" value="AIRYVEST"/>
               AIRYVEST

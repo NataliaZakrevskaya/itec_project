@@ -5,9 +5,16 @@
   width: 100%;
   color: $mainColor;
   @include flex(row, space-between, center);
+  margin-top: 26px;
   .navigationBlock{
     display: flex;
     flex-direction: row;
     align-items: center;
+    & .navigationBlockLeft{
+      margin-right: 7.6px;
+    }
+    & .navigationBlockRight{
+      margin-left: 7.6px;
+    }
   }
 }

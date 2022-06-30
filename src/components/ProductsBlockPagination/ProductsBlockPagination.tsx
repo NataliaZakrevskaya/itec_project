@@ -7,7 +7,7 @@ const ProductsBlockPagination = () => {
   return (
     <div className={style.paginationBlock}>
       <div className={style.navigationBlock}>
-        <img src={ prevPage } alt="prevPage"/>
+        <img className={style.navigationBlockLeft} src={ prevPage } alt="prevPage"/>
         <p>Предыдущая</p>
       </div>
       <div>
@@ -15,7 +15,7 @@ const ProductsBlockPagination = () => {
       </div>
       <div className={style.navigationBlock}>
         <p>Следующая</p>
-        <img src={ nextPage } alt="nextPage"/>
+        <img className={style.navigationBlockRight} src={ nextPage } alt="nextPage"/>
       </div>
     </div>
   );

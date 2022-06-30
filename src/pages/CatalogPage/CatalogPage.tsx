@@ -17,10 +17,11 @@ const CatalogPage = () => {
   return (
     <div className={ style.catalogPageBlock }>
       <div className={ style.navigationBlock }>
-        <p>Главная
-          <img src={ nextIcon } alt="nextIcon"/>
-          Каталог
-        </p>
+        <div className={style.navigationBlockWrapper}>
+            <p>Главная</p>
+            <img src={ nextIcon } alt="nextIcon"/>
+            <p>Каталог</p>
+        </div>
       </div>
       <AnimalsTypesList/>
       <div className={ style.title }>

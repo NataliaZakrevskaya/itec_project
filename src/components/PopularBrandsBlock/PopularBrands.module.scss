@@ -2,12 +2,15 @@
 
 .popularBrandsBlock{
   width: 100%;
-  padding: 56px 0;
+  padding-top: 56px;
+  margin-bottom: 57px;
 
   .brandsContainer{
     @include flex (row, space-between, center);
     box-sizing: border-box;
     width: 100%;
+    gap: 24px;
     flex-wrap: wrap;
+    margin-bottom: 25px;
   }
 }

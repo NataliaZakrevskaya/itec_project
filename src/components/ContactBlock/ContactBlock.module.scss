@@ -1,3 +1,6 @@
+@import "src/styles/Mixins";
+
+
 .contactBlockContainer {
   width: 100%;
 
@@ -5,4 +8,58 @@
     display: flex;
     flex-direction: row;
   }
+}
+.contactBlockImageWrapper{
+  margin-right: 86px;
+  width: 670px;
+  padding:56px 0;
+  & img{
+    width: 100%;
+    height: 100%;
+  }
+}
+.contactBlockWrapper{
+  padding-top: 70px;
+}
+.contactBlockWrapperTitle{
+  @include SFDisplaySemibold();
+  width: 313px;
+  font-size: 20px;
+  line-height: 130%;
+  color: #202223;
+  margin-bottom: 24px;
+
+}
+.contactBlockWrapperDirection{
+  margin-bottom: 24px;
+}
+.contactBlockWrapperTimeWork{
+  margin-bottom: 24px;
+  & .timeWork {
+    @include SFDisplaySemibold();
+    font-size: 16px;
+    line-height: 24px;
+    color: #202223;
+    margin-bottom: 8px;
+  }
+}
+.contactBlockWrapperTel{
+  margin-bottom: 24px;
+  & .tel{
+    @include SFDisplaySemibold();
+    font-size: 16px;
+    line-height: 24px;
+    color: #202223;
+    margin-bottom: 8px;
+  }
+}
+.contactBlockWrapperSocial{
+
+}
+.socialTitle{
+  @include SFDisplaySemibold();
+  font-size: 16px;
+  line-height: 24px;
+  color: #202223;
+  margin-bottom: 8px;
 }
