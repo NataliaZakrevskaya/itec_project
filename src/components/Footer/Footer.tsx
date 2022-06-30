@@ -2,14 +2,14 @@ import React from 'react';
 import style from './Footer.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import FooterLogo from '../Logo/footerLogo/FooterLogo';
-import NavbarForHeader from '../Navbar/NavbarForHeader/NavbarForHeader';
 import Address from '../common/Address/Address';
 import Phone from '../common/PhoneBlock/Phone';
 import Schedule from '../common/Schedule/Schedule';
-import Callback from '../common/Callback/Callback';
 import NavbarForFooter from '../Navbar/NavbarForFooter/NavbarForFooter';
+import Callback from '../common/Callback/Callback';
 
 const Footer = () => {
+
   return (
     <div className={ style.footer }>
       <div className={ commonStyle.container }>
@@ -22,7 +22,7 @@ const Footer = () => {
           <Address/>
           <Phone/>
           <Schedule/>
-          <Callback/>
+          <Callback />
         </div>
         <div className={ style.siteInfo }>
           <div className={style.designerInfo}><p>Дизайн сайта: </p>

@@ -11,7 +11,7 @@ import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArti
 
 const BasketPage = () => {
 
-  const productsInBasket = getProductItems() //todo позже будет запрос на продукты в корзине
+  const productsInBasket = getProductItems().filter((item, index) => index < 3) //todo позже будет запрос на продукты в корзине
   const basketCount = 543 // позже будет приходить из стора корзины
   const productsCount = 3 // позже будет приходить из стора корзины
 

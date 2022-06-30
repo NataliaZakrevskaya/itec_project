@@ -1,12 +1,12 @@
 import React from 'react';
 import style from './SearchResultsBlock.module.scss';
-import sadDog from '../../../Images/sadDog.svg';
+//import sadDog from '../../../Images/sadDog.svg';
 import ProductItemForSearch from '../../ProductItemForSerch/ProductItemForSearch';
 import { ProductItemType } from '../../../mocks';
 
 const SearchResultsBlock = ( { productItems }: any ) => {
   return (
-    /*<div className={ style.searchResultsBlock }>
+    <div className={ style.searchResultsBlock }>
       {
         productItems.map( ( item: ProductItemType ) =>
           <ProductItemForSearch
@@ -16,8 +16,8 @@ const SearchResultsBlock = ( { productItems }: any ) => {
           />,
         )
       }
-    </div>*/
-    <div className={style.badSearchResultBlock}>
+    </div>
+    /*<div className={style.badSearchResultBlock}>
       <div  className={style.badSearchResultContainer}>
       <img className={style.withoutResultsImage} src={sadDog} alt="sadDog"/>
       <div className={style.textBlock}>
@@ -26,7 +26,7 @@ const SearchResultsBlock = ( { productItems }: any ) => {
       </div>
       <button>Перейти в каталог</button>
       </div>
-    </div>
+    </div>*/
   );
 };
 

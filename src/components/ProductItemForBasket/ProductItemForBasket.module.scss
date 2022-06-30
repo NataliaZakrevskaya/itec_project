@@ -2,12 +2,4 @@
 
 .productItemForBasketContainer{
   @include flex(row, space-between, flex-start);
-  .productItemImg{
-    @include size(56px, 56px);
-  }
-  .quantityManagementBlock{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
 }

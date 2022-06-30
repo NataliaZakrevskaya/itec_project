@@ -1,5 +1,4 @@
-@import "src/styles/Mixins";
-
+@import "../../../styles/Mixins";
 
 .button{
   cursor: pointer;
@@ -16,7 +15,7 @@
   text-align: center;
 }
 
-.buttonMoreProducts{
+.smallerButtonMoreProducts{
   display: flex;
   justify-content: center;
   & button{

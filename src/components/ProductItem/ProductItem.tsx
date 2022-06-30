@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { OptionType } from '../../mocks';
 import ProductItemUnit from '../ProductItemUnit/ProductItemUnit';
 import basketIcon from '../../Images/basketIcon.svg';
 import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import OnClickOrder from '../common/modals/OnClickOrder/OnClickOrder';
+import Modal from '../common/modals/Modal';
 
 const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem }: ProductItemPropsType ) => {
 
-  const isKilo = unit === 'кг.' //todo пока заглушка
-  const price = 325 // будет выводиться в зависимости от выбранного option, приходить из редюсера
-  const navigate = useNavigate()
+  const [ isActive, setIsActive ] = useState<boolean>( false );
+  const isKilo = unit === 'кг.'; //todo пока заглушка
+  const price = 325; // будет выводиться в зависимости от выбранного option, приходить из редюсера
+  const navigate = useNavigate();
+
+  const closeModal = () => {
+    setIsActive( false );
+  };
 
   return (
-    <div className={`${style.productItem} ${classNameForDarkItem}`}>
-        <div className={style.productItemWrapper}>
-            <img className={style.mainProductItemImage} src={ image } alt={ 'product' }/>
-            <p className={style.title} onClick={() => navigate(`${routesPathsEnum.CATALOG}/${id}`)}>{ name }</p>
-        </div>
-      <div className={style.unitGroup}>
+    <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
+      <div className={ style.productItemWrapper }>
+        <img className={ style.mainProductItemImage } src={ image } alt={ 'product' }/>
+        <p className={ style.title } onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>{ name }</p>
+      </div>
+      <div className={ style.unitGroup }>
         { options.map( option =>
           <ProductItemUnit
             key={ option.id }
@@ -26,20 +33,25 @@ const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem }: 
             unit={ unit }
           />,
         ) }
-        {isKilo && <span onClick={() => alert('Переход на страницу товара с активным блоком задания веса')}>Задать свой вес</span>}
+        { isKilo && <span onClick={ () => alert( 'Переход на страницу товара с активным блоком задания веса' ) }>Задать свой вес</span> }
       </div>
-        <div className={style.priceBlockWrapper}>
-            <div className={style.priceBlock}>
-                <p className={style.price}>{ `${ price } BYN` }</p>
-                <div className={style.basket} onClick={() => alert('добавить в корзину')}>
-                    <p>+</p>
-                    <div className={style.imageWrapper}>
-                        <img src={ basketIcon } alt="basketIcon"/>
-                    </div>
-                </div>
+      <div className={ style.priceBlockWrapper }>
+        <div className={ style.priceBlock }>
+          <p className={ style.price }>{ `${ price } BYN` }</p>
+          <div className={ style.basket } onClick={ () => alert( 'добавить в корзину' ) }>
+            <p>+</p>
+            <div className={ style.imageWrapper }>
+              <img src={ basketIcon } alt="basketIcon"/>
             </div>
-            <button onClick={() => alert('Модалка "купить в 1 клик"')}>Купить в 1 клик</button>
+          </div>
         </div>
+        <button onClick={ () => setIsActive(true) }>Купить в 1 клик</button>
+        { isActive &&
+          <Modal closeModal={ closeModal }>
+            <OnClickOrder/>
+          </Modal>
+        }
+      </div>
     </div>
   );
 };

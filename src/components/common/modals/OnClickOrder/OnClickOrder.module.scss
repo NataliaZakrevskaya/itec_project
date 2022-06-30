@@ -1,0 +1,31 @@
+@import "src/styles/Mixins";
+
+.onClickOrderContent {
+  @include flex(column, center, center);
+
+  & h3{
+    @include SFDisplayBold();
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .formBlock {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .formInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .orderBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
+  }
+}
+

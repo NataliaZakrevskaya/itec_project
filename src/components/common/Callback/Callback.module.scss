@@ -1,8 +1,6 @@
 @import "src/styles/Mixins";
-@import "src/styles/Variables";
 
 .callback{
-  color: $mainColor;
   cursor: pointer;
   @include SFTextRegular();
   font-size: 14px;

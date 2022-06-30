@@ -24,7 +24,7 @@ const Header = () => {
             <img src={ instagramIcon } alt={ 'instagramIcon' }/>
           </a>
         </div>
-        <Callback/>
+        <Callback />
       </div>
       <div className={ style.navBarContainer }>
         <div className={ `${ style.navBar } ${ commonStyle.container } ` }>

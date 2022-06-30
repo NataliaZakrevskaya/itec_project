@@ -1,6 +1,7 @@
 import React from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
+import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
 import ProductTypesForm from '../../components/ProductTypesForm/ProductTypesForm';
 import BrandsForm from '../../components/BrandsForm/BrandsForm';
@@ -54,6 +55,7 @@ const CatalogPage = () => {
                   image={ item.images[ 0 ].image }
                   name={ item.name }
                   options={ item.options }
+                  classNameForDarkItem={themeStyle.productItem}
                   unit={item.unit}
                 />,
               )
