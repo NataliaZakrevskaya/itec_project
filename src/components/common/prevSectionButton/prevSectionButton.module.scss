@@ -1,10 +1,9 @@
 @import "src/styles/Mixins";
 
-.button {
+.button{
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
   @include flex(row, center, center);
-  margin-left: 16px;
 }

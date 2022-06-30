@@ -1,8 +1,9 @@
 import React from 'react';
+import style from './prevSectionButton.module.scss';
 
 const PrevSectionButton = ({onClick}: PrevSectionButtonPropsType) => {
   return (
-    <div onClick={onClick}/>
+    <div className={style.button} onClick={onClick}/>
   );
 };
 

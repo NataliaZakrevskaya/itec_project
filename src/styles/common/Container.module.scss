@@ -20,10 +20,7 @@
     width: 100%;
 
     & h2 {
-      font-family: 'SF Pro Display';
       @include SFDisplaySemibold();
-      font-style: normal;
-      font-weight: 600;
       font-size: 28px;
       line-height: 32px;
       color: #202223;
@@ -32,18 +29,6 @@
     .sectionsBlock {
       display: flex;
       flex-direction: row;
-
-      & div {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        @include flex(row, center, center);
-
-        &:last-child {
-          margin-left: 16px;
-        }
-      }
     }
   }
 

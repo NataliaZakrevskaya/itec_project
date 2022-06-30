@@ -3,7 +3,7 @@ import style from './nextSectionButton.module.scss';
 
 const NextSectionButton = ({onClick}: NextSectionButtonPropsType) => {
   return (
-    <div className={style.nextSectionButtonArrow}  onClick={onClick}/>
+    <div className={style.button}  onClick={onClick}></div>
   );
 };
 

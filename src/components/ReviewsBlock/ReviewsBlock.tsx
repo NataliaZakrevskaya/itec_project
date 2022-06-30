@@ -13,7 +13,7 @@ const ReviewsBlock = () => {
   return (
     <div className={ commonStyle.container }>
       <div className={ style.reviewsBlock }>
-        <h2 className={style.reviewsBlockTitle}>Отзывы о магазине</h2>
+        <h2 className={ style.reviewsBlockTitle }>Отзывы о магазине</h2>
         <Review
           key={ reviews[ 0 ].id }
           id={ reviews[ 0 ].id }
@@ -22,12 +22,12 @@ const ReviewsBlock = () => {
           phoneNumber={ reviews[ 0 ].phoneNumber }
           petsName={ reviews[ 0 ].petsName }
         />
-
-
-        <div className={ `${ commonStyle.sectionsBlock } ${ colorStyle.sectionsBlock }` }>
+        <div className={colorStyle.block}>
+          <div className={ `${colorStyle.sectionsBlock} ${style.buttonsBlock}` }>
           <PrevSectionButton onClick={ () => alert( 'prev review' ) }/>
           <p>1 из 9</p> {/*// todo пока заглушкаБ можно не стилизовать*/ }
           <NextSectionButton onClick={ () => alert( 'next review' ) }/>
+        </div>
         </div>
       </div>
     </div>

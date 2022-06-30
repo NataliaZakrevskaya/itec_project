@@ -1,32 +1,81 @@
-.reviewsBlock{
+@import 'src/styles/Mixins';
+
+.reviewsBlock {
   width: 100%;
   background-color: white;
   margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.reviewsBlockTitle{
+
+.reviewsBlockTitle {
+  @include SFDisplaySemibold();
+  font-size: 28px;
+  line-height: 32px;
   text-align: center;
   padding-top: 24px;
   margin-bottom: 24px;
+  color: #202223;
 }
-.reviewsBlockSubTitle{
+
+.reviewsBlockSubTitle {
+  @include SFDisplaySemibold();
+  font-size: 16px;
+  line-height: 24px;
   text-align: center;
   margin-bottom: 12px;
+  color: #202223;
 }
-.reviewsBlockText{
+
+.reviewsBlockText {
+  @include SFTextRegular();
+  font-size: 14px;
+  line-height: 140%;
   text-align: center;
   max-width: 718px;
-  margin: 0 auto;
-  margin-bottom: 12px;
+  margin: 0 auto 12px;
+  color: #202223
 }
-.reviewsBlockWrapper{
+
+.reviewsBlockWrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 22px;
+
+  & p {
+    @include SFTextRegular();
+    font-size: 16px;
+    line-height: 24px;
+    color: #6D7175
+  }
 }
-.reviewsBlockPhoneWrapper{
+
+.reviewsBlockPhoneWrapper {
   display: flex;
   margin-right: 16px;
-  & img{
-     margin-right: 6.55px;
+
+  & p {
+    @include SFTextRegular();
+    font-size: 16px;
+    line-height: 24px;
+    color: #6D7175
+  }
+
+  & img {
+    margin-right: 6.55px;
+  }
+}
+
+.buttonsBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & p {
+    margin: 0 32px 0 48px;
+    @include SFTextRegular();
+    font-size: 16px;
+    line-height: 24px;
+    color: #916A00;
   }
 }
