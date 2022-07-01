@@ -12,7 +12,7 @@ const SearchInput = () => {
 
   const searchInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setValue( e.target.value );
-  };/**/
+  };
 
   return (
     <div className={style.searchInputBlock}>
