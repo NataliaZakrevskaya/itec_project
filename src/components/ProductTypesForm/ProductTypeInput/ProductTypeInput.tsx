@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent } from 'react';
 
-const ProductTypeInput = ({name, isActiveValue}: ProductTypeInputPropsType) => {
-  const [isChecked, setIsChecked] = useState(isActiveValue)
-  const radioInputHandler = () => {
-    setIsChecked(() => !isChecked)
-    //todo после изменится на dispatch санки
-  }
+const ProductTypeInput = ({ name, isActive, onChange }: ProductTypeInputPropsType) => {
+
   return (
       <label>
-        <input type="radio" checked={ isChecked } onChange={radioInputHandler}/>
+        <input type="radio" checked={ isActive } value={name} onChange={onChange}/>
+        <span/>
         { name }
       </label>
   );
@@ -18,5 +15,6 @@ export default ProductTypeInput;
 
 type ProductTypeInputPropsType = {
   name: string,
-  isActiveValue: boolean
+  isActive: boolean,
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }

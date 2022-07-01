@@ -24,8 +24,31 @@
     font-size: 14px;
     line-height: 20px;
     color: #202223;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     & input{
-      margin-right: 13px;
+      display: none;
+      /*margin-right: 13px;*/
+    }
+
+    & span{
+      @include size(18px, 18px);
+      border: 2px solid #8C9196;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      background: #FFFFFF;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    [type=radio]:checked + span:before {
+      @include size(20px, 20px);
+      content: url("../../Images/radio.svg");
+      position: absolute;
+      top: -3px;
+      left: -3px;
     }
   }
 }
