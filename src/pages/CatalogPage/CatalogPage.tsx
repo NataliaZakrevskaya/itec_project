@@ -28,7 +28,7 @@ const CatalogPage = () => {
         <h1>Каталог товаров</h1>{/* //todo позже будет меняться в зависимости от выбранного типа животного*/ }
         <div className={ style.select }>
           <p>Сортировка по: </p>
-          <select name="select">
+          <select name="select" >
             <option value="value1" selected>дате добавления</option>
             <option value="value2">названию: «от А до Я»</option>
             <option value="value3">названию: «от Я до А»</option>
