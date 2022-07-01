@@ -5,30 +5,21 @@
 
   .sectionsBlock {
     & div:last-child{
-      background: url("../../Images/nextIcon.svg");
-      background-repeat: no-repeat;
       background-size: 7px 12px;
-      background-position: 50% 50%;
-      background-color: #F6F6F7;
+      background: #F6F6F7 url("../../Images/nextIcon.svg") no-repeat 50% 50%;
     }
     & div:last-child:hover{
-      background: url("../../Images/whiteNextArrow.svg"), #00A0AC;
-      background-repeat: no-repeat;
       background-size: 7px 12px;
-      background-position: 50% 50%;
+      background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
 
     }
     & div:first-child{
-      background: url("../../Images/prevIcon.svg");
-      background-repeat: no-repeat;
       background-size: 7px 12px;
-      background-position: 50% 50%;
-      background-color: #F6F6F7;
+      background: #F6F6F7 url("../../Images/prevIcon.svg") no-repeat 50% 50%;
+
       &:hover{
-        background: url("../../Images/whiteNextArrow.svg"), #00A0AC;
-        background-repeat: no-repeat;
         transform: rotate(-180deg);
-        background-position: 50% 50%;
+        background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
         background-size: 7px 12px;
       }
     }

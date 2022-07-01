@@ -560,47 +560,47 @@ export const getBrands = (): Array<BrandType> => {
   return [
     {
       id: 1,
-      name: 'PURINA',
+      name: 'AIRYVEST',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 2,
-      name: 'PURINA',
+      name: 'BIOMILL',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 3,
-      name: 'PURINA',
+      name: 'CAMON',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 4,
-      name: 'PURINA',
+      name: 'CAT STEP',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 5,
-      name: 'PURINA',
+      name: 'DENNERLE',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 6,
-      name: 'PURINA',
+      name: 'ELATO',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 7,
-      name: 'PURINA',
+      name: 'FIBRE FAMILY',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 8,
-      name: 'PURINA',
+      name: 'GIMDOG',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {
       id: 9,
-      name: 'PURINA',
+      name: 'HAPPY FRIENDS',
       image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
     {

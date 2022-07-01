@@ -11,6 +11,7 @@ const BrandFormInput = ({name}: BrandFormInputPropsType) => {
   return (
     <label>
       <input type="checkbox" onChange={brandFormInputHandler}/>
+      <span/>
       { name }
     </label>
   );
