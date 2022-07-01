@@ -7,11 +7,12 @@ const SearchInput = () => {
 
   const [ value, setValue ] = useState( '' );
 
-  const resultProductItems = getProductItems()
+  const resultProductItems = getProductItems() //todo придет по запросу
     .filter((item, index) => index < 6)
 
   const searchInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setValue( e.target.value );
+    //todo dispatch Таски по поиску товаров
   };
 
   return (

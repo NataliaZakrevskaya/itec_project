@@ -1,15 +1,21 @@
 import React from 'react';
 import style from './AnimalType.module.scss';
-import { AnimalTypesPropsType } from './types';
 
-const AnimalType = ( props: AnimalTypesPropsType ) => {
+const AnimalType = ( { name, image, isActive, checked }: AnimalTypePropsType ) => {
   return (
-    <div className={ style.animalType }
+    <div className={checked ? isActive ? `${style.animalType} ${style.active}` : `${style.animalType} ${style.restTypes}` : style.animalType}
          onClick={ () => alert( 'переход на каталог товаров для выбранного вида животного' ) }>
-      <img src={ props.image } alt={ 'animal img' }/>
-      <span>{ props.name }</span>
+      <img src={ image } alt={ 'animal img' }/>
+      <span>{ name }</span>
     </div>
   );
 };
 
 export default AnimalType;
+
+type AnimalTypePropsType = {
+  name: string,
+  image: string,
+  isActive: boolean,
+  checked: boolean
+}
