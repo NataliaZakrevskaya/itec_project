@@ -5,56 +5,79 @@ import { getProductItems } from '../../mocks';
 import ProductItemForBasket from '../../components/ProductItemForBasket/ProductItemForBasket';
 import boxIcon from '../../Images/boxIcon.svg';
 import navigateIcon from '../../Images/navigateIcon.svg';
+import cat from '../../Images/cat.svg';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import PreviouslyProductsBlock from '../../components/PreviouslyProductsBlock/PreviouslyProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
+import Button from '../../components/common/Button/Button';
+import { useNavigate } from 'react-router-dom';
+import { routesPathsEnum } from '../../routes/enums';
 
 const BasketPage = () => {
 
-  const productsInBasket = getProductItems().filter((item, index) => index < 3) //todo позже будет запрос на продукты в корзине
-  const basketCount = 543 // позже будет приходить из стора корзины
-  const productsCount = 3 // позже будет приходить из стора корзины
+  const productsInBasket = getProductItems().filter( ( item, index ) => index < 3 ); //todo позже будет запрос на продукты в корзине
+  const basketCount = 543; // позже будет приходить из стора корзины
+  const productsCount = 3; // позже будет приходить из стора корзины
+  const isEmptyBasket = true;
+  const navigate = useNavigate();
 
   return (
-    <div className={style.basketPageBlock}>
+    <div className={ style.basketPageBlock }>
       <div className={ style.navigationBlock }>
-        <p>Главная
-          <img src={ nextIcon } alt="nextIcon"/>
-          Каталог
-        </p>
-      </div>
-      <h1>Моя корзина</h1>
-      <div className={style.basketInfoBlockContainer}>
-        <div className={style.productsItemsBlockContainer}>
-          {
-            productsInBasket.map(item =>
-              <ProductItemForBasket
-                product={item}
-                image={item.images[0].image}
-                name={item.name}
-                options={item.options}
-              />
-            )
-          }
+        <div className={ style.navigationBlockWrapper }>
+          <p>Главная
+            <img src={ nextIcon } alt="nextIcon"/>
+            Корзина
+          </p>
         </div>
-        <div className={style.basketInfoContainer}>
-          <div className={style.basketInfo}>
-            <p>{ basketCount } BYN</p>
-            <p>{ productsCount } товара</p>
-          </div>
-          <div className={style.pickUpBlock}>
-            <img src={boxIcon} alt="boxIcon"/>
+      </div>
+      {
+        !isEmptyBasket
+          ? (
             <div>
-              <h3>Самовывоз</h3>
-              <div className={style.addressInfo}>
-                <img src={navigateIcon} alt={"navigateIcon"}/>
-                <p >Минск, ул. Чюрлёниса, 6.</p>
+              <h1>Моя корзина</h1>
+              <div className={ style.basketInfoBlockContainer }>
+                <div className={ style.productsItemsBlockContainer }>
+                  {
+                    productsInBasket.map( item =>
+                      <ProductItemForBasket
+                        product={ item }
+                        image={ item.images[ 0 ].image }
+                        name={ item.name }
+                        options={ item.options }
+                      />,
+                    )
+                  }
+                </div>
+                <div className={ style.basketInfoContainer }>
+                  <div className={ style.basketInfo }>
+                    <p>{ basketCount } BYN</p>
+                    <p>{ productsCount } товара</p>
+                  </div>
+                  <div className={ style.pickUpBlock }>
+                    <img src={ boxIcon } alt="boxIcon"/>
+                    <div>
+                      <h3>Самовывоз</h3>
+                      <div className={ style.addressInfo }>
+                        <img src={ navigateIcon } alt={ 'navigateIcon' }/>
+                        <p>Минск, ул. Чюрлёниса, 6.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button onClick={ () => alert( 'Переход на модалку оформления заказ' ) }>Оформить заказ</button>
+                </div>
               </div>
             </div>
-          </div>
-          <button onClick={() => alert('Переход на модалку оформления заказ')}>Оформить заказ</button>
-        </div>
-      </div>
+          )
+          : (
+            <div className={ style.emptyBasket }>
+              <img src={ cat } alt="cat"/>
+              <h2>В корзине нет товаров. Выберите нужные товары в нашем каталоге</h2>
+              <Button title={ 'Перейти в каталог товаров' } onClick={ () => navigate( routesPathsEnum.CATALOG ) }/>
+            </div>
+          )
+      }
+
       <PopularProductsBlock/>
       <PreviouslyProductsBlock/>
       <UsefulArticlesBlock/>

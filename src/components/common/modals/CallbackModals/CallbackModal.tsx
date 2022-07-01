@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './CallbackModal.module.scss';
 import { useFormik } from 'formik';
-import smallerButtonStyle from '../../SmallerButton/SmallerButton.module.scss';
 
 const CallbackModal = (  ) => {
 

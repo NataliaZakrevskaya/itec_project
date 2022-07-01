@@ -1,3 +1,5 @@
+@import "src/styles/Mixins";
+
 .basketPageBlock {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,15 @@
 
   .navigationBlock {
     width: 80%;
+    max-width: 1200px;
+    .navigationBlockWrapper{
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      & img{
+        margin: 0 14px 0 15px;
+      }
+    }
   }
 
   .basketInfoBlockContainer {
@@ -41,5 +52,21 @@
       }
     }
   }
-
+  .emptyBasket{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    margin: 56px 0 65px;
+    & img{
+      margin-bottom: 40px;
+    }
+    & h2{
+      @include SFDisplaySemibold();
+      font-size: 28px;
+      line-height: 130%;
+      text-align: center;
+      margin-bottom: 33px;
+    }
+  }
 }

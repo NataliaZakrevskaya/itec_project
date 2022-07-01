@@ -6,7 +6,7 @@ import SuccessCallbackModals from '../modals/SuccessCallbackModals/SuccessCallba
 
 const Callback = () => {
   const [ isActive, setIsActive ] = useState<boolean>( false );
-  const responseIsDone = false; //todo будет меняться в зависимости от успеха запроса
+  const responseIsDone = true; //todo будет меняться в зависимости от успеха запроса
   const closeModal = () => {
     setIsActive( false );
   };
