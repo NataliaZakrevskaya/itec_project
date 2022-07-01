@@ -1,9 +1,7 @@
 import React from 'react';
 import style from './SearchResultsBlock.module.scss';
-import sadDog from '../../../Images/sadDog.svg';
 import ProductItemForSearch from '../../ProductItemForSerch/ProductItemForSearch';
 import { ProductItemType } from '../../../mocks';
-import SmallerButton from '../../common/SmallerButton/SmallerButton';
 import RejectSearchResult from '../../common/modals/RejectSearchResult/RejectSearchResult';
 
 const SearchResultsBlock = ( { productItems }: any ) => {

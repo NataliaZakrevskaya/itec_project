@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './CallbackModal.module.scss';
 import { useFormik } from 'formik';
+import smallerButtonStyle from '../../SmallerButton/SmallerButton.module.scss';
 
 const CallbackModal = (  ) => {
 
@@ -39,8 +40,8 @@ const CallbackModal = (  ) => {
           </div>
           <div className={ style.orderBlock }>
             <button type="submit">Заказать</button>
-            <p>Нажимая на кнопку вы даёте согласие на обработку</p>
-            <p onClick={ () => alert( 'Переход на pdf файл' ) }>персональных данных</p>
+            <p>Нажимая на кнопку вы даёте согласие на обработку
+            <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных</span></p>
           </div>
         </form>
   );
