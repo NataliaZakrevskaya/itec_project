@@ -5,6 +5,5 @@ export enum routesPathsEnum {
   BASKET = '/basket',
   CHECKOUT = '/checkout',
   ARTICLES = '/articles',
-  ARTICLE_WITH_ID = '/articles/:articleId',
-  DISCOUNT = '/#discounts',
+  ARTICLE_WITH_ID = '/articles/:articleId'
 }

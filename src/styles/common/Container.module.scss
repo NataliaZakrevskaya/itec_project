@@ -32,13 +32,28 @@
     }
   }
 
-  .productsList {
-    @include flex(row, space-between, stretch);
-    margin-top: 28px;
-    margin-bottom: 25px;
-    gap: 20px;
+  .itemsContainer{
+    margin: 28px 0 25px;
     width: 100%;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    .window {
+      width: 100%;
+      overflow: hidden;
+      & .allProductItemsContainer{
+        @include flex(row, space-between, stretch);
+        width: 100%;
+        gap: 3%;
+        margin: 8px 0;
+        transition: translate;
+        transition-property: transform;
+        transition-duration: 1500ms;
+        transition-timing-function: ease-in-out;
+        /*&:nth-child(4){
+
+        }*/
+      }
+    }
   }
 
   & button {

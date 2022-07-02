@@ -7,7 +7,7 @@ import light from '../../styles/common/LightBlock.module.scss';
 
 const PreviouslyProductsBlock = () => {
 
-  const previouslyProducts = getProductItems().filter( ( item, index ) => index < 4 ); // получать продукты из локал сторэдж
+  const previouslyProducts = getProductItems() // получать продукты из локал сторэдж
   const navigate = useNavigate();
   const goToProductsCatalog = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход на страницу каталога

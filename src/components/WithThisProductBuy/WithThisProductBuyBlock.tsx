@@ -6,7 +6,7 @@ import dark from '../../styles/common/DarkBlock.module.scss';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 
 export const WithThisProductBuyBlock = () => {
-  const commonProducts = getProductItems().filter( ( item, index ) => index < 4 ); //todo запрос на популярные продукты
+  const commonProducts = getProductItems() //todo запрос на популярные продукты
   const navigate = useNavigate();
   const goToCommonProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход каталог товаров, которые покупают с этим товаром

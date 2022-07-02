@@ -8,7 +8,7 @@ import style from './PopularProductsBlock.module.css'
 
 const PopularProductsBlock = () => {
 
-  const popularProducts = getProductItems().filter( ( item, index ) => index < 4 ); //todo запрос на популярные продукты
+  const popularProducts = getProductItems(); //todo запрос на популярные продукты
   const navigate = useNavigate();
   const goToPopularProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по популярности

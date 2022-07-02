@@ -8,7 +8,7 @@ import style from './LatestBlock.module.scss';
 
 const LatestBlock = () => {
 
-  const latestProducts = getProductItems().filter((item, index )=> index < 4); //todo запрос на новые продукты
+  const latestProducts = getProductItems()//todo запрос на новые продукты
   const navigate = useNavigate();
   const goToLatestProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по дате добавления
