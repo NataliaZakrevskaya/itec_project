@@ -7,7 +7,9 @@
   max-width: 270px;
   border-radius: 5px;
   padding: 8px;
-  //background: white;
+   &:hover{
+     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+   }
   & .mainProductItemImage {
     width: 254px;
     height: 130px;
@@ -96,23 +98,6 @@
     flex-wrap: wrap;
     margin-bottom: 17px;
     margin-top: 16px;
-
-    & span {
-      padding: 2px 8px;
-      background: #E4E5E7;
-      border-radius: 2px;
-      @include SFTextMedium();
-      font-size: 14px;
-      line-height: 20px;
-      color: #202223;
-      cursor: pointer;
-      margin-right: 4px;
-      margin-bottom: 6px;
-    }
-    //& span:last-child{
-    //  margin-right: 0;
-    //  margin-bottom: 0;
-    //}
   }
 }
 

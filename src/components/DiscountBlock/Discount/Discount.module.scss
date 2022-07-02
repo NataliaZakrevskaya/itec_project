@@ -11,16 +11,16 @@
     //@include flex(column, space-between, flex-start);
 
     & p{
-      font-family: 'SF Pro Display';
-      font-style: normal;
-      font-weight: 700;
+      @include SFDisplayBold;
       font-size: 20px;
-      @include SFDisplayBold();
       line-height: 130%;
       color: #202223;
       margin-bottom: 17px;
     }
     & button {
+      @include SFTextRegular();
+      font-size: 14px;
+      line-height: 20px;
       cursor: pointer;
       width: 214px;
       height: 36px;
