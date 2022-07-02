@@ -5,7 +5,7 @@ import style from '../ReviewsBlock.module.scss'
 
 const Review = ( { id, name, reviewText, phoneNumber, petsName }: ReviewsType ) => {
   return (
-    <div>
+    <div className={style.reviewContainer}>
       <h3 className={style.reviewsBlockSubTitle}>{ name }</h3>
       <p className={style.reviewsBlockText}>{ reviewText }</p>
       <div className={style.reviewsBlockWrapper}>
