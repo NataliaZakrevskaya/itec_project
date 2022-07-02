@@ -24,9 +24,9 @@ const ReviewsBlock = () => {
         />
         <div className={colorStyle.block}>
           <div className={ `${colorStyle.sectionsBlock} ${style.buttonsBlock}` }>
-          <PrevSectionButton onClick={ () => alert( 'prev review' ) }/>
+          <PrevSectionButton disabled={false} onClick={ () => alert( 'prev review' ) }/>
           <p>1 из 9</p> {/*// todo пока заглушкаБ можно не стилизовать*/ }
-          <NextSectionButton onClick={ () => alert( 'next review' ) }/>
+          <NextSectionButton disabled={false} onClick={ () => alert( 'next review' ) }/>
         </div>
         </div>
       </div>

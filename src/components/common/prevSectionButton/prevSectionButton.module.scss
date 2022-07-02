@@ -7,3 +7,6 @@
   cursor: pointer;
   @include flex(row, center, center);
 }
+.disabledButton{
+  opacity: 0.3;
+}

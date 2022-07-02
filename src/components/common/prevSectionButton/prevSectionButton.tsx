@@ -1,14 +1,15 @@
 import React from 'react';
 import style from './prevSectionButton.module.scss';
 
-const PrevSectionButton = ({onClick}: PrevSectionButtonPropsType) => {
+const PrevSectionButton = ({onClick, disabled}: PrevSectionButtonPropsType) => {
   return (
-    <div className={style.button} onClick={onClick}/>
+    <button className={disabled ? `${style.button} ${style.disabledButton}` : style.button} onClick={onClick} disabled={disabled}/>
   );
 };
 
 export default PrevSectionButton;
 
 type PrevSectionButtonPropsType = {
+  disabled: boolean
   onClick: () => void
 }

@@ -21,8 +21,8 @@ const UsefulArticlesBlock = () => {
         <div className={ commonStyle.navigationInfoBlock }>
           <h2>Полезные статьи</h2> {/*//todo будет зависить от выбранного типа животного*/}
           <div className={ `${commonStyle.sectionsBlock} ${themeStyle.sectionsBlock}` }>
-            <PrevSectionButton onClick={() => alert( 'prev' )} />
-            <NextSectionButton onClick={() => alert( 'next' )} />
+            <PrevSectionButton disabled={false} onClick={() => alert( 'prev' )} />
+            <NextSectionButton disabled={false} onClick={() => alert( 'next' )} />
           </div>
         </div>
         <div className={ style.articles }>

@@ -8,3 +8,6 @@
   @include flex(row, center, center);
   margin-left: 16px;
 }
+.disabledButton{
+  opacity: 0.3;
+}

@@ -10,35 +10,43 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
 
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );
-  const windowElRef = useRef(null)
+  const [ isNextDisabled, setIsNextDisabled ] = useState( false );
+  const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
+
+  const windowElRef = useRef( null );
   const { block, sectionsBlock, productItem } = blockTheme;
 
-    useEffect( () => {
-      const resizeHandler = () => {
+  useEffect( () => {
+    const resizeHandler = () => {
 
-        // @ts-ignore
-        const _width = windowElRef?.current.offsetWidth;
-        setWidth( _width );
-        setOffset(0)
-      };
-      resizeHandler();
-      window.addEventListener( 'resize', resizeHandler );
+      // @ts-ignore
+      const _width = windowElRef?.current.offsetWidth;
+      setWidth( _width );
+      setOffset( 0 );
+    };
+    resizeHandler();
+    window.addEventListener( 'resize', resizeHandler );
 
-      return () => {
-        window.removeEventListener( 'resize', resizeHandler );
-      };
-    }, [width] );
+    return () => {
+      window.removeEventListener( 'resize', resizeHandler );
+    };
+  }, [ width ] );
 
   const onPrevSectionButtonClick = () => {
     setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset + width + (width / 100 * 1.8);
+      const newOffset = currentOffset + width + ( width / 100 * 1.8 );
+      setIsNextDisabled( false );
+      setIsPrevDisabled( 0 < newOffset + width );
       return Math.min( newOffset, 0 );
     } );
   };
   const onNextSectionButtonClick = () => {
     setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset - width - (width / 100 * 1.8);
-      return Math.max( newOffset, -(width * ((itemsForBlock.length / 4)  - 1) + (width / 100 * 7)));
+      const newOffset = currentOffset - width - ( width / 100 * 1.8 );
+      const maxOffset = -( width * ( ( itemsForBlock.length / 4 ) - 1 ) + ( width / 100 * 7 ) );
+      setIsNextDisabled( maxOffset > newOffset - width );
+      setIsPrevDisabled( false );
+      return Math.max( newOffset, maxOffset );
     } );
   };
 
@@ -50,33 +58,34 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
           <div className={ `${ commonStyle.sectionsBlock } ${ sectionsBlock }` }>
             <PrevSectionButton
               onClick={ onPrevSectionButtonClick }
-
+              disabled={ isPrevDisabled }
             />
             <NextSectionButton
               onClick={ onNextSectionButtonClick }
+              disabled={ isNextDisabled }
             />
           </div>
         </div>
         <div className={ commonStyle.itemsContainer }>
-          <div className={ commonStyle.window } ref={windowElRef}>
+          <div className={ commonStyle.window } ref={ windowElRef }>
             <div className={ commonStyle.allProductItemsContainer }
                  style={ {
                    transform: `translateX(${ offset }px)`,
                  } }>
-                {
-                  itemsForBlock
-                    .map( ( item: ProductItemType ) =>
-                      <ProductItem
-                        key={ item.id }
-                        id={ item.id }
-                        image={ item.images[ 0 ].image }
-                        name={ item.name }
-                        options={ item.options }
-                        classNameForDarkItem={ productItem }
-                        unit={ item.unit }
-                      />,
-                    )
-                }
+              {
+                itemsForBlock
+                  .map( ( item: ProductItemType ) =>
+                    <ProductItem
+                      key={ item.id }
+                      id={ item.id }
+                      image={ item.images[ 0 ].image }
+                      name={ item.name }
+                      options={ item.options }
+                      classNameForDarkItem={ productItem }
+                      unit={ item.unit }
+                    />,
+                  )
+              }
             </div>
           </div>
         </div>
