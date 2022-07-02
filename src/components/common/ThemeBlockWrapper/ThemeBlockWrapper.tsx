@@ -23,6 +23,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
       const _width = windowElRef?.current.offsetWidth;
       setWidth( _width );
       setOffset( 0 );
+      setIsPrevDisabled(true)
+      setIsNextDisabled(false)
     };
     resizeHandler();
     window.addEventListener( 'resize', resizeHandler );

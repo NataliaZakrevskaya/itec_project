@@ -4,16 +4,22 @@
   padding-bottom: 25px;
 
   .sectionsBlock {
-    & div:last-child{
+    & button:last-child{
+      border: none;
+      outline: none;
       background-size: 7px 12px;
       background: #F6F6F7 url("../../Images/nextIcon.svg") no-repeat 50% 50%;
     }
-    & div:last-child:hover{
+    & button:last-child:hover{
+      border: none;
+      outline: none;
       background-size: 7px 12px;
       background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
 
     }
-    & div:first-child{
+    & button:first-child{
+      border: none;
+      outline: none;
       background-size: 7px 12px;
       background: #F6F6F7 url("../../Images/prevIcon.svg") no-repeat 50% 50%;
 
@@ -23,7 +29,9 @@
         background-size: 7px 12px;
       }
     }
-    & div:hover{
+    & button:hover{
+      border: none;
+      outline: none;
       background: #00A0AC;
       border-radius: 40px;
     }
