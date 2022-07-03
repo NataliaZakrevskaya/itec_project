@@ -10,7 +10,7 @@ const Article = ( { id, img, description, title, date, timeForReading }: Article
   return (
     <div className={ style.article }>
       <img src={ img } alt="article"/>
-      <h6 onClick={() => navigate(routesPathsEnum.ARTICLE_WITH_ID)}>{ title }</h6>
+      <h6 onClick={() => navigate(`${routesPathsEnum.ARTICLES}/${id}`)}>{ title }</h6>
       <p>{ description }</p>
       <div className={ style.articleInfo }>
         <div>

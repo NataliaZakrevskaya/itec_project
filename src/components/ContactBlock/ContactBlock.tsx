@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './ContactBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
-import map from '../../Images/map.svg';
 import Address from '../common/Address/Address';
 import Schedule from '../common/Schedule/Schedule';
 import Phone from '../common/PhoneBlock/Phone';
 import instagramIcon from '../../Images/instagramIcon.svg';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 const ContactBlock = () => {
   return (
@@ -13,7 +13,11 @@ const ContactBlock = () => {
       <div className={commonStyle.container}>
         <div className={style.contactBlock}>
           <div className={style.contactBlockImageWrapper}>
-            <img src={map} alt="map"/> {/*//todo заглушка карты*/}
+            <YMaps>
+              <Map defaultState={{ center: [53.854422, 27.478944], zoom: 15 }} className={style.map} >
+                <Placemark geometry={[53.854422, 27.478944]} />
+              </Map>
+            </YMaps>
           </div>
           <div className={style.contactBlockWrapper}>
             <h3 className={style.contactBlockWrapperTitle}>Бесплатно проконсультируем по любому вопросу связанному с вашим любимцем</h3>
