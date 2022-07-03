@@ -5,6 +5,7 @@ import ContactBlock from '../../components/ContactBlock/ContactBlock';
 import { useParams } from 'react-router-dom';
 import { getArticles } from '../../mocks';
 import style from './ArticlePage.module.scss';
+import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import colorTimeIcon from '../../Images/colorTimeIcon.svg';
 import colorCalendarIcon from '../../Images/colorCalendarIcon.svg';
@@ -17,13 +18,14 @@ const ArticlePage = () => {
   return (
     <div className={ style.articlePage }>
       <div className={ commonStyle.container }>
-        <div className={ style.navigationBlock }>
-          <p>Главная
+        <div className={ navigationStyle.navigationBlock }>
+          <div className={ navigationStyle.navigationBlockWrapper }>
+            <p>Главная</p>
             <img src={ nextIcon } alt="nextIcon"/>
-            Каталог
+            <p>Каталог</p>
             <img src={ nextIcon } alt="nextIcon"/>
-            <span>{ article.title }</span>
-          </p>
+            <p>{ article.title }</p>
+          </div>
         </div>
         <h1>{ article.title }</h1>
         <div className={ style.articleInfo }>

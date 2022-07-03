@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
+import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import { WithThisProductBuyBlock } from '../../components/WithThisProductBuy/WithThisProductBuyBlock';
 import nextIcon from '../../Images/nextIcon.svg';
 import { useParams } from 'react-router-dom';
@@ -30,13 +31,14 @@ const ProductPage = () => {
 
   return (
     <div className={ style.productPage }>
-      <div className={ style.navigationBlock }>
-        <p>Главная
+      <div className={ navigationStyle.navigationBlock }>
+        <div className={ navigationStyle.navigationBlockWrapper }>
+          <p>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          Каталог
+          <p>Каталог</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          <span>{ product.name }</span>
-        </p>
+          <p>{ product.name }</p>
+        </div>
       </div>
       <div className={ style.productInfo }>
         <h2>{ name }</h2>
@@ -66,7 +68,7 @@ const ProductPage = () => {
                 <UnitsForBasket
                   key={ option.id }
                   size={ option.count }
-                  price={+option.price}
+                  price={ +option.price }
                   unit={ product.unit }
                 />,
               ) }
@@ -104,15 +106,15 @@ const ProductPage = () => {
           </div>
         </div>
         <h2>Описание</h2>
-        <div className={ style.descriptionBlock }> {/*//todo придет уже отредактированное с бэка*/}
+        <div className={ style.descriptionBlock }> {/*//todo придет уже отредактированное с бэка*/ }
           <div className={ style.mainDescription }>
             <p>{ product.description }</p>
-            <p>{product.features}</p>
+            <p>{ product.features }</p>
             <p>{ product.composition }</p>
           </div>
           <div>
             <p>{ product.analysis }</p>
-            <p>{ product.additives} </p>
+            <p>{ product.additives } </p>
           </div>
         </div>
       </div>

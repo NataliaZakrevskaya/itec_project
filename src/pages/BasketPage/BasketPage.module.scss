@@ -6,19 +6,8 @@
   align-items: center;
   width: 100%;
   background-color: #f6f6f7;
+  padding-bottom: 65px;
 
-  .navigationBlock {
-    width: 80%;
-    max-width: 1200px;
-    .navigationBlockWrapper{
-      padding-top: 16px;
-      display: flex;
-      align-items: center;
-      & img{
-        margin: 0 14px 0 15px;
-      }
-    }
-  }
 
   .basketInfoBlockContainer {
     display: flex;

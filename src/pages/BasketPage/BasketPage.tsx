@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './BasketPage.module.scss';
+import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import { getProductItems } from '../../mocks';
 import ProductItemForBasket from '../../components/ProductItemForBasket/ProductItemForBasket';
@@ -18,17 +19,16 @@ const BasketPage = () => {
   const productsInBasket = getProductItems().filter( ( item, index ) => index < 3 ); //todo позже будет запрос на продукты в корзине
   const basketCount = 543; // позже будет приходить из стора корзины
   const productsCount = 3; // позже будет приходить из стора корзины
-  const isEmptyBasket = true;
+  const isEmptyBasket = false;
   const navigate = useNavigate();
 
   return (
     <div className={ style.basketPageBlock }>
-      <div className={ style.navigationBlock }>
-        <div className={ style.navigationBlockWrapper }>
-          <p>Главная
-            <img src={ nextIcon } alt="nextIcon"/>
-            Корзина
-          </p>
+      <div className={ navigationStyle.navigationBlock }>
+        <div className={ navigationStyle.navigationBlockWrapper }>
+          <p>Главная</p>
+          <img src={ nextIcon } alt="nextIcon"/>
+          <p>Корзина </p>
         </div>
       </div>
       {

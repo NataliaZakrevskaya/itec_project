@@ -1,6 +1,7 @@
 import React from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
+import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
 import ProductTypesForm from '../../components/ProductTypesForm/ProductTypesForm';
@@ -16,8 +17,8 @@ const CatalogPage = () => {
 
   return (
     <div className={ style.catalogPageBlock }>
-      <div className={ style.navigationBlock }>
-        <div className={style.navigationBlockWrapper}>
+      <div className={ navigationStyle.navigationBlock }>
+        <div className={navigationStyle.navigationBlockWrapper}>
             <p>Главная</p>
             <img src={ nextIcon } alt="nextIcon"/>
             <p>Каталог</p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './ArticlesPage.module.scss';
+import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
 import { getArticles } from '../../mocks';
@@ -13,11 +14,12 @@ const ArticlesPage = () => {
 
   return (
     <div className={ style.articlesPageBlock }>
-      <div className={ style.navigationBlock }>
-        <p>Главная
+      <div className={ navigationStyle.navigationBlock }>
+        <div className={ navigationStyle.navigationBlockWrapper }>
+          <p>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          Статьи
-        </p>
+          <p>Статьи</p>
+        </div>
       </div>
       <AnimalsTypesList/>
       <h1>Полезные статьи о собаках</h1> {/*//todo будет меняться в зависимости от выбранного типа животного*/ }

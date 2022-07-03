@@ -1,0 +1,21 @@
+@import "src/styles/Mixins";
+
+.navigationBlock {
+  width: 80%;
+  max-width: 1200px;
+  .navigationBlockWrapper{
+    padding-top: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & img{
+      margin: 0 14px 0 15px;
+    }
+    & p{
+      @include SFTextRegular();
+      font-size: 14px;
+      line-height: 20px;
+      color: #202223;
+    }
+  }
+}
