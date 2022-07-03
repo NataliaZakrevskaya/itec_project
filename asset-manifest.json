@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/itec_project/static/css/main.293660e9.css",
-    "main.js": "/itec_project/static/js/main.a339a0ee.js",
+    "main.js": "/itec_project/static/js/main.c6bfd0a0.js",
     "static/js/787.fae18c42.chunk.js": "/itec_project/static/js/787.fae18c42.chunk.js",
     "static/media/Frame 119.svg": "/itec_project/static/media/Frame 119.7b7d7b449258d229de9ede68d2c6c680.svg",
     "static/media/cat.svg": "/itec_project/static/media/cat.3f557dff0130974da9328bfa7c6f5a05.svg",
@@ -37,11 +37,11 @@
     "static/media/metroIcon.svg": "/itec_project/static/media/metroIcon.ff3341500c649e573863de674fda7fc3.svg",
     "static/media/radio.svg": "/itec_project/static/media/radio.87668a1c5f01c03a846c.svg",
     "main.293660e9.css.map": "/itec_project/static/css/main.293660e9.css.map",
-    "main.a339a0ee.js.map": "/itec_project/static/js/main.a339a0ee.js.map",
+    "main.c6bfd0a0.js.map": "/itec_project/static/js/main.c6bfd0a0.js.map",
     "787.fae18c42.chunk.js.map": "/itec_project/static/js/787.fae18c42.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.293660e9.css",
-    "static/js/main.a339a0ee.js"
+    "static/js/main.c6bfd0a0.js"
   ]
 }
