@@ -1,13 +1,11 @@
 import React from 'react';
 import style from './AnimalType.module.scss';
-import { useNavigate } from 'react-router-dom';
-import { routesPathsEnum } from '../../../routes/enums';
+import { AnimalTypesType } from '../../../mocks';
 
-const AnimalType = ( { name, image, isActive, checked }: AnimalTypePropsType ) => {
-  const navigate = useNavigate()
+const AnimalType = ( { type, name, image, isActive, checked, setActiveAnimalTypeId }: AnimalTypePropsType ) => {
   return (
     <div className={checked ? isActive ? `${style.animalType} ${style.active}` : `${style.animalType} ${style.restTypes}` : style.animalType}
-         onClick={ () => navigate(routesPathsEnum.CATALOG) }>
+         onClick={ () => setActiveAnimalTypeId(type) }>
       <img src={ image } alt={ 'animal img' }/>
       <span>{ name }</span>
     </div>
@@ -17,8 +15,10 @@ const AnimalType = ( { name, image, isActive, checked }: AnimalTypePropsType ) =
 export default AnimalType;
 
 type AnimalTypePropsType = {
+  type: AnimalTypesType,
   name: string,
   image: string,
   isActive: boolean,
   checked: boolean
+  setActiveAnimalTypeId: (type: AnimalTypesType) => void
 }

@@ -4,7 +4,10 @@ import { getProductItems } from '../../mocks';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import dark from '../../styles/common/DarkBlock.module.scss';
-import style from './PopularProductsBlock.module.css'
+import style from './PopularProductsBlock.module.css';
+import { useSelector } from 'react-redux';
+import { getTitleForProductsBlock } from '../../helpers/getTitle';
+import { getActiveAnimalTypeName } from '../../redux/selectors/animalTypes-selectors';
 
 const PopularProductsBlock = () => {
 
@@ -13,16 +16,18 @@ const PopularProductsBlock = () => {
   const goToPopularProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по популярности
   };
+  const activeAnimalTypeName = useSelector( getActiveAnimalTypeName );
+  const subTitle = getTitleForProductsBlock( activeAnimalTypeName );
 
   return (
-      <div className={style.popularProductsWrapper}>
-        <ThemeBlockWrapper
-            title={ 'Популярные товары' }
-            onButtonClick={ goToPopularProducts }
-            itemsForBlock={ popularProducts }
-            blockTheme={ dark }
-        />
-      </div>
+    <div className={ style.popularProductsWrapper }>
+      <ThemeBlockWrapper
+        title={ `Популярные товары ${ subTitle }` }
+        onButtonClick={ goToPopularProducts }
+        itemsForBlock={ popularProducts }
+        blockTheme={ dark }
+      />
+    </div>
   );
 };
 

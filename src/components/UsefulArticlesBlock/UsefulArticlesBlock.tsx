@@ -9,11 +9,16 @@ import { routesPathsEnum } from '../../routes/enums';
 import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
+import { useSelector } from 'react-redux';
+import { getActiveAnimalTypeName } from '../../redux/selectors/animalTypes-selectors';
+import { getTitleForArticlesBlock } from '../../helpers/getTitle';
 
 const UsefulArticlesBlock = () => {
 
   const articles = getArticles();
   const navigate = useNavigate();
+  const activeAnimalTypeName = useSelector( getActiveAnimalTypeName );
+  const subTitle = getTitleForArticlesBlock( activeAnimalTypeName );
 
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );
@@ -62,7 +67,7 @@ const UsefulArticlesBlock = () => {
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
       <div className={ commonStyle.container }>
         <div className={ commonStyle.navigationInfoBlock }>
-          <h2>Полезные статьи</h2> {/*//todo будет зависить от выбранного типа животного*/ }
+          <h2>{ `Полезные статьи ${subTitle}` }</h2> {/*//todo будет зависить от выбранного типа животного*/ }
           <div className={ `${ commonStyle.sectionsBlock } ${ themeStyle.sectionsBlock }` }>
             <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
             <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>
