@@ -34,7 +34,7 @@ const BasketPage = () => {
       {
         !isEmptyBasket
           ? (
-            <div>
+            <div className={style.basketWrapper}>
               <h1>Моя корзина</h1>
               <div className={ style.basketInfoBlockContainer }>
                 <div className={ style.productsItemsBlockContainer }>
@@ -51,12 +51,12 @@ const BasketPage = () => {
                 </div>
                 <div className={ style.basketInfoContainer }>
                   <div className={ style.basketInfo }>
-                    <p>{ basketCount } BYN</p>
-                    <p>{ productsCount } товара</p>
+                    <p className={style.basketBUN}>{ basketCount } BYN</p>
+                    <p className={style.basketProducts}>{ productsCount } товара</p>
                   </div>
                   <div className={ style.pickUpBlock }>
-                    <img src={ boxIcon } alt="boxIcon"/>
-                    <div>
+                    <img className={style.basketBoxImage} src={ boxIcon } alt="boxIcon"/>
+                    <div className={style.basketTextWrapper}>
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
                         <img src={ navigateIcon } alt={ 'navigateIcon' }/>
@@ -64,7 +64,7 @@ const BasketPage = () => {
                       </div>
                     </div>
                   </div>
-                  <button onClick={ () => alert( 'Переход на модалку оформления заказ' ) }>Оформить заказ</button>
+                  <button className={style.basketButton} onClick={ () => alert( 'Переход на модалку оформления заказ' ) }>Оформить заказ</button>
                 </div>
               </div>
             </div>

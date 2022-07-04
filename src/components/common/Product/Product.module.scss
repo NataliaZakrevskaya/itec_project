@@ -1,15 +1,101 @@
 @import "src/styles/Mixins";
 
+
 .productForBasketContainer {
   @include flex(row, space-between, flex-start);
+  margin-bottom: 24px;
 
-  .productItemImg {
-    @include size(56px, 56px);
+.imageWrapper{
+  margin-right: 16px;
+  @include size(56px,56px);
+  & img {
+    @include size(100%, 100%);
+    object-fit: contain;
+  }
+}
+  .abc{
+    display: flex;
+
+  }
+  .heftWrapper{
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  .basketTitle{
+    @include SFDisplaySemibold();
+    font-size: 16px;
+    line-height: 130%;
+    color: #202223;
+    margin-bottom: 8px;
+  }
+  .basketTitleWrapper{
+    max-width: 471px;
   }
 
   .quantityManagementBlock {
     display: flex;
     flex-direction: row;
     align-items: center;
+    & .minus {
+      @include size(36px,36px);
+      border-radius: 5px;
+      background: #FFFFFF;
+      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      display: flex;
+      border: 1px solid gray;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      & div{
+        width: 12px;
+        height: 2px;
+        background:  #008060;
+        border-radius: 5px;
+      }
+    }
+    & .countMeaning{
+      @include size(36px,36px);
+      border-radius: 5px;
+      background: #FFFFFF;
+      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      border: 1px solid gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 6px;
+    }
+    & .plus{
+      @include size(36px,36px);
+      border-radius: 5px;
+      background: #FFFFFF;
+      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+      border-radius: 4px;
+      display: flex;
+      border: 1px solid gray;
+      justify-content: center;
+      align-items: center;
+      margin-right: 37.75px;
+      cursor: pointer;
+      & div {
+        width: 12px;
+        height: 2px;
+        background:  #008060;
+        border-radius: 5px;
+        & span {
+          display: block;
+          //width: 12px;
+          height: 1.5px;
+          transform: rotate(90deg);
+          background: #008060;
+          border-radius: 5px;
+        }
+      }
+    }
+    & .basketImage{
+      cursor: pointer;
+    }
   }
 }

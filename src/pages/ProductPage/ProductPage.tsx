@@ -41,11 +41,11 @@ const ProductPage = () => {
         </div>
       </div>
       <div className={ style.productInfo }>
-        <h2>{ name }</h2>
-        <p>Смотреть все товары бренда { brand.name } </p>
+        <h2 className={style.productPageTitle}>{ name }</h2>
+        <p className={style.productPageSubTitle}>Смотреть все товары бренда { brand.name } </p>
         <div className={ style.imgAndOrderBlock }>
           <div className={ style.imageBlock }>
-            <div>
+            <div className={style.mainImageWrapper}>
               <img src={ images[ 0 ].image } alt="product" className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
@@ -63,20 +63,22 @@ const ProductPage = () => {
             <h3>
               Варианты фасовки. Выберите удобный вес
             </h3>
-            <div className={ style.unitsGroup }>
-              { options.map( option =>
-                <UnitsForBasket
-                  key={ option.id }
-                  size={ option.count }
-                  price={ +option.price }
-                  unit={ product.unit }
-                />,
-              ) }
+            <div>
+              <div className={ style.unitsGroup }>
+                { options.map( option =>
+                    <UnitsForBasket
+                        key={ option.id }
+                        size={ option.count }
+                        price={ +option.price }
+                        unit={ product.unit }
+                    />,
+                ) }
+              </div>
+              <p className={style.unitsGroupHeft}>Задать свой вес</p>{/*//todo удет появлять только если ед. изм. кг*/ }
             </div>
-            <p>Задать свой вес</p> {/*//todo удет появлять только если ед. изм. кг*/ }
 
             <div className={ style.orderInfo }>
-              <div>
+              <div className={style.orderImageWrapper}>
                 <img src={ boxIcon } alt="boxIcon"/>
               </div>
               <div>
@@ -94,13 +96,15 @@ const ProductPage = () => {
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
-                <div onClick={ onDecrementBtnClick }>-</div>
-                <div>{ countOfProduct }</div>
-                <div onClick={ onIncrementBtnClick }>+</div>
+                <div className={style.basketInterfaceMinus} onClick={ onDecrementBtnClick }><div></div></div>
+                <div className={style.basketInterfaceCount}>{ countOfProduct }</div>
+                <div className={style.basketInterfacePlus} onClick={ onIncrementBtnClick }><div><span></span></div></div>
               </div>
-              <Button title={ 'Добавить в корзину' } onClick={ () => alert( 'Будет добавлять в корзину' ) }/>
+              <div className={style.basketInterfaceButton}>
+                <Button title={ 'Добавить в корзину' } onClick={ () => alert( 'Будет добавлять в корзину' ) }/>
+              </div>
               <div>
-                <p>Купить в 1 клик</p> {/*//todo будет открываться модалка*/ }
+                <p className={style.basketInterfaceOneClick}>Купить в 1 клик</p> {/*//todo будет открываться модалка*/ }
               </div>
             </div>
           </div>

@@ -22,7 +22,9 @@ const ArticlesPage = () => {
         </div>
       </div>
       <AnimalsTypesList/>
-      <h1>Полезные статьи о собаках</h1> {/*//todo будет меняться в зависимости от выбранного типа животного*/ }
+      <div className={style.articlesTitle}>
+          <h1>Полезные статьи о собаках</h1>
+      </div> {/*//todo будет меняться в зависимости от выбранного типа животного*/ }
       <div className={ style.articlesBlockContainer }>
         <div className={ style.articlesBlock }>
           {

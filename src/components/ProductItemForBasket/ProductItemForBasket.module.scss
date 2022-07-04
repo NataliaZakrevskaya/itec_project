@@ -1,5 +1,5 @@
 @import "src/styles/Mixins";
 
 .productItemForBasketContainer{
-  @include flex(row, space-between, flex-start);
+  //@include flex(row, space-between, flex-start);
 }
