@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './Product.module.scss';
 import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
 import { OptionType, ProductItemType } from '../../../mocks';
+import basket from "../../../Images/basket.svg";
 
 const Product = ( { options, name, image, product, isForOneClick }: ProductForBasketPropsType ) => {
   const [ countOfProduct, setCountOfProduct ] = useState( 1 );
@@ -13,31 +14,34 @@ const Product = ( { options, name, image, product, isForOneClick }: ProductForBa
   };
   return (
     <div className={ style.productForBasketContainer }>
-      <div>
-        <img className={ style.productItemImg } src={ image } alt="product"/>
-      </div>
-      <div>
-        <h3>
-          { name }
-        </h3>
-        <div>
-          {
-            options.map( option =>
-              <ProductItemUnit
-                key={ option.id }
-                count={ option.count }
-                unit={ product.unit }
-              />,
-            )
-          }
+        <div className={style.abc}>
+            <div className={style.imageWrapper}>
+                <img className={ style.productItemImg } src={ image } alt="product"/>
+            </div>
+            <div className={style.basketTitleWrapper}>
+                <h3 className={style.basketTitle}>
+                    { name }
+                </h3>
+                <div className={style.heftWrapper}>
+                    {
+                        options.map( option =>
+                            <ProductItemUnit
+                                key={ option.id }
+                                count={ option.count }
+                                unit={ product.unit }
+                            />,
+                        )
+                    }
+                </div>
+                <p onClick={ () => alert( 'Переход на модалку' ) }>Указать свой вес</p>
+            </div>
         </div>
-        <p onClick={ () => alert( 'Переход на модалку' ) }>Указать свой вес</p>
-      </div>
       <div style={{display: "flex", flexDirection: "column"}}>
         <div className={ style.quantityManagementBlock }>
-          <div onClick={ onDecrementBtnClick }>-</div>
-          <div>{ countOfProduct }</div>
-          <div onClick={ onIncrementBtnClick }>+</div>
+          <div className={style.minus} onClick={ onDecrementBtnClick }><div></div></div>
+          <div className={style.countMeaning}>{ countOfProduct }</div>
+          <div className={style.plus} onClick={ onIncrementBtnClick }><div><span></span></div></div>
+            <img className={style.basketImage} src={ basket } alt="basketIcon"/>
         </div>
         {isForOneClick &&
           <div>

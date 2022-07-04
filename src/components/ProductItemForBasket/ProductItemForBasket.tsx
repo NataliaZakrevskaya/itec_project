@@ -9,7 +9,6 @@ const ProductItemForBasket = ( { options, name, image, product }: ProductItemFor
   return (
     <div className={ style.productItemForBasketContainer }>
       <Product product={ product } options={ options } name={ name } image={ image } isForOneClick={false}/>
-      <img src={ basket } alt="basketIcon"/>
     </div>
   );
 };

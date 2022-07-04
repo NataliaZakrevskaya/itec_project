@@ -27,22 +27,24 @@ const ArticlePage = () => {
             <p>{ article.title }</p>
           </div>
         </div>
-        <h1>{ article.title }</h1>
-        <div className={ style.articleInfo }>
-          <div>
-            <img src={ colorTimeIcon } alt="timeIcon"/>
-            <p>Время чтения: { article.timeForReading } мин.</p>
-          </div>
-          <div>
-            <img src={ colorCalendarIcon } alt="calendar"/>
-            <p>{ article.date }</p>
+        <h1 className={style.articleTitle}>{ article.title }</h1>
+        <div className={style.articleInfo }>
+          <div className={style.articleReadingWrapper}>
+            <div className={style.timeToReading}>
+              <img src={ colorTimeIcon } alt="timeIcon"/>
+              <p>Время чтения: { article.timeForReading } мин.</p>
+            </div>
+            <div>
+              <img src={ colorCalendarIcon } alt="calendar"/>
+              <p>{ article.date }</p>
+            </div>
           </div>
         </div>
         <div className={ style.articleImage }>
           <img src={ article.img } alt="article"/>
         </div>
         <div className={ commonStyle.container }>
-          <p>С появлением кошки в доме нужно организовать все бытовые условия для ее комфортного существования:
+          <p className={style.articleText}>С появлением кошки в доме нужно организовать все бытовые условия для ее комфортного существования:
             определить место для сна, подобрать посуду для кормления и, конечно же, обустроить туалет, где она сможет
             справлять свои естественные нужды.
 
