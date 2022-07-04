@@ -4,7 +4,7 @@ import commonStyle from '../../styles/common/Container.module.scss';
 import { AnimalTypesType } from '../../mocks';
 import AnimalType from './AnimalType/AnimalType';
 import style from './AnimalsTypesList.module.scss';
-import { fetchAnimalTypesTC, setActiveAnimalType } from '../../redux/reducers/animals-reducer';
+import { fetchAnimalTypesTC, setActiveAnimalType } from '../../redux/reducers/animalTypes-reducer';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { getActiveAnimalTypeId, getAnimalTypes } from '../../redux/selectors/animalTypes-selectors';

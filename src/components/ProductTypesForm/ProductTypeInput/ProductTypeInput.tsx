@@ -1,10 +1,10 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
-const ProductTypeInput = ({ name, isActive, onChange }: ProductTypeInputPropsType) => {
+const ProductTypeInput = ({ id, name, isActive, chooseActiveProductType }: ProductTypeInputPropsType) => {
 
   return (
       <label>
-        <input type="radio" checked={ isActive } value={name} onChange={onChange}/>
+        <input type="radio" checked={ isActive } value={name} onChange={() => chooseActiveProductType(id)}/>
         <span/>
         { name }
       </label>
@@ -14,7 +14,8 @@ const ProductTypeInput = ({ name, isActive, onChange }: ProductTypeInputPropsTyp
 export default ProductTypeInput;
 
 type ProductTypeInputPropsType = {
+  id: number
   name: string,
   isActive: boolean,
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  chooseActiveProductType: (id: number) => void
 }

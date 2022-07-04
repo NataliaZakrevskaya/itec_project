@@ -16,7 +16,6 @@ export const slice = createSlice( {
   name: 'animalTypes',
   initialState: {
     animalTypes: [] as Array<AnimalTypesType>,
-    totalCount: null as number | null,
     activeAnimalType: null as AnimalTypesType | null,
   },
   reducers: {

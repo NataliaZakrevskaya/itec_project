@@ -1,14 +1,21 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useEffect } from 'react';
 import style from './ProductTypesForm.module.scss';
-import { getProductsTypes } from '../../mocks';
 import ProductTypeInput from './ProductTypeInput/ProductTypeInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { getChosenProductTypeId, getProductTypes } from '../../redux/selectors/productTypes-selectors';
+import { fetchProductTypesTC, setActiveProductTypeId } from '../../redux/reducers/productTypes-reducer';
 
 const ProductTypesForm = () => {
-  const productsTypes = getProductsTypes();
-  const [ activeType, setActiveType ] = useState( 'Наполнитель' ); //todo позже получаем из стора
-  const changeActiveTypeId = ( e: ChangeEvent<HTMLInputElement> ) => {
-    setActiveType( e.currentTarget.value );
+  const dispatch = useDispatch()
+  const productsTypes = useSelector(getProductTypes);
+  const chosenProductTypeId = useSelector(getChosenProductTypeId)
+  const chooseActiveProductType = ( id: number) => {
+    dispatch(setActiveProductTypeId({id}))
   };
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchProductTypesTC())
+  }, [])
 
   return (
     <div className={ style.productTypesBlock }>
@@ -16,8 +23,13 @@ const ProductTypesForm = () => {
       <div className={ style.radioGroup }>
         {
           productsTypes.map( type =>
-            <ProductTypeInput key={ type.id } name={ type.name } isActive={ activeType === type.name }
-                              onChange={ changeActiveTypeId }/>,
+            <ProductTypeInput
+              key={ type.id }
+              id={type.id}
+              name={ type.name }
+              isActive={ chosenProductTypeId === type.id }
+              chooseActiveProductType={ chooseActiveProductType }
+            />,
           )
         }
       </div>

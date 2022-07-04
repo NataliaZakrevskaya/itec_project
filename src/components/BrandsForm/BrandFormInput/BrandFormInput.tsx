@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setBrandStatus } from '../../../redux/reducers/brands-reducer';
 
-const BrandFormInput = ({name}: BrandFormInputPropsType) => {
+const BrandFormInput = ({id, name, chosen}: BrandFormInputPropsType) => {
 
-  const [isChecked, setIsChecked] = useState(false)
+  const dispatch = useDispatch();
   const brandFormInputHandler = () => {
-    setIsChecked(!isChecked)
-    //todo после изменится на dispatch санки
+    dispatch(setBrandStatus({id, chosen}))
   }
 
   return (
     <label>
-      <input type="checkbox" onChange={brandFormInputHandler}/>
+      <input type="checkbox" checked={chosen} onChange={brandFormInputHandler}/>
       <span/>
       { name }
     </label>
@@ -20,5 +21,7 @@ const BrandFormInput = ({name}: BrandFormInputPropsType) => {
 export default BrandFormInput;
 
 type BrandFormInputPropsType = {
-  name: string
+  id: number
+  name: string,
+  chosen: boolean
 }

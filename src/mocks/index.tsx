@@ -940,9 +940,9 @@ export const getDiscounts = (): Array<DiscountType> => {
     },
   ];
 };
-export const getProductsTypes = () => {
+export const getProductsTypes = (): Array<resProductTypesType> => {
   return [
-    { id: 0, name: 'Корм (сухой, влажный)', is_active: true },
+    { id: 0, name: 'Корм (сухой, влажный)', is_active: false },
     { id: 1, name: 'Лакомства', is_active: false },
     { id: 2, name: 'Игрушки', is_active: false },
     { id: 3, name: 'Наполнитель', is_active: false },
@@ -1155,7 +1155,7 @@ export const getReviews = (): Array<ReviewsType> => {
 
   ];
 };
-export const getBrands = (): Array<BrandType> => {
+export const getBrands = (): Array<resBrandType> => {
   return [
     {
       id: 0,
@@ -1255,10 +1255,10 @@ export type DiscountType = {
   title: string,
   img: string
 }
-export type BrandType = {
+export type resBrandType = {
   id: number,
   name: string,
-  image: string
+  image: string,
 }
 export type OptionType = {
   id: number,
@@ -1303,5 +1303,10 @@ export type AnimalTypesType = {
   id: number,
   name: string,
   image: string,
+}
+export type resProductTypesType = {
+  id: number,
+  name: string,
+  is_active: boolean
 }
 
