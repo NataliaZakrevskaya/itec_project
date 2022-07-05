@@ -74,7 +74,8 @@
           .restImage:last-child {
             margin-bottom: 0;
           }
-          .selectImg{
+
+          .selectImg {
             border: 2px solid #008060;
           }
         }
@@ -141,16 +142,18 @@
           cursor: pointer;
         }
 
-        .setWeightBlock{
+        .setWeightBlock {
           margin: 12px 0 13px;
-          & h3{
+
+          & h3 {
             @include SFDisplaySemibold();
             font-size: 20px;
             line-height: 28px;
             color: #202223;
             margin-bottom: 9px;
           }
-          & input{
+
+          & input {
             padding: 8px 12px;
             gap: 10px;
             width: 184px;
@@ -164,14 +167,16 @@
             font-size: 15px;
             line-height: 20px;
             color: #202223;
-            &::placeholder{
+
+            &::placeholder {
               @include SFTextRegular();
               font-size: 15px;
               line-height: 20px;
               color: #202223;
             }
           }
-          & button{
+
+          & button {
             background: #FFFFFF;
             border-radius: 5px;
             padding: 0;
@@ -192,17 +197,20 @@
           flex-direction: row;
           align-items: center;
           margin-top: 12px;
+
           .orderImageWrapper {
             margin-right: 20.88px;
           }
-          & h3{
+
+          & h3 {
             @include SFDisplaySemibold();
             font-size: 20px;
             line-height: 130%;
             color: #202223;
             margin-bottom: 6px;
           }
-          & .pickUpInfo{
+
+          & .pickUpInfo {
             @include SFTextRegular();
             font-size: 14px;
             line-height: 130%;
@@ -217,13 +225,15 @@
           border-radius: 4px;
           padding: 8px 16px;
           margin: 24px 0 25px;
-          & h2{
+
+          & h2 {
             @include SFDisplayBold();
             font-size: 28px;
             line-height: 32px;
             color: #202223;
           }
-          & p{
+
+          & p {
             @include SFDisplaySemibold();
             font-size: 16px;
             line-height: 24px;
@@ -243,7 +253,7 @@
               width: 36px;
               height: 36px;
               background: #FFFFFF;
-              box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+              box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
               border-radius: 4px;
               display: flex;
               justify-content: center;
@@ -263,7 +273,7 @@
               width: 36px;
               height: 36px;
               background: #FFFFFF;
-              box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+              box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
               border-radius: 4px;
               display: flex;
               justify-content: center;
@@ -276,9 +286,8 @@
           .basketInterfacePlus {
             width: 36px;
             height: 36px;
-            border-radius: 5px;
             background: #FFFFFF;
-            box-shadow: 0px 1px 0px rgb(0 0 0 / 5%);
+            box-shadow: 0 1px 0 rgb(0 0 0 / 5%);
             border-radius: 4px;
             display: flex;
             border: 1px solid gray;
@@ -312,6 +321,7 @@
             font-size: 16px;
             line-height: 24px;
             color: #2C6ECB;
+            cursor: pointer;
           }
         }
       }

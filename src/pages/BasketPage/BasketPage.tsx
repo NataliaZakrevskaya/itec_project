@@ -41,7 +41,9 @@ const BasketPage = () => {
                   {
                     productsInBasket.map( item =>
                       <ProductItemForBasket
-                        product={ item }
+                        key={item.id}
+                        unit={item.unit}
+                        id={item.id}
                         image={ item.images[ 0 ].image }
                         name={ item.name }
                         options={ item.options }

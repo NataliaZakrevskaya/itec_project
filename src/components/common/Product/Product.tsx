@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import style from './Product.module.scss';
 import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
-import { OptionType, ProductItemType } from '../../../mocks';
-import basket from "../../../Images/basket.svg";
+import { OptionType } from '../../../mocks';
+import basket from '../../../Images/basket.svg';
 
-const Product = ( { options, name, image, product, isForOneClick }: ProductForBasketPropsType ) => {
+const Product = ( { id, options, name, image, isForModal, unit }: ProductForBasketPropsType ) => {
   const [ countOfProduct, setCountOfProduct ] = useState( 1 );
   const onDecrementBtnClick = () => {
     setCountOfProduct( () => countOfProduct - 1 );
@@ -28,7 +28,7 @@ const Product = ( { options, name, image, product, isForOneClick }: ProductForBa
                             <ProductItemUnit
                                 key={ option.id }
                                 count={ option.count }
-                                unit={ product.unit }
+                                unit={ unit }
                             />,
                         )
                     }
@@ -43,7 +43,7 @@ const Product = ( { options, name, image, product, isForOneClick }: ProductForBa
           <div className={style.plus} onClick={ onIncrementBtnClick }><div><span></span></div></div>
             <img className={style.basketImage} src={ basket } alt="basketIcon"/>
         </div>
-        {isForOneClick &&
+        {isForModal &&
           <div>
             <p>235 BYN.</p> {/*//todo позже будет получаться из стора*/}
           </div>
@@ -56,9 +56,10 @@ const Product = ( { options, name, image, product, isForOneClick }: ProductForBa
 export default Product;
 
 type ProductForBasketPropsType = {
-  product: ProductItemType
+  id: number,
   options: Array<OptionType>,
   name: string,
-  image: string
-  isForOneClick: boolean
+  image: string,
+  unit: string,
+  isForModal: boolean
 }

@@ -5,11 +5,14 @@ import Button from '../Button/Button';
 import React, { useEffect, useRef, useState } from 'react';
 import PrevSectionButton from '../prevSectionButton/prevSectionButton';
 import NextSectionButton from '../nextSectionButton/nextSectionButton';
+import Modal from '../modals/Modal';
+import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
 
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );
+  const [ isModalActive, setIsModalActive ] = useState<boolean>( false );
   const [ isNextDisabled, setIsNextDisabled ] = useState( false );
   const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
 
@@ -23,8 +26,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
       const _width = windowElRef?.current.offsetWidth;
       setWidth( _width );
       setOffset( 0 );
-      setIsPrevDisabled(true)
-      setIsNextDisabled(false)
+      setIsPrevDisabled( true );
+      setIsNextDisabled( false );
     };
     resizeHandler();
     window.addEventListener( 'resize', resizeHandler );
@@ -51,6 +54,12 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
       return Math.max( newOffset, maxOffset );
     } );
   };
+  const closeModal = () => {
+    setIsModalActive( false );
+  };
+  const openModal = () => {
+    setIsModalActive(true)
+  }
 
   return (
     <div className={ `${ commonStyle.block } ${ block }` }>
@@ -85,6 +94,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                       options={ item.options }
                       classNameForDarkItem={ productItem }
                       unit={ item.unit }
+                      onClick={openModal}
                     />,
                   )
               }
@@ -93,6 +103,11 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
         </div>
         <Button title={ 'Смотреть больше товаров' }
                 onClick={ onButtonClick }/> {/*//todo не отображается, если находится в каталоге*/ }
+        { isModalActive &&
+          <Modal closeModal={ closeModal }>
+            <OnClickOrder/>
+          </Modal>
+        }
       </div>
     </div>
   );

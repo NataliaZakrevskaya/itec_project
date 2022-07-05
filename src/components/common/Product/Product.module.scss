@@ -28,6 +28,10 @@
     line-height: 130%;
     color: #202223;
     margin-bottom: 8px;
+    cursor: pointer;
+    &:hover{
+      color: #00A0AC;
+    }
   }
   .basketTitleWrapper{
     max-width: 471px;

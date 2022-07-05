@@ -1,14 +1,13 @@
 import React from 'react';
-import basket from '../../Images/basket.svg';
-import { OptionType, ProductItemType } from '../../mocks';
+import { OptionType } from '../../mocks';
 import style from './ProductItemForBasket.module.scss';
 import Product from '../common/Product/Product';
 
-const ProductItemForBasket = ( { options, name, image, product }: ProductItemForBasketPropsType ) => {
+const ProductItemForBasket = ( {id, options, unit, name, image }: ProductItemForBasketPropsType ) => {
 
   return (
     <div className={ style.productItemForBasketContainer }>
-      <Product product={ product } options={ options } name={ name } image={ image } isForOneClick={false}/>
+      <Product id={id} options={options} name={ name } image={ image } unit={unit} isForModal={false}/>
     </div>
   );
 };
@@ -16,8 +15,9 @@ const ProductItemForBasket = ( { options, name, image, product }: ProductItemFor
 export default ProductItemForBasket;
 
 type ProductItemForBasketPropsType = {
-  product: ProductItemType
+  id: number,
   options: Array<OptionType>,
   name: string,
-  image: string
+  image: string,
+  unit: string
 }

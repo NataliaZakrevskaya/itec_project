@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
@@ -14,11 +14,21 @@ import ProductsBlockPagination from '../../components/ProductsBlockPagination/Pr
 import { useSelector } from 'react-redux';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
+import Modal from '../../components/common/modals/Modal';
+import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
 
 const CatalogPage = () => {
+
   const products = getProductItems();
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
+  const [ isModalActive, setIsModalActive ] = useState<boolean>( false );
+  const closeModal = () => {
+    setIsModalActive( false );
+  };
+  const openModal = () => {
+    setIsModalActive(true)
+  }
 
   return (
     <div className={ style.catalogPageBlock }>
@@ -63,6 +73,7 @@ const CatalogPage = () => {
                   options={ item.options }
                   classNameForDarkItem={themeStyle.productItem}
                   unit={item.unit}
+                  onClick={openModal}
                 />,
               )
             }
@@ -72,6 +83,10 @@ const CatalogPage = () => {
       </div>
       <PopularProductsBlock/>
       <UsefulArticlesBlock/>
+      {isModalActive &&
+        <Modal closeModal={ closeModal }>
+          <OnClickOrder/>
+        </Modal>}
     </div>
   );
 };

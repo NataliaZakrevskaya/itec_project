@@ -5,12 +5,18 @@ import style from './ProductPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import { WithThisProductBuyBlock } from '../../components/WithThisProductBuy/WithThisProductBuyBlock';
 import nextIcon from '../../Images/nextIcon.svg';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getProductItems } from '../../mocks';
 import UnitsForBasket from '../../components/common/UnitsForBasket/UnitsForBasket';
 import boxIcon from '../../Images/boxIcon.svg';
 import Address from '../../components/common/Address/Address';
 import Button from '../../components/common/Button/Button';
+import Modal from '../../components/common/modals/Modal';
+import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
+import { useDispatch } from 'react-redux';
+import { setBrandStatus } from '../../redux/reducers/brands-reducer';
+import { routesPathsEnum } from '../../routes/enums';
+import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 
 const ProductPage = () => {
 
@@ -18,13 +24,21 @@ const ProductPage = () => {
   const [ weightSetIsShowed, setWeightSetIsShowed ] = useState<boolean>( false );
   const [ weightSetValue, setWeightSetValue ] = useState<string>( '' );
   const [ selectImageId, setSelectImageId ] = useState<number>( 0 );
+  const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
+  const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
 
   const totalSum = 234; //todo позже будет получаться из стора
   const totalWeight = 0.542; //todo позже будет получаться из стора
-  const productId = Number( useParams().productId ) - 1;
-  const product = getProductItems()[ productId ]; //todo позже будет просто запрос по апи
+  const product = getProductItems()[ Number( useParams().productId ) ]; //todo позже будет просто запрос по апи
   const { brand, name, images, options } = product;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const chooseBrand = ( id: number, chosen: boolean ) => {
+    dispatch( setBrandStatus( { id, chosen } ) );
+    navigate( routesPathsEnum.CATALOG );
+  };
   const onDecrementBtnClick = () => {
     if ( countOfProduct ) {
       setCountOfProduct( () => countOfProduct - 1 );
@@ -42,6 +56,18 @@ const ProductPage = () => {
   const selectImage = ( id: number ) => {
     setSelectImageId( id );
   };
+  const closeOneClickModal = () => {
+    setIsOneClickModalActive( false );
+  };
+  const openOneClickModal = () => {
+    setIsOneClickModalActive( true );
+  };
+  const closeBasketModal = () => {
+    setIsBasketModalActive( false );
+  };
+  const openBasketModal = () => {
+    setIsBasketModalActive( true );
+  };
 
   return (
     <div className={ style.productPage }>
@@ -56,7 +82,10 @@ const ProductPage = () => {
       </div>
       <div className={ style.productInfo }>
         <h2 className={ style.productPageTitle }>{ name }</h2>
-        <p className={ style.productPageSubTitle }>Смотреть все товары бренда { brand.name } </p>
+        <p
+          className={ style.productPageSubTitle }
+          onClick={ () => chooseBrand( brand.id, true ) }
+        >Смотреть все товары бренда { brand.name } </p>
         <div className={ style.imgAndOrderBlock }>
           <div className={ style.imageBlock }>
             <div className={ style.mainImageWrapper }>
@@ -137,10 +166,10 @@ const ProductPage = () => {
                 </div>
               </div>
               <div className={ style.basketInterfaceButton }>
-                <Button title={ 'Добавить в корзину' } onClick={ () => alert( 'Будет добавлять в корзину' ) }/>
+                <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal() }/>
               </div>
               <div>
-                <p className={ style.basketInterfaceOneClick }>Купить в 1
+                <p className={ style.basketInterfaceOneClick } onClick={ openOneClickModal }>Купить в 1
                   клик</p> {/*//todo будет открываться модалка*/ }
               </div>
             </div>
@@ -162,6 +191,24 @@ const ProductPage = () => {
       <PopularProductsBlock/>
       <WithThisProductBuyBlock/>
       <UsefulArticlesBlock/>
+      { isOneClickModalActive &&
+        <Modal closeModal={ closeOneClickModal }>
+          <OnClickOrder/>
+        </Modal>
+      }
+      { isBasketModalActive &&
+        <Modal closeModal={ closeBasketModal }>
+          <BasketModal
+            key={ product.id }
+            id={ product.id }
+            image={ product.images[ 0 ].image }
+            name={ product.name }
+            unit={ product.unit }
+            options={ product.options }
+            isForModal={ true }
+          />
+        </Modal>
+      }
     </div>
   );
 };

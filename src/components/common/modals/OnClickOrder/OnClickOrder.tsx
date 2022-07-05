@@ -21,14 +21,15 @@ const OnClickOrder = () => {
   } );
 
   return (
-    <div className={style.onClickOrderContent}>
+    <div className={ style.onClickOrderContent }>
       <h3>Оформление заказа в 1 клик</h3>
       <Product
-        product={ selectProduct }
+        unit={ selectProduct.unit }
+        id={ selectProduct.id }
         options={ selectProduct.options }
         name={ selectProduct.name }
         image={ selectProduct.images[ 0 ].image }
-        isForOneClick={ true }
+        isForModal={ true }
       />
       <hr/>
       <p>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать вас по адресу: Минск, ул. Чюрлёниса,
