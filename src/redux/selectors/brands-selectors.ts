@@ -4,8 +4,8 @@ import { BrandType } from '../reducers/brands-reducer';
 export const getBrands = (state: AppRootStateType): Array<BrandType> => {
   return state.brands.brands
 }
-export const getChosenBrands = (state: AppRootStateType): Array<BrandType> => {
-  return state.brands.chosenBrands
+export const getChosenBrandsId = (state: AppRootStateType): Array<number> => {
+  return state.brands.chosenBrandsId
 }
 export const getBrandName = (state: AppRootStateType): string => {
   return state.brands.brandName

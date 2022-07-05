@@ -1,39 +1,42 @@
-export const getTitleForProductsBlock = ( activeAnimalTypeName: string | undefined) => {
-  switch ( activeAnimalTypeName ) {
-    case 'Собаки': {
+
+
+export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null) => {
+  switch ( chosenAnimalTypeId ) {
+    case 0: {
       return 'для собак';
     }
-    case 'Кошки': {
+    case 1: {
       return 'для кошек';
     }
-    case 'Грызуны': {
+    case 2: {
       return 'для грызунов';
     }
-    case 'Птицы': {
+    case 3: {
       return 'для птиц';
     }
-    case 'Рыбки': {
+    case 4: {
       return 'для рыбок';
     }
     default:
       return '';
   }
 };
-export const getTitleForArticlesBlock = ( activeAnimalTypeName: string | undefined) => {
-  switch ( activeAnimalTypeName ) {
-    case 'Собаки': {
+
+export const getTitleForArticlesBlock = ( chosenAnimalTypeId: number | null) => {
+  switch ( chosenAnimalTypeId ) {
+    case 0: {
       return 'про собак';
     }
-    case 'Кошки': {
+    case 1: {
       return 'про кошек';
     }
-    case 'Грызуны': {
+    case 2: {
       return 'про грызунов';
     }
-    case 'Птицы': {
+    case 3: {
       return 'про птиц';
     }
-    case 'Рыбки': {
+    case 4: {
       return 'про рыбок';
     }
     default:

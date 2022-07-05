@@ -11,9 +11,14 @@ import ProductItem from '../../components/ProductItem/ProductItem';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import ProductsBlockPagination from '../../components/ProductsBlockPagination/ProductsBlockPagination';
+import { useSelector } from 'react-redux';
+import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
+import { getTitleForProductsBlock } from '../../helpers/getTitle';
 
 const CatalogPage = () => {
   const products = getProductItems();
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
 
   return (
     <div className={ style.catalogPageBlock }>
@@ -26,7 +31,7 @@ const CatalogPage = () => {
       </div>
       <AnimalsTypesList/>
       <div className={ style.title }>
-        <h1>Каталог товаров</h1>{/* //todo позже будет меняться в зависимости от выбранного типа животного*/ }
+        <h1>{ `Каталог товаров ${subTitle}` }</h1>{/* //todo позже будет меняться в зависимости от выбранного типа животного*/ }
         <div className={ style.select }>
           <p>Сортировка по: </p>
           <select name="select" >

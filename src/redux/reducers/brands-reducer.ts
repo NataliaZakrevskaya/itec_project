@@ -16,12 +16,14 @@ export const slice = createSlice( {
   name: 'brands',
   initialState: {
     brands: [] as Array<BrandType>,
-    chosenBrands: [] as Array<BrandType>,
+    chosenBrandsId: [] as Array<number>,
     brandName: '' as string
   },
   reducers: {
-    setChosenBrands( state, action ) {
-      state.chosenBrands = state.brands.filter((brand: BrandType) => brand.chosen)
+    setChosenBrandsId( state, action ) {
+      state.chosenBrandsId = state.brands
+        .filter((brand: BrandType) => brand.chosen)
+        .map(brand => brand.id)
     },
     setBrandName( state, action: PayloadAction<{ brandName: string } > ) {
       state.brandName = action.payload.brandName
@@ -41,7 +43,7 @@ export const slice = createSlice( {
 } );
 
 export const brandsReducer = slice.reducer
-export const {setChosenBrands, setBrandName, setBrandStatus} = slice.actions
+export const {setChosenBrandsId, setBrandName, setBrandStatus} = slice.actions
 
 export type BrandType = {
   id: number,

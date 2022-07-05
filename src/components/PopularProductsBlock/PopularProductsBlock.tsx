@@ -7,7 +7,7 @@ import dark from '../../styles/common/DarkBlock.module.scss';
 import style from './PopularProductsBlock.module.css';
 import { useSelector } from 'react-redux';
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
-import { getActiveAnimalTypeName } from '../../redux/selectors/animalTypes-selectors';
+import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 
 const PopularProductsBlock = () => {
 
@@ -16,8 +16,8 @@ const PopularProductsBlock = () => {
   const goToPopularProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по популярности
   };
-  const activeAnimalTypeName = useSelector( getActiveAnimalTypeName );
-  const subTitle = getTitleForProductsBlock( activeAnimalTypeName );
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
 
   return (
     <div className={ style.popularProductsWrapper }>

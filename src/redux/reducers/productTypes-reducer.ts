@@ -19,7 +19,7 @@ export const slice = createSlice( {
     chosenProductTypeId: null as number | null,
   },
   reducers: {
-    setActiveProductTypeId( state, action: PayloadAction<{ id: number }> ) {
+    setChosenProductTypeId( state, action: PayloadAction<{ id: number }> ) {
       state.chosenProductTypeId = action.payload.id;
     },
   }, extraReducers: builder => {
@@ -33,7 +33,7 @@ export const slice = createSlice( {
 } );
 
 export const productTypesReducer = slice.reducer;
-export const { setActiveProductTypeId } = slice.actions;
+export const { setChosenProductTypeId } = slice.actions;
 
 export type ProductTypesType = {
   id: number,

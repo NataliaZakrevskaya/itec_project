@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './AnimalType.module.scss';
-import { AnimalTypesType } from '../../../mocks';
 
-const AnimalType = ( { type, name, image, isActive, checked, setActiveAnimalTypeId }: AnimalTypePropsType ) => {
+const AnimalType = ( { id, name, image, isActive, checked, chooseActiveAnimalType }: AnimalTypePropsType ) => {
   return (
-    <div className={checked ? isActive ? `${style.animalType} ${style.active}` : `${style.animalType} ${style.restTypes}` : style.animalType}
-         onClick={ () => setActiveAnimalTypeId(type) }>
+    <div
+      className={ checked ? isActive ? `${ style.animalType } ${ style.active }` : `${ style.animalType } ${ style.restTypes }` : style.animalType }
+      onClick={ () => chooseActiveAnimalType( id ) }>
       <img src={ image } alt={ 'animal img' }/>
       <span>{ name }</span>
     </div>
@@ -15,10 +15,10 @@ const AnimalType = ( { type, name, image, isActive, checked, setActiveAnimalType
 export default AnimalType;
 
 type AnimalTypePropsType = {
-  type: AnimalTypesType,
+  id: number,
   name: string,
   image: string,
   isActive: boolean,
   checked: boolean
-  setActiveAnimalTypeId: (type: AnimalTypesType) => void
+  chooseActiveAnimalType: ( id: number ) => void
 }

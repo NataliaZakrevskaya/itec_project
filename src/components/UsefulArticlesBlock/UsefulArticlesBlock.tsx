@@ -10,15 +10,15 @@ import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import { useSelector } from 'react-redux';
-import { getActiveAnimalTypeName } from '../../redux/selectors/animalTypes-selectors';
+import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 import { getTitleForArticlesBlock } from '../../helpers/getTitle';
 
 const UsefulArticlesBlock = () => {
 
   const articles = getArticles();
   const navigate = useNavigate();
-  const activeAnimalTypeName = useSelector( getActiveAnimalTypeName );
-  const subTitle = getTitleForArticlesBlock( activeAnimalTypeName );
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
 
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );

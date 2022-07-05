@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ProductTypeInput = ({ id, name, isActive, chooseActiveProductType }: ProductTypeInputPropsType) => {
+const ProductTypeInput = ({ id, name, isActive, chooseProductType }: ProductTypeInputPropsType) => {
 
   return (
       <label>
-        <input type="radio" checked={ isActive } value={name} onChange={() => chooseActiveProductType(id)}/>
+        <input type="radio" checked={ isActive } value={name} onChange={() => chooseProductType(id)}/>
         <span/>
         { name }
       </label>
@@ -17,5 +17,5 @@ type ProductTypeInputPropsType = {
   id: number
   name: string,
   isActive: boolean,
-  chooseActiveProductType: (id: number) => void
+  chooseProductType: (id: number) => void
 }
