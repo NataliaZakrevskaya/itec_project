@@ -8,22 +8,37 @@
 
   width: 100%;
   background-color: #f6f6f7;
-  .productPageTitle{
+
+  .productPageTitle {
+    @include SFDisplaySemibold();
+    font-size: 28px;
+    line-height: 130%;
+    color: #202223;
     margin: 24px 0;
+    width: 80%;
   }
-  .productPageSubTitle{
+
+  .productPageSubTitle {
     margin-bottom: 32px;
+    cursor: pointer;
+    @include SFDisplaySemibold();
+    font-size: 16px;
+    line-height: 24px;
+    color: #2C6ECB;
   }
-  .mainImageWrapper{
+
+  .mainImageWrapper {
     width: 470px;
     height: 392px;
     margin-right: 16px;
+
     & img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
   }
+
   .productInfo {
     width: 80%;
     max-width: 1200px;
@@ -31,82 +46,200 @@
     flex-direction: column;
     align-items: flex-start;
 
-    .imgAndOrderBlock{
+    .imgAndOrderBlock {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
       margin-bottom: 64px;
-      .imageBlock{
+
+      .imageBlock {
         display: flex;
         flex-direction: row;
 
-        .mainImg{
+        .mainImg {
         }
 
-        .restImagesBlock{
+        .restImagesBlock {
           display: flex;
           flex-direction: column;
-          .restImage{
+
+          .restImage {
             width: 92px;
             height: 92px;
             margin-bottom: 8px;
+            border-radius: 4px;
           }
-          .restImage:last-child{
+
+          .restImage:last-child {
             margin-bottom: 0;
+          }
+          .selectImg{
+            border: 2px solid #008060;
           }
         }
       }
-      .orderBlock{
+
+      .orderBlock {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         max-width: 501px;
 
-        .unitsGroup{
+        & h3 {
+          @include SFDisplaySemibold();
+          font-size: 20px;
+          line-height: 28px;
+          color: #202223;
+        }
+
+        .unitsGroup {
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
           gap: 16px;
-          & div{
+
+          & div {
             background: #E4E5E7;
             border-radius: 2px;
-            padding: 6px 20px 6px 16px;
+            padding: 6px 16px;
+
+            & .option {
+              @include SFDisplayBold();
+              font-size: 16px;
+              line-height: 120%;
+            }
+
+            & .price {
+              @include SFTextRegular();
+              font-size: 16px;
+              line-height: 110%;
+              color: #6D7175;
+            }
           }
-          & div:hover{
+
+          & div:hover {
             background: #008060;
             color: white;
+
+            & .option {
+              color: white;
+            }
+
+            & .price {
+              color: white;
+            }
           }
         }
-        .unitsGroupHeft{
+
+        .unitsGroupHeft {
           @include SFTextRegular();
           margin-top: 12px;
           font-size: 14px;
           line-height: 20px;
           color: #2C6ECB;
+          cursor: pointer;
         }
-        .orderImageWrapper{
-          margin-right: 20.88px;
+
+        .setWeightBlock{
+          margin: 12px 0 13px;
+          & h3{
+            @include SFDisplaySemibold();
+            font-size: 20px;
+            line-height: 28px;
+            color: #202223;
+            margin-bottom: 9px;
+          }
+          & input{
+            padding: 8px 12px;
+            gap: 10px;
+            width: 184px;
+            height: 36px;
+            background: #FFFFFF;
+            border-radius: 4px;
+            outline: none;
+            border: 1px solid #BABFC3;
+            margin-right: 9px;
+            @include SFTextRegular();
+            font-size: 15px;
+            line-height: 20px;
+            color: #202223;
+            &::placeholder{
+              @include SFTextRegular();
+              font-size: 15px;
+              line-height: 20px;
+              color: #202223;
+            }
+          }
+          & button{
+            background: #FFFFFF;
+            border-radius: 5px;
+            padding: 0;
+            width: 112px;
+            height: 36px;
+            border: 1px solid #BABFC3;
+            @include SFTextMedium();
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+            color: #202223;
+            cursor: pointer;
+          }
         }
-        .orderInfo{
+
+        .orderInfo {
           display: flex;
           flex-direction: row;
           align-items: center;
+          margin-top: 12px;
+          .orderImageWrapper {
+            margin-right: 20.88px;
+          }
+          & h3{
+            @include SFDisplaySemibold();
+            font-size: 20px;
+            line-height: 130%;
+            color: #202223;
+            margin-bottom: 6px;
+          }
+          & .pickUpInfo{
+            @include SFTextRegular();
+            font-size: 14px;
+            line-height: 130%;
+            color: #5C5C5C;
+            margin-bottom: 6px;
+          }
         }
-        .orderInfoForPayment{
+
+        .orderInfoForPayment {
           @include flex(row, space-between, center);
           background: #FFFFFF;
           border-radius: 4px;
           padding: 8px 16px;
+          margin: 24px 0 25px;
+          & h2{
+            @include SFDisplayBold();
+            font-size: 28px;
+            line-height: 32px;
+            color: #202223;
+          }
+          & p{
+            @include SFDisplaySemibold();
+            font-size: 16px;
+            line-height: 24px;
+            color: #202223;
+          }
         }
-        .basketInterface{
+
+        .basketInterface {
           @include flex(row, space-between, center);
 
-          .quantityManagementBlock{
+          .quantityManagementBlock {
             display: flex;
             flex-direction: row;
             align-items: center;
-            .basketInterfaceMinus{
+
+            .basketInterfaceMinus {
               width: 36px;
               height: 36px;
               background: #FFFFFF;
@@ -117,14 +250,16 @@
               border: 1px solid gray;
               align-items: center;
               cursor: pointer;
-              & div{
+
+              & div {
                 width: 12px;
                 height: 2px;
                 background: #008060;
                 border-radius: 10px;
               }
             }
-            .basketInterfaceCount{
+
+            .basketInterfaceCount {
               width: 36px;
               height: 36px;
               background: #FFFFFF;
@@ -137,7 +272,8 @@
               margin: 0 6px;
             }
           }
-          .basketInterfacePlus{
+
+          .basketInterfacePlus {
             width: 36px;
             height: 36px;
             border-radius: 5px;
@@ -149,11 +285,13 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            & div{
+
+            & div {
               width: 12px;
               height: 2px;
               background: #008060;
               border-radius: 5px;
+
               & span {
                 display: block;
                 height: 1.5px;
@@ -163,11 +301,13 @@
               }
             }
           }
-          .basketInterfaceButton{
+
+          .basketInterfaceButton {
             width: 189px;
             height: 44px;
           }
-          .basketInterfaceOneClick{
+
+          .basketInterfaceOneClick {
             @include SFTextMedium();
             font-size: 16px;
             line-height: 24px;
@@ -177,10 +317,12 @@
       }
     }
   }
-  .descriptionBlock{
+
+  .descriptionBlock {
     display: flex;
     flex-direction: row;
-    & div{
+
+    & div {
       display: flex;
       flex-direction: column;
     }

@@ -53,11 +53,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -65,11 +60,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '11', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '231', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '342', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '24', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '141', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '11', count: 214, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '231', count: 8, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '342', count: 27, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '24', count: 47, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '141', count: 7, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -109,11 +104,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -121,11 +111,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '34', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '241', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '125', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '65', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '34', count: 4, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '241', count: 0.4, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '21', count: 3, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '125', count: 1, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '65', count: 23, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -165,11 +155,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -177,10 +162,10 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 100, price: '125', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 85, price: '42', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 35, price: '212', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 200, price: '23', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 100, price: '125', count: 23, is_active: true, product: 0 },
+        { id: 1, size: 85, price: '42', count: 5, is_active: true, product: 0 },
+        { id: 2, size: 35, price: '212', count: 1, is_active: true, product: 0 },
+        { id: 3, size: 200, price: '23', count: 3, is_active: true, product: 0 },
       ],
       unit: 'г.',
       animal: {
@@ -220,11 +205,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -232,11 +212,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 2, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 43, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 54, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 1, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 3, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -276,11 +256,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -288,11 +263,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '56', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '76', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '78', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '34', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 1, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '56', count: 1, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '76', count: 54, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '78', count: 3, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '34', count: 2, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -332,11 +307,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -344,11 +314,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '11', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '231', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '342', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '24', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '141', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '11', count: 7, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '231', count: 5, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '342', count: 32, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '24', count: 1, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '141', count: 32, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -388,11 +358,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -400,11 +365,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 4, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 23, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 12, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 2, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 5, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -444,11 +409,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -456,11 +416,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 23, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 4, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 2, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 1, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 5, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -500,11 +460,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -512,11 +467,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 4, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 2, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 2, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 4, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 6, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -556,11 +511,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -568,11 +518,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 1, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 1, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 2, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 42, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 3, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -612,11 +562,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -624,11 +569,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 1, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 4, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 32, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 2, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 43, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -668,11 +613,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -680,11 +620,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 2, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 23, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 5, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 1, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 6, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -724,11 +664,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -736,11 +671,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 2, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 3, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 5, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 5, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 23, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -780,11 +715,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -792,11 +722,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 2, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 23, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 5, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 12, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 5, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -836,11 +766,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -848,11 +773,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 1, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 2, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 23, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 4, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 64, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {
@@ -892,11 +817,6 @@ export const getProductItems = (): Array<ProductItemType> => {
           image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
           product: 0,
         },
-        {
-          id: 4,
-          image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
-          product: 0,
-        },
       ],
       brand: {
         id: 1,
@@ -904,11 +824,11 @@ export const getProductItems = (): Array<ProductItemType> => {
         image: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
       },
       options: [
-        { id: 0, size: 0.4, price: '211', count: 2147483647, is_active: true, product: 0 },
-        { id: 1, size: 0.4, price: '12', count: 2147483647, is_active: true, product: 0 },
-        { id: 2, size: 0.4, price: '45', count: 2147483647, is_active: true, product: 0 },
-        { id: 3, size: 0.4, price: '21', count: 2147483647, is_active: true, product: 0 },
-        { id: 4, size: 0.4, price: '43', count: 2147483647, is_active: true, product: 0 },
+        { id: 0, size: 0.4, price: '211', count: 4, is_active: true, product: 0 },
+        { id: 1, size: 0.4, price: '12', count: 23, is_active: true, product: 0 },
+        { id: 2, size: 0.4, price: '45', count: 3, is_active: true, product: 0 },
+        { id: 3, size: 0.4, price: '21', count: 1, is_active: true, product: 0 },
+        { id: 4, size: 0.4, price: '43', count: 21, is_active: true, product: 0 },
       ],
       unit: 'кг.',
       animal: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
@@ -14,7 +14,10 @@ import Button from '../../components/common/Button/Button';
 
 const ProductPage = () => {
 
-  const [ countOfProduct, setCountOfProduct ] = useState( 1 );
+  const [ countOfProduct, setCountOfProduct ] = useState<number>( 1 );
+  const [ weightSetIsShowed, setWeightSetIsShowed ] = useState<boolean>( false );
+  const [ weightSetValue, setWeightSetValue ] = useState<string>( '' );
+  const [ selectImageId, setSelectImageId ] = useState<number>( 0 );
 
   const totalSum = 234; //todo позже будет получаться из стора
   const totalWeight = 0.542; //todo позже будет получаться из стора
@@ -23,10 +26,21 @@ const ProductPage = () => {
   const { brand, name, images, options } = product;
 
   const onDecrementBtnClick = () => {
-    setCountOfProduct( () => countOfProduct - 1 );
+    if ( countOfProduct ) {
+      setCountOfProduct( () => countOfProduct - 1 );
+    }
   };
   const onIncrementBtnClick = () => {
     setCountOfProduct( () => countOfProduct + 1 );
+  };
+  const onWeightSetInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
+    setWeightSetValue( e.currentTarget.value );
+  };
+  const onWeightSetParagraphClick = () => {
+    setWeightSetIsShowed( !weightSetIsShowed );
+  };
+  const selectImage = ( id: number ) => {
+    setSelectImageId( id );
   };
 
   return (
@@ -41,20 +55,23 @@ const ProductPage = () => {
         </div>
       </div>
       <div className={ style.productInfo }>
-        <h2 className={style.productPageTitle}>{ name }</h2>
-        <p className={style.productPageSubTitle}>Смотреть все товары бренда { brand.name } </p>
+        <h2 className={ style.productPageTitle }>{ name }</h2>
+        <p className={ style.productPageSubTitle }>Смотреть все товары бренда { brand.name } </p>
         <div className={ style.imgAndOrderBlock }>
           <div className={ style.imageBlock }>
-            <div className={style.mainImageWrapper}>
-              <img src={ images[ 0 ].image } alt="product" className={ style.mainImg }/>
+            <div className={ style.mainImageWrapper }>
+              <img src={ images[ selectImageId ].image } alt="product" className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
               {
                 images
-                  .filter( ( img, index ) =>
-                    index > 0 )
                   .map( img =>
-                    <img src={ img.image } alt="product" className={ style.restImage }/>,
+                    <img
+                      src={ img.image }
+                      alt="product"
+                      className={ img.id === selectImageId ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
+                      onClick={ () => selectImage( img.id ) }
+                    />,
                   )
               }
             </div>
@@ -66,45 +83,65 @@ const ProductPage = () => {
             <div>
               <div className={ style.unitsGroup }>
                 { options.map( option =>
-                    <UnitsForBasket
-                        key={ option.id }
-                        size={ option.count }
-                        price={ +option.price }
-                        unit={ product.unit }
-                    />,
+                  <UnitsForBasket
+                    key={ option.id }
+                    size={ option.count }
+                    price={ +option.price }
+                    unit={ product.unit }
+                  />,
                 ) }
               </div>
-              <p className={style.unitsGroupHeft}>Задать свой вес</p>{/*//todo удет появлять только если ед. изм. кг*/ }
+              <div>
+                <p className={ style.unitsGroupHeft } onClick={ onWeightSetParagraphClick }>Задать свой
+                  вес</p>{/*//todo удет появлять только если ед. изм. кг*/ }
+                { weightSetIsShowed &&
+                  <div className={ style.setWeightBlock }>
+                    <h3>Задайте свой вес</h3>
+                    <div>
+                      <input
+                        type="text"
+                        value={ weightSetValue }
+                        onChange={ onWeightSetInputChange }
+                        placeholder={ 'Например: 1,2 кг' }
+                      />
+                      <button>Применить</button>
+                    </div>
+                  </div> }
+              </div>
             </div>
-
             <div className={ style.orderInfo }>
-              <div className={style.orderImageWrapper}>
+              <div className={ style.orderImageWrapper }>
                 <img src={ boxIcon } alt="boxIcon"/>
               </div>
               <div>
                 <h3>Самовывоз</h3>
-                <p>В данный момент товар можно забрать только самовывозом из нашего уютного магазина по адресу:</p>
+                <p className={ style.pickUpInfo }>В данный момент товар можно забрать только самовывозом из нашего
+                  уютного магазина по адресу:</p>
                 <Address/>
               </div>
             </div>
             <div className={ style.orderInfoForPayment }>
               <h2>
-                { totalSum }
-                BYN
+                { totalSum } BYN
               </h2>
               <p>Общий вес: { totalWeight } { product.unit }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
-                <div className={style.basketInterfaceMinus} onClick={ onDecrementBtnClick }><div></div></div>
-                <div className={style.basketInterfaceCount}>{ countOfProduct }</div>
-                <div className={style.basketInterfacePlus} onClick={ onIncrementBtnClick }><div><span></span></div></div>
+                <div className={ style.basketInterfaceMinus } onClick={ onDecrementBtnClick }>
+                  <div></div>
+                </div>
+                <div className={ style.basketInterfaceCount }>{ countOfProduct }</div>
+                <div className={ style.basketInterfacePlus } onClick={ onIncrementBtnClick }>
+                  <div><span></span></div>
+                </div>
               </div>
-              <div className={style.basketInterfaceButton}>
+              <div className={ style.basketInterfaceButton }>
                 <Button title={ 'Добавить в корзину' } onClick={ () => alert( 'Будет добавлять в корзину' ) }/>
               </div>
               <div>
-                <p className={style.basketInterfaceOneClick}>Купить в 1 клик</p> {/*//todo будет открываться модалка*/ }
+                <p className={ style.basketInterfaceOneClick }>Купить в 1
+                  клик</p> {/*//todo будет открываться модалка*/ }
               </div>
             </div>
           </div>
