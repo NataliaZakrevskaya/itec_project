@@ -1,0 +1,1 @@
+export const ANIMALS_URL = 'animals/';

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getBrands } from '../../mocks';
 
 export const fetchBrandsTC = createAsyncThunk(
-  'brands/fetchBrands', ( param, { dispatch } ) => {
+  'brands/fetchBrands',  ( param, { dispatch } ) => {
     const res = getBrands(); //todo позже будет APi запрос
     try {
       return { brands: res };
@@ -11,6 +11,16 @@ export const fetchBrandsTC = createAsyncThunk(
     }
   },
 );
+/*export const fetchBrandsTC = createAsyncThunk(
+  'brands/fetchBrands', async ( param, { dispatch } ) => {
+    const res = await brandsAPI.setBrands(); //todo после того, как заработает бэк
+    try {
+      return { brands: res.data };
+    } catch ( err ) {
+
+    }
+  },
+);*/
 
 export const slice = createSlice( {
   name: 'brands',

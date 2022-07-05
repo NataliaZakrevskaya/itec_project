@@ -1155,7 +1155,7 @@ export const getReviews = (): Array<ReviewsType> => {
 
   ];
 };
-export const getBrands = (): Array<resBrandType> => {
+export const getBrands = (): Array<ResBrandType> => {
   return [
     {
       id: 0,
@@ -1255,7 +1255,7 @@ export type DiscountType = {
   title: string,
   img: string
 }
-export type resBrandType = {
+export type ResBrandType = {
   id: number,
   name: string,
   image: string,
