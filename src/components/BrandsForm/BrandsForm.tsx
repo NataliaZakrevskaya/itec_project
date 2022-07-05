@@ -19,6 +19,10 @@ const BrandsForm = () => {
     const brandName = e.currentTarget.value;
     dispatch( setBrandName( { brandName } ) );
   };
+  const onRejButtonClick = () => {
+    const brandName = '';
+    dispatch( setBrandName( { brandName } ) );
+  }
 
   useEffect(() => {
     // @ts-ignore
@@ -52,7 +56,7 @@ const BrandsForm = () => {
           )
           : (
             <div className={ style.rejectSearchResultContainer }>
-              <RejectSearchResult requestTitle={ 'бренды' }/>
+              <RejectSearchResult requestTitle={ 'бренды' } onClick={onRejButtonClick}/>
             </div>
           )
       }

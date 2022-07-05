@@ -3,14 +3,16 @@ import style from '../../../Header/SearchResultsBlock/SearchResultsBlock.module.
 import sadDog from '../../../../Images/sadDog.svg';
 import SmallerButton from '../../SmallerButton/SmallerButton';
 
-const RejectSearchResult = ({requestTitle}: RejectSearchResultPropsType) => {
+const RejectSearchResult = ( { requestTitle, onClick }: RejectSearchResultPropsType ) => {
+
   return (
-    <div  className={style.rejectResultContainer}>
-      <img className={style.rejectResultImage} src={sadDog} alt="sadDog"/>
-      <div className={style.textBlock}>
-        <p>По вашему запросу ничего не найдено. Попробуйте изменить запрос или выбрать {requestTitle} в нашем каталоге </p>
+    <div className={ style.rejectResultContainer }>
+      <img className={ style.rejectResultImage } src={ sadDog } alt="sadDog"/>
+      <div className={ style.textBlock }>
+        <p>По вашему запросу ничего не найдено. Попробуйте изменить запрос или выбрать { requestTitle } в нашем
+          каталоге </p>
       </div>
-      <SmallerButton title={'Перейти в каталог'} onClick={() => alert('dvmk')}/>
+      <SmallerButton title={ 'Перейти в каталог' } onClick={ onClick }/>
     </div>
   );
 };
@@ -19,4 +21,5 @@ export default RejectSearchResult;
 
 type RejectSearchResultPropsType = {
   requestTitle: string
+  onClick: () => void | undefined
 }

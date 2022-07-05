@@ -4,7 +4,7 @@ import ProductItemForSearch from '../../ProductItemForSerch/ProductItemForSearch
 import { ProductItemType } from '../../../mocks';
 import RejectSearchResult from '../../common/modals/RejectSearchResult/RejectSearchResult';
 
-const SearchResultsBlock = ( { productItems }: any ) => {
+const SearchResultsBlock = ( { productItems, onButtonClick }: any ) => {
 
   const successResult = false; //todo после получется из состояния запроса
 
@@ -27,7 +27,7 @@ const SearchResultsBlock = ( { productItems }: any ) => {
           )
           : (
             <div className={ style.rejectSearchResultContainer }>
-              <RejectSearchResult requestTitle={ 'товары' }/>
+              <RejectSearchResult requestTitle={ 'товары' } onClick={onButtonClick}/>
             </div>
           )
       }
