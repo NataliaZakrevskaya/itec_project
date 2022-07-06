@@ -7,10 +7,15 @@ import { getArticles } from '../../mocks';
 import Article from '../../components/common/Article/Article';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import ContactBlock from '../../components/ContactBlock/ContactBlock';
+import { useSelector } from 'react-redux';
+import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
+import { getTitleForArticlesBlock, getTitleForProductsBlock } from '../../helpers/getTitle';
 
 const ArticlesPage = () => {
 
   const articlesItems = getArticles(); //todo позже будет запрос
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
 
   return (
     <div className={ style.articlesPageBlock }>
@@ -23,7 +28,7 @@ const ArticlesPage = () => {
       </div>
       <AnimalsTypesList/>
       <div className={style.articlesTitle}>
-          <h1>Полезные статьи о собаках</h1>
+          <h1>{ `Полезные статьи ${subTitle}` }</h1>
       </div> {/*//todo будет меняться в зависимости от выбранного типа животного*/ }
       <div className={ style.articlesBlockContainer }>
         <div className={ style.articlesBlock }>

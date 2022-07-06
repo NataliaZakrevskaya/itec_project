@@ -1,5 +1,5 @@
 import { ArticleType } from '../../../mocks';
-import timeIcon from '../../../Images/timeIcon.svg';
+import grayClock from '../../../Images/grayClock.svg';
 import calendarIcon from '../../../Images/calendarIcon.svg';
 import style from './Article.module.scss';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Article = ( { id, img, description, title, date, timeForReading }: Article
       <p>{ description }</p>
       <div className={ style.articleInfo }>
         <div>
-          <img src={ timeIcon } alt="timeIcon"/>
+          <img src={ grayClock } alt="timeIcon"/>
           <p>Время чтения: { timeForReading } мин.</p>
         </div>
         <div>
