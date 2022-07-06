@@ -124,6 +124,9 @@
       color: #202223;
     }
   }
+  &:last-child{
+    margin-bottom: 0;
+  }
 }
 .widthForBasketMainProductInfo{
   max-width: 471px;

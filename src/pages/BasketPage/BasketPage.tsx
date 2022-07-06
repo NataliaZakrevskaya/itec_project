@@ -4,7 +4,7 @@ import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import { getProductItems } from '../../mocks';
 import boxIcon from '../../Images/boxIcon.svg';
-import navigateIcon from '../../Images/navigateIcon.svg';
+import whiteNavigateIcon from '../../Images/whiteNavigationIcon.svg';
 import cat from '../../Images/cat.svg';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import PreviouslyProductsBlock from '../../components/PreviouslyProductsBlock/PreviouslyProductsBlock';
@@ -61,7 +61,7 @@ const BasketPage = () => {
                     <div className={style.basketTextWrapper}>
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
-                        <img src={ navigateIcon } alt={ 'navigateIcon' }/>
+                        <img src={ whiteNavigateIcon } alt={ 'whiteNavigateIcon' }/>
                         <p>Минск, ул. Чюрлёниса, 6.</p>
                       </div>
                     </div>
