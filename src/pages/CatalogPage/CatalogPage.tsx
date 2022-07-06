@@ -16,19 +16,27 @@ import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selecto
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
 import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
+import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 
 const CatalogPage = () => {
 
   const products = getProductItems();
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
-  const [ isModalActive, setIsModalActive ] = useState<boolean>( false );
-  const closeModal = () => {
-    setIsModalActive( false );
+  const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
+  const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
+  const closeOneClickModal = () => {
+    setIsOneClickModalActive( false );
   };
-  const openModal = () => {
-    setIsModalActive(true)
-  }
+  const openOneClickModal = () => {
+    setIsOneClickModalActive( true );
+  };
+  const closeBasketModal = () => {
+    setIsBasketModalActive( false );
+  };
+  const openBasketModal = () => {
+    setIsBasketModalActive( true );
+  };
 
   return (
     <div className={ style.catalogPageBlock }>
@@ -73,7 +81,8 @@ const CatalogPage = () => {
                   options={ item.options }
                   classNameForDarkItem={themeStyle.productItem}
                   unit={item.unit}
-                  onClick={openModal}
+                  openOneClickModal={openOneClickModal}
+                  openBasketModal={openBasketModal}
                 />,
               )
             }
@@ -83,10 +92,24 @@ const CatalogPage = () => {
       </div>
       <PopularProductsBlock/>
       <UsefulArticlesBlock/>
-      {isModalActive &&
-        <Modal closeModal={ closeModal }>
+      { isOneClickModalActive &&
+        <Modal closeModal={ closeOneClickModal }>
           <OnClickOrder/>
-        </Modal>}
+        </Modal>
+      }
+      { isBasketModalActive &&
+        <Modal closeModal={ closeBasketModal }>
+          <BasketModal
+            key={ products[0].id }
+            id={ products[0].id }
+            image={ products[0].images[ 0 ].image }
+            name={ products[0].name }
+            unit={ products[0].unit }
+            options={ products[0].options }
+            isForModal={ true }
+          />
+        </Modal>
+      }
     </div>
   );
 };

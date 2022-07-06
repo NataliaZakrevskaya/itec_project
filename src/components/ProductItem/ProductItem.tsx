@@ -6,7 +6,7 @@ import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 
-const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, onClick }: ProductItemPropsType ) => {
+const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, openBasketModal, openOneClickModal }: ProductItemPropsType ) => {
 
 
   const isKilo = unit === 'кг.'; //todo пока заглушка
@@ -34,14 +34,14 @@ const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, on
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
           <p className={ style.price }>{ `${ price } BYN` }</p>
-          <div className={ style.basket } onClick={ () => alert( 'добавить в корзину' ) }>
+          <div className={ style.basket } onClick={openBasketModal}>
             <p>+</p>
             <div className={ style.imageWrapper }>
               <img src={ basketIcon } alt="basketIcon"/>
             </div>
           </div>
         </div>
-        <button onClick={ onClick }>Купить в 1 клик</button>
+        <button onClick={ openOneClickModal }>Купить в 1 клик</button>
       </div>
     </div>
   );
@@ -56,5 +56,6 @@ type ProductItemPropsType = {
   options: Array<OptionType>,
   classNameForDarkItem?: string,
   unit: string,
-  onClick: () => void
+  openOneClickModal: () => void
+  openBasketModal: () => void
 }

@@ -7,12 +7,14 @@ import PrevSectionButton from '../prevSectionButton/prevSectionButton';
 import NextSectionButton from '../nextSectionButton/nextSectionButton';
 import Modal from '../modals/Modal';
 import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
+import BasketModal from '../modals/BasketModal/BasketModal';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
 
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );
-  const [ isModalActive, setIsModalActive ] = useState<boolean>( false );
+  const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
+  const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const [ isNextDisabled, setIsNextDisabled ] = useState( false );
   const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
 
@@ -54,12 +56,18 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
       return Math.max( newOffset, maxOffset );
     } );
   };
-  const closeModal = () => {
-    setIsModalActive( false );
+  const closeOneClickModal = () => {
+    setIsOneClickModalActive( false );
   };
-  const openModal = () => {
-    setIsModalActive(true)
-  }
+  const openOneClickModal = () => {
+    setIsOneClickModalActive( true );
+  };
+  const closeBasketModal = () => {
+    setIsBasketModalActive( false );
+  };
+  const openBasketModal = () => {
+    setIsBasketModalActive( true );
+  };
 
   return (
     <div className={ `${ commonStyle.block } ${ block }` }>
@@ -94,7 +102,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                       options={ item.options }
                       classNameForDarkItem={ productItem }
                       unit={ item.unit }
-                      onClick={openModal}
+                      openOneClickModal={ openOneClickModal }
+                      openBasketModal={openBasketModal}
                     />,
                   )
               }
@@ -103,9 +112,22 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
         </div>
         <Button title={ 'Смотреть больше товаров' }
                 onClick={ onButtonClick }/> {/*//todo не отображается, если находится в каталоге*/ }
-        { isModalActive &&
-          <Modal closeModal={ closeModal }>
+        { isOneClickModalActive &&
+          <Modal closeModal={ closeOneClickModal }>
             <OnClickOrder/>
+          </Modal>
+        }
+        { isBasketModalActive &&
+          <Modal closeModal={ closeBasketModal }>
+            <BasketModal
+              key={ itemsForBlock[0].id }
+              id={ itemsForBlock[0].id }
+              image={ itemsForBlock[0].images[ 0 ].image }
+              name={ itemsForBlock[0].name }
+              unit={ itemsForBlock[0].unit }
+              options={ itemsForBlock[0].options }
+              isForModal={ true }
+            />
           </Modal>
         }
       </div>
