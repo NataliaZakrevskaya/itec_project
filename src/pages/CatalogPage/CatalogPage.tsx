@@ -17,6 +17,7 @@ import { getTitleForProductsBlock } from '../../helpers/getTitle';
 import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
+import sadCat from '../../Images/sadCat.svg';
 
 const CatalogPage = () => {
 
@@ -25,6 +26,7 @@ const CatalogPage = () => {
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
+  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( false );
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
@@ -70,24 +72,34 @@ const CatalogPage = () => {
           </div>
         </div>
         <div className={ style.productsBlockContainer }>
-          <div className={ style.productsBlock }>
-            {
-              products.map( ( item: any ) =>
-                <ProductItem
-                  key={ item.id }
-                  id={ item.id }
-                  image={ item.images[ 0 ].image }
-                  name={ item.name }
-                  options={ item.options }
-                  classNameForDarkItem={themeStyle.productItem}
-                  unit={item.unit}
-                  openOneClickModal={openOneClickModal}
-                  openBasketModal={openBasketModal}
-                />,
-              )
-            }
-          </div>
-          <ProductsBlockPagination/>
+          {!isRejectResponse
+            ? (<div className={ style.productsBlock }>
+              {
+                products.map( ( item: any ) =>
+                  <ProductItem
+                    key={ item.id }
+                    id={ item.id }
+                    image={ item.images[ 0 ].image }
+                    name={ item.name }
+                    options={ item.options }
+                    classNameForDarkItem={themeStyle.productItem}
+                    unit={item.unit}
+                    openOneClickModal={openOneClickModal}
+                    openBasketModal={openBasketModal}
+                  />,
+                )
+              }
+              <ProductsBlockPagination/>
+            </div>)
+            : (<div className={style.emptyCatalog}>
+              <img src={sadCat} alt="sadCat"/>
+              <div className={style.title}>
+              <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте с нова</h3>
+              </div>
+              <button onClick={() => setIsRejectResponse(false)}>Сбросить фильтры</button>
+            </div>)
+          }
+
         </div>
       </div>
       <PopularProductsBlock/>

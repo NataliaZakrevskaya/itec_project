@@ -75,6 +75,7 @@
 
     .productsBlockContainer {
       padding: 0 0 0 30px;
+      width: 100%;
 
       .productsBlock {
         display: flex;
@@ -82,6 +83,43 @@
         box-sizing: border-box;
         width: 100%;
         flex-wrap: wrap;
+      }
+      .emptyCatalog{
+        width: 70%;
+        margin: 96px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .title{
+          margin: 24px 0 25px;
+          & h3{
+            @include SFDisplaySemibold();
+            font-size: 20px;
+            line-height: 28px;
+            text-align: center;
+            color: #202223;
+          }
+        }
+        & button{
+          padding: 12px 24px;
+          background: #00A0AC;
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          @include SFTextMedium();
+          font-size: 14px;
+          line-height: 20px;
+          text-align: center;
+          color: #FFFFFF;
+          margin-bottom: 9px;
+          &:hover{
+            background: #347C84;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+          }
+        }
       }
     }
   }
