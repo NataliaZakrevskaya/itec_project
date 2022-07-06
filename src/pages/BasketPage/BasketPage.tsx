@@ -3,7 +3,6 @@ import style from './BasketPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import { getProductItems } from '../../mocks';
-import ProductItemForBasket from '../../components/ProductItemForBasket/ProductItemForBasket';
 import boxIcon from '../../Images/boxIcon.svg';
 import navigateIcon from '../../Images/navigateIcon.svg';
 import cat from '../../Images/cat.svg';
@@ -13,6 +12,7 @@ import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArti
 import Button from '../../components/common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import Product from '../../components/common/Product/Product';
 
 const BasketPage = () => {
 
@@ -40,14 +40,14 @@ const BasketPage = () => {
                 <div className={ style.productsItemsBlockContainer }>
                   {
                     productsInBasket.map( item =>
-                      <ProductItemForBasket
-                        key={item.id}
-                        unit={item.unit}
+                      <Product
                         id={item.id}
-                        image={ item.images[ 0 ].image }
+                        options={item.options}
                         name={ item.name }
-                        options={ item.options }
-                      />,
+                        image={ item.images[0].image }
+                        unit={item.unit}
+                        isForModal={false}
+                      />
                     )
                   }
                 </div>

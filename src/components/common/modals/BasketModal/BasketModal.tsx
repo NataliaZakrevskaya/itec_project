@@ -2,7 +2,6 @@ import React from 'react';
 import selectIcon from '../../../../Images/checkmarkCircle.svg';
 import Product from '../../Product/Product';
 import { OptionType } from '../../../../mocks';
-import Button from '../../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../../routes/enums';
 import style from './BasketModal.module.scss';
