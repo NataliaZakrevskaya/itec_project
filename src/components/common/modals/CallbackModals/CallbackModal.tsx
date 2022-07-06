@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './CallbackModal.module.scss';
+import formStyle from '../../../../styles/common/Form.module.scss';
 import { useFormik } from 'formik';
 
 const CallbackModal = (  ) => {
@@ -19,8 +20,8 @@ const CallbackModal = (  ) => {
   return (
         <form className={ style.formBlock } onSubmit={ formik.handleSubmit }>
           <h3>Перезвоним вам в течение 15 минут</h3>
-          <div className={ style.formInfo }>
-            <div className={ style.formInput }>
+          <div className={ formStyle.formInfo }>
+            <div className={ formStyle.formInput }>
               <p>Имя</p>
               <input
                 type={ 'name' }
@@ -28,7 +29,7 @@ const CallbackModal = (  ) => {
                 { ...formik.getFieldProps( 'name' ) }
               />
             </div>
-            <div className={ style.formInput }>
+            <div className={ formStyle.formInput }>
               <p>Номер телефона</p>
               <input
                 type={ 'phoneNumber' }
@@ -37,8 +38,8 @@ const CallbackModal = (  ) => {
               />
             </div>
           </div>
-          <div className={ style.orderBlock }>
-            <button type="submit">Заказать</button>
+          <div className={ formStyle.orderBlock }>
+            <button type="submit">Отправить</button>
             <p>Нажимая на кнопку вы даёте согласие на обработку
             <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных</span></p>
           </div>
