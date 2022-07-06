@@ -7,17 +7,19 @@
   width: 100%;
   background-color: #f6f6f7;
 
-  .navigationBlock {
-    width: 80%;
+  .articleTitle {
+    margin: 24px 0;
+    width: 70%;
+
+    & h1 {
+      @include SFDisplayBold();
+      font-size: 42px;
+      line-height: 120%;
+      color: #202223;
+
+    }
   }
-.articleTitle{
-  @include SFDisplayBold();
-  margin-top: 24px;
-  font-size: 42px;
-  line-height: 120%;
-  color: #202223;
-  margin-bottom: 24px;
-}
+
   .articleInfo {
     display: flex;
     flex-direction: row;
@@ -26,24 +28,54 @@
       display: flex;
       flex-direction: row;
     }
+
+    .articleReadingWrapper {
+      margin-bottom: 32px;
+
+      & div {
+        margin-right: 17.6px;
+
+        & img {
+          margin-right: 7.6px;
+        }
+
+        & p {
+          @include SFTextRegular();
+          font-size: 16px;
+          line-height: 24px;
+          color: #6D7175;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
   }
-  .articleReadingWrapper{
-    margin-bottom: 32px;
-  }
-  .timeToReading{
-    margin-right: 17.6px;
-  }
+
   .articleImage {
     width: 100%;
     height: 306px;
     margin-bottom: 32px;
+    border-radius: 8px;
+
     & img {
       width: 100%;
       height: 100%;
+      border-radius: 8px;
       object-fit: contain;
     }
   }
-}
-.articleText{
-  margin-bottom: 76px;
+
+  .articleTextContainer {
+    width: 60%;
+    margin: 0 auto 76px;
+
+    .articleText {
+      @include SFTextRegular();
+      font-size: 20px;
+      line-height: 145%;
+      color: #202223;
+    }
+  }
 }
