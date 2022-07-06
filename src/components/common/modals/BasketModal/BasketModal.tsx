@@ -6,8 +6,16 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../../routes/enums';
 import style from './BasketModal.module.scss';
 
-const BasketModal = ( { name, unit, options, image, isForModal, id }: BasketModalPropsType ) => {
+const BasketModal = ( { name, unit, options, image, isForModal, id, closeModal }: BasketModalPropsType ) => {
   const navigate = useNavigate();
+  const continueShopping = () => {
+    navigate( routesPathsEnum.CATALOG );
+    closeModal();
+  };
+  const goToBasket = () => {
+    navigate( routesPathsEnum.BASKET );
+    closeModal();
+  };
 
   return (
     <div className={ style.basketModalContainer }>
@@ -15,7 +23,7 @@ const BasketModal = ( { name, unit, options, image, isForModal, id }: BasketModa
         <img src={ selectIcon } alt="selectIcon"/>
         <h3>Товар добавлен в корзину</h3>
       </div>
-      <div className={style.product}>
+      <div className={ style.product }>
         <Product
           id={ id }
           name={ name }
@@ -26,9 +34,9 @@ const BasketModal = ( { name, unit, options, image, isForModal, id }: BasketModa
           key={ id }
         />
       </div>
-      <div className={style.buttons}>
-        <button onClick={ () => navigate( routesPathsEnum.BASKET ) } className={style.basketBtn}>Перейти в корзину</button>
-        <button onClick={ () => navigate( routesPathsEnum.CATALOG ) } className={style.catalogBtn}>Продолжить покупки</button>
+      <div className={ style.buttons }>
+        <button onClick={ goToBasket } className={ style.basketBtn }>Перейти в корзину</button>
+        <button onClick={ continueShopping } className={ style.catalogBtn }>Продолжить покупки</button>
       </div>
 
     </div>
@@ -43,5 +51,6 @@ type BasketModalPropsType = {
   options: Array<OptionType>,
   image: string,
   isForModal: boolean,
-  id: number
+  id: number,
+  closeModal: () => void
 }

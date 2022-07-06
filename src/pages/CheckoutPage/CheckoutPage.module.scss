@@ -7,50 +7,115 @@
   width: 100%;
   background-color: #f6f6f7;
 
-  .navigationBlock {
-    width: 80%;
-  }
 
   .checkoutBlock {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 50%;
+    max-width: 421px;
+
+
+    & h1 {
+      @include SFDisplaySemibold();
+      font-size: 28px;
+      line-height: 130%;
+      text-align: center;
+      color: #202223;
+      margin: 56px 0 32px;
+    }
 
     .formBlock {
       padding: 24px 32px;
       background-color: white;
+      border-radius: 8px;
+      margin-bottom: 64px;
 
-      .formInfo {
+      .list{
+        width: 95%;
+        margin: 17px 0 18px 16px;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-
-        .formInput {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: flex-start;
-
-          & p {
-            @include SFDisplaySemibold();
-            font-size: 16px;
-            line-height: 130%;
-            color: #202223;
-            margin-bottom: 5px;
-          }
+        @include SFTextRegular();
+        font-size: 14px;
+        line-height: 20px;
+        color: #8C9196;
+        & .address{
+          margin-bottom: 6px;
         }
-
-        .basketInfo {
-          display: flex;
-          flex-direction: row;
+        & div{
+          & span {
+            display: block;
+            height: 1px;
+            position: relative;
+            &::before {
+              width: 3px;
+              height: 3px;
+              content: "";
+              position: absolute;
+              top: -12px;
+              left: -13px;
+              border-radius: 50%;
+              background-color: #8C9196;
+            }
+          }
         }
       }
 
-      .orderBlock{
+      .basketInfo {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        margin-bottom: 25px;
+        .sum{
+          @include SFDisplayBold();
+          font-size: 16px;
+          line-height: 24px;
+          color: #202223;
+          margin-right: 16px;
+        }
+        .productsInfo{
+          @include SFTextMedium();
+          font-size: 14px;
+          line-height: 20px;
+          color: #8C9196;
+        }
+      }
+    }
+
+    .orderBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .orderBtn{
+        padding: 12px 24px;
+        background: #00A0AC;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        @include SFTextMedium();
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF;
+        margin-bottom: 9px;
+        &:hover{
+          background: #347C84;
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+        }
+      }
+      & p{
+        @include SFTextRegular();
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        color: #6D7175;
+        & span {
+          color: #2C6ECB;
+          cursor: pointer;
+        }
       }
     }
   }

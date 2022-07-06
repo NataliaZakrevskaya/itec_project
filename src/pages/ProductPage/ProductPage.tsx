@@ -206,6 +206,7 @@ const ProductPage = () => {
             unit={ product.unit }
             options={ product.options }
             isForModal={ true }
+            closeModal={closeBasketModal}
           />
         </Modal>
       }

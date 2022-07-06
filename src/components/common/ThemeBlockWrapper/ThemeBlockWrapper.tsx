@@ -127,6 +127,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
               unit={ itemsForBlock[0].unit }
               options={ itemsForBlock[0].options }
               isForModal={ true }
+              closeModal={closeBasketModal}
             />
           </Modal>
         }

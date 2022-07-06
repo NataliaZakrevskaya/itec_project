@@ -107,6 +107,7 @@ const CatalogPage = () => {
             unit={ products[0].unit }
             options={ products[0].options }
             isForModal={ true }
+            closeModal={closeBasketModal}
           />
         </Modal>
       }

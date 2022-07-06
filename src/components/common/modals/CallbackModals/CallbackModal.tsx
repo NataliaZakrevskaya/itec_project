@@ -13,7 +13,6 @@ const CallbackModal = (  ) => {
     onSubmit: value => {
       formik.resetForm();
       alert( value );
-      //dispatch( loginUserTC( { email: value.email, password: value.password, rememberMe: value.rememberMe } ) );
     },
   } );
 

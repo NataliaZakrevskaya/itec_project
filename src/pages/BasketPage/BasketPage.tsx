@@ -66,7 +66,7 @@ const BasketPage = () => {
                       </div>
                     </div>
                   </div>
-                  <button className={style.basketButton} onClick={ () => alert( 'Переход на модалку оформления заказ' ) }>Оформить заказ</button>
+                  <button className={style.basketButton} onClick={ () => navigate(routesPathsEnum.CHECKOUT) }>Оформить заказ</button>
                 </div>
               </div>
             </div>
