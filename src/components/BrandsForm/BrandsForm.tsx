@@ -3,14 +3,19 @@ import BrandFormInput from './BrandFormInput/BrandFormInput';
 import style from './BrandsForm.module.scss';
 import RejectSearchResult from '../common/modals/RejectSearchResult/RejectSearchResult';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBrandName, getBrands } from '../../redux/selectors/brands-selectors';
-import { fetchBrandsTC, setBrandName } from '../../redux/reducers/brands-reducer';
+import { getBrandName, getBrands, getBrandsForForm } from '../../redux/selectors/brands-selectors';
+import {
+  fetchBrandsTC,
+  setBrandName,
+  setBrandsForFormByName,
+  setChosenBrandsId,
+} from '../../redux/reducers/brands-reducer';
 import Button from '../common/Button/Button';
 
 const BrandsForm = () => {
 
   const dispatch = useDispatch();
-  const brands = useSelector( getBrands );
+  const brandsForForm = useSelector( getBrandsForForm );
   const brandName = useSelector( getBrandName );
 
   const successResult = true; //todo после получется из состояния запроса
@@ -18,10 +23,16 @@ const BrandsForm = () => {
   const onBrandInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     const brandName = e.currentTarget.value;
     dispatch( setBrandName( { brandName } ) );
+    // @ts-ignore
+    dispatch(setBrandsForFormByName())
   };
   const onRejButtonClick = () => {
     const brandName = '';
     dispatch( setBrandName( { brandName } ) );
+  }
+  const setFilters = () => {
+    // @ts-ignore
+    dispatch(setChosenBrandsId()) //todo позже диспатч санки
   }
 
   useEffect(() => {
@@ -42,7 +53,7 @@ const BrandsForm = () => {
           ? (
             <div className={ style.brandsFormGroup }>
               {
-                brands.map( brand =>
+                brandsForForm.map( brand =>
                   <BrandFormInput
                     key={ brand.id }
                     id={ brand.id }
@@ -51,7 +62,7 @@ const BrandsForm = () => {
                   />,
                 )
               }
-              <Button title={ 'Применить фильтры' } onClick={ () => alert( 'диспатч санки' ) }/>
+              <Button title={ 'Применить фильтры' } onClick={ setFilters }/>
             </div>
           )
           : (

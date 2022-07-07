@@ -35,8 +35,8 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const chooseBrand = ( id: number, chosen: boolean ) => {
-    dispatch( setBrandStatus( { id, chosen } ) );
+  const chooseBrand = ( id: number, isChosen: boolean ) => {
+    dispatch( setBrandStatus( { id, isChosen } ) );
     navigate( routesPathsEnum.CATALOG );
   };
   const onDecrementBtnClick = () => {

@@ -11,13 +11,16 @@ import ProductItem from '../../components/ProductItem/ProductItem';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import ProductsBlockPagination from '../../components/ProductsBlockPagination/ProductsBlockPagination';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
 import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import sadCat from '../../Images/sadCat.svg';
+import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
+import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
+import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
 
 const CatalogPage = () => {
 
@@ -26,7 +29,9 @@ const CatalogPage = () => {
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( false );
+  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( true );
+  const dispatch = useDispatch();
+
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
@@ -39,22 +44,31 @@ const CatalogPage = () => {
   const openBasketModal = () => {
     setIsBasketModalActive( true );
   };
+  const resetFilters = () => {
+    // @ts-ignore
+    dispatch( removeChosenBrandsId() );
+    // @ts-ignore
+    dispatch( removeChosenProductTypeId() );
+    // @ts-ignore
+    dispatch( removeChosenAnimalTypeId() );
+    setIsRejectResponse( false );
+  };
 
   return (
     <div className={ style.catalogPageBlock }>
       <div className={ navigationStyle.navigationBlock }>
-        <div className={navigationStyle.navigationBlockWrapper}>
-            <p>Главная</p>
-            <img src={ nextIcon } alt="nextIcon"/>
-            <p>Каталог</p>
+        <div className={ navigationStyle.navigationBlockWrapper }>
+          <p>Главная</p>
+          <img src={ nextIcon } alt="nextIcon"/>
+          <p>Каталог</p>
         </div>
       </div>
       <AnimalsTypesList/>
       <div className={ style.title }>
-        <h1>{ `Каталог товаров ${subTitle}` }</h1>{/* //todo позже будет меняться в зависимости от выбранного типа животного*/ }
+        <h1>{ `Каталог товаров ${ subTitle }` }</h1>{/* //todo позже будет меняться в зависимости от выбранного типа животного*/ }
         <div className={ style.select }>
           <p>Сортировка по: </p>
-          <select name="select" >
+          <select name="select">
             <option value="value1" selected>дате добавления</option>
             <option value="value2">названию: «от А до Я»</option>
             <option value="value3">названию: «от Я до А»</option>
@@ -72,8 +86,8 @@ const CatalogPage = () => {
           </div>
         </div>
         <div className={ style.productsBlockContainer }>
-          {!isRejectResponse
-            ? (<div className={ style.productsBlock }>
+          { !isRejectResponse
+            ? ( <div className={ style.productsBlock }>
               {
                 products.map( ( item: any ) =>
                   <ProductItem
@@ -82,22 +96,22 @@ const CatalogPage = () => {
                     image={ item.images[ 0 ].image }
                     name={ item.name }
                     options={ item.options }
-                    classNameForDarkItem={themeStyle.productItem}
-                    unit={item.unit}
-                    openOneClickModal={openOneClickModal}
-                    openBasketModal={openBasketModal}
+                    classNameForDarkItem={ themeStyle.productItem }
+                    unit={ item.unit }
+                    openOneClickModal={ openOneClickModal }
+                    openBasketModal={ openBasketModal }
                   />,
                 )
               }
               <ProductsBlockPagination/>
-            </div>)
-            : (<div className={style.emptyCatalog}>
-              <img src={sadCat} alt="sadCat"/>
-              <div className={style.title}>
-              <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте с нова</h3>
+            </div> )
+            : ( <div className={ style.emptyCatalog }>
+              <img src={ sadCat } alt="sadCat"/>
+              <div className={ style.title }>
+                <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте с нова</h3>
               </div>
-              <button onClick={() => setIsRejectResponse(false)}>Сбросить фильтры</button>
-            </div>)
+              <button onClick={ resetFilters }>Сбросить фильтры</button>
+            </div> )
           }
 
         </div>
@@ -112,14 +126,14 @@ const CatalogPage = () => {
       { isBasketModalActive &&
         <Modal closeModal={ closeBasketModal }>
           <BasketModal
-            key={ products[0].id }
-            id={ products[0].id }
-            image={ products[0].images[ 0 ].image }
-            name={ products[0].name }
-            unit={ products[0].unit }
-            options={ products[0].options }
+            key={ products[ 0 ].id }
+            id={ products[ 0 ].id }
+            image={ products[ 0 ].images[ 0 ].image }
+            name={ products[ 0 ].name }
+            unit={ products[ 0 ].unit }
+            options={ products[ 0 ].options }
             isForModal={ true }
-            closeModal={closeBasketModal}
+            closeModal={ closeBasketModal }
           />
         </Modal>
       }

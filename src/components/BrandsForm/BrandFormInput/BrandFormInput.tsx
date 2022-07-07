@@ -4,9 +4,11 @@ import { setBrandStatus } from '../../../redux/reducers/brands-reducer';
 
 const BrandFormInput = ({id, name, chosen}: BrandFormInputPropsType) => {
 
+
   const dispatch = useDispatch();
   const brandFormInputHandler = () => {
-    dispatch(setBrandStatus({id, chosen}))
+    const isChosen = !chosen
+    dispatch(setBrandStatus({id, isChosen}))
   }
 
   return (
