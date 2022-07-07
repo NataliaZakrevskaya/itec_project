@@ -1,0 +1,37 @@
+.block {
+  background-color: #f6f6f7;
+}
+.block .sectionsBlock button:last-child {
+  border: none;
+  outline: none;
+  background-size: 7px 12px;
+  background: white url("../../Images/nextIcon.svg") no-repeat 50% 50%;
+}
+.block .sectionsBlock button:last-child:hover {
+  border: none;
+  outline: none;
+  background-size: 7px 12px;
+  background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
+}
+.block .sectionsBlock button:first-child {
+  border: none;
+  outline: none;
+  background-size: 7px 12px;
+  background: white url("../../Images/prevIcon.svg") no-repeat 50% 50%;
+}
+.block .sectionsBlock button:first-child:hover {
+  transform: rotate(-180deg);
+  background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
+}
+.block .sectionsBlock button:hover {
+  border: none;
+  outline: none;
+  background: #00A0AC;
+  border-radius: 40px;
+}
+
+.productItem {
+  background-color: white;
+}
+
+/*# sourceMappingURL=DarkBlock.module.css.map */

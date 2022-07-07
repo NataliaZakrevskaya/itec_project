@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "SF Text Regular";
+  src: url("fonts/SF-UI-Text-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Text Medium";
+  src: url("fonts/SF-UI-Text-Medium.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Semibold";
+  src: url("fonts/SF-UI-Display-Semibold.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Bold";
+  src: url("fonts/SF-UI-Display-Bold.woff") format("woff");
+  font-display: swap;
+}
+.logoBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logoBlock img {
+  width: 20.5px;
+  height: 24px;
+  margin-right: 9.5px;
+}
+.logoBlock p {
+  font-family: "SF Display Bold";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+/*# sourceMappingURL=HeaderLogo.module.css.map */

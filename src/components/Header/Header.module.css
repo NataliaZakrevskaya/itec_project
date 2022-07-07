@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "SF Text Regular";
+  src: url("fonts/SF-UI-Text-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Text Medium";
+  src: url("fonts/SF-UI-Text-Medium.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Semibold";
+  src: url("fonts/SF-UI-Display-Semibold.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Bold";
+  src: url("fonts/SF-UI-Display-Bold.woff") format("woff");
+  font-display: swap;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.header .contactInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.header .contactInfo .instaPhoneNumber {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.header .contactInfo .instaPhoneNumber p {
+  margin-right: 12px;
+}
+.header .navBarContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  background-color: #00A0AC;
+}
+.header .navBarContainer .navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  gap: 41px;
+}
+
+.headerInstagram {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.headerInstagram img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .contactInfo {
+    display: none !important;
+  }
+}
+
+/*# sourceMappingURL=Header.module.css.map */

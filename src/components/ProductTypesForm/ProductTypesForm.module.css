@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "SF Text Regular";
+  src: url("fonts/SF-UI-Text-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Text Medium";
+  src: url("fonts/SF-UI-Text-Medium.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Semibold";
+  src: url("fonts/SF-UI-Display-Semibold.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Bold";
+  src: url("fonts/SF-UI-Display-Bold.woff") format("woff");
+  font-display: swap;
+}
+.productTypesBlock {
+  background-color: white;
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: 5px;
+}
+.productTypesBlock .radioGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.productTypesBlock h3 {
+  font-family: "SF Display Semibold";
+  font-style: normal;
+  font-weight: 600;
+  margin-bottom: 18px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #202223;
+}
+.productTypesBlock label {
+  font-family: "SF Text Regular";
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #202223;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.productTypesBlock label input {
+  display: none;
+  /*margin-right: 13px;*/
+}
+.productTypesBlock label span {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #8C9196;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  background: #FFFFFF;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.productTypesBlock label [type=radio]:checked + span:before {
+  width: 20px;
+  height: 20px;
+  content: url("../../Images/radio.svg");
+  position: absolute;
+  top: -3px;
+  left: -3px;
+}
+
+/*# sourceMappingURL=ProductTypesForm.module.css.map */

@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "SF Text Regular";
+  src: url("fonts/SF-UI-Text-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Text Medium";
+  src: url("fonts/SF-UI-Text-Medium.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Semibold";
+  src: url("fonts/SF-UI-Display-Semibold.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Bold";
+  src: url("fonts/SF-UI-Display-Bold.woff") format("woff");
+  font-display: swap;
+}
+.button {
+  cursor: pointer;
+  width: 234px;
+  height: 44px;
+  background: #00A0AC;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  color: #FFFFFF;
+  border: none;
+  font-family: "SF Display Semibold";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.smallerButtonMoreProducts {
+  display: flex;
+  justify-content: center;
+}
+.smallerButtonMoreProducts button:hover {
+  background: #347C84;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/*# sourceMappingURL=SmallerButton.module.css.map */

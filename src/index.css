@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "SF Text Regular";
+  src: url("fonts/SF-UI-Text-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Text Medium";
+  src: url("fonts/SF-UI-Text-Medium.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Semibold";
+  src: url("fonts/SF-UI-Display-Semibold.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Display Bold";
+  src: url("fonts/SF-UI-Display-Bold.woff") format("woff");
+  font-display: swap;
+}
+body {
+  margin: 0;
+  font-family: "SF Text Regular", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd,
+span {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=index.css.map */
