@@ -26,44 +26,38 @@ export const slice = createSlice( {
   name: 'brands',
   initialState: {
     brands: [] as Array<BrandType>,
-    brandsForForm: [] as Array<BrandType>,
     chosenBrandsId: [] as Array<number>,
     brandName: '' as string,
   },
   reducers: {
-    setChosenBrandsId( state, action ) {
-      state.chosenBrandsId = state.brandsForForm
-        .filter( ( brand: BrandType ) => brand.chosen )
-        .map( brand => brand.id );
+    setChosenBrandId( state, action: PayloadAction<{ id: number }>   ) {
+      state.chosenBrandsId.push(action.payload.id)
     },
     removeChosenBrandsId( state, action ) {
-      state.brandsForForm = state.brandsForForm.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
+      state.brands = state.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
       state.chosenBrandsId = []
+    },
+    removeChosenBrandId( state, action: PayloadAction<{ id: number }>  ) {
+       state.chosenBrandsId = state.chosenBrandsId.filter( id => id !== action.payload.id );
     },
     setBrandName( state, action: PayloadAction<{ brandName: string }> ) {
       state.brandName = action.payload.brandName;
     },
     setBrandsForFormByName (state, action){
-      state.brandsForForm = state.brands.filter(brand => brand.name.toLowerCase().includes(state.brandName.toLowerCase()));
-    },
-    setBrandStatus( state, action: PayloadAction<{ id: number, isChosen: boolean }> ) {
-      const index = state.brandsForForm.findIndex( brand => brand.id === action.payload.id );
-      state.brandsForForm[ index ].chosen = action.payload.isChosen;
+      state.brands = state.brands.filter(brand => brand.name.toLowerCase().includes(state.brandName.toLowerCase()));
     },
   },
   extraReducers: ( builder => {
     // @ts-ignore
     builder.addCase( fetchBrandsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.brands = action.payload.brands;
-      // @ts-ignore
-      state.brandsForForm = action.payload.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
+      state.brands  = action.payload.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
     } );
   } ),
 } );
 
 export const brandsReducer = slice.reducer;
-export const { setChosenBrandsId, setBrandName, setBrandStatus, removeChosenBrandsId, setBrandsForFormByName } = slice.actions;
+export const { setChosenBrandId, setBrandName, removeChosenBrandsId, removeChosenBrandId, setBrandsForFormByName } = slice.actions;
 
 export type BrandType = {
   id: number,

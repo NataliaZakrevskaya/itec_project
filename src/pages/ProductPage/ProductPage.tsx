@@ -14,9 +14,9 @@ import Button from '../../components/common/Button/Button';
 import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
 import { useDispatch } from 'react-redux';
-import { setBrandStatus } from '../../redux/reducers/brands-reducer';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
+import { setChosenBrandId } from '../../redux/reducers/brands-reducer';
 
 const ProductPage = () => {
 
@@ -35,8 +35,8 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const chooseBrand = ( id: number, isChosen: boolean ) => {
-    dispatch( setBrandStatus( { id, isChosen } ) );
+  const chooseBrand = ( id: number ) => {
+    dispatch( setChosenBrandId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
   };
   const onDecrementBtnClick = () => {
@@ -84,7 +84,7 @@ const ProductPage = () => {
         <h2 className={ style.productPageTitle }>{ name }</h2>
         <p
           className={ style.productPageSubTitle }
-          onClick={ () => chooseBrand( brand.id, true ) }
+          onClick={ () => chooseBrand( brand.id ) }
         >Смотреть все товары бренда { brand.name } </p>
         <div className={ style.imgAndOrderBlock }>
           <div className={ style.imageBlock }>

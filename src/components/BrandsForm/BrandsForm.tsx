@@ -3,19 +3,20 @@ import BrandFormInput from './BrandFormInput/BrandFormInput';
 import style from './BrandsForm.module.scss';
 import RejectSearchResult from '../common/modals/RejectSearchResult/RejectSearchResult';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBrandName, getBrands, getBrandsForForm } from '../../redux/selectors/brands-selectors';
+import { getBrandName, getBrands, getChosenBrandsId } from '../../redux/selectors/brands-selectors';
 import {
   fetchBrandsTC,
   setBrandName,
   setBrandsForFormByName,
-  setChosenBrandsId,
 } from '../../redux/reducers/brands-reducer';
 import Button from '../common/Button/Button';
 
 const BrandsForm = () => {
 
   const dispatch = useDispatch();
-  const brandsForForm = useSelector( getBrandsForForm );
+  const brands = useSelector( getBrands );
+  const chosenBrandsId = useSelector( getChosenBrandsId );
+
   const brandName = useSelector( getBrandName );
 
   const successResult = true; //todo после получется из состояния запроса
@@ -24,21 +25,21 @@ const BrandsForm = () => {
     const brandName = e.currentTarget.value;
     dispatch( setBrandName( { brandName } ) );
     // @ts-ignore
-    dispatch(setBrandsForFormByName())
+    dispatch( setBrandsForFormByName() );
   };
   const onRejButtonClick = () => {
     const brandName = '';
     dispatch( setBrandName( { brandName } ) );
-  }
+  };
   const setFilters = () => {
     // @ts-ignore
-    dispatch(setChosenBrandsId()) //todo позже диспатч санки
-  }
+    dispatch( setChosenBrandsId() ); //todo позже диспатч санки
+  };
 
-  useEffect(() => {
+  useEffect( () => {
     // @ts-ignore
-    dispatch(fetchBrandsTC())
-  }, [])
+    dispatch( fetchBrandsTC() );
+  }, [] );
 
   return (
     <div className={ style.brandsFormBlock }>
@@ -53,12 +54,12 @@ const BrandsForm = () => {
           ? (
             <div className={ style.brandsFormGroup }>
               {
-                brandsForForm.map( brand =>
+                brands.map( brand =>
                   <BrandFormInput
                     key={ brand.id }
                     id={ brand.id }
                     name={ brand.name }
-                    chosen={ brand.chosen }
+                    chosen={ chosenBrandsId.includes( brand.id ) }
                   />,
                 )
               }
@@ -67,7 +68,7 @@ const BrandsForm = () => {
           )
           : (
             <div className={ style.rejectSearchResultContainer }>
-              <RejectSearchResult requestTitle={ 'бренды' } onClick={onRejButtonClick}/>
+              <RejectSearchResult requestTitle={ 'бренды' } onClick={ onRejButtonClick }/>
             </div>
           )
       }

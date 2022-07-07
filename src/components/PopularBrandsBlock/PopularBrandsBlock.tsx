@@ -6,7 +6,7 @@ import Button from '../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBrandsTC, setBrandStatus } from '../../redux/reducers/brands-reducer';
+import { fetchBrandsTC, setChosenBrandId } from '../../redux/reducers/brands-reducer';
 import { getBrands } from '../../redux/selectors/brands-selectors';
 
 const PopularBrandsBlock = () => {
@@ -14,8 +14,8 @@ const PopularBrandsBlock = () => {
   const brands = useSelector( getBrands );
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const chooseBrand = ( id: number, isChosen: boolean ) => {
-    dispatch( setBrandStatus( { id, isChosen } ) );
+  const chooseBrand = ( id: number ) => {
+    dispatch( setChosenBrandId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
   };
   useEffect( () => {
