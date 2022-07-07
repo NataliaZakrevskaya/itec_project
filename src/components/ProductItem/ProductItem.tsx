@@ -1,19 +1,26 @@
 import React from 'react';
-import { OptionType } from '../../mocks';
+import { OptionType, ProductItemType } from '../../mocks';
 import ProductItemUnit from '../ProductItemUnit/ProductItemUnit';
 import basketIcon from '../../Images/basketIcon.svg';
 import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 
-const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, openBasketModal, openOneClickModal }: ProductItemPropsType ) => {
-
+const ProductItem = ( {
+                        product,
+                        image,
+                        name,
+                        options,
+                        id,
+                        unit,
+                        classNameForDarkItem,
+                        openBasketModal,
+                        openOneClickModal,
+                      }: ProductItemPropsType ) => {
 
   const isKilo = unit === 'кг.'; //todo пока заглушка
   const price = 325; // будет выводиться в зависимости от выбранного option, приходить из редюсера
   const navigate = useNavigate();
-
-
 
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
@@ -25,7 +32,7 @@ const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, op
         { options.map( option =>
           <ProductItemUnit
             key={ option.id }
-            count={ option.size }
+            count={ +option.size }
             unit={ unit }
           />,
         ) }
@@ -34,7 +41,7 @@ const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, op
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
           <p className={ style.price }>{ `${ price } BYN` }</p>
-          <div className={ style.basket } onClick={openBasketModal}>
+          <div className={ style.basket } onClick={ () => openBasketModal( product ) }>
             <p>+</p>
             <div className={ style.imageWrapper }>
               <img src={ basketIcon } alt="basketIcon"/>
@@ -50,12 +57,13 @@ const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, op
 export default ProductItem;
 
 type ProductItemPropsType = {
+  product: ProductItemType,
   id: number,
   image: string,
   name: string,
   options: Array<OptionType>,
   classNameForDarkItem?: string,
   unit: string,
-  openOneClickModal: () => void
-  openBasketModal: () => void
+  openOneClickModal: () => void,
+  openBasketModal: ( product: ProductItemType ) => void
 }

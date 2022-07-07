@@ -8,6 +8,8 @@ import NextSectionButton from '../nextSectionButton/nextSectionButton';
 import Modal from '../modals/Modal';
 import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
 import BasketModal from '../modals/BasketModal/BasketModal';
+import { useDispatch } from 'react-redux';
+import { setProductToBasket } from '../../../redux/reducers/basket-reducer';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
 
@@ -20,6 +22,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
 
   const windowElRef = useRef( null );
   const { block, sectionsBlock, productItem } = blockTheme;
+
+  const dispatch = useDispatch();
 
   useEffect( () => {
     const resizeHandler = () => {
@@ -65,7 +69,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
   };
-  const openBasketModal = () => {
+  const openBasketModal = (product: ProductItemType) => {
+    dispatch(setProductToBasket({product}))
     setIsBasketModalActive( true );
   };
 
@@ -96,6 +101,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                   .map( ( item: ProductItemType ) =>
                     <ProductItem
                       key={ item.id }
+                      product={item}
                       id={ item.id }
                       image={ item.images[ 0 ].image }
                       name={ item.name }

@@ -3,15 +3,22 @@ import style from './Product.module.scss';
 import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
 import { OptionType } from '../../../mocks';
 import basket from '../../../Images/basket.svg';
+import { useDispatch } from 'react-redux';
+import { removeProductFromBasket } from '../../../redux/reducers/basket-reducer';
 
 const Product = ( { id, options, name, image, isForModal, unit }: ProductForBasketPropsType ) => {
   const [ countOfProduct, setCountOfProduct ] = useState( 1 );
+  const dispatch = useDispatch();
+
   const onDecrementBtnClick = () => {
     setCountOfProduct( () => countOfProduct - 1 );
   };
   const onIncrementBtnClick = () => {
     setCountOfProduct( () => countOfProduct + 1 );
   };
+  const deleteProductFromBasket = () => {
+    dispatch(removeProductFromBasket({id}))
+  }
   return (
     <div className={ style.productForBasketContainer }>
       <div className={ style.imageWrapper }>
@@ -45,7 +52,11 @@ const Product = ( { id, options, name, image, isForModal, unit }: ProductForBask
           <div className={ style.plus } onClick={ onIncrementBtnClick }>
             <div/>
           </div>
-          { !isForModal && <img className={ style.basketImage } src={ basket } alt="basketIcon"/> }
+          { !isForModal && <img
+            className={ style.basketImage }
+            src={ basket } alt="basketIcon"
+            onClick={deleteProductFromBasket}
+          /> }
         </div>
         { isForModal &&
           <div>

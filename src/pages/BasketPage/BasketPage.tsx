@@ -13,14 +13,17 @@ import Button from '../../components/common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import Product from '../../components/common/Product/Product';
+import { useSelector } from 'react-redux';
+import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
 
 const BasketPage = () => {
 
-  const productsInBasket = getProductItems().filter( ( item, index ) => index < 3 ); //todo позже будет запрос на продукты в корзине
-  const basketCount = 543; // позже будет приходить из стора корзины
-  const productsCount = 3; // позже будет приходить из стора корзины
-  const isEmptyBasket = false;
+  const productsInBasket = useSelector(getProductsInBasket)
+  const basketCount = useSelector( getTotalSum );
+  const productsCount = useSelector( getTotalProductsCount );
+  const isEmptyBasket = productsInBasket.length;
   const navigate = useNavigate();
+
 
   return (
     <div className={ style.basketPageBlock }>
@@ -32,33 +35,33 @@ const BasketPage = () => {
         </div>
       </div>
       {
-        !isEmptyBasket
+        isEmptyBasket
           ? (
-            <div className={style.basketWrapper}>
+            <div className={ style.basketWrapper }>
               <h1>Моя корзина</h1>
               <div className={ style.basketInfoBlockContainer }>
                 <div className={ style.productsItemsBlockContainer }>
                   {
                     productsInBasket.map( item =>
                       <Product
-                        id={item.id}
-                        options={item.options}
+                        id={ item.id }
+                        options={ item.options }
                         name={ item.name }
-                        image={ item.images[0].image }
-                        unit={item.unit}
-                        isForModal={false}
-                      />
+                        image={ item.images[ 0 ].image }
+                        unit={ item.unit }
+                        isForModal={ false }
+                      />,
                     )
                   }
                 </div>
                 <div className={ style.basketInfoContainer }>
                   <div className={ style.basketInfo }>
-                    <p className={style.basketBUN}>{ basketCount } BYN</p>
-                    <p className={style.basketProducts}>{ productsCount } товара</p>
+                    <p className={ style.basketBUN }>{ basketCount } BYN</p>
+                    <p className={ style.basketProducts }>{ productsCount } товара</p>
                   </div>
                   <div className={ style.pickUpBlock }>
-                    <img className={style.basketBoxImage} src={ boxIcon } alt="boxIcon"/>
-                    <div className={style.basketTextWrapper}>
+                    <img className={ style.basketBoxImage } src={ boxIcon } alt="boxIcon"/>
+                    <div className={ style.basketTextWrapper }>
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
                         <img src={ whiteNavigateIcon } alt={ 'whiteNavigateIcon' }/>
@@ -66,7 +69,9 @@ const BasketPage = () => {
                       </div>
                     </div>
                   </div>
-                  <button className={style.basketButton} onClick={ () => navigate(routesPathsEnum.CHECKOUT) }>Оформить заказ</button>
+                  <button className={ style.basketButton } onClick={ () => navigate( routesPathsEnum.CHECKOUT ) }>Оформить
+                    заказ
+                  </button>
                 </div>
               </div>
             </div>

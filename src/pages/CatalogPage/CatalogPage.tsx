@@ -6,7 +6,7 @@ import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
 import ProductTypesForm from '../../components/ProductTypesForm/ProductTypesForm';
 import BrandsForm from '../../components/BrandsForm/BrandsForm';
-import { getProductItems } from '../../mocks';
+import { getProductItems, ProductItemType } from '../../mocks';
 import ProductItem from '../../components/ProductItem/ProductItem';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
@@ -21,6 +21,7 @@ import sadCat from '../../Images/sadCat.svg';
 import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
 import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
+import { setProductToBasket } from '../../redux/reducers/basket-reducer';
 
 const CatalogPage = () => {
 
@@ -41,7 +42,8 @@ const CatalogPage = () => {
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
   };
-  const openBasketModal = () => {
+  const openBasketModal = ( product: ProductItemType ) => {
+    dispatch( setProductToBasket( { product } ) );
     setIsBasketModalActive( true );
   };
   const resetFilters = () => {
@@ -89,9 +91,10 @@ const CatalogPage = () => {
           { !isRejectResponse
             ? ( <div className={ style.productsBlock }>
               {
-                products.map( ( item: any ) =>
+                products.map( ( item: ProductItemType ) =>
                   <ProductItem
                     key={ item.id }
+                    product={ item }
                     id={ item.id }
                     image={ item.images[ 0 ].image }
                     name={ item.name }

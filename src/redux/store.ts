@@ -14,11 +14,13 @@ import thunkMiddleware from 'redux-thunk';
 import { animalTypesReducer } from './reducers/animalTypes-reducer';
 import { brandsReducer } from './reducers/brands-reducer';
 import { productTypesReducer } from './reducers/productTypes-reducer';
+import { basketReducer } from './reducers/basket-reducer';
 
 const rootReducer = combineReducers( {
   animalTypes: animalTypesReducer,
   brands: brandsReducer,
   productTypes: productTypesReducer,
+  basket: basketReducer,
 } );
 
 const persistConfig = {
