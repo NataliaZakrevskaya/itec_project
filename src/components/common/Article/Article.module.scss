@@ -43,14 +43,16 @@
     width: 100%;
 
     & div {
-      width: 50%;
       @include flex(row, flex-start, center);
       & img {
-        @include size(12.8px, 12.8px);
+        @include size(16px, 16px);
         margin-right: 7px;
       }
 
       & p {
+        @include SFTextRegular();
+        font-size: 14px;
+        line-height: 20px;
         color: #8C9196;
       }
       &:last-child{

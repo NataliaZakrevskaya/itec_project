@@ -14,7 +14,6 @@ import commonStyle from '../../styles/common/Container.module.scss';
 const ArticlePage = () => {
   const articleId = Number( useParams().articleId ) - 1;
   const article = getArticles()[ articleId ]; //todo позже будет просто запрос по апи
-  console.log( article );
   return (
     <div className={ style.articlePage }>
       <div className={ commonStyle.container }>
@@ -27,10 +26,12 @@ const ArticlePage = () => {
             <p>{ article.title }</p>
           </div>
         </div>
-        <h1 className={style.articleTitle}>{ article.title }</h1>
-        <div className={style.articleInfo }>
-          <div className={style.articleReadingWrapper}>
-            <div className={style.timeToReading}>
+        <div className={ style.articleTitle }>
+          <h1>{ article.title }</h1>
+        </div>
+        <div className={ style.articleInfo }>
+          <div className={ style.articleReadingWrapper }>
+            <div>
               <img src={ colorTimeIcon } alt="timeIcon"/>
               <p>Время чтения: { article.timeForReading } мин.</p>
             </div>
@@ -43,8 +44,9 @@ const ArticlePage = () => {
         <div className={ style.articleImage }>
           <img src={ article.img } alt="article"/>
         </div>
-        <div className={ commonStyle.container }>
-          <p className={style.articleText}>С появлением кошки в доме нужно организовать все бытовые условия для ее комфортного существования:
+        <div className={ style.articleTextContainer }>
+          <p className={ style.articleText }>С появлением кошки в доме нужно организовать все бытовые условия для ее
+            комфортного существования:
             определить место для сна, подобрать посуду для кормления и, конечно же, обустроить туалет, где она сможет
             справлять свои естественные нужды.
 

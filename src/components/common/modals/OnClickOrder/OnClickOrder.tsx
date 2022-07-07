@@ -3,6 +3,7 @@ import Product from '../../Product/Product';
 import { getProductItems } from '../../../../mocks';
 import { useFormik } from 'formik';
 import style from './OnClickOrder.module.scss';
+import formStyle from '../../../../styles/common/Form.module.scss';
 
 const OnClickOrder = () => {
 
@@ -16,26 +17,28 @@ const OnClickOrder = () => {
     onSubmit: value => {
       formik.resetForm();
       alert( value );
-      //dispatch( loginUserTC( { email: value.email, password: value.password, rememberMe: value.rememberMe } ) );
     },
   } );
 
   return (
-    <div className={style.onClickOrderContent}>
+    <div className={ style.onClickOrderContent }>
       <h3>Оформление заказа в 1 клик</h3>
       <Product
-        product={ selectProduct }
+        unit={ selectProduct.unit }
+        id={ selectProduct.id }
         options={ selectProduct.options }
         name={ selectProduct.name }
         image={ selectProduct.images[ 0 ].image }
-        isForOneClick={ true }
+        isForModal={ true }
       />
-      <hr/>
-      <p>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать вас по адресу: Минск, ул. Чюрлёниса,
+      <div className={style.nextSection}>
+        <span></span>
+      </div>
+      <p className={style.setDataParagraph}>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать вас по адресу: Минск, ул. Чюрлёниса,
         6.</p>
       <form className={ style.formBlock } onSubmit={ formik.handleSubmit }>
-        <div className={ style.formInfo }>
-          <div className={ style.formInput }>
+        <div className={ formStyle.formInfo }>
+          <div className={ formStyle.formInput }>
             <p>Имя</p>
             <input
               type={ 'name' }
@@ -43,7 +46,7 @@ const OnClickOrder = () => {
               { ...formik.getFieldProps( 'name' ) }
             />
           </div>
-          <div className={ style.formInput }>
+          <div className={ formStyle.formInput }>
             <p>Номер телефона</p>
             <input
               type={ 'phoneNumber' }
@@ -52,12 +55,12 @@ const OnClickOrder = () => {
             />
           </div>
         </div>
-        <div className={ style.orderBlock }>
-          <button type="submit">Заказать</button>
-          <p>Нажимая на кнопку вы даёте согласие на обработку
-            <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных </span></p>
+        <div className={ formStyle.orderBlock }>
+          <button type="submit">Оформить заказ</button>
         </div>
       </form>
+      <p className={style.personalData}>Нажимая на кнопку вы даёте согласие на обработку
+        <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных </span></p>
     </div>
   );
 };

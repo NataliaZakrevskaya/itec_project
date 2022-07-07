@@ -1,30 +1,67 @@
 @import "src/styles/Mixins";
 
 .onClickOrderContent {
-  @include flex(column, center, center);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 611px;
 
-  & h3{
+  & h3 {
     @include SFDisplayBold();
     font-size: 20px;
     line-height: 28px;
+    margin: 0 0 16px;
   }
+   .nextSection{
+     width: 100%;
+     margin: 0 auto 16px;
+     height: 1px;
+     position: relative;
+     & span {
+       display: block;
+       height: 1px;
+       position: relative;
+       &::after {
+         width: 100%;
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         bottom: 0;
+         background-color: #8C9196;
+       }
+     }
+   }
+
+  & .setDataParagraph {
+    @include SFTextRegular();
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: #6D7175;
+    margin-bottom: 16px;
+  }
+
   .formBlock {
-    width: 80%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    .formInfo {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  }
 
-    .orderBlock {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  .personalData{
+    @include SFTextRegular();
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #6D7175;
+    margin-top: 17px;
 
+    & span {
+      color: #2C6ECB;
+      cursor: pointer;
     }
   }
 }

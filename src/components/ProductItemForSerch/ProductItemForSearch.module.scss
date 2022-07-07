@@ -1,14 +1,26 @@
 @import "src/styles/Mixins";
 
-.productItemFroSearch{
+.productItemFroSearch {
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   padding: 8px 16px;
   gap: 8px;
+  cursor: pointer;
 
   & img{
     @include size(40px, 40px);
     object-fit: contain;
+    border: 1px solid #BABFC3;
+    border-radius: 3px;
+  }
+  & p{
+    @include SFTextRegular();
+    font-size: 15px;
+    line-height: 20px;
+    color: #202223;
+  }
+
+  &:hover {
+    background-color: #F1F2F3;
   }
 }

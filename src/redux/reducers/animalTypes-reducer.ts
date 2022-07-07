@@ -33,6 +33,9 @@ export const slice = createSlice( {
     setChosenAnimalTypeId( state, action: PayloadAction<{ id: number }> ) {
       state.chosenAnimalTypeId = action.payload.id;
     },
+    removeChosenAnimalTypeId( state, action ) {
+      state.chosenAnimalTypeId = null;
+    },
   }, extraReducers: builder => {
     builder.addCase( fetchAnimalTypesTC.fulfilled, (
         state, action ) => {
@@ -44,5 +47,5 @@ export const slice = createSlice( {
 } );
 
 export const animalTypesReducer = slice.reducer;
-export const { setChosenAnimalTypeId } = slice.actions;
+export const { setChosenAnimalTypeId, removeChosenAnimalTypeId } = slice.actions;
 

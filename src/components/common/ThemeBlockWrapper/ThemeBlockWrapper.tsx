@@ -5,11 +5,16 @@ import Button from '../Button/Button';
 import React, { useEffect, useRef, useState } from 'react';
 import PrevSectionButton from '../prevSectionButton/prevSectionButton';
 import NextSectionButton from '../nextSectionButton/nextSectionButton';
+import Modal from '../modals/Modal';
+import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
+import BasketModal from '../modals/BasketModal/BasketModal';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
 
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );
+  const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
+  const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const [ isNextDisabled, setIsNextDisabled ] = useState( false );
   const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
 
@@ -23,8 +28,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
       const _width = windowElRef?.current.offsetWidth;
       setWidth( _width );
       setOffset( 0 );
-      setIsPrevDisabled(true)
-      setIsNextDisabled(false)
+      setIsPrevDisabled( true );
+      setIsNextDisabled( false );
     };
     resizeHandler();
     window.addEventListener( 'resize', resizeHandler );
@@ -50,6 +55,18 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
       setIsPrevDisabled( false );
       return Math.max( newOffset, maxOffset );
     } );
+  };
+  const closeOneClickModal = () => {
+    setIsOneClickModalActive( false );
+  };
+  const openOneClickModal = () => {
+    setIsOneClickModalActive( true );
+  };
+  const closeBasketModal = () => {
+    setIsBasketModalActive( false );
+  };
+  const openBasketModal = () => {
+    setIsBasketModalActive( true );
   };
 
   return (
@@ -85,6 +102,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                       options={ item.options }
                       classNameForDarkItem={ productItem }
                       unit={ item.unit }
+                      openOneClickModal={ openOneClickModal }
+                      openBasketModal={openBasketModal}
                     />,
                   )
               }
@@ -93,6 +112,25 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
         </div>
         <Button title={ 'Смотреть больше товаров' }
                 onClick={ onButtonClick }/> {/*//todo не отображается, если находится в каталоге*/ }
+        { isOneClickModalActive &&
+          <Modal closeModal={ closeOneClickModal }>
+            <OnClickOrder/>
+          </Modal>
+        }
+        { isBasketModalActive &&
+          <Modal closeModal={ closeBasketModal }>
+            <BasketModal
+              key={ itemsForBlock[0].id }
+              id={ itemsForBlock[0].id }
+              image={ itemsForBlock[0].images[ 0 ].image }
+              name={ itemsForBlock[0].name }
+              unit={ itemsForBlock[0].unit }
+              options={ itemsForBlock[0].options }
+              isForModal={ true }
+              closeModal={closeBasketModal}
+            />
+          </Modal>
+        }
       </div>
     </div>
   );

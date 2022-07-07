@@ -17,6 +17,9 @@
       font-size: 14px;
       line-height: 20px;
       color: #202223;
+      &:last-child{
+        color: #6D7175;
+      }
     }
   }
 }

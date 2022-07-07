@@ -1,10 +1,11 @@
 import React from 'react';
+import style from '../../../pages/ProductPage/ProductPage.module.scss';
 
 const UnitsForBasket = ( { size, unit, price }: UnitsForBasketPropsType ) => {
   return (
-    <div>
-      <p>{ size } { unit }</p>
-      <p>{ price }</p>
+    <div onClick={() => alert('Отправить в стор корзины')}>
+      <p className={style.option}>{ size } { unit }</p>
+      <p className={style.price}>{ price } BYN</p>
     </div>
   );
 };

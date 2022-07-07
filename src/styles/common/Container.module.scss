@@ -3,7 +3,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  //align-items: center;
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
@@ -21,9 +20,6 @@
 
 .block {
   width: 100%;
-  //padding: 24px 0;
-  //margin-top: 60px;
-  //margin-bottom: 57px;
 
   .navigationInfoBlock {
     @include flex(row, space-between, center);
@@ -67,7 +63,6 @@
 
   & button {
     cursor: pointer;
-    //margin-bottom: 57px;
   }
 }
 @media (max-width: 1199px) {

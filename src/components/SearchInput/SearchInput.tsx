@@ -20,6 +20,10 @@ const SearchInput = () => {
     navigate( routesPathsEnum.CATALOG )
     setValue('')
   }
+  const onProductItemClick = (id: number) => {
+    navigate(`${routesPathsEnum.CATALOG}/${id}`)
+    setValue('')
+  }
 
   return (
     <div className={style.searchInputBlock}>
@@ -33,6 +37,7 @@ const SearchInput = () => {
       { value && <SearchResultsBlock
         productItems={resultProductItems}
         onButtonClick={onRejResultButtonClick}
+        onProductItemClick={onProductItemClick}
       /> }
     </div>
   );

@@ -10,6 +10,7 @@
     @include size(12.8px, 12.8px);
     margin-right: 7.6px;
   }
+
   .scheduleBlockWrapperOne{
     display: flex;
     align-items: center;
@@ -37,9 +38,6 @@
   margin: 0 6px;
 }
   & p {
-    font-family: 'SF Pro Text';
-    font-style: normal;
-    font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     color: #202223;

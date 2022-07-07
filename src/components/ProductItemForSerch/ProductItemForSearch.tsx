@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './ProductItemForSearch.module.scss';
 
-const ProductItemForSearch = ( {name, image}: ProductItemForSearchPropsType) => {
+const ProductItemForSearch = ( { id, name, image, onClick }: ProductItemForSearchPropsType ) => {
   return (
-    <div className={style.productItemFroSearch}>
-      <img src={image} alt="product"/>
-      <p>{name}</p>
+    <div className={ style.productItemFroSearch } onClick={() => onClick(id)}>
+      <img src={ image } alt="product"/>
+      <p>{ name }</p>
     </div>
   );
 };
@@ -13,6 +13,8 @@ const ProductItemForSearch = ( {name, image}: ProductItemForSearchPropsType) => 
 export default ProductItemForSearch;
 
 type ProductItemForSearchPropsType = {
+  id: number
   name: string,
-  image: string
+  image: string,
+  onClick: (id: number) => void
 }

@@ -1,23 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { OptionType } from '../../mocks';
 import ProductItemUnit from '../ProductItemUnit/ProductItemUnit';
 import basketIcon from '../../Images/basketIcon.svg';
 import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import OnClickOrder from '../common/modals/OnClickOrder/OnClickOrder';
-import Modal from '../common/modals/Modal';
 
-const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem }: ProductItemPropsType ) => {
+const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem, openBasketModal, openOneClickModal }: ProductItemPropsType ) => {
 
-  const [ isActive, setIsActive ] = useState<boolean>( false );
+
   const isKilo = unit === 'кг.'; //todo пока заглушка
   const price = 325; // будет выводиться в зависимости от выбранного option, приходить из редюсера
   const navigate = useNavigate();
 
-  const closeModal = () => {
-    setIsActive( false );
-  };
+
 
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
@@ -38,19 +34,14 @@ const ProductItem = ( { image, name, options, id, unit, classNameForDarkItem }: 
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
           <p className={ style.price }>{ `${ price } BYN` }</p>
-          <div className={ style.basket } onClick={ () => alert( 'добавить в корзину' ) }>
+          <div className={ style.basket } onClick={openBasketModal}>
             <p>+</p>
             <div className={ style.imageWrapper }>
               <img src={ basketIcon } alt="basketIcon"/>
             </div>
           </div>
         </div>
-        <button onClick={ () => setIsActive(true) }>Купить в 1 клик</button>
-        { isActive &&
-          <Modal closeModal={ closeModal }>
-            <OnClickOrder/>
-          </Modal>
-        }
+        <button onClick={ openOneClickModal }>Купить в 1 клик</button>
       </div>
     </div>
   );
@@ -64,5 +55,7 @@ type ProductItemPropsType = {
   name: string,
   options: Array<OptionType>,
   classNameForDarkItem?: string,
-  unit: string
+  unit: string,
+  openOneClickModal: () => void
+  openBasketModal: () => void
 }

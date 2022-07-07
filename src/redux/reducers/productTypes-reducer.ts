@@ -22,6 +22,9 @@ export const slice = createSlice( {
     setChosenProductTypeId( state, action: PayloadAction<{ id: number }> ) {
       state.chosenProductTypeId = action.payload.id;
     },
+    removeChosenProductTypeId( state, action ) {
+      state.chosenProductTypeId = null;
+    },
   }, extraReducers: builder => {
     builder.addCase( fetchProductTypesTC.fulfilled, (
         state, action ) => {
@@ -33,7 +36,7 @@ export const slice = createSlice( {
 } );
 
 export const productTypesReducer = slice.reducer;
-export const { setChosenProductTypeId } = slice.actions;
+export const { setChosenProductTypeId, removeChosenProductTypeId } = slice.actions;
 
 export type ProductTypesType = {
   id: number,

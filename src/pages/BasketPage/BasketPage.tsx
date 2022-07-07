@@ -3,9 +3,8 @@ import style from './BasketPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import { getProductItems } from '../../mocks';
-import ProductItemForBasket from '../../components/ProductItemForBasket/ProductItemForBasket';
 import boxIcon from '../../Images/boxIcon.svg';
-import navigateIcon from '../../Images/navigateIcon.svg';
+import whiteNavigateIcon from '../../Images/whiteNavigationIcon.svg';
 import cat from '../../Images/cat.svg';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import PreviouslyProductsBlock from '../../components/PreviouslyProductsBlock/PreviouslyProductsBlock';
@@ -13,6 +12,7 @@ import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArti
 import Button from '../../components/common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import Product from '../../components/common/Product/Product';
 
 const BasketPage = () => {
 
@@ -40,12 +40,14 @@ const BasketPage = () => {
                 <div className={ style.productsItemsBlockContainer }>
                   {
                     productsInBasket.map( item =>
-                      <ProductItemForBasket
-                        product={ item }
-                        image={ item.images[ 0 ].image }
+                      <Product
+                        id={item.id}
+                        options={item.options}
                         name={ item.name }
-                        options={ item.options }
-                      />,
+                        image={ item.images[0].image }
+                        unit={item.unit}
+                        isForModal={false}
+                      />
                     )
                   }
                 </div>
@@ -59,12 +61,12 @@ const BasketPage = () => {
                     <div className={style.basketTextWrapper}>
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
-                        <img src={ navigateIcon } alt={ 'navigateIcon' }/>
+                        <img src={ whiteNavigateIcon } alt={ 'whiteNavigateIcon' }/>
                         <p>Минск, ул. Чюрлёниса, 6.</p>
                       </div>
                     </div>
                   </div>
-                  <button className={style.basketButton} onClick={ () => alert( 'Переход на модалку оформления заказ' ) }>Оформить заказ</button>
+                  <button className={style.basketButton} onClick={ () => navigate(routesPathsEnum.CHECKOUT) }>Оформить заказ</button>
                 </div>
               </div>
             </div>
