@@ -1,11 +1,22 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getProductsTypes } from '../../mocks';
+import { productTypesAPI } from '../../Api/productTypesApi/productTypesApi';
 
-export const fetchProductTypesTC = createAsyncThunk(
+/*export const fetchProductTypesTC = createAsyncThunk(
   'productTypes/fetchProductTypes', ( param, { dispatch } ) => {
     const res = getProductsTypes(); //todo позже будет APi запрос
     try {
       return { productTypes: res };
+    } catch ( err ) {
+
+    }
+  },
+);*/
+
+export const fetchProductTypesTC = createAsyncThunk(
+  'productTypes/fetchProductTypes', async ( param, { dispatch } ) => {
+    const res = await productTypesAPI.setProductTypes(); //todo позже будет APi запрос
+    try {
+      return { productTypes: res.data };
     } catch ( err ) {
 
     }

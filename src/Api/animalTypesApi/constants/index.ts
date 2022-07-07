@@ -1,1 +1,1 @@
-export const ANIMALS_URL = 'animals/';
+export const ANIMALS_URL = 'animals';

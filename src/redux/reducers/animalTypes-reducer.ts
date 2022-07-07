@@ -1,16 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AnimalTypesType, getAnimalTypes } from '../../mocks';
+import { AnimalTypesType } from '../../mocks';
+import { animalTypesAPI } from '../../Api/animalTypesApi/animalTypesApi';
 
-export const fetchAnimalTypesTC = createAsyncThunk(
-  'animalTypes/fetchAnimalTypes',   ( param, { dispatch } ) => {
-    const res =  getAnimalTypes(); //todo пока нет бэка
-    try {
-      return { animalTypes: res };
-    } catch ( err ) {
-
-    }
-  },
-);
 /*export const fetchAnimalTypesTC = createAsyncThunk(
   'animalTypes/fetchAnimalTypes',  async ( param, { dispatch } ) => {
     const res = await animalTypesAPI.setAnimalTypes(); //todo когда будет готов бэк
@@ -22,6 +13,17 @@ export const fetchAnimalTypesTC = createAsyncThunk(
     }
   },
 );*/
+
+export const fetchAnimalTypesTC = createAsyncThunk(
+  'animalTypes/fetchAnimalTypes',   async( param, { dispatch } ) => {
+    const res =  await animalTypesAPI.setAnimalTypes(); //todo пока нет бэка
+    try {
+      return { animalTypes: res.data };
+    } catch ( err ) {
+
+    }
+  },
+);
 
 export const slice = createSlice( {
   name: 'animalTypes',
