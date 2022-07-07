@@ -3,14 +3,21 @@
 .scheduleBlock {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  //align-items: center;
   position: relative;
 
   & img {
     @include size(12.8px, 12.8px);
     margin-right: 7.6px;
   }
-
+  .scheduleBlockWrapperOne{
+    display: flex;
+    align-items: center;
+  }
+  .scheduleBlockWrappers{
+    display: flex;
+    align-items: center;
+  }
 
 
   //.scheduleText::after {
@@ -37,5 +44,17 @@
     line-height: 20px;
     color: #202223;
     @include SFTextRegular();
+  }
+}
+@media (max-width: 1199px) {
+    .scheduleBlock{
+      flex-direction: column;
+    }
+  .scheduleBlockWrappers{
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .headerStrip{
+    display: none;
   }
 }

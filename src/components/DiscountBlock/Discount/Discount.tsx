@@ -13,7 +13,7 @@ const Discount = ( { img, title }: DiscountPropsType ) => {
         <p>{ title }</p>
         <button onClick={() => navigate(routesPathsEnum.CATALOG)}>Перейти к выбору товара</button>
       </div>
-      <div className={ style.imgWrapper }>
+      <div className={ style.discountImageWrapper }>
         <img src={ img } alt="animalImg"/>
       </div>
     </div>

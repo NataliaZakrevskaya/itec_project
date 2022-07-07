@@ -15,18 +15,34 @@ const ContactBlock = () => {
           <div className={style.contactBlockImageWrapper}>
             <YMaps>
               <Map defaultState={{ center: [53.854422, 27.478944], zoom: 15 }} className={style.map} >
-                <Placemark geometry={[53.854422, 27.478944]} />
+                <Placemark geometry={[53.854422, 27.478944]} className={style.mapTwo} />
               </Map>
             </YMaps>
           </div>
           <div className={style.contactBlockWrapper}>
             <h3 className={style.contactBlockWrapperTitle}>Бесплатно проконсультируем по любому вопросу связанному с вашим любимцем</h3>
             <div className={style.contactBlockWrapperDirection}>
-              <Address />
+              <div className={style.contactBlockAdressSWrapper}>
+                <img src="" alt=""/>
+                <p>Минск, ул. Чюрлёниса, 6.</p>
+              </div>
+              <div className={style.contactBlockWrapperMetro}>
+                <img src="" alt=""/>
+                <p>Малиновка</p>
+              </div>
             </div>
             <div className={style.contactBlockWrapperTimeWork}>
               <p className={style.timeWork}>Время работы</p>
-              <Schedule />
+              <div className={style.scheduleWrapper}>
+                <div className={style.scheduleWrapperFirst}>
+                  <img src="" alt=""/>
+                  Пон.-Пят. 10:00-21:00
+                </div>
+                <div className={style.scheduleWrapperLine}></div>
+                <div className={style.scheduleWrapperSecond}>
+                  Суб.-Вос. 10:00-20:00
+                </div>
+              </div>
             </div>
             <div className={style.contactBlockWrapperTel}>
               <p className={style.tel}>Телефон</p>

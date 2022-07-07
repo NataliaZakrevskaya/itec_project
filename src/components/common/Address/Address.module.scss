@@ -5,6 +5,14 @@
     flex-direction: row;
     align-items: center;
 
+    .addressBlockWrapperOne{
+        display: flex;
+        align-items: center;
+    }
+    .addressBlockWrapperTwo{
+        display: flex;
+        align-items: center;
+    }
     .navigateIcon {
         width: 12.8px;
         height: 16px;
@@ -25,7 +33,11 @@
         color: #202223;
     }
 }
-
+@media (max-width: 1199px) {
+    .addressBlock{
+        flex-direction: column;
+    }
+}
 
 
 

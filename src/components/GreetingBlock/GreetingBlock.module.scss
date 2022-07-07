@@ -11,7 +11,7 @@
 }
 .greetingBlockTitle{
   @include SFDisplaySemibold();
-  width: 597px;
+  max-width: 597px;
   font-size: 28px;
   line-height: 32px;
   color: #202223;
@@ -47,4 +47,12 @@
   background: #98C6CD;
   border-radius: 2px;
   margin-right: 12px;
+}
+@media (max-width: 1199px) {
+  .greetingBlockImageWrapper{
+    display: none;
+  }
+  .greetingBlockWrapperText{
+    padding: 62.5px 0;
+  }
 }

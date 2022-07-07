@@ -8,7 +8,7 @@ const GreetingBlock = () => {
     <div className={ style.greetingBlock }>
       <div className={ commonStyle.container }>
         <div className={style.greetingBlockContainer}>
-          <div>
+          <div className={style.greetingBlockWrapperText}>
             <h2 className={style.greetingBlockTitle}>Здравствуйте, счастливый хозяин любимого питомца!</h2>
             <div className={style.greetingBlockTextWrapper}>
               <p className={style.greetingBlockText}>Меня зовут Ирина, 2 года назад моя бесконечная любовь к животным трансформировалась в магазин «Территория
@@ -38,7 +38,7 @@ const GreetingBlock = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className={style.greetingBlockImageWrapper}>
             <img src={ shopPhoto } alt="shopPhoto"/>
           </div>
         </div>
