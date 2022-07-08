@@ -1,5 +1,5 @@
 import { AppRootStateType } from '../store';
-import { ProductItemType } from '../../mocks';
+import { ProductItemType } from '../reducers/products-reducer';
 
 export const getTotalProductsCount = ( state: AppRootStateType ): number => {
   return state.basket.totalProductsCount;

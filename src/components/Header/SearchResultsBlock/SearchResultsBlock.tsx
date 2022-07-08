@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './SearchResultsBlock.module.scss';
 import ProductItemForSearch from '../../ProductItemForSerch/ProductItemForSearch';
-import { ProductItemType } from '../../../mocks';
 import RejectSearchResult from '../../common/modals/RejectSearchResult/RejectSearchResult';
+import { ProductItemType } from '../../../redux/reducers/products-reducer';
 
 const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }: any ) => {
 

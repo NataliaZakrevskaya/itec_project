@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductItemType } from '../../mocks';
+import { ProductItemType } from './products-reducer';
 
 export const slice = createSlice( {
   name: 'basket',

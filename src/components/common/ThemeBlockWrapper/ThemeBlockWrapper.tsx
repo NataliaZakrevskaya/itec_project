@@ -1,4 +1,3 @@
-import { ProductItemType } from '../../../mocks';
 import commonStyle from '../../../styles/common/Container.module.scss';
 import ProductItem from '../../ProductItem/ProductItem';
 import Button from '../Button/Button';
@@ -10,6 +9,7 @@ import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
 import BasketModal from '../modals/BasketModal/BasketModal';
 import { useDispatch } from 'react-redux';
 import { setProductToBasket } from '../../../redux/reducers/basket-reducer';
+import { ProductItemType } from '../../../redux/reducers/products-reducer';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
 
