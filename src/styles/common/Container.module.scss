@@ -3,9 +3,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
+
 }
 @media (max-width: 1199px) {
   .container{
@@ -15,6 +17,16 @@
 @media (max-width: 992px) {
   .container{
     max-width: 720px;
+  }
+}
+@media (max-width: 768px) {
+  .container{
+    max-width: 540px;
+  }
+}
+@media (max-width: 576px) {
+  .container{
+    max-width: 100%;
   }
 }
 
@@ -72,7 +84,7 @@
 }
 @media (max-width: 992px) {
   .allProductItemsContainer{
-    gap: 17% !important;
+    gap: 15% !important;
   }
 }
 @media (max-width: 768px) {

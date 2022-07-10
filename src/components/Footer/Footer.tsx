@@ -23,6 +23,7 @@ const Footer = () => {
           <Phone/>
           <Schedule/>
           <Callback />
+          <hr className={style.hr}/>
         </div>
         <div className={ style.siteInfo }>
           <div className={style.designerInfo}><p>Дизайн сайта: </p>

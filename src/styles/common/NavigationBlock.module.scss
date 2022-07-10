@@ -1,9 +1,11 @@
 @import "src/styles/Mixins";
 
 .navigationBlock {
-  width: 80%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
+
   .navigationBlockWrapper{
     padding-top: 16px;
     display: flex;
@@ -21,5 +23,15 @@
         color: #6D7175;
       }
     }
+  }
+}
+@media (max-width: 1199px) {
+  .navigationBlock{
+    max-width: 960px;
+  }
+}
+@media (max-width: 992px) {
+  .navigationBlock{
+    max-width: 720px;
   }
 }

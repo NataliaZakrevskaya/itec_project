@@ -19,12 +19,14 @@ const Header = () => {
         <Address/>
         <Schedule/>
         <div className={ style.instaPhoneNumber }>
-          <Phone/>
-          <a className={style.headerInstagram} href={ 'https://www.instagram.com/' } target={ '_blank' } rel={ 'noreferrer' }>
-            <img src={ instagramIcon } alt={ 'instagramIcon' }/>
-          </a>
+          <div className={style.phoneWrapper}>
+            <Phone/>
+            <a className={style.headerInstagram} href={ 'https://www.instagram.com/' } target={ '_blank' } rel={ 'noreferrer' }>
+              <img src={ instagramIcon } alt={ 'instagramIcon' }/>
+            </a>
+          </div>
+          <Callback />
         </div>
-        <Callback />
       </div>
       <div className={ style.navBarContainer }>
         <div className={ `${ style.navBar } ${ commonStyle.container } ` }>

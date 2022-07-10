@@ -25,6 +25,11 @@
 
   }
 }
+@media (max-width: 992px) {
+  .navBar{
+    gap: 18px;
+  }
+}
 @media (max-width: 768px) {
 .navBar{
   display: none;

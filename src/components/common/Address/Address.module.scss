@@ -37,6 +37,15 @@
         flex-direction: column;
     }
 }
+@media (max-width: 768px) {
+    .addressBlock{
+        flex-direction: row;
+        margin-bottom: 16px;
+        & .addressBlockWrapperOne{
+            margin-right: 12px;
+        }
+    }
+}
 
 
 

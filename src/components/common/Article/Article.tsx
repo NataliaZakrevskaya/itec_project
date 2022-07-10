@@ -9,7 +9,7 @@ const Article = ( { id, img, description, title, date, timeForReading }: Article
   const navigate = useNavigate()
   return (
     <div className={ style.article }>
-      <img src={ img } alt="article"/>
+      <div className={style.articleImageWrapper}><img src={ img } alt="article"/></div>
       <h6 onClick={() => navigate(`${routesPathsEnum.ARTICLES}/${id}`)}>{ title }</h6>
       <p>{ description }</p>
       <div className={ style.articleInfo }>

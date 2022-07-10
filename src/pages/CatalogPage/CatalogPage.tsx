@@ -79,6 +79,12 @@ const CatalogPage = () => {
             <option value="value3">популярности</option>
           </select>
         </div>
+        <div className={style.catalogFilter}>
+          <img className={style.catalogFilterImage} src="/itec_project/src/Images/filter_major.svg" alt=""/>
+          <div className={style.catalogFilterText}>
+            Фильтры
+          </div>
+        </div>
       </div>
       <div className={ style.mainBlock }>
         <div className={ style.sortingBlock }>

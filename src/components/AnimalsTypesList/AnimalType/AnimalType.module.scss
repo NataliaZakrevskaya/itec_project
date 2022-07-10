@@ -12,6 +12,7 @@
   border-radius: 5px;
   cursor: pointer;
   padding: 5px;
+  padding-left: 0;
   & span {
     @include SFDisplaySemibold();
     font-size: 16px;
@@ -21,6 +22,7 @@
   }
   & img{
     @include size(85px, 85px);
+    object-fit: cover;
   }
 }
 .animalType:hover{
@@ -39,4 +41,14 @@
 }
 .restTypes{
   opacity: 0.6;
+}
+@media (max-width: 768px) {
+  .animalType{
+    width: 137.88px;
+    height: 56px;
+    & img {
+      width: 56.88px;
+      height: 56px;
+    }
+  }
 }

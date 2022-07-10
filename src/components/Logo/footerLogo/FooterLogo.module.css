@@ -39,4 +39,10 @@
   color: #008060;
 }
 
+@media (max-width: 768px) {
+  .logoBlock {
+    margin-bottom: 16px;
+  }
+}
+
 /*# sourceMappingURL=FooterLogo.module.css.map */
