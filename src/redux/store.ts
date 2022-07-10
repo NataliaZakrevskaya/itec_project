@@ -15,12 +15,14 @@ import { animalTypesReducer } from './reducers/animalTypes-reducer';
 import { brandsReducer } from './reducers/brands-reducer';
 import { productTypesReducer } from './reducers/productTypes-reducer';
 import { basketReducer } from './reducers/basket-reducer';
+import { productsReducer } from './reducers/products-reducer';
 
 const rootReducer = combineReducers( {
   animalTypes: animalTypesReducer,
   brands: brandsReducer,
   productTypes: productTypesReducer,
   basket: basketReducer,
+  products: productsReducer,
 } );
 
 const persistConfig = {

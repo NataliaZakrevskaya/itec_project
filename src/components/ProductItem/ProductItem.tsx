@@ -1,10 +1,11 @@
 import React from 'react';
-import { OptionType, ProductItemType } from '../../mocks';
+import { OptionType } from '../../mocks';
 import ProductItemUnit from '../ProductItemUnit/ProductItemUnit';
 import basketIcon from '../../Images/basketIcon.svg';
 import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import { ProductItemType } from '../../redux/reducers/products-reducer';
 
 const ProductItem = ( {
                         product,

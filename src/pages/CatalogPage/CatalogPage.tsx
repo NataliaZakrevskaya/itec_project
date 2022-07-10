@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
@@ -6,7 +6,6 @@ import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
 import ProductTypesForm from '../../components/ProductTypesForm/ProductTypesForm';
 import BrandsForm from '../../components/BrandsForm/BrandsForm';
-import { getProductItems, ProductItemType } from '../../mocks';
 import ProductItem from '../../components/ProductItem/ProductItem';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
@@ -22,15 +21,17 @@ import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
 import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
 import { setProductToBasket } from '../../redux/reducers/basket-reducer';
+import { fetchProductsTC, ProductItemType } from '../../redux/reducers/products-reducer';
+import { getProductItems } from '../../redux/selectors/products-selectors';
 
 const CatalogPage = () => {
 
-  const products = getProductItems();
+  const products = useSelector(getProductItems);
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( true );
+  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( false );
   const dispatch = useDispatch();
 
   const closeOneClickModal = () => {
@@ -55,6 +56,11 @@ const CatalogPage = () => {
     dispatch( removeChosenAnimalTypeId() );
     setIsRejectResponse( false );
   };
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchProductsTC())
+  }, [])
 
   return (
     <div className={ style.catalogPageBlock }>

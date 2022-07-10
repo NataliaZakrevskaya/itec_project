@@ -6,17 +6,19 @@ import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import { WithThisProductBuyBlock } from '../../components/WithThisProductBuy/WithThisProductBuyBlock';
 import nextIcon from '../../Images/nextIcon.svg';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getProductItems } from '../../mocks';
 import UnitsForBasket from '../../components/common/UnitsForBasket/UnitsForBasket';
 import boxIcon from '../../Images/boxIcon.svg';
 import Address from '../../components/common/Address/Address';
 import Button from '../../components/common/Button/Button';
 import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import { setChosenBrandId } from '../../redux/reducers/brands-reducer';
+import { setProductToBasket } from '../../redux/reducers/basket-reducer';
+import { ProductItemType } from '../../redux/reducers/products-reducer';
+import { getProductItems } from '../../mocks';
 
 const ProductPage = () => {
 
@@ -29,8 +31,10 @@ const ProductPage = () => {
 
   const totalSum = 234; //todo позже будет получаться из стора
   const totalWeight = 0.542; //todo позже будет получаться из стора
-  const product = getProductItems()[ Number( useParams().productId ) ]; //todo позже будет просто запрос по апи
-  const { brand, name, images, options } = product;
+  const productId = Number( useParams().productId )
+  const product = getProductItems()
+    .filter((prod: ProductItemType) => prod.id === productId)[0]
+  const { id, brand, name, images, options, unit, description, analysis, features, composition, additives  }  = product;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -65,7 +69,8 @@ const ProductPage = () => {
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
   };
-  const openBasketModal = () => {
+  const openBasketModal = (product: ProductItemType) => {
+    dispatch(setProductToBasket({product}))
     setIsBasketModalActive( true );
   };
 
@@ -77,7 +82,7 @@ const ProductPage = () => {
           <img src={ nextIcon } alt="nextIcon"/>
           <p>Каталог</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          <p>{ product.name }</p>
+          <p>{ name }</p>
         </div>
       </div>
       <div className={ style.productInfo }>
@@ -116,7 +121,7 @@ const ProductPage = () => {
                     key={ option.id }
                     size={ option.count }
                     price={ +option.price }
-                    unit={ product.unit }
+                    unit={ unit }
                   />,
                 ) }
               </div>
@@ -153,7 +158,7 @@ const ProductPage = () => {
               <h2>
                 { totalSum } BYN
               </h2>
-              <p>Общий вес: { totalWeight } { product.unit }</p>
+              <p>Общий вес: { totalWeight } { unit }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
@@ -166,7 +171,7 @@ const ProductPage = () => {
                 </div>
               </div>
               <div className={ style.basketInterfaceButton }>
-                <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal() }/>
+                <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal(product) }/>
               </div>
               <div>
                 <p className={ style.basketInterfaceOneClick } onClick={ openOneClickModal }>Купить в 1
@@ -178,13 +183,13 @@ const ProductPage = () => {
         <h2>Описание</h2>
         <div className={ style.descriptionBlock }> {/*//todo придет уже отредактированное с бэка*/ }
           <div className={ style.mainDescription }>
-            <p>{ product.description }</p>
-            <p>{ product.features }</p>
-            <p>{ product.composition }</p>
+            <p>{ description }</p>
+            <p>{ features }</p>
+            <p>{ composition }</p>
           </div>
           <div>
-            <p>{ product.analysis }</p>
-            <p>{ product.additives } </p>
+            <p>{ analysis }</p>
+            <p>{ additives } </p>
           </div>
         </div>
       </div>
@@ -199,12 +204,12 @@ const ProductPage = () => {
       { isBasketModalActive &&
         <Modal closeModal={ closeBasketModal }>
           <BasketModal
-            key={ product.id }
-            id={ product.id }
-            image={ product.images[ 0 ].image }
-            name={ product.name }
-            unit={ product.unit }
-            options={ product.options }
+            key={ id }
+            id={ id }
+            image={ images[ 0 ].image }
+            name={ name }
+            unit={ unit }
+            options={ options }
             isForModal={ true }
             closeModal={closeBasketModal}
           />

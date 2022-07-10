@@ -1,6 +1,5 @@
 import React from 'react';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
-import { getProductItems } from '../../mocks';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import dark from '../../styles/common/DarkBlock.module.scss';
@@ -8,6 +7,7 @@ import style from './PopularProductsBlock.module.css';
 import { useSelector } from 'react-redux';
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
+import { getProductItems } from '../../mocks';
 
 const PopularProductsBlock = () => {
 
