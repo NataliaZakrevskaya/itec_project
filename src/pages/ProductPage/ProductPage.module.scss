@@ -40,11 +40,12 @@
   }
 
   .productInfo {
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 0 20px;
 
     .imgAndOrderBlock {
       display: flex;
@@ -336,5 +337,13 @@
       display: flex;
       flex-direction: column;
     }
+  }
+}
+@media (max-width: 768px) {
+  .productInfo{
+    max-width: 540px !important;
+  }
+  .imgAndOrderBlock{
+    flex-direction: column !important;
   }
 }
