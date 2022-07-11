@@ -6,6 +6,8 @@ import Schedule from '../common/Schedule/Schedule';
 import Phone from '../common/PhoneBlock/Phone';
 import instagramIcon from '../../Images/instagramIcon.svg';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import metroIcon from '../../Images/metroIcon.svg';
+import navigationIcon from '../../Images/navigateIcon.svg'
 
 const ContactBlock = () => {
   return (
@@ -30,11 +32,11 @@ const ContactBlock = () => {
             <h3 className={style.contactBlockWrapperTitle}>Бесплатно проконсультируем по любому вопросу связанному с вашим любимцем</h3>
             <div className={style.contactBlockWrapperDirection}>
               <div className={style.contactBlockAdressSWrapper}>
-                <img src="/itec_project/static/media/navigateIcon.a76ccff43ddddea4d2417b82d224b84e.svg" alt=""/>
+                <img src={ navigationIcon } alt=""/>
                 <p>Минск, ул. Чюрлёниса, 6.</p>
               </div>
               <div className={style.contactBlockWrapperMetro}>
-                <img src="/itec_project/static/media/metroIcon.d1aa5b1bdf4620aac63a763930adfea1.svg" alt=""/>
+                <img src={ metroIcon } alt=""/>
                 <p>Малиновка</p>
               </div>
             </div>
