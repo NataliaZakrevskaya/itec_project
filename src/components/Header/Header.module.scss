@@ -12,16 +12,38 @@
     @include flex(row, space-between, center);
     padding: 12px 20px;
 
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+
     .instaPhoneNumber {
       display: flex;
       align-items: center;
-      //& p {
-      //  margin-right: 12px;
-      //}
+
+      @media (max-width: 1199px) {
+        flex-direction: column;
+      }
+
+      .phoneWrapper {
+        display: flex;
+
+        .headerInstagram {
+          display: block;
+          width: 18px;
+          height: 18px;
+          margin-right: 68.33px;
+
+          @media (max-width: 1199px) {
+            margin-right: 0;
+          }
+
+          & img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
     }
-  }
-  .phoneWrapper{
-    display: flex;
   }
 
   .navBarContainer {
@@ -30,44 +52,34 @@
     width: 100%;
     height: 54px;
     background-color: $mainColor;
+    position: relative;
+
+    @media (max-width: 768px) {
+      background-color: white;
+    }
 
     .navBar {
+      width: 100%;
+      padding: 0 10px;
       @include flex(row, space-between, center);
-      margin:0 auto;
+      margin: 0 auto;
       gap: 41px;
-      padding: 0 20px;
-    }
-  }
-}
-.headerInstagram{
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin-right: 68.33px;
-  & img {
-    width: 100%;
-    height: 100%;
-  }
-}
-@media (max-width: 1199px) {
-  .instaPhoneNumber{
-    flex-direction: column;
-  }
-  .headerInstagram{
-    margin-right: 0;
-  }
-}
-@media (max-width: 992px) {
 
-  .navBarContainer{
-    & .navBar{
-      gap: 25px!important;
+      @media (max-width: 992px) {
+        gap: 25px !important;
+      }
+
+      & .burgerButton {
+        background-image: url("../../Images/hamburger.svg");
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+
+        @media (min-width: 768px) {
+             display: none;
+        }
+      }
     }
   }
-}
-@media (max-width: 768px) {
-  .contactInfo{
-    display: none !important;
-  }
-  .navBar{}
 }

@@ -4,12 +4,11 @@ import { routesPathsEnum } from '../../routes/enums';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import light from '../../styles/common/LightBlock.module.scss';
 import style from './PreviouslyProductsBlock.module.scss';
-import { useSelector } from 'react-redux';
-import { getPreviouslyProductItems } from '../../redux/selectors/products-selectors';
+import { getProductItems } from '../../mocks';
 
 const PreviouslyProductsBlock = () => {
 
-  const previouslyProducts = useSelector(getPreviouslyProductItems); // получать продукты из локал сторэдж
+  const previouslyProducts = getProductItems(); // получать продукты из локал сторэдж
   const navigate = useNavigate();
   const goToProductsCatalog = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход на страницу каталога

@@ -1,13 +1,18 @@
 @import "../../../styles/Mixins";
 
-.logoBlock{
+.logoBlock {
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  & img {
+  & div {
     @include size(20.5px, 24px);
     margin-right: 9.5px;
+    background: url("../../../Images/headerLogo.svg");
+
+    @media (max-width: 768px) {
+      background: url("../../../Images/darkLogo.svg");
+    }
   }
 
   & p {
@@ -16,5 +21,38 @@
     line-height: 24px;
     text-transform: uppercase;
     color: #FFFFFF;
+    @media (max-width: 768px) {
+      color: #202223;
+    }
+
+    & span {
+      @media (max-width: 768px) {
+        color: #008060;
+      }
+    }
+  }
+}
+
+.logoBlockForBurger {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & div {
+    @include size(20.5px, 24px);
+    margin-right: 9.5px;
+    background: url("../../../Images/darkLogo.svg");
+  }
+
+  & p {
+    @include SFDisplayBold();
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #202223;
+
+    & span {
+      color: #008060;
+    }
   }
 }

@@ -1,0 +1,40 @@
+@import "src/styles/Mixins";
+
+.navBarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+
+  .editModeBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+
+    .burgerButton {
+      width: 20px;
+      height: 20px;
+      background-image: url("../../../Images/shape.svg");
+      background-size: cover;
+      background-position: center;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  .navBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 70vh;
+  }
+}

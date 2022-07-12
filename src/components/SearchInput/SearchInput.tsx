@@ -5,7 +5,7 @@ import SearchResultsBlock from '../Header/SearchResultsBlock/SearchResultsBlock'
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 
-const SearchInput = () => {
+const SearchInput = ({forHeaderBurger}: SearchInputPropsType) => {
 
   const [ value, setValue ] = useState( '' );
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SearchInput = () => {
   }
 
   return (
-    <div className={style.searchInputBlock}>
+    <div className={forHeaderBurger ? style.searchInputBlockForHeader : style.searchInputBlock}>
       <input
         className={ style.searchInput }
         placeholder={ `Поиск` }
@@ -44,3 +44,7 @@ const SearchInput = () => {
 };
 
 export default SearchInput;
+
+type SearchInputPropsType = {
+  forHeaderBurger: boolean
+}
