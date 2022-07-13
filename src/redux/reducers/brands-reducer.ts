@@ -27,37 +27,35 @@ export const slice = createSlice( {
   initialState: {
     brands: [] as Array<BrandType>,
     chosenBrandsId: [] as Array<number>,
-    brandName: '' as string,
   },
   reducers: {
-    setChosenBrandId( state, action: PayloadAction<{ id: number }>   ) {
-      state.chosenBrandsId.push(action.payload.id)
+    setChosenBrandId( state, action: PayloadAction<{ id: number }> ) {
+      const index = state.brands.findIndex( brand => brand.id === action.payload.id );
+      state.brands[ index ].chosen = true;
     },
     removeChosenBrandsId( state, action ) {
       state.brands = state.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
-      state.chosenBrandsId = []
+      state.chosenBrandsId = [];
     },
-    removeChosenBrandId( state, action: PayloadAction<{ id: number }>  ) {
-       state.chosenBrandsId = state.chosenBrandsId.filter( id => id !== action.payload.id );
-    },
-    setBrandName( state, action: PayloadAction<{ brandName: string }> ) {
-      state.brandName = action.payload.brandName;
-    },
-    setBrandsForFormByName (state, action){
-      state.brands = state.brands.filter(brand => brand.name.toLowerCase().includes(state.brandName.toLowerCase()));
+    removeChosenBrandId( state, action: PayloadAction<{ id: number }> ) {
+      const index = state.brands.findIndex( brand => brand.id === action.payload.id );
+      state.brands[ index ].chosen = false;
     },
   },
   extraReducers: ( builder => {
-    // @ts-ignore
     builder.addCase( fetchBrandsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.brands  = action.payload.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
+      state.brands = action.payload.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
     } );
   } ),
 } );
 
 export const brandsReducer = slice.reducer;
-export const { setChosenBrandId, setBrandName, removeChosenBrandsId, removeChosenBrandId, setBrandsForFormByName } = slice.actions;
+export const {
+  setChosenBrandId,
+  removeChosenBrandsId,
+  removeChosenBrandId,
+} = slice.actions;
 
 export type BrandType = {
   id: number,

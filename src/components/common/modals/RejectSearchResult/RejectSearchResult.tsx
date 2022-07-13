@@ -21,5 +21,5 @@ export default RejectSearchResult;
 
 type RejectSearchResultPropsType = {
   requestTitle: string
-  onClick: () => void | undefined
+  onClick: () => void
 }

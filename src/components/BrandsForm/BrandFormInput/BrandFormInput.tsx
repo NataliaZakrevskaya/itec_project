@@ -3,19 +3,21 @@ import { useDispatch } from 'react-redux';
 import { removeChosenBrandId, setChosenBrandId } from '../../../redux/reducers/brands-reducer';
 
 const BrandFormInput = ( { id, name, chosen }: BrandFormInputPropsType ) => {
-
   const dispatch = useDispatch();
-  const brandFormInputHandler = () => {
-    if ( chosen ) {
-      dispatch( removeChosenBrandId( { id } ) );
-    }
+  const addBrandStatusChosen = () => {
     dispatch( setChosenBrandId( { id } ) );
+  };
+  const removeBrandStatusChosen = () => {
+    dispatch( removeChosenBrandId( { id } ) );
   };
 
   return (
     <label>
-      <input type="checkbox" checked={ chosen } onChange={ brandFormInputHandler }/>
-      <span/>
+      <input type="checkbox" checked={ chosen }/>
+      { chosen
+        ? <span onClick={ removeBrandStatusChosen }/>
+        : <span onClick={ addBrandStatusChosen }/>
+      }
       { name }
     </label>
   );

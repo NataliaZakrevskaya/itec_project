@@ -31,7 +31,7 @@ const CatalogPage = () => {
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( false );
+  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( true );
   const dispatch = useDispatch();
 
   const closeOneClickModal = () => {
