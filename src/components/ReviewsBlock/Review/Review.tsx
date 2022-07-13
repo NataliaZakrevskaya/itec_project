@@ -1,23 +1,29 @@
 import React from 'react';
-import { ReviewsType } from '../../../mocks';
 import phoneIcon from '../../../Images/phoneIcon.svg';
-import style from '../ReviewsBlock.module.scss'
+import style from '../ReviewsBlock.module.scss';
 
-const Review = ( { id, name, reviewText, phoneNumber, petsName }: ReviewsType ) => {
+const Review = ( props: ReviewPropsType ) => {
   return (
     <div className={style.reviewContainer}>
-      <h3 className={style.reviewsBlockSubTitle}>{ name }</h3>
-      <p className={style.reviewsBlockText}>{ reviewText }</p>
+      <h3 className={style.reviewsBlockSubTitle}>{ props.nameAuthor }</h3>
+      <p className={style.reviewsBlockText}>{ props.bodyOfComment }</p>
       <div className={style.reviewsBlockWrapper}>
         <div className={style.reviewsBlockPhoneWrapper}>
           <img src={ phoneIcon } alt="phoneIcon"/>
-          <p>{ phoneNumber }</p>
+          <p>{ props.phoneNumber }</p>
         </div>
-        <p>Питомец: { petsName }</p>
+        <p>Питомец: { props.nameAnimal }</p>
       </div>
     </div>
   );
 };
 
 export default Review;
+
+type ReviewPropsType = {
+  nameAuthor: string,
+  bodyOfComment: string,
+  phoneNumber: string,
+  nameAnimal: string
+}
 

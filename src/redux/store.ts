@@ -16,6 +16,7 @@ import { brandsReducer } from './reducers/brands-reducer';
 import { productTypesReducer } from './reducers/productTypes-reducer';
 import { basketReducer } from './reducers/basket-reducer';
 import { productsReducer } from './reducers/products-reducer';
+import { reviewsReducer } from './reducers/reviews-reducer';
 
 const rootReducer = combineReducers( {
   animalTypes: animalTypesReducer,
@@ -23,25 +24,26 @@ const rootReducer = combineReducers( {
   productTypes: productTypesReducer,
   basket: basketReducer,
   products: productsReducer,
+  reviews: reviewsReducer,
 } );
 
 const persistConfig = {
   key: 'root',
   storage,
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer( persistConfig, rootReducer );
 
 const store = configureStore( {
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware => getDefaultMiddleware({
+  middleware: getDefaultMiddleware => getDefaultMiddleware( {
     serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      ignoredActions: [ FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER ],
     },
-  }).prepend( thunkMiddleware ),
+  } ).prepend( thunkMiddleware ),
 } );
 
-export const persistor = persistStore(store);
+export const persistor = persistStore( store );
 export default store;
 
 export type RootReducerType = typeof rootReducer

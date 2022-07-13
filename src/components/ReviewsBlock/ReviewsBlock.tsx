@@ -3,14 +3,17 @@ import colorStyle from '../../styles/common/LightBlock.module.scss';
 import style from './ReviewsBlock.module.scss';
 import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
-import { getReviews } from '../../mocks';
 import Review from './Review/Review';
 import React, { useEffect, useRef, useState } from 'react';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { getReviews } from '../../redux/selectors/reviews-selectors';
+import { fetchReviewsTC } from '../../redux/reducers/reviews-reducer';
 
 const ReviewsBlock = () => {
 
-  const reviews = getReviews();
+  const reviews = useSelector(getReviews);
+  const dispatch = useDispatch();
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );
   const [ isNextDisabled, setIsNextDisabled ] = useState( false );
@@ -54,6 +57,11 @@ const ReviewsBlock = () => {
     } );
   };
 
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchReviewsTC())
+  }, [])
+
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
       <div className={ commonStyle.container }>
@@ -69,11 +77,10 @@ const ReviewsBlock = () => {
                   reviews.map( review =>
                     <Review
                       key={ review.id }
-                      id={ review.id }
-                      name={ review.name }
-                      reviewText={ review.reviewText }
-                      phoneNumber={ review.phoneNumber }
-                      petsName={ review.petsName }
+                      nameAuthor={review.name_author}
+                      bodyOfComment={review.body_of_comment}
+                      phoneNumber={review.phone_number}
+                      nameAnimal={review.name_animal}
                     />,
                   )
                 }
@@ -83,7 +90,7 @@ const ReviewsBlock = () => {
           <div className={ colorStyle.block }>
             <div className={ `${ colorStyle.sectionsBlock } ${ style.buttonsBlock }` }>
               <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
-              <p>1 из 9</p> {/*// todo пока заглушкаБ можно не стилизовать*/ }
+              <p>1 из {reviews.length}</p> {/*// todo пока заглушкаБ можно не стилизовать*/ }
               <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>
             </div>
           </div>
