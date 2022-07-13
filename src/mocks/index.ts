@@ -1694,7 +1694,7 @@ export const getProductsTypes = (): Array<resProductTypesType> => {
     { id: 10, name: 'Когтеточки', is_active: false },
   ];
 };
-export const getArticles = (): Array<ArticleType> => {
+/*export const getArticles = (): Array<ArticleType> => {
   return [
     {
       id: 0,
@@ -1825,7 +1825,7 @@ export const getArticles = (): Array<ArticleType> => {
       img: 'https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/580540_mjznrj.jpg',
     },
   ];
-};
+};*/
 /*export const getReviews = (): Array<ReviewsType> => {
   return [
     {
@@ -1998,9 +1998,11 @@ export type ArticleType = {
   id: number,
   title: string,
   description: string,
-  timeForReading: number,
-  date: string //todo пока стринг, потом нужно будет с бэка переводить,
-  img: string
+  time_read: number,
+  date_added: string,
+  image: string,
+  is_active: boolean,
+  animals: number
 }
 export type ReviewsType = {
   id: number,

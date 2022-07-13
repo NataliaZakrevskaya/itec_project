@@ -1,14 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunkMiddleware from 'redux-thunk';
 import { animalTypesReducer } from './reducers/animalTypes-reducer';
@@ -17,6 +8,7 @@ import { productTypesReducer } from './reducers/productTypes-reducer';
 import { basketReducer } from './reducers/basket-reducer';
 import { productsReducer } from './reducers/products-reducer';
 import { reviewsReducer } from './reducers/reviews-reducer';
+import { articlesReducer } from './reducers/articles-reducer';
 
 const rootReducer = combineReducers( {
   animalTypes: animalTypesReducer,
@@ -25,6 +17,7 @@ const rootReducer = combineReducers( {
   basket: basketReducer,
   products: productsReducer,
   reviews: reviewsReducer,
+  articles: articlesReducer,
 } );
 
 const persistConfig = {

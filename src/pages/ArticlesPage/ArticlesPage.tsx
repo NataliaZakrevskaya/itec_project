@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './ArticlesPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import AnimalsTypesList from '../../components/AnimalsTypesList/AnimalsTypesList';
-import { getArticles } from '../../mocks';
 import Article from '../../components/common/Article/Article';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import ContactBlock from '../../components/ContactBlock/ContactBlock';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
-import { getTitleForArticlesBlock, getTitleForProductsBlock } from '../../helpers/getTitle';
+import { getTitleForArticlesBlock } from '../../helpers/getTitle';
+import { getArticles } from '../../redux/selectors/articles-selectors';
+import { fetchArticlesTC } from '../../redux/reducers/articles-reducer';
 
 const ArticlesPage = () => {
 
-  const articlesItems = getArticles(); //todo позже будет запрос
+  const articles = useSelector( getArticles );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
+
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+    // @ts-ignore
+    dispatch(fetchArticlesTC())
+  }, [] );
 
   return (
     <div className={ style.articlesPageBlock }>
@@ -27,21 +35,21 @@ const ArticlesPage = () => {
         </div>
       </div>
       <AnimalsTypesList/>
-      <div className={style.articlesTitle}>
-          <h1>{ `Полезные статьи ${subTitle}` }</h1>
-      </div> {/*//todo будет меняться в зависимости от выбранного типа животного*/ }
+      <div className={ style.articlesTitle }>
+        <h1>{ `Полезные статьи ${ subTitle }` }</h1>
+      </div>
       <div className={ style.articlesBlockContainer }>
         <div className={ style.articlesBlock }>
           {
-            articlesItems.map( item =>
+            articles.map( article =>
               <Article
-                key={ item.id }
-                id={ item.id }
-                title={ item.title }
-                description={ item.description }
-                timeForReading={ item.timeForReading }
-                date={ item.date }
-                img={ item.img }
+                key={ article.id }
+                id={ article.id }
+                title={ article.title }
+                description={ article.description }
+                timeForReading={ article.time_read }
+                date_added={ article.date_added }
+                image={ article.image }
               />,
             )
           }

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getArticles } from '../../mocks';
 import Article from '../common/Article/Article';
 import style from './UsefulArticlesBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
@@ -12,10 +11,11 @@ import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import { useSelector } from 'react-redux';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 import { getTitleForArticlesBlock } from '../../helpers/getTitle';
+import { getArticles } from '../../redux/selectors/articles-selectors';
 
 const UsefulArticlesBlock = () => {
 
-  const articles = getArticles();
+  const articles = useSelector(getArticles);
   const navigate = useNavigate();
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
@@ -81,15 +81,15 @@ const UsefulArticlesBlock = () => {
                  } }>
               {
                 articles.map( article => {
-                  const { id, img, title, description, date, timeForReading } = { ...article };
+                  const { id, title, description, date_added, image, time_read } = { ...article };
                   return ( <Article
                       key={ id }
                       id={ id }
-                      img={ img }
+                      image={ image }
                       title={ title }
                       description={ description }
-                      date={ date }
-                      timeForReading={ timeForReading }
+                      date_added={ date_added }
+                      timeForReading={ time_read }
                     />
                   );
                 } )

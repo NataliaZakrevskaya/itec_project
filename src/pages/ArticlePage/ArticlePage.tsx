@@ -3,17 +3,18 @@ import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArti
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import ContactBlock from '../../components/ContactBlock/ContactBlock';
 import { useParams } from 'react-router-dom';
-import { getArticles } from '../../mocks';
 import style from './ArticlePage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
 import colorTimeIcon from '../../Images/colorTimeIcon.svg';
 import colorCalendarIcon from '../../Images/colorCalendarIcon.svg';
 import commonStyle from '../../styles/common/Container.module.scss';
+import { useSelector } from 'react-redux';
+import { getArticles } from '../../redux/selectors/articles-selectors';
 
 const ArticlePage = () => {
   const articleId = Number( useParams().articleId ) - 1;
-  const article = getArticles()[ articleId ]; //todo позже будет просто запрос по апи
+  const article = useSelector( getArticles )[ articleId ]; //todo позже будет просто запрос по апи
   return (
     <div className={ style.articlePage }>
       <div className={ commonStyle.container }>
@@ -33,16 +34,16 @@ const ArticlePage = () => {
           <div className={ style.articleReadingWrapper }>
             <div>
               <img src={ colorTimeIcon } alt="timeIcon"/>
-              <p>Время чтения: { article.timeForReading } мин.</p>
+              <p>Время чтения: { article.time_read } мин.</p>
             </div>
             <div>
               <img src={ colorCalendarIcon } alt="calendar"/>
-              <p>{ article.date }</p>
+              <p>{ article.date_added }</p>
             </div>
           </div>
         </div>
         <div className={ style.articleImage }>
-          <img src={ article.img } alt="article"/>
+          <img src={ article.image } alt="article"/>
         </div>
         <div className={ style.articleTextContainer }>
           <p className={ style.articleText }>С появлением кошки в доме нужно организовать все бытовые условия для ее
