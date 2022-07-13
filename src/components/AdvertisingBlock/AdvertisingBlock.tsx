@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './AdvertisingBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
+import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import frame from '../../Images/Frame 119.svg';
@@ -29,7 +30,7 @@ const AdvertisingBlock = () => {
                 </p>
               </div>
             </div>
-            <button onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать товар</button>
+            <button className={buttonStyle.bigButton} onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать товар</button>
           </div>
           <div className={style.mainImage}>
             <img src={frame} alt="frame"/>

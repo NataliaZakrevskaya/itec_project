@@ -8,7 +8,7 @@ import ArticlesPage from '../pages/ArticlesPage/ArticlesPage';
 import ArticlePage from '../pages/ArticlePage/ArticlePage';
 import BasketPage from '../pages/BasketPage/BasketPage';
 import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
-import NotFoundPage from '../pages/NotFoundPage';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 const AppRoutes = () => {
   return (

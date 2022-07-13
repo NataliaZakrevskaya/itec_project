@@ -1,0 +1,49 @@
+@import "src/styles/Mixins";
+
+.notFoundPageContainer {
+  @include flex(row, flex-start, center);
+  position: relative;
+  height: 80vh;
+
+  .textContainer {
+    width: 30%;
+    position: absolute;
+    top: 75px;
+    z-index: 2;
+
+    & h1 {
+  @include SFDisplayBold();
+      font-size: 146px;
+      line-height: 120%;
+      color: #BDC1CC;
+      margin-bottom: 16px;
+    }
+    & h2{
+      @include SFDisplaySemibold();
+      font-size: 28px;
+      line-height: 32px;
+      color: #202223;
+      margin-bottom: 16px;
+    }
+    & p{
+      @include SFTextRegular();
+      font-size: 16px;
+      line-height: 130%;
+      color: #6D7175;
+    }
+    .lastParagraph{
+      margin: 8px 0 33px;
+    }
+    & button{
+
+    }
+  }
+
+  .notFoundImage {
+    @include size(935px, 575px);
+    position: absolute;
+    top: 0;
+    right: -24px;
+    background: url('../../Images/notFoundCat.svg') no-repeat center;
+  }
+}

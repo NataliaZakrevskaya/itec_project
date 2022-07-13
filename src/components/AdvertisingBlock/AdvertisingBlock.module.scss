@@ -38,25 +38,7 @@
   }
   margin-bottom: 33px;
 }
-.mainWrapper{
-  & button{
-    background: #00A0AC;
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    width: 153px;
-    height: 44px;
-    @include SFDisplaySemibold();
-    font-size: 14px;
-    line-height: 20px;
-    color: #FFFFFF;
-    border: none;
-  }
-  & button:hover{
-    background: #347C84;
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-  }
-}
+
 .subTitleOne{
   display: flex;
 }
