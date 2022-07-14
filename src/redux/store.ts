@@ -9,10 +9,8 @@ import { basketReducer } from './reducers/basket-reducer';
 import { productsReducer } from './reducers/products-reducer';
 import { reviewsReducer } from './reducers/reviews-reducer';
 import { articlesReducer } from './reducers/articles-reducer';
-import { appReducer } from './reducers/app-reducer';
 
 const rootReducer = combineReducers( {
-  app: appReducer,
   animalTypes: animalTypesReducer,
   brands: brandsReducer,
   productTypes: productTypesReducer,
