@@ -4,19 +4,22 @@ import style from './Article.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../routes/enums';
 import { getCurrentAddedDate } from '../../../helpers/getDate';
+import { stringCutter } from '../../../helpers/stringCutter';
 
 const Article = ( { id, description, title, date_added, timeForReading, image }: ArticlePropsType ) => {
 
   const date = new Date( date_added );
   const currentData = getCurrentAddedDate(date)
   const navigate = useNavigate();
+
+
   return (
     <div className={ style.article }>
       <div className={ style.articleImageWrapper }>
         <img src={ image } alt="article"/>
       </div>
       <h6 onClick={ () => navigate( `${ routesPathsEnum.ARTICLES }/${ id }` ) }>{ title }</h6>
-      <p dangerouslySetInnerHTML={ { __html: description } }/>
+      <p dangerouslySetInnerHTML={ { __html: stringCutter(description, 160) } }/>
       <div className={ style.articleInfo }>
         <div>
           <img src={ grayClock } alt="timeIcon"/>

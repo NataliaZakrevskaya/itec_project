@@ -19,6 +19,7 @@ import { setChosenBrandId } from '../../redux/reducers/brands-reducer';
 import { setProductToBasket } from '../../redux/reducers/basket-reducer';
 import { ProductItemType } from '../../redux/reducers/products-reducer';
 import { getProductItems } from '../../mocks';
+import { stringCutter } from '../../helpers/stringCutter';
 
 const ProductPage = () => {
 
@@ -35,6 +36,7 @@ const ProductPage = () => {
   const product = getProductItems()
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
   const { id, brand, name, images, options, unit, description, analysis, features, composition, additives } = product;
+  const nameForNavigationBlock = stringCutter(name, 90);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -82,7 +84,7 @@ const ProductPage = () => {
           <img src={ nextIcon } alt="nextIcon"/>
           <p onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Каталог</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          <p>{ name }</p>
+          <p>{ nameForNavigationBlock }</p>
         </div>
       </div>
       <div className={ style.productInfo }>

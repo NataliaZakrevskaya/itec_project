@@ -23,7 +23,7 @@ const ProductItem = ( {
   const isKilo = unit === 'кг.'; //todo пока заглушка
   const price = 325; // будет выводиться в зависимости от выбранного option, приходить из редюсера
   const navigate = useNavigate();
-  const nameForCard = stringCutter(name)
+  const nameForCard = stringCutter(name, 70);
 
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
