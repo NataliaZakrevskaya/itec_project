@@ -11,6 +11,8 @@ import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selecto
 import { getTitleForArticlesBlock } from '../../helpers/getTitle';
 import { getArticles } from '../../redux/selectors/articles-selectors';
 import { fetchArticlesTC } from '../../redux/reducers/articles-reducer';
+import { useNavigate } from 'react-router-dom';
+import { routesPathsEnum } from '../../routes/enums';
 
 const ArticlesPage = () => {
 
@@ -19,6 +21,7 @@ const ArticlesPage = () => {
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect( () => {
     // @ts-ignore
@@ -29,7 +32,7 @@ const ArticlesPage = () => {
     <div className={ style.articlesPageBlock }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
-          <p>Главная</p>
+          <p onClick={() => navigate(routesPathsEnum.MAIN)}>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
           <p>Статьи</p>
         </div>

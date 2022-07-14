@@ -40,9 +40,9 @@ const CheckoutPage = () => {
     <div className={ style.checkoutPage }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
-          <p>Главная</p>
+          <p onClick={() => navigate(routesPathsEnum.MAIN)}>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          <p>Корзина</p>
+          <p onClick={() => navigate(routesPathsEnum.BASKET)}>Корзина</p>
           <img src={ nextIcon } alt="nextIcon"/>
           <p>Оформление заказа</p>
         </div>
@@ -69,10 +69,10 @@ const CheckoutPage = () => {
             </div>
             <div className={ style.list }>
               <div className={ style.address }>Самовывоз по адресу: Минск, ул. Чюрлёниса, 6.
-                <span></span>
+                <span/>
               </div>
               <div>Оплата любым способом при получении
-                <span></span>
+                <span/>
               </div>
             </div>
             <div className={ style.basketInfo }>

@@ -2,7 +2,7 @@ import React from 'react';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import ContactBlock from '../../components/ContactBlock/ContactBlock';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import style from './ArticlePage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
@@ -11,18 +11,20 @@ import colorCalendarIcon from '../../Images/colorCalendarIcon.svg';
 import commonStyle from '../../styles/common/Container.module.scss';
 import { useSelector } from 'react-redux';
 import { getArticles } from '../../redux/selectors/articles-selectors';
+import { routesPathsEnum } from '../../routes/enums';
 
 const ArticlePage = () => {
   const articleId = Number( useParams().articleId ) - 1;
   const article = useSelector( getArticles )[ articleId ]; //todo позже будет просто запрос по апи
+  const navigate = useNavigate();
   return (
     <div className={ style.articlePage }>
       <div className={ commonStyle.container }>
         <div className={ navigationStyle.navigationBlock }>
           <div className={ navigationStyle.navigationBlockWrapper }>
-            <p>Главная</p>
+            <p onClick={() => navigate(routesPathsEnum.MAIN)}>Главная</p>
             <img src={ nextIcon } alt="nextIcon"/>
-            <p>Каталог</p>
+            <p onClick={() => navigate(routesPathsEnum.ARTICLES)}>Статьи</p>
             <img src={ nextIcon } alt="nextIcon"/>
             <p>{ article.title }</p>
           </div>

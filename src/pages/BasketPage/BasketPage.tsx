@@ -2,7 +2,6 @@ import React from 'react';
 import style from './BasketPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
-import { getProductItems } from '../../mocks';
 import boxIcon from '../../Images/boxIcon.svg';
 import whiteNavigateIcon from '../../Images/whiteNavigationIcon.svg';
 import cat from '../../Images/cat.svg';
@@ -18,18 +17,17 @@ import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../r
 
 const BasketPage = () => {
 
-  const productsInBasket = useSelector(getProductsInBasket)
+  const productsInBasket = useSelector( getProductsInBasket );
   const basketCount = useSelector( getTotalSum );
   const productsCount = useSelector( getTotalProductsCount );
   const isEmptyBasket = productsInBasket.length;
   const navigate = useNavigate();
 
-
   return (
     <div className={ style.basketPageBlock }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
-          <p>Главная</p>
+          <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
           <p>Корзина </p>
         </div>

@@ -12,7 +12,7 @@ import Address from '../../components/common/Address/Address';
 import Button from '../../components/common/Button/Button';
 import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import { setChosenBrandId } from '../../redux/reducers/brands-reducer';
@@ -31,10 +31,10 @@ const ProductPage = () => {
 
   const totalSum = 234; //todo позже будет получаться из стора
   const totalWeight = 0.542; //todo позже будет получаться из стора
-  const productId = Number( useParams().productId )
+  const productId = Number( useParams().productId );
   const product = getProductItems()
-    .filter((prod: ProductItemType) => prod.id === productId)[0]
-  const { id, brand, name, images, options, unit, description, analysis, features, composition, additives  }  = product;
+    .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
+  const { id, brand, name, images, options, unit, description, analysis, features, composition, additives } = product;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -69,8 +69,8 @@ const ProductPage = () => {
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
   };
-  const openBasketModal = (product: ProductItemType) => {
-    dispatch(setProductToBasket({product}))
+  const openBasketModal = ( product: ProductItemType ) => {
+    dispatch( setProductToBasket( { product } ) );
     setIsBasketModalActive( true );
   };
 
@@ -78,9 +78,9 @@ const ProductPage = () => {
     <div className={ style.productPage }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
-          <p>Главная</p>
+          <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          <p>Каталог</p>
+          <p onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Каталог</p>
           <img src={ nextIcon } alt="nextIcon"/>
           <p>{ name }</p>
         </div>
@@ -163,15 +163,15 @@ const ProductPage = () => {
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
                 <div className={ style.basketInterfaceMinus } onClick={ onDecrementBtnClick }>
-                  <div></div>
+                  <div/>
                 </div>
                 <div className={ style.basketInterfaceCount }>{ countOfProduct }</div>
                 <div className={ style.basketInterfacePlus } onClick={ onIncrementBtnClick }>
-                  <div><span></span></div>
+                  <div><span/></div>
                 </div>
               </div>
               <div className={ style.basketInterfaceButton }>
-                <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal(product) }/>
+                <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal( product ) }/>
               </div>
               <div>
                 <p className={ style.basketInterfaceOneClick } onClick={ openOneClickModal }>Купить в 1
@@ -211,7 +211,7 @@ const ProductPage = () => {
             unit={ unit }
             options={ options }
             isForModal={ true }
-            closeModal={closeBasketModal}
+            closeModal={ closeBasketModal }
           />
         </Modal>
       }

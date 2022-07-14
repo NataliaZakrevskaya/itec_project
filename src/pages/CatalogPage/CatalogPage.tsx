@@ -17,22 +17,26 @@ import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import sadCat from '../../Images/sadCat.svg';
+import filterMajor from '../../Images/filter_major.svg';
 import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
 import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
 import { setProductToBasket } from '../../redux/reducers/basket-reducer';
 import { fetchProductsTC, ProductItemType } from '../../redux/reducers/products-reducer';
 import { getProductItems } from '../../redux/selectors/products-selectors';
+import { routesPathsEnum } from '../../routes/enums';
+import { useNavigate } from 'react-router-dom';
 
 const CatalogPage = () => {
 
-  const products = useSelector(getProductItems);
+  const products = useSelector( getProductItems );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( true );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
@@ -57,16 +61,16 @@ const CatalogPage = () => {
     setIsRejectResponse( false );
   };
 
-  useEffect(() => {
+  useEffect( () => {
     // @ts-ignore
-    dispatch(fetchProductsTC())
-  }, [])
+    dispatch( fetchProductsTC() );
+  }, [] );
 
   return (
     <div className={ style.catalogPageBlock }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
-          <p>Главная</p>
+          <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
           <p>Каталог</p>
         </div>
@@ -85,9 +89,9 @@ const CatalogPage = () => {
             <option value="value3">популярности</option>
           </select>
         </div>
-        <div className={style.catalogFilter}>
-          <img className={style.catalogFilterImage} src="/itec_project/src/Images/filter_major.svg" alt=""/>
-          <div className={style.catalogFilterText}>
+        <div className={ style.catalogFilter }>
+          <img className={ style.catalogFilterImage } src={ filterMajor } alt=""/>
+          <div className={ style.catalogFilterText }>
             Фильтры
           </div>
         </div>
