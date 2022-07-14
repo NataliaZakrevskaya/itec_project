@@ -7,10 +7,7 @@
   border-radius: 5px;
   padding: 16px;
   gap: 16px;
-  margin: 24px 25px 24px 0;
-  &:nth-child(3n){
-    margin-right: 0;
-  }
+  margin: 24px 0;
   &:hover{
     cursor: pointer;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);

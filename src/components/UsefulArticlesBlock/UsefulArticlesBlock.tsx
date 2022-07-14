@@ -23,7 +23,7 @@ const UsefulArticlesBlock = () => {
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
   const dispatch = useDispatch();
 
-  const pagesCount = articles.length / 4;
+  const pagesCount = articles.length / 3;
   const {
     offset,
     isPrevDisabled,
