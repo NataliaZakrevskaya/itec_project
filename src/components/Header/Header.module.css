@@ -116,4 +116,10 @@
   }
 }
 
+@media (max-width: 576px) {
+  .navElements {
+    gap: 0 !important;
+  }
+}
+
 /*# sourceMappingURL=Header.module.css.map */

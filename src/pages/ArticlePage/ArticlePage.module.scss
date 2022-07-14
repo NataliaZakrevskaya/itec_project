@@ -9,7 +9,7 @@
 
   .articleTitle {
     margin: 24px 0;
-    width: 70%;
+    width: 100%;
 
     & h1 {
       @include SFDisplayBold();
@@ -82,5 +82,19 @@
 @media (max-width: 768px) {
   .articleTextContainer{
     width: 100% !important;
+  }
+  .articleReadingWrapper{
+    & div {
+      & p {
+        font-size: 15px!important;
+        line-height: 24px!important;
+        color: #6D7175!important;
+      }
+    }
+  }
+  .articleText{
+    font-size: 16px !important;
+    line-height: 145% !important;
+    color: #202223 !important;
   }
 }
