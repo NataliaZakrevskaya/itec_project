@@ -173,7 +173,7 @@ const ProductPage = () => {
               <div className={ style.basketInterfaceButton }>
                 <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal( product ) }/>
               </div>
-              <div>
+              <div className={style.basketInterfaceOneClickWrapper}>
                 <p className={ style.basketInterfaceOneClick } onClick={ openOneClickModal }>Купить в 1
                   клик</p> {/*//todo будет открываться модалка*/ }
               </div>
@@ -187,7 +187,7 @@ const ProductPage = () => {
             <p>{ features }</p>
             <p>{ composition }</p>
           </div>
-          <div>
+          <div className={style.mainAnalysis}>
             <p>{ analysis }</p>
             <p>{ additives } </p>
           </div>

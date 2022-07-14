@@ -135,5 +135,13 @@
   max-width: 355px;
 }
 
-
+@media (max-width: 768px) {
+  .productForBasketContainer{
+    flex-direction: column;
+    justify-content: space-between;
+    & .productMainInfo{
+      margin: 0;
+    }
+  }
+}
 

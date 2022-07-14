@@ -20,10 +20,13 @@
     color: #202223;
 
   }
+.animalTypeImageWrapper{
+  @include size(85px,81px);
   & img{
-    @include size(85px, 85px);
+    @include size(100%, 100%);
     object-fit: cover;
   }
+}
 }
 .animalType:hover{
   & span{

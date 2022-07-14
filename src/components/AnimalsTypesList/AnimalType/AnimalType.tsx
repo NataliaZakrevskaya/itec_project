@@ -6,7 +6,9 @@ const AnimalType = ( { id, name, image, isActive, checked, chooseActiveAnimalTyp
     <div
       className={ checked ? isActive ? `${ style.animalType } ${ style.active }` : `${ style.animalType } ${ style.restTypes }` : style.animalType }
       onClick={ () => chooseActiveAnimalType( id ) }>
-      <img src={ image } alt={ 'animal img' }/>
+      <div className={style.animalTypeImageWrapper}>
+        <img src={ image } alt={ 'animal img' }/>
+      </div>
       <span>{ name }</span>
     </div>
   );
