@@ -12,10 +12,13 @@ import commonStyle from '../../styles/common/Container.module.scss';
 import { useSelector } from 'react-redux';
 import { getArticles } from '../../redux/selectors/articles-selectors';
 import { routesPathsEnum } from '../../routes/enums';
+import { getCurrentAddedDate } from '../../helpers/getDate';
 
 const ArticlePage = () => {
   const articleId = Number( useParams().articleId ) - 1;
   const article = useSelector( getArticles )[ articleId ]; //todo позже будет просто запрос по апи
+  const date = new Date( article.date_added );
+  const currentData = getCurrentAddedDate(date)
   const navigate = useNavigate();
   return (
     <div className={ style.articlePage }>
@@ -40,7 +43,7 @@ const ArticlePage = () => {
             </div>
             <div>
               <img src={ colorCalendarIcon } alt="calendar"/>
-              <p>{ article.date_added }</p>
+              <p>{ currentData }</p>
             </div>
           </div>
         </div>
