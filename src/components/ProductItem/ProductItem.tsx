@@ -6,6 +6,7 @@ import style from './ProductItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { ProductItemType } from '../../redux/reducers/products-reducer';
+import { stringCutter } from '../../helpers/stringCutter';
 
 const ProductItem = ( {
                         product,
@@ -22,12 +23,13 @@ const ProductItem = ( {
   const isKilo = unit === 'кг.'; //todo пока заглушка
   const price = 325; // будет выводиться в зависимости от выбранного option, приходить из редюсера
   const navigate = useNavigate();
+  const nameForCard = stringCutter(name)
 
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
       <div className={ style.productItemWrapper }>
         <img className={ style.mainProductItemImage } src={ image } alt={ 'product' }/>
-        <p className={ style.title } onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>{ name }</p>
+        <p className={ style.title } onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>{ nameForCard }</p>
       </div>
       <div className={ style.unitGroup }>
         { options.map( option =>

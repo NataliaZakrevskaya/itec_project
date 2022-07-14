@@ -312,7 +312,7 @@ export const getProductItems = (): Array<resProductItemType> => {
   return [
     {
       id: 1,
-      name: 'Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..',
+      name: 'Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов. Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов. Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов',
       images: [
         {
           id: 0,
@@ -363,7 +363,7 @@ export const getProductItems = (): Array<resProductItemType> => {
     },
     {
       id: 2,
-      name: 'Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..',
+      name: 'Консервы ROYAL CANIN STERILISED',
       images: [
         {
           id: 0,
@@ -464,7 +464,7 @@ export const getProductItems = (): Array<resProductItemType> => {
     },
     {
       id: 4,
-      name: 'Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов..',
+      name: 'Консервы ROYAL CANIN STERILISED для взрослых кастрированных котов ROYAL CANIN STERILISED.',
       images: [
         {
           id: 0,
