@@ -1,7 +1,7 @@
 import commonStyle from '../../../styles/common/Container.module.scss';
 import ProductItem from '../../ProductItem/ProductItem';
 import Button from '../Button/Button';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import PrevSectionButton from '../prevSectionButton/prevSectionButton';
 import NextSectionButton from '../nextSectionButton/nextSectionButton';
 import Modal from '../modals/Modal';
@@ -10,56 +10,25 @@ import BasketModal from '../modals/BasketModal/BasketModal';
 import { useDispatch } from 'react-redux';
 import { setProductToBasket } from '../../../redux/reducers/basket-reducer';
 import { ProductItemType } from '../../../redux/reducers/products-reducer';
+import { useCarousel } from '../../../customHooks/useCarousel';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
 
-  const [ offset, setOffset ] = useState( 0 );
-  const [ width, setWidth ] = useState( 1200 );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ isNextDisabled, setIsNextDisabled ] = useState( false );
-  const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
-
-  const windowElRef = useRef( null );
   const { block, sectionsBlock, productItem } = blockTheme;
-
   const dispatch = useDispatch();
+  const pagesCount = itemsForBlock.length / 4;
 
-  useEffect( () => {
-    const resizeHandler = () => {
+  const {
+    onPrevSectionButtonClick,
+    onNextSectionButtonClick,
+    isPrevDisabled,
+    offset,
+    windowElRef,
+    isNextDisabled,
+  } = useCarousel( pagesCount );
 
-      // @ts-ignore
-      const _width = windowElRef?.current.offsetWidth;
-      setWidth( _width );
-      setOffset( 0 );
-      setIsPrevDisabled( true );
-      setIsNextDisabled( false );
-    };
-    resizeHandler();
-    window.addEventListener( 'resize', resizeHandler );
-
-    return () => {
-      window.removeEventListener( 'resize', resizeHandler );
-    };
-  }, [ width ] );
-
-  const onPrevSectionButtonClick = () => {
-    setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset + width + ( width / 100 * 1.8 );
-      setIsNextDisabled( false );
-      setIsPrevDisabled( 0 < newOffset + width );
-      return Math.min( newOffset, 0 );
-    } );
-  };
-  const onNextSectionButtonClick = () => {
-    setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset - width - ( width / 100 * 1.8 );
-      const maxOffset = -( width * ( ( itemsForBlock.length / 4 ) - 1 ) + ( width / 100 * 7 ) );
-      setIsNextDisabled( maxOffset > newOffset - width );
-      setIsPrevDisabled( false );
-      return Math.max( newOffset, maxOffset );
-    } );
-  };
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
@@ -69,8 +38,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
   };
-  const openBasketModal = (product: ProductItemType) => {
-    dispatch(setProductToBasket({product}))
+  const openBasketModal = ( product: ProductItemType ) => {
+    dispatch( setProductToBasket( { product } ) );
     setIsBasketModalActive( true );
   };
 
@@ -101,7 +70,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                   .map( ( item: ProductItemType ) =>
                     <ProductItem
                       key={ item.id }
-                      product={item}
+                      product={ item }
                       id={ item.id }
                       image={ item.images[ 0 ].image }
                       name={ item.name }
@@ -109,7 +78,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                       classNameForDarkItem={ productItem }
                       unit={ item.unit }
                       openOneClickModal={ openOneClickModal }
-                      openBasketModal={openBasketModal}
+                      openBasketModal={ openBasketModal }
                     />,
                   )
               }
@@ -126,14 +95,14 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
         { isBasketModalActive &&
           <Modal closeModal={ closeBasketModal }>
             <BasketModal
-              key={ itemsForBlock[0].id }
-              id={ itemsForBlock[0].id }
-              image={ itemsForBlock[0].images[ 0 ].image }
-              name={ itemsForBlock[0].name }
-              unit={ itemsForBlock[0].unit }
-              options={ itemsForBlock[0].options }
+              key={ itemsForBlock[ 0 ].id }
+              id={ itemsForBlock[ 0 ].id }
+              image={ itemsForBlock[ 0 ].images[ 0 ].image }
+              name={ itemsForBlock[ 0 ].name }
+              unit={ itemsForBlock[ 0 ].unit }
+              options={ itemsForBlock[ 0 ].options }
               isForModal={ true }
-              closeModal={closeBasketModal}
+              closeModal={ closeBasketModal }
             />
           </Modal>
         }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import Article from '../common/Article/Article';
 import style from './UsefulArticlesBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
@@ -13,68 +13,36 @@ import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selecto
 import { getTitleForArticlesBlock } from '../../helpers/getTitle';
 import { getArticles } from '../../redux/selectors/articles-selectors';
 import { fetchArticlesTC } from '../../redux/reducers/articles-reducer';
+import { useCarousel } from '../../customHooks/useCarousel';
 
 const UsefulArticlesBlock = () => {
 
-  const articles = useSelector(getArticles);
+  const articles = useSelector( getArticles );
   const navigate = useNavigate();
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
   const dispatch = useDispatch();
 
-  const [ offset, setOffset ] = useState( 0 );
-  const [ width, setWidth ] = useState( 1200 );
-  const [ isNextDisabled, setIsNextDisabled ] = useState( false );
-  const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
-
-  const windowElRef = useRef( null );
+  const pagesCount = articles.length / 4;
+  const {
+    offset,
+    isPrevDisabled,
+    isNextDisabled,
+    onNextSectionButtonClick,
+    onPrevSectionButtonClick,
+    windowElRef,
+  } = useCarousel( pagesCount );
 
   useEffect( () => {
-    const resizeHandler = () => {
-
-      // @ts-ignore
-      const _width = windowElRef?.current.offsetWidth;
-      setWidth( _width );
-      setOffset( 0 );
-      setIsPrevDisabled(true)
-      setIsNextDisabled(false)
-    };
-    resizeHandler();
-    window.addEventListener( 'resize', resizeHandler );
-
-    return () => {
-      window.removeEventListener( 'resize', resizeHandler );
-    };
-  }, [ width ] );
-
-  const onPrevSectionButtonClick = () => {
-    setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset + width;
-      setIsNextDisabled( false );
-      setIsPrevDisabled( 0 < newOffset + width );
-      return Math.min( newOffset, 0 );
-    } );
-  };
-  const onNextSectionButtonClick = () => {
-    setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset - width;
-      const maxOffset = -( width * ( ( articles.length / 4 ) - 1 ) + ( width / 100 * 7 ) );
-      setIsNextDisabled( maxOffset > newOffset - width );
-      setIsPrevDisabled( false );
-      return Math.max( newOffset, maxOffset );
-    } );
-  };
-
-  useEffect(() => {
     // @ts-ignore
-    dispatch(fetchArticlesTC())
-  }, [])
+    dispatch( fetchArticlesTC() );
+  }, [] );
 
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
       <div className={ commonStyle.container }>
         <div className={ commonStyle.navigationInfoBlock }>
-          <h2>{ `Полезные статьи ${subTitle}` }</h2> {/*//todo будет зависить от выбранного типа животного*/ }
+          <h2>{ `Полезные статьи ${ subTitle }` }</h2>
           <div className={ `${ commonStyle.sectionsBlock } ${ themeStyle.sectionsBlock }` }>
             <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
             <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>
