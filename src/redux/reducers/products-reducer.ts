@@ -1,14 +1,17 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getProductItems, getWithThisProductsBuy, OptionType } from '../../mocks';
 import { selectValues } from '../../Api/productsApi/enums';
+import { setProductRequest } from './app-reducer';
+import { RequestStatus } from './enums';
 
 /*export const fetchProductsTC = createAsyncThunk(
   'products/fetchProducts', async ( param, { dispatch } ) => {
     const res = await productsAPI.setProducts(); //todo после того, как заработает бэк
     try {
+      dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {
-
+      dispatch( setProductRequest( { status: RequestStatus.FAILED } ) );
     }
   },
 );*/
@@ -47,9 +50,10 @@ export const fetchProductsTC = createAsyncThunk(
   'products/fetchProducts', ( param, { dispatch } ) => {
     const res = getProductItems(); //todo позже будет APi запрос
     try {
+      dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res };
     } catch ( err ) {
-
+      dispatch( setProductRequest( { status: RequestStatus.FAILED } ) );
     }
   },
 );
@@ -108,36 +112,36 @@ export const slice = createSlice( {
     selectSort: selectValues.ADDED_DATE,
   },
   reducers: {
-    setActualPage( state, action: PayloadAction<{ pageNumber: number }>   ) {
-      state.pageNumber = action.payload.pageNumber
+    setActualPage( state, action: PayloadAction<{ pageNumber: number }> ) {
+      state.pageNumber = action.payload.pageNumber;
     },
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.products = action.payload.products
+      state.products = action.payload.products;
     } );
     builder.addCase( fetchWithThisProductByProductsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.withThisProductBy = action.payload.products
+      state.withThisProductBy = action.payload.products;
     } );
     builder.addCase( fetchPopularProductsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.popularProducts = action.payload.popularProducts
+      state.popularProducts = action.payload.popularProducts;
     } );
     builder.addCase( fetchLatestProductsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.latestProducts = action.payload.latestProducts
+      state.latestProducts = action.payload.latestProducts;
     } );
     builder.addCase( fetchPreviouslyProductsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.previouslyProducts = action.payload.previouslyProducts
+      state.previouslyProducts = action.payload.previouslyProducts;
     } );
   } ),
 } );
 
 export const productsReducer = slice.reducer;
-export const {setActualPage} = slice.actions;
+export const { setActualPage } = slice.actions;
 
 export type ProductItemType = {
   id: number,

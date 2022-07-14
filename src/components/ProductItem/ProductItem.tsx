@@ -37,7 +37,7 @@ const ProductItem = ( {
             unit={ unit }
           />,
         ) }
-        { isKilo && <span onClick={ () => alert( 'Переход на страницу товара с активным блоком задания веса' ) }>Задать свой вес</span> }
+        { isKilo && <span onClick={ () => navigate(`${ routesPathsEnum.CATALOG }/${ id }`) }>Задать свой вес</span> }
       </div>
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
