@@ -11,8 +11,8 @@
   margin: 24px 0;
   border-radius: 5px;
   cursor: pointer;
-  padding: 5px;
-  padding-left: 0;
+  padding: 5px 5px 5px 0;
+
   & span {
     @include SFDisplaySemibold();
     font-size: 16px;
@@ -24,7 +24,7 @@
   @include size(85px,81px);
   & img{
     @include size(100%, 100%);
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 }
