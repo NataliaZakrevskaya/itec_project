@@ -130,15 +130,18 @@
 }
 @media (max-width: 1199px) {
   .basketWrapper{
-    max-width: 960px;
+    max-width: 960px!important;
   }
 }
 @media (max-width: 992px) {
   .basketWrapper{
-    max-width: 720px;
+    max-width: 720px !important;
   }
   .basketInfoBlockContainer{
     flex-direction: column!important;
+  }
+  .basketInfoContainer{
+    width: 100% !important;
   }
   .basketInfoContainer{
     margin: 0 auto;
@@ -146,10 +149,7 @@
 }
 @media (max-width: 768px) {
   .basketWrapper{
-    max-width: 540px;
-  }
-  .basketInfoContainer{
-    width: 100% !important;
+    max-width: 540px !important;
   }
   .productsItemsBlockContainer{
     width: 100% !important;

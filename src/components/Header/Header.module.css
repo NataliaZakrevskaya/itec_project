@@ -91,6 +91,18 @@
     gap: 25px !important;
   }
 }
+.header .navBarContainer .navBar .navElements {
+  gap: 41px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .navBarContainer .navBar .navElements .searchIcon {
+  background: url("../../Images/searchIcon.svg") no-repeat center;
+  width: 16px;
+  height: 16px;
+}
 .header .navBarContainer .navBar .burgerButton {
   background-image: url("../../Images/hamburger.svg");
   width: 20px;

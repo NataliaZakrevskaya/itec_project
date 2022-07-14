@@ -49,9 +49,9 @@
   .animalType{
     width: 137.88px;
     height: 56px;
-    & img {
+    & .animalTypeImageWrapper{
       width: 56.88px;
-      height: 56px;
+      height: 53px;
     }
   }
 }

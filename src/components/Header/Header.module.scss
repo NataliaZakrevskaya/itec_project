@@ -70,7 +70,7 @@
       }
 
       .navElements{
-        width: 80%;
+        gap: 41px;
         @include flex(row, space-between, center);
         .searchIcon {
           background: url("../../Images/searchIcon.svg") no-repeat center;
