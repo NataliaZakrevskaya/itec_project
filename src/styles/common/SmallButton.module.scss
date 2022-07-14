@@ -1,3 +1,5 @@
+@import "src/styles/Mixins";
+
 .smallButton{
   cursor: pointer;
   padding: 8px 16px;
@@ -5,7 +7,7 @@
   background: #00A0AC;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  color: #FFFFFF;
+  color: white;
   border: none;
   outline: none;
   @include SFTextRegular();

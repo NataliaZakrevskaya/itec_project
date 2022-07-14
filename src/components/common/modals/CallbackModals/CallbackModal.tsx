@@ -38,7 +38,7 @@ const CallbackModal = (  ) => {
             </div>
           </div>
           <div className={ formStyle.orderBlock }>
-            <button type="submit">Отправить</button>
+            <button onClick={() => alert('диспатч санки')} type="submit">Отправить</button>
             <p>Нажимая на кнопку вы даёте согласие на обработку
             <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных</span></p>
           </div>

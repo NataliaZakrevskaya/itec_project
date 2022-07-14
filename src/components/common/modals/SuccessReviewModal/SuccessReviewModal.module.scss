@@ -1,6 +1,6 @@
 @import "src/styles/Mixins";
 
-.successCallbackModalsContent{
+.successReviewModal{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,14 +15,6 @@
     text-align: center;
     color: #202223;
     margin: 12px 0;
-    white-space: nowrap;
-  }
-  & p{
-    @include SFTextRegular();
-    font-size: 15px;
-    line-height: 20px;
-    color: #202223;
-    margin-bottom: 13px;
     white-space: nowrap;
   }
 }

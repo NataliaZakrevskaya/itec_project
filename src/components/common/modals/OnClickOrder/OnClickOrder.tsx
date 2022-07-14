@@ -32,7 +32,7 @@ const OnClickOrder = () => {
         isForModal={ true }
       />
       <div className={style.nextSection}>
-        <span></span>
+        <span/>
       </div>
       <p className={style.setDataParagraph}>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать вас по адресу: Минск, ул. Чюрлёниса,
         6.</p>
