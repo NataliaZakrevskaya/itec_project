@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getProductItems, getWithThisProductsBuy, OptionType } from '../../mocks';
 import { selectValues } from '../../Api/productsApi/enums';
 
@@ -102,16 +102,15 @@ export const slice = createSlice( {
     previouslyProducts: [] as Array<ProductItemType>,
     popularProducts: [] as Array<ProductItemType>,
     latestProducts: [] as Array<ProductItemType>,
-    totalProductsCount: 0 as number,
-    maxProductItemsOnPage: 10 as number,
+    totalProductsCount: 60 as number, //todo заменить на 0 после получения по апишке
+    maxProductItemsOnPage: 15 as number,
     pageNumber: 1 as number,
-    productName: '' as string,
     selectSort: selectValues.ADDED_DATE,
   },
   reducers: {
-    /*setToPreviouslyProducts( state, action: PayloadAction<{ product: ProductItemType }>   ) {
-      state.previouslyProducts.unshift(action.payload.product)
-    },*/
+    setActualPage( state, action: PayloadAction<{ pageNumber: number }>   ) {
+      state.pageNumber = action.payload.pageNumber
+    },
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
@@ -138,6 +137,7 @@ export const slice = createSlice( {
 } );
 
 export const productsReducer = slice.reducer;
+export const {setActualPage} = slice.actions;
 
 export type ProductItemType = {
   id: number,

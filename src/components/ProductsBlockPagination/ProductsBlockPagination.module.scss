@@ -6,15 +6,32 @@
   color: $mainColor;
   @include flex(row, space-between, center);
   margin-top: 26px;
-  .navigationBlock{
+
+  .navigationBlock {
     display: flex;
     flex-direction: row;
     align-items: center;
-    & .navigationBlockLeft{
+    cursor: pointer;
+
+    & .navigationBlockLeft {
       margin-right: 7.6px;
     }
-    & .navigationBlockRight{
+
+    & .navigationBlockRight {
       margin-left: 7.6px;
+    }
+  }
+
+  .pages {
+    display: flex;
+    align-items: center;
+
+    .page {
+      cursor: pointer;
+      margin: 0 16px;
+    }
+    .active{
+      color: #6D7175;
     }
   }
 }

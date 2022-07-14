@@ -4,9 +4,9 @@ import ProductItemForSearch from '../../ProductItemForSerch/ProductItemForSearch
 import RejectSearchResult from '../../common/modals/RejectSearchResult/RejectSearchResult';
 import { ProductItemType } from '../../../redux/reducers/products-reducer';
 
-const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }: any ) => {
+const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }: SearchResultsBlockType ) => {
 
-  const successResult = true; //todo после получется из состояния запроса
+  const successResult = false; //todo после получется из состояния запроса
 
   return (
     <div>
@@ -21,7 +21,7 @@ const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }
                     id={ item.id }
                     name={ item.name }
                     image={ item.images[ 0 ].image }
-                    onClick={onProductItemClick}
+                    onClick={ onProductItemClick }
                   />,
                 )
               }
@@ -38,3 +38,9 @@ const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }
 };
 
 export default SearchResultsBlock;
+
+type SearchResultsBlockType = {
+  productItems: Array<ProductItemType>,
+  onButtonClick: () => void,
+  onProductItemClick: (id: number) => void
+}

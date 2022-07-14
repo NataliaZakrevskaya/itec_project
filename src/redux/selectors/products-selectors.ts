@@ -16,3 +16,12 @@ export const getPopularProductsItems = (state: AppRootStateType): ProductItemTyp
 export const getLatestProductsItems = (state: AppRootStateType): ProductItemType[] => {
   return state.products.latestProducts
 }
+export const getActualPage = (state: AppRootStateType): number => {
+  return state.products.pageNumber
+}
+export const getTotalProductsCount = (state: AppRootStateType): number => {
+  return state.products.totalProductsCount
+}
+export const getPageSize = (state: AppRootStateType): number => {
+  return state.products.maxProductItemsOnPage
+}

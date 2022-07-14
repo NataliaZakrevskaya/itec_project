@@ -22,8 +22,13 @@ import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
 import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
 import { setProductToBasket } from '../../redux/reducers/basket-reducer';
-import { fetchProductsTC, ProductItemType } from '../../redux/reducers/products-reducer';
-import { getProductItems } from '../../redux/selectors/products-selectors';
+import { fetchProductsTC, ProductItemType, setActualPage } from '../../redux/reducers/products-reducer';
+import {
+  getActualPage,
+  getPageSize,
+  getProductItems,
+  getTotalProductsCount,
+} from '../../redux/selectors/products-selectors';
 import { routesPathsEnum } from '../../routes/enums';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,11 +37,21 @@ const CatalogPage = () => {
   const products = useSelector( getProductItems );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
+  const actualPage = useSelector( getActualPage );
+  const totalProductsCount = useSelector( getTotalProductsCount );
+  const pageSize = useSelector( getPageSize );
+
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( true );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const onPageChanged = ( pageNumber: number ) => {
+    alert( `${ pageNumber }` ); //todo позже санка с запросом продуктов
+    dispatch(setActualPage({pageNumber}))
+  };
 
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
@@ -122,7 +137,12 @@ const CatalogPage = () => {
                   />,
                 )
               }
-              <ProductsBlockPagination/>
+              <ProductsBlockPagination
+                totalProductsCount={ totalProductsCount }
+                pageSize={ pageSize }
+                actualPage={ actualPage }
+                onPageChanged={ onPageChanged }
+                portionSize={ 3 }/>
             </div> )
             : ( <div className={ style.emptyCatalog }>
               <img src={ sadCat } alt="sadCat"/>
