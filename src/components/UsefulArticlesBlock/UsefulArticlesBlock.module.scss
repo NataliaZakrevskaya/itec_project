@@ -14,12 +14,15 @@
       & .allArticlesItemsContainer {
       @include flex(row, space-between, stretch);
       width: 100%;
-      gap: 3%;
+      /*gap: 25px;*/
       //margin-left: 5px;
       transition: translate;
       transition-property: transform;
       transition-duration: 1500ms;
       transition-timing-function: ease-in-out;
+        &:nth-child(3n){
+          margin-right: 0;
+        }
     }
   }
 }

@@ -8,10 +8,11 @@ import { routesPathsEnum } from '../../routes/enums';
 import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 import { getTitleForArticlesBlock } from '../../helpers/getTitle';
 import { getArticles } from '../../redux/selectors/articles-selectors';
+import { fetchArticlesTC } from '../../redux/reducers/articles-reducer';
 
 const UsefulArticlesBlock = () => {
 
@@ -19,6 +20,7 @@ const UsefulArticlesBlock = () => {
   const navigate = useNavigate();
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
+  const dispatch = useDispatch();
 
   const [ offset, setOffset ] = useState( 0 );
   const [ width, setWidth ] = useState( 1200 );
@@ -47,7 +49,7 @@ const UsefulArticlesBlock = () => {
 
   const onPrevSectionButtonClick = () => {
     setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset + width + ( width / 100 * 1.8 );
+      const newOffset = currentOffset + width;
       setIsNextDisabled( false );
       setIsPrevDisabled( 0 < newOffset + width );
       return Math.min( newOffset, 0 );
@@ -55,13 +57,18 @@ const UsefulArticlesBlock = () => {
   };
   const onNextSectionButtonClick = () => {
     setOffset( ( currentOffset ) => {
-      const newOffset = currentOffset - width - ( width / 100 * 1.4 );
+      const newOffset = currentOffset - width;
       const maxOffset = -( width * ( ( articles.length / 4 ) - 1 ) + ( width / 100 * 7 ) );
       setIsNextDisabled( maxOffset > newOffset - width );
       setIsPrevDisabled( false );
       return Math.max( newOffset, maxOffset );
     } );
   };
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchArticlesTC())
+  }, [])
 
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
