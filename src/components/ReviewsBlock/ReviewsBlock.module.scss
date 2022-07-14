@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 0 16px 0;
 
   .reviewsBlockTitle {
     @include SFDisplaySemibold();
