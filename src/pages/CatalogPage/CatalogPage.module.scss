@@ -74,6 +74,7 @@
     align-items: center;
     margin-top: 14px;
     border: 1px solid #BABFC3;
+    display: none;
     & .catalogFilterText{
       @include SFTextMedium();
       font-size: 15px;
@@ -164,13 +165,20 @@
 @media (max-width: 992px) {
   .mainBlock{
     max-width: 720px !important;
-    .productsBlockContainer{
-      padding: 0 !important;
-    }
+    //.productsBlockContainer{
+    //  padding: 0 !important;
+    //}
   }
   .productsType{
-    position: absolute;
+    //position: absolute;
     //left: -1000px;
+    width: 220px;
+    & input{
+      width: 190px !important;
+    }
+    & button {
+      width: 190px!important;
+    }
   }
   .title{
     max-width: 720px !important;
@@ -179,5 +187,13 @@
     & h1 {
       margin-bottom: 16px;
     }
+  }
+}
+@media (max-width: 768px) {
+  .mainBlock{
+    max-width: 540px !important;
+  }
+  .title{
+    max-width: 540px !important;
   }
 }

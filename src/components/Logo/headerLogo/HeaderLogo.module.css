@@ -23,10 +23,16 @@
   flex-direction: row;
   align-items: center;
 }
-.logoBlock img {
+.logoBlock div {
   width: 20.5px;
   height: 24px;
   margin-right: 9.5px;
+  background: url("../../../Images/headerLogo.svg");
+}
+@media (max-width: 768px) {
+  .logoBlock div {
+    background: url("../../../Images/darkLogo.svg");
+  }
 }
 .logoBlock p {
   font-family: "SF Display Bold";
@@ -36,6 +42,40 @@
   line-height: 24px;
   text-transform: uppercase;
   color: #FFFFFF;
+}
+@media (max-width: 768px) {
+  .logoBlock p {
+    color: #202223;
+  }
+}
+@media (max-width: 768px) {
+  .logoBlock p span {
+    color: #008060;
+  }
+}
+
+.logoBlockForBurger {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logoBlockForBurger div {
+  width: 20.5px;
+  height: 24px;
+  margin-right: 9.5px;
+  background: url("../../../Images/darkLogo.svg");
+}
+.logoBlockForBurger p {
+  font-family: "SF Display Bold";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #202223;
+}
+.logoBlockForBurger p span {
+  color: #008060;
 }
 
 /*# sourceMappingURL=HeaderLogo.module.css.map */

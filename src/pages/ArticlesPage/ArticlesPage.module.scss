@@ -28,7 +28,9 @@
     margin: 0 auto;
     padding: 0 20px;
     .articlesBlock{
-      @include flex(row, space-between, center);
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
       box-sizing: border-box;
       flex-wrap: wrap;
       gap: 16px;
@@ -53,6 +55,22 @@
         border: none;
       }
     }
+  }
+}
+@media (max-width: 1199px) {
+  .articlesBlockContainer{
+    max-width: 960px !important;
+  }
+  .articlesTitle{
+    max-width: 960px!important;
+  }
+}
+@media (max-width: 992px) {
+  .articlesBlockContainer{
+    max-width: 720px !important;
+  }
+  .articlesTitle{
+    max-width: 720px !important;
   }
 }
 @media (max-width: 768px) {
