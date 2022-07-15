@@ -16,6 +16,7 @@ import ReviewModal from '../common/modals/ReviewModal/ReviewModal';
 import SuccessReviewModal from '../common/modals/SuccessReviewModal/SuccessReviewModal';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import { BlockNames } from '../../customHooks/enums';
 
 const ReviewsBlock = () => {
 
@@ -23,7 +24,6 @@ const ReviewsBlock = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const pagesCount = reviews.length;
   const {
     windowElRef,
     offset,
@@ -33,7 +33,7 @@ const ReviewsBlock = () => {
     isNextDisabled,
     onTouchStart,
     onTouchEnd,
-  } = useCarousel( pagesCount );
+  } = useCarousel( BlockNames.REVIEWS, reviews.length );
 
   const [ isReviewModalActive, setIsReviewModalActive ] = useState<boolean>( false );
   const isSuccessReviewActive = false; //todo позже из стора апп
@@ -87,7 +87,7 @@ const ReviewsBlock = () => {
           <div className={ colorStyle.block }>
             <div className={ `${ colorStyle.sectionsBlock } ${ style.buttonsBlock }` }>
               <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
-              <p>1 из { pagesCount }</p>
+              <p>1 из { 3 }</p>
               <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>
             </div>
           </div>

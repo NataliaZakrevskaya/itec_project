@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setProductToBasket } from '../../../redux/reducers/basket-reducer';
 import { ProductItemType } from '../../../redux/reducers/products-reducer';
 import { useCarousel } from '../../../customHooks/useCarousel';
+import { BlockNames } from '../../../customHooks/enums';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
 
@@ -18,7 +19,6 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const { block, sectionsBlock, productItem } = blockTheme;
   const dispatch = useDispatch();
-  const pagesCount = itemsForBlock.length / 4;
 
   const {
     onPrevSectionButtonClick,
@@ -29,7 +29,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
     isNextDisabled,
     onTouchStart,
     onTouchEnd,
-  } = useCarousel( pagesCount );
+  } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length );
 
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
