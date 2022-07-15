@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Address from '../common/Address/Address';
 import Schedule from '../common/Schedule/Schedule';
 import Phone from '../common/PhoneBlock/Phone';
@@ -10,26 +10,11 @@ import commonStyle from '../../styles/common/Container.module.scss';
 import HeaderLogo from '../Logo/headerLogo/HeaderLogo';
 import Callback from '../common/Callback/Callback';
 import instagramIcon from '../../Images/instagramIcon.svg';
+import { useResize } from '../../customHooks/useResize';
 
 const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
 
-  const [ width, setWidth ] = useState( 1200 );
-
-  const windowElRef = useRef( null );
-
-  useEffect( () => {
-    const resizeHandler = () => {
-      // @ts-ignore
-      const _width = windowElRef?.current.offsetWidth;
-      setWidth( _width );
-    };
-    resizeHandler();
-    window.addEventListener( 'resize', resizeHandler );
-
-    return () => {
-      window.removeEventListener( 'resize', resizeHandler );
-    };
-  }, [ width ] );
+  const { width, windowElRef } = useResize();
 
   return (
     <header className={ style.header } ref={ windowElRef }>
@@ -53,7 +38,7 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
           <div className={ style.navElements }>
             { width > 570
               ? <SearchInput forHeaderBurger={ false }/>
-              : <div className={ style.searchIcon } onClick={openEditMode}/>
+              : <div className={ style.searchIcon } onClick={ openEditMode }/>
             }
             <NavbarForHeader forHeaderBurger={ false } closeEditMode={ closeEditMode }/>
             <BasketLink forHeaderBurger={ false } onClickHandler={ closeEditMode }/>

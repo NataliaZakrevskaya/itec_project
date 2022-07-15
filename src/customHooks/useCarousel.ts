@@ -1,30 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { useResize } from './useResize';
 
 export const useCarousel = ( pagesCount: number ) => {
   const [ offset, setOffset ] = useState( 0 );
-  const [ width, setWidth ] = useState( 1200 );
   const [ isNextDisabled, setIsNextDisabled ] = useState( false );
   const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
-
-  const windowElRef = useRef( null );
-
-  useEffect( () => {
-    const resizeHandler = () => {
-
-      // @ts-ignore
-      const _width = windowElRef?.current.offsetWidth;
-      setWidth( _width );
-      setOffset( 0 );
-      setIsPrevDisabled( true );
-      setIsNextDisabled( false );
-    };
-    resizeHandler();
-    window.addEventListener( 'resize', resizeHandler );
-
-    return () => {
-      window.removeEventListener( 'resize', resizeHandler );
-    };
-  }, [ width ] );
+  const { width, windowElRef } = useResize();
 
   const onPrevSectionButtonClick = () => {
     setOffset( ( currentOffset ) => {
