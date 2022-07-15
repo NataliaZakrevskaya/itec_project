@@ -50,7 +50,7 @@ const CatalogPage = () => {
 
   const onPageChanged = ( pageNumber: number ) => {
     alert( `${ pageNumber }` ); //todo позже санка с запросом продуктов
-    dispatch(setActualPage({pageNumber}))
+    dispatch( setActualPage( { pageNumber } ) );
   };
 
   const closeOneClickModal = () => {
