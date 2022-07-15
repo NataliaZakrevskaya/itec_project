@@ -50,7 +50,7 @@ export const useCarousel = ( pagesCount: number ) => {
   const onTouchStart = ( event: any ) => {
     setX( event.touches[ 0 ].clientX );
   };
-  const onTouchMove = ( event: any ) => {
+  const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;
     setX2( event.changedTouches[ 0 ].clientX );
     if ( x && x2 ) {
@@ -79,6 +79,6 @@ export const useCarousel = ( pagesCount: number ) => {
     onNextSectionButtonClick,
     windowElRef,
     onTouchStart,
-    onTouchMove,
+    onTouchEnd,
   };
 };

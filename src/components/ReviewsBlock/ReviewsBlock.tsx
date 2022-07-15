@@ -4,7 +4,7 @@ import style from './ReviewsBlock.module.scss';
 import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
 import Review from './Review/Review';
-import React, { TouchEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +16,6 @@ import ReviewModal from '../common/modals/ReviewModal/ReviewModal';
 import SuccessReviewModal from '../common/modals/SuccessReviewModal/SuccessReviewModal';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import { log } from 'util';
 
 const ReviewsBlock = () => {
 
@@ -33,7 +32,7 @@ const ReviewsBlock = () => {
     onPrevSectionButtonClick,
     isNextDisabled,
     onTouchStart,
-    onTouchMove
+    onTouchEnd,
   } = useCarousel( pagesCount );
 
   const [ isReviewModalActive, setIsReviewModalActive ] = useState<boolean>( false );
@@ -55,8 +54,6 @@ const ReviewsBlock = () => {
     dispatch( fetchReviewsTC() );
   }, [] );
 
-
-
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
       <div className={ commonStyle.container }>
@@ -67,7 +64,7 @@ const ReviewsBlock = () => {
               className={ style.window }
               ref={ windowElRef }
               onTouchStart={ onTouchStart }
-              onTouchEnd={ onTouchMove }
+              onTouchEnd={ onTouchEnd }
             >
               <div className={ style.allReviewsItemsContainer }
                    style={ {

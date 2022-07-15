@@ -27,6 +27,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
     offset,
     windowElRef,
     isNextDisabled,
+    onTouchStart,
+    onTouchEnd,
   } = useCarousel( pagesCount );
 
   const closeOneClickModal = () => {
@@ -60,7 +62,12 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
           </div>
         </div>
         <div className={ commonStyle.itemsContainer }>
-          <div className={ commonStyle.window } ref={ windowElRef }>
+          <div
+            className={ commonStyle.window }
+            ref={ windowElRef }
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
             <div className={ commonStyle.allProductItemsContainer }
                  style={ {
                    transform: `translateX(${ offset }px)`,
