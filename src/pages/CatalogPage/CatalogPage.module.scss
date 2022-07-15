@@ -193,7 +193,19 @@
   .mainBlock{
     max-width: 540px !important;
   }
+  .productsType{
+    display: none !important;
+  }
   .title{
     max-width: 540px !important;
+  }
+  .catalogFilter{
+    display: flex !important;
+    margin: 0 auto;
+    margin-top: 14px !important;
+    cursor: pointer;
+  }
+  .productsBlock{
+    justify-content: center !important;
   }
 }
