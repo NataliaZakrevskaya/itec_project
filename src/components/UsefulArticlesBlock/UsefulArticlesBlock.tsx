@@ -31,6 +31,8 @@ const UsefulArticlesBlock = () => {
     onNextSectionButtonClick,
     onPrevSectionButtonClick,
     windowElRef,
+    onTouchStart,
+    onTouchEnd
   } = useCarousel( pagesCount );
 
   useEffect( () => {
@@ -49,7 +51,12 @@ const UsefulArticlesBlock = () => {
           </div>
         </div>
         <div className={ style.articlesContainer }>
-          <div className={ style.window } ref={ windowElRef }>
+          <div
+            className={ style.window }
+            ref={ windowElRef }
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
             <div className={ style.allArticlesItemsContainer }
                  style={ {
                    transform: `translateX(${ offset }px)`,
