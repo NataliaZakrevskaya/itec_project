@@ -25,8 +25,20 @@
         margin: 0 4.9%;
       }
       @media (max-width: 992px) {
-          gap: 45.4%;
-        margin: 0 22.7%;
+          gap: 58.8%;
+        margin: 0 29.4%;
+      }
+      @media (max-width: 768px) {
+        gap: 44%;
+        margin: 0 22%;
+      }
+      @media (max-width: 532px) {
+        gap: 43.1%;
+        margin: 0 21.5%;
+      }
+      @media (max-width: 412px) {
+        gap: 17.2%;
+        margin: 0 8.6%;
       }
     }
   }

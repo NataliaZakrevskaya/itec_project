@@ -35,11 +35,9 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
       <div className={ style.navBarContainer }>
         <div className={ `${ style.navBar } ${ commonStyle.container } ` }>
           <HeaderLogo/>
+          { width > 768 && <SearchInput forHeaderBurger={ false }/> }
           <div className={ style.navElements }>
-            { width > 570
-              ? <SearchInput forHeaderBurger={ false }/>
-              : <div className={ style.searchIcon } onClick={ openEditMode }/>
-            }
+            { width < 769 && <div className={ style.searchIcon } onClick={ openEditMode }/> }
             <NavbarForHeader forHeaderBurger={ false } closeEditMode={ closeEditMode }/>
             <BasketLink forHeaderBurger={ false } onClickHandler={ closeEditMode }/>
             <div onClick={ openEditMode } className={ style.burgerButton }/>
