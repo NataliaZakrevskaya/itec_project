@@ -195,8 +195,12 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <PopularProductsBlock/>
-      <WithThisProductBuyBlock/>
+      <div className={style.productPageButtonWrappers}>
+        <PopularProductsBlock/>
+      </div>
+      <div className={style.productPageButtonWithWrappers}>
+        <WithThisProductBuyBlock/>
+      </div>
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>

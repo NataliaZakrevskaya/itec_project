@@ -22,3 +22,10 @@
     color: #202223;
   }
 }
+@media (max-width: 768px) {
+  .phoneBlock{
+    & a {
+      font-size: 13px !important;
+    }
+  }
+}

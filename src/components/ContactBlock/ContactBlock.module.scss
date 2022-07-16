@@ -138,5 +138,27 @@
   }
 }
 @media (max-width: 768px) {
+  .scheduleWrapperLine{
 
+  }
+  .scheduleWrapperFirst{
+  display: flex;
+  }
+  .contactBlockWrapperDirection{
+    & p {
+      @include SFTextRegular();
+      font-size: 14px;
+      line-height: 20px;
+      color: #202223;
+    }
+  }
+  .scheduleWrapper{
+
+    & div {
+      @include SFTextRegular();
+      font-size: 13px;
+      line-height: 20px;
+      color: #202223;
+    }
+  }
 }

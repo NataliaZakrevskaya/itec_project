@@ -26,7 +26,7 @@
   & p {
     width: 220px;
     @include SFTextRegular();
-    font-size: 14px;
+    font-size: 16px;
     line-height: 140%;
     color: #202223;
   }
@@ -78,6 +78,8 @@
   }
   .subTitleWrapper{
     flex-direction: column;
+    font-size: 15px;
+    line-height: 140%;
   }
   .subTitleOne{
     margin-bottom: 16px;

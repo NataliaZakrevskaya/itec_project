@@ -155,7 +155,9 @@ const CatalogPage = () => {
 
         </div>
       </div>
-      <PopularProductsBlock/>
+      <div className={style.catalogPopularProductsWrapper}>
+        <PopularProductsBlock/>
+      </div>
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>

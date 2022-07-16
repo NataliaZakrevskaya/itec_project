@@ -56,3 +56,17 @@
     padding: 62.5px 0;
   }
 }
+@media (max-width: 768px) {
+  .greetingBlockTitle{
+    font-size: 21px !important;
+    line-height: 28px !important;
+  }
+  .greetingBlockText{
+    font-size: 15px !important;
+    line-height: 20px !important;
+  }
+  .greetingBlockWrapperTitle{
+    font-size: 15px !important;
+    line-height: 20px !important;
+  }
+}

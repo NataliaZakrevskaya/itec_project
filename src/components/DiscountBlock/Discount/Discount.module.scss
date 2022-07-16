@@ -10,7 +10,7 @@
 
   .titlePart {
     //@include flex(column, space-between, flex-start);
-
+    margin-right: 9px;
     & p{
       @include SFDisplayBold;
       font-size: 20px;
@@ -63,9 +63,9 @@
    height: 116px;
  }
   .titlePart{
-    font-size: 15px;
-    line-height: 20px;
     & p {
+      font-size: 15px !important;
+      line-height: 20px !important;
       max-width: 215px;
     }
   }

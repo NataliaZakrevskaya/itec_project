@@ -41,3 +41,8 @@
 .productItem{
   background-color: #FAFBFB;
 }
+@media (max-width: 768px) {
+  .block {
+    padding-bottom: 33px;
+  }
+}

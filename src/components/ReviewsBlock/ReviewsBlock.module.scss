@@ -37,6 +37,7 @@
         & .reviewContainer {
           min-width: 100%;
           max-width: 100%;
+          padding: 0 10px;
 
           .reviewsBlockSubTitle {
             @include SFDisplaySemibold();
@@ -96,5 +97,32 @@
       line-height: 24px;
       color: #916A00;
     }
+  }
+}
+@media (max-width: 768px) {
+  .reviewsBlockTitle{
+    font-size: 21px !important;
+    line-height: 28px !important;
+  }
+  .reviewsBlockSubTitle{
+    font-size: 15px !important;
+    line-height: 20px !important;
+  }
+  .reviewsBlockText{
+    font-size: 13px !important;
+    line-height: 20px !important;
+  }
+  .reviewsBlockWrapper{
+    flex-direction: column;
+    align-items: center;
+    & p {
+      font-size: 15px !important;
+      line-height: 20px !important;
+    }
+  }
+  .reviewsBlockPhoneWrapper{
+    margin-right: 0 !important;
+    margin-bottom: 8px;
+
   }
 }

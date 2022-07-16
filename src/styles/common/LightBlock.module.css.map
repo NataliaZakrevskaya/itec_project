@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["LightBlock.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;;AAGE;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGJ;EACE;EACA;EACA;EACA;;;AAKN;EACE","file":"LightBlock.module.css"}
+{"version":3,"sourceRoot":"","sources":["LightBlock.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;;AAGE;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGJ;EACE;EACA;EACA;EACA;;;AAKN;EACE;;;AAEF;EACE;IACE","file":"LightBlock.module.css"}

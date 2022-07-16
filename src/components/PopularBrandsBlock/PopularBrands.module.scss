@@ -19,3 +19,11 @@
   //  gap: 5px !important;
   //}
 }
+@media (max-width: 768px) {
+  .popularBrandsBlock{
+    padding-top: 10px;
+    & h2{
+      margin-bottom: 16px;
+    }
+  }
+}

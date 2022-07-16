@@ -38,7 +38,7 @@ const ContactBlock = () => {
               <div className={ style.scheduleWrapper }>
                 <div className={ style.scheduleWrapperFirst }>
                   <img src={ timeIcon } alt="timeIcon"/>
-                  Пон.-Пят. 10:00-21:00
+                  <div>Пон.-Пят. 10:00-21:00</div>
                 </div>
                 <div className={ style.scheduleWrapperLine }/>
                 <div className={ style.scheduleWrapperSecond }>

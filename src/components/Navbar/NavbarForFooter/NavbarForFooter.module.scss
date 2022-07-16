@@ -1,7 +1,7 @@
 @import "src/styles/Mixins";
 
 .navBar {
-  width: 302px;
+  gap: 48px;
   display: flex;
   justify-content: space-between;
 
@@ -14,5 +14,10 @@
     &:hover {
       text-decoration-line: underline;
     }
+  }
+}
+@media (max-width: 768px) {
+  .navBar{
+    gap: 32px;
   }
 }

@@ -154,6 +154,9 @@
 .productsType{
   width: 270px;
 }
+.catalogPopularProductsWrapper{
+  margin-bottom: 60px;
+}
 @media (max-width: 1199px) {
   .mainBlock{
     max-width: 960px !important;
@@ -196,6 +199,16 @@
   .productsType{
     display: none !important;
   }
+  .select{
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    & select{
+      width: 100% !important;
+    }
+    & p {
+      margin-bottom: 4px;
+    }
+  }
   .title{
     max-width: 540px !important;
   }
@@ -204,8 +217,13 @@
     margin: 0 auto;
     margin-top: 14px !important;
     cursor: pointer;
+    width: 100% !important;
   }
   .productsBlock{
     justify-content: center !important;
+  }
+  .catalogPopularProductsWrapper{
+    width: 100%;
+    margin-bottom: 41px;
   }
 }
