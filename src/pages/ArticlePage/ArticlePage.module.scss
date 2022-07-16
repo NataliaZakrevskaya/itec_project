@@ -97,4 +97,17 @@
     line-height: 145% !important;
     color: #202223 !important;
   }
+  .articleReadingWrapper{
+    & div {
+      & p {
+        font-size: 13px !important;
+      }
+    }
+  }
+  .articleTitle{
+    & h1 {
+      font-size: 24px !important;
+      line-height: 130% !important;
+    }
+  }
 }
