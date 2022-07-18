@@ -6,14 +6,15 @@
 
 .discountBlock{
   @include flex(row, space-between, center);
-  //margin: 56px 0;
-  margin-bottom: 40px;
-  margin-top: 57px;
+  margin: 57px 0;
   flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
   .discountBlockWrapper{
     width: 100%;
+  }
+  .discountBlock{
+    margin: 33px 0;
   }
 }

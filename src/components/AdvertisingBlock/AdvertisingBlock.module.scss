@@ -16,7 +16,7 @@
 .mainTitle{
   padding-top: 42.25px;
   margin-bottom: 32px;
-  max-width: 512px;
+  max-width: 534px;
   @include SFDisplayBold();
   font-size: 42px;
   line-height: 120%;
@@ -24,7 +24,7 @@
 .subTitleWrapper{
   display: flex;
   & p {
-    width: 220px;
+    max-width: 254px;
     @include SFTextRegular();
     font-size: 16px;
     line-height: 140%;

@@ -1,6 +1,6 @@
 .block {
   background-color: white;
-  padding-top: 3px;
+  padding-top: 28px;
   padding-bottom: 38px;
 }
 .block .sectionsBlock button:last-child {
@@ -40,6 +40,8 @@
 @media (max-width: 768px) {
   .block {
     padding-bottom: 33px;
+    background: none;
+    padding-top: 0;
   }
 }
 
