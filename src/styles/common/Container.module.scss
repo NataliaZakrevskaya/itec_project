@@ -61,7 +61,7 @@
       width: 100%;
       overflow: hidden;
 
-      & .allProductItemsContainer {
+      .allProductItemsContainer {
         @include flex(row, space-between, stretch);
         width: 100%;
         gap: 1.72%;
@@ -78,6 +78,14 @@
           gap: 10.2%;
           margin: 8px 5.1%;
         }
+      }
+      .allAnimalTypesContainer{
+        @include flex(row, space-between, stretch);
+        width: 100%;
+        transition: translate;
+        transition-property: transform;
+        transition-duration: 1500ms;
+        transition-timing-function: ease-in-out;
       }
     }
   }

@@ -35,6 +35,13 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       if ( width < 1199 && width > 992 ) return itemsCount / 3;
       return itemsCount / 2;
     }
+    if ( blockName === BlockNames.ANIMALS ) {
+      if ( width > 680 ) return 0;
+      if ( width < 681 && width > 500 ) return itemsCount / 14.29;
+      if ( width < 501 && width > 400 ) return itemsCount / 16.67;
+      if ( width < 401 && width > 350 ) return itemsCount / 12.82;
+      if ( width < 351 ) return itemsCount / 11.81;
+    }
     return 1;
   };
 
@@ -82,7 +89,27 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
         } );
       }
     }
-
+  };
+  const onTouchMove = ( event: any ) => {
+    if ( !x ) return false;
+    setX2( event.touches[ 0 ].clientX );
+    if ( x && x2 ) {
+      if ( x2 - x < 0 ) {
+        setOffset( ( currentOffset ) => {
+          const nextDiff = Math.abs( x2 - x );
+          const newOffset = currentOffset - nextDiff;
+          const maxOffset = -( width * 1.27 );
+          return Math.max( newOffset, maxOffset );
+        } );
+      }
+      if ( x2 - x > 0 ) {
+        setOffset( ( currentOffset ) => {
+          const prevDiff = x2 - x;
+          const newOffset = currentOffset + prevDiff;
+          return Math.min( newOffset, 0 );
+        } );
+      }
+    }
   };
 
   return {
@@ -94,8 +121,9 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     windowElRef,
     onTouchStart,
     onTouchEnd,
+    onTouchMove,
     width,
   };
 };
 
-type BlockNameType = 'reviews' | 'products' | 'articles'
+type BlockNameType = 'reviews' | 'products' | 'articles' | 'animals'
