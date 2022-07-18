@@ -33,6 +33,7 @@ const ReviewsBlock = () => {
     isNextDisabled,
     onTouchStart,
     onTouchEnd,
+    width
   } = useCarousel( BlockNames.REVIEWS, reviews.length );
 
   const [ isReviewModalActive, setIsReviewModalActive ] = useState<boolean>( false );
@@ -53,6 +54,15 @@ const ReviewsBlock = () => {
     // @ts-ignore
     dispatch( fetchReviewsTC() );
   }, [] );
+
+  const getCurrentReviewPage = (offset: number, width: number) => {
+    if(offset === 0) return 1;
+    if(offset === -width) return 2;
+    if(offset === -(width * 2)) return 3;
+    if(offset === -(width * 3)) return 4;
+  }
+
+  const currentReviewNumber = getCurrentReviewPage(offset, width)
 
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
@@ -87,7 +97,7 @@ const ReviewsBlock = () => {
           <div className={ colorStyle.block }>
             <div className={ `${ colorStyle.sectionsBlock } ${ style.buttonsBlock }` }>
               <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
-              <p>1 из { 3 }</p>
+              <p>{ currentReviewNumber } из { 3 }</p>
               <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>
             </div>
           </div>

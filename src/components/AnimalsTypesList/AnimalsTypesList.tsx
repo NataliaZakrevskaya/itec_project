@@ -8,40 +8,58 @@ import { fetchAnimalTypesTC, setChosenAnimalTypeId } from '../../redux/reducers/
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
+import { useCarousel } from '../../customHooks/useCarousel';
+import { BlockNames } from '../../customHooks/enums';
 
 const AnimalsTypesList = () => {
 
-  const animalTypes = useSelector(getAnimalTypes);
-  const activeAnimalTypeId = useSelector(getChosenAnimalTypeId)
+  const animalTypes = useSelector( getAnimalTypes );
+  const activeAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const {
+    offset,
+    onTouchStart,
+    onTouchMove,
+    windowElRef,
+  } = useCarousel( BlockNames.ANIMALS, animalTypes.length );
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect( () => {
     // @ts-ignore
-    dispatch(fetchAnimalTypesTC())
-  }, [])
+    dispatch( fetchAnimalTypesTC() );
+  }, [] );
 
-  const chooseActiveAnimalType = (id: number) => {
-    dispatch(setChosenAnimalTypeId({id}))
-    navigate(routesPathsEnum.CATALOG)
-  }
-
-
+  const chooseActiveAnimalType = ( id: number ) => {
+    dispatch( setChosenAnimalTypeId( { id } ) );
+    navigate( routesPathsEnum.CATALOG );
+  };
 
   return (
-    <div className={ `${ commonStyle.container } ${style.animalTypesBlock}`}>
-      { animalTypes.map( (type: AnimalTypesType) =>
-        <AnimalType
-          key={type.id}
-          id={type.id}
-          name={type.name}
-          image={type.image}
-          isActive={activeAnimalTypeId === type.id}
-          checked={!!activeAnimalTypeId || activeAnimalTypeId === 0}
-          chooseActiveAnimalType={chooseActiveAnimalType}
-        />,
-      ) }
+    <div className={ commonStyle.container }>
+      <div
+        className={ style.window }
+        ref={ windowElRef }
+        onTouchStart={ onTouchStart }
+        onTouchMove={ onTouchMove }
+      >
+        <div className={ style.animalTypesBlock }
+             style={ {
+               transform: `translateX(${ offset }px)`,
+             } }>
+          { animalTypes.map( ( type: AnimalTypesType ) =>
+            <AnimalType
+              key={ type.id }
+              id={ type.id }
+              name={ type.name }
+              image={ type.image }
+              isActive={ activeAnimalTypeId === type.id }
+              checked={ !!activeAnimalTypeId || activeAnimalTypeId === 0 }
+              chooseActiveAnimalType={ chooseActiveAnimalType }
+            />,
+          ) }
+        </div>
+      </div>
     </div>
   );
 };

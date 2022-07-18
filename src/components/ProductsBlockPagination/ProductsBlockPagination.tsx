@@ -18,19 +18,21 @@ const ProductsBlockPagination = ( {
     pages.push( i );
   }
 
-  const portionCount = Math.ceil( pagesCount / portionSize );
+  const portionCount = Math.ceil( pagesCount / portionSize);
   const [ portionNumber, setPortionNumber ] = useState( 1 );
-  const leftPortionPageNumber = ( portionNumber - 1 ) * portionSize + 1;
-  const rightPortionPageNumber = portionNumber * portionSize;
+  const leftPortionPageNumber = actualPage === pagesCount ? actualPage - 2 :actualPage - 1;
+  const rightPortionPageNumber = actualPage === 1 ? actualPage + 2 :actualPage + 1;
 
   const onPrevButtonClick = () => {
     if(portionCount > 1){
-      setPortionNumber( portionNumber - 1 )
+      onPageChanged( actualPage - 1 )
+      setPortionNumber(portionNumber - 1)
     }
   }
   const onNextButtonClick = () => {
-    if(portionCount > portionNumber){
-      setPortionNumber( portionNumber + 1 )
+    if(pagesCount > actualPage){
+      onPageChanged( actualPage + 1 )
+      setPortionNumber(portionNumber + 1)
     }
   }
 

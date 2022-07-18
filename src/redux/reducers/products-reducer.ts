@@ -106,7 +106,7 @@ export const slice = createSlice( {
     previouslyProducts: [] as Array<ProductItemType>,
     popularProducts: [] as Array<ProductItemType>,
     latestProducts: [] as Array<ProductItemType>,
-    totalProductsCount: 60 as number, //todo заменить на 0 после получения по апишке
+    totalProductsCount: 560 as number, //todo заменить на 0 после получения по апишке
     maxProductItemsOnPage: 15 as number,
     pageNumber: 1 as number,
     selectSort: selectValues.ADDED_DATE,

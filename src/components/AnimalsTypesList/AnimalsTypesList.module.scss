@@ -1,7 +1,16 @@
 @import "src/styles/Mixins";
 
-.animalTypesBlock{
-  @include flex(row, space-between, center);
-  gap: 24px;
+.window {
+  width: 100%;
   overflow: hidden;
+
+  .animalTypesBlock {
+    gap: 24px;
+    @include flex(row, space-between, stretch);
+    width: 100%;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 1500ms;
+    transition-timing-function: ease-in-out;
+  }
 }
