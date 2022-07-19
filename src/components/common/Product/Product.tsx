@@ -10,23 +10,26 @@ import { stringCutter } from '../../../helpers/stringCutter';
 const Product = ( { id, options, name, image, isForModal, unit }: ProductForBasketPropsType ) => {
   const [ countOfProduct, setCountOfProduct ] = useState( 1 );
   const dispatch = useDispatch();
-  const productName = stringCutter(name, 70);
+  const productName = stringCutter( name, 70 );
 
   const onDecrementBtnClick = () => {
-    setCountOfProduct( () => countOfProduct - 1 );
+    if ( countOfProduct > 1 ) {
+      setCountOfProduct( () => countOfProduct - 1 );
+    }
   };
   const onIncrementBtnClick = () => {
     setCountOfProduct( () => countOfProduct + 1 );
   };
   const deleteProductFromBasket = () => {
-    dispatch(removeProductFromBasket({id}))
-  }
+    dispatch( removeProductFromBasket( { id } ) );
+  };
   return (
     <div className={ style.productForBasketContainer }>
       <div className={ style.imageWrapper }>
         <img src={ image } alt="product"/>
       </div>
-        <div className={isForModal ? `${style.productMainInfo} ${style.widthForModalMainProductInfo}` : `${style.productMainInfo} ${style.widthForBasketMainProductInfo}`}>
+      <div
+        className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
         <h3 className={ style.basketTitle }>
           { productName }
         </h3>
@@ -57,7 +60,7 @@ const Product = ( { id, options, name, image, isForModal, unit }: ProductForBask
           { !isForModal && <img
             className={ style.basketImage }
             src={ basket } alt="basketIcon"
-            onClick={deleteProductFromBasket}
+            onClick={ deleteProductFromBasket }
           /> }
         </div>
         { isForModal &&
