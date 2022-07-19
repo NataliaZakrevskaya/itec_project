@@ -31,7 +31,6 @@ const ProductPage = () => {
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
 
   const totalSum = 234; //todo позже будет получаться из стора
-  const totalWeight = 0.542; //todo позже будет получаться из стора
   const productId = Number( useParams().productId );
   const product = getProductItems()
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
@@ -160,7 +159,7 @@ const ProductPage = () => {
               <h2>
                 { totalSum } BYN
               </h2>
-              <p>Общий вес: { totalWeight } { options[0].size }</p>
+              <p>Общий вес: { options[0].size }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
@@ -177,13 +176,13 @@ const ProductPage = () => {
               </div>
               <div className={style.basketInterfaceOneClickWrapper}>
                 <p className={ style.basketInterfaceOneClick } onClick={ openOneClickModal }>Купить в 1
-                  клик</p> {/*//todo будет открываться модалка*/ }
+                  клик</p>
               </div>
             </div>
           </div>
         </div>
         <h2 className={style.descriptionTitle}>Описание</h2>
-        <div className={ style.descriptionBlock }> {/*//todo придет уже отредактированное с бэка*/ }
+        <div className={ style.descriptionBlock }>
           <div className={ style.mainDescription }>
             <p dangerouslySetInnerHTML={ { __html: description } }/>
             <h3>Ключевые особенности:</h3>
