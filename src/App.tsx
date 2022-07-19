@@ -8,9 +8,15 @@ import FooterBurger from './components/Footer/FooterBurger/FooterBurger';
 const App = () => {
 
   const [ editMode, setEditMode ] = useState<boolean>( false );
+  const [ forFilters, setForFilters ] = useState<boolean>( false );
 
+  const openFiltersMode = () => {
+    setEditMode( true );
+    setForFilters( true );
+  };
   const closeEditMode = () => {
     setEditMode( false );
+    setForFilters( false );
   };
   const openEditMode = () => {
     setEditMode( true );
@@ -20,13 +26,13 @@ const App = () => {
     <>
       { editMode
         ? ( <div>
-          <HeaderBurger onClickHandler={closeEditMode}/>
+          <HeaderBurger onClickHandler={ closeEditMode } forFilters={ forFilters }/>
           <FooterBurger/>
         </div> )
         : ( <>
-          <Header openEditMode={openEditMode}
-                  closeEditMode={closeEditMode}/>
-          <AppRoutes/>
+          <Header openEditMode={ openEditMode }
+                  closeEditMode={ closeEditMode }/>
+          <AppRoutes openFiltersMode={ openFiltersMode } closeEditMode={closeEditMode}/>
           <Footer/>
         </> )
       }

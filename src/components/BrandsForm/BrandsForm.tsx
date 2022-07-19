@@ -7,7 +7,7 @@ import { getBrands } from '../../redux/selectors/brands-selectors';
 import Button from '../common/Button/Button';
 import { fetchBrandsTC } from '../../redux/reducers/brands-reducer';
 
-const BrandsForm = () => {
+const BrandsForm = ({closeEditMode}: BrandsFormPropsType) => {
 
   const dispatch = useDispatch();
   const brands = useSelector( getBrands );
@@ -17,6 +17,7 @@ const BrandsForm = () => {
   const setFilters = () => {
     // @ts-ignore
     alert( 'диспатч санки' );
+    closeEditMode()
     /* dispatch( setChosenBrandsId() );*/ //todo позже диспатч санки
   };
   useEffect(() => {
@@ -61,3 +62,7 @@ const BrandsForm = () => {
 };
 
 export default BrandsForm;
+
+type BrandsFormPropsType = {
+  closeEditMode: () => void
+}

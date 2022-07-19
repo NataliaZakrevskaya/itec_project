@@ -32,7 +32,7 @@ import {
 import { routesPathsEnum } from '../../routes/enums';
 import { useNavigate } from 'react-router-dom';
 
-const CatalogPage = () => {
+const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => {
 
   const products = useSelector( getProductItems );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
@@ -92,7 +92,7 @@ const CatalogPage = () => {
       </div>
       <AnimalsTypesList/>
       <div className={ style.title }>
-        <h1>{ `Каталог товаров ${ subTitle }` }</h1>{/* //todo позже будет меняться в зависимости от выбранного типа животного*/ }
+        <h1>{ `Каталог товаров ${ subTitle }` }</h1>
         <div className={ style.select }>
           <p>Сортировка по: </p>
           <select name="select">
@@ -106,7 +106,7 @@ const CatalogPage = () => {
         </div>
         <div className={ style.catalogFilter }>
           <img className={ style.catalogFilterImage } src={ filterMajor } alt=""/>
-          <div className={ style.catalogFilterText }>
+          <div onClick={openFiltersMode} className={ style.catalogFilterText }>
             Фильтры
           </div>
         </div>
@@ -115,7 +115,7 @@ const CatalogPage = () => {
         <div className={ style.sortingBlock }>
           <div className={ style.productsType }>
             <ProductTypesForm/>
-            <BrandsForm/>
+            <BrandsForm closeEditMode={closeEditMode}/>
           </div>
         </div>
         <div className={ style.productsBlockContainer }>
@@ -183,3 +183,8 @@ const CatalogPage = () => {
 };
 
 export default CatalogPage;
+
+type CatalogPagePropsType = {
+  openFiltersMode: () => void,
+  closeEditMode: () => void
+}

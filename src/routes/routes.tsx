@@ -10,11 +10,11 @@ import BasketPage from '../pages/BasketPage/BasketPage';
 import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
-const AppRoutes = () => {
+const AppRoutes = ({openFiltersMode, closeEditMode}: AppRoutesPropsType) => {
   return (
       <Routes>
         <Route path={ routesPathsEnum.MAIN } element={ <MainPage/> }/>
-        <Route path={ routesPathsEnum.CATALOG } element={ <CatalogPage/> }/>
+        <Route path={ routesPathsEnum.CATALOG } element={ <CatalogPage openFiltersMode={openFiltersMode} closeEditMode={closeEditMode}/> }/>
         <Route path={ routesPathsEnum.PRODUCT_WITH_ID } element={ <ProductPage/> }/>
         <Route path={ routesPathsEnum.ARTICLES } element={ <ArticlesPage/> }/>
         <Route path={ routesPathsEnum.ARTICLE_WITH_ID } element={ <ArticlePage/> }/>
@@ -26,3 +26,8 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
+
+type AppRoutesPropsType = {
+  openFiltersMode: () => void,
+  closeEditMode: () => void
+}

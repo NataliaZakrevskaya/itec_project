@@ -37,4 +37,13 @@
     width: 100%;
     height: 70vh;
   }
+
+  .sortingBlock {
+    display: flex;
+    flex-direction: column;
+
+    .productsType{
+      width: 270px;
+    }
+  }
 }
