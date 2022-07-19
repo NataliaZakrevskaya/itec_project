@@ -38,7 +38,7 @@ const Product = ( { id, options, name, image, isForModal, unit }: ProductForBask
             options.map( option =>
               <ProductItemUnit
                 key={ option.id }
-                count={ option.count }
+                count={ +option.size }
                 unit={ unit }
               />,
             )

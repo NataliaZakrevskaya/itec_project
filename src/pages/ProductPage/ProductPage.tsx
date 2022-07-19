@@ -35,7 +35,7 @@ const ProductPage = () => {
   const productId = Number( useParams().productId );
   const product = getProductItems()
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
-  const { id, brand, name, images, options, unit, description, analysis, features, composition, additives } = product;
+  const { id, brand, name, images, options, description, analysis, features, composition, additives } = product;
   const nameForNavigationBlock = stringCutter(name, 90);
 
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ const ProductPage = () => {
     navigate( routesPathsEnum.CATALOG );
   };
   const onDecrementBtnClick = () => {
-    if ( countOfProduct ) {
+    if ( countOfProduct > 1 ) {
       setCountOfProduct( () => countOfProduct - 1 );
     }
   };
@@ -121,9 +121,9 @@ const ProductPage = () => {
                 { options.map( option =>
                   <UnitsForBasket
                     key={ option.id }
-                    size={ option.count }
+                    size={ +option.size }
                     price={ +option.price }
-                    unit={ unit }
+                    unit={ option.units.unit_name }
                   />,
                 ) }
               </div>
@@ -160,7 +160,7 @@ const ProductPage = () => {
               <h2>
                 { totalSum } BYN
               </h2>
-              <p>Общий вес: { totalWeight } { unit }</p>
+              <p>Общий вес: { totalWeight } { options[0].size }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
@@ -182,16 +182,20 @@ const ProductPage = () => {
             </div>
           </div>
         </div>
-        <h2>Описание</h2>
+        <h2 className={style.descriptionTitle}>Описание</h2>
         <div className={ style.descriptionBlock }> {/*//todo придет уже отредактированное с бэка*/ }
           <div className={ style.mainDescription }>
-            <p>{ description }</p>
-            <p>{ features }</p>
-            <p>{ composition }</p>
+            <p dangerouslySetInnerHTML={ { __html: description } }/>
+            <h3>Ключевые особенности:</h3>
+            <p dangerouslySetInnerHTML={ { __html: features } }/>
+            <h3>Состав:</h3>
+            <p dangerouslySetInnerHTML={ { __html: composition } }/>
           </div>
           <div className={style.mainAnalysis}>
-            <p>{ analysis }</p>
-            <p>{ additives } </p>
+            <h3>Гарантированный анализ:</h3>
+            <p dangerouslySetInnerHTML={ { __html: analysis } }/>
+            <h3>Пищевые добавки:</h3>
+            <p dangerouslySetInnerHTML={ { __html: additives } }/>
           </div>
         </div>
       </div>
@@ -214,7 +218,7 @@ const ProductPage = () => {
             id={ id }
             image={ images[ 0 ].image }
             name={ name }
-            unit={ unit }
+            unit={ options[0].units.unit_name }
             options={ options }
             isForModal={ true }
             closeModal={ closeBasketModal }

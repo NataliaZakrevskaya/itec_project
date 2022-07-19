@@ -83,7 +83,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                       name={ item.name }
                       options={ item.options }
                       classNameForDarkItem={ productItem }
-                      unit={ item.unit }
+                      unit={ item.options[0].units.unit_name }
                       openOneClickModal={ openOneClickModal }
                       openBasketModal={ openBasketModal }
                     />,
@@ -106,7 +106,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
               id={ itemsForBlock[ 0 ].id }
               image={ itemsForBlock[ 0 ].images[ 0 ].image }
               name={ itemsForBlock[ 0 ].name }
-              unit={ itemsForBlock[ 0 ].unit }
+              unit={ itemsForBlock[ 0 ].options[0].units.unit_name }
               options={ itemsForBlock[ 0 ].options }
               isForModal={ true }
               closeModal={ closeBasketModal }

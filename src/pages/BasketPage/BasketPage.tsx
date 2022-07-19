@@ -46,7 +46,7 @@ const BasketPage = () => {
                         options={ item.options }
                         name={ item.name }
                         image={ item.images[ 0 ].image }
-                        unit={ item.unit }
+                        unit={ item.options[0].units.unit_name}
                         isForModal={ false }
                       />,
                     )

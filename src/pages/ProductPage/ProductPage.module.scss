@@ -19,9 +19,36 @@
   }
   .mainDescription {
     max-width: 670px;
+    @include SFTextRegular();
+    font-size: 14px;
+    line-height: 20px;
+    color: #202223;
+    & h3{
+      @include SFDisplaySemibold();
+      font-size: 16px;
+      line-height: 24px;
+      color: #202223;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
   }
   .mainAnalysis{
     max-width: 470px;
+    @include SFTextRegular();
+    font-size: 14px;
+    line-height: 20px;
+    color: #202223;
+    & h3{
+      @include SFDisplaySemibold();
+      font-size: 16px;
+      line-height: 24px;
+      color: #202223;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      &:first-child{
+        margin-top: 0;
+      }
+    }
   }
   .productPageSubTitle {
     margin-bottom: 32px;
@@ -40,7 +67,7 @@
     & img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
   .productPageButtonWrappers{
@@ -82,6 +109,7 @@
             height: 92px;
             margin-bottom: 8px;
             border-radius: 4px;
+            object-fit: cover;
           }
 
           .restImage:last-child {
@@ -338,6 +366,13 @@
           }
         }
       }
+    }
+    .descriptionTitle{
+      @include SFDisplaySemibold();
+      font-size: 28px;
+      line-height: 32px;
+      color: #202223;
+      margin-bottom: 24px;
     }
   }
 

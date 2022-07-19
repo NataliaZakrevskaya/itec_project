@@ -131,7 +131,7 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
                     name={ item.name }
                     options={ item.options }
                     classNameForDarkItem={ themeStyle.productItem }
-                    unit={ item.unit }
+                    unit={ item.options[0].units.unit_name }
                     openOneClickModal={ openOneClickModal }
                     openBasketModal={ openBasketModal }
                   />,
@@ -171,7 +171,7 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
             id={ products[ 0 ].id }
             image={ products[ 0 ].images[ 0 ].image }
             name={ products[ 0 ].name }
-            unit={ products[ 0 ].unit }
+            unit={ products[ 0 ].options[0].units.unit_name }
             options={ products[ 0 ].options }
             isForModal={ true }
             closeModal={ closeBasketModal }

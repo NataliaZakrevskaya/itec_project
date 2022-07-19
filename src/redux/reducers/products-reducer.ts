@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getProductItems, getWithThisProductsBuy, OptionType } from '../../mocks';
+import { AnimalTypesType, getProductItems, getWithThisProductsBuy, OptionType } from '../../mocks';
 import { selectValues } from '../../Api/productsApi/enums';
 import { setProductRequest } from './app-reducer';
 import { RequestStatus } from './enums';
@@ -146,16 +146,14 @@ export const { setActualPage } = slice.actions;
 export type ProductItemType = {
   id: number,
   name: string,
-  images: Array<{ id: number, image: string, product: 0 }>,
+  animal: Array<AnimalTypesType>
+  images: Array<{ id: number, image: string }>,
   description: string,
   features: string,
   composition: string,
   additives: string,
   analysis: string,
-  date_added: string,
-  unit: string,
-  animal: { id: number, name: string, image: string },
   brand: { id: number, name: string, image: string },
-  product_type: { id: number, name: string, is_active: true },
+  category: { id: number, name: string, is_active: true, },
   options: Array<OptionType>
 }
