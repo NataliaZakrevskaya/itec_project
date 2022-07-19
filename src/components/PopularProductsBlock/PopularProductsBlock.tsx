@@ -11,7 +11,7 @@ import { getProductItems } from '../../mocks';
 
 const PopularProductsBlock = () => {
 
-  const popularProducts = getProductItems(); //todo запрос на популярные продукты
+  const popularProducts = getProductItems().filter((item, index) => index < 12); //todo запрос на популярные продукты
   const navigate = useNavigate();
   const goToPopularProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по популярности
