@@ -5,10 +5,12 @@ import { OptionType } from '../../../mocks';
 import basket from '../../../Images/basket.svg';
 import { useDispatch } from 'react-redux';
 import { removeProductFromBasket } from '../../../redux/reducers/basket-reducer';
+import { stringCutter } from '../../../helpers/stringCutter';
 
 const Product = ( { id, options, name, image, isForModal, unit }: ProductForBasketPropsType ) => {
   const [ countOfProduct, setCountOfProduct ] = useState( 1 );
   const dispatch = useDispatch();
+  const productName = stringCutter(name, 70);
 
   const onDecrementBtnClick = () => {
     setCountOfProduct( () => countOfProduct - 1 );
@@ -26,7 +28,7 @@ const Product = ( { id, options, name, image, isForModal, unit }: ProductForBask
       </div>
         <div className={isForModal ? `${style.productMainInfo} ${style.widthForModalMainProductInfo}` : `${style.productMainInfo} ${style.widthForBasketMainProductInfo}`}>
         <h3 className={ style.basketTitle }>
-          { name }
+          { productName }
         </h3>
         <div className={ style.heftWrapper }>
           {
