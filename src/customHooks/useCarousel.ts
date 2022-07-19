@@ -26,8 +26,8 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
   const getPagesCount = ( blockName: BlockNameType, itemsCount: number ) => {
     if ( blockName === BlockNames.REVIEWS ) return itemsCount;
     if ( blockName === BlockNames.ARTICLES ) {
-      if ( width > 1198 ) return itemsCount / 3;
-      if ( width < 1199 && width > 992 ) return itemsCount / 2;
+      if ( width > 940 ) return itemsCount / 3;
+      if ( width < 941 && width > 700 ) return itemsCount / 2;
       return itemsCount;
     }
     if ( blockName === BlockNames.PRODUCTS ) {
