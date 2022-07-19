@@ -31,9 +31,10 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       return itemsCount;
     }
     if ( blockName === BlockNames.PRODUCTS ) {
-      if ( width > 920 ) return itemsCount / 4;
-      if ( width < 921 && width > 680 ) return itemsCount / 3;
-      return itemsCount / 2;
+      if ( width > 940 ) return itemsCount / 4;
+      if ( width < 941 && width > 700 ) return itemsCount / 3;
+      if ( width < 701) return itemsCount / 2;
+      return itemsCount;
     }
     if ( blockName === BlockNames.ANIMALS ) {
       if ( width > 680 ) return 0;
