@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
@@ -35,6 +35,8 @@ import { getChosenProductTypeId } from '../../redux/selectors/productTypes-selec
 import { getProductRequestStatus } from '../../redux/selectors/app-selectors';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { setProductRequest } from '../../redux/reducers/app-reducer';
+import { selectValues } from '../../Api/productsApi/enums';
+import { SelectValuesTypes } from '../../Api/productsApi/types';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -45,11 +47,11 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const totalProductsCount = useSelector( getTotalProductsCount );
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
-  const ordering = 'date_added';//todo будет получаться позже из селектора
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
+  const [ ordering, setOrdering ] = useState<SelectValuesTypes>( selectValues.ADDED_DATE );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -80,6 +82,10 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     dispatch( removeChosenAnimalTypeId() );
     dispatch( setProductRequest( { status: RequestStatus.IDLE } ) );
   };
+  const chooseOption = ( e: ChangeEvent<HTMLSelectElement> ) => {
+    // @ts-ignore
+    setOrdering( e.currentTarget.value );
+  };
 
   useEffect( () => {
     // @ts-ignore
@@ -100,13 +106,28 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
         <h1>{ `Каталог товаров ${ subTitle }` }</h1>
         <div className={ style.select }>
           <p>Сортировка по: </p>
-          <select name="select">
-            <option value="value1" selected>дате добавления</option>
-            <option value="value2">названию: «от А до Я»</option>
-            <option value="value3">названию: «от Я до А»</option>
-            <option value="value3">цене по возр.</option>
-            <option value="value3">цене по убыв.</option>
-            <option value="value3">популярности</option>
+          <select
+            name="select"
+            value={ ordering }
+            onChange={ chooseOption }>
+            <option value={ selectValues.ADDED_DATE } selected={ ordering === selectValues.ADDED_DATE }>дате
+              добавления
+            </option>
+            <option value={ selectValues.NAME_POSITIVE }
+                    selected={ ordering === selectValues.NAME_POSITIVE }>названию: «от А до Я»
+            </option>
+            <option value={ selectValues.NAME_NEGATIVE }
+                    selected={ ordering === selectValues.NAME_NEGATIVE }>названию: «от Я до А»
+            </option>
+            <option value={ selectValues.PRICE_POSITIVE }
+                    selected={ ordering === selectValues.PRICE_POSITIVE }>цене по возр.
+            </option>
+            <option value={ selectValues.PRICE_NEGATIVE }
+                    selected={ ordering === selectValues.PRICE_NEGATIVE }>цене по убыв.
+            </option>
+            <option value={ selectValues.POPULARITY }
+                    selected={ ordering === selectValues.POPULARITY }>популярности
+            </option>
           </select>
         </div>
         <div className={ style.catalogFilter }>

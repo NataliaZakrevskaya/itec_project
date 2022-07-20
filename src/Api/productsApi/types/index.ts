@@ -1,0 +1,1 @@
+export type SelectValuesTypes = 'added_date' | 'name' | '-name' | 'min_price' | '-min_price' | 'popular'

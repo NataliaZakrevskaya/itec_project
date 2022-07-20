@@ -1,8 +1,8 @@
 export enum selectValues {
-  ADDED_DATE = 'addedDate',
-  NAME_POSITIVE = 'namePositive',
-  NAME_NEGATIVE = 'nameNegative',
-  PRICE_POSITIVE = 'pricePositive',
-  PRICE_NEGATIVE = 'priceNegative',
-  POPULARITY = 'popularity',
+  ADDED_DATE = 'added_date',
+  NAME_POSITIVE = 'name',
+  NAME_NEGATIVE = '-name',
+  PRICE_POSITIVE = 'min_price',
+  PRICE_NEGATIVE = '-min_price',
+  POPULARITY = 'popular',
 }
