@@ -1,20 +1,25 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AnimalTypesType, getProductItems, getWithThisProductsBuy, OptionType } from '../../mocks';
-import { selectValues } from '../../Api/productsApi/enums';
 import { setProductRequest } from './app-reducer';
 import { RequestStatus } from './enums';
+import { productsAPI } from '../../Api/productsApi/productsApi';
 
-/*export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param, { dispatch } ) => {
-    const res = await productsAPI.setProducts(); //todo после того, как заработает бэк
+export const fetchProductsTC = createAsyncThunk(
+  'products/fetchProducts', async ( param: { page: number, page_size?: number, animal: number, category: number, search?: string, ordering: any }, {
+    dispatch,
+    rejectWithValue,
+  } ) => {
+
     try {
+      const res = await productsAPI.setProducts( param.page, param.ordering, param.page_size, param.animal, param.category, param.search );
       dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {
       dispatch( setProductRequest( { status: RequestStatus.FAILED } ) );
+      rejectWithValue( null );
     }
   },
-);*/
+);
 /*export const fetchWithThisProductByProductsTC = createAsyncThunk(
   'products/fetchProducts', async ( param, { dispatch } ) => {
     const res = await productsAPI.setWithThisProductByProducts(); //todo после того, как заработает бэк
@@ -46,7 +51,7 @@ import { RequestStatus } from './enums';
   },
 );*/
 
-export const fetchProductsTC = createAsyncThunk(
+/*export const fetchProductsTC = createAsyncThunk(
   'products/fetchProducts', ( param, { dispatch } ) => {
     const res = getProductItems(); //todo позже будет APi запрос
     try {
@@ -56,7 +61,7 @@ export const fetchProductsTC = createAsyncThunk(
       dispatch( setProductRequest( { status: RequestStatus.FAILED } ) );
     }
   },
-);
+);*/
 export const fetchWithThisProductByProductsTC = createAsyncThunk(
   'products/fetchWithThisProductByProducts', ( param, { dispatch } ) => {
     const res = getWithThisProductsBuy(); //todo позже будет APi запрос
@@ -101,42 +106,44 @@ export const fetchPreviouslyProductsTC = createAsyncThunk(
 export const slice = createSlice( {
   name: 'products',
   initialState: {
-    products: [] as Array<ProductItemType>,
-    withThisProductBy: [] as Array<ProductItemType>,
-    previouslyProducts: [] as Array<ProductItemType>,
-    popularProducts: [] as Array<ProductItemType>,
-    latestProducts: [] as Array<ProductItemType>,
-    totalProductsCount: 560 as number, //todo заменить на 0 после получения по апишке
-    maxProductItemsOnPage: 15 as number,
-    pageNumber: 1 as number,
-    selectSort: selectValues.ADDED_DATE,
+    results: [] as Array<ProductItemType>,
+    /*   withThisProductBy: [] as Array<ProductItemType>,
+       previouslyProducts: [] as Array<ProductItemType>,
+       popularProducts: [] as Array<ProductItemType>,
+       latestProducts: [] as Array<ProductItemType>,*/
+    total_products: 0 as number,
+    max_products_on_page: 15 as number,
+    page_number: 1 as number,
+    products_on_page: null as null | number,
+    total_pages: 1 as number,
+    /*selectSort: selectValues.ADDED_DATE,*/
   },
   reducers: {
     setActualPage( state, action: PayloadAction<{ pageNumber: number }> ) {
-      state.pageNumber = action.payload.pageNumber;
+      state.page_number = action.payload.pageNumber;
     },
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
-      state.products = action.payload.products;
+      return action.payload.products;
     } );
-    builder.addCase( fetchWithThisProductByProductsTC.fulfilled, ( state, action ) => {
-      // @ts-ignore
-      state.withThisProductBy = action.payload.products;
-    } );
-    builder.addCase( fetchPopularProductsTC.fulfilled, ( state, action ) => {
-      // @ts-ignore
-      state.popularProducts = action.payload.popularProducts;
-    } );
-    builder.addCase( fetchLatestProductsTC.fulfilled, ( state, action ) => {
-      // @ts-ignore
-      state.latestProducts = action.payload.latestProducts;
-    } );
-    builder.addCase( fetchPreviouslyProductsTC.fulfilled, ( state, action ) => {
-      // @ts-ignore
-      state.previouslyProducts = action.payload.previouslyProducts;
-    } );
+    /* builder.addCase( fetchWithThisProductByProductsTC.fulfilled, ( state, action ) => {
+       // @ts-ignore
+       state.withThisProductBy = action.payload.products;
+     } );
+     builder.addCase( fetchPopularProductsTC.fulfilled, ( state, action ) => {
+       // @ts-ignore
+       state.popularProducts = action.payload.popularProducts;
+     } );
+     builder.addCase( fetchLatestProductsTC.fulfilled, ( state, action ) => {
+       // @ts-ignore
+       state.latestProducts = action.payload.latestProducts;
+     } );
+     builder.addCase( fetchPreviouslyProductsTC.fulfilled, ( state, action ) => {
+       // @ts-ignore
+       state.previouslyProducts = action.payload.previouslyProducts;
+     } );*/
   } ),
 } );
 

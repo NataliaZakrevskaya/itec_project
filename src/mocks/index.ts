@@ -308,6 +308,8 @@
   ];
 };*/
 
+import { AxiosRequestConfig, AxiosResponseHeaders } from 'axios';
+
 export const getProductItems = (): Array<resProductItemType> => {
   return [
     {
@@ -2185,6 +2187,22 @@ export type resProductItemType = {
   brand: { id: number, name: string, image: string },
   category: { id: number, name: string, is_active: true, },
   options: Array<OptionType>
+}
+export type responseProductItemType = {
+  page_number: number,
+  products_on_page: number,
+  total_products: number,
+  total_pages: number,
+  max_products_on_page: number,
+  results: Array<resProductItemType>
+}
+export type AxiosResponse<T = any, D = any> = {
+  data: T,
+  status: number;
+  statusText: string;
+  headers: AxiosResponseHeaders;
+  config: AxiosRequestConfig<D>;
+  request?: any;
 }
 export type resProductTypesType = {
   id: number,

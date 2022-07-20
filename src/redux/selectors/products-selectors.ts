@@ -2,9 +2,9 @@ import { AppRootStateType } from '../store';
 import { ProductItemType } from '../reducers/products-reducer';
 
 export const getProductItems = (state: AppRootStateType): ProductItemType[] => {
-  return state.products.products
+  return state.products.results
 }
-export const getWithThisProductsByItems = (state: AppRootStateType): ProductItemType[] => {
+/*export const getWithThisProductsByItems = (state: AppRootStateType): ProductItemType[] => {
   return state.products.withThisProductBy
 }
 export const getPreviouslyProductItems = (state: AppRootStateType): ProductItemType[] => {
@@ -15,13 +15,13 @@ export const getPopularProductsItems = (state: AppRootStateType): ProductItemTyp
 }
 export const getLatestProductsItems = (state: AppRootStateType): ProductItemType[] => {
   return state.products.latestProducts
-}
+}*/
 export const getActualPage = (state: AppRootStateType): number => {
-  return state.products.pageNumber
+  return state.products.page_number
 }
 export const getTotalProductsCount = (state: AppRootStateType): number => {
-  return state.products.totalProductsCount
+  return state.products.total_products
 }
 export const getPageSize = (state: AppRootStateType): number => {
-  return state.products.maxProductItemsOnPage
+  return state.products.max_products_on_page
 }

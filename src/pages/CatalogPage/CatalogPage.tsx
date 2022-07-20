@@ -31,25 +31,30 @@ import {
 } from '../../redux/selectors/products-selectors';
 import { routesPathsEnum } from '../../routes/enums';
 import { useNavigate } from 'react-router-dom';
+import { getChosenProductTypeId } from '../../redux/selectors/productTypes-selectors';
+import { getProductRequestStatus } from '../../redux/selectors/app-selectors';
+import { RequestStatus } from '../../redux/reducers/enums';
+import { setProductRequest } from '../../redux/reducers/app-reducer';
 
-const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => {
+const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
   const products = useSelector( getProductItems );
-  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
-  const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
-  const actualPage = useSelector( getActualPage );
+  const animal = useSelector( getChosenAnimalTypeId );
+  const subTitle = getTitleForProductsBlock( animal );
+  const page = useSelector( getActualPage );
   const totalProductsCount = useSelector( getTotalProductsCount );
   const pageSize = useSelector( getPageSize );
+  const category = useSelector( getChosenProductTypeId );
+  const ordering = 'date_added';//todo будет получаться позже из селектора
+  const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ isRejectResponse, setIsRejectResponse ] = useState<boolean>( false );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onPageChanged = ( pageNumber: number ) => {
-    alert( `${ pageNumber }` ); //todo позже санка с запросом продуктов
     dispatch( setActualPage( { pageNumber } ) );
   };
 
@@ -73,13 +78,13 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
     dispatch( removeChosenProductTypeId() );
     // @ts-ignore
     dispatch( removeChosenAnimalTypeId() );
-    setIsRejectResponse( false );
+    dispatch( setProductRequest( { status: RequestStatus.IDLE } ) );
   };
 
   useEffect( () => {
     // @ts-ignore
-    dispatch( fetchProductsTC() );
-  }, [] );
+    dispatch( fetchProductsTC( { page, animal, category, ordering } ) );
+  }, [ page, animal, category, ordering ] );
 
   return (
     <div className={ style.catalogPageBlock }>
@@ -106,7 +111,7 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
         </div>
         <div className={ style.catalogFilter }>
           <img className={ style.catalogFilterImage } src={ filterMajor } alt=""/>
-          <div onClick={openFiltersMode} className={ style.catalogFilterText }>
+          <div onClick={ openFiltersMode } className={ style.catalogFilterText }>
             Фильтры
           </div>
         </div>
@@ -115,7 +120,7 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
         <div className={ style.sortingBlock }>
           <div className={ style.productsType }>
             <ProductTypesForm/>
-            <BrandsForm closeEditMode={closeEditMode}/>
+            <BrandsForm closeEditMode={ closeEditMode }/>
           </div>
         </div>
         <div className={ style.productsBlockContainer }>
@@ -127,11 +132,11 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
                     key={ item.id }
                     product={ item }
                     id={ item.id }
-                    image={ item.images[ 0 ].image }
+                    image={ item.images[ 0 ] ? item.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
                     name={ item.name }
                     options={ item.options }
                     classNameForDarkItem={ themeStyle.productItem }
-                    unit={ item.options[0].units.unit_name }
+                    unit={ item.options[ 0 ].units.unit_name }
                     openOneClickModal={ openOneClickModal }
                     openBasketModal={ openBasketModal }
                   />,
@@ -140,7 +145,7 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
               <ProductsBlockPagination
                 totalProductsCount={ totalProductsCount }
                 pageSize={ pageSize }
-                actualPage={ actualPage }
+                actualPage={ page }
                 onPageChanged={ onPageChanged }
                 portionSize={ 3 }/>
             </div> )
@@ -155,7 +160,7 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
 
         </div>
       </div>
-      <div className={style.catalogPopularProductsWrapper}>
+      <div className={ style.catalogPopularProductsWrapper }>
         <PopularProductsBlock/>
       </div>
       <UsefulArticlesBlock/>
@@ -171,7 +176,7 @@ const CatalogPage = ({openFiltersMode, closeEditMode}: CatalogPagePropsType) => 
             id={ products[ 0 ].id }
             image={ products[ 0 ].images[ 0 ].image }
             name={ products[ 0 ].name }
-            unit={ products[ 0 ].options[0].units.unit_name }
+            unit={ products[ 0 ].options[ 0 ].units.unit_name }
             options={ products[ 0 ].options }
             isForModal={ true }
             closeModal={ closeBasketModal }
