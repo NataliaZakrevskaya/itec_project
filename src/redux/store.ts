@@ -10,6 +10,7 @@ import { productsReducer } from './reducers/products-reducer';
 import { reviewsReducer } from './reducers/reviews-reducer';
 import { articlesReducer } from './reducers/articles-reducer';
 import { appReducer } from './reducers/app-reducer';
+import { productsFromSearchReducer } from './reducers/productsFromSearch-reducer';
 
 const rootReducer = combineReducers( {
   app: appReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers( {
   productTypes: productTypesReducer,
   basket: basketReducer,
   products: productsReducer,
+  productsFromSearch: productsFromSearchReducer,
   reviews: reviewsReducer,
   articles: articlesReducer,
 } );

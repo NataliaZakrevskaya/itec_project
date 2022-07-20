@@ -5,11 +5,16 @@ import { RequestStatusType } from './types';
 export const slice = createSlice( {
   name: 'app',
   initialState: {
+    searchProductStatus: RequestStatus.IDLE as RequestStatusType,
     productRequestStatus: RequestStatus.IDLE as RequestStatusType,
     callbackRequestStatus: RequestStatus.IDLE as RequestStatusType,
     orderRequestStatus: RequestStatus.IDLE as RequestStatusType,
   },
   reducers: {
+    setSearchProductRequest( state, action: PayloadAction<{
+      status: RequestStatusType }> ) {
+      state.searchProductStatus = action.payload.status;
+    },
     setProductRequest( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.productRequestStatus = action.payload.status;
     },
@@ -24,6 +29,7 @@ export const slice = createSlice( {
 
 export const appReducer = slice.reducer;
 export const {
+  setSearchProductRequest,
   setProductRequest,
   setCallbackRequest,
   setOrderRequestStatus,
