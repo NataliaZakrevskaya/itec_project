@@ -39,8 +39,4 @@ export const productsAPI = {
   async setWithThisProductByProducts() {
     return await instance.get<Array<resProductItemType>>( PRODUCTS_URL ); // todo в параметрах передавать
   },
-  async setPopularProductsTC() {
-    return await instance.get<Array<resProductItemType>>( PRODUCTS_URL ); // todo в параметрах передавать
-  },
-
 };

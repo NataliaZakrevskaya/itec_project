@@ -24,19 +24,19 @@ export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null) => 
 
 export const getTitleForArticlesBlock = ( chosenAnimalTypeId: number | null) => {
   switch ( chosenAnimalTypeId ) {
-    case 0: {
+    case 1: {
       return 'про собак';
     }
-    case 1: {
+    case 2: {
       return 'про кошек';
     }
-    case 2: {
+    case 3: {
       return 'про грызунов';
     }
-    case 3: {
+    case 4: {
       return 'про птиц';
     }
-    case 4: {
+    case 5: {
       return 'про рыбок';
     }
     default:

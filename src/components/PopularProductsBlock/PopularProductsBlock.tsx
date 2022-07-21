@@ -14,7 +14,6 @@ import { selectValues } from '../../Api/productsApi/enums';
 const PopularProductsBlock = () => {
 
   const popularProducts = useSelector(getPopularProducts)
-  console.log(popularProducts);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const goToPopularProducts = () => {
