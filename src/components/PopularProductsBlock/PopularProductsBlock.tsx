@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import dark from '../../styles/common/DarkBlock.module.scss';
 import style from './PopularProductsBlock.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
-import { getProductItems } from '../../mocks';
+import { getPopularProducts } from '../../redux/selectors/popularProducts-selectors';
+import { fetchPopularProductsTC } from '../../redux/reducers/popularProducts-reducer';
+import { selectValues } from '../../Api/productsApi/enums';
 
 const PopularProductsBlock = () => {
 
-  const popularProducts = getProductItems().filter((item, index) => index < 12); //todo запрос на популярные продукты
+  const popularProducts = useSelector(getPopularProducts)
+  console.log(popularProducts);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const goToPopularProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по популярности
   };
-  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
-  const subTitle = getTitleForProductsBlock( chosenAnimalTypeId );
+  const animal = useSelector( getChosenAnimalTypeId );
+  const subTitle = getTitleForProductsBlock( animal );
+  const ordering = selectValues.POPULARITY
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(fetchPopularProductsTC({ordering, animal}))
+  }, [animal])
 
   return (
     <div className={ style.popularProductsWrapper }>

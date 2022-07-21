@@ -17,11 +17,21 @@ export const productsAPI = {
   async setProductsByName( search?: string ) {
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, { params: { search } } );
   },
-  async setLatestProducts( ordering?: string ) {
+  async setProductsByOrdering( ordering?: string ) {
     const page_size = 12;
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {
         ordering,
+        page_size,
+      },
+    } );
+  },
+  async setPopularProducts( ordering?: string, animal?: number ) {
+    const page_size = 12;
+    return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
+      params: {
+        ordering,
+        animal,
         page_size,
       },
     } );

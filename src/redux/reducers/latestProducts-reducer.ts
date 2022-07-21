@@ -10,7 +10,7 @@ export const fetchLatestProductsTC = createAsyncThunk(
     rejectWithValue,
   } ) => {
     try {
-      const res = await productsAPI.setLatestProducts( param.ordering );
+      const res = await productsAPI.setProductsByOrdering( param.ordering );
       dispatch( setLatestProductRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {

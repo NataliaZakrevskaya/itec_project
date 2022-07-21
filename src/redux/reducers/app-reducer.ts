@@ -7,6 +7,7 @@ export const slice = createSlice( {
   initialState: {
     searchProductStatus: RequestStatus.IDLE as RequestStatusType,
     latestProductStatus: RequestStatus.IDLE as RequestStatusType,
+    popularProductStatus: RequestStatus.IDLE as RequestStatusType,
     productRequestStatus: RequestStatus.IDLE as RequestStatusType,
     callbackRequestStatus: RequestStatus.IDLE as RequestStatusType,
     orderRequestStatus: RequestStatus.IDLE as RequestStatusType,
@@ -28,6 +29,9 @@ export const slice = createSlice( {
     setLatestProductRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.latestProductStatus = action.payload.status;
     },
+    setPopularProductRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
+      state.popularProductStatus = action.payload.status;
+    },
   },
 } );
 
@@ -38,4 +42,5 @@ export const {
   setCallbackRequest,
   setOrderRequestStatus,
   setLatestProductRequestStatus,
+  setPopularProductRequestStatus,
 } = slice.actions;

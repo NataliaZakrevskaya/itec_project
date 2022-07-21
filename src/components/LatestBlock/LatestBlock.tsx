@@ -12,7 +12,6 @@ import { selectValues } from '../../Api/productsApi/enums';
 const LatestBlock = () => {
 
   const latestProducts = useSelector( getLatestProducts )
-    .filter((item, index) => index < 13);
   const ordering = selectValues.ADDED_DATE;
 
   const navigate = useNavigate();

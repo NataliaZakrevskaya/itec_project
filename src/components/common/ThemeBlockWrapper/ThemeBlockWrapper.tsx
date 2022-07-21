@@ -19,7 +19,6 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const { block, sectionsBlock, productItem } = blockTheme;
   const dispatch = useDispatch();
-  console.log(itemsForBlock);
 
   const {
     onPrevSectionButtonClick,
@@ -30,7 +29,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
     isNextDisabled,
     onTouchStart,
     onTouchEnd,
-  } = useCarousel( BlockNames.PRODUCTS, 12 );
+  } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length);
 
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
