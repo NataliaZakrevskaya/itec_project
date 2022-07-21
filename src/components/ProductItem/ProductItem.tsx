@@ -23,13 +23,16 @@ const ProductItem = ( {
   const isKilo = unit === 'кг.'; //todo пока заглушка
   const price = 325; // будет выводиться в зависимости от выбранного option, приходить из редюсера
   const navigate = useNavigate();
-  const nameForCard = stringCutter(name, 70);
-
+  const nameForCard = stringCutter( name, 70 );
+  const onNameClick = () => {
+    navigate( `${ routesPathsEnum.CATALOG }/${ id }` )
+  }
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
       <div className={ style.productItemWrapper }>
         <img className={ style.mainProductItemImage } src={ image } alt={ 'product' }/>
-        <p className={ style.title } onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>{ nameForCard }</p>
+        <p className={ style.title }
+           onClick={ onNameClick }>{ nameForCard }</p>
       </div>
       <div className={ style.unitGroup }>
         { options.map( option =>
@@ -39,7 +42,7 @@ const ProductItem = ( {
             unit={ unit }
           />,
         ) }
-        { isKilo && <span onClick={ () => navigate(`${ routesPathsEnum.CATALOG }/${ id }`) }>Задать свой вес</span> }
+        { isKilo && <span onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>Задать свой вес</span> }
       </div>
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>

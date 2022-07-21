@@ -12,14 +12,14 @@ import Address from '../../components/common/Address/Address';
 import Button from '../../components/common/Button/Button';
 import Modal from '../../components/common/modals/Modal';
 import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import { setChosenBrandId } from '../../redux/reducers/brands-reducer';
 import { setProductToBasket } from '../../redux/reducers/basket-reducer';
 import { ProductItemType } from '../../redux/reducers/products-reducer';
-import { getProductItems } from '../../mocks';
 import { stringCutter } from '../../helpers/stringCutter';
+import { getProductItems } from '../../redux/selectors/products-selectors';
 
 const ProductPage = () => {
 
@@ -32,8 +32,9 @@ const ProductPage = () => {
 
   const totalSum = 234; //todo позже будет получаться из стора
   const productId = Number( useParams().productId );
-  const product = getProductItems()
+  const product = useSelector(getProductItems)
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
+  console.log(product)
   const { id, brand, name, images, options, description, analysis, features, composition, additives } = product;
   const nameForNavigationBlock = stringCutter(name, 90);
 
@@ -95,7 +96,7 @@ const ProductPage = () => {
         <div className={ style.imgAndOrderBlock }>
           <div className={ style.imageBlock }>
             <div className={ style.mainImageWrapper }>
-              <img src={ images[ selectImageId ].image } alt="product" className={ style.mainImg }/>
+              <img src={ images[ selectImageId ] ? images[ selectImageId ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png'} alt="product" className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
               {
