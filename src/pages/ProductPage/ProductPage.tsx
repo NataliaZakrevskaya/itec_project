@@ -34,7 +34,6 @@ const ProductPage = () => {
   const productId = Number( useParams().productId );
   const product = useSelector(getProductItems)
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
-  console.log(product)
   const { id, brand, name, images, options, description, analysis, features, composition, additives } = product;
   const nameForNavigationBlock = stringCutter(name, 90);
 

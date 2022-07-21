@@ -18,9 +18,20 @@ import { BlockNames } from '../../customHooks/enums';
 
 const UsefulArticlesBlock = () => {
 
-    const articles = useSelector( getArticles );
     const navigate = useNavigate();
     const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+    const articlesFromStore = useSelector( getArticles );
+    const getArticlesForBlock = () => {
+      if ( chosenAnimalTypeId ) {
+       const articles = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
+       if(articles.length){
+         return articles;
+       }
+       return articlesFromStore;
+      }
+      return articlesFromStore;
+    };
+    const articles = getArticlesForBlock();
     const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
     const dispatch = useDispatch();
 
