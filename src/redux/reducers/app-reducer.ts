@@ -6,6 +6,7 @@ export const slice = createSlice( {
   name: 'app',
   initialState: {
     searchProductStatus: RequestStatus.IDLE as RequestStatusType,
+    latestProductStatus: RequestStatus.IDLE as RequestStatusType,
     productRequestStatus: RequestStatus.IDLE as RequestStatusType,
     callbackRequestStatus: RequestStatus.IDLE as RequestStatusType,
     orderRequestStatus: RequestStatus.IDLE as RequestStatusType,
@@ -24,6 +25,9 @@ export const slice = createSlice( {
     setOrderRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.orderRequestStatus = action.payload.status;
     },
+    setLatestProductRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
+      state.latestProductStatus = action.payload.status;
+    },
   },
 } );
 
@@ -33,4 +37,5 @@ export const {
   setProductRequest,
   setCallbackRequest,
   setOrderRequestStatus,
+  setLatestProductRequestStatus,
 } = slice.actions;

@@ -33,14 +33,17 @@ export const slice = createSlice( {
       const index = state.brands.findIndex( brand => brand.id === action.payload.id );
       state.brands[ index ].chosen = true;
     },
-    removeChosenBrandsId( state, action ) {
-      state.brands = state.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
-      state.chosenBrandsId = [];
-    },
     removeChosenBrandId( state, action: PayloadAction<{ id: number }> ) {
       const index = state.brands.findIndex( brand => brand.id === action.payload.id );
       state.brands[ index ].chosen = false;
     },
+    removeChosenBrandsId( state, action ) {
+      state.brands = state.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
+      state.chosenBrandsId = [];
+    },
+    setChosenBrandsId(state, action) {
+      state.chosenBrandsId = state.brands.filter(brand => brand.chosen).map(brand => brand.id)
+    }
   },
   extraReducers: ( builder => {
     builder.addCase( fetchBrandsTC.fulfilled, ( state, action ) => {
@@ -55,6 +58,7 @@ export const {
   setChosenBrandId,
   removeChosenBrandsId,
   removeChosenBrandId,
+  setChosenBrandsId,
 } = slice.actions;
 
 export type BrandType = {

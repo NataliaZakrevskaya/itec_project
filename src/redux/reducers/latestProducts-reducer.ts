@@ -1,30 +1,31 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ProductItemType } from './products-reducer';
 import { productsAPI } from '../../Api/productsApi/productsApi';
-import { setSearchProductRequest } from './app-reducer';
+import { setLatestProductRequestStatus } from './app-reducer';
 import { RequestStatus } from './enums';
 
-export const fetchProductsFromSearchTC = createAsyncThunk(
-  'productsFromSearch/fetchProductsFromSearch', async ( param: { search?: string }, {
+export const fetchLatestProductsTC = createAsyncThunk(
+  'latestProducts/fetchLatestProducts', async ( param: { ordering: string }, {
     dispatch,
     rejectWithValue,
   } ) => {
     try {
-      const res = await productsAPI.setProductsByName( param.search );
-      dispatch( setSearchProductRequest( { status: RequestStatus.SUCCEEDED } ) );
+      const res = await productsAPI.setLatestProducts( param.ordering );
+      dispatch( setLatestProductRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {
-      dispatch( setSearchProductRequest( { status: RequestStatus.FAILED } ) );
+      dispatch( setLatestProductRequestStatus( { status: RequestStatus.FAILED } ) );
       rejectWithValue( null );
     }
   },
 );
 export const slice = createSlice( {
-  name: 'productsFromSearch',
-  initialState: {} as productsFromSearchInitialStateType,
+  name: 'latestProducts',
+  initialState: {} as latestProductsInitialStateType,
   reducers: {},
   extraReducers: ( builder => {
-    builder.addCase( fetchProductsFromSearchTC.fulfilled, ( state, action ) => {
+    // @ts-ignore
+    builder.addCase( fetchLatestProductsTC.fulfilled, ( state, action ) => {
       if ( action.payload ) {
         return action.payload.products;
       }
@@ -32,9 +33,9 @@ export const slice = createSlice( {
   } ),
 } );
 
-export const productsFromSearchReducer = slice.reducer;
+export const latestProductsReducer = slice.reducer;
 
-type productsFromSearchInitialStateType = {
+type latestProductsInitialStateType = {
   results: Array<ProductItemType>,
   total_products: number,
   max_products_on_page: number,

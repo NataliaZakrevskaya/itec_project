@@ -37,6 +37,7 @@ import { RequestStatus } from '../../redux/reducers/enums';
 import { setProductRequest } from '../../redux/reducers/app-reducer';
 import { selectValues } from '../../Api/productsApi/enums';
 import { SelectValuesTypes } from '../../Api/productsApi/types';
+import { getChosenBrandsId } from '../../redux/selectors/brands-selectors';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -48,6 +49,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
+  const chosenBrands = useSelector(getChosenBrandsId)
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
@@ -74,12 +76,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setIsBasketModalActive( true );
   };
   const resetFilters = () => {
-    // @ts-ignore
-    dispatch( removeChosenBrandsId() );
-    // @ts-ignore
-    dispatch( removeChosenProductTypeId() );
-    // @ts-ignore
-    dispatch( removeChosenAnimalTypeId() );
+    dispatch( removeChosenBrandsId({}) );
+    dispatch( removeChosenProductTypeId({}) );
+    dispatch( removeChosenAnimalTypeId({}) );
     dispatch( setProductRequest( { status: RequestStatus.IDLE } ) );
   };
   const chooseOption = ( e: ChangeEvent<HTMLSelectElement> ) => {
@@ -89,8 +88,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
 
   useEffect( () => {
     // @ts-ignore
-    dispatch( fetchProductsTC( { page, animal, category, ordering } ) );
-  }, [ page, animal, category, ordering ] );
+    dispatch( fetchProductsTC( { page, animal, category, ordering, chosenBrands } ) );
+  }, [ page, animal, category, ordering, chosenBrands ] );
 
   return (
     <div className={ style.catalogPageBlock }>

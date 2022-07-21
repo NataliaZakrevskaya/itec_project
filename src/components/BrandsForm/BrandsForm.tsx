@@ -5,7 +5,7 @@ import RejectSearchResult from '../common/modals/RejectSearchResult/RejectSearch
 import { useDispatch, useSelector } from 'react-redux';
 import { getBrands } from '../../redux/selectors/brands-selectors';
 import Button from '../common/Button/Button';
-import { fetchBrandsTC } from '../../redux/reducers/brands-reducer';
+import { fetchBrandsTC, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
 
 const BrandsForm = ({closeEditMode}: BrandsFormPropsType) => {
 
@@ -15,10 +15,8 @@ const BrandsForm = ({closeEditMode}: BrandsFormPropsType) => {
   const filteredBrands = brands.filter( brand => brand.name.toLowerCase().includes( value.toLowerCase() ) );
 
   const setFilters = () => {
-    // @ts-ignore
-    alert( 'диспатч санки' );
     closeEditMode()
-    /* dispatch( setChosenBrandsId() );*/ //todo позже диспатч санки
+    dispatch( setChosenBrandsId({}) );
   };
   useEffect(() => {
     // @ts-ignore

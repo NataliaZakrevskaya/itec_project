@@ -19,6 +19,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const { block, sectionsBlock, productItem } = blockTheme;
   const dispatch = useDispatch();
+  console.log(itemsForBlock);
 
   const {
     onPrevSectionButtonClick,
@@ -29,7 +30,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
     isNextDisabled,
     onTouchStart,
     onTouchEnd,
-  } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length );
+  } = useCarousel( BlockNames.PRODUCTS, 12 );
 
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
@@ -79,7 +80,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                       key={ item.id }
                       product={ item }
                       id={ item.id }
-                      image={ item.images[ 0 ].image }
+                      image={ item.images[ 0 ] ? item.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
                       name={ item.name }
                       options={ item.options }
                       classNameForDarkItem={ productItem }
@@ -104,7 +105,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
             <BasketModal
               key={ itemsForBlock[ 0 ].id }
               id={ itemsForBlock[ 0 ].id }
-              image={ itemsForBlock[ 0 ].images[ 0 ].image }
+              image={ itemsForBlock[0].images[ 0 ] ? itemsForBlock[0].images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
               name={ itemsForBlock[ 0 ].name }
               unit={ itemsForBlock[ 0 ].options[0].units.unit_name }
               options={ itemsForBlock[ 0 ].options }

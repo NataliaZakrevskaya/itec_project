@@ -11,6 +11,7 @@ import { reviewsReducer } from './reducers/reviews-reducer';
 import { articlesReducer } from './reducers/articles-reducer';
 import { appReducer } from './reducers/app-reducer';
 import { productsFromSearchReducer } from './reducers/productsFromSearch-reducer';
+import { latestProductsReducer } from './reducers/latestProducts-reducer';
 
 const rootReducer = combineReducers( {
   app: appReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers( {
   basket: basketReducer,
   products: productsReducer,
   productsFromSearch: productsFromSearchReducer,
+  latestProducts: latestProductsReducer,
   reviews: reviewsReducer,
   articles: articlesReducer,
 } );

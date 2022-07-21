@@ -5,13 +5,13 @@ import { RequestStatus } from './enums';
 import { productsAPI } from '../../Api/productsApi/productsApi';
 
 export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param: { page?: number, page_size?: number, animal?: number, category?: number, ordering?: any }, {
+  'products/fetchProducts', async ( param: { page?: number, page_size?: number, animal?: number, category?: number, ordering?: any, chosenBrands?: Array<number> }, {
     dispatch,
     rejectWithValue,
   } ) => {
-
+    /*const brands = {...param.chosenBrands.map(brand => `brand: ${brand}`)}*/
     try {
-      const res = await productsAPI.setProducts( param.page, param.ordering, param.page_size, param.animal, param.category );
+      const res = await productsAPI.setProducts( param.page, param.ordering, param.page_size, param.animal, param.category/*, brands*/ );
       dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {
@@ -82,7 +82,7 @@ export const fetchPopularProductsTC = createAsyncThunk(
     }
   },
 );
-export const fetchLatestProductsTC = createAsyncThunk(
+/*export const fetchLatestProductsTC = createAsyncThunk(
   'products/fetchLatestProducts', ( param, { dispatch } ) => {
     const res = getProductItems(); //todo позже будет APi запрос
     try {
@@ -91,7 +91,7 @@ export const fetchLatestProductsTC = createAsyncThunk(
 
     }
   },
-);
+);*/
 export const fetchPreviouslyProductsTC = createAsyncThunk(
   'products/fetchPreviouslyProducts', ( param, { dispatch } ) => {
     const res = getProductItems(); //todo позже будет APi запрос
@@ -107,16 +107,11 @@ export const slice = createSlice( {
   name: 'products',
   initialState: {
     results: [] as Array<ProductItemType>,
-    /*   withThisProductBy: [] as Array<ProductItemType>,
-       previouslyProducts: [] as Array<ProductItemType>,
-       popularProducts: [] as Array<ProductItemType>,
-       latestProducts: [] as Array<ProductItemType>,*/
     total_products: 0 as number,
     max_products_on_page: 15 as number,
     page_number: 1 as number,
     products_on_page: null as null | number,
     total_pages: 1 as number,
-    /*selectSort: selectValues.ADDED_DATE,*/
   },
   reducers: {
     setActualPage( state, action: PayloadAction<{ pageNumber: number }> ) {
@@ -125,25 +120,10 @@ export const slice = createSlice( {
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
-      // @ts-ignore
-      return action.payload.products;
+      if ( action.payload ) {
+        return action.payload.products;
+      }
     } );
-    /* builder.addCase( fetchWithThisProductByProductsTC.fulfilled, ( state, action ) => {
-       // @ts-ignore
-       state.withThisProductBy = action.payload.products;
-     } );
-     builder.addCase( fetchPopularProductsTC.fulfilled, ( state, action ) => {
-       // @ts-ignore
-       state.popularProducts = action.payload.popularProducts;
-     } );
-     builder.addCase( fetchLatestProductsTC.fulfilled, ( state, action ) => {
-       // @ts-ignore
-       state.latestProducts = action.payload.latestProducts;
-     } );
-     builder.addCase( fetchPreviouslyProductsTC.fulfilled, ( state, action ) => {
-       // @ts-ignore
-       state.previouslyProducts = action.payload.previouslyProducts;
-     } );*/
   } ),
 } );
 
