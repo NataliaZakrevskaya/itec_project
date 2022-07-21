@@ -3,7 +3,8 @@ import { instance } from '../configApi/configApi';
 import { AxiosResponse, responseProductItemType, resProductItemType } from '../../mocks';
 
 export const productsAPI = {
-  async setProducts( page?: number, ordering?: string, page_size?: number, animal?: number, category?: number, brands?: any ) {
+  async setProducts( page?: number, ordering?: string, animal?: number, category?: number, brands?: any ) {
+    const page_size = 15;
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {
         page,

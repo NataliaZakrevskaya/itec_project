@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBrands } from '../../redux/selectors/brands-selectors';
 import Button from '../common/Button/Button';
 import { fetchBrandsTC, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
+import { setActualPage } from '../../redux/reducers/products-reducer';
 
-const BrandsForm = ({closeEditMode}: BrandsFormPropsType) => {
+const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
 
   const dispatch = useDispatch();
   const brands = useSelector( getBrands );
@@ -15,13 +16,15 @@ const BrandsForm = ({closeEditMode}: BrandsFormPropsType) => {
   const filteredBrands = brands.filter( brand => brand.name.toLowerCase().includes( value.toLowerCase() ) );
 
   const setFilters = () => {
-    closeEditMode()
-    dispatch( setChosenBrandsId({}) );
+    const pageNumber = 1;
+    closeEditMode();
+    dispatch( setChosenBrandsId( {} ) );
+    dispatch( setActualPage( { pageNumber } ) );
   };
-  useEffect(() => {
+  useEffect( () => {
     // @ts-ignore
-    dispatch(fetchBrandsTC())
-  }, [])
+    dispatch( fetchBrandsTC() );
+  }, [] );
 
   return (
     <div className={ style.brandsFormBlock }>

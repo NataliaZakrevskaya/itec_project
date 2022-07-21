@@ -1,17 +1,17 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AnimalTypesType, getProductItems, getWithThisProductsBuy, OptionType } from '../../mocks';
+import { AnimalTypesType, getProductItems, OptionType } from '../../mocks';
 import { setProductRequest } from './app-reducer';
 import { RequestStatus } from './enums';
 import { productsAPI } from '../../Api/productsApi/productsApi';
 
 export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param: { page?: number, page_size?: number, animal?: number, category?: number, ordering?: any, chosenBrands?: Array<number> }, {
+  'products/fetchProducts', async ( param: { page?: number, animal?: number, category?: number, ordering?: any, chosenBrands?: Array<number> }, {
     dispatch,
     rejectWithValue,
   } ) => {
     /*const brands = {...param.chosenBrands.map(brand => `brand: ${brand}`)}*/
     try {
-      const res = await productsAPI.setProducts( param.page, param.ordering, param.page_size, param.animal, param.category/*, brands*/ );
+      const res = await productsAPI.setProducts( param.page, param.ordering, param.animal, param.category/*, brands*/ );
       dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {
@@ -20,78 +20,7 @@ export const fetchProductsTC = createAsyncThunk(
     }
   },
 );
-/*export const fetchWithThisProductByProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param, { dispatch } ) => {
-    const res = await productsAPI.setWithThisProductByProducts(); //todo после того, как заработает бэк
-    try {
-      return { products: res.data };
-    } catch ( err ) {
 
-    }
-  },
-);*/
-/*export const fetchPopularProductsTC = createAsyncThunk(
-  'products/fetchPopularProducts', async ( param, { dispatch } ) => {
-    const res = await productsAPI.setPopularProductsTC(); //todo после того, как заработает бэк
-    try {
-      return { products: res.data };
-    } catch ( err ) {
-
-    }
-  },
-);*/
-/*export const fetchLatestProductsTC = createAsyncThunk(
-  'products/fetchLatestProducts', async ( param, { dispatch } ) => {
-    const res = await productsAPI.setLatestProductsTC(); //todo после того, как заработает бэк
-    try {
-      return { products: res.data };
-    } catch ( err ) {
-
-    }
-  },
-);*/
-
-/*export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', ( param, { dispatch } ) => {
-    const res = getProductItems(); //todo позже будет APi запрос
-    try {
-      dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
-      return { products: res };
-    } catch ( err ) {
-      dispatch( setProductRequest( { status: RequestStatus.FAILED } ) );
-    }
-  },
-);*/
-export const fetchWithThisProductByProductsTC = createAsyncThunk(
-  'products/fetchWithThisProductByProducts', ( param, { dispatch } ) => {
-    const res = getWithThisProductsBuy(); //todo позже будет APi запрос
-    try {
-      return { products: res };
-    } catch ( err ) {
-
-    }
-  },
-);
-export const fetchPopularProductsTC = createAsyncThunk(
-  'products/fetchPopularProducts', ( param, { dispatch } ) => {
-    const res = getProductItems(); //todo позже будет APi запрос
-    try {
-      return { popularProducts: res };
-    } catch ( err ) {
-
-    }
-  },
-);
-/*export const fetchLatestProductsTC = createAsyncThunk(
-  'products/fetchLatestProducts', ( param, { dispatch } ) => {
-    const res = getProductItems(); //todo позже будет APi запрос
-    try {
-      return { latestProducts: res };
-    } catch ( err ) {
-
-    }
-  },
-);*/
 export const fetchPreviouslyProductsTC = createAsyncThunk(
   'products/fetchPreviouslyProducts', ( param, { dispatch } ) => {
     const res = getProductItems(); //todo позже будет APi запрос

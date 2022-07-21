@@ -16,8 +16,19 @@ import { routesPathsEnum } from '../../routes/enums';
 
 const ArticlesPage = () => {
 
-  const articles = useSelector( getArticles );
+  const articlesFromStore = useSelector( getArticles );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const getArticlesForBlock = () => {
+    if ( chosenAnimalTypeId ) {
+      const articles = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
+      if(articles.length){
+        return articles;
+      }
+      return articlesFromStore;
+    }
+    return articlesFromStore;
+  };
+  const articles = getArticlesForBlock();
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
 
   const dispatch = useDispatch();
