@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useLayoutEffect, useState } from 'react';
 import style from './SearchInput.module.scss';
 import SearchResultsBlock from '../Header/SearchResultsBlock/SearchResultsBlock';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +27,7 @@ const SearchInput = ( { forHeaderBurger }: SearchInputPropsType ) => {
     setSearch( '' );
   };
 
-  useEffect( () => {
+  useLayoutEffect( () => {
     // @ts-ignore
     dispatch( fetchProductsFromSearchTC( { search } ) );
   }, [ search ] );

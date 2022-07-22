@@ -9,7 +9,6 @@ import { RequestStatus } from '../../../redux/reducers/enums';
 
 const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }: SearchResultsBlockType ) => {
 
-
   const successResult = useSelector(getSearchProductStatus) === RequestStatus.SUCCEEDED
 
   return (

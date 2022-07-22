@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
@@ -13,7 +13,7 @@ import { selectValues } from '../../Api/productsApi/enums';
 
 const PopularProductsBlock = () => {
 
-  const popularProducts = useSelector(getPopularProducts)
+  const popularProducts = useSelector( getPopularProducts );
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const goToPopularProducts = () => {
@@ -21,12 +21,12 @@ const PopularProductsBlock = () => {
   };
   const animal = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( animal );
-  const ordering = selectValues.POPULARITY
+  const ordering = selectValues.POPULARITY;
 
-  useEffect(() => {
+  useLayoutEffect( () => {
     // @ts-ignore
-    dispatch(fetchPopularProductsTC({ordering, animal}))
-  }, [animal])
+    dispatch( fetchPopularProductsTC( { ordering, animal } ) );
+  }, [ animal ] );
 
   return (
     <div className={ style.popularProductsWrapper }>

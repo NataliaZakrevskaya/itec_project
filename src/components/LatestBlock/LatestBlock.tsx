@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
-import light from '../../styles/common/LightBlock.module.scss';
+import React, { useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import style from './LatestBlock.module.scss';
@@ -11,7 +9,7 @@ import { selectValues } from '../../Api/productsApi/enums';
 
 const LatestBlock = () => {
 
-  const latestProducts = useSelector( getLatestProducts )
+  const latestProducts = useSelector( getLatestProducts );
   const ordering = selectValues.ADDED_DATE;
 
   const navigate = useNavigate();
@@ -21,18 +19,18 @@ const LatestBlock = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по дате добавления
   };
 
-  useEffect( () => {
+  useLayoutEffect( () => {
     // @ts-ignore
     dispatch( fetchLatestProductsTC( { ordering } ) );
   }, [] );
   return (
     <div className={ style.latestBlockWrapper }>
-      <ThemeBlockWrapper
+      {/*<ThemeBlockWrapper
         title={ 'Новинки' }
         onButtonClick={ goToLatestProducts }
         itemsForBlock={ latestProducts }
         blockTheme={ light }
-      />
+      />*/ }
     </div>
   );
 };

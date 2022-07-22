@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useLayoutEffect, useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
@@ -49,7 +49,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
-  const chosenBrands = useSelector(getChosenBrandsId)
+  const chosenBrands = useSelector( getChosenBrandsId );
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
@@ -76,9 +76,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setIsBasketModalActive( true );
   };
   const resetFilters = () => {
-    dispatch( removeChosenBrandsId({}) );
-    dispatch( removeChosenProductTypeId({}) );
-    dispatch( removeChosenAnimalTypeId({}) );
+    dispatch( removeChosenBrandsId( {} ) );
+    dispatch( removeChosenProductTypeId( {} ) );
+    dispatch( removeChosenAnimalTypeId( {} ) );
     dispatch( setProductRequest( { status: RequestStatus.IDLE } ) );
   };
   const chooseOption = ( e: ChangeEvent<HTMLSelectElement> ) => {
@@ -86,7 +86,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setOrdering( e.currentTarget.value );
   };
 
-  useEffect( () => {
+  useLayoutEffect( () => {
     // @ts-ignore
     dispatch( fetchProductsTC( { page, animal, category, ordering, chosenBrands } ) );
   }, [ page, animal, category, ordering, chosenBrands ] );
