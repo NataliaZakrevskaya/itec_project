@@ -142,7 +142,7 @@
           flex-wrap: wrap;
           gap: 16px;
 
-          & div {
+          .unit {
             background: #E4E5E7;
             border-radius: 2px;
             padding: 6px 16px;
@@ -161,7 +161,7 @@
             }
           }
 
-          & div:hover {
+          .unit:hover {
             background: #008060;
             color: white;
 
@@ -171,6 +171,23 @@
 
             & .price {
               color: white;
+            }
+          }
+          .active{
+            border-radius: 2px;
+            padding: 6px 16px;
+            background: #008060;
+            color: white;
+            & .option {
+              @include SFDisplayBold();
+              font-size: 16px;
+              line-height: 120%;
+            }
+
+            & .price {
+              @include SFTextRegular();
+              font-size: 16px;
+              line-height: 110%;
             }
           }
         }

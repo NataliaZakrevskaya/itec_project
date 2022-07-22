@@ -4,6 +4,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import dark from '../../styles/common/DarkBlock.module.scss';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { getProductItems } from '../../mocks';
+import { location } from '../../enums';
 
 export const WithThisProductBuyBlock = () => {
   const commonProducts = getProductItems(); //todo запрос на популярные продукты
@@ -18,6 +19,7 @@ export const WithThisProductBuyBlock = () => {
       onButtonClick={ goToCommonProducts }
       itemsForBlock={ commonProducts }
       blockTheme={ dark }
+      from={location.WITH_THIS_PRODUCT_BUY}
     />
   );
 };

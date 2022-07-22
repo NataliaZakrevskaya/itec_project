@@ -10,6 +10,7 @@ import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selecto
 import { getPopularProducts } from '../../redux/selectors/popularProducts-selectors';
 import { fetchPopularProductsTC } from '../../redux/reducers/popularProducts-reducer';
 import { selectValues } from '../../Api/productsApi/enums';
+import { location } from '../../enums';
 
 const PopularProductsBlock = () => {
 
@@ -35,6 +36,7 @@ const PopularProductsBlock = () => {
         onButtonClick={ goToPopularProducts }
         itemsForBlock={ popularProducts }
         blockTheme={ dark }
+        from={location.POPULAR_PRODUCTS}
       />
     </div>
   );

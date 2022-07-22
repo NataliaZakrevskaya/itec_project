@@ -7,17 +7,19 @@ import NextSectionButton from '../nextSectionButton/nextSectionButton';
 import Modal from '../modals/Modal';
 import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
 import BasketModal from '../modals/BasketModal/BasketModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setProductToBasket } from '../../../redux/reducers/basket-reducer';
 import { ProductItemType } from '../../../redux/reducers/products-reducer';
 import { useCarousel } from '../../../customHooks/useCarousel';
 import { BlockNames } from '../../../customHooks/enums';
+import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
 
-const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }: ThemeBlockWrapperPropsType ) => {
+const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, from }: ThemeBlockWrapperPropsType ) => {
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const { block, sectionsBlock, productItem } = blockTheme;
+  const productForBasketModal = useSelector( getProductsInBasket )[ 0 ];
   const dispatch = useDispatch();
 
   const {
@@ -87,6 +89,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
                       unit={ item.options[0].units.unit_name }
                       openOneClickModal={ openOneClickModal }
                       openBasketModal={ openBasketModal }
+                      from={from}
                     />,
                   )
               }
@@ -103,14 +106,12 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme }:
         { isBasketModalActive &&
           <Modal closeModal={ closeBasketModal }>
             <BasketModal
-              key={ itemsForBlock[ 0 ].id }
-              id={ itemsForBlock[ 0 ].id }
-              image={ itemsForBlock[0].images[ 0 ] ? itemsForBlock[0].images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
-              name={ itemsForBlock[ 0 ].name }
-              unit={ itemsForBlock[ 0 ].options[0].units.unit_name }
-              options={ itemsForBlock[ 0 ].options }
-              chosenOption={itemsForBlock[ 0 ].chosen_option}
-              isForModal={ true }
+              key={ productForBasketModal.id }
+              id={ productForBasketModal.id }
+              image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
+              name={ productForBasketModal.name }
+              options={ productForBasketModal.options }
+              chosenOption={ productForBasketModal.chosen_option }
               closeModal={ closeBasketModal }
             />
           </Modal>
@@ -126,5 +127,6 @@ type ThemeBlockWrapperPropsType = {
   title: string,
   onButtonClick: () => void,
   itemsForBlock: Array<ProductItemType>,
-  blockTheme: any
+  blockTheme: any,
+  from: string
 }

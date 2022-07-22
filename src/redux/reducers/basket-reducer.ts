@@ -10,7 +10,7 @@ export const slice = createSlice( {
   },
   reducers: {
     setProductToBasket( state, action: PayloadAction<{ product: ProductItemType }> ) {
-      state.productsInBasket.push( action.payload.product );
+      state.productsInBasket.unshift( action.payload.product );
       state.totalProductsCount = state.productsInBasket.length;
     },
     removeProductFromBasket( state, action: PayloadAction<{ id: number }> ) {

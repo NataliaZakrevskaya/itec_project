@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { removeProductFromBasket } from '../../../redux/reducers/basket-reducer';
 import { stringCutter } from '../../../helpers/stringCutter';
 
-const Product = ( { id, options, name, image, isForModal, chosenOption }: ProductForBasketPropsType ) => {
+const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
   const [ countOfProduct, setCountOfProduct ] = useState( 1 );
   const dispatch = useDispatch();
   const productName = stringCutter( name, 70 );
@@ -41,6 +41,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption }: Produc
                 option={ option }
                 productId={ id }
                 active={chosenOption ? chosenOption.id === option.id : options[0].id === option.id}
+                from={from}
               />,
             )
           }
@@ -83,5 +84,6 @@ type ProductForBasketPropsType = {
   image: string,
   unit: string,
   isForModal: boolean,
-  chosenOption: null | OptionType
+  chosenOption: null | OptionType,
+  from: string
 }

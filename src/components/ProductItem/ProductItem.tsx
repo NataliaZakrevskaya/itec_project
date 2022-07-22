@@ -19,6 +19,7 @@ const ProductItem = ( {
                         classNameForDarkItem,
                         openBasketModal,
                         openOneClickModal,
+                        from,
                       }: ProductItemPropsType ) => {
 
   const isKilo = unit === 'кг.'; //todo пока заглушка
@@ -47,7 +48,8 @@ const ProductItem = ( {
             key={ option.id }
             option={ option }
             productId={ id }
-            active={chosenOption ? chosenOption.id === option.id : options[0].id === option.id}
+            from={ from }
+            active={ chosenOption ? chosenOption.id === option.id : options[ 0 ].id === option.id }
           />,
         ) }
         { isKilo && <span onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>Задать свой вес</span> }
@@ -80,5 +82,6 @@ type ProductItemPropsType = {
   unit: string,
   chosenOption: null | OptionType,
   openOneClickModal: () => void,
-  openBasketModal: ( product: ProductItemType ) => void
+  openBasketModal: ( product: ProductItemType ) => void,
+  from: string
 }

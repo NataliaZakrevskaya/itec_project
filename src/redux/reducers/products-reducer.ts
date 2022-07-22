@@ -46,7 +46,7 @@ export const slice = createSlice( {
     setActualPage( state, action: PayloadAction<{ pageNumber: number }> ) {
       state.page_number = action.payload.pageNumber;
     },
-    setChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+    setChosenOptionToProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
       const index = state.results.findIndex(product => product.id === action.payload.productId)
       state.results[index].chosen_option = action.payload.option
     },
@@ -61,7 +61,7 @@ export const slice = createSlice( {
 } );
 
 export const productsReducer = slice.reducer;
-export const { setActualPage, setChosenOption } = slice.actions;
+export const { setActualPage, setChosenOptionToProduct } = slice.actions;
 
 export type ProductItemType = {
   id: number,

@@ -1,12 +1,19 @@
 import React from 'react';
 import selectIcon from '../../../../Images/checkmarkCircle.svg';
-import Product from '../../Product/Product';
 import { OptionType } from '../../../../mocks';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../../routes/enums';
 import style from './BasketModal.module.scss';
+import ProductForBasketModal from '../../ProductForBasketModal/ProductForBasketModal';
 
-const BasketModal = ( { name, unit, options, image, isForModal, id, closeModal, chosenOption }: BasketModalPropsType ) => {
+const BasketModal = ( {
+                        name,
+                        options,
+                        image,
+                        id,
+                        closeModal,
+                        chosenOption,
+                      }: BasketModalPropsType ) => {
   const navigate = useNavigate();
   const continueShopping = () => {
     navigate( routesPathsEnum.CATALOG );
@@ -24,15 +31,12 @@ const BasketModal = ( { name, unit, options, image, isForModal, id, closeModal, 
         <h3>Товар добавлен в корзину</h3>
       </div>
       <div className={ style.product }>
-        <Product
-          id={ id }
+        <ProductForBasketModal
           name={ name }
-          unit={ unit }
-          options={ options }
           image={ image }
-          isForModal={ isForModal }
-          chosenOption={chosenOption}
-          key={ id }
+          chosenOption={ chosenOption }
+          options={ options }
+          id={ id }
         />
       </div>
       <div className={ style.buttons }>
@@ -48,10 +52,8 @@ export default BasketModal;
 
 type BasketModalPropsType = {
   name: string,
-  unit: string,
   options: Array<OptionType>,
   image: string,
-  isForModal: boolean,
   id: number,
   chosenOption: null | OptionType,
   closeModal: () => void

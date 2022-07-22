@@ -5,6 +5,7 @@ import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import light from '../../styles/common/LightBlock.module.scss';
 import style from './PreviouslyProductsBlock.module.scss';
 import { getProductItems } from '../../mocks';
+import { location } from '../../enums';
 
 const PreviouslyProductsBlock = () => {
 
@@ -21,6 +22,7 @@ const PreviouslyProductsBlock = () => {
         onButtonClick={ goToProductsCatalog }
         itemsForBlock={ previouslyProducts }
         blockTheme={ light }
+        from={location.PREVIOUSLY_PRODUCTS}
       />
     </div>
   );

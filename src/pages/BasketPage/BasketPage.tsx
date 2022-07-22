@@ -14,6 +14,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import Product from '../../components/common/Product/Product';
 import { useSelector } from 'react-redux';
 import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
+import { location } from '../../enums';
 
 const BasketPage = () => {
 
@@ -49,6 +50,7 @@ const BasketPage = () => {
                         chosenOption={item.chosen_option}
                         unit={ item.options[0].units.unit_name}
                         isForModal={ false }
+                        from={location.BASKET}
                       />,
                     )
                   }

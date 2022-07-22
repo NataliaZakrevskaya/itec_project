@@ -20,6 +20,7 @@ import { setProductToBasket } from '../../redux/reducers/basket-reducer';
 import { ProductItemType } from '../../redux/reducers/products-reducer';
 import { stringCutter } from '../../helpers/stringCutter';
 import { getProductItems } from '../../redux/selectors/products-selectors';
+import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 
 const ProductPage = () => {
 
@@ -30,7 +31,6 @@ const ProductPage = () => {
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
 
-  const totalSum = 234; //todo позже будет получаться из стора
   const productId = Number( useParams().productId );
   const product = useSelector( getProductItems )
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
@@ -48,6 +48,7 @@ const ProductPage = () => {
     chosen_option,
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
+  const productForBasketModal = useSelector( getProductsInBasket )[ 0 ];
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -134,15 +135,17 @@ const ProductPage = () => {
                 { options.map( option =>
                   <UnitsForBasket
                     key={ option.id }
-                    size={ +option.size }
-                    price={ +option.price }
-                    unit={ option.units.unit_name }
+                    option={ option }
+                    productId={ id }
+                    active={ chosen_option ? chosen_option.id === option.id : options[ 0 ].id === option.id }
                   />,
                 ) }
               </div>
               <div>
-                <p className={ style.unitsGroupHeft } onClick={ onWeightSetParagraphClick }>Задать свой
-                  вес</p>{/*//todo удет появлять только если ед. изм. кг*/ }
+                { chosen_option?.units.unit_name === 'кг.' &&
+                  <p className={ style.unitsGroupHeft } onClick={ onWeightSetParagraphClick }>Задать свой
+                    вес</p>
+                }
                 { weightSetIsShowed &&
                   <div className={ style.setWeightBlock }>
                     <h3>Задайте свой вес</h3>
@@ -171,9 +174,9 @@ const ProductPage = () => {
             </div>
             <div className={ style.orderInfoForPayment }>
               <h2>
-                { totalSum } BYN
+                { chosen_option ? chosen_option.price : options[ 0 ].price } BYN
               </h2>
-              <p>Общий вес: { options[ 0 ].size }</p>
+              <p>Общий вес: { chosen_option ? chosen_option.size : options[ 0 ].size }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
@@ -227,14 +230,12 @@ const ProductPage = () => {
       { isBasketModalActive &&
         <Modal closeModal={ closeBasketModal }>
           <BasketModal
-            key={ id }
-            id={ id }
-            image={ images[ 0 ].image }
-            name={ name }
-            unit={ options[ 0 ].units.unit_name }
-            options={ options }
-            chosenOption={ chosen_option }
-            isForModal={ true }
+            key={ productForBasketModal.id }
+            id={ productForBasketModal.id }
+            image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
+            name={ productForBasketModal.name }
+            options={ productForBasketModal.options }
+            chosenOption={ productForBasketModal.chosen_option }
             closeModal={ closeBasketModal }
           />
         </Modal>

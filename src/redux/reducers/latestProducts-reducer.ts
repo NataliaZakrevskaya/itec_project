@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductItemType } from './products-reducer';
 import { productsAPI } from '../../Api/productsApi/productsApi';
 import { setLatestProductRequestStatus } from './app-reducer';
 import { RequestStatus } from './enums';
+import { OptionType } from '../../mocks';
 
 export const fetchLatestProductsTC = createAsyncThunk(
   'latestProducts/fetchLatestProducts', async ( param: { ordering: string }, {
@@ -22,7 +23,12 @@ export const fetchLatestProductsTC = createAsyncThunk(
 export const slice = createSlice( {
   name: 'latestProducts',
   initialState: {} as latestProductsInitialStateType,
-  reducers: {},
+  reducers: {
+    setChosenOptionToLatestProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+      const index = state.results.findIndex(product => product.id === action.payload.productId)
+      state.results[index].chosen_option = action.payload.option
+    },
+  },
   extraReducers: ( builder => {
     // @ts-ignore
     builder.addCase( fetchLatestProductsTC.fulfilled, ( state, action ) => {
@@ -34,6 +40,7 @@ export const slice = createSlice( {
 } );
 
 export const latestProductsReducer = slice.reducer;
+export const { setChosenOptionToLatestProduct } = slice.actions;
 
 type latestProductsInitialStateType = {
   results: Array<ProductItemType>,

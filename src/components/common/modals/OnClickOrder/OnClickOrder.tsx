@@ -4,6 +4,7 @@ import { getProductItems } from '../../../../mocks';
 import { useFormik } from 'formik';
 import style from './OnClickOrder.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
+import { location } from '../../../../enums';
 
 const OnClickOrder = () => {
 
@@ -31,6 +32,7 @@ const OnClickOrder = () => {
         image={ selectProduct.images[ 0 ].image }
         chosenOption={selectProduct.chosen_option}
         isForModal={ true }
+        from={location.ONE_CLICK_ORDER}
       />
       <div className={style.nextSection}>
         <span/>
