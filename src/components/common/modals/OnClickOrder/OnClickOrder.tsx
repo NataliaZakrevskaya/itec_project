@@ -29,6 +29,7 @@ const OnClickOrder = () => {
         options={ selectProduct.options }
         name={ selectProduct.name }
         image={ selectProduct.images[ 0 ].image }
+        chosenOption={selectProduct.chosen_option}
         isForModal={ true }
       />
       <div className={style.nextSection}>

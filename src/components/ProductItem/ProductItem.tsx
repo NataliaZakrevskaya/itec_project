@@ -15,18 +15,25 @@ const ProductItem = ( {
                         options,
                         id,
                         unit,
+                        chosenOption,
                         classNameForDarkItem,
                         openBasketModal,
                         openOneClickModal,
                       }: ProductItemPropsType ) => {
 
   const isKilo = unit === 'кг.'; //todo пока заглушка
-  const price = 325; // будет выводиться в зависимости от выбранного option, приходить из редюсера
+  const getPrice = () => {
+    if ( chosenOption ) {
+      return chosenOption.price;
+    }
+    return options[ 0 ].price;
+  };
+  const price = getPrice();
   const navigate = useNavigate();
   const nameForCard = stringCutter( name, 70 );
   const onNameClick = () => {
-    navigate( `${ routesPathsEnum.CATALOG }/${ id }` )
-  }
+    navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
+  };
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
       <div className={ style.productItemWrapper }>
@@ -38,8 +45,9 @@ const ProductItem = ( {
         { options.map( option =>
           <ProductItemUnit
             key={ option.id }
-            count={ +option.size }
-            unit={ unit }
+            option={ option }
+            productId={ id }
+            active={chosenOption ? chosenOption.id === option.id : options[0].id === option.id}
           />,
         ) }
         { isKilo && <span onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>Задать свой вес</span> }
@@ -70,6 +78,7 @@ type ProductItemPropsType = {
   options: Array<OptionType>,
   classNameForDarkItem?: string,
   unit: string,
+  chosenOption: null | OptionType,
   openOneClickModal: () => void,
   openBasketModal: ( product: ProductItemType ) => void
 }

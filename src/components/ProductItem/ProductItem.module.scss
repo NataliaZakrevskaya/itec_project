@@ -99,22 +99,6 @@
     flex-wrap: wrap;
     margin-bottom: 17px;
     margin-top: 16px;
-    & span{
-      padding: 2px 8px;
-      background: #E4E5E7;
-      border-radius: 2px;
-      @include SFTextMedium();
-      font-size: 14px;
-      line-height: 20px;
-      color: #202223;
-      cursor: pointer;
-      margin-right: 4px;
-      margin-bottom: 6px;
-      &:hover{
-        color: #FFFFFF;
-        background: #449DA7;
-      }
-    }
   }
 }
 

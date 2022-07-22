@@ -32,10 +32,22 @@ const ProductPage = () => {
 
   const totalSum = 234; //todo позже будет получаться из стора
   const productId = Number( useParams().productId );
-  const product = useSelector(getProductItems)
+  const product = useSelector( getProductItems )
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
-  const { id, brand, name, images, options, description, analysis, features, composition, additives } = product;
-  const nameForNavigationBlock = stringCutter(name, 90);
+  const {
+    id,
+    brand,
+    name,
+    images,
+    options,
+    description,
+    analysis,
+    features,
+    composition,
+    additives,
+    chosen_option,
+  } = product;
+  const nameForNavigationBlock = stringCutter( name, 90 );
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -95,7 +107,9 @@ const ProductPage = () => {
         <div className={ style.imgAndOrderBlock }>
           <div className={ style.imageBlock }>
             <div className={ style.mainImageWrapper }>
-              <img src={ images[ selectImageId ] ? images[ selectImageId ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png'} alt="product" className={ style.mainImg }/>
+              <img
+                src={ images[ selectImageId ] ? images[ selectImageId ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
+                alt="product" className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
               {
@@ -159,7 +173,7 @@ const ProductPage = () => {
               <h2>
                 { totalSum } BYN
               </h2>
-              <p>Общий вес: { options[0].size }</p>
+              <p>Общий вес: { options[ 0 ].size }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
@@ -174,14 +188,14 @@ const ProductPage = () => {
               <div className={ style.basketInterfaceButton }>
                 <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal( product ) }/>
               </div>
-              <div className={style.basketInterfaceOneClickWrapper}>
+              <div className={ style.basketInterfaceOneClickWrapper }>
                 <p className={ style.basketInterfaceOneClick } onClick={ openOneClickModal }>Купить в 1
                   клик</p>
               </div>
             </div>
           </div>
         </div>
-        <h2 className={style.descriptionTitle}>Описание</h2>
+        <h2 className={ style.descriptionTitle }>Описание</h2>
         <div className={ style.descriptionBlock }>
           <div className={ style.mainDescription }>
             <p dangerouslySetInnerHTML={ { __html: description } }/>
@@ -190,7 +204,7 @@ const ProductPage = () => {
             <h3>Состав:</h3>
             <p dangerouslySetInnerHTML={ { __html: composition } }/>
           </div>
-          <div className={style.mainAnalysis}>
+          <div className={ style.mainAnalysis }>
             <h3>Гарантированный анализ:</h3>
             <p dangerouslySetInnerHTML={ { __html: analysis } }/>
             <h3>Пищевые добавки:</h3>
@@ -198,10 +212,10 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-      <div className={style.productPageButtonWrappers}>
+      <div className={ style.productPageButtonWrappers }>
         <PopularProductsBlock/>
       </div>
-      <div className={style.productPageButtonWithWrappers}>
+      <div className={ style.productPageButtonWithWrappers }>
         <WithThisProductBuyBlock/>
       </div>
       <UsefulArticlesBlock/>
@@ -217,8 +231,9 @@ const ProductPage = () => {
             id={ id }
             image={ images[ 0 ].image }
             name={ name }
-            unit={ options[0].units.unit_name }
+            unit={ options[ 0 ].units.unit_name }
             options={ options }
+            chosenOption={ chosen_option }
             isForModal={ true }
             closeModal={ closeBasketModal }
           />

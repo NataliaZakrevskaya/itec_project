@@ -46,6 +46,10 @@ export const slice = createSlice( {
     setActualPage( state, action: PayloadAction<{ pageNumber: number }> ) {
       state.page_number = action.payload.pageNumber;
     },
+    setChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+      const index = state.results.findIndex(product => product.id === action.payload.productId)
+      state.results[index].chosen_option = action.payload.option
+    },
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
@@ -57,7 +61,7 @@ export const slice = createSlice( {
 } );
 
 export const productsReducer = slice.reducer;
-export const { setActualPage } = slice.actions;
+export const { setActualPage, setChosenOption } = slice.actions;
 
 export type ProductItemType = {
   id: number,
@@ -71,5 +75,6 @@ export type ProductItemType = {
   analysis: string,
   brand: { id: number, name: string, image: string },
   category: { id: number, name: string, is_active: true, },
-  options: Array<OptionType>
+  options: Array<OptionType>,
+  chosen_option: null | OptionType
 }

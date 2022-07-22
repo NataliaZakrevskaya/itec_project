@@ -356,6 +356,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -416,6 +417,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -476,6 +478,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -536,6 +539,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -596,6 +600,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -656,6 +661,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -716,6 +722,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -776,6 +783,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -836,6 +844,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -896,6 +905,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -956,6 +966,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1016,6 +1027,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1076,6 +1088,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1136,6 +1149,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1196,6 +1210,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1260,6 +1275,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1320,6 +1336,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1380,6 +1397,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1440,6 +1458,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1500,6 +1519,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1560,6 +1580,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1620,6 +1641,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1680,6 +1702,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1740,6 +1763,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1800,6 +1824,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1860,6 +1885,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1920,6 +1946,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -1980,6 +2007,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -2040,6 +2068,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -2100,6 +2129,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      chosen_option: null,
       images: [
         {
           id: 56,
@@ -2186,7 +2216,8 @@ export type resProductItemType = {
   analysis: string,
   brand: { id: number, name: string, image: string },
   category: { id: number, name: string, is_active: true, },
-  options: Array<OptionType>
+  options: Array<OptionType>,
+  chosen_option: null | OptionType
 }
 export type responseProductItemType = {
   page_number: number,

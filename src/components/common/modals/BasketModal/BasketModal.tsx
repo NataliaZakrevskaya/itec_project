@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../../routes/enums';
 import style from './BasketModal.module.scss';
 
-const BasketModal = ( { name, unit, options, image, isForModal, id, closeModal }: BasketModalPropsType ) => {
+const BasketModal = ( { name, unit, options, image, isForModal, id, closeModal, chosenOption }: BasketModalPropsType ) => {
   const navigate = useNavigate();
   const continueShopping = () => {
     navigate( routesPathsEnum.CATALOG );
@@ -31,6 +31,7 @@ const BasketModal = ( { name, unit, options, image, isForModal, id, closeModal }
           options={ options }
           image={ image }
           isForModal={ isForModal }
+          chosenOption={chosenOption}
           key={ id }
         />
       </div>
@@ -52,5 +53,6 @@ type BasketModalPropsType = {
   image: string,
   isForModal: boolean,
   id: number,
+  chosenOption: null | OptionType,
   closeModal: () => void
 }
