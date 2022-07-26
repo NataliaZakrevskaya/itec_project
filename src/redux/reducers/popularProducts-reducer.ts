@@ -37,7 +37,6 @@ export const slice = createSlice( {
     },
   },
   extraReducers: ( builder => {
-    // @ts-ignore
     builder.addCase( fetchPopularProductsTC.fulfilled, ( state, action ) => {
       if ( action.payload ) {
         return action.payload.products;

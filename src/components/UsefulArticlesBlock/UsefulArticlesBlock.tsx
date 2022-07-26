@@ -15,6 +15,7 @@ import { getArticles } from '../../redux/selectors/articles-selectors';
 import { fetchArticlesTC } from '../../redux/reducers/articles-reducer';
 import { useCarousel } from '../../customHooks/useCarousel';
 import { BlockNames } from '../../customHooks/enums';
+import { AppDispatch } from '../../redux/store';
 
 const UsefulArticlesBlock = () => {
 
@@ -33,7 +34,7 @@ const UsefulArticlesBlock = () => {
     };
     const articles = getArticlesForBlock();
     const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     const {
       offset,
@@ -47,7 +48,6 @@ const UsefulArticlesBlock = () => {
     } = useCarousel( BlockNames.ARTICLES, articles.length );
 
     useEffect( () => {
-      // @ts-ignore
       dispatch( fetchArticlesTC() );
     }, [] );
 

@@ -10,6 +10,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 import { useCarousel } from '../../customHooks/useCarousel';
 import { BlockNames } from '../../customHooks/enums';
+import { AppDispatch } from '../../redux/store';
 
 const AnimalsTypesList = () => {
 
@@ -22,11 +23,10 @@ const AnimalsTypesList = () => {
     windowElRef,
   } = useCarousel( BlockNames.ANIMALS, animalTypes.length );
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   useEffect( () => {
-    // @ts-ignore
     dispatch( fetchAnimalTypesTC() );
   }, [] );
 

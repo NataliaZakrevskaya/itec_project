@@ -7,10 +7,11 @@ import { getBrands } from '../../redux/selectors/brands-selectors';
 import Button from '../common/Button/Button';
 import { fetchBrandsTC, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { setActualPage } from '../../redux/reducers/products-reducer';
+import { AppDispatch } from '../../redux/store';
 
 const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const brands = useSelector( getBrands );
   const [ value, setValue ] = useState( '' );
   const filteredBrands = brands.filter( brand => brand.name.toLowerCase().includes( value.toLowerCase() ) );
@@ -22,7 +23,6 @@ const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
     dispatch( setActualPage( { pageNumber } ) );
   };
   useEffect( () => {
-    // @ts-ignore
     dispatch( fetchBrandsTC() );
   }, [] );
 

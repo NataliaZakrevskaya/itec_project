@@ -30,7 +30,6 @@ export const slice = createSlice( {
   },
   reducers: {},
   extraReducers: ( builder => {
-    // @ts-ignore
     builder.addCase( fetchReviewsTC.fulfilled, ( state, action ) => {
       // @ts-ignore
       state.reviews  = action.payload.reviews;

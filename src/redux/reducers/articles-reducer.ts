@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BrandType } from './brands-reducer';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { articlesAPI } from '../../Api/articlesApi/articlesApi';
 import { ArticleType } from '../../mocks';
 
@@ -19,9 +18,8 @@ export const slice = createSlice( {
   initialState: {
     articles: [] as Array<ArticleType>,
   },
-  reducers: { },
+  reducers: {},
   extraReducers: ( builder => {
-    // @ts-ignore
     builder.addCase( fetchArticlesTC.fulfilled, ( state, action ) => {
       // @ts-ignore
       state.articles = action.payload.articles;

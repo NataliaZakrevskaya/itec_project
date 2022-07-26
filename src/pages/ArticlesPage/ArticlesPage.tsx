@@ -13,6 +13,7 @@ import { getArticles } from '../../redux/selectors/articles-selectors';
 import { fetchArticlesTC } from '../../redux/reducers/articles-reducer';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import { AppDispatch } from '../../redux/store';
 
 const ArticlesPage = () => {
 
@@ -31,11 +32,10 @@ const ArticlesPage = () => {
   const articles = getArticlesForBlock();
   const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   useEffect( () => {
-    // @ts-ignore
     dispatch(fetchArticlesTC())
   }, [] );
 

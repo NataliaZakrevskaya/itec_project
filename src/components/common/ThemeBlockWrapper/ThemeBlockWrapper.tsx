@@ -51,7 +51,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
     <div className={ `${ commonStyle.block } ${ block }` }>
       <div className={ commonStyle.container }>
         <div className={ commonStyle.navigationInfoBlock }>
-          <h2>{ title }</h2> {/*//todo меняется в зависимости от выбора типа животного*/ }
+          <h2>{ title }</h2>
           <div className={ `${ commonStyle.sectionsBlock } ${ sectionsBlock }` }>
             <PrevSectionButton
               onClick={ onPrevSectionButtonClick }

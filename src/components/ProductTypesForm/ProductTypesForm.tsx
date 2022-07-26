@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChosenProductTypeId, getProductTypes } from '../../redux/selectors/productTypes-selectors';
 import { fetchProductTypesTC, setChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
 import { setActualPage } from '../../redux/reducers/products-reducer';
+import { AppDispatch } from '../../redux/store';
 
 const ProductTypesForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const productsTypes = useSelector( getProductTypes );
   const chosenProductTypeId = useSelector( getChosenProductTypeId );
   const chooseProductType = ( id: number ) => {
@@ -16,7 +17,6 @@ const ProductTypesForm = () => {
     dispatch(setActualPage({pageNumber}))
   };
   useEffect( () => {
-    // @ts-ignore
     dispatch( fetchProductTypesTC() );
   }, [] );
 

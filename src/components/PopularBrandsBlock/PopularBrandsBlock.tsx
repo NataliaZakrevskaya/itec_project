@@ -8,18 +8,18 @@ import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBrandsTC, setChosenBrandId } from '../../redux/reducers/brands-reducer';
 import { getBrands } from '../../redux/selectors/brands-selectors';
+import { AppDispatch } from '../../redux/store';
 
 const PopularBrandsBlock = () => {
 
   const brands = useSelector( getBrands );
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const chooseBrand = ( id: number ) => {
     dispatch( setChosenBrandId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
   };
   useEffect( () => {
-    // @ts-ignore
     dispatch( fetchBrandsTC() );
   }, [] );
 

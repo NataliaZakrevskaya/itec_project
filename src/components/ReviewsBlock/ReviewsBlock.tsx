@@ -17,11 +17,12 @@ import SuccessReviewModal from '../common/modals/SuccessReviewModal/SuccessRevie
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { BlockNames } from '../../customHooks/enums';
+import { AppDispatch } from '../../redux/store';
 
 const ReviewsBlock = () => {
 
   const reviews = useSelector( getReviews );
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const {
@@ -51,7 +52,6 @@ const ReviewsBlock = () => {
   };
 
   useEffect( () => {
-    // @ts-ignore
     dispatch( fetchReviewsTC() );
   }, [] );
 
