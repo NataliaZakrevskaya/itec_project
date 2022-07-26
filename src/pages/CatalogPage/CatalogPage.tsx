@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useLayoutEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
@@ -40,6 +40,7 @@ import { SelectValuesTypes } from '../../Api/productsApi/types';
 import { getChosenBrandsId } from '../../redux/selectors/brands-selectors';
 import { location } from '../../enums';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
+import { AppDispatch } from '../../redux/store';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -56,9 +57,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ ordering, setOrdering ] = useState<SelectValuesTypes>( selectValues.ADDED_DATE );
+  const [ ordering, setOrdering ] = useState<SelectValuesTypes>( selectValues.POPULARITY );
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const onPageChanged = ( pageNumber: number ) => {
@@ -89,8 +90,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setOrdering( e.currentTarget.value );
   };
 
-  useLayoutEffect( () => {
-    // @ts-ignore
+  useEffect( () => {
     dispatch( fetchProductsTC( { page, animal, category, ordering, chosenBrands } ) );
   }, [ page, animal, category, ordering, chosenBrands ] );
 
@@ -112,8 +112,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             name="select"
             value={ ordering }
             onChange={ chooseOption }>
-            <option value={ selectValues.ADDED_DATE } selected={ ordering === selectValues.ADDED_DATE }>дате
-              добавления
+            <option value={ selectValues.POPULARITY }
+                    selected={ ordering === selectValues.POPULARITY }>популярности
             </option>
             <option value={ selectValues.NAME_POSITIVE }
                     selected={ ordering === selectValues.NAME_POSITIVE }>названию: «от А до Я»
@@ -126,9 +126,6 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             </option>
             <option value={ selectValues.PRICE_NEGATIVE }
                     selected={ ordering === selectValues.PRICE_NEGATIVE }>цене по убыв.
-            </option>
-            <option value={ selectValues.POPULARITY }
-                    selected={ ordering === selectValues.POPULARITY }>популярности
             </option>
           </select>
         </div>

@@ -3,7 +3,7 @@ import { instance } from '../configApi/configApi';
 import { AxiosResponse, responseProductItemType, resProductItemType } from '../../mocks';
 
 export const productsAPI = {
-  async setProducts( page?: number, ordering?: string, animal?: number, category?: number, brands?: any ) {
+  async setProducts( animal: number | null, category: number | null, page?: number, ordering?: string, brands?: any ) {
     const page_size = 15;
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {
@@ -27,7 +27,7 @@ export const productsAPI = {
       },
     } );
   },
-  async setPopularProducts( ordering?: string, animal?: number ) {
+  async setPopularProducts( ordering?: string, animal?: number | null ) {
     const page_size = 12;
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {

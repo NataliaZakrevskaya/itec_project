@@ -21,6 +21,7 @@ import { ProductItemType } from '../../redux/reducers/products-reducer';
 import { stringCutter } from '../../helpers/stringCutter';
 import { getProductItems } from '../../redux/selectors/products-selectors';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
+import { AppDispatch } from '../../redux/store';
 
 const ProductPage = () => {
 
@@ -51,7 +52,7 @@ const ProductPage = () => {
   const productForBasketModal = useSelector( getProductsInBasket )[ 0 ];
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const chooseBrand = ( id: number ) => {
     dispatch( setChosenBrandId( { id } ) );
@@ -142,7 +143,7 @@ const ProductPage = () => {
                 ) }
               </div>
               <div>
-                { chosen_option?.units.unit_name === 'кг.' &&
+                { options.filter(option => option.partial) &&
                   <p className={ style.unitsGroupHeft } onClick={ onWeightSetParagraphClick }>Задать свой
                     вес</p>
                 }

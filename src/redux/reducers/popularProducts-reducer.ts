@@ -6,7 +6,7 @@ import { setPopularProductRequestStatus } from './app-reducer';
 import { OptionType } from '../../mocks';
 
 export const fetchPopularProductsTC = createAsyncThunk(
-  'popularProducts/fetchPopularProducts', async ( param: { ordering: string, animal: number }, {
+  'popularProducts/fetchPopularProducts', async ( param: { ordering: string, animal: number | null }, {
     dispatch,
     rejectWithValue,
   } ) => {
@@ -22,7 +22,14 @@ export const fetchPopularProductsTC = createAsyncThunk(
 );
 export const slice = createSlice( {
   name: 'popularProducts',
-  initialState: {} as popularProductsInitialStateType,
+  initialState: {
+    results: [] as Array<ProductItemType>,
+    total_products: 0 as number,
+    max_products_on_page: 15 as number,
+    page_number: 1 as number,
+    products_on_page: null as null | number,
+    total_pages: 1 as number,
+  } as popularProductsInitialStateType,
   reducers: {
     setChosenOptionToPopularProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
       const index = state.results.findIndex(product => product.id === action.payload.productId)

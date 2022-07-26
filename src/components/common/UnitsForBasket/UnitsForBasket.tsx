@@ -10,12 +10,16 @@ const UnitsForBasket = ( { option, productId, active }: UnitsForBasketPropsType 
     dispatch( setChosenOptionToProduct( { productId, option } ) );
   };
 
-return (
-  <div onClick={ onUnitClick } className={active ? style.active : style.unit}>
-    <p className={ style.option }>{ option.size } { option.units.unit_name }</p>
-    <p className={ style.price }>{ option.price } BYN</p>
-  </div>
-);
+  return (
+    <>
+      { !option.partial &&
+        <div onClick={ onUnitClick } className={ active ? style.active : style.unit }>
+          <p className={ style.option }>{ option.size } { option.units.unit_name }</p>
+          <p className={ style.price }>{ option.price } BYN</p>
+        </div>
+      }
+    </>
+  );
 };
 
 export default UnitsForBasket;

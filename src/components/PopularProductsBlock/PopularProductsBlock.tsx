@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
@@ -11,12 +11,13 @@ import { getPopularProducts } from '../../redux/selectors/popularProducts-select
 import { fetchPopularProductsTC } from '../../redux/reducers/popularProducts-reducer';
 import { selectValues } from '../../Api/productsApi/enums';
 import { location } from '../../enums';
+import { AppDispatch } from '../../redux/store';
 
 const PopularProductsBlock = () => {
 
   const popularProducts = useSelector( getPopularProducts );
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const goToPopularProducts = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по популярности
   };
@@ -24,9 +25,10 @@ const PopularProductsBlock = () => {
   const subTitle = getTitleForProductsBlock( animal );
   const ordering = selectValues.POPULARITY;
 
-  useLayoutEffect( () => {
-    // @ts-ignore
-    dispatch( fetchPopularProductsTC( { ordering, animal } ) );
+  useEffect( () => {
+    if ( !window.localStorage.getItem( 'popularProducts' ) ) {
+      dispatch( fetchPopularProductsTC( { ordering, animal } ) );
+    }
   }, [ animal ] );
 
   return (
@@ -36,7 +38,7 @@ const PopularProductsBlock = () => {
         onButtonClick={ goToPopularProducts }
         itemsForBlock={ popularProducts }
         blockTheme={ dark }
-        from={location.POPULAR_PRODUCTS}
+        from={ location.POPULAR_PRODUCTS }
       />
     </div>
   );

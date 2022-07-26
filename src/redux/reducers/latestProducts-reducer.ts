@@ -22,7 +22,14 @@ export const fetchLatestProductsTC = createAsyncThunk(
 );
 export const slice = createSlice( {
   name: 'latestProducts',
-  initialState: {} as latestProductsInitialStateType,
+  initialState: {
+    results: [] as Array<ProductItemType>,
+    total_products: 0 as number,
+    max_products_on_page: 15 as number,
+    page_number: 1 as number,
+    products_on_page: null as null | number,
+    total_pages: 1 as number,
+  } as latestProductsInitialStateType,
   reducers: {
     setChosenOptionToLatestProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
       const index = state.results.findIndex(product => product.id === action.payload.productId)

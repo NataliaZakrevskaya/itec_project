@@ -5,13 +5,13 @@ import { RequestStatus } from './enums';
 import { productsAPI } from '../../Api/productsApi/productsApi';
 
 export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param: { page?: number, animal?: number, category?: number, ordering?: any, chosenBrands?: Array<number> }, {
+  'products/fetchProducts', async ( param: { page?: number, animal: number | null, category: number | null, ordering?: any, chosenBrands?: Array<number> }, {
     dispatch,
     rejectWithValue,
   } ) => {
     /*const brands = {...param.chosenBrands.map(brand => `brand: ${brand}`)}*/
     try {
-      const res = await productsAPI.setProducts( param.page, param.ordering, param.animal, param.category/*, brands*/ );
+      const res = await productsAPI.setProducts( param.animal,  param.category, param.page, param.ordering /*, brands*/ );
       dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {

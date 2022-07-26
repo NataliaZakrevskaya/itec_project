@@ -21,7 +21,14 @@ export const fetchProductsFromSearchTC = createAsyncThunk(
 );
 export const slice = createSlice( {
   name: 'productsFromSearch',
-  initialState: {} as productsFromSearchInitialStateType,
+  initialState: {
+    results: [] as Array<ProductItemType>,
+    total_products: 0 as number,
+    max_products_on_page: 15 as number,
+    page_number: 1 as number,
+    products_on_page: null as null | number,
+    total_pages: 1 as number,
+  } as productsFromSearchInitialStateType,
   reducers: {},
   extraReducers: ( builder => {
     builder.addCase( fetchProductsFromSearchTC.fulfilled, ( state, action ) => {

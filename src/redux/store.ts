@@ -31,6 +31,7 @@ const rootReducer = combineReducers( {
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['products']
 };
 
 const persistedReducer = persistReducer( persistConfig, rootReducer );
@@ -49,6 +50,7 @@ export default store;
 
 export type RootReducerType = typeof rootReducer
 export type AppRootStateType = ReturnType<RootReducerType>
+export type AppDispatch = typeof store.dispatch
 
 // @ts-ignore
 window.store = store;
