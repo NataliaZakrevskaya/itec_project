@@ -15,7 +15,6 @@ const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
   const brands = useSelector( getBrands );
   const [ value, setValue ] = useState( '' );
   const filteredBrands = brands.filter( brand => brand.name.toLowerCase().includes( value.toLowerCase() ) );
-
   const setFilters = () => {
     const pageNumber = 1;
     closeEditMode();
@@ -23,7 +22,9 @@ const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
     dispatch( setActualPage( { pageNumber } ) );
   };
   useEffect( () => {
-    dispatch( fetchBrandsTC() );
+    if ( !brands[0] ) {
+      dispatch( fetchBrandsTC() );
+    }
   }, [] );
 
   return (
