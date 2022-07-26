@@ -14,7 +14,6 @@ const ProductItem = ( {
                         name,
                         options,
                         id,
-                        unit,
                         chosenOption,
                         classNameForDarkItem,
                         openBasketModal,
@@ -22,7 +21,6 @@ const ProductItem = ( {
                         from,
                       }: ProductItemPropsType ) => {
 
-  const isKilo = unit === 'кг.'; //todo пока заглушка
   const getPrice = () => {
     if ( chosenOption ) {
       return chosenOption.price;
@@ -52,7 +50,7 @@ const ProductItem = ( {
             active={ chosenOption ? chosenOption.id === option.id : options[ 0 ].id === option.id }
           />,
         ) }
-        { isKilo && <span onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>Задать свой вес</span> }
+        {/*{ isKilo && <span onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>Задать свой вес</span> }*/}
       </div>
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
@@ -79,7 +77,6 @@ type ProductItemPropsType = {
   name: string,
   options: Array<OptionType>,
   classNameForDarkItem?: string,
-  unit: string,
   chosenOption: null | OptionType,
   openOneClickModal: () => void,
   openBasketModal: ( product: ProductItemType ) => void,

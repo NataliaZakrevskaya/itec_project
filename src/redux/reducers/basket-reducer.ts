@@ -11,6 +11,7 @@ export const slice = createSlice( {
   reducers: {
     setProductToBasket( state, action: PayloadAction<{ product: ProductItemType }> ) {
       state.productsInBasket.unshift( action.payload.product );
+
       state.totalProductsCount = state.productsInBasket.length;
         state.totalSum = state.productsInBasket.map( (product: ProductItemType) => {
           if(product.chosen_option){

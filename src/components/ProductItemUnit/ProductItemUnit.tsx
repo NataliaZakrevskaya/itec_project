@@ -6,9 +6,12 @@ import { setChosenOptionToProduct } from '../../redux/reducers/products-reducer'
 import { location } from '../../enums';
 import { setChosenOptionToPopularProduct } from '../../redux/reducers/popularProducts-reducer';
 import { setChosenOptionToLatestProduct } from '../../redux/reducers/latestProducts-reducer';
+import { useNavigate } from 'react-router-dom';
+import { routesPathsEnum } from '../../routes/enums';
 
 const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onUnitClick = () => {
     if ( from === location.CATALOG ) dispatch( setChosenOptionToProduct( { productId, option } ) );
@@ -17,9 +20,13 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
   };
 
   return (
-    <span onClick={ onUnitClick } className={ active ? style.active : style.oneUnitBlock }>
+    <>
+      {!option.partial
+      ? (<span onClick={ onUnitClick } className={ active ? style.active : style.oneUnitBlock }>
       { +option.size } { option.units.unit_name }
-    </span>
+    </span>)
+     : <span className={style.oneUnitBlock} onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ productId }` ) }>Задать свой вес</span> }
+    </>
   );
 };
 

@@ -160,7 +160,6 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                     options={ item.options }
                     chosenOption={ item.chosen_option }
                     classNameForDarkItem={ themeStyle.productItem }
-                    unit={ item.options[ 0 ].units.unit_name }
                     openOneClickModal={ openOneClickModal }
                     openBasketModal={ openBasketModal }
                     from={ location.CATALOG }

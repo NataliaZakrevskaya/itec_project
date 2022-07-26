@@ -86,7 +86,6 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
                       options={ item.options }
                       chosenOption={item.chosen_option}
                       classNameForDarkItem={ productItem }
-                      unit={ item.options[0].units.unit_name }
                       openOneClickModal={ openOneClickModal }
                       openBasketModal={ openBasketModal }
                       from={from}
