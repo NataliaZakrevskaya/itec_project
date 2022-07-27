@@ -43,6 +43,7 @@ const BasketPage = () => {
                   {
                     productsInBasket.map( item =>
                       <Product
+                        key={item.id}
                         id={ item.id }
                         options={ item.options }
                         name={ item.name }

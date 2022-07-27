@@ -6,8 +6,8 @@ import basket from '../../../Images/basket.svg';
 import { useDispatch } from 'react-redux';
 import {
   decrementProductQuantity,
-  incrementProductQuantity,
-  removeProductFromBasket,
+  incrementProductQuantity, removeByChosenOptionId,
+  removeWithoutChosenOptionId,
 } from '../../../redux/reducers/basket-reducer';
 import { stringCutter } from '../../../helpers/stringCutter';
 import { AppDispatch } from '../../../redux/store';
@@ -28,8 +28,13 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
     dispatch( incrementProductQuantity( { optionId } ) );
   };
   const deleteProductFromBasket = () => {
-    dispatch( removeProductFromBasket( { id } ) );
-  };
+    if(chosenOption){
+      const optionId = chosenOption.id
+      dispatch(removeByChosenOptionId({optionId}))
+    } else {
+    const optionId = options[0].id
+    dispatch( removeWithoutChosenOptionId( { optionId } ) );
+    } };
   return (
     <div className={ style.productForBasketContainer }>
       <div className={ style.imageWrapper }>

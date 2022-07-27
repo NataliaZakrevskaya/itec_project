@@ -44,9 +44,15 @@ export const slice = createSlice( {
       setTotalCount( state );
       setTotalSum( state );
     },
-    removeProductFromBasket( state, action: PayloadAction<{ id: number }> ) {
-      state.productsInBasket = state.productsInBasket.filter( product => product.id !== action.payload.id );
-      state.totalProductsCount = state.productsInBasket.length;
+    removeWithoutChosenOptionId( state, action: PayloadAction<{ optionId: number }> ) {
+      state.productsInBasket = state.productsInBasket.filter( product => product.options[0].id !== action.payload.optionId );
+      setTotalCount( state );
+      setTotalSum( state );
+    },
+    removeByChosenOptionId( state, action: PayloadAction<{ optionId: number }> ) {
+      state.productsInBasket = state.productsInBasket.filter( product => product.chosen_option?.id !== action.payload.optionId );
+      setTotalCount( state );
+      setTotalSum( state );
     },
   },
 } );
@@ -54,7 +60,8 @@ export const slice = createSlice( {
 export const basketReducer = slice.reducer;
 export const {
   setProductToBasket,
-  removeProductFromBasket,
+  removeWithoutChosenOptionId,
+  removeByChosenOptionId,
   incrementProductQuantity,
   decrementProductQuantity,
 } = slice.actions;
