@@ -8,7 +8,7 @@ import Modal from '../modals/Modal';
 import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
 import BasketModal from '../modals/BasketModal/BasketModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { setProductToBasket } from '../../../redux/reducers/basket-reducer';
+import { incrementProductQuantity, setProductToBasket } from '../../../redux/reducers/basket-reducer';
 import { ProductItemType } from '../../../redux/reducers/products-reducer';
 import { useCarousel } from '../../../customHooks/useCarousel';
 import { BlockNames } from '../../../customHooks/enums';
@@ -19,7 +19,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const { block, sectionsBlock, productItem } = blockTheme;
-  const productForBasketModal = useSelector( getProductsInBasket )[ 0 ];
+  const productForBasket = useSelector( getProductsInBasket );
+  const productForBasketModal = productForBasket[ 0 ];
   const dispatch = useDispatch();
 
   const {
@@ -31,7 +32,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
     isNextDisabled,
     onTouchStart,
     onTouchEnd,
-  } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length);
+  } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length );
 
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
@@ -43,7 +44,20 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
     setIsBasketModalActive( false );
   };
   const openBasketModal = ( product: ProductItemType ) => {
-    dispatch( setProductToBasket( { product } ) );
+    let isNewProduct;
+    if ( product.chosen_option ) {
+      const optionId = product.chosen_option.id;
+      isNewProduct = productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id );
+      isNewProduct ? dispatch( setProductToBasket( { product } ) )
+        : dispatch( incrementProductQuantity( { optionId } ) );
+    }
+    if(!product.chosen_option){
+      const optionId = product.options[ 0 ].id;
+      isNewProduct = productForBasket.every( prod => prod.options[ 0 ].id !== product.options[ 0 ].id );
+      isNewProduct ? dispatch( setProductToBasket( { product } ) )
+        : dispatch( incrementProductQuantity( { optionId } ) );
+    }
+
     setIsBasketModalActive( true );
   };
 
@@ -67,8 +81,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
           <div
             className={ commonStyle.window }
             ref={ windowElRef }
-            onTouchStart={onTouchStart}
-            onTouchEnd={onTouchEnd}
+            onTouchStart={ onTouchStart }
+            onTouchEnd={ onTouchEnd }
           >
             <div className={ commonStyle.allProductItemsContainer }
                  style={ {
@@ -84,11 +98,11 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
                       image={ item.images[ 0 ] ? item.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
                       name={ item.name }
                       options={ item.options }
-                      chosenOption={item.chosen_option}
+                      chosenOption={ item.chosen_option }
                       classNameForDarkItem={ productItem }
                       openOneClickModal={ openOneClickModal }
                       openBasketModal={ openBasketModal }
-                      from={from}
+                      from={ from }
                     />,
                   )
               }

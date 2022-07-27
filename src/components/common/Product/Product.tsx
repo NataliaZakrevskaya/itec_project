@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './Product.module.scss';
 import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
 import { OptionType } from '../../../mocks';
 import basket from '../../../Images/basket.svg';
 import { useDispatch } from 'react-redux';
-import { removeProductFromBasket } from '../../../redux/reducers/basket-reducer';
+import {
+  decrementProductQuantity,
+  incrementProductQuantity,
+  removeProductFromBasket,
+} from '../../../redux/reducers/basket-reducer';
 import { stringCutter } from '../../../helpers/stringCutter';
+import { AppDispatch } from '../../../redux/store';
 
 const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
-  const [ countOfProduct, setCountOfProduct ] = useState( 1 );
-  const dispatch = useDispatch();
+  const countOfProduct = chosenOption ? chosenOption.quantity : options[ 0 ].quantity;
+  const dispatch = useDispatch<AppDispatch>();
   const productName = stringCutter( name, 70 );
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
-      setCountOfProduct( () => countOfProduct - 1 );
+      const optionId = chosenOption ? chosenOption.id : options[ 0 ].id;
+      dispatch( decrementProductQuantity( { optionId } ) );
     }
   };
   const onIncrementBtnClick = () => {
-    setCountOfProduct( () => countOfProduct + 1 );
+    const optionId = chosenOption ? chosenOption.id : options[ 0 ].id;
+    dispatch( incrementProductQuantity( { optionId } ) );
   };
   const deleteProductFromBasket = () => {
     dispatch( removeProductFromBasket( { id } ) );
@@ -40,8 +47,8 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
                 key={ option.id }
                 option={ option }
                 productId={ id }
-                active={chosenOption ? chosenOption.id === option.id : options[0].id === option.id}
-                from={from}
+                active={ chosenOption ? chosenOption.id === option.id : options[ 0 ].id === option.id }
+                from={ from }
               />,
             )
           }
@@ -82,7 +89,6 @@ type ProductForBasketPropsType = {
   options: Array<OptionType>,
   name: string,
   image: string,
-  unit: string,
   isForModal: boolean,
   chosenOption: null | OptionType,
   from: string

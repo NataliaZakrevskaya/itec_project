@@ -25,7 +25,6 @@ const OnClickOrder = () => {
     <div className={ style.onClickOrderContent }>
       <h3>Оформление заказа в 1 клик</h3>
       <Product
-        unit={ selectProduct.options[0].units.unit_name }
         id={ selectProduct.id }
         options={ selectProduct.options }
         name={ selectProduct.name }
