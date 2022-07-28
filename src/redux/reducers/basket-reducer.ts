@@ -17,47 +17,29 @@ export const slice = createSlice( {
       setTotalCount( state );
       setTotalSum( state );
     },
-    incrementProductQuantity( state, action: PayloadAction<{ optionId: number }> ) {
-      const index = state.productsInBasket.findIndex( product => {
-        if ( product.chosen_option ) return product.chosen_option.id === action.payload.optionId;
-        return product.options[ 0 ].id === action.payload.optionId;
-      } );
-      if ( state.productsInBasket[ index ].chosen_option ) {
-        // @ts-ignore
-        state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity + 1;
-      } else {
-        state.productsInBasket[ index ].options[ 0 ].quantity = state.productsInBasket[ index ].options[ 0 ].quantity + 1;
-      }
+    incrementProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
+      const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId);
+        state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity + action.payload.quantity;
+
       setTotalCount( state );
       setTotalSum( state );
     },
     decrementProductQuantity( state, action: PayloadAction<{ optionId: number }> ) {
-      const index = state.productsInBasket.findIndex( product => {
-        if ( product.chosen_option ) return product.chosen_option.id === action.payload.optionId;
-        return product.options[ 0 ].id === action.payload.optionId;
-      } );
-      if ( state.productsInBasket[ index ].chosen_option ) {
-        // @ts-ignore
+      const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
         state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity - 1;
-      } else {
-        state.productsInBasket[ index ].options[ 0 ].quantity = state.productsInBasket[ index ].options[ 0 ].quantity - 1;
-      }
-      setTotalCount( state );
-      setTotalSum( state );
-    },
-    removeWithoutChosenOptionId( state, action: PayloadAction<{ optionId: number }> ) {
-      state.productsInBasket = state.productsInBasket.filter( product => product.options[0].id !== action.payload.optionId );
+
       setTotalCount( state );
       setTotalSum( state );
     },
     removeByChosenOptionId( state, action: PayloadAction<{ optionId: number }> ) {
-      state.productsInBasket = state.productsInBasket.filter( product => product.chosen_option?.id !== action.payload.optionId );
+      state.productsInBasket = state.productsInBasket.filter( product => product.chosen_option.id !== action.payload.optionId );
       setTotalCount( state );
       setTotalSum( state );
     },
     changeChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
       const index = state.productsInBasket.findIndex(product => product.id === action.payload.productId)
       state.productsInBasket[index].chosen_option = action.payload.option
+      setTotalSum( state );
     },
   },
 } );
@@ -65,7 +47,6 @@ export const slice = createSlice( {
 export const basketReducer = slice.reducer;
 export const {
   setProductToBasket,
-  removeWithoutChosenOptionId,
   removeByChosenOptionId,
   incrementProductQuantity,
   decrementProductQuantity,

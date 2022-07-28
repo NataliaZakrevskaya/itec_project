@@ -1,16 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { brandsAPI } from '../../Api/brandsApi/brandsApi';
 
-/*export const fetchBrandsTC = createAsyncThunk(
-  'brands/fetchBrands', ( param, { dispatch } ) => {
-    const res = getBrands(); //todo позже будет APi запрос
-    try {
-      return { brands: res };
-    } catch ( err ) {
-
-    }
-  },
-);*/
 export const fetchBrandsTC = createAsyncThunk(
   'brands/fetchBrands', async ( param, { dispatch } ) => {
     const res = await brandsAPI.setBrands(); //todo после того, как заработает бэк

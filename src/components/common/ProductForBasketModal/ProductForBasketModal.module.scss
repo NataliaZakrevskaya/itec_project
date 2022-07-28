@@ -1,11 +1,27 @@
 @import "src/styles/Mixins";
 
 .ProductForBasketModalContainer {
-  @include flex(row, space-between, flex-start);
+  width: 100%;
+  @include flex(row, space-between, center);
+  @include SFTextRegular();
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #202223;
 
+  .productName{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     & img {
       @include size(56px, 56px);
       object-fit: contain;
-
+      margin-right: 10px;
+    }
   }
+.orderInfo{
+  width: 40%;
+  @include flex(row, space-between, center);
+}
 }

@@ -8,11 +8,11 @@ import ProductForBasketModal from '../../ProductForBasketModal/ProductForBasketM
 
 const BasketModal = ( {
                         name,
-                        options,
                         image,
                         id,
                         closeModal,
                         chosenOption,
+                        countOfProduct = 1
                       }: BasketModalPropsType ) => {
   const navigate = useNavigate();
   const continueShopping = () => {
@@ -35,7 +35,7 @@ const BasketModal = ( {
           name={ name }
           image={ image }
           chosenOption={ chosenOption }
-          options={ options }
+          countOfProduct={countOfProduct}
           id={ id }
         />
       </div>
@@ -52,9 +52,9 @@ export default BasketModal;
 
 type BasketModalPropsType = {
   name: string,
-  options: Array<OptionType>,
   image: string,
   id: number,
-  chosenOption: null | OptionType,
+  chosenOption: OptionType,
+  countOfProduct?: number,
   closeModal: () => void
 }

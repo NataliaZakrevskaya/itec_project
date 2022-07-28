@@ -21,13 +21,7 @@ const ProductItem = ( {
                         from,
                       }: ProductItemPropsType ) => {
 
-  const getPrice = () => {
-    if ( chosenOption ) {
-      return chosenOption.price;
-    }
-    return options[ 0 ].price;
-  };
-  const price = getPrice();
+  const price = chosenOption.price;
   const navigate = useNavigate();
   const nameForCard = stringCutter( name, 70 );
   const onNameClick = () => {
@@ -47,7 +41,7 @@ const ProductItem = ( {
             option={ option }
             productId={ id }
             from={ from }
-            active={ chosenOption ? chosenOption.id === option.id : options[ 0 ].id === option.id }
+            active={ chosenOption.id === option.id  }
           />,
         ) }
       </div>
@@ -76,7 +70,7 @@ type ProductItemPropsType = {
   name: string,
   options: Array<OptionType>,
   classNameForDarkItem?: string,
-  chosenOption: null | OptionType,
+  chosenOption: OptionType,
   openOneClickModal: () => void,
   openBasketModal: ( product: ProductItemType ) => void,
   from: string

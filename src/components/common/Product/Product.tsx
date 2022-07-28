@@ -6,8 +6,8 @@ import basket from '../../../Images/basket.svg';
 import { useDispatch } from 'react-redux';
 import {
   decrementProductQuantity,
-  incrementProductQuantity, removeByChosenOptionId,
-  removeWithoutChosenOptionId,
+  incrementProductQuantity,
+  removeByChosenOptionId,
 } from '../../../redux/reducers/basket-reducer';
 import { stringCutter } from '../../../helpers/stringCutter';
 import { AppDispatch } from '../../../redux/store';
@@ -16,31 +16,23 @@ import { useNavigate } from 'react-router-dom';
 
 const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
 
-
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   const productName = stringCutter( name, 70 );
-  const countOfProduct = chosenOption ? chosenOption.quantity : options[ 0 ].quantity;
+  const countOfProduct = chosenOption.quantity;
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
-      const optionId = chosenOption ? chosenOption.id : options[ 0 ].id;
-      dispatch( decrementProductQuantity( { optionId } ) );
+      dispatch( decrementProductQuantity( { optionId: chosenOption.id } ) );
     }
   };
   const onIncrementBtnClick = () => {
-    const optionId = chosenOption ? chosenOption.id : options[ 0 ].id;
-    dispatch( incrementProductQuantity( { optionId } ) );
+    dispatch( incrementProductQuantity( { optionId: chosenOption.id, quantity: 1 } ) );
   };
   const deleteProductFromBasket = () => {
-    if(chosenOption){
-      const optionId = chosenOption.id
-      dispatch(removeByChosenOptionId({optionId}))
-    } else {
-    const optionId = options[0].id
-    dispatch( removeWithoutChosenOptionId( { optionId } ) );
-    } };
+    dispatch( removeByChosenOptionId( { optionId: chosenOption.id } ) );
+  };
   const onNameClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
@@ -52,25 +44,25 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
       </div>
       <div
         className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
-        <h3 className={ style.basketTitle } onClick={onNameClick}>
+        <h3 className={ style.basketTitle } onClick={ onNameClick }>
           { productName }
         </h3>
         <div className={ style.heftWrapper }>
           {
             options
-              .filter(option => !option.partial)
+              .filter( option => !option.partial )
               .map( option =>
-              <ProductItemUnit
-                key={ option.id }
-                option={ option }
-                productId={ id }
-                active={ chosenOption ? chosenOption.id === option.id : options[ 0 ].id === option.id }
-                from={ from }
-              />,
-            )
+                <ProductItemUnit
+                  key={ option.id }
+                  option={ option }
+                  productId={ id }
+                  active={ chosenOption.id === option.id }
+                  from={ from }
+                />,
+              )
           }
         </div>
-        {options.some(option => option.partial) &&
+        { options.some( option => option.partial ) &&
           <p onClick={ () => alert( 'Переход на модалку' ) }>Указать свой вес</p>
         }
       </div>
@@ -109,6 +101,6 @@ type ProductForBasketPropsType = {
   name: string,
   image: string,
   isForModal: boolean,
-  chosenOption: null | OptionType,
+  chosenOption: OptionType,
   from: string
 }

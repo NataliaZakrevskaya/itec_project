@@ -52,9 +52,7 @@ export const slice = createSlice( {
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
-      if ( action.payload ) {
-        return action.payload.products;
-      }
+        return action.payload?.products;
     } );
   } ),
 } );
@@ -75,5 +73,5 @@ export type ProductItemType = {
   brand: { id: number, name: string, image: string },
   category: { id: number, name: string, is_active: true, },
   options: Array<OptionType>,
-  chosen_option: null | OptionType
+  chosen_option: OptionType
 }

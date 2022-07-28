@@ -44,20 +44,9 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
     setIsBasketModalActive( false );
   };
   const openBasketModal = ( product: ProductItemType ) => {
-    let isNewProduct;
-    if ( product.chosen_option ) {
-      const optionId = product.chosen_option.id;
-      isNewProduct = productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id );
-      isNewProduct ? dispatch( setProductToBasket( { product } ) )
-        : dispatch( incrementProductQuantity( { optionId } ) );
-    }
-    if(!product.chosen_option){
-      const optionId = product.options[ 0 ].id;
-      isNewProduct = productForBasket.every( prod => prod.options[ 0 ].id !== product.options[ 0 ].id );
-      isNewProduct ? dispatch( setProductToBasket( { product } ) )
-        : dispatch( incrementProductQuantity( { optionId } ) );
-    }
-
+    productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
+      ? dispatch( setProductToBasket( { product } ) )
+      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1 } ) );
     setIsBasketModalActive( true );
   };
 
@@ -123,7 +112,6 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
               id={ productForBasketModal.id }
               image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
               name={ productForBasketModal.name }
-              options={ productForBasketModal.options }
               chosenOption={ productForBasketModal.chosen_option }
               closeModal={ closeBasketModal }
             />

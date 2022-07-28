@@ -15,13 +15,14 @@ import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrd
 import { useDispatch, useSelector } from 'react-redux';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
-import { setChosenBrandId } from '../../redux/reducers/brands-reducer';
-import { setProductToBasket } from '../../redux/reducers/basket-reducer';
-import { ProductItemType } from '../../redux/reducers/products-reducer';
+import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
+import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket-reducer';
+import { ProductItemType, setActualPage, setChosenOptionToProduct } from '../../redux/reducers/products-reducer';
 import { stringCutter } from '../../helpers/stringCutter';
 import { getProductItems } from '../../redux/selectors/products-selectors';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 import { AppDispatch } from '../../redux/store';
+import { OptionType } from '../../mocks';
 
 const ProductPage = () => {
 
@@ -36,7 +37,6 @@ const ProductPage = () => {
   const product = useSelector( getProductItems )
     .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
   const {
-    id,
     brand,
     name,
     images,
@@ -49,13 +49,18 @@ const ProductPage = () => {
     chosen_option,
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
-  const productForBasketModal = useSelector( getProductsInBasket )[ 0 ];
+  const productForBasket = useSelector( getProductsInBasket );
+  const productForBasketModal = productForBasket[ 0 ];
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
   const chooseBrand = ( id: number ) => {
+    const pageNumber = 1;
+    dispatch( removeChosenBrandsId( {} ) );
     dispatch( setChosenBrandId( { id } ) );
+    dispatch( setChosenBrandsId( {} ) );
+    dispatch( setActualPage( { pageNumber } ) );
     navigate( routesPathsEnum.CATALOG );
   };
   const onDecrementBtnClick = () => {
@@ -85,8 +90,19 @@ const ProductPage = () => {
     setIsBasketModalActive( false );
   };
   const openBasketModal = ( product: ProductItemType ) => {
-    dispatch( setProductToBasket( { product } ) );
+    productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
+      ? dispatch( setProductToBasket( {
+        product: {
+          ...product,
+          chosen_option: { ...chosen_option, quantity: countOfProduct },
+        },
+      } ) )
+      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct } ) );
     setIsBasketModalActive( true );
+  };
+  const onUnitClick = ( option: OptionType ) => {
+    setCountOfProduct( 1 );
+    dispatch( setChosenOptionToProduct( { productId, option } ) );
   };
 
   return (
@@ -137,13 +153,13 @@ const ProductPage = () => {
                   <UnitsForBasket
                     key={ option.id }
                     option={ option }
-                    productId={ id }
-                    active={ chosen_option ? chosen_option.id === option.id : options[ 0 ].id === option.id }
+                    active={ chosen_option.id === option.id }
+                    onUnitClick={ onUnitClick }
                   />,
                 ) }
               </div>
               <div>
-                { options.filter(option => option.partial) &&
+                { options.filter( option => option.partial ) &&
                   <p className={ style.unitsGroupHeft } onClick={ onWeightSetParagraphClick }>Задать свой
                     вес</p>
                 }
@@ -175,9 +191,9 @@ const ProductPage = () => {
             </div>
             <div className={ style.orderInfoForPayment }>
               <h2>
-                { chosen_option ? chosen_option.price : options[ 0 ].price } BYN
+                { +chosen_option.price * countOfProduct } BYN
               </h2>
-              <p>Общий вес: { chosen_option ? chosen_option.size : options[ 0 ].size }</p>
+              <p>Общий вес: { chosen_option.size * countOfProduct } { chosen_option.units.unit_name }</p>
             </div>
             <div className={ style.basketInterface }>
               <div className={ style.quantityManagementBlock }>
@@ -235,8 +251,8 @@ const ProductPage = () => {
             id={ productForBasketModal.id }
             image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
             name={ productForBasketModal.name }
-            options={ productForBasketModal.options }
             chosenOption={ productForBasketModal.chosen_option }
+            countOfProduct={ countOfProduct }
             closeModal={ closeBasketModal }
           />
         </Modal>

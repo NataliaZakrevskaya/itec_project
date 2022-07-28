@@ -8,6 +8,7 @@ import { setChosenOptionToPopularProduct } from '../../redux/reducers/popularPro
 import { setChosenOptionToLatestProduct } from '../../redux/reducers/latestProducts-reducer';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import { changeChosenOption } from '../../redux/reducers/basket-reducer';
 
 const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
   const dispatch = useDispatch();
@@ -17,15 +18,18 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
     if ( from === location.CATALOG ) dispatch( setChosenOptionToProduct( { productId, option } ) );
     if ( from === location.POPULAR_PRODUCTS ) dispatch( setChosenOptionToPopularProduct( { productId, option } ) );
     if ( from === location.LATEST_PRODUCTS ) dispatch( setChosenOptionToLatestProduct( { productId, option } ) );
+    if ( from === location.BASKET ) dispatch(
+      changeChosenOption( { productId, option } ) );
   };
 
   return (
     <>
-      {!option.partial
-      ? (<span onClick={ onUnitClick } className={ active ? style.active : style.oneUnitBlock }>
+      { !option.partial
+        ? ( <span onClick={ onUnitClick } className={ active ? style.active : style.oneUnitBlock }>
       { +option.size } { option.units.unit_name }
-    </span>)
-     : <span className={style.oneUnitBlock} onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ productId }` ) }>Задать свой вес</span> }
+    </span> )
+        : <span className={ style.oneUnitBlock }
+                onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ productId }` ) }>Задать свой вес</span> }
     </>
   );
 };

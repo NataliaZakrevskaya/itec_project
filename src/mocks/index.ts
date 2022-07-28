@@ -342,7 +342,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -354,11 +354,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -405,7 +416,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -417,11 +428,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -468,7 +490,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -480,11 +502,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -531,7 +564,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -543,11 +576,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -594,7 +638,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -606,11 +650,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -657,7 +712,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -669,11 +724,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -720,7 +786,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -732,11 +798,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -783,7 +860,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -795,11 +872,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -846,7 +934,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -858,11 +946,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -909,7 +1008,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -921,11 +1020,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -972,7 +1082,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -984,11 +1094,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1035,7 +1156,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1047,11 +1168,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1098,7 +1230,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1110,11 +1242,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1161,7 +1304,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1173,11 +1316,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1224,7 +1378,7 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1236,11 +1390,22 @@ export const getProductItems = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1291,7 +1456,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1303,11 +1468,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1354,7 +1530,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1366,11 +1542,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1417,7 +1604,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1429,11 +1616,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1480,7 +1678,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1492,11 +1690,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1543,7 +1752,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1555,11 +1764,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1606,7 +1826,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1618,11 +1838,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1669,7 +1900,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1681,11 +1912,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1732,7 +1974,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1744,11 +1986,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1795,7 +2048,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1807,11 +2060,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1858,7 +2122,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1870,11 +2134,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1921,7 +2196,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1933,11 +2208,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -1984,7 +2270,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -1996,11 +2282,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -2047,7 +2344,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -2059,11 +2356,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -2110,7 +2418,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -2122,11 +2430,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -2173,7 +2492,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: '2.00',
-          size: '12',
+          size: 12,
           stock_balance: 2,
         },
         {
@@ -2185,11 +2504,22 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           partial: false,
           quantity: 1,
           price: "20.00",
-          size: "30",
+          size: 30,
           stock_balance: 12
         }
       ],
-      chosen_option: null,
+      chosen_option: {
+        id: 156,
+        units: {
+          unit_name: 'шт.',
+        },
+        article_number: '405',
+        partial: false,
+        quantity: 1,
+        price: '2.00',
+        size: 12,
+        stock_balance: 2,
+      },
       images: [
         {
           id: 56,
@@ -2239,7 +2569,7 @@ export type OptionType = {
   partial: boolean,
   quantity: number,
   price: string,
-  size: string,
+  size: number,
   stock_balance: number,
   units: { unit_name: string },
 }
@@ -2278,7 +2608,7 @@ export type resProductItemType = {
   brand: { id: number, name: string, image: string },
   category: { id: number, name: string, is_active: true, },
   options: Array<OptionType>,
-  chosen_option: null | OptionType
+  chosen_option: OptionType
 }
 export type responseProductItemType = {
   page_number: number,
