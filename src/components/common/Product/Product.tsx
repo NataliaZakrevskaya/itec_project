@@ -11,11 +11,17 @@ import {
 } from '../../../redux/reducers/basket-reducer';
 import { stringCutter } from '../../../helpers/stringCutter';
 import { AppDispatch } from '../../../redux/store';
+import { routesPathsEnum } from '../../../routes/enums';
+import { useNavigate } from 'react-router-dom';
 
 const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
-  const countOfProduct = chosenOption ? chosenOption.quantity : options[ 0 ].quantity;
+
+
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
   const productName = stringCutter( name, 70 );
+  const countOfProduct = chosenOption ? chosenOption.quantity : options[ 0 ].quantity;
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
@@ -35,6 +41,10 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
     const optionId = options[0].id
     dispatch( removeWithoutChosenOptionId( { optionId } ) );
     } };
+  const onNameClick = () => {
+    navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
+  };
+
   return (
     <div className={ style.productForBasketContainer }>
       <div className={ style.imageWrapper }>
@@ -42,12 +52,14 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
       </div>
       <div
         className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
-        <h3 className={ style.basketTitle }>
+        <h3 className={ style.basketTitle } onClick={onNameClick}>
           { productName }
         </h3>
         <div className={ style.heftWrapper }>
           {
-            options.map( option =>
+            options
+              .filter(option => !option.partial)
+              .map( option =>
               <ProductItemUnit
                 key={ option.id }
                 option={ option }
@@ -58,7 +70,9 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
             )
           }
         </div>
-        <p onClick={ () => alert( 'Переход на модалку' ) }>Указать свой вес</p>
+        {options.some(option => option.partial) &&
+          <p onClick={ () => alert( 'Переход на модалку' ) }>Указать свой вес</p>
+        }
       </div>
       <div className={ style.quantityManagementBlockWrapper }>
         <div className={ style.quantityManagementBlock }>

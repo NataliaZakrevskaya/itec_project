@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductItemType } from './products-reducer';
 import { setTotalCount, setTotalSum } from './helpers';
+import { OptionType } from '../../mocks';
 
 export const slice = createSlice( {
   name: 'basket',
@@ -54,6 +55,10 @@ export const slice = createSlice( {
       setTotalCount( state );
       setTotalSum( state );
     },
+    changeChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+      const index = state.productsInBasket.findIndex(product => product.id === action.payload.productId)
+      state.productsInBasket[index].chosen_option = action.payload.option
+    },
   },
 } );
 
@@ -64,4 +69,5 @@ export const {
   removeByChosenOptionId,
   incrementProductQuantity,
   decrementProductQuantity,
+  changeChosenOption,
 } = slice.actions;
