@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './ArticlesPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
@@ -17,15 +17,26 @@ import { AppDispatch } from '../../redux/store';
 
 const ArticlesPage = () => {
 
+  const [showAll, setShowAll] = useState<boolean>(false)
+
   const articlesFromStore = useSelector( getArticles );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const getArticlesForBlock = () => {
     if ( chosenAnimalTypeId ) {
       const articles = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
       if(articles.length){
+        if(!showAll){
+          return articles.filter( (article, index) => index < 3)
+        }
         return articles;
       }
+      if (!showAll){
+        return articlesFromStore.filter( (article, index) => index < 3)
+      }
       return articlesFromStore;
+    }
+    if (!showAll){
+      return articlesFromStore.filter( (article, index) => index < 3)
     }
     return articlesFromStore;
   };
@@ -68,7 +79,7 @@ const ArticlesPage = () => {
             )
           }
         </div>
-        <button onClick={ () => alert( 'Позже юужет раскрывать список' ) }>Показать ещё</button>
+        {!showAll && <button onClick={ () => setShowAll(true) }>Показать ещё</button>}
       </div>
       <PopularProductsBlock/>
       <ContactBlock/>
