@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useLayoutEffect, useState } from 'react';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
@@ -19,10 +19,11 @@ import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../..
 import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket-reducer';
 import { ProductItemType, setActualPage, setChosenOptionToProduct } from '../../redux/reducers/products-reducer';
 import { stringCutter } from '../../helpers/stringCutter';
-import { getProductItems } from '../../redux/selectors/products-selectors';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 import { AppDispatch } from '../../redux/store';
 import { OptionType } from '../../mocks';
+import { fetchProductTC } from '../../redux/reducers/product-reducer';
+import { getProduct } from '../../redux/selectors/product-selector';
 
 const ProductPage = () => {
 
@@ -34,8 +35,7 @@ const ProductPage = () => {
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
 
   const productId = Number( useParams().productId );
-  const product = useSelector( getProductItems )
-    .filter( ( prod: ProductItemType ) => prod.id === productId )[ 0 ];
+  const product = useSelector( getProduct );
   const {
     brand,
     name,
@@ -104,6 +104,10 @@ const ProductPage = () => {
     setCountOfProduct( 1 );
     dispatch( setChosenOptionToProduct( { productId, option } ) );
   };
+
+  useLayoutEffect( () => {
+    dispatch( fetchProductTC( { productId } ) );
+  }, [ productId ] );
 
   return (
     <div className={ style.productPage }>

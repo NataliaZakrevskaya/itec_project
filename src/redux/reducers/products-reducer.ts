@@ -71,7 +71,7 @@ export type ProductItemType = {
   additives: string,
   analysis: string,
   brand: { id: number, name: string, image: string },
-  category: { id: number, name: string, is_active: true, },
+  category: { id: number, name: string, is_active: boolean, },
   options: Array<OptionType>,
   chosen_option: OptionType
 }

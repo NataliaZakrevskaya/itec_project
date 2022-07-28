@@ -6,5 +6,4 @@ export enum location {
   PREVIOUSLY_PRODUCTS='previouslyProducts',
   BASKET='BASKET',
   ONE_CLICK_ORDER='oneClickOrder',
-  BASKET_MODAL='basketModal'
 }

@@ -13,6 +13,7 @@ import { appReducer } from './reducers/app-reducer';
 import { productsFromSearchReducer } from './reducers/productsFromSearch-reducer';
 import { latestProductsReducer } from './reducers/latestProducts-reducer';
 import { popularProductsReducer } from './reducers/popularProducts-reducer';
+import { productReducer } from './reducers/product-reducer';
 
 const rootReducer = combineReducers( {
   app: appReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers( {
   brands: brandsReducer,
   productTypes: productTypesReducer,
   basket: basketReducer,
+  product: productReducer,
   products: productsReducer,
   productsFromSearch: productsFromSearchReducer,
   latestProducts: latestProductsReducer,
@@ -31,7 +33,7 @@ const rootReducer = combineReducers( {
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['products', 'productsFromSearch', 'latestProducts', 'popularProducts' ]
+  blacklist: ['products', 'productsFromSearch', 'latestProducts', 'popularProducts', 'product' ]
 };
 
 const persistedReducer = persistReducer( persistConfig, rootReducer );

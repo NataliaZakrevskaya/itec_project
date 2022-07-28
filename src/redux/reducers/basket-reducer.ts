@@ -1,7 +1,25 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductItemType } from './products-reducer';
 import { setTotalCount, setTotalSum } from './helpers';
 import { OptionType } from '../../mocks';
+import { orderAPI } from '../../Api/orderApi/orderApi';
+import { setOrderRequestStatus } from './app-reducer';
+import { RequestStatus } from './enums';
+
+export const sendOrderTC = createAsyncThunk(
+  'order/sendOrder', async ( param: {
+    name: string, phoneNumber: string, orderInfo: Array<{ article_number: string, quantity: number }>
+  }, { dispatch, rejectWithValue } ) => {
+    try {
+      await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo );
+      dispatch( setOrderRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
+      dispatch( clearBasket( {} ) );
+    } catch ( err ) {
+      dispatch( setOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+      rejectWithValue( null );
+    }
+  },
+);
 
 export const slice = createSlice( {
   name: 'basket',
@@ -18,15 +36,15 @@ export const slice = createSlice( {
       setTotalSum( state );
     },
     incrementProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
-      const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId);
-        state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity + action.payload.quantity;
+      const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
+      state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity + action.payload.quantity;
 
       setTotalCount( state );
       setTotalSum( state );
     },
     decrementProductQuantity( state, action: PayloadAction<{ optionId: number }> ) {
       const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
-        state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity - 1;
+      state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity - 1;
 
       setTotalCount( state );
       setTotalSum( state );
@@ -37,9 +55,12 @@ export const slice = createSlice( {
       setTotalSum( state );
     },
     changeChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
-      const index = state.productsInBasket.findIndex(product => product.id === action.payload.productId)
-      state.productsInBasket[index].chosen_option = action.payload.option
+      const index = state.productsInBasket.findIndex( product => product.id === action.payload.productId );
+      state.productsInBasket[ index ].chosen_option = action.payload.option;
       setTotalSum( state );
+    },
+    clearBasket( state, action ) {
+      state.productsInBasket = [];
     },
   },
 } );
@@ -51,4 +72,5 @@ export const {
   incrementProductQuantity,
   decrementProductQuantity,
   changeChosenOption,
+  clearBasket,
 } = slice.actions;

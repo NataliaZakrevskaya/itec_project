@@ -2552,6 +2552,39 @@ export const getDiscounts = (): Array<DiscountType> => {
     },
   ];
 };
+export const getProductInitState = () => {
+  return {id: 0,
+    name: '',
+    animal: [{ id: 0, name: '', image: '' }],
+    images:  [{id: 0, image: ''}],
+    description: '',
+    features: '',
+    composition: '',
+    additives: '',
+    analysis: '',
+    brand: { id: 0, name: '', image: '' },
+    category: { id: 0, name: '', is_active: true } ,
+    options: [{
+      id: 0,
+      article_number: '',
+      partial: false,
+      quantity: 0,
+      price: '',
+      size: 0,
+      stock_balance: 0,
+      units: { unit_name: '' },
+    }],
+    chosen_option: {
+      id: 0,
+      article_number: '',
+      partial: false,
+      quantity: 0,
+      price: '',
+      size: 0,
+      stock_balance: 0,
+      units: { unit_name: '' },
+    },}
+}
 
 export type DiscountType = {
   id: number,

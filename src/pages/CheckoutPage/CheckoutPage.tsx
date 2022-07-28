@@ -8,14 +8,23 @@ import Modal from '../../components/common/modals/Modal';
 import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
+import { sendOrderTC } from '../../redux/reducers/basket-reducer';
+import { AppDispatch } from '../../redux/store';
 
 const CheckoutPage = () => {
 
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
-  const basketCount = 543; // позже будет приходить из стора корзины
-  const productsCount = 3; // позже будет приходить из стора корзины
+  const basketCount = useSelector(getTotalSum);
+  const productsCount = useSelector(getTotalProductsCount);
+  const productsInBasket = useSelector(getProductsInBasket);
+  const orderInfo = productsInBasket.map(product => {
+    return ({ article_number: product.chosen_option.article_number, quantity: product.chosen_option.quantity})
+  })
 
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const closeSuccessModal = () => {
     navigate( routesPathsEnum.CATALOG );
@@ -32,8 +41,7 @@ const CheckoutPage = () => {
     },
     onSubmit: value => {
       formik.resetForm();
-      alert( value );
-      //dispatch( loginUserTC( { email: value.email, password: value.password, rememberMe: value.rememberMe } ) );
+      dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo: orderInfo } ) );
     },
   } );
   return (
