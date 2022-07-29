@@ -17,12 +17,12 @@ import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket-reducer';
-import { ProductItemType, setActualPage, setChosenOptionToProduct } from '../../redux/reducers/products-reducer';
+import { ProductItemType, setActualPage } from '../../redux/reducers/products-reducer';
 import { stringCutter } from '../../helpers/stringCutter';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 import { AppDispatch } from '../../redux/store';
 import { OptionType } from '../../mocks';
-import { fetchProductTC } from '../../redux/reducers/product-reducer';
+import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/product-reducer';
 import { getProduct } from '../../redux/selectors/product-selector';
 
 const ProductPage = () => {

@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { productAPI } from '../../Api/productApi/productApi';
-import { getProductInitState } from '../../mocks';
+import { getProductInitState, OptionType } from '../../mocks';
 
 export const fetchProductTC = createAsyncThunk(
   'product/fetchProduct', async ( param: { productId: number }, {
@@ -9,7 +9,7 @@ export const fetchProductTC = createAsyncThunk(
   } ) => {
     try {
       const res = await productAPI.setProduct( param.productId );
-      return { products: res.data };
+      return { product: res.data };
     } catch ( err ) {
       rejectWithValue( null );
     }
@@ -19,13 +19,18 @@ export const fetchProductTC = createAsyncThunk(
 export const slice = createSlice( {
   name: 'product',
   initialState: getProductInitState(),
-  reducers: {},
+  reducers: {
+    setChosenOptionToProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+      state.chosen_option = action.payload.option;
+    },
+  },
   extraReducers: ( builder => {
     // @ts-ignore
     builder.addCase( fetchProductTC.fulfilled, ( state, action ) => {
-      return action.payload?.products;
+      return action.payload?.product;
     } );
   } ),
 } );
 
 export const productReducer = slice.reducer;
+export const { setChosenOptionToProduct } = slice.actions;

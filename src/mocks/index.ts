@@ -309,6 +309,7 @@
 };*/
 
 import { AxiosRequestConfig, AxiosResponseHeaders } from 'axios';
+import { ProductItemType } from '../redux/reducers/products-reducer';
 
 export const getProductItems = (): Array<resProductItemType> => {
   return [
@@ -2552,7 +2553,7 @@ export const getDiscounts = (): Array<DiscountType> => {
     },
   ];
 };
-export const getProductInitState = () => {
+export const getProductInitState = (): ProductItemType => {
   return {id: 0,
     name: '',
     animal: [{ id: 0, name: '', image: '' }],
