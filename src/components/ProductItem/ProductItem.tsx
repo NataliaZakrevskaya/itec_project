@@ -41,7 +41,7 @@ const ProductItem = ( {
             option={ option }
             productId={ id }
             from={ from }
-            active={ chosenOption.id === option.id  }
+            active={ chosenOption.id === option.id }
           />,
         ) }
       </div>
@@ -55,7 +55,7 @@ const ProductItem = ( {
             </div>
           </div>
         </div>
-        <button onClick={ openOneClickModal }>Купить в 1 клик</button>
+        <button onClick={ () => openOneClickModal(product) }>Купить в 1 клик</button>
       </div>
     </div>
   );
@@ -71,7 +71,7 @@ type ProductItemPropsType = {
   options: Array<OptionType>,
   classNameForDarkItem?: string,
   chosenOption: OptionType,
-  openOneClickModal: () => void,
+  openOneClickModal: ( product: ProductItemType ) => void,
   openBasketModal: ( product: ProductItemType ) => void,
   from: string
 }

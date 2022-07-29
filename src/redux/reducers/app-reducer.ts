@@ -11,6 +11,7 @@ export const slice = createSlice( {
     productRequestStatus: RequestStatus.IDLE as RequestStatusType,
     callbackRequestStatus: RequestStatus.IDLE as RequestStatusType,
     orderRequestStatus: RequestStatus.IDLE as RequestStatusType,
+    oneClickOrderRequestStatus: RequestStatus.IDLE as RequestStatusType,
   },
   reducers: {
     setSearchProductRequest( state, action: PayloadAction<{
@@ -32,6 +33,12 @@ export const slice = createSlice( {
     setPopularProductRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.popularProductStatus = action.payload.status;
     },
+    setOneClickOrderRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
+      state.oneClickOrderRequestStatus = action.payload.status;
+    },
+    setCallbackRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
+      state.callbackRequestStatus = action.payload.status;
+    },
   },
 } );
 
@@ -43,4 +50,6 @@ export const {
   setOrderRequestStatus,
   setLatestProductRequestStatus,
   setPopularProductRequestStatus,
+  setOneClickOrderRequestStatus,
+  setCallbackRequestStatus,
 } = slice.actions;

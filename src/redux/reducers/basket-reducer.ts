@@ -3,7 +3,7 @@ import { ProductItemType } from './products-reducer';
 import { setTotalCount, setTotalSum } from './helpers';
 import { OptionType } from '../../mocks';
 import { orderAPI } from '../../Api/orderApi/orderApi';
-import { setOrderRequestStatus } from './app-reducer';
+import { setCallbackRequestStatus, setOrderRequestStatus } from './app-reducer';
 import { RequestStatus } from './enums';
 
 export const sendOrderTC = createAsyncThunk(
@@ -16,6 +16,18 @@ export const sendOrderTC = createAsyncThunk(
       dispatch( clearBasket( {} ) );
     } catch ( err ) {
       dispatch( setOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+      rejectWithValue( null );
+    }
+  },
+);
+export const sendCallbackRequestTC = createAsyncThunk(
+  'order/sendCallbackRequest', async ( param: {
+    name: string, phoneNumber: string }, { dispatch, rejectWithValue } ) => {
+    try {
+      await orderAPI.sendCallbackRequest( param.name, param.phoneNumber );
+      dispatch( setCallbackRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
+    } catch ( err ) {
+      dispatch( setCallbackRequestStatus( { status: RequestStatus.FAILED } ) );
       rejectWithValue( null );
     }
   },

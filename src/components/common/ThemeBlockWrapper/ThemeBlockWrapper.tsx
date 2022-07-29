@@ -13,6 +13,7 @@ import { ProductItemType } from '../../../redux/reducers/products-reducer';
 import { useCarousel } from '../../../customHooks/useCarousel';
 import { BlockNames } from '../../../customHooks/enums';
 import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
+import { getProductForOneClickOrder } from '../../../redux/selectors/oneClickOrder-selectors';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, from }: ThemeBlockWrapperPropsType ) => {
 
@@ -21,6 +22,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
   const { block, sectionsBlock, productItem } = blockTheme;
   const productForBasket = useSelector( getProductsInBasket );
   const productForBasketModal = productForBasket[ 0 ];
+  const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
+
   const dispatch = useDispatch();
 
   const {
@@ -37,7 +40,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
-  const openOneClickModal = () => {
+  const openOneClickModal = (product: ProductItemType) => {
+    dispatch( setProductToBasket( { product } ) );
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {
@@ -102,7 +106,13 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
                 onClick={ onButtonClick }/> {/*//todo не отображается, если находится в каталоге*/ }
         { isOneClickModalActive &&
           <Modal closeModal={ closeOneClickModal }>
-            <OnClickOrder/>
+            <OnClickOrder
+              id={ productForOneClickOrderModal.id }
+              name={ productForOneClickOrderModal.name }
+              image={ productForOneClickOrderModal.images[ 0 ].image }
+              options={ productForOneClickOrderModal.options }
+              chosen_option={ productForOneClickOrderModal.chosen_option }
+            />
           </Modal>
         }
         { isBasketModalActive &&

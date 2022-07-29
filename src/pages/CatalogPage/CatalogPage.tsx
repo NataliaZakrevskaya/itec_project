@@ -41,6 +41,8 @@ import { getChosenBrandsId } from '../../redux/selectors/brands-selectors';
 import { location } from '../../enums';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 import { AppDispatch } from '../../redux/store';
+import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
+import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -54,6 +56,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
   const chosenBrands = useSelector( getChosenBrandsId );
+  const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
@@ -69,7 +72,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
-  const openOneClickModal = () => {
+  const openOneClickModal = ( product: ProductItemType ) => {
+    dispatch( setProductToState( { product } ) );
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {
@@ -187,7 +191,13 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          <OnClickOrder/>
+          <OnClickOrder
+            id={ productForOneClickOrderModal.id }
+            name={ productForOneClickOrderModal.name }
+            image={ productForOneClickOrderModal.images[ 0 ].image }
+            options={ productForOneClickOrderModal.options }
+            chosen_option={ productForOneClickOrderModal.chosen_option }
+          />
         </Modal>
       }
       { isBasketModalActive &&

@@ -2,8 +2,13 @@ import React from 'react';
 import style from './CallbackModal.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../../redux/store';
+import { sendCallbackRequestTC } from '../../../../redux/reducers/basket-reducer';
 
 const CallbackModal = (  ) => {
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const formik = useFormik( {
     initialValues: {
@@ -12,7 +17,7 @@ const CallbackModal = (  ) => {
     },
     onSubmit: value => {
       formik.resetForm();
-      alert( value );
+      dispatch(sendCallbackRequestTC({name: value.name, phoneNumber: value.phoneNumber}));
     },
   } );
 
@@ -38,7 +43,7 @@ const CallbackModal = (  ) => {
             </div>
           </div>
           <div className={ formStyle.orderBlock }>
-            <button onClick={() => alert('диспатч санки')} type="submit">Отправить</button>
+            <button type="submit">Отправить</button>
             <p>Нажимая на кнопку вы даёте согласие на обработку
             <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных</span></p>
           </div>

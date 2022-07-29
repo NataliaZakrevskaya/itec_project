@@ -9,6 +9,7 @@ import { setChosenOptionToLatestProduct } from '../../redux/reducers/latestProdu
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { changeChosenOption } from '../../redux/reducers/basket-reducer';
+import { setChosenOptionToOneOrderProduct } from '../../redux/reducers/onClickOrder-reducer';
 
 const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
     if ( from === location.LATEST_PRODUCTS ) dispatch( setChosenOptionToLatestProduct( { productId, option } ) );
     if ( from === location.BASKET ) dispatch(
       changeChosenOption( { productId, option } ) );
+    if (from === location.ONE_CLICK_ORDER) dispatch(setChosenOptionToOneOrderProduct({productId, option}))
   };
 
   return (

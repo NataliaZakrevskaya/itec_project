@@ -12,9 +12,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
 import { sendOrderTC } from '../../redux/reducers/basket-reducer';
 import { AppDispatch } from '../../redux/store';
+import { getOrderRequestStatus } from '../../redux/selectors/app-selectors';
+import { RequestStatus } from '../../redux/reducers/enums';
+import { setOrderRequestStatus } from '../../redux/reducers/app-reducer';
 
 const CheckoutPage = () => {
 
+  const orderIsSucceeded = useSelector(getOrderRequestStatus) === RequestStatus.SUCCEEDED;
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
   const basketCount = useSelector(getTotalSum);
   const productsCount = useSelector(getTotalProductsCount);
@@ -27,7 +31,8 @@ const CheckoutPage = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const closeSuccessModal = () => {
-    navigate( routesPathsEnum.CATALOG );
+    dispatch(setOrderRequestStatus({status: RequestStatus.IDLE}))
+    navigate( routesPathsEnum.ARTICLES );
     setIsSuccessModalActive( false );
   };
   const openSuccessModal = () => {
@@ -95,10 +100,11 @@ const CheckoutPage = () => {
           </div>
         </form>
       </div>
-      { isSuccessModalActive &&
+      { isSuccessModalActive && orderIsSucceeded &&
         <Modal closeModal={ closeSuccessModal }>
-          <SuccessOrderModal/>
-        </Modal> }
+           <SuccessOrderModal/>
+        </Modal>
+      }
     </div>
   );
 };

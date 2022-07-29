@@ -1,14 +1,19 @@
 import React from 'react';
 import Product from '../../Product/Product';
-import { getProductItems } from '../../../../mocks';
+import { OptionType } from '../../../../mocks';
 import { useFormik } from 'formik';
 import style from './OnClickOrder.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
 import { location } from '../../../../enums';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder-reducer';
+import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder-selectors';
+import { AppDispatch } from '../../../../redux/store';
 
-const OnClickOrder = () => {
+const OnClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrderPropsType ) => {
 
-  const selectProduct = getProductItems()[ 0 ]; //todo заглушка, после получается из стора
+  const dispatch = useDispatch<AppDispatch>();
+  const productForOneClickOrder = useSelector(getProductForOneClickOrder)
 
   const formik = useFormik( {
     initialValues: {
@@ -17,7 +22,7 @@ const OnClickOrder = () => {
     },
     onSubmit: value => {
       formik.resetForm();
-      alert( value );
+      dispatch(sendOneClickOrderTC({name: value.name, phoneNumber: value.phoneNumber, orderInfo: [{article_number: productForOneClickOrder.chosen_option.article_number, quantity: productForOneClickOrder.chosen_option.quantity}]}))
     },
   } );
 
@@ -25,18 +30,19 @@ const OnClickOrder = () => {
     <div className={ style.onClickOrderContent }>
       <h3>Оформление заказа в 1 клик</h3>
       <Product
-        id={ selectProduct.id }
-        options={ selectProduct.options }
-        name={ selectProduct.name }
-        image={ selectProduct.images[ 0 ].image }
-        chosenOption={selectProduct.chosen_option}
+        id={ id }
+        options={ options }
+        name={ name }
+        image={ image }
+        chosenOption={ chosen_option }
         isForModal={ true }
-        from={location.ONE_CLICK_ORDER}
+        from={ location.ONE_CLICK_ORDER }
       />
-      <div className={style.nextSection}>
+      <div className={ style.nextSection }>
         <span/>
       </div>
-      <p className={style.setDataParagraph}>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать вас по адресу: Минск, ул. Чюрлёниса,
+      <p className={ style.setDataParagraph }>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать вас
+        по адресу: Минск, ул. Чюрлёниса,
         6.</p>
       <form className={ style.formBlock } onSubmit={ formik.handleSubmit }>
         <div className={ formStyle.formInfo }>
@@ -61,10 +67,18 @@ const OnClickOrder = () => {
           <button type="submit">Оформить заказ</button>
         </div>
       </form>
-      <p className={style.personalData}>Нажимая на кнопку вы даёте согласие на обработку
+      <p className={ style.personalData }>Нажимая на кнопку вы даёте согласие на обработку
         <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных </span></p>
     </div>
   );
 };
 
 export default OnClickOrder;
+
+type OnClickOrderPropsType = {
+  id: number,
+  options: Array<OptionType>,
+  name: string,
+  image: string,
+  chosen_option: OptionType
+}

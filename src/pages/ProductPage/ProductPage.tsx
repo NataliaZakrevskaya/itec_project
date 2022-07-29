@@ -24,6 +24,8 @@ import { AppDispatch } from '../../redux/store';
 import { OptionType } from '../../mocks';
 import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/product-reducer';
 import { getProduct } from '../../redux/selectors/product-selector';
+import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
+import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 
 const ProductPage = () => {
 
@@ -51,6 +53,7 @@ const ProductPage = () => {
   const nameForNavigationBlock = stringCutter( name, 90 );
   const productForBasket = useSelector( getProductsInBasket );
   const productForBasketModal = productForBasket[ 0 ];
+  const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -83,7 +86,8 @@ const ProductPage = () => {
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
-  const openOneClickModal = () => {
+  const openOneClickModal = (product: ProductItemType) => {
+    dispatch( setProductToState( {product} ) );
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {
@@ -213,7 +217,7 @@ const ProductPage = () => {
                 <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal( product ) }/>
               </div>
               <div className={ style.basketInterfaceOneClickWrapper }>
-                <p className={ style.basketInterfaceOneClick } onClick={ openOneClickModal }>Купить в 1
+                <p className={ style.basketInterfaceOneClick } onClick={ () => openOneClickModal( product ) }>Купить в 1
                   клик</p>
               </div>
             </div>
@@ -245,7 +249,13 @@ const ProductPage = () => {
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          <OnClickOrder/>
+          <OnClickOrder
+            id={ productForOneClickOrderModal.id }
+            name={ productForOneClickOrderModal.name }
+            image={ productForOneClickOrderModal.images[ 0 ].image }
+            options={ productForOneClickOrderModal.options }
+            chosen_option={ productForOneClickOrderModal.chosen_option }
+          />
         </Modal>
       }
       { isBasketModalActive &&

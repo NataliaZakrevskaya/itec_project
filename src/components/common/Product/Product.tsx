@@ -13,6 +13,11 @@ import { stringCutter } from '../../../helpers/stringCutter';
 import { AppDispatch } from '../../../redux/store';
 import { routesPathsEnum } from '../../../routes/enums';
 import { useNavigate } from 'react-router-dom';
+import { location } from '../../../enums';
+import {
+  decrementOneOrderProductQuantity,
+  incrementOneOrderProductQuantity,
+} from '../../../redux/reducers/onClickOrder-reducer';
 
 const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
 
@@ -24,11 +29,13 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
-      dispatch( decrementProductQuantity( { optionId: chosenOption.id } ) );
+      if ( from === location.ONE_CLICK_ORDER ) dispatch( decrementOneOrderProductQuantity( { quantity: 1 } ) );
+      else dispatch( decrementProductQuantity( { optionId: chosenOption.id } ) );
     }
   };
   const onIncrementBtnClick = () => {
-    dispatch( incrementProductQuantity( { optionId: chosenOption.id, quantity: 1 } ) );
+    if ( from === location.ONE_CLICK_ORDER ) dispatch( incrementOneOrderProductQuantity( { quantity: 1 } ) );
+    else dispatch( incrementProductQuantity( { optionId: chosenOption.id, quantity: 1 } ) );
   };
   const deleteProductFromBasket = () => {
     dispatch( removeByChosenOptionId( { optionId: chosenOption.id } ) );
@@ -85,7 +92,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
         </div>
         { isForModal &&
           <div>
-            <p>235 BYN.</p> {/*//todo позже будет получаться из стора*/ }
+            <p>{ +chosenOption.price * countOfProduct } BYN.</p>
           </div>
         }
       </div>
