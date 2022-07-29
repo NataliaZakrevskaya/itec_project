@@ -5,12 +5,12 @@ import { RequestStatus } from './enums';
 import { productsAPI } from '../../Api/productsApi/productsApi';
 
 export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param: { page?: number, animal: number | null, category: number | null, ordering?: any, chosenBrands: Array<number> | null }, {
+  'products/fetchProducts', async ( param: { page?: number, animal: number | null, category: number | null, ordering?: any, brands: string | null }, {
     dispatch,
     rejectWithValue,
   } ) => {
     try {
-      const res = await productsAPI.setProducts( param.animal,  param.category, param.chosenBrands, param.page, param.ordering );
+      const res = await productsAPI.setProducts( param.animal,  param.category, param.brands, param.page, param.ordering );
       dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {

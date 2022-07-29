@@ -95,7 +95,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   };
 
   useEffect( () => {
-    dispatch( fetchProductsTC( { page, animal, category, ordering, chosenBrands } ) );
+    const brands = chosenBrands.length ? chosenBrands?.join() : null
+    dispatch( fetchProductsTC( { page, animal, category, ordering, brands } ) );
   }, [ page, animal, category, ordering, chosenBrands ] );
 
   return (
