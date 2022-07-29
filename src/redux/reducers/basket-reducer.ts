@@ -73,6 +73,8 @@ export const slice = createSlice( {
     },
     clearBasket( state, action ) {
       state.productsInBasket = [];
+      state.totalSum = 0;
+      state.totalProductsCount = 0;
     },
   },
 } );

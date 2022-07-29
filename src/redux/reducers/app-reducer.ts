@@ -12,6 +12,7 @@ export const slice = createSlice( {
     callbackRequestStatus: RequestStatus.IDLE as RequestStatusType,
     orderRequestStatus: RequestStatus.IDLE as RequestStatusType,
     oneClickOrderRequestStatus: RequestStatus.IDLE as RequestStatusType,
+    sendingReviewRequestStatus: RequestStatus.IDLE as RequestStatusType,
   },
   reducers: {
     setSearchProductRequest( state, action: PayloadAction<{
@@ -39,6 +40,9 @@ export const slice = createSlice( {
     setCallbackRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.callbackRequestStatus = action.payload.status;
     },
+    setSendingReviewRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
+      state.sendingReviewRequestStatus = action.payload.status;
+    },
   },
 } );
 
@@ -52,4 +56,5 @@ export const {
   setPopularProductRequestStatus,
   setOneClickOrderRequestStatus,
   setCallbackRequestStatus,
+  setSendingReviewRequestStatus,
 } = slice.actions;

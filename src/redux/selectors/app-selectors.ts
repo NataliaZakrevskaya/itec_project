@@ -12,3 +12,6 @@ export const getCallbackRequestStatus = ( state: AppRootStateType ) => {
 export const getOrderRequestStatus = ( state: AppRootStateType ) => {
   return state.app.orderRequestStatus;
 };
+export const getSendingReviewsRequestStatus = ( state: AppRootStateType ) => {
+  return state.app.sendingReviewRequestStatus;
+};

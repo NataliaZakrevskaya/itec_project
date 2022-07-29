@@ -2,26 +2,33 @@ import React from 'react';
 import { useFormik } from 'formik';
 import style from './ReviewModal.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../../redux/store';
+import { sendReviewTC } from '../../../../redux/reducers/reviews-reducer';
 
 const ReviewModal = ( { closeModal }: ReviewModalType ) => {
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const formik = useFormik( {
     initialValues: {
-      name_author: '',
-      phone_number: '',
-      name_animal: '',
-      body_of_comment: '',
+      nameAuthor: '',
+      phoneNumber: '',
+      nameAnimal: '',
+      bodyOfComment: '',
     },
     onSubmit: value => {
       formik.resetForm();
-      alert( value );
+      dispatch( sendReviewTC( {
+        nameAuthor: value.nameAuthor,
+        phoneNumber: value.phoneNumber,
+        nameAnimal: value.nameAnimal,
+        bodyOfComment: value.bodyOfComment,
+      } ) );
+      closeModal();
     },
-  } );
+  } )
 
-  const onButtonClick = () => {
-    alert( 'диспатч санки ' );
-    closeModal();
-  };
   return (
     <div className={ style.reviewModal }>
       <h3>Ваш отзыв</h3>
@@ -30,37 +37,37 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
           <div className={ formStyle.formInput }>
             <p>Имя</p>
             <input
-              type={ 'name_author' }
+              type={ 'nameAuthor' }
               placeholder={ 'Иванов Иван Иванович' }
-              { ...formik.getFieldProps( 'name_author' ) }
+              { ...formik.getFieldProps( 'nameAuthor' ) }
             />
           </div>
           <div className={ formStyle.formInput }>
             <p>Номер телефона</p>
             <input
-              type={ 'phone_number' }
+              type={ 'phoneNumber' }
               placeholder={ '+375 ___-__-__' }
-              { ...formik.getFieldProps( 'phone_number' ) }
+              { ...formik.getFieldProps( 'phoneNumber' ) }
             />
           </div>
           <div className={ formStyle.formInput }>
             <p>Имя питомца</p>
             <input
-              type={ 'name_animal' }
+              type={ 'nameAnimal' }
               placeholder={ 'Собака Шепард' }
-              { ...formik.getFieldProps( 'name_animal' ) }
+              { ...formik.getFieldProps( 'nameAnimal' ) }
             />
           </div>
           <div className={ formStyle.formTextarea }>
             <p>Ваш отзыв</p>
             <textarea
               placeholder={ 'Введите текст...' }
-              { ...formik.getFieldProps( 'body_of_comment' ) }
+              { ...formik.getFieldProps( 'bodyOfComment' ) }
             />
           </div>
         </div>
         <div className={ formStyle.orderBlock }>
-          <button onClick={ onButtonClick } type="submit">Отправить отзыв</button>
+          <button type="submit">Отправить отзыв</button>
         </div>
       </form>
     </div>

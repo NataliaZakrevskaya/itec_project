@@ -1,1 +1,1 @@
-export const REVIEWS_URL = 'comments'
+export const REVIEWS_URL = 'comments/'

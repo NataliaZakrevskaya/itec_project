@@ -18,6 +18,9 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { BlockNames } from '../../customHooks/enums';
 import { AppDispatch } from '../../redux/store';
+import { getSendingReviewsRequestStatus } from '../../redux/selectors/app-selectors';
+import { setSendingReviewRequestStatus } from '../../redux/reducers/app-reducer';
+import { RequestStatus } from '../../redux/reducers/enums';
 
 const ReviewsBlock = () => {
 
@@ -34,11 +37,11 @@ const ReviewsBlock = () => {
     isNextDisabled,
     onTouchStart,
     onTouchEnd,
-    width
+    width,
   } = useCarousel( BlockNames.REVIEWS, reviews.length );
 
   const [ isReviewModalActive, setIsReviewModalActive ] = useState<boolean>( false );
-  const isSuccessReviewActive = false; //todo позже из стора апп
+  const isSuccessReview = useSelector( getSendingReviewsRequestStatus ) === RequestStatus.SUCCEEDED;
 
   const closeReviewModal = () => {
     setIsReviewModalActive( false );
@@ -47,7 +50,7 @@ const ReviewsBlock = () => {
     setIsReviewModalActive( true );
   };
   const closeSuccessReviewModal = () => {
-    alert( 'диспатч санки' ); //todo изменение состояния запроса в app
+    dispatch(setSendingReviewRequestStatus({status: RequestStatus.IDLE}))
     navigate( routesPathsEnum.CATALOG );
   };
 
@@ -55,14 +58,14 @@ const ReviewsBlock = () => {
     dispatch( fetchReviewsTC() );
   }, [] );
 
-  const getCurrentReviewPage = (offset: number, width: number) => {
-    if(offset === 0) return 1;
-    if(offset === -width) return 2;
-    if(offset === -(width * 2)) return 3;
-    if(offset === -(width * 3)) return 4;
-  }
+  const getCurrentReviewPage = ( offset: number, width: number ) => {
+    if ( offset === 0 ) return 1;
+    if ( offset === -width ) return 2;
+    if ( offset === -( width * 2 ) ) return 3;
+    if ( offset === -( width * 3 ) ) return 4;
+  };
 
-  const currentReviewNumber = getCurrentReviewPage(offset, width)
+  const currentReviewNumber = getCurrentReviewPage( offset, width );
 
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
@@ -109,7 +112,7 @@ const ReviewsBlock = () => {
           <ReviewModal closeModal={ closeReviewModal }/>
         </Modal>
       }
-      { isSuccessReviewActive &&
+      { isSuccessReview &&
         <Modal closeModal={ closeReviewModal }>
           <SuccessReviewModal closeModal={ closeSuccessReviewModal }/>
         </Modal>
