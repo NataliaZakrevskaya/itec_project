@@ -108,7 +108,7 @@
 
       .productsBlock {
         display: flex;
-        justify-content: space-between;
+        gap: 30px;
         box-sizing: border-box;
         width: 100%;
         flex-wrap: wrap;
@@ -223,6 +223,7 @@
   }
   .productsBlock{
     justify-content: center !important;
+    gap: 16px !important;
   }
   .catalogPopularProductsWrapper{
     width: 100%;
