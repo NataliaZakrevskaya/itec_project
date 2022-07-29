@@ -4,9 +4,12 @@
 .productForBasketContainer {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 24px;
-
+  .productWrap{
+    display: flex;
+  }
   .imageWrapper {
     @include size(56px, 56px);
 
