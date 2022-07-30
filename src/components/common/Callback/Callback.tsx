@@ -16,7 +16,6 @@ const Callback = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const closeModal = () => {
-    debugger
     dispatch(setCallbackRequestStatus({status: RequestStatus.IDLE}))
     setIsActive( false );
   };

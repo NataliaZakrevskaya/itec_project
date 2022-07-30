@@ -26,6 +26,11 @@
       border: 1px solid #BABFC3;
       border-radius: 4px;
       padding: 8px 12px;
+      outline: none;
+      @include SFTextRegular();
+      font-size: 15px;
+      line-height: 20px;
+      color: #202223;
 
       &::placeholder {
         @include SFTextRegular();
@@ -33,6 +38,13 @@
         line-height: 20px;
         color: #202223;
       }
+    }
+
+    & span{
+      @include SFTextRegular();
+      font-size: .8em;
+      line-height: 130%;
+      color: #b42b33;
     }
 
     &:first-child {

@@ -2,6 +2,10 @@
 
 .discount {
   @include flex(row, space-between, center);
+  @include SFDisplayBold();
+  font-size: 20px;
+  line-height: 130%;
+  color: #202223;
   max-width: 569px;
   background: #FFD79D;
   border-radius: 5px;
@@ -19,12 +23,11 @@
       margin-bottom: 17px;
     }
     & button {
-      @include SFTextRegular();
+      @include SFTextMedium();
       font-size: 14px;
       line-height: 20px;
       cursor: pointer;
-      width: 214px;
-      height: 36px;
+      padding: 8px 16px;
       background: #FFFFFF;
       border: 1px solid #8C9196;
       border-radius: 4px;
