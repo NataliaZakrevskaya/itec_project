@@ -134,9 +134,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             </option>
           </select>
         </div>
-        <div className={ style.catalogFilter }>
+        <div onClick={ openFiltersMode } className={ style.catalogFilter }>
           <img className={ style.catalogFilterImage } src={ filterMajor } alt=""/>
-          <div onClick={ openFiltersMode } className={ style.catalogFilterText }>
+          <div className={ style.catalogFilterText }>
             Фильтры
           </div>
         </div>

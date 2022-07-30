@@ -31,7 +31,7 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
       { +option.size } { option.units.unit_name }
     </span> )
         : <span className={ style.oneUnitBlock }
-                onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ productId }` ) }>Задать свой вес</span> }
+                onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ productId }` ) }>Задать вес</span> }
     </>
   );
 };
