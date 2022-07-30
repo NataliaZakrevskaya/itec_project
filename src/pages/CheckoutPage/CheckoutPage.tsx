@@ -44,6 +44,20 @@ const CheckoutPage = () => {
       name: '',
       phoneNumber: '',
     },
+    validate: (values) => {
+      const errors: FormikOrderErrorType = {};
+      if (values.name.length < 2){
+        errors.name = 'Поле обязательно для заполнения';
+      }
+      if(!values.phoneNumber){
+        errors.phoneNumber = 'Обязательно'
+      } else if ( values.phoneNumber.length !==13 ){
+        errors.phoneNumber = 'Должно быть 13 символов'
+      } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
+        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567'
+      }
+      return errors;
+    },
     onSubmit: value => {
       formik.resetForm();
       dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo: orderInfo } ) );
@@ -71,14 +85,20 @@ const CheckoutPage = () => {
                 placeholder={ 'Иванов Иван Иванович' }
                 { ...formik.getFieldProps( 'name' ) }
               />
+              {formik.touched.name && formik.errors.name &&
+                <span>{formik.errors.name}</span>
+              }
             </div>
             <div className={ formStyle.formInput }>
               <p>Номер телефона</p>
               <input
                 type={ 'phoneNumber' }
-                placeholder={ '+375 ___-__-__' }
+                placeholder={ '+375291234567' }
                 { ...formik.getFieldProps( 'phoneNumber' ) }
               />
+              {formik.touched.phoneNumber && formik.errors.phoneNumber &&
+                <span>{formik.errors.phoneNumber}</span>
+              }
             </div>
             <div className={ style.list }>
               <div className={ style.address }>Самовывоз по адресу: Минск, ул. Чюрлёниса, 6.
@@ -110,3 +130,8 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
+type FormikOrderErrorType = {
+  name?: string,
+  phoneNumber?: string
+}

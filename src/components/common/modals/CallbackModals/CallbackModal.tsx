@@ -21,7 +21,7 @@ const CallbackModal = (  ) => {
         errors.name = 'Поле обязательно для заполнения';
       }
       if(!values.phoneNumber){
-        errors.phoneNumber = 'Обязательно'
+        errors.phoneNumber = 'Поле обязательно для заполнения'
       } else if ( values.phoneNumber.length !==13 ){
         errors.phoneNumber = 'Должно быть 13 символов'
       } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
