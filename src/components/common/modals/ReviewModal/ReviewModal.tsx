@@ -17,6 +17,26 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
       nameAnimal: '',
       bodyOfComment: '',
     },
+    validate: (values) => {
+      const errors: FormikReviewErrorType = {};
+      if (values.nameAuthor.length < 2){
+        errors.nameAuthor = 'Поле обязательно для заполнения';
+      }
+      if (values.nameAnimal.length < 2){
+        errors.nameAnimal = 'Поле обязательно для заполнения';
+      }
+      if (values.bodyOfComment.length < 2){
+        errors.bodyOfComment = 'Поле обязательно для заполнения';
+      }
+      if(!values.phoneNumber){
+        errors.phoneNumber = 'Поле обязательно для заполнения'
+      } else if ( values.phoneNumber.length !==13 ){
+        errors.phoneNumber = 'Должно быть 13 символов'
+      } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
+        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567'
+      }
+      return errors;
+    },
     onSubmit: value => {
       formik.resetForm();
       dispatch( sendReviewTC( {
@@ -41,14 +61,20 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
               placeholder={ 'Иванов Иван Иванович' }
               { ...formik.getFieldProps( 'nameAuthor' ) }
             />
+            {formik.touched.nameAuthor && formik.errors.nameAuthor &&
+              <span>{formik.errors.nameAuthor}</span>
+            }
           </div>
           <div className={ formStyle.formInput }>
             <p>Номер телефона</p>
             <input
               type={ 'phoneNumber' }
-              placeholder={ '+375 ___-__-__' }
+              placeholder={ '+375291231212' }
               { ...formik.getFieldProps( 'phoneNumber' ) }
             />
+            {formik.touched.phoneNumber && formik.errors.phoneNumber &&
+              <span>{formik.errors.phoneNumber}</span>
+            }
           </div>
           <div className={ formStyle.formInput }>
             <p>Имя питомца</p>
@@ -57,6 +83,9 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
               placeholder={ 'Собака Шепард' }
               { ...formik.getFieldProps( 'nameAnimal' ) }
             />
+            {formik.touched.nameAnimal && formik.errors.nameAnimal &&
+              <span>{formik.errors.nameAnimal}</span>
+            }
           </div>
           <div className={ formStyle.formTextarea }>
             <p>Ваш отзыв</p>
@@ -64,6 +93,9 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
               placeholder={ 'Введите текст...' }
               { ...formik.getFieldProps( 'bodyOfComment' ) }
             />
+            {formik.touched.bodyOfComment && formik.errors.bodyOfComment &&
+              <span>{formik.errors.bodyOfComment}</span>
+            }
           </div>
         </div>
         <div className={ formStyle.orderBlock }>
@@ -78,4 +110,10 @@ export default ReviewModal;
 
 type ReviewModalType = {
   closeModal: () => void
+}
+type FormikReviewErrorType = {
+  nameAuthor?: string,
+  phoneNumber?: string,
+  nameAnimal?: string,
+  bodyOfComment?: string
 }

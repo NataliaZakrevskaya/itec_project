@@ -58,6 +58,7 @@
 
   .formTextarea {
     margin-top: 10px;
+    margin-bottom: 30px;
     width: 100%;
 
     & p {
@@ -74,20 +75,25 @@
       border: 1px solid #BABFC3;
       border-radius: 4px;
       padding: 8px 12px;
-      margin-bottom: 30px;
       resize: none;
       outline: none;
-      @include SFTextMedium();
-      font-size: 12px;
-      line-height: 130%;
+      @include SFTextRegular();
+      font-size: 15px;
+      line-height: 20px;
       color: #202223;
 
       &::placeholder {
         @include SFTextRegular();
         font-size: 15px;
         line-height: 20px;
-        color: #202223;
+        color: #6D7175;
       }
+    }
+    & span{
+      @include SFTextRegular();
+      font-size: .8em;
+      line-height: 130%;
+      color: #b42b33;
     }
   }
 }
