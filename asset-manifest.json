@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/itec_project/static/css/main.7250ceea.css",
-    "main.js": "/itec_project/static/js/main.77a7af87.js",
+    "main.css": "/itec_project/static/css/main.9984871a.css",
+    "main.js": "/itec_project/static/js/main.1a8e7363.js",
     "static/media/Frame 119.svg": "/itec_project/static/media/Frame 119.7b7d7b449258d229de9ede68d2c6c680.svg",
     "static/media/notFoundCat.svg": "/itec_project/static/media/notFoundCat.70633c2d4b06caf2ae76.svg",
     "static/media/cat.svg": "/itec_project/static/media/cat.3f557dff0130974da9328bfa7c6f5a05.svg",
@@ -45,11 +45,11 @@
     "static/media/metroIcon.svg": "/itec_project/static/media/metroIcon.ff3341500c649e573863de674fda7fc3.svg",
     "static/media/minusIcon.svg": "/itec_project/static/media/minusIcon.7be582755f9c1f0e71e4.svg",
     "static/media/radio.svg": "/itec_project/static/media/radio.87668a1c5f01c03a846c.svg",
-    "main.7250ceea.css.map": "/itec_project/static/css/main.7250ceea.css.map",
-    "main.77a7af87.js.map": "/itec_project/static/js/main.77a7af87.js.map"
+    "main.9984871a.css.map": "/itec_project/static/css/main.9984871a.css.map",
+    "main.1a8e7363.js.map": "/itec_project/static/js/main.1a8e7363.js.map"
   },
   "entrypoints": [
-    "static/css/main.7250ceea.css",
-    "static/js/main.77a7af87.js"
+    "static/css/main.9984871a.css",
+    "static/js/main.1a8e7363.js"
   ]
 }
