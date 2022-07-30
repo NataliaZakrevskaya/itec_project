@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
 import Modal from '../../components/common/modals/Modal';
-import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
+import OneClickOrder from '../../components/common/modals/OneClickOrder/OneClickOrder';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import sadCat from '../../Images/sadCat.svg';
 import filterMajor from '../../Images/filter_major.svg';
@@ -32,7 +32,7 @@ import {
 import { routesPathsEnum } from '../../routes/enums';
 import { useNavigate } from 'react-router-dom';
 import { getChosenProductTypeId } from '../../redux/selectors/productTypes-selectors';
-import { getProductRequestStatus } from '../../redux/selectors/app-selectors';
+import { getOneClickOrderRequestStatus, getProductRequestStatus } from '../../redux/selectors/app-selectors';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { setProductRequest } from '../../redux/reducers/app-reducer';
 import { selectValues } from '../../Api/productsApi/enums';
@@ -43,6 +43,7 @@ import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 import { AppDispatch } from '../../redux/store';
 import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
 import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
+import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -55,6 +56,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
+  const isOneClickOrderSucceeded = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const chosenBrands = useSelector( getChosenBrandsId );
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
 
@@ -95,7 +97,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   };
 
   useEffect( () => {
-    const brands = chosenBrands.length ? chosenBrands?.join() : null
+    const brands = chosenBrands.length ? chosenBrands?.join() : null;
     dispatch( fetchProductsTC( { page, animal, category, ordering, brands } ) );
   }, [ page, animal, category, ordering, chosenBrands ] );
 
@@ -192,13 +194,19 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          <OnClickOrder
-            id={ productForOneClickOrderModal.id }
-            name={ productForOneClickOrderModal.name }
-            image={ productForOneClickOrderModal.images[ 0 ].image }
-            options={ productForOneClickOrderModal.options }
-            chosen_option={ productForOneClickOrderModal.chosen_option }
-          />
+          { isOneClickOrderSucceeded
+            ? ( <SuccessOrderModal
+              from={ location.ONE_CLICK_ORDER }
+            /> )
+            : ( <OneClickOrder
+              id={ productForOneClickOrderModal.id }
+              name={ productForOneClickOrderModal.name }
+              image={ productForOneClickOrderModal.images[ 0 ].image }
+              options={ productForOneClickOrderModal.options }
+              chosen_option={ productForOneClickOrderModal.chosen_option }
+            /> )
+          }
+
         </Modal>
       }
       { isBasketModalActive &&

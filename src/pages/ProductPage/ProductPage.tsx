@@ -11,7 +11,7 @@ import boxIcon from '../../Images/boxIcon.svg';
 import Address from '../../components/common/Address/Address';
 import Button from '../../components/common/Button/Button';
 import Modal from '../../components/common/modals/Modal';
-import OnClickOrder from '../../components/common/modals/OnClickOrder/OnClickOrder';
+import OneClickOrder from '../../components/common/modals/OneClickOrder/OneClickOrder';
 import { useDispatch, useSelector } from 'react-redux';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
@@ -249,7 +249,7 @@ const ProductPage = () => {
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          <OnClickOrder
+          <OneClickOrder
             id={ productForOneClickOrderModal.id }
             name={ productForOneClickOrderModal.name }
             image={ productForOneClickOrderModal.images[ 0 ].image }

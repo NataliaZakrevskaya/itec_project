@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import PrevSectionButton from '../prevSectionButton/prevSectionButton';
 import NextSectionButton from '../nextSectionButton/nextSectionButton';
 import Modal from '../modals/Modal';
-import OnClickOrder from '../modals/OnClickOrder/OnClickOrder';
+import OneClickOrder from '../modals/OneClickOrder/OneClickOrder';
 import BasketModal from '../modals/BasketModal/BasketModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementProductQuantity, setProductToBasket } from '../../../redux/reducers/basket-reducer';
@@ -106,7 +106,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
                 onClick={ onButtonClick }/> {/*//todo не отображается, если находится в каталоге*/ }
         { isOneClickModalActive &&
           <Modal closeModal={ closeOneClickModal }>
-            <OnClickOrder
+            <OneClickOrder
               id={ productForOneClickOrderModal.id }
               name={ productForOneClickOrderModal.name }
               image={ productForOneClickOrderModal.images[ 0 ].image }

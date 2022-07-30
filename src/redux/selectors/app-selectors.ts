@@ -15,3 +15,6 @@ export const getOrderRequestStatus = ( state: AppRootStateType ) => {
 export const getSendingReviewsRequestStatus = ( state: AppRootStateType ) => {
   return state.app.sendingReviewRequestStatus;
 };
+export const getOneClickOrderRequestStatus = ( state: AppRootStateType ) => {
+  return state.app.oneClickOrderRequestStatus;
+};

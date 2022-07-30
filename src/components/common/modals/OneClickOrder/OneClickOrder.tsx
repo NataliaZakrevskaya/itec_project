@@ -2,7 +2,7 @@ import React from 'react';
 import Product from '../../Product/Product';
 import { OptionType } from '../../../../mocks';
 import { useFormik } from 'formik';
-import style from './OnClickOrder.module.scss';
+import style from './OneClickOrder.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
 import { location } from '../../../../enums';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder-red
 import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder-selectors';
 import { AppDispatch } from '../../../../redux/store';
 
-const OnClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrderPropsType ) => {
+const OneClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrderPropsType ) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const productForOneClickOrder = useSelector(getProductForOneClickOrder)
@@ -19,6 +19,20 @@ const OnClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrder
     initialValues: {
       name: '',
       phoneNumber: '',
+    },
+    validate: (values) => {
+      const errors: FormikOneClickOrderErrorType = {};
+      if (values.name.length < 2){
+        errors.name = 'Поле обязательно для заполнения';
+      }
+      if(!values.phoneNumber){
+        errors.phoneNumber = 'Поле обязательно для заполнения'
+      } else if ( values.phoneNumber.length !==13 ){
+        errors.phoneNumber = 'Должно быть 13 символов'
+      } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
+        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567'
+      }
+      return errors;
     },
     onSubmit: value => {
       formik.resetForm();
@@ -53,14 +67,20 @@ const OnClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrder
               placeholder={ 'Иванов Иван Иванович' }
               { ...formik.getFieldProps( 'name' ) }
             />
+            {formik.touched.name && formik.errors.name &&
+              <span>{formik.errors.name}</span>
+            }
           </div>
           <div className={ formStyle.formInput }>
             <p>Номер телефона</p>
             <input
               type={ 'phoneNumber' }
-              placeholder={ '+375 ___-__-__' }
+              placeholder={ '+375291231212' }
               { ...formik.getFieldProps( 'phoneNumber' ) }
             />
+            {formik.touched.phoneNumber && formik.errors.phoneNumber &&
+              <span>{formik.errors.phoneNumber}</span>
+            }
           </div>
         </div>
         <div className={ formStyle.orderBlock }>
@@ -73,12 +93,16 @@ const OnClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrder
   );
 };
 
-export default OnClickOrder;
+export default OneClickOrder;
 
 type OnClickOrderPropsType = {
   id: number,
   options: Array<OptionType>,
   name: string,
   image: string,
-  chosen_option: OptionType
+  chosen_option: OptionType,
+}
+type FormikOneClickOrderErrorType = {
+  name?: string,
+  phoneNumber?: string
 }

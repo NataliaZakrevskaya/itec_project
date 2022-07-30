@@ -3,7 +3,7 @@
  * 1 | @import "src/styles/Mixins";
  *   |         ^^^^^^^^^^^^^^^^^^^
  *   '
- *   OnClickOrder.module.scss 1:9  root stylesheet */
+ *   OneClickOrder.module.scss 1:9  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",

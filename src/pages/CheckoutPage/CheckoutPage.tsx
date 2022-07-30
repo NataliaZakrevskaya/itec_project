@@ -15,6 +15,7 @@ import { AppDispatch } from '../../redux/store';
 import { getOrderRequestStatus } from '../../redux/selectors/app-selectors';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { setOrderRequestStatus } from '../../redux/reducers/app-reducer';
+import { location } from '../../enums';
 
 const CheckoutPage = () => {
 
@@ -122,7 +123,7 @@ const CheckoutPage = () => {
       </div>
       { isSuccessModalActive && orderIsSucceeded &&
         <Modal closeModal={ closeSuccessModal }>
-           <SuccessOrderModal/>
+           <SuccessOrderModal from={location.CHECKOUT}/>
         </Modal>
       }
     </div>
