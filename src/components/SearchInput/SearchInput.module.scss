@@ -10,6 +10,10 @@
   }
 
   .searchInput {
+    @include SFTextRegular();
+    font-size: 15px;
+    line-height: 20px;
+    color: #202223;
     padding: 14px 40px 12px;
     gap: 16px;
     width: 100%;
@@ -27,7 +31,7 @@
       background-position: 2%;
     }
 
-    & ::placeholder {
+    &::placeholder {
       @include SFTextRegular();
       font-size: 15px;
       line-height: 20px;
