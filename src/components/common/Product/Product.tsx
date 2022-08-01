@@ -47,46 +47,50 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
   return (
     <div className={ style.productForBasketContainer }>
 
-      <div className={style.productWrap}>
+      <div className={ style.productWrap }>
         <div className={ style.imageWrapper }>
           <img src={ image } alt="product"/>
         </div>
         <div
-            className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
+          className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
           <h3 className={ style.basketTitle } onClick={ onNameClick }>
             { productName }
           </h3>
           <div className={ style.heftWrapper }>
             {
               options
-                  .filter( option => !option.partial )
-                  .map( option =>
-                      <ProductItemUnit
-                          key={ option.id }
-                          option={ option }
-                          productId={ id }
-                          active={ chosenOption.id === option.id }
-                          from={ from }
-                      />,
-                  )
+                .filter( option => !option.partial )
+                .map( option =>
+                  <ProductItemUnit
+                    key={ option.id }
+                    option={ option }
+                    productId={ id }
+                    active={ chosenOption.id === option.id }
+                    from={ from }
+                  />,
+                )
             }
           </div>
           { options.some( option => option.partial ) &&
-              <p onClick={ () => alert( 'Переход на модалку' ) }>Указать свой вес</p>
+            <p onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>Указать свой вес</p>
           }
         </div>
       </div>
       <div className={ style.quantityManagementBlockWrapper }>
-        <div className={ style.quantityManagementBlock }>
-          <div className={ style.minus } onClick={ onDecrementBtnClick }>
-            <div/>
-          </div>
-          <div className={ style.countMeaning }>
-            { countOfProduct }
-          </div>
-          <div className={ style.plus } onClick={ onIncrementBtnClick }>
-            <div/>
-          </div>
+        <div className={ style.quantityManagementBlockContainer}>
+          { chosenOption.partial
+            ? <div className={ style.quantity }>{ chosenOption.quantity } кг.</div>
+            : ( <div className={ style.quantityManagementBlock}>
+              <div className={ style.minus } onClick={ onDecrementBtnClick }>
+                <div/>
+              </div>
+              <div className={ style.countMeaning }>
+                { countOfProduct }
+              </div>
+              <div className={ style.plus } onClick={ onIncrementBtnClick }>
+                <div/>
+              </div>
+            </div> ) }
           { !isForModal && <img
             className={ style.basketImage }
             src={ basket } alt="basketIcon"

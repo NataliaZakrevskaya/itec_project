@@ -11,9 +11,12 @@ const ProductForBasketModal = ( { name, chosenOption, image, countOfProduct }: P
         <img src={ image } alt="product"/>
         <p>{ productName }</p>
       </div>
-      <div className={style.orderInfo}>
-        <p>{ chosenOption.size } { chosenOption.units.unit_name }</p>
-        <p>{ countOfProduct } шт.</p>
+      <div className={chosenOption.partial ? style.orderInfoPartial : style.orderInfoNotPartial}>
+        {chosenOption.partial
+        ? <p>{ chosenOption.quantity } кг.</p>
+        : <p>{ chosenOption.size } { chosenOption.units.unit_name }</p>
+        }
+        {!chosenOption.partial && <p>{ countOfProduct } шт.</p>}
         <p>{ +chosenOption.price * countOfProduct } BYN.</p>
       </div>
     </div>

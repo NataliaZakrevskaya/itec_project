@@ -249,6 +249,21 @@
             color: #202223;
             cursor: pointer;
           }
+
+          .errorContainer{
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            & span{
+              @include SFTextRegular();
+              font-size: .8em;
+              line-height: 130%;
+              color: #b42b33;
+            }
+          }
+
         }
 
         .orderInfo {

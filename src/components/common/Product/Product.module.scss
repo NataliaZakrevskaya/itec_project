@@ -54,11 +54,18 @@
     flex-direction: column;
     align-items: center;
 
-    .quantityManagementBlock {
+
+    .quantityManagementBlockContainer {
       display: flex;
       flex-direction: row;
       align-items: center;
       margin-bottom: 16px;
+
+
+    .quantityManagementBlock {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
       & .minus {
         @include size(36px, 36px);
@@ -79,7 +86,7 @@
         }
       }
 
-      & .countMeaning{
+      & .countMeaning {
         @include size(36px, 36px);
         padding: 8px 8px 8px 7px;
         border-radius: 4px;
@@ -108,13 +115,15 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+
         & div {
           background: url("../../../Images/plusIcon.svg") no-repeat;
           @include size(20px, 20px);
         }
       }
+    }
 
-      & .basketImage {
+      .basketImage {
         margin-left: 37.75px;
         cursor: pointer;
       }

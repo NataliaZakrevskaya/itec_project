@@ -20,8 +20,12 @@
       margin-right: 10px;
     }
   }
-.orderInfo{
+.orderInfoNotPartial{
   width: 40%;
+  @include flex(row, space-between, center);
+}
+.orderInfoPartial{
+  width: 30%;
   @include flex(row, space-between, center);
 }
 }

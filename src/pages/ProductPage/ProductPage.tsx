@@ -16,7 +16,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
-import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket-reducer';
+import {
+  changePartialProductQuantity,
+  incrementProductQuantity,
+  setProductToBasket,
+} from '../../redux/reducers/basket-reducer';
 import { ProductItemType, setActualPage } from '../../redux/reducers/products-reducer';
 import { stringCutter } from '../../helpers/stringCutter';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
@@ -32,6 +36,7 @@ const ProductPage = () => {
   const [ countOfProduct, setCountOfProduct ] = useState<number>( 1 );
   const [ weightSetIsShowed, setWeightSetIsShowed ] = useState<boolean>( false );
   const [ weightSetValue, setWeightSetValue ] = useState<string>( '' );
+  const [ weightSetError, setWeightSetError ] = useState<string>( '' );
   const [ selectImageId, setSelectImageId ] = useState<number>( 0 );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
@@ -54,6 +59,8 @@ const ProductPage = () => {
   const productForBasket = useSelector( getProductsInBasket );
   const productForBasketModal = productForBasket[ 0 ];
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
+  const partialOption = options.filter( option => option.partial )[ 0 ];
+  const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -75,6 +82,7 @@ const ProductPage = () => {
     setCountOfProduct( () => countOfProduct + 1 );
   };
   const onWeightSetInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
+    setWeightSetError( '' );
     setWeightSetValue( e.currentTarget.value );
   };
   const onWeightSetParagraphClick = () => {
@@ -86,31 +94,54 @@ const ProductPage = () => {
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
-  const openOneClickModal = (product: ProductItemType) => {
-    dispatch( setProductToState( {product} ) );
+  const openOneClickModal = ( product: ProductItemType ) => {
+    dispatch( setProductToState( { product } ) );
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
   };
   const openBasketModal = ( product: ProductItemType ) => {
+    debugger
     productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( {
         product: {
           ...product,
-          chosen_option: { ...chosen_option, quantity: countOfProduct },
+          chosen_option: {
+            ...chosen_option,
+            quantity: chosen_option.partial ? ( chosen_option.quantity / 1000 ) : countOfProduct,
+          },
         },
       } ) )
-      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct } ) );
+      : chosen_option.partial ? dispatch( changePartialProductQuantity( {
+        optionId: product.chosen_option.id,
+        quantity: ( chosen_option.quantity / 1000 ),
+      } ) ) : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct } ) );
     setIsBasketModalActive( true );
   };
   const onUnitClick = ( option: OptionType ) => {
     setCountOfProduct( 1 );
     dispatch( setChosenOptionToProduct( { productId, option } ) );
   };
+  const onApplyButtonClick = () => {
+    if ( partialOption ) {
+      if ( +weightSetValue <= ( partialOption.stock_balance / 1000 ) ) {
+        const sum = +weightSetValue * +partialOption.price;
+        const price = sum.toFixed( 2 );
+        dispatch( setChosenOptionToProduct( {
+          productId,
+          option: { ...partialOption, quantity: +weightSetValue * 1000, price },
+        } ) );
+        setWeightSetError( '' );
+        setWeightSetValue( '' );
+        setWeightSetIsShowed( false );
+      }
+      setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
+    }
+  };
 
   useLayoutEffect( () => {
-    dispatch( fetchProductTC( { productId } ) );
+    if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
   }, [ productId ] );
 
   return (
@@ -167,7 +198,7 @@ const ProductPage = () => {
                 ) }
               </div>
               <div>
-                { options.filter( option => option.partial ) &&
+                { partialOption &&
                   <p className={ style.unitsGroupHeft } onClick={ onWeightSetParagraphClick }>Задать свой
                     вес</p>
                 }
@@ -179,10 +210,15 @@ const ProductPage = () => {
                         type="text"
                         value={ weightSetValue }
                         onChange={ onWeightSetInputChange }
-                        placeholder={ 'Например: 1,2 кг' }
+                        placeholder={ 'Например: 1.2 кг' }
                       />
-                      <button>Применить</button>
+                      <button onClick={ onApplyButtonClick }>Применить</button>
                     </div>
+                    { weightSetError &&
+                      <div className={ style.errorContainer }>
+                        <span>{ weightSetError }</span>
+                        <span>{ stockBalanceInfo }</span>
+                      </div> }
                   </div> }
               </div>
             </div>
@@ -201,18 +237,25 @@ const ProductPage = () => {
               <h2>
                 { +chosen_option.price * countOfProduct } BYN
               </h2>
-              <p>Общий вес: { chosen_option.size * countOfProduct } { chosen_option.units.unit_name }</p>
+              {
+                chosen_option.partial
+                  ? <p>Общий вес: { chosen_option.quantity / 1000 } кг.</p>
+                  : <p>Общий вес: { chosen_option.size * countOfProduct } { chosen_option.units.unit_name }</p>
+              }
+
             </div>
             <div className={ style.basketInterface }>
-              <div className={ style.quantityManagementBlock }>
-                <div className={ style.basketInterfaceMinus } onClick={ onDecrementBtnClick }>
-                  <div/>
+              { !chosen_option.partial &&
+                <div className={ style.quantityManagementBlock }>
+                  <div className={ style.basketInterfaceMinus } onClick={ onDecrementBtnClick }>
+                    <div/>
+                  </div>
+                  <div className={ style.basketInterfaceCount }>{ countOfProduct }</div>
+                  <div className={ style.basketInterfacePlus } onClick={ onIncrementBtnClick }>
+                    <div><span/></div>
+                  </div>
                 </div>
-                <div className={ style.basketInterfaceCount }>{ countOfProduct }</div>
-                <div className={ style.basketInterfacePlus } onClick={ onIncrementBtnClick }>
-                  <div><span/></div>
-                </div>
-              </div>
+              }
               <div className={ style.basketInterfaceButton }>
                 <Button title={ 'Добавить в корзину' } onClick={ () => openBasketModal( product ) }/>
               </div>

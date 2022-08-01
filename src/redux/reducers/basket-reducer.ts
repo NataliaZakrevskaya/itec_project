@@ -71,6 +71,12 @@ export const slice = createSlice( {
       state.productsInBasket[ index ].chosen_option = action.payload.option;
       setTotalSum( state );
     },
+    changePartialProductQuantity(state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
+      const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
+      state.productsInBasket[ index ].chosen_option.quantity = action.payload.quantity;
+
+      setTotalSum( state );
+    },
     clearBasket( state, action ) {
       state.productsInBasket = [];
       state.totalSum = 0;
@@ -86,5 +92,6 @@ export const {
   incrementProductQuantity,
   decrementProductQuantity,
   changeChosenOption,
+  changePartialProductQuantity,
   clearBasket,
 } = slice.actions;
