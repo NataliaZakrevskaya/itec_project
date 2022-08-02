@@ -1,5 +1,5 @@
 import React from 'react';
-import timeIcon from '../../../Images/timeIcon.svg';
+import timeIcon from '../../../Images/clock_minorfooter.svg';
 import style from './Schedule.module.scss';
 
 const Schedule = ( { forFooterBurger }: any ) => {

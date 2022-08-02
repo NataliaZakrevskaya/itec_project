@@ -7,6 +7,7 @@ import { Map, Placemark, YMaps } from 'react-yandex-maps';
 import metroIcon from '../../Images/metroIcon.svg';
 import navigationIcon from '../../Images/navigateIcon.svg';
 import timeIcon from '../../Images/timeIcon.svg';
+import IconTime from '../../Images/clock_minorfooter.svg'
 
 const ContactBlock = () => {
   return (
@@ -37,7 +38,7 @@ const ContactBlock = () => {
               <p className={ style.timeWork }>Время работы</p>
               <div className={ style.scheduleWrapper }>
                 <div className={ style.scheduleWrapperFirst }>
-                  <img src={ timeIcon } alt="timeIcon"/>
+                  <img src={ IconTime } alt="timeIcon"/>
                   <div>Пон.-Пят. 10:00-21:00</div>
                 </div>
                 <div className={ style.scheduleWrapperLine }/>
