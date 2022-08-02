@@ -1,9 +1,10 @@
 import Header from './components/Header/Header';
 import AppRoutes from './routes/routes';
 import Footer from './components/Footer/Footer';
-import { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import HeaderBurger from './components/Header/HeaderBurger/HeaderBurger';
 import FooterBurger from './components/Footer/FooterBurger/FooterBurger';
+import { Wrapper } from './components/common/Wrapper/Wrapper';
 
 const App = () => {
 
@@ -26,14 +27,22 @@ const App = () => {
     <>
       { editMode
         ? ( <div>
-          <HeaderBurger onClickHandler={ closeEditMode } forFilters={ forFilters }/>
-          <FooterBurger/>
+          <Suspense fallback={ <div>Загрузка...</div> }>
+            <Wrapper>
+              <HeaderBurger onClickHandler={ closeEditMode } forFilters={ forFilters }/>
+              <FooterBurger/>
+            </Wrapper>
+          </Suspense>
         </div> )
         : ( <>
-          <Header openEditMode={ openEditMode }
-                  closeEditMode={ closeEditMode }/>
-          <AppRoutes openFiltersMode={ openFiltersMode } closeEditMode={closeEditMode}/>
-          <Footer/>
+          <Suspense fallback={ <div>Загрузка...</div> }>
+            <Wrapper>
+              <Header openEditMode={ openEditMode }
+                      closeEditMode={ closeEditMode }/>
+              <AppRoutes openFiltersMode={ openFiltersMode } closeEditMode={ closeEditMode }/>
+              <Footer/>
+            </Wrapper>
+          </Suspense>
         </> )
       }
     </>
