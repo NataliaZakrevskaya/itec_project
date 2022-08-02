@@ -81,7 +81,7 @@ const ArticlesPage = () => {
         </div>
         {!showAll && <button onClick={ () => setShowAll(true) }>Показать ещё</button>}
       </div>
-      <PopularProductsBlock/>
+      <PopularProductsBlock fromCatalog={false}/>
       <ContactBlock/>
     </div>
   );

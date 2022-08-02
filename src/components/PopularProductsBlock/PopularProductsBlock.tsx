@@ -13,7 +13,7 @@ import { selectValues } from '../../Api/productsApi/enums';
 import { location } from '../../enums';
 import { AppDispatch } from '../../redux/store';
 
-const PopularProductsBlock = () => {
+const PopularProductsBlock = ({fromCatalog}: PopularProductsBlockPropsType) => {
 
   const popularProducts = useSelector( getPopularProducts );
   const navigate = useNavigate();
@@ -39,9 +39,14 @@ const PopularProductsBlock = () => {
         itemsForBlock={ popularProducts }
         blockTheme={ dark }
         from={ location.POPULAR_PRODUCTS }
+        withButton={!fromCatalog}
       />
     </div>
   );
 };
 
 export default PopularProductsBlock;
+
+type PopularProductsBlockPropsType = {
+  fromCatalog: boolean
+}

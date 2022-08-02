@@ -86,7 +86,7 @@ const BasketPage = () => {
           )
       }
 
-      <PopularProductsBlock/>
+      <PopularProductsBlock fromCatalog={false}/>
       <PreviouslyProductsBlock/>
       <UsefulArticlesBlock/>
     </div>

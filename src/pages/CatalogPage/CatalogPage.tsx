@@ -189,7 +189,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
         </div>
       </div>
       <div className={ style.catalogPopularProductsWrapper }>
-        <PopularProductsBlock/>
+        <PopularProductsBlock fromCatalog={true}/>
       </div>
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&

@@ -9,17 +9,19 @@ import { stringCutter } from '../../../helpers/stringCutter';
 const Article = ( { id, description, title, date_added, timeForReading, image }: ArticlePropsType ) => {
 
   const date = new Date( date_added );
-  const currentData = getCurrentAddedDate(date)
+  const currentData = getCurrentAddedDate( date );
   const navigate = useNavigate();
 
-
   return (
-    <div className={ style.article }>
+    <div
+      className={ style.article }
+      onClick={ () => navigate( `${ routesPathsEnum.ARTICLES }/${ id }` ) }
+    >
       <div className={ style.articleImageWrapper }>
         <img src={ image } alt="article"/>
       </div>
-      <h6 onClick={ () => navigate( `${ routesPathsEnum.ARTICLES }/${ id }` ) }>{ title }</h6>
-      <p dangerouslySetInnerHTML={ { __html: stringCutter(description, 160) } }/>
+      <h6>{ title }</h6>
+      <p dangerouslySetInnerHTML={ { __html: stringCutter( description, 160 ) } }/>
       <div className={ style.articleInfo }>
         <div>
           <img src={ grayClock } alt="timeIcon"/>

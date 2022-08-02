@@ -15,7 +15,7 @@ import { BlockNames } from '../../../customHooks/enums';
 import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
 import { getProductForOneClickOrder } from '../../../redux/selectors/oneClickOrder-selectors';
 
-const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, from }: ThemeBlockWrapperPropsType ) => {
+const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, from, withButton}: ThemeBlockWrapperPropsType ) => {
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
@@ -102,8 +102,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
             </div>
           </div>
         </div>
-        <Button title={ 'Смотреть больше товаров' }
-                onClick={ onButtonClick }/> {/*//todo не отображается, если находится в каталоге*/ }
+        {withButton && <Button title={ 'Смотреть больше товаров' }
+                               onClick={ onButtonClick }/>}
         { isOneClickModalActive &&
           <Modal closeModal={ closeOneClickModal }>
             <OneClickOrder
@@ -139,5 +139,6 @@ type ThemeBlockWrapperPropsType = {
   onButtonClick: () => void,
   itemsForBlock: Array<ProductItemType>,
   blockTheme: any,
-  from: string
+  from: string,
+  withButton?: boolean
 }

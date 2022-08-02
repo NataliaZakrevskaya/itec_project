@@ -284,7 +284,7 @@ const ProductPage = () => {
         </div>
       </div>
       <div className={ style.productPageButtonWrappers }>
-        <PopularProductsBlock/>
+        <PopularProductsBlock fromCatalog={false}/>
       </div>
       <div className={ style.productPageButtonWithWrappers }>
         <WithThisProductBuyBlock/>

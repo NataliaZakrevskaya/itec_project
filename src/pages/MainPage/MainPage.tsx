@@ -17,7 +17,7 @@ const MainPage = () => {
     <div className={ style.mainPage }>
         <AnimalsTypesList/>
         <AdvertisingBlock/>
-        <PopularProductsBlock/>
+        <PopularProductsBlock fromCatalog={false}/>
         <DiscountBlock/>
         <LatestBlock/>
         <PopularBrandsBlock/>
