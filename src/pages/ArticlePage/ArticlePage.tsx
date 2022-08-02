@@ -66,7 +66,7 @@ const ArticlePage = () => {
         </div>
       </div>
       <UsefulArticlesBlock/>
-      <PopularProductsBlock/>
+      <PopularProductsBlock fromCatalog={false}/>
       <ContactBlock/>
     </div>
   );
