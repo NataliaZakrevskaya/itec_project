@@ -39,7 +39,7 @@ const PopularProductsBlock = ({fromCatalog}: PopularProductsBlockPropsType) => {
         itemsForBlock={ popularProducts }
         blockTheme={ dark }
         from={ location.POPULAR_PRODUCTS }
-        withButton={!fromCatalog}
+        withoutButton={fromCatalog}
       />
     </div>
   );
