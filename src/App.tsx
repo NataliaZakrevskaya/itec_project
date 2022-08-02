@@ -5,6 +5,7 @@ import React, { useState, Suspense } from 'react';
 import HeaderBurger from './components/Header/HeaderBurger/HeaderBurger';
 import FooterBurger from './components/Footer/FooterBurger/FooterBurger';
 import { Wrapper } from './components/common/Wrapper/Wrapper';
+import Loading from './components/common/Loading/Loading';
 
 const App = () => {
 
@@ -27,7 +28,7 @@ const App = () => {
     <>
       { editMode
         ? ( <div>
-          <Suspense fallback={ <div>Загрузка...</div> }>
+          <Suspense fallback={ <Loading/> }>
             <Wrapper>
               <HeaderBurger onClickHandler={ closeEditMode } forFilters={ forFilters }/>
               <FooterBurger/>
@@ -35,7 +36,7 @@ const App = () => {
           </Suspense>
         </div> )
         : ( <>
-          <Suspense fallback={ <div>Загрузка...</div> }>
+          <Suspense fallback={ <Loading/> }>
             <Wrapper>
               <Header openEditMode={ openEditMode }
                       closeEditMode={ closeEditMode }/>
