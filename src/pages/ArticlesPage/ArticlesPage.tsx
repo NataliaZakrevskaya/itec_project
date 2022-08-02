@@ -21,9 +21,10 @@ const ArticlesPage = () => {
 
   const articlesFromStore = useSelector( getArticles );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const articlesByAnimalTypeSorting = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
   const getArticlesForBlock = () => {
     if ( chosenAnimalTypeId ) {
-      const articles = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
+      const articles = articlesByAnimalTypeSorting
       if(articles.length){
         if(!showAll){
           return articles.filter( (article, index) => index < 3)
@@ -45,6 +46,8 @@ const ArticlesPage = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  console.log(articles.length);
 
   useEffect( () => {
     dispatch(fetchArticlesTC())
@@ -79,7 +82,7 @@ const ArticlesPage = () => {
             )
           }
         </div>
-        {!showAll && <button onClick={ () => setShowAll(true) }>Показать ещё</button>}
+        {!showAll && articlesByAnimalTypeSorting.length < 3 && <button onClick={ () => setShowAll(true) }>Показать ещё</button>}
       </div>
       <PopularProductsBlock fromCatalog={false}/>
       <ContactBlock/>
