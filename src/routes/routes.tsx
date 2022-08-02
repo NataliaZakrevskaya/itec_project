@@ -1,14 +1,14 @@
 import React from 'react';
 import { routesPathsEnum } from './enums';
 import { Route, Routes } from 'react-router-dom';
-import MainPage from '../pages/MainPage/MainPage';
-import CatalogPage from '../pages/CatalogPage/CatalogPage';
-import ProductPage from '../pages/ProductPage/ProductPage';
-import ArticlesPage from '../pages/ArticlesPage/ArticlesPage';
-import ArticlePage from '../pages/ArticlePage/ArticlePage';
-import BasketPage from '../pages/BasketPage/BasketPage';
-import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
-import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
+const MainPage = React.lazy(() => import('../pages/MainPage/MainPage'))
+const CatalogPage = React.lazy(() => import('../pages/CatalogPage/CatalogPage'))
+const ProductPage = React.lazy(() => import('../pages/ProductPage/ProductPage'))
+const ArticlesPage = React.lazy(() => import('../pages/ArticlesPage/ArticlesPage'))
+const ArticlePage = React.lazy(() => import('../pages/ArticlePage/ArticlePage'))
+const BasketPage = React.lazy(() => import('../pages/BasketPage/BasketPage'))
+const CheckoutPage = React.lazy(() => import('../pages/CheckoutPage/CheckoutPage'))
+const NotFoundPage = React.lazy(() => import('../pages/NotFoundPage/NotFoundPage'))
 
 const AppRoutes = ({openFiltersMode, closeEditMode}: AppRoutesPropsType) => {
   return (
