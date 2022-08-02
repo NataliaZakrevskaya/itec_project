@@ -15,12 +15,14 @@ import Product from '../../components/common/Product/Product';
 import { useSelector } from 'react-redux';
 import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
 import { location } from '../../enums';
+import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 
 const BasketPage = () => {
 
   const productsInBasket = useSelector( getProductsInBasket );
   const basketCount = useSelector( getTotalSum );
   const productsCount = useSelector( getTotalProductsCount );
+  const previouslyProducts = useSelector( getPreviouslyProduct );
   const isEmptyBasket = productsInBasket.length;
   const navigate = useNavigate();
 
@@ -43,14 +45,14 @@ const BasketPage = () => {
                   {
                     productsInBasket.map( item =>
                       <Product
-                        key={item.id}
+                        key={ item.id }
                         id={ item.id }
                         options={ item.options }
                         name={ item.name }
                         image={ item.images[ 0 ] ? item.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
-                        chosenOption={item.chosen_option}
+                        chosenOption={ item.chosen_option }
                         isForModal={ false }
-                        from={location.BASKET}
+                        from={ location.BASKET }
                       />,
                     )
                   }
@@ -86,8 +88,8 @@ const BasketPage = () => {
           )
       }
 
-      <PopularProductsBlock fromCatalog={false}/>
-      <PreviouslyProductsBlock/>
+      <PopularProductsBlock fromCatalog={ false }/>
+      {!!previouslyProducts.length && <PreviouslyProductsBlock products={previouslyProducts}/>}
       <UsefulArticlesBlock/>
     </div>
   );

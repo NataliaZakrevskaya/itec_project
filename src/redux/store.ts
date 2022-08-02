@@ -16,6 +16,7 @@ import { popularProductsReducer } from './reducers/popularProducts-reducer';
 import { productReducer } from './reducers/product-reducer';
 import { oneClickOrderReducer } from './reducers/onClickOrder-reducer';
 import { orderingReducer } from './reducers/ordering-reducer';
+import { previouslyProductsReducer } from './reducers/previouslyProducts-reducer';
 
 const rootReducer = combineReducers( {
   app: appReducer,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers( {
   productsFromSearch: productsFromSearchReducer,
   latestProducts: latestProductsReducer,
   popularProducts: popularProductsReducer,
+  previouslyProducts: previouslyProductsReducer,
   reviews: reviewsReducer,
   articles: articlesReducer,
   ordering: orderingReducer,

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useLayoutEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useLayoutEffect, useState } from 'react';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
@@ -30,6 +30,8 @@ import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/p
 import { getProduct } from '../../redux/selectors/product-selector';
 import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
 import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
+import { setProductToBlock } from '../../redux/reducers/previouslyProducts-reducer';
+import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 
 const ProductPage = () => {
 
@@ -59,6 +61,7 @@ const ProductPage = () => {
   const productForBasket = useSelector( getProductsInBasket );
   const productForBasketModal = productForBasket[ 0 ];
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
+  const previouslyProducts = useSelector( getPreviouslyProduct );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
 
@@ -102,7 +105,6 @@ const ProductPage = () => {
     setIsBasketModalActive( false );
   };
   const openBasketModal = ( product: ProductItemType ) => {
-    debugger
     productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( {
         product: {
@@ -139,10 +141,23 @@ const ProductPage = () => {
       setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
     }
   };
+  const addToPreviouslyProducts = () => {
+    if ( !previouslyProducts.length ) {
+      dispatch( setProductToBlock( { product } ) );
+    } else {
+      if ( previouslyProducts.every( prod => prod.id !== product.id ) ) dispatch( setProductToBlock( { product } ) );
+    }
+  };
 
   useLayoutEffect( () => {
     if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
   }, [ productId ] );
+
+  useEffect( () => {
+    if ( product.id ) {
+      addToPreviouslyProducts();
+    }
+  }, [ product ] );
 
   return (
     <div className={ style.productPage }>
@@ -284,7 +299,7 @@ const ProductPage = () => {
         </div>
       </div>
       <div className={ style.productPageButtonWrappers }>
-        <PopularProductsBlock fromCatalog={false}/>
+        <PopularProductsBlock fromCatalog={ false }/>
       </div>
       <div className={ style.productPageButtonWithWrappers }>
         <WithThisProductBuyBlock/>

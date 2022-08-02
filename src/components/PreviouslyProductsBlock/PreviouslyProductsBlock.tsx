@@ -4,28 +4,32 @@ import { routesPathsEnum } from '../../routes/enums';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import light from '../../styles/common/LightBlock.module.scss';
 import style from './PreviouslyProductsBlock.module.scss';
-import { getProductItems } from '../../mocks';
 import { location } from '../../enums';
+import { ProductItemType } from '../../redux/reducers/previouslyProducts-reducer';
 
-const PreviouslyProductsBlock = () => {
+const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType ) => {
 
-  const previouslyProducts = getProductItems(); // получать продукты из локал сторэдж
+  console.log(products);
   const navigate = useNavigate();
   const goToProductsCatalog = () => {
     navigate( routesPathsEnum.CATALOG ); //todo переход на страницу каталога
   };
 
   return (
-    <div className={style.blockMargin}>
+    <div className={ style.blockMargin }>
       <ThemeBlockWrapper
         title={ 'Ранее вы смотрели' }
         onButtonClick={ goToProductsCatalog }
-        itemsForBlock={ previouslyProducts }
+        itemsForBlock={ products }
         blockTheme={ light }
-        from={location.PREVIOUSLY_PRODUCTS}
+        from={ location.PREVIOUSLY_PRODUCTS }
       />
     </div>
   );
 };
 
 export default PreviouslyProductsBlock;
+
+type PreviouslyProductsBlockPropsType = {
+  products: Array<ProductItemType>
+}
