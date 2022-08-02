@@ -15,7 +15,7 @@
 
     & img {
       @include size(100%, 100%);
-      object-fit: contain;
+      object-fit: cover;
     }
   }
 
@@ -151,9 +151,13 @@
   .productForBasketContainer{
     flex-direction: column;
     justify-content: space-between;
+    gap: 16px;
     & .productMainInfo{
       margin: 0;
     }
+  }
+  .productWrap{
+    flex-direction: column;
   }
 }
 

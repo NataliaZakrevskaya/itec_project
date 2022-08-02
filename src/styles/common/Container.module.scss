@@ -66,6 +66,7 @@
         width: 100%;
         gap: 2.12%;
         margin: 8px 1.06%;
+        margin-bottom: 25px;
         transition: translate;
         transition-property: transform;
         transition-duration: 500ms;
@@ -81,6 +82,7 @@
         @media (max-width: 768px) {
           gap: 4.1% !important;
           margin: 8px 2.05%;
+          margin-bottom: 17px !important;
         }
         @media (max-width: 420px) {
           gap: 7.1% !important;
