@@ -12,18 +12,20 @@ import { fetchPopularProductsTC } from '../../redux/reducers/popularProducts-red
 import { selectValues } from '../../Api/productsApi/enums';
 import { location } from '../../enums';
 import { AppDispatch } from '../../redux/store';
+import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 
-const PopularProductsBlock = ({fromCatalog}: PopularProductsBlockPropsType) => {
+const PopularProductsBlock = ( { fromCatalog }: PopularProductsBlockPropsType ) => {
 
   const popularProducts = useSelector( getPopularProducts );
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const ordering = selectValues.POPULARITY;
   const goToPopularProducts = () => {
-    navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по популярности
+    dispatch( setChosenOrdering( { ordering } ) );
+    navigate( routesPathsEnum.CATALOG );
   };
   const animal = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( animal );
-  const ordering = selectValues.POPULARITY;
 
   useEffect( () => {
     if ( !window.localStorage.getItem( 'popularProducts' ) ) {
@@ -39,7 +41,7 @@ const PopularProductsBlock = ({fromCatalog}: PopularProductsBlockPropsType) => {
         itemsForBlock={ popularProducts }
         blockTheme={ dark }
         from={ location.POPULAR_PRODUCTS }
-        withoutButton={fromCatalog}
+        withoutButton={ fromCatalog }
       />
     </div>
   );

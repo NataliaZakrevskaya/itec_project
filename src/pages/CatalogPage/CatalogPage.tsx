@@ -44,6 +44,8 @@ import { AppDispatch } from '../../redux/store';
 import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
 import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
+import { getChosenOrdering } from '../../redux/selectors/ordering-selectors';
+import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -59,10 +61,10 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const isOneClickOrderSucceeded = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const chosenBrands = useSelector( getChosenBrandsId );
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
+  const chosenOrdering = useSelector( getChosenOrdering );
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ ordering, setOrdering ] = useState<SelectValuesTypes>( selectValues.POPULARITY );
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -92,14 +94,13 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     dispatch( setProductRequest( { status: RequestStatus.IDLE } ) );
   };
   const chooseOption = ( e: ChangeEvent<HTMLSelectElement> ) => {
-    // @ts-ignore
-    setOrdering( e.currentTarget.value );
+    dispatch( setChosenOrdering( { ordering: e.currentTarget.value as SelectValuesTypes } ) );
   };
 
   useEffect( () => {
     const brands = chosenBrands.length ? chosenBrands?.join() : null;
-    dispatch( fetchProductsTC( { page, animal, category, ordering, brands } ) );
-  }, [ page, animal, category, ordering, chosenBrands ] );
+    dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands } ) );
+  }, [ page, animal, category, chosenOrdering, chosenBrands ] );
 
   return (
     <div className={ style.catalogPageBlock }>
@@ -117,22 +118,22 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
           <p>Сортировка по: </p>
           <select
             name="select"
-            value={ ordering }
+            value={ chosenOrdering }
             onChange={ chooseOption }>
             <option value={ selectValues.POPULARITY }
-                    selected={ ordering === selectValues.POPULARITY }>популярности
+                    selected={ chosenOrdering === selectValues.POPULARITY }>популярности
             </option>
             <option value={ selectValues.NAME_POSITIVE }
-                    selected={ ordering === selectValues.NAME_POSITIVE }>названию: «от А до Я»
+                    selected={ chosenOrdering === selectValues.NAME_POSITIVE }>названию: «от А до Я»
             </option>
             <option value={ selectValues.NAME_NEGATIVE }
-                    selected={ ordering === selectValues.NAME_NEGATIVE }>названию: «от Я до А»
+                    selected={ chosenOrdering === selectValues.NAME_NEGATIVE }>названию: «от Я до А»
             </option>
             <option value={ selectValues.PRICE_POSITIVE }
-                    selected={ ordering === selectValues.PRICE_POSITIVE }>цене по возр.
+                    selected={ chosenOrdering === selectValues.PRICE_POSITIVE }>цене по возр.
             </option>
             <option value={ selectValues.PRICE_NEGATIVE }
-                    selected={ ordering === selectValues.PRICE_NEGATIVE }>цене по убыв.
+                    selected={ chosenOrdering === selectValues.PRICE_NEGATIVE }>цене по убыв.
             </option>
           </select>
         </div>
@@ -189,7 +190,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
         </div>
       </div>
       <div className={ style.catalogPopularProductsWrapper }>
-        <PopularProductsBlock fromCatalog={true}/>
+        <PopularProductsBlock fromCatalog={ true }/>
       </div>
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&

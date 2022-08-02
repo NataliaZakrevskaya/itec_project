@@ -15,6 +15,7 @@ import { latestProductsReducer } from './reducers/latestProducts-reducer';
 import { popularProductsReducer } from './reducers/popularProducts-reducer';
 import { productReducer } from './reducers/product-reducer';
 import { oneClickOrderReducer } from './reducers/onClickOrder-reducer';
+import { orderingReducer } from './reducers/ordering-reducer';
 
 const rootReducer = combineReducers( {
   app: appReducer,
@@ -30,6 +31,7 @@ const rootReducer = combineReducers( {
   popularProducts: popularProductsReducer,
   reviews: reviewsReducer,
   articles: articlesReducer,
+  ordering: orderingReducer,
 } );
 
 const persistConfig = {

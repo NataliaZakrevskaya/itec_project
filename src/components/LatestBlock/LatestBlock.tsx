@@ -10,6 +10,7 @@ import { selectValues } from '../../Api/productsApi/enums';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { location } from '../../enums';
 import { AppDispatch } from '../../redux/store';
+import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 
 const LatestBlock = () => {
 
@@ -20,6 +21,7 @@ const LatestBlock = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const goToLatestProducts = () => {
+    dispatch( setChosenOrdering( { ordering } ) );
     navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по дате добавления
   };
 
