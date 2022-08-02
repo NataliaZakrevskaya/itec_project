@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/itec_project/static/css/main.613c2144.css",
-    "main.js": "/itec_project/static/js/main.afdcd2a4.js",
+    "main.js": "/itec_project/static/js/main.cf10706b.js",
     "static/css/635.9897b4e5.chunk.css": "/itec_project/static/css/635.9897b4e5.chunk.css",
     "static/js/635.fe71baca.chunk.js": "/itec_project/static/js/635.fe71baca.chunk.js",
     "static/css/165.724e0956.chunk.css": "/itec_project/static/css/165.724e0956.chunk.css",
@@ -9,7 +9,7 @@
     "static/css/217.f3f7f564.chunk.css": "/itec_project/static/css/217.f3f7f564.chunk.css",
     "static/js/217.c5a4f071.chunk.js": "/itec_project/static/js/217.c5a4f071.chunk.js",
     "static/css/82.5470ce08.chunk.css": "/itec_project/static/css/82.5470ce08.chunk.css",
-    "static/js/82.7e41a6f0.chunk.js": "/itec_project/static/js/82.7e41a6f0.chunk.js",
+    "static/js/82.2145608d.chunk.js": "/itec_project/static/js/82.2145608d.chunk.js",
     "static/css/409.7f9c07e4.chunk.css": "/itec_project/static/css/409.7f9c07e4.chunk.css",
     "static/js/409.981f4b86.chunk.js": "/itec_project/static/js/409.981f4b86.chunk.js",
     "static/css/717.40ede227.chunk.css": "/itec_project/static/css/717.40ede227.chunk.css",
@@ -66,7 +66,7 @@
     "static/media/minusIcon.svg": "/itec_project/static/media/minusIcon.7be582755f9c1f0e71e4.svg",
     "static/media/radio.svg": "/itec_project/static/media/radio.87668a1c5f01c03a846c.svg",
     "main.613c2144.css.map": "/itec_project/static/css/main.613c2144.css.map",
-    "main.afdcd2a4.js.map": "/itec_project/static/js/main.afdcd2a4.js.map",
+    "main.cf10706b.js.map": "/itec_project/static/js/main.cf10706b.js.map",
     "635.9897b4e5.chunk.css.map": "/itec_project/static/css/635.9897b4e5.chunk.css.map",
     "635.fe71baca.chunk.js.map": "/itec_project/static/js/635.fe71baca.chunk.js.map",
     "165.724e0956.chunk.css.map": "/itec_project/static/css/165.724e0956.chunk.css.map",
@@ -74,7 +74,7 @@
     "217.f3f7f564.chunk.css.map": "/itec_project/static/css/217.f3f7f564.chunk.css.map",
     "217.c5a4f071.chunk.js.map": "/itec_project/static/js/217.c5a4f071.chunk.js.map",
     "82.5470ce08.chunk.css.map": "/itec_project/static/css/82.5470ce08.chunk.css.map",
-    "82.7e41a6f0.chunk.js.map": "/itec_project/static/js/82.7e41a6f0.chunk.js.map",
+    "82.2145608d.chunk.js.map": "/itec_project/static/js/82.2145608d.chunk.js.map",
     "409.7f9c07e4.chunk.css.map": "/itec_project/static/css/409.7f9c07e4.chunk.css.map",
     "409.981f4b86.chunk.js.map": "/itec_project/static/js/409.981f4b86.chunk.js.map",
     "717.40ede227.chunk.css.map": "/itec_project/static/css/717.40ede227.chunk.css.map",
@@ -89,6 +89,6 @@
   },
   "entrypoints": [
     "static/css/main.613c2144.css",
-    "static/js/main.afdcd2a4.js"
+    "static/js/main.cf10706b.js"
   ]
 }
