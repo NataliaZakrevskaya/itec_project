@@ -25,7 +25,7 @@ import { ProductItemType, setActualPage } from '../../redux/reducers/products-re
 import { stringCutter } from '../../helpers/stringCutter';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 import { AppDispatch } from '../../redux/store';
-import { OptionType } from '../../mocks';
+import { getProductItems, OptionType } from '../../mocks';
 import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/product-reducer';
 import { getProduct } from '../../redux/selectors/product-selector';
 import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
@@ -64,6 +64,7 @@ const ProductPage = () => {
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
+  const products = getProductItems() //todo позже забирать из детализации товара
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -302,7 +303,7 @@ const ProductPage = () => {
         <PopularProductsBlock fromCatalog={ false }/>
       </div>
       <div className={ style.productPageButtonWithWrappers }>
-        <WithThisProductBuyBlock/>
+        <WithThisProductBuyBlock products={products}/>
       </div>
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&

@@ -9,11 +9,7 @@ import { ProductItemType } from '../../redux/reducers/previouslyProducts-reducer
 
 const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType ) => {
 
-  console.log(products);
-  const navigate = useNavigate();
-  const goToProductsCatalog = () => {
-    navigate( routesPathsEnum.CATALOG ); //todo переход на страницу каталога
-  };
+  const goToProductsCatalog = () => {};
 
   return (
     <div className={ style.blockMargin }>
@@ -23,6 +19,7 @@ const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType
         itemsForBlock={ products }
         blockTheme={ light }
         from={ location.PREVIOUSLY_PRODUCTS }
+        withoutButton={true}
       />
     </div>
   );

@@ -8,7 +8,6 @@ export const slice = createSlice( {
   },
   reducers: {
     setProductToBlock( state, action: PayloadAction<{ product: ProductItemType }> ) {
-      debugger
       state.previouslyProducts.unshift( action.payload.product );
     },
   },

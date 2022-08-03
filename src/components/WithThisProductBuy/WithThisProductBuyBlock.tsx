@@ -1,25 +1,24 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { routesPathsEnum } from '../../routes/enums';
 import dark from '../../styles/common/DarkBlock.module.scss';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
-import { getProductItems } from '../../mocks';
 import { location } from '../../enums';
+import { ProductItemType } from '../../redux/reducers/products-reducer';
 
-export const WithThisProductBuyBlock = () => {
-  const commonProducts = getProductItems(); //todo запрос на популярные продукты
-  const navigate = useNavigate();
-  const goToCommonProducts = () => {
-    navigate( routesPathsEnum.CATALOG ); //todo переход каталог товаров, которые покупают с этим товаром
-  };
+export const WithThisProductBuyBlock = ( { products }: WithThisProductBuyBlockPropsType ) => {
+  const goToCommonProducts = () => {};
 
   return (
     <ThemeBlockWrapper
       title={ 'Вместе с этим товаром покупают' }
       onButtonClick={ goToCommonProducts }
-      itemsForBlock={ commonProducts }
+      itemsForBlock={ products }
       blockTheme={ dark }
-      from={location.WITH_THIS_PRODUCT_BUY}
+      from={ location.WITH_THIS_PRODUCT_BUY }
+      withoutButton={true}
     />
   );
 };
+
+type WithThisProductBuyBlockPropsType = {
+  products: Array<ProductItemType>
+}
