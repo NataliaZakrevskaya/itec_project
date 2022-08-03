@@ -34,7 +34,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
     windowElRef,
     isNextDisabled,
     onTouchStart,
-    onTouchEnd,
+    onTouchEnd
   } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length );
 
   const closeOneClickModal = () => {
