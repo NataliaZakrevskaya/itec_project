@@ -32,6 +32,7 @@ import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-
 import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 import { setProductToBlock } from '../../redux/reducers/previouslyProducts-reducer';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
+import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 
 const ProductPage = () => {
 
@@ -62,6 +63,7 @@ const ProductPage = () => {
   const productForBasketModal = productForBasket[ 0 ];
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const previouslyProducts = useSelector( getPreviouslyProduct );
+  const {address, metro} = useSelector(getInfo);
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
   const products = getProductItems() //todo позже забирать из детализации товара
@@ -246,7 +248,7 @@ const ProductPage = () => {
                 <h3>Самовывоз</h3>
                 <p className={ style.pickUpInfo }>В данный момент товар можно забрать только самовывозом из нашего
                   уютного магазина по адресу:</p>
-                <Address/>
+                <Address address={address} metro={metro}/>
               </div>
             </div>
             <div className={ style.orderInfoForPayment }>

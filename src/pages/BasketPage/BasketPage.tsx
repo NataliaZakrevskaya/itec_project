@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
 import { location } from '../../enums';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
+import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 
 const BasketPage = () => {
 
@@ -23,6 +24,7 @@ const BasketPage = () => {
   const basketCount = useSelector( getTotalSum );
   const productsCount = useSelector( getTotalProductsCount );
   const previouslyProducts = useSelector( getPreviouslyProduct );
+  const {address} = useSelector(getInfo);
   const isEmptyBasket = productsInBasket.length;
   const navigate = useNavigate();
 
@@ -68,7 +70,7 @@ const BasketPage = () => {
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
                         <img src={ whiteNavigateIcon } alt={ 'whiteNavigateIcon' }/>
-                        <p>Минск, ул. Чюрлёниса, 6.</p>
+                        <p>{address}</p>
                       </div>
                     </div>
                   </div>

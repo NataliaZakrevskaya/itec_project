@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Address from '../common/Address/Address';
 import Schedule from '../common/Schedule/Schedule';
 import Phone from '../common/PhoneBlock/Phone';
@@ -11,20 +11,30 @@ import HeaderLogo from '../Logo/headerLogo/HeaderLogo';
 import Callback from '../common/Callback/Callback';
 import instagramIcon from '../../Images/instagramIcon.svg';
 import { useResize } from '../../customHooks/useResize';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../../redux/store';
+import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop-reducer';
+import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 
 const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
 
   const { width, windowElRef } = useResize();
 
+  const { metro, address, phone_number, social, time_weekdays, time_weekend } = useSelector( getInfo );
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect( () => {
+    if ( !metro || !address || !phone_number || !social || !time_weekdays || !time_weekend ) dispatch( fetchDescriptionShopTC() );
+  }, [ address, metro, phone_number, social, time_weekdays, time_weekend ] );
+
   return (
     <header className={ style.header } ref={ windowElRef }>
       <div className={ `${ style.contactInfo } ${ commonStyle.container }` }>
-        <Address/>
-        <Schedule/>
+        <Address address={ address } metro={ metro }/>
+        <Schedule timeWeekdays={ time_weekdays } timeWeekend={ time_weekend }/>
         <div className={ style.instaPhoneNumber }>
           <div className={ style.phoneWrapper }>
-            <Phone/>
-            <a className={ style.headerInstagram } href={ 'https://www.instagram.com/' } target={ '_blank' }
+            <Phone phoneNumber={ phone_number }/>
+            <a className={ style.headerInstagram } href={ social } target={ '_blank' }
                rel={ 'noreferrer' }>
               <img src={ instagramIcon } alt={ 'instagramIcon' }/>
             </a>

@@ -6,10 +6,12 @@ import instagramIcon from '../../Images/instagramIcon.svg';
 import { Map, Placemark, YMaps } from 'react-yandex-maps';
 import metroIcon from '../../Images/metroIcon.svg';
 import navigationIcon from '../../Images/navigateIcon.svg';
-import timeIcon from '../../Images/timeIcon.svg';
-import IconTime from '../../Images/clock_minorfooter.svg'
+import IconTime from '../../Images/clock_minorfooter.svg';
+import { useSelector } from 'react-redux';
+import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 
 const ContactBlock = () => {
+  const { phone_number, address, metro, time_weekdays, time_weekend, social } = useSelector( getInfo );
   return (
     <div className={ style.contactBlockContainer }>
       <div className={ commonStyle.container }>
@@ -27,11 +29,11 @@ const ContactBlock = () => {
             <div className={ style.contactBlockWrapperDirection }>
               <div className={ style.contactBlockAdressSWrapper }>
                 <img src={ navigationIcon } alt=""/>
-                <p>Минск, ул. Чюрлёниса, 6.</p>
+                <p>{ address }</p>
               </div>
               <div className={ style.contactBlockWrapperMetro }>
                 <img src={ metroIcon } alt=""/>
-                <p>Малиновка</p>
+                <p>{ metro }</p>
               </div>
             </div>
             <div className={ style.contactBlockWrapperTimeWork }>
@@ -39,21 +41,21 @@ const ContactBlock = () => {
               <div className={ style.scheduleWrapper }>
                 <div className={ style.scheduleWrapperFirst }>
                   <img src={ IconTime } alt="timeIcon"/>
-                  <div>Пон.-Пят. 10:00-21:00</div>
+                  <div>Пон.-Пят. { time_weekdays }</div>
                 </div>
                 <div className={ style.scheduleWrapperLine }/>
                 <div className={ style.scheduleWrapperSecond }>
-                  Суб.-Вос. 10:00-20:00
+                  Суб.-Вос. { time_weekend }
                 </div>
               </div>
             </div>
             <div className={ style.contactBlockWrapperTel }>
               <p className={ style.tel }>Телефон</p>
-              <Phone/>
+              <Phone phoneNumber={ phone_number }/>
             </div>
             <div className={ style.contactBlockWrapperSocial }>
               <p className={ style.socialTitle }>Пишите нам в социальных сетях</p>
-              <a href={ 'https://www.instagram.com/' } target={ '_blank' } rel={ 'noreferrer' }>
+              <a href={ social } target={ '_blank' } rel={ 'noreferrer' }>
                 <img src={ instagramIcon } alt={ 'instagramIcon' }/>
               </a>
             </div>

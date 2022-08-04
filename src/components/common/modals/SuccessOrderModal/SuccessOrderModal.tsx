@@ -9,17 +9,19 @@ import grayClock from '../../../../Images/grayClock.svg';
 import { location, LocationsType } from '../../../../enums';
 import { setOneClickOrderRequestStatus, setOrderRequestStatus } from '../../../../redux/reducers/app-reducer';
 import { RequestStatus } from '../../../../redux/reducers/enums';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../../redux/store';
+import { getInfo } from '../../../../redux/selectors/descriptionShop-selectors';
 
 const SuccessOrderModal = ( { from }: SuccessOrderModalPropsType ) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const { metro, address } = useSelector( getInfo );
   const onCloseButtonClick = () => {
-    if (from === location.ONE_CLICK_ORDER) dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ))
-    if (from === location.CHECKOUT) dispatch(setOrderRequestStatus({status: RequestStatus.IDLE}))
-      navigate( routesPathsEnum.ARTICLES )
-  }
+    if ( from === location.ONE_CLICK_ORDER ) dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
+    if ( from === location.CHECKOUT ) dispatch( setOrderRequestStatus( { status: RequestStatus.IDLE } ) );
+    navigate( routesPathsEnum.ARTICLES );
+  };
 
   return (
     <div className={ style.successModalContainer }>
@@ -27,7 +29,7 @@ const SuccessOrderModal = ( { from }: SuccessOrderModalPropsType ) => {
       <div className={ style.title }>
         <h3>Заказ оформлен и ожидает вас по адресу:</h3>
       </div>
-      <Address/>
+      <Address address={ address } metro={ metro }/>
       <div className={ style.scheduleBlock }>
         <img src={ grayClock } alt={ 'timeIcon' }/>
         <p className={ scheduleStyle.scheduleText }>Пон.-Пят. 10:00-21:00</p>

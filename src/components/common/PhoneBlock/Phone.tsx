@@ -1,14 +1,18 @@
 import React from 'react';
 import phoneIcon from '../../../Images/phoneIcon.svg';
-import style from "./Phone.module.scss";
+import style from './Phone.module.scss';
 
-const Phone = () => {
+const Phone = ( { phoneNumber }: PhonePropsType ) => {
   return (
-    <div className={style.phoneBlock}>
+    <div className={ style.phoneBlock }>
       <img src={ phoneIcon } alt={ 'phoneIcon' }/>
-      <a href='#'>+ 375 (44) 501 03 55</a>
+      <a href="#">{ phoneNumber }</a>
     </div>
   );
 };
 
 export default Phone;
+
+type PhonePropsType = {
+  phoneNumber: string
+}

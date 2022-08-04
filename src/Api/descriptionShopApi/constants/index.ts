@@ -1,0 +1,1 @@
+export const SHOP_INFO = 'shop-info';

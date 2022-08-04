@@ -17,6 +17,7 @@ import { productReducer } from './reducers/product-reducer';
 import { oneClickOrderReducer } from './reducers/onClickOrder-reducer';
 import { orderingReducer } from './reducers/ordering-reducer';
 import { previouslyProductsReducer } from './reducers/previouslyProducts-reducer';
+import { descriptionShopReducer } from './reducers/descriptionShop-reducer';
 
 const rootReducer = combineReducers( {
   app: appReducer,
@@ -34,6 +35,7 @@ const rootReducer = combineReducers( {
   reviews: reviewsReducer,
   articles: articlesReducer,
   ordering: orderingReducer,
+  descriptionShop: descriptionShopReducer
 } );
 
 const persistConfig = {

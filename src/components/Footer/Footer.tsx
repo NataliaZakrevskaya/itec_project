@@ -7,8 +7,12 @@ import Phone from '../common/PhoneBlock/Phone';
 import Schedule from '../common/Schedule/Schedule';
 import NavbarForFooter from '../Navbar/NavbarForFooter/NavbarForFooter';
 import Callback from '../common/Callback/Callback';
+import { useSelector } from 'react-redux';
+import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 
 const Footer = () => {
+
+  const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );
 
   return (
     <div className={ style.footer }>
@@ -19,14 +23,14 @@ const Footer = () => {
         </div>
         <hr/>
         <div className={ style.address }>
-          <Address/>
-          <Phone/>
-          <Schedule/>
-          <Callback />
-          <hr className={style.hr}/>
+          <Address address={ address } metro={ metro }/>
+          <Phone phoneNumber={phone_number}/>
+          <Schedule timeWeekend={time_weekend} timeWeekdays={time_weekdays}/>
+          <Callback/>
+          <hr className={ style.hr }/>
         </div>
         <div className={ style.siteInfo }>
-          <div className={style.designerInfo}><p>Дизайн сайта: </p>
+          <div className={ style.designerInfo }><p>Дизайн сайта: </p>
             <a href={ 'https://e.mail.ru/' } target={ '_blank' } rel={ 'noreferrer' }>shkuratovdesigner.com</a>
           </div>
           <p>© Все права защищены 2022</p>

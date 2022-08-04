@@ -19,7 +19,7 @@ const AnimalsTypesList = () => {
   const {
     offset,
     onTouchStart,
-    onTouchMove,
+    onTouchEnd,
     windowElRef,
   } = useCarousel( BlockNames.ANIMALS, animalTypes.length );
 
@@ -41,7 +41,7 @@ const AnimalsTypesList = () => {
         className={ style.window }
         ref={ windowElRef }
         onTouchStart={ onTouchStart }
-        onTouchMove={ onTouchMove }
+        onTouchEnd={ onTouchEnd }
       >
         <div className={ style.animalTypesBlock }
              style={ {

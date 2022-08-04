@@ -2665,4 +2665,16 @@ export type resProductTypesType = {
   name: string,
   is_active: boolean
 }
+export type ShopInfoType = {
+  id: number,
+  address: string,
+  metro: string,
+  time_weekdays: string,
+  time_weekend: string,
+  phone_number: string,
+  social: string,
+  maps: string,
+  description_shop: string,
+  published: boolean
+}
 

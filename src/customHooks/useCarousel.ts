@@ -70,6 +70,8 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
 
   const [ x, setX ] = useState<null | number>( null );
   const [ x2, setX2 ] = useState<null | number>( null );
+  console.log(x);
+  console.log(x2);
 
   const onTouchStart = ( event: any ) => {
     setX( event.touches[ 0 ].clientX );
@@ -86,6 +88,10 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       if ( width >= 700 ) return width;
       else return 280 + ( width * 0.03 );
     }
+    if ( blockName === BlockNames.ANIMALS ) {
+      if ( width >= 700 ) return width;
+      else return 280 + ( width * 0.03 );
+    }
     else return width
   };
   const onTouchEnd = ( event: any ) => {
@@ -94,37 +100,14 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     if ( x && x2 ) {
       if ( x2 - x < 0 ) {
         setOffset( ( currentOffset ) => {
-          const nextDiff = getDiff();
-          const newOffset = currentOffset - nextDiff;
+          const newOffset = currentOffset - getDiff();
           const maxOffset = -( width * ( pagesCount - 1 ) );
           return Math.max( newOffset, maxOffset );
         } );
       }
       if ( x2 - x > 0 ) {
         setOffset( ( currentOffset ) => {
-          const prevOffset = getDiff();
-          const newOffset = currentOffset + prevOffset;
-          return Math.min( newOffset, 0 );
-        } );
-      }
-    }
-  };
-  const onTouchMove = ( event: any ) => {
-    if ( !x ) return false;
-    setX2( event.touches[ 0 ].clientX );
-    if ( x && x2 ) {
-      if ( x2 - x < 0 ) {
-        setOffset( ( currentOffset ) => {
-          const nextDiff = Math.abs( x2 - x );
-          const newOffset = currentOffset - nextDiff;
-          const maxOffset = -( width * ( pagesCount - 1 ) );
-          return Math.max( newOffset, maxOffset );
-        } );
-      }
-      if ( x2 - x > 0 ) {
-        setOffset( ( currentOffset ) => {
-          const prevDiff = x2 - x;
-          const newOffset = currentOffset + prevDiff;
+          const newOffset = currentOffset + getDiff();
           return Math.min( newOffset, 0 );
         } );
       }
@@ -140,7 +123,6 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     windowElRef,
     onTouchStart,
     onTouchEnd,
-    onTouchMove,
     width,
   };
 };
