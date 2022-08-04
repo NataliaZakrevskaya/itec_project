@@ -70,8 +70,9 @@
 @media (max-width: 992px) {
   .article{
     max-width: 280px;
+    padding: 8px;
     & .articleImageWrapper{
-      width: 249px;
+      width: 264px;
       height: 138px;
     }
     & div{
