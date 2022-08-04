@@ -39,11 +39,9 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       else return 3200 / width;
     }
     if ( blockName === BlockNames.ANIMALS ) {
-      if ( width > 680 ) return 0;
-      if ( width < 681 && width > 500 ) return itemsCount / 14.29;
-      if ( width < 501 && width > 400 ) return itemsCount / 16.67;
-      if ( width < 401 && width > 350 ) return itemsCount / 12.82;
-      if ( width < 351 ) return itemsCount / 11.81;
+      if ( width >= 940 ) return 1;
+      if ( width < 940 && width >= 700 ) return itemsCount / (width / (158 + 24));
+      else return  itemsCount / (width / (137 + 16))
     }
     return 1;
   };
@@ -70,8 +68,6 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
 
   const [ x, setX ] = useState<null | number>( null );
   const [ x2, setX2 ] = useState<null | number>( null );
-  console.log(x);
-  console.log(x2);
 
   const onTouchStart = ( event: any ) => {
     setX( event.touches[ 0 ].clientX );
@@ -94,6 +90,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     }
     else return width
   };
+  console.log(offset);
   const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;
     setX2( event.changedTouches[ 0 ].clientX );

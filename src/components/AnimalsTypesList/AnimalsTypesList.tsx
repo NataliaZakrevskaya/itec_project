@@ -22,7 +22,7 @@ const AnimalsTypesList = () => {
     onTouchEnd,
     windowElRef,
   } = useCarousel( BlockNames.ANIMALS, animalTypes.length );
-
+  console.log(offset);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 

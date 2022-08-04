@@ -65,8 +65,7 @@
         @include flex(row, space-between, stretch);
         width: 100%;
         gap: 2.12%;
-        margin: 8px 1.06%;
-        margin-bottom: 25px;
+        margin: 8px 1.06% 25px;
         transition: translate;
         transition-property: transform;
         transition-duration: 500ms;
@@ -94,7 +93,7 @@
         width: 100%;
         transition: translate;
         transition-property: transform;
-        transition-duration: 1500ms;
+        transition-duration: 500ms;
         transition-timing-function: ease-in-out;
       }
     }

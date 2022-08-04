@@ -47,6 +47,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
   };
+
   const openBasketModal = ( product: ProductItemType ) => {
     productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( { product } ) )
