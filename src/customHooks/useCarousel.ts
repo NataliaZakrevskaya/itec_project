@@ -26,9 +26,10 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
   const getPagesCount = ( blockName: BlockNameType, itemsCount: number ) => {
     if ( blockName === BlockNames.REVIEWS ) return itemsCount;
     if ( blockName === BlockNames.ARTICLES ) {
-      if ( width > 940 ) return itemsCount / 3;
-      if ( width < 941 && width > 700 ) return itemsCount / 2;
-      return itemsCount;
+      if ( width >= 940 ) return itemsCount / 3;
+      if ( width < 940 && width >= 700 ) return itemsCount / 2;
+      if ( width < 700 && width >= 520 ) return  itemsCount / (1 + ((width -(280 + (width * 0.05))) / 280));
+      return itemsCount / (1 + ((width -(280 + (width * 0.04))) / 280));
     }
     if ( blockName === BlockNames.PRODUCTS ) {
       if ( width > 940 ) return itemsCount / 4;
@@ -74,19 +75,19 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     setX( event.touches[ 0 ].clientX );
   };
 
-  const getDiff = () => {
+  /*const getDiff = () => {
     if(width >= 520) return width
     if(width < 520 && width > 400 ) return 239 + (width * 0.04)
     if(width <= 400 ) return 239 + (width * 0.071)
     return width
-  }
+  }*/
   const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;
     setX2( event.changedTouches[ 0 ].clientX );
     if ( x && x2 ) {
       if ( x2 - x < 0 ) {
         setOffset( ( currentOffset ) => {
-          const nextDiff = getDiff();
+          const nextDiff = width;
           const newOffset = currentOffset - nextDiff;
           const maxOffset = -( width * ( pagesCount - 1 ) );
           return Math.max( newOffset, maxOffset );
@@ -94,7 +95,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       }
       if ( x2 - x > 0 ) {
         setOffset( ( currentOffset ) => {
-          const prevOffset = getDiff()
+          const prevOffset = width
           const newOffset = currentOffset + prevOffset;
           return Math.min( newOffset, 0 );
         } );
