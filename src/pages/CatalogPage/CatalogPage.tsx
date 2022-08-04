@@ -135,6 +135,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             <option value={ selectValues.PRICE_NEGATIVE }
                     selected={ chosenOrdering === selectValues.PRICE_NEGATIVE }>цене по убыв.
             </option>
+            <option value={ selectValues.ADDED_DATE }
+                    selected={ chosenOrdering === selectValues.ADDED_DATE }>новизне
+            </option>
           </select>
         </div>
         <div onClick={ openFiltersMode } className={ style.catalogFilter }>

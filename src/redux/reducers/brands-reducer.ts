@@ -3,7 +3,7 @@ import { brandsAPI } from '../../Api/brandsApi/brandsApi';
 
 export const fetchBrandsTC = createAsyncThunk(
   'brands/fetchBrands', async ( param, { dispatch } ) => {
-    const res = await brandsAPI.setBrands(); //todo после того, как заработает бэк
+    const res = await brandsAPI.setBrands();
     try {
       return { brands: res.data };
     } catch ( err ) {

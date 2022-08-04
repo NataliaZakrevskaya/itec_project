@@ -4,7 +4,7 @@ import { animalTypesAPI } from '../../Api/animalTypesApi/animalTypesApi';
 
 export const fetchAnimalTypesTC = createAsyncThunk(
   'animalTypes/fetchAnimalTypes',   async( param, { dispatch } ) => {
-    const res =  await animalTypesAPI.setAnimalTypes(); //todo пока нет бэка
+    const res =  await animalTypesAPI.setAnimalTypes();
     try {
       return { animalTypes: res.data };
     } catch ( err ) {

@@ -16,7 +16,7 @@ import { getCurrentAddedDate } from '../../helpers/getDate';
 
 const ArticlePage = () => {
   const articleId = Number( useParams().articleId ) - 1;
-  const article = useSelector( getArticles )[ articleId ]; //todo позже будет просто запрос по апи
+  const article = useSelector( getArticles )[ articleId ];
   const date = new Date( article.date_added );
   const currentData = getCurrentAddedDate(date)
   const navigate = useNavigate();

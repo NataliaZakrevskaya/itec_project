@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AnimalTypesType, getProductItems, OptionType } from '../../mocks';
+import { AnimalTypesType, OptionType } from '../../mocks';
 import { setProductRequest } from './app-reducer';
 import { RequestStatus } from './enums';
 import { productsAPI } from '../../Api/productsApi/productsApi';
@@ -10,23 +10,12 @@ export const fetchProductsTC = createAsyncThunk(
     rejectWithValue,
   } ) => {
     try {
-      const res = await productsAPI.setProducts( param.animal,  param.category, param.brands, param.page, param.ordering );
+      const res = await productsAPI.setProducts( param.animal, param.category, param.brands, param.page, param.ordering );
       dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {
       dispatch( setProductRequest( { status: RequestStatus.FAILED } ) );
       rejectWithValue( null );
-    }
-  },
-);
-
-export const fetchPreviouslyProductsTC = createAsyncThunk(
-  'products/fetchPreviouslyProducts', ( param, { dispatch } ) => {
-    const res = getProductItems(); //todo позже будет APi запрос
-    try {
-      return { previouslyProducts: res };
-    } catch ( err ) {
-
     }
   },
 );
@@ -46,13 +35,13 @@ export const slice = createSlice( {
       state.page_number = action.payload.pageNumber;
     },
     setChosenOptionToProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
-      const index = state.results.findIndex(product => product.id === action.payload.productId)
-      state.results[index].chosen_option = action.payload.option
+      const index = state.results.findIndex( product => product.id === action.payload.productId );
+      state.results[ index ].chosen_option = action.payload.option;
     },
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
-        return action.payload?.products;
+      return action.payload?.products;
     } );
   } ),
 } );

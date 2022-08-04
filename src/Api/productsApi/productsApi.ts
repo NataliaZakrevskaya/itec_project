@@ -1,6 +1,6 @@
 import { PRODUCTS_URL } from './constants';
 import { instance } from '../configApi/configApi';
-import { AxiosResponse, responseProductItemType, resProductItemType } from '../../mocks';
+import { AxiosResponse, responseProductItemType } from '../../mocks';
 
 export const productsAPI = {
   async setProducts( animal: number | null, category: number | null, brands?: string | null, page?: number, ordering?: string ) {
@@ -37,8 +37,5 @@ export const productsAPI = {
         page_size,
       },
     } );
-  },
-  async setWithThisProductByProducts() {
-    return await instance.get<Array<resProductItemType>>( PRODUCTS_URL ); // todo в параметрах передавать
   },
 };

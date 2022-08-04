@@ -22,7 +22,7 @@ const LatestBlock = () => {
 
   const goToLatestProducts = () => {
     dispatch( setChosenOrdering( { ordering } ) );
-    navigate( routesPathsEnum.CATALOG ); //todo переход с сортировкой по дате добавления
+    navigate( routesPathsEnum.CATALOG );
   };
 
   useEffect( () => {
