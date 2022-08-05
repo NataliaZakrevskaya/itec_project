@@ -17,12 +17,12 @@ import { getProductForOneClickOrder } from '../../../redux/selectors/oneClickOrd
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, from, withoutButton}: ThemeBlockWrapperPropsType ) => {
 
+  const [productForBasketModal, setProductForBasketModal] = useState<any>(null)
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const { block, sectionsBlock, productItem } = blockTheme;
-  const productForBasket = useSelector( getProductsInBasket );
-  const productForBasketModal = productForBasket[ 0 ];
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
+  const productsFromBasket = useSelector(getProductsInBasket);
 
   const dispatch = useDispatch();
 
@@ -46,10 +46,13 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
   };
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
+    setProductForBasketModal(null)
   };
 
   const openBasketModal = ( product: ProductItemType ) => {
-    productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
+    debugger
+    setProductForBasketModal(product);
+    productsFromBasket.every( (prod: ProductItemType) => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( { product } ) )
       : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1 } ) );
     setIsBasketModalActive( true );
