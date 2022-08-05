@@ -29,6 +29,24 @@
         margin: 0 0;
       }
     }
+    .articlesLessThenFour{
+      @include flex(row, space-between, stretch);
+      width: 100%;
+      gap: 0;
+      margin: 0 0;
+      transition: translate;
+      transition-property: transform;
+      transition-duration: 500ms;
+      transition-timing-function: ease-in-out;
+      @media (max-width: 1199px) {
+        gap: 10%;
+        margin: 0 5%
+      }
+      @media (max-width: 768px) {
+        gap: 3%;
+        margin: 0 0;
+      }
+    }
   }
 }
 

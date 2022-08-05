@@ -2,8 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { BlockNames } from './enums';
 
 export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
+
+  const getIsNextButtonDisables = () => {
+    if ( blockName === BlockNames.REVIEWS && itemsCount > 1 ) return false;
+    if ( blockName === BlockNames.ARTICLES && itemsCount > 3 ) return false;
+    return !( blockName === BlockNames.PRODUCTS && itemsCount > 4 );
+  };
+
   const [ offset, setOffset ] = useState( 0 );
-  const [ isNextDisabled, setIsNextDisabled ] = useState( false );
+  const [ isNextDisabled, setIsNextDisabled ] = useState( getIsNextButtonDisables() );
   const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
   const [ width, setWidth ] = useState( 1200 );
 
@@ -23,7 +30,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     };
   }, [ width ] );
 
-  const getPagesCount = ( blockName: BlockNameType, itemsCount: number ) => {
+  const getPagesCount = () => {
     if ( blockName === BlockNames.REVIEWS ) return itemsCount;
     if ( blockName === BlockNames.ARTICLES ) {
       if ( width >= 940 ) return itemsCount / 3;
@@ -40,13 +47,13 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     }
     if ( blockName === BlockNames.ANIMALS ) {
       if ( width >= 940 ) return 1;
-      if ( width < 940 && width >= 700 ) return itemsCount / (width / (158 + 24));
-      else return  itemsCount / (width / (137 + 16))
+      if ( width < 940 && width >= 700 ) return itemsCount / ( width / ( 158 + 24 ) );
+      else return itemsCount / ( width / ( 137 + 16 ) );
     }
     return 1;
   };
 
-  const pagesCount = getPagesCount( blockName, itemsCount );
+  const pagesCount = getPagesCount();
 
   const onPrevSectionButtonClick = () => {
     setOffset( ( currentOffset ) => {
@@ -73,7 +80,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     setX( event.touches[ 0 ].clientX );
   };
 
-  const getDiff = ( ) => {
+  const getDiff = () => {
     if ( blockName === BlockNames.PRODUCTS ) {
       if ( width >= 520 ) return width;
       if ( width < 520 && width > 400 ) return 239 + ( width * 0.04 );
@@ -87,8 +94,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     if ( blockName === BlockNames.ANIMALS ) {
       if ( width >= 520 ) return width;
       else return 137 + 16;
-    }
-    else return width
+    } else return width;
   };
   const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;

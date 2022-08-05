@@ -68,7 +68,7 @@ const UsefulArticlesBlock = () => {
               onTouchStart={ onTouchStart }
               onTouchEnd={ onTouchEnd }
             >
-              <div className={ style.allArticlesItemsContainer }
+              <div className={ articles.length > 3 ? `${style.allArticlesItemsContainer}` : ` ${style.articlesLessThenFour}` }
                    style={ {
                      transform: `translateX(${ offset }px)`,
                    } }>
