@@ -46,6 +46,7 @@ import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
 import { getChosenOrdering } from '../../redux/selectors/ordering-selectors';
 import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
+import { useResize } from '../../customHooks/useResize';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -62,6 +63,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const chosenBrands = useSelector( getChosenBrandsId );
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const chosenOrdering = useSelector( getChosenOrdering );
+  const {windowElRef, width} = useResize();
+  const withWords = width >= 620
 
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
@@ -156,7 +159,10 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
         </div>
         <div className={ style.productsBlockContainer }>
           { !isRejectResponse
-            ? ( <div className={ style.productsBlock }>
+            ? ( <div
+              className={ style.productsBlock }
+              ref={ windowElRef }
+            >
               {
                 products.map( ( item: ProductItemType ) =>
                   <ProductItem
@@ -179,7 +185,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                 pageSize={ pageSize }
                 actualPage={ page }
                 onPageChanged={ onPageChanged }
-                portionSize={ 3 }/>
+                portionSize={ 3 }
+                withWords={withWords}
+              />
             </div> )
             : ( <div className={ style.emptyCatalog }>
               <img src={ sadCat } alt="sadCat"/>

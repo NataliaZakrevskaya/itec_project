@@ -9,6 +9,7 @@ const ProductsBlockPagination = ( {
                                     actualPage,
                                     onPageChanged,
                                     portionSize = 3,
+                                    withWords
                                   }: ProductsBlockPaginationType ) => {
 
   let pagesCount = Math.ceil( totalProductsCount / pageSize );
@@ -40,7 +41,7 @@ const ProductsBlockPagination = ( {
     <div className={ style.paginationBlock }>
       <div className={ style.navigationBlock } onClick={ onPrevButtonClick }>
         <img className={ style.navigationBlockLeft } src={ prevPage } alt="prevPage"/>
-        <p>Предыдущая</p>
+        {withWords && <p>Предыдущая</p> }
       </div>
       <div className={ style.pages }>
         { pages
@@ -57,7 +58,7 @@ const ProductsBlockPagination = ( {
           } ) }
       </div>
       <div className={ style.navigationBlock } onClick={ onNextButtonClick }>
-        <p>Следующая</p>
+        {withWords && <p>Следующая</p> }
         <img className={ style.navigationBlockRight } src={ nextPage } alt="nextPage"/>
       </div>
     </div>
@@ -71,5 +72,6 @@ type ProductsBlockPaginationType = {
   pageSize: number
   actualPage: number,
   portionSize: number,
+  withWords: boolean,
   onPageChanged: ( pageNumber: number ) => void
 }
