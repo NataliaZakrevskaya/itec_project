@@ -85,12 +85,11 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       else return 280 + ( width * 0.03 );
     }
     if ( blockName === BlockNames.ANIMALS ) {
-      if ( width >= 700 ) return width;
-      else return 280 + ( width * 0.03 );
+      if ( width >= 520 ) return width;
+      else return 137 + 16;
     }
     else return width
   };
-  console.log(offset);
   const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;
     setX2( event.changedTouches[ 0 ].clientX );
