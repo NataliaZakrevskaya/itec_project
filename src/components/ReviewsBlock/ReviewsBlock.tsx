@@ -100,7 +100,7 @@ const ReviewsBlock = () => {
           <div className={ colorStyle.block }>
             <div className={ `${ colorStyle.sectionsBlock } ${ style.buttonsBlock }` }>
               <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
-              <p>{ currentReviewNumber } из { 3 }</p>
+              <p>{ currentReviewNumber } из { reviews.length }</p>
               <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>
             </div>
           </div>

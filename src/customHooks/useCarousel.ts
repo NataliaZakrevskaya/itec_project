@@ -3,24 +3,32 @@ import { BlockNames } from './enums';
 
 export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
 
-  const getIsNextButtonDisables = () => {
-    if ( blockName === BlockNames.REVIEWS && itemsCount > 1 ) return false;
-    if ( blockName === BlockNames.ARTICLES && itemsCount > 3 ) return false;
-    return !( blockName === BlockNames.PRODUCTS && itemsCount > 4 );
-  };
-
   const [ offset, setOffset ] = useState( 0 );
-  const [ isNextDisabled, setIsNextDisabled ] = useState( getIsNextButtonDisables() );
+  const [ isNextDisabled, setIsNextDisabled ] = useState( false );
   const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
   const [ width, setWidth ] = useState( 1200 );
-
   const windowElRef = useRef( null );
+
+  const getIsNextButtonDisables = () => {
+    if ( blockName === BlockNames.REVIEWS) setIsNextDisabled(itemsCount <= 1)
+    if ( blockName === BlockNames.ARTICLES ) {
+      if ( width >= 1180) {
+        setIsNextDisabled(itemsCount <= 3);
+      }
+      if( width < 1180 && width >= 700){
+       setIsNextDisabled(itemsCount <= 2);
+      }
+      else setIsNextDisabled(true);
+    }
+    return !( blockName === BlockNames.PRODUCTS && itemsCount > 4 );
+  };
 
   useEffect( () => {
     const resizeHandler = () => {
       // @ts-ignore
       const _width = windowElRef?.current.offsetWidth;
       setWidth( _width );
+      getIsNextButtonDisables()
     };
     resizeHandler();
     window.addEventListener( 'resize', resizeHandler );
