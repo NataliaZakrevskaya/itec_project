@@ -17,6 +17,7 @@ import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../r
 import { location } from '../../enums';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
+import { getGoods } from '../../helpers/getGoods';
 
 const BasketPage = () => {
 
@@ -27,6 +28,7 @@ const BasketPage = () => {
   const {address} = useSelector(getInfo);
   const isEmptyBasket = productsInBasket.length;
   const navigate = useNavigate();
+  const goodsName = getGoods(productsCount)
 
   return (
     <div className={ style.basketPageBlock }>
@@ -62,7 +64,7 @@ const BasketPage = () => {
                 <div className={ style.basketInfoContainer }>
                   <div className={ style.basketInfo }>
                     <p className={ style.basketBUN }>{ basketCount } BYN</p>
-                    <p className={ style.basketProducts }>{ productsCount } товара</p>
+                    <p className={ style.basketProducts }>{ productsCount } {goodsName}</p>
                   </div>
                   <div className={ style.pickUpBlock }>
                     <img className={ style.basketBoxImage } src={ boxIcon } alt="boxIcon"/>

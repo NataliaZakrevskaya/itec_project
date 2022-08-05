@@ -90,7 +90,7 @@ const UsefulArticlesBlock = () => {
               </div>
             </div>
           </div>
-          <Button title={ 'Смотреть больше статей' } onClick={ () => navigate( routesPathsEnum.ARTICLES ) }/>
+          <Button title={ 'Читать больше статей' } onClick={ () => navigate( routesPathsEnum.ARTICLES ) }/>
         </div>
       </div>
     );
