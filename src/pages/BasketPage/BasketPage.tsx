@@ -18,6 +18,7 @@ import { location } from '../../enums';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 import { getGoods } from '../../helpers/getGoods';
+import { getPrice } from '../../helpers/getPrice';
 
 const BasketPage = () => {
 
@@ -25,10 +26,11 @@ const BasketPage = () => {
   const basketCount = useSelector( getTotalSum );
   const productsCount = useSelector( getTotalProductsCount );
   const previouslyProducts = useSelector( getPreviouslyProduct );
-  const {address} = useSelector(getInfo);
+  const { address } = useSelector( getInfo );
   const isEmptyBasket = productsInBasket.length;
   const navigate = useNavigate();
-  const goodsName = getGoods(productsCount)
+  const price = getPrice( basketCount );
+  const goodsName = getGoods( productsCount );
 
   return (
     <div className={ style.basketPageBlock }>
@@ -63,8 +65,8 @@ const BasketPage = () => {
                 </div>
                 <div className={ style.basketInfoContainer }>
                   <div className={ style.basketInfo }>
-                    <p className={ style.basketBUN }>{ basketCount } BYN</p>
-                    <p className={ style.basketProducts }>{ productsCount } {goodsName}</p>
+                    <p className={ style.basketBUN }>{ price } BYN</p>
+                    <p className={ style.basketProducts }>{ productsCount } { goodsName }</p>
                   </div>
                   <div className={ style.pickUpBlock }>
                     <img className={ style.basketBoxImage } src={ boxIcon } alt="boxIcon"/>
@@ -72,7 +74,7 @@ const BasketPage = () => {
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
                         <img src={ whiteNavigateIcon } alt={ 'whiteNavigateIcon' }/>
-                        <p>{address}</p>
+                        <p>{ address }</p>
                       </div>
                     </div>
                   </div>
@@ -93,7 +95,7 @@ const BasketPage = () => {
       }
 
       <PopularProductsBlock fromCatalog={ false }/>
-      {!!previouslyProducts.length && <PreviouslyProductsBlock products={previouslyProducts}/>}
+      { !!previouslyProducts.length && <PreviouslyProductsBlock products={ previouslyProducts }/> }
       <UsefulArticlesBlock/>
     </div>
   );
