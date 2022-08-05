@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useLayoutEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
@@ -60,13 +60,13 @@ const ProductPage = () => {
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
   const productForBasket = useSelector( getProductsInBasket );
-  const productForBasketModal = productForBasket[ 0 ];
+  const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const previouslyProducts = useSelector( getPreviouslyProduct );
-  const {address, metro} = useSelector(getInfo);
+  const { address, metro } = useSelector( getInfo );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
-  const products = getProductItems() //todo позже забирать из детализации товара
+  const products = getProductItems(); //todo позже забирать из детализации товара
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -106,8 +106,10 @@ const ProductPage = () => {
   };
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
+    setProductForBasketModal( null );
   };
   const openBasketModal = ( product: ProductItemType ) => {
+    setProductForBasketModal( product );
     productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( {
         product: {
@@ -152,7 +154,7 @@ const ProductPage = () => {
     }
   };
 
-  useLayoutEffect( () => {
+  useEffect( () => {
     if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
   }, [ productId ] );
 
@@ -248,7 +250,7 @@ const ProductPage = () => {
                 <h3>Самовывоз</h3>
                 <p className={ style.pickUpInfo }>В данный момент товар можно забрать только самовывозом из нашего
                   уютного магазина по адресу:</p>
-                <Address address={address} metro={metro}/>
+                <Address address={ address } metro={ metro }/>
               </div>
             </div>
             <div className={ style.orderInfoForPayment }>
@@ -305,7 +307,7 @@ const ProductPage = () => {
         <PopularProductsBlock fromCatalog={ false }/>
       </div>
       <div className={ style.productPageButtonWithWrappers }>
-        <WithThisProductBuyBlock products={products}/>
+        <WithThisProductBuyBlock products={ products }/>
       </div>
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
