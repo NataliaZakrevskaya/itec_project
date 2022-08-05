@@ -10,17 +10,16 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
   const windowElRef = useRef( null );
 
   const getIsNextButtonDisables = () => {
-    if ( blockName === BlockNames.REVIEWS) setIsNextDisabled(itemsCount <= 1)
+    if ( blockName === BlockNames.REVIEWS ) setIsNextDisabled( itemsCount <= 1 );
     if ( blockName === BlockNames.ARTICLES ) {
-      if ( width >= 1180) {
-        setIsNextDisabled(itemsCount <= 3);
-      }
-      if( width < 1180 && width >= 700){
-       setIsNextDisabled(itemsCount <= 2);
-      }
-      else setIsNextDisabled(true);
+      if ( width >= 1180 ) setIsNextDisabled( itemsCount <= 3 );
+      if ( width < 1180 ) setIsNextDisabled( itemsCount <= 2 );
     }
-    return !( blockName === BlockNames.PRODUCTS && itemsCount > 4 );
+    if ( blockName === BlockNames.PRODUCTS ) {
+      if ( width >= 1179 ) setIsNextDisabled( itemsCount <= 4 );
+      if ( width === 940 ) setIsNextDisabled( itemsCount <= 3 );
+      if ( width < 940 ) setIsNextDisabled( itemsCount <= 2 );
+    }
   };
 
   useEffect( () => {
@@ -28,7 +27,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       // @ts-ignore
       const _width = windowElRef?.current.offsetWidth;
       setWidth( _width );
-      getIsNextButtonDisables()
+      getIsNextButtonDisables();
     };
     resizeHandler();
     window.addEventListener( 'resize', resizeHandler );
@@ -36,7 +35,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     return () => {
       window.removeEventListener( 'resize', resizeHandler );
     };
-  }, [ width ] );
+  }, [ width, itemsCount ] );
 
   const getPagesCount = () => {
     if ( blockName === BlockNames.REVIEWS ) return itemsCount;

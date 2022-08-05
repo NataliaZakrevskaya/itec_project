@@ -28,9 +28,7 @@ const PopularProductsBlock = ( { fromCatalog }: PopularProductsBlockPropsType ) 
   const subTitle = getTitleForProductsBlock( animal );
 
   useEffect( () => {
-    if ( !window.localStorage.getItem( 'popularProducts' ) ) {
-      dispatch( fetchPopularProductsTC( { ordering, animal } ) );
-    }
+    dispatch( fetchPopularProductsTC( { ordering, animal } ) );
   }, [ animal ] );
 
   return (

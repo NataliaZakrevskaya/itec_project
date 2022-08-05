@@ -24,6 +24,8 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
   const productForBasketModal = productForBasket[ 0 ];
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
 
+  console.log(itemsForBlock.length);
+
   const dispatch = useDispatch();
 
   const {

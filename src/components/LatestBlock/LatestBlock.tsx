@@ -14,7 +14,7 @@ import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 
 const LatestBlock = () => {
 
-  const latestProducts = useSelector( getLatestProducts );
+  const latestProducts = useSelector( getLatestProducts ).filter( ( prod, index ) => index < 4 );
   const ordering = selectValues.ADDED_DATE;
 
   const navigate = useNavigate();
@@ -26,10 +26,8 @@ const LatestBlock = () => {
   };
 
   useEffect( () => {
-    if ( !window.localStorage.getItem( 'latestProducts' ) ) {
-      dispatch( fetchLatestProductsTC( { ordering } ) );
-    }
-  }, [] );
+    dispatch( fetchLatestProductsTC( { ordering } ) );
+  }, [ ] );
   return (
     <div className={ style.latestBlockWrapper }>
       <ThemeBlockWrapper
