@@ -50,7 +50,6 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
   };
 
   const openBasketModal = ( product: ProductItemType ) => {
-    debugger
     setProductForBasketModal(product);
     productsFromBasket.every( (prod: ProductItemType) => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( { product } ) )
