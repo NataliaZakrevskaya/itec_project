@@ -26,7 +26,7 @@ const PopularBrandsBlock = () => {
   return (
     <div className={ style.popularBrandsBlock }>
       <div className={ commonStyle.container }>
-        <h2>Популярные бренды</h2>
+        <h2 className={style.title}>Популярные бренды</h2>
         <div className={ style.brandsContainer }>
           {
             brands.map( brand =>

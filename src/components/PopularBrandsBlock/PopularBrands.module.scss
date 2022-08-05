@@ -5,13 +5,20 @@
   padding-top: 56px;
   margin-bottom: 57px;
 
+  .title{
+    @include SFDisplaySemibold();
+    font-size: 28px;
+    line-height: 32px;
+    color: #202223;
+  }
+
   .brandsContainer{
     @include flex (row, space-between, center);
     box-sizing: border-box;
     width: 100%;
     gap: 24px;
     flex-wrap: wrap;
-    margin-bottom: 25px;
+    margin: 24px 0 25px;
   }
 }
 @media (max-width: 1199px) {

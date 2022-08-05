@@ -14,6 +14,7 @@ import { useCarousel } from '../../../customHooks/useCarousel';
 import { BlockNames } from '../../../customHooks/enums';
 import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
 import { getProductForOneClickOrder } from '../../../redux/selectors/oneClickOrder-selectors';
+import { PRODUCT_IMAGE } from '../../../constants';
 
 const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, from, withoutButton}: ThemeBlockWrapperPropsType ) => {
 
@@ -91,7 +92,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
                       key={ item.id }
                       product={ item }
                       id={ item.id }
-                      image={ item.images[ 0 ] ? item.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
+                      image={ item.images[ 0 ] ? item.images[ 0 ].image : `${PRODUCT_IMAGE}` }
                       name={ item.name }
                       options={ item.options }
                       chosenOption={ item.chosen_option }
