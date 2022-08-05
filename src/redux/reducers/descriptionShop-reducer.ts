@@ -24,8 +24,16 @@ export const slice = createSlice( {
     phone_number: '',
     social: '',
     maps: '',
-    description_shop: '',
-    published: true,
+    photo: '',
+    description_shop: {
+      title: '',
+      main_info: ''
+    },
+    second_info:[{
+      id: 0,
+      info_title: '',
+      info_text: ''
+    }]
   } as ShopInfoType,
   reducers: {},
   extraReducers: builder => {

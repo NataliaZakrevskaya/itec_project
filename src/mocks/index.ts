@@ -2674,7 +2674,15 @@ export type ShopInfoType = {
   phone_number: string,
   social: string,
   maps: string,
-  description_shop: string,
-  published: boolean
+  photo: string,
+  description_shop: {
+    title: string,
+    main_info: string
+  },
+  second_info: Array<{
+    id: number,
+    info_title: string,
+    info_text: string
+  }>
 }
 

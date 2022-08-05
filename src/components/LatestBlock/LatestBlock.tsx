@@ -14,7 +14,7 @@ import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 
 const LatestBlock = () => {
 
-  const latestProducts = useSelector( getLatestProducts ).filter( ( prod, index ) => index < 4 );
+  const latestProducts = useSelector( getLatestProducts );
   const ordering = selectValues.ADDED_DATE;
 
   const navigate = useNavigate();
