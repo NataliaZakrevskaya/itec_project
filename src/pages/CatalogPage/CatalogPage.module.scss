@@ -198,8 +198,18 @@
   .mainBlock{
     max-width: 540px !important;
   }
+  .title{
+    & h1 {
+      font-size: 24px !important;
+      line-height: 28px !important;
+    }
+
+  }
   .productsType{
     display: none !important;
+  }
+  .productsBlockContainer{
+    padding: 0 !important;
   }
   .select{
     flex-direction: column !important;

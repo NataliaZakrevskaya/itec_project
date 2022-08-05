@@ -104,9 +104,11 @@
 
 @media (max-width: 768px) {
   .productItem{
-    max-width: 243px;
+    max-width: 100%;
+    width: 100%;
   }
   .mainProductItemImage{
     width: 223px!important;
+    margin: 0 auto;
   }
 }

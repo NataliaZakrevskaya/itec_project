@@ -29,11 +29,9 @@ const ProductItem = ( {
   };
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
-      <div className={ style.productItemWrapper }>
         <img className={ style.mainProductItemImage } src={ image } alt={ 'product' }/>
         <p className={ style.title }
            onClick={ onNameClick }>{ nameForCard }</p>
-      </div>
       <div className={ style.unitGroup }>
         { options.map( option =>
           <ProductItemUnit
