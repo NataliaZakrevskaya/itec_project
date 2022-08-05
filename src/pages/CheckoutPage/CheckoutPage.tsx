@@ -16,46 +16,50 @@ import { getOrderRequestStatus } from '../../redux/selectors/app-selectors';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { setOrderRequestStatus } from '../../redux/reducers/app-reducer';
 import { location } from '../../enums';
+import { getPrice } from '../../helpers/getPrice';
+import { getGoods } from '../../helpers/getGoods';
 
 const CheckoutPage = () => {
 
-  const orderIsSucceeded = useSelector(getOrderRequestStatus) === RequestStatus.SUCCEEDED;
+  const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
-  const basketCount = useSelector(getTotalSum);
-  const productsCount = useSelector(getTotalProductsCount);
-  const productsInBasket = useSelector(getProductsInBasket);
-  const orderInfo = productsInBasket.map(product => {
-    return ({ article_number: product.chosen_option.article_number, quantity: product.chosen_option.quantity})
-  })
+  const basketCount = useSelector( getTotalSum );
+  const price = getPrice( basketCount );
+  const productsCount = useSelector( getTotalProductsCount );
+  const goodsName = getGoods( productsCount );
+  const productsInBasket = useSelector( getProductsInBasket );
+  const orderInfo = productsInBasket.map( product => {
+    return ( { article_number: product.chosen_option.article_number, quantity: product.chosen_option.quantity } );
+  } );
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
   const closeSuccessModal = () => {
-    dispatch(setOrderRequestStatus({status: RequestStatus.IDLE}))
+    dispatch( setOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     navigate( routesPathsEnum.ARTICLES );
     setIsSuccessModalActive( false );
   };
   const openSuccessModal = () => {
-    setIsSuccessModalActive(true)
-  }
+    setIsSuccessModalActive( true );
+  };
 
   const formik = useFormik( {
     initialValues: {
       name: '',
       phoneNumber: '',
     },
-    validate: (values) => {
+    validate: ( values ) => {
       const errors: FormikOrderErrorType = {};
-      if (values.name.length < 2){
+      if ( values.name.length < 2 ) {
         errors.name = 'Поле обязательно для заполнения';
       }
-      if(!values.phoneNumber){
-        errors.phoneNumber = 'Обязательно'
-      } else if ( values.phoneNumber.length !==13 ){
-        errors.phoneNumber = 'Должно быть 13 символов'
-      } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
-        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567'
+      if ( !values.phoneNumber ) {
+        errors.phoneNumber = 'Обязательно';
+      } else if ( values.phoneNumber.length !== 13 ) {
+        errors.phoneNumber = 'Должно быть 13 символов';
+      } else if ( !/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test( values.phoneNumber ) ) {
+        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567';
       }
       return errors;
     },
@@ -68,9 +72,9 @@ const CheckoutPage = () => {
     <div className={ style.checkoutPage }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
-          <p onClick={() => navigate(routesPathsEnum.MAIN)}>Главная</p>
+          <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
-          <p onClick={() => navigate(routesPathsEnum.BASKET)}>Корзина</p>
+          <p onClick={ () => navigate( routesPathsEnum.BASKET ) }>Корзина</p>
           <img src={ nextIcon } alt="nextIcon"/>
           <p>Оформление заказа</p>
         </div>
@@ -86,8 +90,8 @@ const CheckoutPage = () => {
                 placeholder={ 'Иванов Иван Иванович' }
                 { ...formik.getFieldProps( 'name' ) }
               />
-              {formik.touched.name && formik.errors.name &&
-                <span>{formik.errors.name}</span>
+              { formik.touched.name && formik.errors.name &&
+                <span>{ formik.errors.name }</span>
               }
             </div>
             <div className={ formStyle.formInput }>
@@ -97,8 +101,8 @@ const CheckoutPage = () => {
                 placeholder={ '+375291234567' }
                 { ...formik.getFieldProps( 'phoneNumber' ) }
               />
-              {formik.touched.phoneNumber && formik.errors.phoneNumber &&
-                <span>{formik.errors.phoneNumber}</span>
+              { formik.touched.phoneNumber && formik.errors.phoneNumber &&
+                <span>{ formik.errors.phoneNumber }</span>
               }
             </div>
             <div className={ style.list }>
@@ -110,12 +114,12 @@ const CheckoutPage = () => {
               </div>
             </div>
             <div className={ style.basketInfo }>
-              <p className={ style.sum }>{ basketCount } BYN</p>
-              <p className={ style.productsInfo }>{ productsCount } товара</p>
+              <p className={ style.sum }>{ price } BYN</p>
+              <p className={ style.productsInfo }>{ productsCount } { goodsName }</p>
             </div>
           </div>
           <div className={ style.orderBlock }>
-            <button className={ style.orderBtn } type="submit" onClick={openSuccessModal}>Заказать</button>
+            <button className={ style.orderBtn } type="submit" onClick={ openSuccessModal }>Заказать</button>
             <p>Нажимая на кнопку вы даёте согласие на обработку <span onClick={ () => alert( 'Переход на pdf файл' ) }>персональных данных</span>
             </p>
           </div>
@@ -123,7 +127,7 @@ const CheckoutPage = () => {
       </div>
       { isSuccessModalActive && orderIsSucceeded &&
         <Modal closeModal={ closeSuccessModal }>
-           <SuccessOrderModal from={location.CHECKOUT}/>
+          <SuccessOrderModal from={ location.CHECKOUT }/>
         </Modal>
       }
     </div>
