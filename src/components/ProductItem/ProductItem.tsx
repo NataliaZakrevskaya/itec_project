@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { ProductItemType } from '../../redux/reducers/products-reducer';
 import { stringCutter } from '../../helpers/stringCutter';
+import { getPrice } from '../../helpers/getPrice';
 
 const ProductItem = ( {
                         product,
@@ -21,7 +22,7 @@ const ProductItem = ( {
                         from,
                       }: ProductItemPropsType ) => {
 
-  const price = chosenOption.price;
+  const price = getPrice(+chosenOption.price);
   const navigate = useNavigate();
   const nameForCard = stringCutter( name, 70 );
   const onNameClick = () => {
