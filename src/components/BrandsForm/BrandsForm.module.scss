@@ -19,7 +19,7 @@
     @include SFTextRegular();
     font-size: 15px;
     line-height: 20px;
-    padding: 8px 12px 5px 29px;
+    padding: 8px 12px 5px 36px;
     gap: 10px;
     width: 236px;
     height: 36px;
@@ -27,7 +27,7 @@
     border: 1px solid #A7ACB1;
     margin-bottom: 17px;
     outline: none;
-    background: #FFFFFF url("../../Images/searchIcon.svg") no-repeat 3%;
+    background: #FFFFFF url("../../Images/searchIcon.svg") no-repeat 5%;
   }
   & input::placeholder {
     @include SFTextRegular();

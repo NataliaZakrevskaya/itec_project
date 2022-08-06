@@ -118,7 +118,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <div className={ style.title }>
         <h1>{ `Каталог товаров ${ subTitle }` }</h1>
         <div className={ style.select }>
-          <p>Сортировка по: </p>
+          <p>Сортировать по: </p>
           <select
             name="select"
             value={ chosenOrdering }
