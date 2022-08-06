@@ -65,7 +65,7 @@
         @include flex(row, space-between, stretch);
         width: 100%;
         gap: 2.12%;
-        margin: 8px 1.06% 25px;
+        margin: 0 1.06% 25px;
         transition: translate;
         transition-property: transform;
         transition-duration: 500ms;

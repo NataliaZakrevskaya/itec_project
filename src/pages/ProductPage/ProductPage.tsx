@@ -33,6 +33,7 @@ import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 import { setProductToBlock } from '../../redux/reducers/previouslyProducts-reducer';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
+import { PRODUCT_IMAGE } from '../../constants';
 
 const ProductPage = () => {
 
@@ -185,18 +186,18 @@ const ProductPage = () => {
           <div className={ style.imageBlock }>
             <div className={ style.mainImageWrapper }>
               <img
-                src={ images[ selectImageId ] ? images[ selectImageId ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
+                src={ images[ selectImageId ] ? images[ selectImageId ].image : `${ PRODUCT_IMAGE }` }
                 alt="product" className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
               {
                 images
-                  .map( img =>
+                  .map( (img, index) =>
                     <img
                       src={ img.image }
                       alt="product"
-                      className={ img.id === selectImageId ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
-                      onClick={ () => selectImage( img.id ) }
+                      className={ img.id === images[selectImageId].id ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
+                      onClick={ () => selectImage( index ) }
                     />,
                   )
               }
