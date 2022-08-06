@@ -28,7 +28,7 @@ const GreetingBlock = () => {
             </div>
             {secondInfoOptions.map(option =>
             <div key={option.id} className={ style.greetingBlockWrapper }>
-              <div>
+              <div className={style.greetingOptionWrapper}>
                 <div className={ style.greetingBlockWrapperTitle } dangerouslySetInnerHTML={{__html: option.info_title}}/>
                 <p className={ style.greetingBlockText } dangerouslySetInnerHTML={{__html: option.info_text}}/>
               </div>

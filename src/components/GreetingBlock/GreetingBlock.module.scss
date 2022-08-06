@@ -38,16 +38,26 @@
 .greetingBlockWrapper{
   display: flex;
   margin-bottom: 24px;
+  min-height: 30px;
+  position: relative;
+
+  &:before{
+    content: "";
+    display: block;
+    width: 2px;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    background: #98C6CD;
+    border-radius: 2px;
+    margin-right: 12px;
+  }
+
+  .greetingOptionWrapper{
+    margin-left: 12px;
+  }
 }
-.greetingBlockWrapper:before{
-  content: "";
-  display: block;
-  width: 2px;
-  height: 88px;
-  background: #98C6CD;
-  border-radius: 2px;
-  margin-right: 12px;
-}
+
 @media (max-width: 1199px) {
   .greetingBlockImageWrapper{
     display: none;
