@@ -25,14 +25,18 @@ const ProductItem = ( {
   const price = getPrice(+chosenOption.price);
   const navigate = useNavigate();
   const nameForCard = stringCutter( name, 70 );
-  const onNameClick = () => {
+  const onProductClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
   return (
     <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
-        <img className={ style.mainProductItemImage } src={ image } alt={ 'product' }/>
+        <img
+          className={ style.mainProductItemImage }
+          onClick={ onProductClick }
+          src={ image }
+          alt={ 'product' }/>
         <p className={ style.title }
-           onClick={ onNameClick }>{ nameForCard }</p>
+           onClick={ onProductClick }>{ nameForCard }</p>
       <div className={ style.unitGroup }>
         { options.map( option =>
           <ProductItemUnit

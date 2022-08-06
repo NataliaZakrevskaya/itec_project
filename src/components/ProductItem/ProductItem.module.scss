@@ -11,6 +11,7 @@
      box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
    }
   & .mainProductItemImage {
+    cursor: pointer;
     width: 254px;
     height: 130px;
     object-fit: contain;
