@@ -151,6 +151,7 @@
               @include SFDisplayBold();
               font-size: 16px;
               line-height: 120%;
+              margin-bottom: 4px;
             }
 
             & .price {
@@ -182,6 +183,7 @@
               @include SFDisplayBold();
               font-size: 16px;
               line-height: 120%;
+              margin-bottom: 4px;
             }
 
             & .price {
@@ -331,7 +333,7 @@
               border-radius: 4px;
               display: flex;
               justify-content: center;
-              border: 1px solid gray;
+              border: 1px solid #BABFC3;
               align-items: center;
               cursor: pointer;
 
@@ -352,7 +354,7 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              border: 1px solid gray;
+              border: 1px solid #BABFC3;
               margin: 0 6px;
             }
           }
@@ -364,7 +366,7 @@
             box-shadow: 0 1px 0 rgb(0 0 0 / 5%);
             border-radius: 4px;
             display: flex;
-            border: 1px solid gray;
+            border: 1px solid #BABFC3;
             justify-content: center;
             align-items: center;
             cursor: pointer;
