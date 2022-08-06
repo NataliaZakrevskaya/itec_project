@@ -26,7 +26,7 @@ const Footer = () => {
           <Address address={ address } metro={ metro }/>
           <Phone phoneNumber={phone_number}/>
           <Schedule timeWeekend={time_weekend} timeWeekdays={time_weekdays}/>
-          <Callback/>
+          <Callback forHeader={false}/>
           <hr className={ style.hr }/>
         </div>
         <div className={ style.siteInfo }>

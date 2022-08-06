@@ -39,7 +39,7 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
               <img src={ instagramIcon } alt={ 'instagramIcon' }/>
             </a>
           </div>
-          <Callback/>
+          <Callback forHeader={true}/>
         </div>
       </div>
       <div className={ style.navBarContainer }>

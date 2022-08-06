@@ -14,44 +14,49 @@
   cursor: pointer;
   padding: 5px 5px 5px 0;
 
+  &:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+
+    & span {
+      @include SFDisplaySemibold();
+      font-size: 16px;
+      line-height: 24px;
+      color: #00A0AC;
+    }
+  }
+
   & span {
     @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 24px;
     color: #202223;
+  }
 
-  }
-.animalTypeImageWrapper{
-  @include size(85px,81px);
-  & img{
-    @include size(100%, 100%);
-    object-fit: contain;
-  }
-}
-}
-.animalType:hover{
-  & span{
-    @include SFDisplaySemibold();
-    font-size: 16px;
-    line-height: 24px;
-    color: #00A0AC;
-  }
-  &:hover{
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+  .animalTypeImageWrapper {
+    @include size(85px, 81px);
+
+    & img {
+      @include size(100%, 100%);
+      object-fit: contain;
+    }
   }
 }
-.active{
+
+.active {
   box-sizing: border-box;
   border: 2px solid #008060;
 }
-.restTypes{
+
+.restTypes {
   opacity: 0.6;
 }
+
 @media (max-width: 768px) {
-  .animalType{
+  .animalType {
     width: 137.88px;
     height: 56px;
-    & .animalTypeImageWrapper{
+
+    & .animalTypeImageWrapper {
       width: 56.88px;
       height: 53px;
     }

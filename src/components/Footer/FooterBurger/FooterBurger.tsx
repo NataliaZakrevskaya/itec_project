@@ -17,7 +17,7 @@ const FooterBurger = () => {
         <div className={ style.instagramIcon }/>
       </div>
       <Schedule forFooterBurger={ true } timeWeekdays={ time_weekdays } timeWeekend={ time_weekend }/>
-      <Callback/>
+      <Callback forHeader={false}/>
     </div>
   );
 };

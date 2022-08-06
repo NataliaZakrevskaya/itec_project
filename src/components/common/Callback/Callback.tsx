@@ -9,7 +9,7 @@ import { RequestStatus } from '../../../redux/reducers/enums';
 import { AppDispatch } from '../../../redux/store';
 import { setCallbackRequestStatus } from '../../../redux/reducers/app-reducer';
 
-const Callback = () => {
+const Callback = ({forHeader}: CallbackPropsType) => {
   const [ isActive, setIsActive ] = useState<boolean>( false );
   const responseIsSuccess = useSelector( getCallbackRequestStatus ) === RequestStatus.SUCCEEDED;
   const responseIsIdle = useSelector( getCallbackRequestStatus ) === RequestStatus.IDLE;
@@ -22,7 +22,7 @@ const Callback = () => {
 
   return (
     <div>
-      <p onClick={ () => setIsActive( true ) } className={ style.callback }>Обратный звонок</p>
+      <p onClick={ () => setIsActive( true ) } className={ forHeader ? `${style.callback}` : `${style.callbackForFooter}` }>Обратный звонок</p>
       { isActive &&
         <Modal closeModal={ closeModal }>
           { responseIsIdle && <CallbackModal/> }
@@ -34,3 +34,7 @@ const Callback = () => {
 };
 
 export default Callback;
+
+type CallbackPropsType = {
+  forHeader: boolean
+}
