@@ -60,9 +60,7 @@ const ReviewsBlock = () => {
 
   const getCurrentReviewPage = ( offset: number, width: number ) => {
     if ( offset === 0 ) return 1;
-    if ( offset === -width ) return 2;
-    if ( offset === -( width * 2 ) ) return 3;
-    if ( offset === -( width * 3 ) ) return 4;
+    else return (Math.abs(offset) / width) + 1
   };
 
   const currentReviewNumber = getCurrentReviewPage( offset, width );
