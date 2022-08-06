@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import {
   decrementProductQuantity,
   incrementProductQuantity,
-  removeByChosenOptionId,
+  removeByChosenOptionArticle,
 } from '../../../redux/reducers/basket-reducer';
 import { stringCutter } from '../../../helpers/stringCutter';
 import { AppDispatch } from '../../../redux/store';
@@ -38,7 +38,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
     else dispatch( incrementProductQuantity( { optionId: chosenOption.id, quantity: 1 } ) );
   };
   const deleteProductFromBasket = () => {
-    dispatch( removeByChosenOptionId( { optionId: chosenOption.id } ) );
+    dispatch( removeByChosenOptionArticle( { article_number: chosenOption.article_number } ) );
   };
   const onNameClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
@@ -77,10 +77,10 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
         </div>
       </div>
       <div className={ style.quantityManagementBlockWrapper }>
-        <div className={ style.quantityManagementBlockContainer}>
+        <div className={ style.quantityManagementBlockContainer }>
           { chosenOption.partial
             ? <div className={ style.quantity }>{ chosenOption.quantity } кг.</div>
-            : ( <div className={ style.quantityManagementBlock}>
+            : ( <div className={ style.quantityManagementBlock }>
               <div className={ style.minus } onClick={ onDecrementBtnClick }>
                 <div/>
               </div>

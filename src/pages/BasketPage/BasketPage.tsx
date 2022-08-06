@@ -28,7 +28,7 @@ const BasketPage = () => {
   const productsCount = useSelector( getTotalProductsCount );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const { address } = useSelector( getInfo );
-  const isEmptyBasket = productsInBasket.length;
+  const isFullBasket = productsInBasket.length;
   const navigate = useNavigate();
   const price = getPrice( basketCount );
   const goodsName = getGoods( productsCount );
@@ -43,7 +43,7 @@ const BasketPage = () => {
         </div>
       </div>
       {
-        isEmptyBasket
+        isFullBasket
           ? (
             <div className={ style.basketWrapper }>
               <h1>Моя корзина</h1>

@@ -61,8 +61,8 @@ export const slice = createSlice( {
       setTotalCount( state );
       setTotalSum( state );
     },
-    removeByChosenOptionId( state, action: PayloadAction<{ optionId: number }> ) {
-      state.productsInBasket = state.productsInBasket.filter( product => product.chosen_option.id !== action.payload.optionId );
+    removeByChosenOptionArticle( state, action: PayloadAction<{ article_number: string }> ) {
+      state.productsInBasket = state.productsInBasket.filter( product => product.chosen_option.article_number !== action.payload.article_number );
       setTotalCount( state );
       setTotalSum( state );
     },
@@ -88,7 +88,7 @@ export const slice = createSlice( {
 export const basketReducer = slice.reducer;
 export const {
   setProductToBasket,
-  removeByChosenOptionId,
+  removeByChosenOptionArticle,
   incrementProductQuantity,
   decrementProductQuantity,
   changeChosenOption,
