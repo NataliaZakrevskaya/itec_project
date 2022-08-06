@@ -21,7 +21,7 @@ import filterMajor from '../../Images/filter_major.svg';
 import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
 import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
-import { setProductToBasket } from '../../redux/reducers/basket-reducer';
+import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket-reducer';
 import { fetchProductsTC, ProductItemType, setActualPage } from '../../redux/reducers/products-reducer';
 import {
   getActualPage,
@@ -52,7 +52,6 @@ import { PRODUCT_IMAGE } from '../../constants';
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
   const products = useSelector( getProductItems );
-  const productForBasketModal = useSelector( getProductsInBasket )[ 0 ];
   const animal = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( animal );
   const page = useSelector( getActualPage );
@@ -64,9 +63,11 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const chosenBrands = useSelector( getChosenBrandsId );
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const chosenOrdering = useSelector( getChosenOrdering );
+  const productsFromBasket = useSelector( getProductsInBasket );
   const {windowElRef, width} = useResize();
   const withWords = width >= 620
 
+  const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
 
@@ -86,9 +87,13 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   };
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
+    setProductForBasketModal( null );
   };
   const openBasketModal = ( product: ProductItemType ) => {
-    dispatch( setProductToBasket( { product } ) );
+    setProductForBasketModal( product );
+    productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.id !== product.chosen_option?.id )
+      ? dispatch( setProductToBasket( { product } ) )
+      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1 } ) );
     setIsBasketModalActive( true );
   };
   const resetFilters = () => {
@@ -214,7 +219,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             : ( <OneClickOrder
               id={ productForOneClickOrderModal.id }
               name={ productForOneClickOrderModal.name }
-              image={ productForOneClickOrderModal.images[ 0 ].image }
+              image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${PRODUCT_IMAGE}` }
               options={ productForOneClickOrderModal.options }
               chosen_option={ productForOneClickOrderModal.chosen_option }
             /> )

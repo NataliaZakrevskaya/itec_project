@@ -15,15 +15,23 @@ import { BlockNames } from '../../../customHooks/enums';
 import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
 import { getProductForOneClickOrder } from '../../../redux/selectors/oneClickOrder-selectors';
 import { PRODUCT_IMAGE } from '../../../constants';
+import { setProductToState } from '../../../redux/reducers/onClickOrder-reducer';
 
-const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, from, withoutButton}: ThemeBlockWrapperPropsType ) => {
+const ThemeBlockWrapper = ( {
+                              title,
+                              onButtonClick,
+                              itemsForBlock,
+                              blockTheme,
+                              from,
+                              withoutButton,
+                            }: ThemeBlockWrapperPropsType ) => {
 
-  const [productForBasketModal, setProductForBasketModal] = useState<any>(null)
+  const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const { block, sectionsBlock, productItem } = blockTheme;
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
-  const productsFromBasket = useSelector(getProductsInBasket);
+  const productsFromBasket = useSelector( getProductsInBasket );
 
   const dispatch = useDispatch();
 
@@ -35,24 +43,24 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
     windowElRef,
     isNextDisabled,
     onTouchStart,
-    onTouchEnd
+    onTouchEnd,
   } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length );
 
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
-  const openOneClickModal = (product: ProductItemType) => {
-    dispatch( setProductToBasket( { product } ) );
+  const openOneClickModal = ( product: ProductItemType ) => {
+    dispatch( setProductToState( { product } ) );
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
-    setProductForBasketModal(null)
+    setProductForBasketModal( null );
   };
 
   const openBasketModal = ( product: ProductItemType ) => {
-    setProductForBasketModal(product);
-    productsFromBasket.every( (prod: ProductItemType) => prod.chosen_option?.id !== product.chosen_option?.id )
+    setProductForBasketModal( product );
+    productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( { product } ) )
       : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1 } ) );
     setIsBasketModalActive( true );
@@ -92,7 +100,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
                       key={ item.id }
                       product={ item }
                       id={ item.id }
-                      image={ item.images[ 0 ] ? item.images[ 0 ].image : `${PRODUCT_IMAGE}` }
+                      image={ item.images[ 0 ] ? item.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
                       name={ item.name }
                       options={ item.options }
                       chosenOption={ item.chosen_option }
@@ -106,14 +114,14 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
             </div>
           </div>
         </div>
-        {!withoutButton && <Button title={ 'Смотреть больше товаров' }
-                               onClick={ onButtonClick }/>}
+        { !withoutButton && <Button title={ 'Смотреть больше товаров' }
+                                    onClick={ onButtonClick }/> }
         { isOneClickModalActive &&
           <Modal closeModal={ closeOneClickModal }>
             <OneClickOrder
               id={ productForOneClickOrderModal.id }
               name={ productForOneClickOrderModal.name }
-              image={ productForOneClickOrderModal.images[ 0 ].image }
+              image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
               options={ productForOneClickOrderModal.options }
               chosen_option={ productForOneClickOrderModal.chosen_option }
             />
@@ -124,7 +132,7 @@ const ThemeBlockWrapper = ( { title, onButtonClick, itemsForBlock, blockTheme, f
             <BasketModal
               key={ productForBasketModal.id }
               id={ productForBasketModal.id }
-              image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
+              image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
               name={ productForBasketModal.name }
               chosenOption={ productForBasketModal.chosen_option }
               closeModal={ closeBasketModal }
