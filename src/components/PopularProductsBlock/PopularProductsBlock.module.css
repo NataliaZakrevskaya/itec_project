@@ -2,3 +2,8 @@
     padding-top: 60px;
     width: 100%;
 }
+@media (max-width: 768px) {
+    .popularProductsWrapper{
+        padding-top: 64px;
+    }
+}

@@ -2,3 +2,8 @@
   margin: 65px 0 68px;
   width: 100%;
 }
+@media (max-width: 768px) {
+  .blockMargin{
+    margin: 41px 0;
+  }
+}

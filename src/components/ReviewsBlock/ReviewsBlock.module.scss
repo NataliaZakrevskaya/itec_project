@@ -102,9 +102,14 @@
   }
 }
 @media (max-width: 768px) {
+  .reviewsBlock{
+    margin-bottom: 32px !important;
+  }
   .reviewsBlockTitle{
     font-size: 21px !important;
     line-height: 28px !important;
+    padding-top: 16px !important;
+    margin-bottom: 12px !important;
   }
   .reviewsBlockSubTitle{
     font-size: 15px !important;

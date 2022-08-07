@@ -1,7 +1,7 @@
 @import "src/styles/Mixins";
 
 .callbackModals {
-  @include size(100vw, 100vh);
+  //@include size(100vw, 100vh);
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 10;
@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 10px;
 
   .modalContent {
     padding: 4px 4px;
@@ -28,4 +29,9 @@
       right: 4px;
     }
   }
+}
+@media (max-width: 768px) {
+  //.closeIcon{
+  //  top: 25px !important;
+  //}
 }

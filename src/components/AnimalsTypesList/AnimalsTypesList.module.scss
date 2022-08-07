@@ -14,3 +14,8 @@
     transition-timing-function: ease-in-out;
   }
 }
+@media (max-width: 768px) {
+  .animalTypesBlock{
+    gap: 8px !important;
+  }
+}

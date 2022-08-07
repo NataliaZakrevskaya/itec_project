@@ -95,7 +95,7 @@
   }
 }
 .scheduleWrapperLine{
-  width: 2px;
+  width: 1px;
   height: 17px;
   background: #8C9196;
   margin: 0 6px;
@@ -157,7 +157,7 @@
 
     & div {
       @include SFTextRegular();
-      font-size: 13px;
+      font-size: 14px;
       line-height: 20px;
       color: #202223;
     }
