@@ -89,10 +89,11 @@ const ThemeBlockWrapper = ( {
             onTouchStart={ onTouchStart }
             onTouchEnd={ onTouchEnd }
           >
-            <div className={ commonStyle.allProductItemsContainer }
-                 style={ {
-                   transform: `translateX(${ offset }px)`,
-                 } }>
+            <div
+              className={ commonStyle.allProductItemsContainer }
+              style={ {
+                transform: `translateX(${ offset }px)`,
+              } }>
               {
                 itemsForBlock
                   .map( ( item: ProductItemType ) =>

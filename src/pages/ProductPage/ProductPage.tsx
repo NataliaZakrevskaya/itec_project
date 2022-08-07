@@ -292,15 +292,15 @@ const ProductPage = () => {
           <div className={ style.mainDescription }>
             <p dangerouslySetInnerHTML={ { __html: description } }/>
             <h3>Ключевые особенности:</h3>
-            <p dangerouslySetInnerHTML={ { __html: features } }/>
+            <div dangerouslySetInnerHTML={ { __html: features } }/>
             <h3>Состав:</h3>
-            <p dangerouslySetInnerHTML={ { __html: composition } }/>
+            <div dangerouslySetInnerHTML={ { __html: composition } }/>
           </div>
           <div className={ style.mainAnalysis }>
             <h3>Гарантированный анализ:</h3>
-            <p dangerouslySetInnerHTML={ { __html: analysis } }/>
+            <div dangerouslySetInnerHTML={ { __html: analysis } }/>
             <h3>Пищевые добавки:</h3>
-            <p dangerouslySetInnerHTML={ { __html: additives } }/>
+            <div dangerouslySetInnerHTML={ { __html: additives } }/>
           </div>
         </div>
       </div>

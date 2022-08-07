@@ -21,6 +21,26 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       if ( width < 940 ) setIsNextDisabled( itemsCount <= 2 );
     }
   };
+  /*  let className;
+    const getIsWithGap = () => {
+      if ( blockName === BlockNames.PRODUCTS ) {
+        if ( width > 940 ) {
+          if ( itemsCount <= 4 ) {
+            return className='commonStyle.productsLessThenFive'
+          } else return className='commonStyle.allProductItemsContainer'
+        }
+        if ( width <= 940 && width > 700 ){
+          if ( itemsCount <= 3 ) {
+            return className='commonStyle.productsLessThenFive'
+          } else return className='commonStyle.allProductItemsContainer'
+        }
+        if ( width <= 700 ){
+          if ( itemsCount <= 3 ) {
+            return className='commonStyle.productsLessThenFive'
+          } else return className='commonStyle.allProductItemsContainer'
+        }
+      }
+    };*/
 
   useEffect( () => {
     const resizeHandler = () => {
