@@ -9,10 +9,10 @@
   & div {
     @include size(20.5px, 24px);
     margin-right: 9.5px;
-    background: url("../../../Images/headerLogo.svg");
+    background: url("../../../Images/headerLogo.svg") no-repeat;
 
     @media (max-width: 768px) {
-      background: url("../../../Images/darkLogo.svg");
+      background: url("../../../Images/darkLogo.svg") no-repeat;
     }
   }
 

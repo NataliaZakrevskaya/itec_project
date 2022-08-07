@@ -71,6 +71,9 @@
     font-size: 21px !important;
     line-height: 28px !important;
   }
+  .greetingBlockWrapper{
+    margin-bottom: 16px !important;
+  }
   .greetingBlock{
     margin-top: 33px;
   }
@@ -84,5 +87,6 @@
   }
   .greetingBlockWrapperText{
     padding-top: 16px !important;
+    padding-bottom: 0 !important;
   }
 }

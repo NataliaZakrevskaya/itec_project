@@ -123,6 +123,9 @@
 
 
 @media (max-width: 768px) {
+  .itemsContainer{
+    margin-top: 16px !important;
+  }
   .allProductItemsContainer {
     gap: 5% !important;
   }
@@ -133,6 +136,7 @@
     & h2 {
       font-size: 21px !important;
       line-height: 28px !important;
+      @include SFDisplayBold;
     }
   }
 }

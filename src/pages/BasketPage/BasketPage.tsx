@@ -46,7 +46,7 @@ const BasketPage = () => {
         isFullBasket
           ? (
             <div className={ style.basketWrapper }>
-              <h1>Моя корзина</h1>
+              <h1 className={style.basketTitle}>Моя корзина</h1>
               <div className={ style.basketInfoBlockContainer }>
                 <div className={ style.productsItemsBlockContainer }>
                   {
