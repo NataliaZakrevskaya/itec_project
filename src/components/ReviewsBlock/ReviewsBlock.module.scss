@@ -49,6 +49,7 @@
             margin-bottom: 12px;
             color: #202223;
           }
+
           .reviewsBlockText {
             @include SFTextRegular();
             font-size: 14px;
@@ -58,9 +59,11 @@
             margin: 0 auto 12px;
             color: #202223
           }
+
           .reviewsBlockWrapper {
             display: flex;
             justify-content: center;
+
             .reviewsBlockPhoneWrapper {
               display: flex;
               margin-right: 16px;
@@ -76,6 +79,7 @@
                 margin-right: 6.55px;
               }
             }
+
             & p {
               @include SFTextRegular();
               font-size: 16px;
@@ -87,6 +91,7 @@
       }
     }
   }
+
   .buttonsBlock {
     display: flex;
     flex-direction: row;
@@ -101,35 +106,61 @@
     }
   }
 }
-@media (max-width: 768px) {
-  .reviewsBlock{
-    margin-bottom: 32px !important;
-  }
-  .reviewsBlockTitle{
-    font-size: 21px !important;
-    line-height: 28px !important;
-    padding-top: 16px !important;
-    margin-bottom: 12px !important;
-  }
-  .reviewsBlockSubTitle{
-    font-size: 15px !important;
-    line-height: 20px !important;
-  }
-  .reviewsBlockText{
-    font-size: 13px !important;
-    line-height: 20px !important;
-  }
-  .reviewsBlockWrapper{
-    flex-direction: column;
-    align-items: center;
-    & p {
-      font-size: 15px !important;
-      line-height: 20px !important;
-    }
-  }
-  .reviewsBlockPhoneWrapper{
-    margin-right: 0 !important;
-    margin-bottom: 8px;
 
+@media (max-width: 768px) {
+  .reviewsBlock {
+    margin-bottom: 32px;
+
+    .reviewsBlockTitle {
+      @include SFDisplayBold();
+      font-size: 21px;
+      line-height: 28px;
+      padding-top: 16px;
+      margin-bottom: 12px;
+    }
+
+    .reviewsContainer {
+
+      .window {
+
+        .allReviewsItemsContainer {
+
+          .reviewContainer {
+
+            padding-bottom: 0;
+
+            .reviewsBlockSubTitle {
+              font-size: 15px;
+              line-height: 20px;
+            }
+
+            .reviewsBlockText {
+              font-size: 13px;
+              line-height: 20px;
+            }
+
+            .reviewsBlockWrapper {
+              flex-direction: column;
+              align-items: center;
+
+              .reviewsBlockPhoneWrapper {
+                margin-right: 0 !important;
+                margin-bottom: 8px;
+
+                & p {
+                  font-size: 15px !important;
+                  line-height: 20px !important;
+                }
+              }
+
+              & p {
+                font-size: 15px !important;
+                line-height: 20px !important;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
