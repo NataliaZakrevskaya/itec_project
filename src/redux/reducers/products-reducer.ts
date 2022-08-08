@@ -40,6 +40,7 @@ export const slice = createSlice( {
     },
   },
   extraReducers: ( builder => {
+    // @ts-ignore
     builder.addCase( fetchProductsTC.fulfilled, ( state, action ) => {
       return action.payload?.products;
     } );
@@ -54,6 +55,11 @@ export type ProductItemType = {
   name: string,
   animal: Array<AnimalTypesType>
   images: Array<{ id: number, image: string }>,
+  discountproduct: {
+    title: string,
+    discount_amount: number,
+    product_id: number
+  } | null,
   description: string,
   features: string,
   composition: string,

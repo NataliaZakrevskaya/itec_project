@@ -340,6 +340,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -352,6 +353,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -359,12 +361,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -414,6 +418,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -426,6 +431,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -433,12 +439,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -488,6 +496,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -500,6 +509,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -507,12 +517,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -562,6 +574,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -574,6 +587,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -581,12 +595,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -636,6 +652,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -648,6 +665,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -655,12 +673,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -710,6 +730,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -722,6 +743,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -729,12 +751,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -784,6 +808,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -796,6 +821,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -803,12 +829,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -858,6 +886,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -870,6 +899,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -877,12 +907,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -932,6 +964,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -944,6 +977,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -951,12 +985,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1006,6 +1042,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1018,6 +1055,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1025,12 +1063,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1080,6 +1120,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1092,6 +1133,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1099,12 +1141,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1154,6 +1198,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1166,6 +1211,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1173,12 +1219,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1228,6 +1276,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1240,6 +1289,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1247,12 +1297,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1302,6 +1354,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1314,6 +1367,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1321,12 +1375,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1376,6 +1432,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1388,6 +1445,7 @@ export const getProductItems = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1395,12 +1453,14 @@ export const getProductItems = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1454,6 +1514,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1466,6 +1527,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1473,12 +1535,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1488,11 +1552,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -1528,6 +1592,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1540,6 +1605,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1547,12 +1613,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1562,11 +1630,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -1602,6 +1670,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1614,6 +1683,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1621,12 +1691,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1636,11 +1708,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -1676,6 +1748,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1688,6 +1761,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1695,12 +1769,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1710,11 +1786,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -1750,6 +1826,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1762,6 +1839,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1769,12 +1847,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1784,11 +1864,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -1824,6 +1904,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1836,6 +1917,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1843,12 +1925,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1858,11 +1942,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -1898,6 +1982,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1910,6 +1995,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1917,12 +2003,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -1932,11 +2020,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -1972,6 +2060,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -1984,6 +2073,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -1991,12 +2081,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2006,11 +2098,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2046,6 +2138,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -2058,6 +2151,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -2065,12 +2159,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2080,11 +2176,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2120,6 +2216,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -2132,6 +2229,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -2139,12 +2237,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2154,11 +2254,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2194,6 +2294,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -2206,6 +2307,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -2213,12 +2315,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2228,11 +2332,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2268,6 +2372,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -2280,6 +2385,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -2287,12 +2393,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2302,11 +2410,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2342,6 +2450,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -2354,6 +2463,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -2361,12 +2471,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2376,11 +2488,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2416,6 +2528,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -2428,6 +2541,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -2435,12 +2549,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2450,11 +2566,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2490,6 +2606,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: 'шт.',
           },
           article_number: '405',
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: '2.00',
@@ -2502,6 +2619,7 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
             unit_name: "шт."
           },
           article_number: "404",
+          discountproductoption: null,
           partial: false,
           quantity: 1,
           price: "20.00",
@@ -2509,12 +2627,14 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
           stock_balance: 12
         }
       ],
+      discountproduct: null,
       chosen_option: {
         id: 156,
         units: {
           unit_name: 'шт.',
         },
         article_number: '405',
+        discountproductoption: null,
         partial: false,
         quantity: 1,
         price: '2.00',
@@ -2524,11 +2644,11 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
       images: [
         {
           id: 56,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t6.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
         {
           id: 57,
-          image: 'http://127.0.0.1:8000/media/photos_products/Y/M/t2.jpeg',
+          image: 'https://www.purinaone.ru/dog/sites/default/files/2021-11/shutterstock_1155759124_OG_1.jpg',
         },
       ],
       description: 'Полнорационный сухой корм для кастрированных котов и стерилизованных кошек от 1 до 7 лет. После стерилизации (кастрации) поведение кошек меняется, и их питание должно соответствовать новым специфическим потребностям. Дело в том, что эти кошки не отличаются высокой активностью, потребляют меньше жидкости и, соответственно, у них реже частота мочеиспусканий и повышена концентрация мочи.Контроль веса. После стерилизации у кошек уменьшаются энергетические потребности.',
@@ -2558,6 +2678,7 @@ export const getProductInitState = (): ProductItemType => {
     name: '',
     animal: [{ id: 0, name: '', image: '' }],
     images:  [{id: 0, image: ''}],
+    discountproduct: null,
     description: '',
     features: '',
     composition: '',
@@ -2568,6 +2689,7 @@ export const getProductInitState = (): ProductItemType => {
     options: [{
       id: 0,
       article_number: '',
+      discountproductoption: null,
       partial: false,
       quantity: 0,
       price: '',
@@ -2578,6 +2700,7 @@ export const getProductInitState = (): ProductItemType => {
     chosen_option: {
       id: 0,
       article_number: '',
+      discountproductoption: null,
       partial: false,
       quantity: 0,
       price: '',
@@ -2600,11 +2723,11 @@ export type ResBrandType = {
 export type OptionType = {
   id: number,
   article_number: string,
-  /*discountproductoption: {
+  discountproductoption: {
     title: string,
     discount_amount: number,
     product_option: string
-  },*/
+  } | null,
   partial: boolean,
   quantity: number,
   price: string,
@@ -2647,11 +2770,11 @@ export type resProductItemType = {
   brand: { id: number, name: string, image: string },
   category: { id: number, name: string, is_active: true, },
   options: Array<OptionType>,
- /* discountproduct: {
+  discountproduct: {
     title: string,
     discount_amount: number,
     product_id: number
-  } | null,*/
+  } | null,
   chosen_option: OptionType
 }
 export type responseProductItemType = {

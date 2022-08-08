@@ -58,6 +58,7 @@ const ProductPage = () => {
     features,
     composition,
     additives,
+    discountproduct,
     chosen_option,
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
@@ -95,7 +96,7 @@ const ProductPage = () => {
     setWeightSetValue( e.currentTarget.value );
   };
   const onWeightSetParagraphClick = () => {
-    dispatch(setWeightSetIsShowed({status: !weightSetIsShowed}))
+    dispatch( setWeightSetIsShowed( { status: !weightSetIsShowed } ) );
   };
   const selectImage = ( id: number ) => {
     setSelectImageId( id );
@@ -111,6 +112,7 @@ const ProductPage = () => {
     setIsBasketModalActive( false );
     setProductForBasketModal( null );
   };
+  const showDiscount = !!discountproduct || !!chosen_option.discountproductoption
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
     productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
@@ -146,8 +148,7 @@ const ProductPage = () => {
         setWeightSetError( '' );
         setWeightSetValue( '' );
         setWeightSetIsShowed( { status: false } );
-      }
-      else setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
+      } else setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
     }
   };
   const addToPreviouslyProducts = () => {
@@ -166,6 +167,7 @@ const ProductPage = () => {
     if ( product.id ) {
       addToPreviouslyProducts();
     }
+
   }, [ product ] );
 
   return (
@@ -180,7 +182,10 @@ const ProductPage = () => {
         </div>
       </div>
       <div className={ style.productInfo }>
-        <h2 className={ style.productPageTitle }>{ name }</h2>
+        <div className={ style.productInfoTitle }>
+          <h2 className={ style.productPageTitle }>{ name }</h2>
+          { showDiscount && <div>Акция</div> }
+        </div>
         <p
           className={ style.productPageSubTitle }
           onClick={ () => chooseBrand( brand.id ) }
@@ -195,11 +200,11 @@ const ProductPage = () => {
             <div className={ style.restImagesBlock }>
               {
                 images
-                  .map( (img, index) =>
+                  .map( ( img, index ) =>
                     <img
                       src={ img.image }
                       alt="product"
-                      className={ img.id === images[selectImageId].id ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
+                      className={ img.id === images[ selectImageId ].id ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
                       onClick={ () => selectImage( index ) }
                     />,
                   )
@@ -234,7 +239,7 @@ const ProductPage = () => {
                         type="text"
                         value={ weightSetValue }
                         onChange={ onWeightSetInputChange }
-                        autoFocus={weightSetIsShowed}
+                        autoFocus={ weightSetIsShowed }
                         placeholder={ 'Например: 1.2 кг' }
                       />
                       <button onClick={ onApplyButtonClick }>Применить</button>
@@ -322,7 +327,7 @@ const ProductPage = () => {
             image={ productForOneClickOrderModal.images[ 0 ].image }
             options={ productForOneClickOrderModal.options }
             chosen_option={ productForOneClickOrderModal.chosen_option }
-            closeOneClickModal={closeOneClickModal}
+            closeOneClickModal={ closeOneClickModal }
           />
         </Modal>
       }

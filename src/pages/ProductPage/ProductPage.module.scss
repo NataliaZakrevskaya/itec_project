@@ -9,15 +9,6 @@
   width: 100%;
   background-color: #f6f6f7;
 
-  .productPageTitle {
-    @include SFDisplaySemibold();
-    font-size: 28px;
-    line-height: 130%;
-    color: #202223;
-    margin: 24px 0;
-    width: 80%;
-    cursor: default;
-  }
   .mainDescription {
     max-width: 670px;
     @include SFTextRegular();
@@ -104,6 +95,32 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0 20px;
+
+    .productInfoTitle{
+      width: 100%;
+      @include flex(row, space-between, center);
+
+      .productPageTitle {
+        @include SFDisplaySemibold();
+        font-size: 28px;
+        line-height: 130%;
+        color: #202223;
+        margin: 24px 0;
+        width: 80%;
+        cursor: default;
+      }
+
+      & div{
+        @include size(66px, 24px);
+        @include SFDisplaySemibold();
+        font-size: 17px;
+        line-height: 24px;
+        color: #FFFFFF;
+        padding: 0 6px;
+        border-radius: 2px;
+        background: #FD5749;
+      }
+    }
 
     .imgAndOrderBlock {
       display: flex;
