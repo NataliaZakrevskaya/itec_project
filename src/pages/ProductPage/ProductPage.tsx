@@ -42,6 +42,7 @@ const ProductPage = () => {
   const [ countOfProduct, setCountOfProduct ] = useState<number>( 1 );
   const [ weightSetValue, setWeightSetValue ] = useState<string>( '' );
   const [ weightSetError, setWeightSetError ] = useState<string>( '' );
+  const [ priceWithDiscount, setPriceWithDiscount ] = useState<number>( 0 );
   const [ selectImageId, setSelectImageId ] = useState<number>( 0 );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
@@ -112,7 +113,7 @@ const ProductPage = () => {
     setIsBasketModalActive( false );
     setProductForBasketModal( null );
   };
-  const showDiscount = !!discountproduct || !!chosen_option.discountproductoption
+  const showDiscount = !!discountproduct || !!chosen_option.discountproductoption;
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
     productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
@@ -160,6 +161,15 @@ const ProductPage = () => {
   };
 
   useEffect( () => {
+    if ( discountproduct ) {
+      setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * discountproduct.discount_amount ) ) * countOfProduct );
+    }
+    if ( chosen_option.discountproductoption ) {
+      setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discountproductoption.discount_amount ) ) * countOfProduct );
+    }
+    else setPriceWithDiscount( 0 );
+  }, [ chosen_option, countOfProduct, discountproduct ] );
+  useEffect( () => {
     if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
   }, [ productId ] );
 
@@ -167,8 +177,7 @@ const ProductPage = () => {
     if ( product.id ) {
       addToPreviouslyProducts();
     }
-
-  }, [ product ] );
+  }, [ product, addToPreviouslyProducts ] );
 
   return (
     <div className={ style.productPage }>
@@ -264,9 +273,16 @@ const ProductPage = () => {
               </div>
             </div>
             <div className={ style.orderInfoForPayment }>
-              <h2>
+              <div>
+              <h2 className={!!priceWithDiscount ? style.priceWithDiscount : style.firstPrice}>
                 { +chosen_option.price * countOfProduct } BYN
               </h2>
+              {!!priceWithDiscount &&
+                <h2 className={style.discountPrice}>
+                  { priceWithDiscount } BYN
+                </h2>
+              }
+              </div>
               {
                 chosen_option.partial
                   ? <p>Общий вес: { chosen_option.quantity / 1000 } кг.</p>
