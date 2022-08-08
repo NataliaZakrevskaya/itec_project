@@ -21,21 +21,21 @@
     margin: 24px 0 25px;
   }
 }
-@media (max-width: 1199px) {
-  //.brandsContainer{
-  //  gap: 5px !important;
-  //}
-}
+
 @media (max-width: 768px) {
   .popularBrandsBlock{
-    padding-top: 10px;
-    & h2{
+    padding-top: 0;
+    .title{
+      @include SFDisplayBold();
+      font-size: 21px;
+      line-height: 28px;
       margin-bottom: 16px;
     }
-  }
-  .brandsContainer{
-    gap: 8px !important;
-    margin-bottom: 17px !important;
-    margin-top: 0 !important;
+
+    .brandsContainer{
+      gap: 8px;
+      margin-bottom: 17px;
+      margin-top: 0;
+    }
   }
 }
