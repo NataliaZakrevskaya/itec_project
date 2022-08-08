@@ -11,16 +11,17 @@
   border-radius: 5px;
   padding: 24px;
   margin: 0 auto;
+  width: 569px;
 
   .titlePart {
-    margin-right: 9px;
-
+    max-width: 363px;
     & p {
       @include SFDisplayBold;
       font-size: 20px;
       line-height: 130%;
       color: #202223;
       margin-bottom: 17px;
+
     }
 
     & button {
@@ -37,6 +38,7 @@
 
   .discountImageWrapper {
     width: 149px;
+    height: 148.69px;
     position: absolute;
     right: 0;
 
@@ -63,6 +65,7 @@
 @media (max-width: 768px) {
   .discount {
     padding: 8px;
+    width: 100%;
 
     .titlePart {
       & p {
