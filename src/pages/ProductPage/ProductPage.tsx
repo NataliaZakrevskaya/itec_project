@@ -340,7 +340,7 @@ const ProductPage = () => {
           <OneClickOrder
             id={ productForOneClickOrderModal.id }
             name={ productForOneClickOrderModal.name }
-            image={ productForOneClickOrderModal.images[ 0 ].image }
+            image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }`}
             options={ productForOneClickOrderModal.options }
             chosen_option={ productForOneClickOrderModal.chosen_option }
             closeOneClickModal={ closeOneClickModal }
@@ -352,8 +352,9 @@ const ProductPage = () => {
           <BasketModal
             key={ productForBasketModal.id }
             id={ productForBasketModal.id }
-            image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : 'https://compfixer.info/wp-content/uploads/2014/06/%D0%9F%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D1%8C%D1%82%D0%B5-%D1%81%D0%B8%D0%B3%D0%BD-%D0%BA%D0%B0%D0%B1-Samsung.png' }
+            image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : `${ PRODUCT_IMAGE }`}
             name={ productForBasketModal.name }
+            priceWithDiscount={priceWithDiscount}
             chosenOption={ productForBasketModal.chosen_option }
             countOfProduct={ countOfProduct }
             closeModal={ closeBasketModal }

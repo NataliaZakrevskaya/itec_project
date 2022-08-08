@@ -13,7 +13,12 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import Product from '../../components/common/Product/Product';
 import { useSelector } from 'react-redux';
-import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
+import {
+  getProductsInBasket,
+  getTotalProductsCount,
+  getTotalSum,
+  getTotalSumWithDiscount,
+} from '../../redux/selectors/basket-selectors';
 import { location } from '../../enums';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
@@ -25,13 +30,16 @@ const BasketPage = () => {
 
   const productsInBasket = useSelector( getProductsInBasket );
   const basketCount = useSelector( getTotalSum );
+  const basketCountWithDiscount = useSelector( getTotalSumWithDiscount );
   const productsCount = useSelector( getTotalProductsCount );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const { address } = useSelector( getInfo );
   const isFullBasket = productsInBasket.length;
   const navigate = useNavigate();
   const price = getPrice( basketCount );
+  const priceWithDiscount = getPrice( basketCountWithDiscount );
   const goodsName = getGoods( productsCount );
+  console.log(!!basketCountWithDiscount);
 
   return (
     <div className={ style.basketPageBlock }>
@@ -66,7 +74,8 @@ const BasketPage = () => {
                 </div>
                 <div className={ style.basketInfoContainer }>
                   <div className={ style.basketInfo }>
-                    <p className={ style.basketBUN }>{ price } BYN</p>
+                    <p className={!basketCountWithDiscount ? style.basketBUN : style.basketBUNWIthDiscount}>{ price } BYN</p>
+                    {basketCountWithDiscount && <p className={ style.basketBUN }>{ priceWithDiscount } BYN</p>}
                     <p className={ style.basketProducts }>{ productsCount } { goodsName }</p>
                   </div>
                   <div className={ style.pickUpBlock }>

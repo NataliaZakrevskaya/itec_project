@@ -52,6 +52,14 @@
             line-height: 32px;
             color: #FFFFFF;
           }
+          .basketBUNWIthDiscount{
+            @include SFDisplayBold();
+            font-size: 28px;
+            line-height: 32px;
+            color: #8C9196;
+            text-decoration: line-through;
+            text-decoration-color: #D72C0D;
+          }
           & .basketProducts{
             @include SFTextMedium();
             font-size: 14px;

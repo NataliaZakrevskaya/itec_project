@@ -12,6 +12,7 @@ const BasketModal = ( {
                         id,
                         closeModal,
                         chosenOption,
+                        priceWithDiscount,
                         countOfProduct = 1
                       }: BasketModalPropsType ) => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const BasketModal = ( {
         <ProductForBasketModal
           name={ name }
           image={ image }
+          priceWithDiscount={priceWithDiscount}
           chosenOption={ chosenOption }
           countOfProduct={countOfProduct}
           id={ id }
@@ -56,5 +58,6 @@ type BasketModalPropsType = {
   id: number,
   chosenOption: OptionType,
   countOfProduct?: number,
-  closeModal: () => void
+  closeModal: () => void,
+  priceWithDiscount?: number
 }
