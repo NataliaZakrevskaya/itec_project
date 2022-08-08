@@ -20,23 +20,24 @@ const ProductItem = ( {
                         openBasketModal,
                         openOneClickModal,
                         from,
+                        forCatalog,
                       }: ProductItemPropsType ) => {
 
-  const price = getPrice(+chosenOption.price);
+  const price = getPrice( +chosenOption.price );
   const navigate = useNavigate();
   const nameForCard = stringCutter( name, 70 );
   const onProductClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
   return (
-    <div className={ `${ style.productItem } ${ classNameForDarkItem }` }>
-        <img
-          className={ style.mainProductItemImage }
-          onClick={ onProductClick }
-          src={ image }
-          alt={ 'product' }/>
-        <p className={ style.title }
-           onClick={ onProductClick }>{ nameForCard }</p>
+    <div className={ `${ forCatalog ? style.productItemForCatalog : style.productItem} ${ classNameForDarkItem }` }>
+      <img
+        className={ style.mainProductItemImage }
+        onClick={ onProductClick }
+        src={ image }
+        alt={ 'product' }/>
+      <p className={ style.title }
+         onClick={ onProductClick }>{ nameForCard }</p>
       <div className={ style.unitGroup }>
         { options.map( option =>
           <ProductItemUnit
@@ -58,7 +59,7 @@ const ProductItem = ( {
             </div>
           </div>
         </div>
-        <button onClick={ () => openOneClickModal(product) }>Купить в 1 клик</button>
+        <button onClick={ () => openOneClickModal( product ) }>Купить в 1 клик</button>
       </div>
     </div>
   );
@@ -76,5 +77,6 @@ type ProductItemPropsType = {
   chosenOption: OptionType,
   openOneClickModal: ( product: ProductItemType ) => void,
   openBasketModal: ( product: ProductItemType ) => void,
-  from: string
+  from: string,
+  forCatalog: boolean
 }

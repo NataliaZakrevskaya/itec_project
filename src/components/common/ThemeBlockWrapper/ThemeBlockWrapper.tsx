@@ -118,6 +118,7 @@ const ThemeBlockWrapper = ( {
                       openOneClickModal={ openOneClickModal }
                       openBasketModal={ openBasketModal }
                       from={ from }
+                      forCatalog={false}
                     />,
                   )
               }

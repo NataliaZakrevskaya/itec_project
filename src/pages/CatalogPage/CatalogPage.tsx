@@ -182,6 +182,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                     openOneClickModal={ openOneClickModal }
                     openBasketModal={ openBasketModal }
                     from={ location.CATALOG }
+                    forCatalog={true}
                   />,
                 )
               }
