@@ -34,11 +34,12 @@ import { setProductToBlock } from '../../redux/reducers/previouslyProducts-reduc
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 import { PRODUCT_IMAGE } from '../../constants';
+import { getWeightSetValue } from '../../redux/selectors/app-selectors';
+import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
 
 const ProductPage = () => {
 
   const [ countOfProduct, setCountOfProduct ] = useState<number>( 1 );
-  const [ weightSetIsShowed, setWeightSetIsShowed ] = useState<boolean>( false );
   const [ weightSetValue, setWeightSetValue ] = useState<string>( '' );
   const [ weightSetError, setWeightSetError ] = useState<string>( '' );
   const [ selectImageId, setSelectImageId ] = useState<number>( 0 );
@@ -64,6 +65,7 @@ const ProductPage = () => {
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const previouslyProducts = useSelector( getPreviouslyProduct );
+  const weightSetIsShowed = useSelector( getWeightSetValue );
   const { address, metro } = useSelector( getInfo );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
@@ -93,7 +95,7 @@ const ProductPage = () => {
     setWeightSetValue( e.currentTarget.value );
   };
   const onWeightSetParagraphClick = () => {
-    setWeightSetIsShowed( !weightSetIsShowed );
+    dispatch(setWeightSetIsShowed({status: !weightSetIsShowed}))
   };
   const selectImage = ( id: number ) => {
     setSelectImageId( id );
@@ -134,6 +136,7 @@ const ProductPage = () => {
   const onApplyButtonClick = () => {
     if ( partialOption ) {
       if ( +weightSetValue <= ( partialOption.stock_balance / 1000 ) ) {
+        debugger
         const sum = +weightSetValue * +partialOption.price;
         const price = sum.toFixed( 2 );
         dispatch( setChosenOptionToProduct( {
@@ -142,9 +145,9 @@ const ProductPage = () => {
         } ) );
         setWeightSetError( '' );
         setWeightSetValue( '' );
-        setWeightSetIsShowed( false );
+        setWeightSetIsShowed( { status: false } );
       }
-      setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
+      else setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
     }
   };
   const addToPreviouslyProducts = () => {
@@ -231,6 +234,7 @@ const ProductPage = () => {
                         type="text"
                         value={ weightSetValue }
                         onChange={ onWeightSetInputChange }
+                        autoFocus={weightSetIsShowed}
                         placeholder={ 'Например: 1.2 кг' }
                       />
                       <button onClick={ onApplyButtonClick }>Применить</button>
@@ -263,7 +267,6 @@ const ProductPage = () => {
                   ? <p>Общий вес: { chosen_option.quantity / 1000 } кг.</p>
                   : <p>Общий вес: { chosen_option.size * countOfProduct } { chosen_option.units.unit_name }</p>
               }
-
             </div>
             <div className={ style.basketInterface }>
               { !chosen_option.partial &&
@@ -298,7 +301,7 @@ const ProductPage = () => {
           </div>
           <div className={ style.mainAnalysis }>
             <h3>Гарантированный анализ:</h3>
-            <div className={style.analysis} dangerouslySetInnerHTML={ { __html: analysis } }/>
+            <div dangerouslySetInnerHTML={ { __html: analysis } }/>
             <h3>Пищевые добавки:</h3>
             <div dangerouslySetInnerHTML={ { __html: additives } }/>
           </div>

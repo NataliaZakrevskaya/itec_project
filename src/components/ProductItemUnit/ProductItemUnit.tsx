@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { changeChosenOption } from '../../redux/reducers/basket-reducer';
 import { setChosenOptionToOneOrderProduct } from '../../redux/reducers/onClickOrder-reducer';
+import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
 
 const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
   const dispatch = useDispatch();
@@ -24,6 +25,11 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
     if (from === location.ONE_CLICK_ORDER) dispatch(setChosenOptionToOneOrderProduct({productId, option}))
   };
 
+  const onSetWeightClick = () => {
+    dispatch(setWeightSetIsShowed({status: true}));
+    navigate( `${ routesPathsEnum.CATALOG }/${ productId }` );
+  }
+
   return (
     <>
       { !option.partial
@@ -31,7 +37,7 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
       { +option.size } { option.units.unit_name }
     </span> )
         : <span className={ style.oneUnitBlock }
-                onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ productId }` ) }>Задать вес</span> }
+                onClick={ onSetWeightClick }>Задать вес</span> }
     </>
   );
 };

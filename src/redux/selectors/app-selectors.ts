@@ -18,3 +18,6 @@ export const getSendingReviewsRequestStatus = ( state: AppRootStateType ) => {
 export const getOneClickOrderRequestStatus = ( state: AppRootStateType ) => {
   return state.app.oneClickOrderRequestStatus;
 };
+export const getWeightSetValue = ( state: AppRootStateType ) => {
+  return state.app.weightSetIsShowed;
+};

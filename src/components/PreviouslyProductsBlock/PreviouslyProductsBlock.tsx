@@ -1,6 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { routesPathsEnum } from '../../routes/enums';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import light from '../../styles/common/LightBlock.module.scss';
 import style from './PreviouslyProductsBlock.module.scss';
@@ -9,7 +7,8 @@ import { ProductItemType } from '../../redux/reducers/previouslyProducts-reducer
 
 const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType ) => {
 
-  const goToProductsCatalog = () => {};
+  const goToProductsCatalog = () => {
+  };
 
   return (
     <div className={ style.blockMargin }>
@@ -19,7 +18,7 @@ const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType
         itemsForBlock={ products }
         blockTheme={ light }
         from={ location.PREVIOUSLY_PRODUCTS }
-        withoutButton={true}
+        withoutButton={ true }
       />
     </div>
   );
