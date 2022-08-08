@@ -16,6 +16,11 @@ import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
 import { getProductForOneClickOrder } from '../../../redux/selectors/oneClickOrder-selectors';
 import { PRODUCT_IMAGE } from '../../../constants';
 import { setProductToState } from '../../../redux/reducers/onClickOrder-reducer';
+import { getOneClickOrderRequestStatus } from '../../../redux/selectors/app-selectors';
+import { RequestStatus } from '../../../redux/reducers/enums';
+import SuccessOrderModal from '../modals/SuccessOrderModal/SuccessOrderModal';
+import { location } from '../../../enums';
+import { setOneClickOrderRequestStatus } from '../../../redux/reducers/app-reducer';
 
 const ThemeBlockWrapper = ( {
                               title,
@@ -32,6 +37,7 @@ const ThemeBlockWrapper = ( {
   const { block, sectionsBlock, productItem } = blockTheme;
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const productsFromBasket = useSelector( getProductsInBasket );
+  const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
 
   const dispatch = useDispatch();
 
@@ -57,6 +63,9 @@ const ThemeBlockWrapper = ( {
     setIsBasketModalActive( false );
     setProductForBasketModal( null );
   };
+  const closeSuccessModal = () => {
+    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
+  }
 
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
@@ -117,7 +126,7 @@ const ThemeBlockWrapper = ( {
         </div>
         { !withoutButton && <Button title={ 'Смотреть больше товаров' }
                                     onClick={ onButtonClick }/> }
-        { isOneClickModalActive &&
+        { isOneClickModalActive && !isSuccessOneClickOrder &&
           <Modal closeModal={ closeOneClickModal }>
             <OneClickOrder
               id={ productForOneClickOrderModal.id }
@@ -125,6 +134,7 @@ const ThemeBlockWrapper = ( {
               image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
               options={ productForOneClickOrderModal.options }
               chosen_option={ productForOneClickOrderModal.chosen_option }
+              closeOneClickModal={closeOneClickModal}
             />
           </Modal>
         }
@@ -138,6 +148,11 @@ const ThemeBlockWrapper = ( {
               chosenOption={ productForBasketModal.chosen_option }
               closeModal={ closeBasketModal }
             />
+          </Modal>
+        }
+        { isSuccessOneClickOrder &&
+          <Modal closeModal={ closeSuccessModal }>
+            <SuccessOrderModal from={location.ONE_CLICK_ORDER}/>
           </Modal>
         }
       </div>

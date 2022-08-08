@@ -221,6 +221,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
               image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
               options={ productForOneClickOrderModal.options }
               chosen_option={ productForOneClickOrderModal.chosen_option }
+              closeOneClickModal={ closeOneClickModal }
             /> )
           }
 

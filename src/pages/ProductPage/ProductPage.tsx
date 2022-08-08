@@ -322,6 +322,7 @@ const ProductPage = () => {
             image={ productForOneClickOrderModal.images[ 0 ].image }
             options={ productForOneClickOrderModal.options }
             chosen_option={ productForOneClickOrderModal.chosen_option }
+            closeOneClickModal={closeOneClickModal}
           />
         </Modal>
       }

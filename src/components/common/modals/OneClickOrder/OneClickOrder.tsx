@@ -10,7 +10,7 @@ import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder-red
 import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder-selectors';
 import { AppDispatch } from '../../../../redux/store';
 
-const OneClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrderPropsType ) => {
+const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClickModal }: OnClickOrderPropsType ) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const productForOneClickOrder = useSelector(getProductForOneClickOrder)
@@ -37,6 +37,7 @@ const OneClickOrder = ( { id, options, name, image, chosen_option }: OnClickOrde
     onSubmit: value => {
       formik.resetForm();
       dispatch(sendOneClickOrderTC({name: value.name, phoneNumber: value.phoneNumber, orderInfo: [{article_number: productForOneClickOrder.chosen_option.article_number, quantity: productForOneClickOrder.chosen_option.quantity}]}))
+      closeOneClickModal()
     },
   } );
 
@@ -101,6 +102,7 @@ type OnClickOrderPropsType = {
   name: string,
   image: string,
   chosen_option: OptionType,
+  closeOneClickModal: () => void
 }
 type FormikOneClickOrderErrorType = {
   name?: string,
