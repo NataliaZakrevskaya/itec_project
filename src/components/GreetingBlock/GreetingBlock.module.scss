@@ -1,15 +1,16 @@
 @import "src/styles/Mixins";
 
-.greetingBlock{
+.greetingBlock {
   width: 100%;
   background-color: white;
   margin-top: 57px;
 
-  .greetingBlockContainer{
+  .greetingBlockContainer {
     @include flex(row, space-between, center);
   }
 }
-.greetingBlockTitle{
+
+.greetingBlockTitle {
   @include SFDisplaySemibold();
   max-width: 597px;
   font-size: 28px;
@@ -17,7 +18,8 @@
   color: #202223;
   margin-bottom: 12px;
 }
-.greetingBlockText{
+
+.greetingBlockText {
   @include SFTextRegular();
   max-width: 597px;
   font-size: 16px;
@@ -25,23 +27,25 @@
   color: #202223;
 }
 
-.greetingBlockWrapperTitle{
+.greetingBlockWrapperTitle {
   @include SFDisplayBold();
   font-size: 16px;
   line-height: 125%;
   color: #202223;
   margin-bottom: 8px;
 }
-.greetingBlockTextWrapper{
+
+.greetingBlockTextWrapper {
   margin-bottom: 24px;
 }
-.greetingBlockWrapper{
+
+.greetingBlockWrapper {
   display: flex;
   margin-bottom: 24px;
   min-height: 30px;
   position: relative;
 
-  &:before{
+  &:before {
     content: "";
     display: block;
     width: 2px;
@@ -53,40 +57,63 @@
     margin-right: 12px;
   }
 
-  .greetingOptionWrapper{
+  .greetingOptionWrapper {
     margin-left: 12px;
   }
 }
 
 @media (max-width: 1199px) {
-  .greetingBlockImageWrapper{
+  .greetingBlockImageWrapper {
     display: none;
   }
-  .greetingBlockWrapperText{
+  .greetingBlockWrapperText {
     padding: 62.5px 0;
   }
 }
+
 @media (max-width: 768px) {
-  .greetingBlockTitle{
-    font-size: 21px !important;
-    line-height: 28px !important;
-  }
-  .greetingBlockWrapper{
-    margin-bottom: 16px !important;
-  }
-  .greetingBlock{
+  .greetingBlock {
     margin-top: 33px;
-  }
-  .greetingBlockText{
-    font-size: 15px !important;
-    line-height: 20px !important;
-  }
-  .greetingBlockWrapperTitle{
-    font-size: 15px !important;
-    line-height: 20px !important;
-  }
-  .greetingBlockWrapperText{
-    padding-top: 16px !important;
-    padding-bottom: 0 !important;
+
+    .greetingBlockWrapperText {
+
+      padding: 16px 0 0;
+
+      .greetingBlockTitle {
+        @include SFDisplayBold();
+        font-size: 21px;
+        line-height: 28px;
+      }
+
+      .greetingBlockTextWrapper {
+        margin-bottom: 16px;
+
+        .greetingBlockText {
+          font-size: 15px;
+          line-height: 20px;
+        }
+      }
+
+      .greetingBlockWrapper {
+        margin-bottom: 16px;
+        &:before{
+          margin-right: 6px;
+        }
+
+        .greetingOptionWrapper {
+
+          .greetingBlockWrapperTitle {
+            font-size: 15px;
+            line-height: 20px;
+          }
+
+          .greetingBlockText {
+            font-size: 15px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
   }
 }
+
