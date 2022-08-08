@@ -86,26 +86,27 @@
         }
         @media (max-width: 420px) {
           gap: 7.1% !important;
-          margin: 8px 0;
+          margin: 16px 0;
         }
       }
-     /* .productsLessThenFive{
-        @include flex(row, space-between, stretch);
-        width: 100%;
-        gap: 0;
-        margin: 0 0 25px;
-        transition: translate;
-        transition-property: transform;
-        transition-duration: 500ms;
-        transition-timing-function: ease-in-out;
-        @media (max-width: 1199px) {
-          margin: 8px 0;
-        }
-        @media (max-width: 768px) {
-          margin-bottom: 17px !important;
-        }
-      }*/
-      .allAnimalTypesContainer{
+
+      /* .productsLessThenFive{
+         @include flex(row, space-between, stretch);
+         width: 100%;
+         gap: 0;
+         margin: 0 0 25px;
+         transition: translate;
+         transition-property: transform;
+         transition-duration: 500ms;
+         transition-timing-function: ease-in-out;
+         @media (max-width: 1199px) {
+           margin: 8px 0;
+         }
+         @media (max-width: 768px) {
+           margin-bottom: 17px !important;
+         }
+       }*/
+      .allAnimalTypesContainer {
         @include flex(row, space-between, stretch);
         width: 100%;
         transition: translate;
@@ -123,20 +124,26 @@
 
 
 @media (max-width: 768px) {
-  .itemsContainer{
-    margin-top: 16px !important;
-  }
-  .allProductItemsContainer {
-    gap: 5% !important;
-  }
-  .sectionsBlock {
-    display: none !important;
-  }
-  .navigationInfoBlock {
-    & h2 {
-      font-size: 21px !important;
-      line-height: 28px !important;
-      @include SFDisplayBold;
+  .block {
+    .itemsContainer {
+      margin-top: 0;
+
+      .allProductItemsContainer {
+        gap: 5% !important;
+      }
+    }
+
+
+    .navigationInfoBlock {
+      & h2 {
+        font-size: 21px;
+        line-height: 28px;
+        @include SFDisplayBold;
+      }
+
+      .sectionsBlock {
+        display: none !important;
+      }
     }
   }
 }

@@ -2600,6 +2600,11 @@ export type ResBrandType = {
 export type OptionType = {
   id: number,
   article_number: string,
+  /*discountproductoption: {
+    title: string,
+    discount_amount: number,
+    product_option: string
+  },*/
   partial: boolean,
   quantity: number,
   price: string,
@@ -2642,6 +2647,11 @@ export type resProductItemType = {
   brand: { id: number, name: string, image: string },
   category: { id: number, name: string, is_active: true, },
   options: Array<OptionType>,
+ /* discountproduct: {
+    title: string,
+    discount_amount: number,
+    product_id: number
+  } | null,*/
   chosen_option: OptionType
 }
 export type responseProductItemType = {
