@@ -9,7 +9,12 @@ import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsInBasket, getTotalProductsCount, getTotalSum } from '../../redux/selectors/basket-selectors';
+import {
+  getProductsInBasket,
+  getTotalProductsCount,
+  getTotalSum,
+  getTotalSumWithDiscount,
+} from '../../redux/selectors/basket-selectors';
 import { sendOrderTC } from '../../redux/reducers/basket-reducer';
 import { AppDispatch } from '../../redux/store';
 import { getOrderRequestStatus } from '../../redux/selectors/app-selectors';
@@ -23,7 +28,7 @@ const CheckoutPage = () => {
 
   const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
-  const basketCount = useSelector( getTotalSum );
+  const basketCount = useSelector( getTotalSumWithDiscount );
   const price = getPrice( basketCount );
   const productsCount = useSelector( getTotalProductsCount );
   const goodsName = getGoods( productsCount );
