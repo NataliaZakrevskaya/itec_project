@@ -33,12 +33,29 @@
       margin-bottom: 12px;
     }
   }
+  & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 9px;
+
+    & li:before {
+      content: '';
+      display: inline-block;
+      height: 3px;
+      width: 3px;
+      vertical-align: middle;
+      border-radius: 50%;
+      background-color: #202223;
+      margin-right: 10px;
+    }
+  }
   .mainAnalysis{
     max-width: 470px;
     @include SFTextRegular();
     font-size: 14px;
     line-height: 20px;
     color: #202223;
+
     & h3{
       @include SFDisplaySemibold();
       font-size: 16px;

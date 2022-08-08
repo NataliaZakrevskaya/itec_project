@@ -64,8 +64,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const chosenOrdering = useSelector( getChosenOrdering );
   const productsFromBasket = useSelector( getProductsInBasket );
-  const {windowElRef, width} = useResize();
-  const withWords = width >= 620
+  const { windowElRef, width } = useResize();
+  const withWords = width >= 620;
 
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
@@ -167,15 +167,14 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
           { !isRejectResponse
             ? ( <div
               className={ style.productsBlock }
-              ref={ windowElRef }
-            >
+              ref={ windowElRef }>
               {
                 products.map( ( item: ProductItemType ) =>
                   <ProductItem
                     key={ item.id }
                     product={ item }
                     id={ item.id }
-                    image={ item.images[ 0 ] ? item.images[ 0 ].image : `${PRODUCT_IMAGE}` }
+                    image={ item.images[ 0 ] ? item.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
                     name={ item.name }
                     options={ item.options }
                     chosenOption={ item.chosen_option }
@@ -192,7 +191,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                 actualPage={ page }
                 onPageChanged={ onPageChanged }
                 portionSize={ 3 }
-                withWords={withWords}
+                withWords={ withWords }
               />
             </div> )
             : ( <div className={ style.emptyCatalog }>
@@ -219,7 +218,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             : ( <OneClickOrder
               id={ productForOneClickOrderModal.id }
               name={ productForOneClickOrderModal.name }
-              image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${PRODUCT_IMAGE}` }
+              image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
               options={ productForOneClickOrderModal.options }
               chosen_option={ productForOneClickOrderModal.chosen_option }
             /> )
@@ -232,7 +231,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
           <BasketModal
             key={ productForBasketModal.id }
             id={ productForBasketModal.id }
-            image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : `${PRODUCT_IMAGE}` }
+            image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
             name={ productForBasketModal.name }
             chosenOption={ productForBasketModal.chosen_option }
             closeModal={ closeBasketModal }

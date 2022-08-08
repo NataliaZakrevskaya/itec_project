@@ -298,7 +298,7 @@ const ProductPage = () => {
           </div>
           <div className={ style.mainAnalysis }>
             <h3>Гарантированный анализ:</h3>
-            <div dangerouslySetInnerHTML={ { __html: analysis } }/>
+            <div className={style.analysis} dangerouslySetInnerHTML={ { __html: analysis } }/>
             <h3>Пищевые добавки:</h3>
             <div dangerouslySetInnerHTML={ { __html: additives } }/>
           </div>
