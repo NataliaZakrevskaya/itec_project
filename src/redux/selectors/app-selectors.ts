@@ -21,6 +21,3 @@ export const getOneClickOrderRequestStatus = ( state: AppRootStateType ) => {
 export const getWeightSetValue = ( state: AppRootStateType ) => {
   return state.app.weightSetIsShowed;
 };
-export const getIsBasketModalActive = ( state: AppRootStateType ) => {
-  return state.app.isBasketModalActive;
-};
