@@ -63,7 +63,9 @@
       overflow: hidden;
 
       .allProductItemsContainer {
-        @include flex(row, space-between, stretch);
+        //@include flex(row, space-between, stretch);
+        display: flex;
+        align-items: stretch;
         width: 100%;
         gap: 2.12%;
         margin: 0 1.06% 25px;

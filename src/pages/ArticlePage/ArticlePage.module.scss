@@ -105,9 +105,19 @@
     }
   }
   .articleTitle{
+    margin-bottom: 12px !important;
     & h1 {
       font-size: 24px !important;
       line-height: 130% !important;
     }
+  }
+  .articleReadingWrapper{
+    margin-bottom: 24px !important;
+  }
+  .articleImage{
+    margin-bottom: 24px !important;
+  }
+  .articleTextContainer{
+    margin-bottom: 48px !important;
   }
 }
