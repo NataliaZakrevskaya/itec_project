@@ -83,6 +83,7 @@ const UsefulArticlesBlock = () => {
                         description={ description }
                         date_added={ date_added }
                         timeForReading={ time_read }
+                        forArticlesPage={ false }
                       />
                     );
                   } )

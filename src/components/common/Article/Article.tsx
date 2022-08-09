@@ -6,7 +6,7 @@ import { routesPathsEnum } from '../../../routes/enums';
 import { getCurrentAddedDate } from '../../../helpers/getDate';
 import { stringCutter } from '../../../helpers/stringCutter';
 
-const Article = ( { id, description, title, date_added, timeForReading, image }: ArticlePropsType ) => {
+const Article = ( { id, description, title, date_added, timeForReading, image, forArticlesPage }: ArticlePropsType ) => {
 
   const date = new Date( date_added );
   const currentData = getCurrentAddedDate( date );
@@ -14,7 +14,7 @@ const Article = ( { id, description, title, date_added, timeForReading, image }:
 
   return (
     <div
-      className={ style.article }
+      className={ forArticlesPage ? style.articleForPage : style.article }
       onClick={ () => navigate( `${ routesPathsEnum.ARTICLES }/${ id }` ) }
     >
       <div className={ style.articleImageWrapper }>
@@ -45,4 +45,5 @@ type ArticlePropsType = {
   description: string,
   date_added: string,
   timeForReading: number,
+  forArticlesPage: boolean
 }

@@ -125,20 +125,28 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
   };
   const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;
-    setX2( event.changedTouches[ 0 ].clientX );
-    if ( x && x2 ) {
-      if ( x2 - x < 0 && Math.abs(x2 - x) > 54 ) {
-        setOffset( ( currentOffset ) => {
-          const newOffset = currentOffset - getDiff();
-          const maxOffset = -( width * ( pagesCount - 1 ) );
-          return Math.max( newOffset, maxOffset );
-        } );
-      }
-      if ( x2 - x > 0 && Math.abs(x2 - x) > 54 ) {
-        setOffset( ( currentOffset ) => {
-          const newOffset = currentOffset + getDiff();
-          return Math.min( newOffset, 0 );
-        } );
+    else {
+      setX2( event.changedTouches[ 0 ].clientX );
+      if ( x && x2 ) {
+        if ( x2 - x < 0 && Math.abs( x2 - x ) > 54 ) {
+          /*console.log( 'x2 ' + x2 );
+          console.log( 'x ' + x );
+          console.log( Math.abs( x2 - x ) );*/
+          setOffset( ( currentOffset ) => {
+            const newOffset = currentOffset - getDiff();
+            const maxOffset = -( width * ( pagesCount - 1 ) );
+            return Math.max( newOffset, maxOffset );
+          } );
+        }
+        if ( x2 - x > 0 && Math.abs( x2 - x ) > 54 ) {
+          /*console.log( 'x2 ' + x2 );
+          console.log( 'x ' + x );
+          console.log( Math.abs( x2 - x ) );*/
+          setOffset( ( currentOffset ) => {
+            const newOffset = currentOffset + getDiff();
+            return Math.min( newOffset, 0 );
+          } );
+        }
       }
     }
   };

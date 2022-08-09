@@ -76,6 +76,7 @@ const ArticlesPage = () => {
                 timeForReading={ article.time_read }
                 date_added={ article.date_added }
                 image={ article.image }
+                forArticlesPage={ true }
               />,
             )
           }
