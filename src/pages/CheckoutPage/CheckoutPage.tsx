@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CheckoutPage.module.scss';
 import { useFormik } from 'formik';
@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsInBasket,
   getTotalProductsCount,
-  getTotalSum,
   getTotalSumWithDiscount,
 } from '../../redux/selectors/basket-selectors';
 import { sendOrderTC } from '../../redux/reducers/basket-reducer';
@@ -48,6 +47,14 @@ const CheckoutPage = () => {
   const openSuccessModal = () => {
     setIsSuccessModalActive( true );
   };
+  useEffect( () => {
+    if ( isSuccessModalActive && orderIsSucceeded ) {
+      window.document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      window.document.body.style.overflow = '';
+    };
+  }, [ isSuccessModalActive, orderIsSucceeded ] );
 
   const formik = useFormik( {
     initialValues: {

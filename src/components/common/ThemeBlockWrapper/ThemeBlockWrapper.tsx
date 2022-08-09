@@ -1,7 +1,7 @@
 import commonStyle from '../../../styles/common/Container.module.scss';
 import ProductItem from '../../ProductItem/ProductItem';
 import Button from '../Button/Button';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PrevSectionButton from '../prevSectionButton/prevSectionButton';
 import NextSectionButton from '../nextSectionButton/nextSectionButton';
 import Modal from '../modals/Modal';
@@ -40,6 +40,13 @@ const ThemeBlockWrapper = ( {
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(isBasketModalActive || isOneClickModalActive){
+      window.document.body.style.overflow = 'hidden'
+    }
+    return () => {window.document.body.style.overflow = ''}
+  }, [isOneClickModalActive, isBasketModalActive])
 
   const {
     onPrevSectionButtonClick,

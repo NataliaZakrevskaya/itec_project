@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CallbackModal from '../modals/CallbackModals/CallbackModal';
 import style from './Callback.module.scss';
 import Modal from '../modals/Modal';
@@ -19,6 +19,12 @@ const Callback = ({forHeader}: CallbackPropsType) => {
     dispatch(setCallbackRequestStatus({status: RequestStatus.IDLE}))
     setIsActive( false );
   };
+  useEffect(() => {
+    if(isActive){
+      window.document.body.style.overflow = 'hidden'
+    }
+    return () => {window.document.body.style.overflow = ''}
+  }, [isActive])
 
   return (
     <div>

@@ -110,9 +110,17 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     const brands = chosenBrands.length ? chosenBrands?.join() : null;
     dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands } ) );
   }, [ page, animal, category, chosenOrdering, chosenBrands ] );
+  useEffect(() => {
+    if(isBasketModalActive || isOneClickModalActive || isOneClickOrderSucceeded){
+      window.document.body.style.overflow = 'hidden'
+    }
+    return () => {window.document.body.style.overflow = ''}
+  }, [isOneClickModalActive, isBasketModalActive, isOneClickOrderSucceeded])
 
   return (
-    <div className={ style.catalogPageBlock }>
+    <div
+      className={ style.catalogPageBlock }
+    >
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>

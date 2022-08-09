@@ -57,6 +57,12 @@ const ReviewsBlock = () => {
   useEffect( () => {
     dispatch( fetchReviewsTC() );
   }, [] );
+  useEffect(() => {
+    if(isReviewModalActive || isSuccessReview){
+      window.document.body.style.overflow = 'hidden'
+    }
+    return () => {window.document.body.style.overflow = ''}
+  }, [isReviewModalActive, isSuccessReview])
 
   const getCurrentReviewPage = ( offset: number, width: number ) => {
     if ( offset === 0 ) return 1;
@@ -111,7 +117,7 @@ const ReviewsBlock = () => {
         </Modal>
       }
       { isSuccessReview &&
-        <Modal closeModal={ closeReviewModal }>
+        <Modal closeModal={ closeSuccessReviewModal }>
           <SuccessReviewModal closeModal={ closeSuccessReviewModal }/>
         </Modal>
       }

@@ -178,6 +178,12 @@ const ProductPage = () => {
       addToPreviouslyProducts();
     }
   }, [ product, addToPreviouslyProducts ] );
+  useEffect(() => {
+    if(isBasketModalActive || isOneClickModalActive){
+      window.document.body.style.overflow = 'hidden'
+    }
+    return () => {window.document.body.style.overflow = ''}
+  }, [isOneClickModalActive, isBasketModalActive])
 
   return (
     <div className={ style.productPage }>
