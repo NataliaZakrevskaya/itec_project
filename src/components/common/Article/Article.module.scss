@@ -37,8 +37,6 @@
 }
 
 .articleImageWrapper {
-  width: 338px;
-  height: 160px;
 
   & img {
     width: 100%;
@@ -129,6 +127,9 @@
     & img {
       display: none;
     }
+  }
+  .articleForPage{
+    max-width: 340px !important;
   }
 }
 
