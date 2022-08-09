@@ -71,7 +71,7 @@
     object-fit: cover;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .mainTitle{
     width: 267px;
     font-size: 21px;
@@ -90,15 +90,17 @@
   .advertisingBlock{
     overflow: hidden;
   }
-  .mainWrapper{
-    & button {
-      width: 137px;
-    }
-  }
   .subTitleWrapper{
     & p{}
 
     font-size: 15px;
     max-width: 183px;
+  }
+}
+@media (max-width: 768px) {
+  .mainWrapper{
+    & button {
+      width: 137px;
+    }
   }
 }
