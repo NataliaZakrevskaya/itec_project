@@ -115,6 +115,7 @@
         box-sizing: border-box;
         width: 100%;
         flex-wrap: wrap;
+        justify-content: space-between;
       }
       .emptyCatalog{
         width: 70%;
@@ -242,4 +243,6 @@
     width: 100%;
     margin-bottom: 41px;
   }
+}
+@media (max-width: 576px) {
 }

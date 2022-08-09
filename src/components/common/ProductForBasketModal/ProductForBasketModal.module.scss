@@ -2,7 +2,12 @@
 
 .ProductForBasketModalContainer {
   width: 100%;
-  @include flex(row, space-between, center);
+  //@include flex(row, space-between, center);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
   @include SFTextRegular();
   font-weight: 600;
   font-size: 16px;
@@ -10,22 +15,29 @@
   color: #202223;
 
   .productName{
-    width: 60%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     & img {
       @include size(56px, 56px);
-      object-fit: contain;
+      object-fit: cover;
       margin-right: 10px;
+    }
+    & p {
+      max-width: 220px;
     }
   }
 .orderInfoNotPartial{
-  width: 40%;
-  @include flex(row, space-between, center);
+  width: 100%;
+  //@include flex(row, space-between, center);
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
 }
 .orderInfoPartial{
-  width: 30%;
   @include flex(row, space-between, center);
 }
 }
