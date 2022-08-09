@@ -126,12 +126,10 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
   const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;
     else {
-      setX2( event.changedTouches[ 0 ].clientX );
+      const x2 = event.changedTouches[ 0 ].clientX
+      setX2( x2);
       if ( x && x2 ) {
-        if ( x2 - x < 0 && Math.abs( x2 - x ) > 54 ) {
-          /*console.log( 'x2 ' + x2 );
-          console.log( 'x ' + x );
-          console.log( Math.abs( x2 - x ) );*/
+        if ( x2 - x < 0 && Math.abs( x2 - x ) > 10 ) {
           setOffset( ( currentOffset ) => {
             const newOffset = currentOffset - getDiff();
             const maxOffset = -( width * ( pagesCount - 1 ) );
@@ -139,9 +137,6 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
           } );
         }
         if ( x2 - x > 0 && Math.abs( x2 - x ) > 54 ) {
-          /*console.log( 'x2 ' + x2 );
-          console.log( 'x ' + x );
-          console.log( Math.abs( x2 - x ) );*/
           setOffset( ( currentOffset ) => {
             const newOffset = currentOffset + getDiff();
             return Math.min( newOffset, 0 );

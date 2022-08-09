@@ -39,7 +39,6 @@ const BasketPage = () => {
   const price = getPrice( basketCount );
   const priceWithDiscount = getPrice( basketCountWithDiscount );
   const goodsName = getGoods( productsCount );
-  console.log(!!basketCountWithDiscount);
 
   return (
     <div className={ style.basketPageBlock }>
