@@ -13,6 +13,7 @@ export const slice = createSlice( {
     orderRequestStatus: RequestStatus.IDLE as RequestStatusType,
     oneClickOrderRequestStatus: RequestStatus.IDLE as RequestStatusType,
     sendingReviewRequestStatus: RequestStatus.IDLE as RequestStatusType,
+    isBasketModalActive: false,
     weightSetIsShowed: false,
   },
   reducers: {
@@ -47,6 +48,9 @@ export const slice = createSlice( {
     setWeightSetIsShowed( state, action: PayloadAction<{ status: boolean }> ) {
       state.weightSetIsShowed = action.payload.status;
     },
+    setIsBasketModalActive( state, action: PayloadAction<{ status: boolean }> ) {
+      state.isBasketModalActive = action.payload.status;
+    },
   },
 } );
 
@@ -61,5 +65,6 @@ export const {
   setOneClickOrderRequestStatus,
   setCallbackRequestStatus,
   setSendingReviewRequestStatus,
+  setIsBasketModalActive,
   setWeightSetIsShowed
 } = slice.actions;

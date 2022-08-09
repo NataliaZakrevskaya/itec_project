@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useLayoutEffect, useState } from 'react';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
@@ -169,7 +169,7 @@ const ProductPage = () => {
     }
     else setPriceWithDiscount( 0 );
   }, [ chosen_option, countOfProduct, discountproduct ] );
-  useEffect( () => {
+  useLayoutEffect( () => {
     if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
   }, [ productId ] );
 
