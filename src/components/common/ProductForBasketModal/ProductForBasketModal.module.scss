@@ -2,7 +2,6 @@
 
 .ProductForBasketModalContainer {
   width: 100%;
-  //@include flex(row, space-between, center);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -14,44 +13,49 @@
   line-height: 130%;
   color: #202223;
 
-  .productName{
+  .productName {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
+
     & img {
       @include size(56px, 56px);
       object-fit: cover;
       margin-right: 10px;
     }
+
     & p {
       max-width: 220px;
     }
   }
-.orderInfoNotPartial{
-  width: 100%;
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  justify-content: center;
 
-  .price{
-    @include SFDisplayBold();
-    font-size: 16px;
-    line-height: 130%;
-    color: #202223;
+  .orderInfoNotPartial {
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+
+    .price {
+      @include SFDisplayBold();
+      font-size: 16px;
+      line-height: 130%;
+      color: #202223;
+    }
+
+    .priceWithDiscount {
+      @include SFDisplayBold();
+      font-size: 16px;
+      line-height: 130%;
+      color: #8C9196;
+      text-decoration: line-through;
+      text-decoration-color: #D72C0D;
+    }
   }
-  .priceWithDiscount{
-    @include SFDisplayBold();
-    font-size: 16px;
-    line-height: 130%;
-    color: #8C9196;
-    text-decoration: line-through;
-    text-decoration-color: #D72C0D;
+
+  .orderInfoPartial {
+    @include flex(row, space-between, center);
   }
-}
-.orderInfoPartial{
-  @include flex(row, space-between, center);
-}
 }

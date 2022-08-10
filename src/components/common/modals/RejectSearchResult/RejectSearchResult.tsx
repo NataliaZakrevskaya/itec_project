@@ -2,6 +2,7 @@ import React from 'react';
 import style from '../../../Header/SearchResultsBlock/SearchResultsBlock.module.scss';
 import sadDog from '../../../../Images/emtyBrands.jpg';
 import SmallerButton from '../../SmallerButton/SmallerButton';
+import { RejectSearchResultPropsType } from '../types';
 
 const RejectSearchResult = ( { requestTitle, onClick }: RejectSearchResultPropsType ) => {
 
@@ -18,8 +19,3 @@ const RejectSearchResult = ( { requestTitle, onClick }: RejectSearchResultPropsT
 };
 
 export default RejectSearchResult;
-
-type RejectSearchResultPropsType = {
-  requestTitle: string
-  onClick: () => void
-}

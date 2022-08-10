@@ -7,14 +7,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductsFromSearch } from '../../redux/selectors/productsFromSearch-selectors';
 import { fetchProductsFromSearchTC } from '../../redux/reducers/productsFromSearch-reducer';
 import { AppDispatch } from '../../redux/store';
+import { SearchInputPropsType } from './types';
 
 const SearchInput = ( { forHeaderBurger }: SearchInputPropsType ) => {
 
   const [ search, setSearch ] = useState( '' );
-  const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
+
   const resultProductItems = useSelector( getProductsFromSearch )
     .filter( ( item, index ) => index < 6 );
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const searchInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setSearch( e.target.value );
@@ -53,7 +56,3 @@ const SearchInput = ( { forHeaderBurger }: SearchInputPropsType ) => {
 };
 
 export default SearchInput;
-
-type SearchInputPropsType = {
-  forHeaderBurger: boolean
-}

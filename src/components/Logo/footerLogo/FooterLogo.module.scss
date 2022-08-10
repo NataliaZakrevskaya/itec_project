@@ -1,7 +1,7 @@
 @import "../../../styles/Mixins";
 @import "../../../styles/Variables";
 
-.logoBlock{
+.logoBlock {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -23,8 +23,9 @@
     }
   }
 }
+
 @media (max-width: 768px) {
-  .logoBlock{
+  .logoBlock {
     margin-bottom: 16px;
   }
 }

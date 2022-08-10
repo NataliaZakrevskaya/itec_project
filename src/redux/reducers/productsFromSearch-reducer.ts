@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ProductItemType } from './products-reducer';
 import { productsAPI } from '../../Api/productsApi/productsApi';
 import { setSearchProductRequest } from './app-reducer';
 import { RequestStatus } from './enums';
+import { ProductItemType } from '../../mocks';
 
 export const fetchProductsFromSearchTC = createAsyncThunk(
   'productsFromSearch/fetchProductsFromSearch', async ( param: { search?: string }, {
@@ -28,7 +28,7 @@ export const slice = createSlice( {
     page_number: 1 as number,
     products_on_page: null as null | number,
     total_pages: 1 as number,
-  } as productsFromSearchInitialStateType,
+  },
   reducers: {},
   extraReducers: ( builder => {
     builder.addCase( fetchProductsFromSearchTC.fulfilled, ( state, action ) => {
@@ -40,12 +40,3 @@ export const slice = createSlice( {
 } );
 
 export const productsFromSearchReducer = slice.reducer;
-
-type productsFromSearchInitialStateType = {
-  results: Array<ProductItemType>,
-  total_products: number,
-  max_products_on_page: number,
-  page_number: number,
-  products_on_page: null | number,
-  total_pages: number,
-}

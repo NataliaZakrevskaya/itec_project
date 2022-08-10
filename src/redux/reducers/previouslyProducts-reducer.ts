@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductItemType } from './products-reducer';
+import { ProductItemType } from '../../mocks';
 
 export const slice = createSlice( {
   name: 'previouslyProducts',

@@ -15,19 +15,19 @@ import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 const LatestBlock = () => {
 
   const latestProducts = useSelector( getLatestProducts );
-  const ordering = selectValues.ADDED_DATE;
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
   const goToLatestProducts = () => {
-    dispatch( setChosenOrdering( { ordering } ) );
+    dispatch( setChosenOrdering( { ordering: selectValues.ADDED_DATE } ) );
     navigate( routesPathsEnum.CATALOG );
   };
 
   useEffect( () => {
-    dispatch( fetchLatestProductsTC( { ordering } ) );
-  }, [ ] );
+    dispatch( fetchLatestProductsTC( { ordering: selectValues.ADDED_DATE } ) );
+  }, [] );
+
   return (
     <div className={ style.latestBlockWrapper }>
       <ThemeBlockWrapper

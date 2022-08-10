@@ -17,7 +17,8 @@ export const slice = createSlice( {
   },
   reducers: {
     setSearchProductRequest( state, action: PayloadAction<{
-      status: RequestStatusType }> ) {
+      status: RequestStatusType
+    }> ) {
       state.searchProductStatus = action.payload.status;
     },
     setProductRequest( state, action: PayloadAction<{ status: RequestStatusType }> ) {
@@ -61,5 +62,5 @@ export const {
   setOneClickOrderRequestStatus,
   setCallbackRequestStatus,
   setSendingReviewRequestStatus,
-  setWeightSetIsShowed
+  setWeightSetIsShowed,
 } = slice.actions;

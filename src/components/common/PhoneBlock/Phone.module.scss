@@ -1,6 +1,6 @@
 @import "src/styles/Mixins.scss";
 
-.phoneBlock{
+.phoneBlock {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,7 +10,7 @@
     @include size(11.2px, 16px)
   }
 
-  & a{
+  & a {
     display: block;
     margin-left: 10.4px;
     @include SFDisplaySemibold();
@@ -20,8 +20,9 @@
     cursor: default;
   }
 }
+
 @media (max-width: 768px) {
-  .phoneBlock{
+  .phoneBlock {
     & a {
       font-size: 14px;
     }

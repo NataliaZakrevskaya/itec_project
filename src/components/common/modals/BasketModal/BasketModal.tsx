@@ -1,10 +1,10 @@
 import React from 'react';
 import selectIcon from '../../../../Images/checkmarkCircle.svg';
-import { OptionType } from '../../../../mocks';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../../routes/enums';
 import style from './BasketModal.module.scss';
 import ProductForBasketModal from '../../ProductForBasketModal/ProductForBasketModal';
+import { BasketModalPropsType } from '../types';
 
 const BasketModal = ( {
                         name,
@@ -13,7 +13,7 @@ const BasketModal = ( {
                         closeModal,
                         chosenOption,
                         priceWithDiscount,
-                        countOfProduct = 1
+                        countOfProduct = 1,
                       }: BasketModalPropsType ) => {
   const navigate = useNavigate();
   const continueShopping = () => {
@@ -28,7 +28,7 @@ const BasketModal = ( {
 
   return (
     <div className={ style.basketModalContainer }>
-      {showDiscount && <div className={style.discount}>Акция</div>}
+      { showDiscount && <div className={ style.discount }>Акция</div> }
       <div className={ style.title }>
         <img src={ selectIcon } alt="selectIcon"/>
         <h3>Товар добавлен в корзину</h3>
@@ -37,9 +37,9 @@ const BasketModal = ( {
         <ProductForBasketModal
           name={ name }
           image={ image }
-          priceWithDiscount={priceWithDiscount}
+          priceWithDiscount={ priceWithDiscount }
           chosenOption={ chosenOption }
-          countOfProduct={countOfProduct}
+          countOfProduct={ countOfProduct }
           id={ id }
         />
       </div>
@@ -53,13 +53,3 @@ const BasketModal = ( {
 };
 
 export default BasketModal;
-
-type BasketModalPropsType = {
-  name: string,
-  image: string,
-  id: number,
-  chosenOption: OptionType,
-  countOfProduct?: number,
-  closeModal: () => void,
-  priceWithDiscount?: number
-}

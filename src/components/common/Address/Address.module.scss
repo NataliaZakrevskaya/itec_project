@@ -1,51 +1,57 @@
 @import "src/styles/Mixins.scss";
 
 .addressBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: default;
+
+  .addressBlockWrapperOne {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    cursor: default;
+  }
 
-    .addressBlockWrapperOne{
-        display: flex;
-        align-items: center;
-    }
-    .addressBlockWrapperTwo{
-        display: flex;
-        align-items: center;
-    }
-    .navigateIcon {
-        width: 12.8px;
-        height: 16px;
-        margin-right: 9.6px;
-    }
-    .metroIcon {
-        margin-left: 10px;
-        margin-right: 6px;
-        width: 18px;
-        height: 12px;
-    }
+  .addressBlockWrapperTwo {
+    display: flex;
+    align-items: center;
+  }
 
-    & p {
-        @include SFTextRegular();
-        font-size: 14px;
-        line-height: 20px;
-        color: #202223;
-    }
+  .navigateIcon {
+    width: 12.8px;
+    height: 16px;
+    margin-right: 9.6px;
+  }
+
+  .metroIcon {
+    margin-left: 10px;
+    margin-right: 6px;
+    width: 18px;
+    height: 12px;
+  }
+
+  & p {
+    @include SFTextRegular();
+    font-size: 14px;
+    line-height: 20px;
+    color: #202223;
+  }
 }
+
 @media (max-width: 1199px) {
-    .addressBlock{
-        flex-direction: column;
-    }
+  .addressBlock {
+    flex-direction: column;
+  }
 }
+
 @media (max-width: 768px) {
-    .addressBlock{
-        flex-direction: row;
-        margin-bottom: 16px;
-        & .addressBlockWrapperOne{
-            margin-right: 12px;
-        }
+  .addressBlock {
+    flex-direction: row;
+    margin-bottom: 16px;
+
+    & .addressBlockWrapperOne {
+      margin-right: 12px;
     }
+  }
 }
 
 

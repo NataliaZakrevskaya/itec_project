@@ -1,17 +1,19 @@
 @import "../../styles/Mixins";
 
 
-.productTypesBlock{
+.productTypesBlock {
   background-color: white;
   padding: 16px;
   margin-bottom: 24px;
   border-radius: 5px;
-  .radioGroup{
+
+  .radioGroup {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  & h3 {
+
+  & h2 {
     @include SFDisplaySemibold();
     margin-bottom: 18px;
     font-size: 16px;
@@ -19,10 +21,11 @@
     color: #202223;
     cursor: default;
   }
+
   & label {
     width: 100%;
     @include SFTextRegular();
-    @include flex(row, space-between, center );
+    @include flex(row, space-between, center);
     margin-bottom: 16px;
     font-size: 14px;
     line-height: 20px;
@@ -33,10 +36,11 @@
       flex-direction: row;
       align-items: center;
 
-      & input{
+      & input {
         display: none;
       }
-      & span{
+
+      & span {
         @include size(18px, 18px);
         border: 2px solid #8C9196;
         border-radius: 50%;
@@ -46,6 +50,7 @@
         margin-right: 8px;
         cursor: pointer;
       }
+
       [type=radio]:checked + span:before {
         @include size(20px, 20px);
         content: url("../../Images/radio.svg");

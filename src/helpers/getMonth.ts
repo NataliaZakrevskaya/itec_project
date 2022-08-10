@@ -1,5 +1,4 @@
-
-export const getMonth = ( month: number) => {
+export const getMonth = ( month: number ) => {
   switch ( month ) {
     case 0: {
       return 'января';

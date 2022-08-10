@@ -3,8 +3,8 @@ import { AnimalTypesType } from '../../mocks';
 import { animalTypesAPI } from '../../Api/animalTypesApi/animalTypesApi';
 
 export const fetchAnimalTypesTC = createAsyncThunk(
-  'animalTypes/fetchAnimalTypes',   async( param, { dispatch } ) => {
-    const res =  await animalTypesAPI.setAnimalTypes();
+  'animalTypes/fetchAnimalTypes', async ( param, { dispatch } ) => {
+    const res = await animalTypesAPI.setAnimalTypes();
     try {
       return { animalTypes: res.data };
     } catch ( err ) {

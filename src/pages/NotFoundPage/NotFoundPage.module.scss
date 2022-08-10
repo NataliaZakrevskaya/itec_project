@@ -12,29 +12,33 @@
     z-index: 2;
 
     & h1 {
-  @include SFDisplayBold();
+      @include SFDisplayBold();
       font-size: 146px;
       line-height: 120%;
       color: #BDC1CC;
       margin-bottom: 16px;
     }
-    & h2{
+
+    & h2 {
       @include SFDisplaySemibold();
       font-size: 28px;
       line-height: 32px;
       color: #202223;
       margin-bottom: 16px;
     }
-    & p{
+
+    & p {
       @include SFTextRegular();
       font-size: 16px;
       line-height: 130%;
       color: #6D7175;
     }
-    .lastParagraph{
+
+    .lastParagraph {
       margin: 8px 0 33px;
     }
-    & button{
+
+    & button {
 
     }
   }

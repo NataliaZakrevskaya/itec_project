@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { productsAPI } from '../../Api/productsApi/productsApi';
 import { RequestStatus } from './enums';
-import { ProductItemType } from './products-reducer';
 import { setPopularProductRequestStatus } from './app-reducer';
-import { OptionType } from '../../mocks';
+import { OptionType, ProductItemType } from '../../mocks';
 
 export const fetchPopularProductsTC = createAsyncThunk(
   'popularProducts/fetchPopularProducts', async ( param: { ordering: string, animal: number | null }, {
@@ -29,11 +28,11 @@ export const slice = createSlice( {
     page_number: 1 as number,
     products_on_page: null as null | number,
     total_pages: 1 as number,
-  } as popularProductsInitialStateType,
+  },
   reducers: {
     setChosenOptionToPopularProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
-      const index = state.results.findIndex(product => product.id === action.payload.productId)
-      state.results[index].chosen_option = action.payload.option
+      const index = state.results.findIndex( product => product.id === action.payload.productId );
+      state.results[ index ].chosen_option = action.payload.option;
     },
   },
   extraReducers: ( builder => {
@@ -47,12 +46,3 @@ export const slice = createSlice( {
 
 export const popularProductsReducer = slice.reducer;
 export const { setChosenOptionToPopularProduct } = slice.actions;
-
-type popularProductsInitialStateType = {
-  results: Array<ProductItemType>,
-  total_products: number,
-  max_products_on_page: number,
-  page_number: number,
-  products_on_page: null | number,
-  total_pages: number,
-}

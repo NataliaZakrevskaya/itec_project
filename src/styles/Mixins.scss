@@ -12,16 +12,19 @@
   font-style: normal;
   font-weight: 400;
 }
+
 @mixin SFTextMedium() {
   font-family: "SF Text Medium";
   font-style: normal;
   font-weight: 500;
 }
+
 @mixin SFDisplaySemibold() {
   font-family: "SF Display Semibold";
   font-style: normal;
   font-weight: 600;
 }
+
 @mixin SFDisplayBold() {
   font-family: "SF Display Bold";
   font-style: normal;

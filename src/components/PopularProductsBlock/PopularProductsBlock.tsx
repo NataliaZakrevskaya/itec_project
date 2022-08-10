@@ -13,22 +13,21 @@ import { selectValues } from '../../Api/productsApi/enums';
 import { location } from '../../enums';
 import { AppDispatch } from '../../redux/store';
 import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
+import { PopularProductsBlockPropsType } from './types';
 
 const PopularProductsBlock = ( { fromCatalog }: PopularProductsBlockPropsType ) => {
 
   const popularProducts = useSelector( getPopularProducts );
-  const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
-  const ordering = selectValues.POPULARITY;
-  const goToPopularProducts = () => {
-    dispatch( setChosenOrdering( { ordering } ) );
-    navigate( routesPathsEnum.CATALOG );
-  };
   const animal = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( animal );
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const goToPopularProducts = () => {
+    dispatch( setChosenOrdering( { ordering: selectValues.POPULARITY } ) );
+    navigate( routesPathsEnum.CATALOG );
+  };
   useEffect( () => {
-    dispatch( fetchPopularProductsTC( { ordering, animal } ) );
+    dispatch( fetchPopularProductsTC( { ordering: selectValues.POPULARITY, animal } ) );
   }, [ animal ] );
 
   return (
@@ -46,7 +45,3 @@ const PopularProductsBlock = ( { fromCatalog }: PopularProductsBlockPropsType ) 
 };
 
 export default PopularProductsBlock;
-
-type PopularProductsBlockPropsType = {
-  fromCatalog: boolean
-}

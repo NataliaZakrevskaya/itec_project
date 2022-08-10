@@ -2,32 +2,35 @@
   background-color: #f6f6f7;
 
   .sectionsBlock {
-    & button:last-child{
+    & button:last-child {
       border: none;
       outline: none;
       background-size: 7px 12px;
       background: white url("../../Images/nextIcon.svg") no-repeat 50% 50%;
     }
-    & button:last-child:hover{
+
+    & button:last-child:hover {
       border: none;
       outline: none;
       background-size: 7px 12px;
       background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
 
     }
-    & button:first-child{
+
+    & button:first-child {
       border: none;
       outline: none;
       background-size: 7px 12px;
       background: white url("../../Images/prevIcon.svg") no-repeat 50% 50%;
 
-      &:hover{
+      &:hover {
         transform: rotate(-180deg);
         background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
 
       }
     }
-    & button:hover{
+
+    & button:hover {
       border: none;
       outline: none;
       background: #00A0AC;
@@ -36,6 +39,6 @@
   }
 }
 
-.productItem{
+.productItem {
   background-color: white;
 }

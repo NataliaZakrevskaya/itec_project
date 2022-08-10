@@ -17,27 +17,27 @@ import { AppDispatch } from '../../redux/store';
 
 const ArticlesPage = () => {
 
-  const [showAll, setShowAll] = useState<boolean>(false)
+  const [ showAll, setShowAll ] = useState<boolean>( false );
 
   const articlesFromStore = useSelector( getArticles );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const articlesByAnimalTypeSorting = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
   const getArticlesForBlock = () => {
     if ( chosenAnimalTypeId ) {
-      const articles = articlesByAnimalTypeSorting
-      if(articles.length){
-        if(!showAll){
-          return articles.filter( (article, index) => index < 3)
+      const articles = articlesByAnimalTypeSorting;
+      if ( articles.length ) {
+        if ( !showAll ) {
+          return articles.filter( ( article, index ) => index < 3 );
         }
         return articles;
       }
-      if (!showAll){
-        return articlesFromStore.filter( (article, index) => index < 3)
+      if ( !showAll ) {
+        return articlesFromStore.filter( ( article, index ) => index < 3 );
       }
       return articlesFromStore;
     }
-    if (!showAll){
-      return articlesFromStore.filter( (article, index) => index < 3)
+    if ( !showAll ) {
+      return articlesFromStore.filter( ( article, index ) => index < 3 );
     }
     return articlesFromStore;
   };
@@ -48,14 +48,14 @@ const ArticlesPage = () => {
   const navigate = useNavigate();
 
   useEffect( () => {
-    dispatch(fetchArticlesTC())
+    dispatch( fetchArticlesTC() );
   }, [] );
 
   return (
     <div className={ style.articlesPageBlock }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
-          <p onClick={() => navigate(routesPathsEnum.MAIN)}>Главная</p>
+          <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
           <img src={ nextIcon } alt="nextIcon"/>
           <p>Статьи</p>
         </div>
@@ -81,9 +81,10 @@ const ArticlesPage = () => {
             )
           }
         </div>
-        {!showAll && articlesByAnimalTypeSorting.length < 3 && <button onClick={ () => setShowAll(true) }>Показать ещё</button>}
+        { !showAll && articlesByAnimalTypeSorting.length < 3 &&
+          <button onClick={ () => setShowAll( true ) }>Показать ещё</button> }
       </div>
-      <PopularProductsBlock fromCatalog={false}/>
+      <PopularProductsBlock fromCatalog={ false }/>
       <ContactBlock/>
     </div>
   );

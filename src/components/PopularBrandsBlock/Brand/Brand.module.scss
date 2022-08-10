@@ -1,13 +1,12 @@
 @import "src/styles/Mixins";
 
-.brand{
+.brand {
   @include flex(column, center, center);
   padding: 14px 20px;
   width: 174px;
   height: 115.55px;
   background: #FFFFFF;
   border-radius: 4px;
-  //margin: 12px 0;
   cursor: pointer;
 
   & img {
@@ -15,12 +14,14 @@
     height: 100%;
     object-fit: contain;
   }
-  &:hover{
+
+  &:hover {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
   }
 }
+
 @media (max-width: 768px) {
-  .brand{
+  .brand {
     width: 80px;
     height: 57.81px;
     padding: 8px;

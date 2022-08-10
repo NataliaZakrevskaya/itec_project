@@ -9,6 +9,7 @@
 
   .title {
     margin: 20px 0 16px;
+
     & h3 {
       @include SFDisplayBold();
       font-size: 24px;
@@ -17,30 +18,35 @@
       color: #202223;
     }
   }
-  .scheduleBlock{
+
+  .scheduleBlock {
     display: flex;
     flex-direction: row;
     align-items: center;
     position: relative;
     margin: 16px 0 17px;
-    & img{
+
+    & img {
       @include size(16px, 16px);
       margin-right: 7.6px;
     }
-    & p{
+
+    & p {
       @include SFTextRegular();
       font-size: 14px;
       line-height: 20px;
       color: #202223;
     }
-    .headerStrip{
+
+    .headerStrip {
       width: 1.5px;
       height: 13px;
       background: #8C9196;
       margin: 0 6px;
     }
   }
-  & button{
+
+  & button {
     padding: 8px 16px;
     gap: 10px;
     background: #00A0AC;
@@ -55,7 +61,8 @@
     text-align: center;
     cursor: pointer;
     margin-right: 13px;
-    &:hover{
+
+    &:hover {
       background: #347C84;
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
       border-radius: 4px;

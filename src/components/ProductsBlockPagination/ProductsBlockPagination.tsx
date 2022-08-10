@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './ProductsBlockPagination.module.scss';
 import prevPage from '../../Images/prevPage.svg';
 import nextPage from '../../Images/nextPage.svg';
+import { ProductsBlockPaginationType } from './types';
 
 const ProductsBlockPagination = ( {
                                     totalProductsCount,
@@ -9,39 +10,37 @@ const ProductsBlockPagination = ( {
                                     actualPage,
                                     onPageChanged,
                                     portionSize = 3,
-                                    withWords
+                                    withWords,
                                   }: ProductsBlockPaginationType ) => {
 
+  const [ portionNumber, setPortionNumber ] = useState( 1 );
   let pagesCount = Math.ceil( totalProductsCount / pageSize );
-
+  const portionCount = Math.ceil( pagesCount / portionSize );
+  const leftPortionPageNumber = actualPage === pagesCount ? actualPage - 2 : actualPage - 1;
+  const rightPortionPageNumber = actualPage === 1 ? actualPage + 2 : actualPage + 1;
   let pages = [] as Array<number>;
   for ( let i = 1; i <= pagesCount; i++ ) {
     pages.push( i );
   }
 
-  const portionCount = Math.ceil( pagesCount / portionSize);
-  const [ portionNumber, setPortionNumber ] = useState( 1 );
-  const leftPortionPageNumber = actualPage === pagesCount ? actualPage - 2 :actualPage - 1;
-  const rightPortionPageNumber = actualPage === 1 ? actualPage + 2 :actualPage + 1;
-
   const onPrevButtonClick = () => {
-    if(portionCount > 1){
-      onPageChanged( actualPage - 1 )
-      setPortionNumber(portionNumber - 1)
+    if ( portionCount > 1 ) {
+      onPageChanged( actualPage - 1 );
+      setPortionNumber( portionNumber - 1 );
     }
-  }
+  };
   const onNextButtonClick = () => {
-    if(pagesCount > actualPage){
-      onPageChanged( actualPage + 1 )
-      setPortionNumber(portionNumber + 1)
+    if ( pagesCount > actualPage ) {
+      onPageChanged( actualPage + 1 );
+      setPortionNumber( portionNumber + 1 );
     }
-  }
+  };
 
   return (
     <div className={ style.paginationBlock }>
       <div className={ style.navigationBlock } onClick={ onPrevButtonClick }>
         <img className={ style.navigationBlockLeft } src={ prevPage } alt="prevPage"/>
-        {withWords && <p>Предыдущая</p> }
+        { withWords && <p>Предыдущая</p> }
       </div>
       <div className={ style.pages }>
         { pages
@@ -50,15 +49,17 @@ const ProductsBlockPagination = ( {
             return (
               <p
                 key={ page }
-                onClick={ () => {onPageChanged( page )} }
-                className={actualPage === page ? `${style.page} ${style.active}` : style.page}
+                onClick={ () => {
+                  onPageChanged( page );
+                } }
+                className={ actualPage === page ? `${ style.page } ${ style.active }` : style.page }
               >{ page }
               </p>
             );
           } ) }
       </div>
       <div className={ style.navigationBlock } onClick={ onNextButtonClick }>
-        {withWords && <p>Следующая</p> }
+        { withWords && <p>Следующая</p> }
         <img className={ style.navigationBlockRight } src={ nextPage } alt="nextPage"/>
       </div>
     </div>
@@ -66,12 +67,3 @@ const ProductsBlockPagination = ( {
 };
 
 export default ProductsBlockPagination;
-
-type ProductsBlockPaginationType = {
-  totalProductsCount: number,
-  pageSize: number
-  actualPage: number,
-  portionSize: number,
-  withWords: boolean,
-  onPageChanged: ( pageNumber: number ) => void
-}

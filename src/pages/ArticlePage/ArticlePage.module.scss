@@ -79,45 +79,47 @@
     }
   }
 }
+
 @media (max-width: 768px) {
-  .articleTextContainer{
+  .articleTextContainer {
     width: 100% !important;
   }
-  .articleReadingWrapper{
+  .articleReadingWrapper {
     & div {
       & p {
-        font-size: 15px!important;
-        line-height: 24px!important;
-        color: #6D7175!important;
+        font-size: 15px !important;
+        line-height: 24px !important;
+        color: #6D7175 !important;
       }
     }
   }
-  .articleText{
+  .articleText {
     font-size: 16px !important;
     line-height: 145% !important;
     color: #202223 !important;
   }
-  .articleReadingWrapper{
+  .articleReadingWrapper {
     & div {
       & p {
         font-size: 13px !important;
       }
     }
   }
-  .articleTitle{
+  .articleTitle {
     margin-bottom: 12px !important;
+
     & h1 {
       font-size: 24px !important;
       line-height: 130% !important;
     }
   }
-  .articleReadingWrapper{
+  .articleReadingWrapper {
     margin-bottom: 24px !important;
   }
-  .articleImage{
+  .articleImage {
     margin-bottom: 24px !important;
   }
-  .articleTextContainer{
+  .articleTextContainer {
     margin-bottom: 48px !important;
   }
 }

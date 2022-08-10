@@ -1,7 +1,6 @@
 import { AxiosRequestConfig, AxiosResponseHeaders } from 'axios';
-import { ProductItemType } from '../redux/reducers/products-reducer';
 
-export const getProductItems = (): Array<resProductItemType> => {
+export const getProductItems = (): Array<ProductItemType> => {
   return [
     {
       id: 1,
@@ -40,16 +39,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -118,16 +117,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -196,16 +195,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -274,16 +273,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -352,16 +351,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -430,16 +429,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -508,16 +507,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -586,16 +585,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -664,16 +663,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -742,16 +741,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -820,16 +819,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -898,16 +897,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -976,16 +975,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1054,16 +1053,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1132,16 +1131,16 @@ export const getProductItems = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1175,7 +1174,7 @@ export const getProductItems = (): Array<resProductItemType> => {
     },
   ];
 };
-export const getWithThisProductsBuy = (): Array<resProductItemType> => {
+export const getWithThisProductsBuy = (): Array<ProductItemType> => {
   return [
     {
       id: 1,
@@ -1214,16 +1213,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1292,16 +1291,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1370,16 +1369,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1448,16 +1447,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1526,16 +1525,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1604,16 +1603,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1682,16 +1681,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1760,16 +1759,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1838,16 +1837,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1916,16 +1915,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -1994,16 +1993,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -2072,16 +2071,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -2150,16 +2149,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -2228,16 +2227,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -2306,16 +2305,16 @@ export const getWithThisProductsBuy = (): Array<resProductItemType> => {
         {
           id: 153,
           units: {
-            unit_name: "шт."
+            unit_name: 'шт.',
           },
-          article_number: "404",
+          article_number: '404',
           discountproductoption: null,
           partial: false,
           quantity: 1,
-          price: "20.00",
+          price: '20.00',
           size: 30,
-          stock_balance: 12
-        }
+          stock_balance: 12,
+        },
       ],
       discountproduct: null,
       chosen_option: {
@@ -2364,10 +2363,11 @@ export const getDiscounts = (): Array<DiscountType> => {
   ];
 };
 export const getProductInitState = (): ProductItemType => {
-  return {id: 0,
+  return {
+    id: 0,
     name: '',
-    animal: [{ id: 0, name: '', image: '' }],
-    images:  [{id: 0, image: ''}],
+    animal: [ { id: 0, name: '', image: '' } ],
+    images: [ { id: 0, image: '' } ],
     discountproduct: null,
     description: '',
     features: '',
@@ -2375,8 +2375,8 @@ export const getProductInitState = (): ProductItemType => {
     additives: '',
     analysis: '',
     brand: { id: 0, name: '', image: '' },
-    category: { id: 0, name: '', is_active: true } ,
-    options: [{
+    category: { id: 0, name: '', is_active: true },
+    options: [ {
       id: 0,
       article_number: '',
       discountproductoption: null,
@@ -2386,7 +2386,7 @@ export const getProductInitState = (): ProductItemType => {
       size: 0,
       stock_balance: 0,
       units: { unit_name: '' },
-    }],
+    } ],
     chosen_option: {
       id: 0,
       article_number: '',
@@ -2397,13 +2397,20 @@ export const getProductInitState = (): ProductItemType => {
       size: 0,
       stock_balance: 0,
       units: { unit_name: '' },
-    },}
-}
+    },
+  };
+};
 
 export type DiscountType = {
   id: number,
   title: string,
   img: string
+}
+export type BrandType = {
+  id: number,
+  name: string,
+  image: string,
+  chosen: boolean
 }
 export type ResBrandType = {
   id: number,
@@ -2447,24 +2454,24 @@ export type AnimalTypesType = {
   name: string,
   image: string,
 }
-export type resProductItemType = {
+export type ProductItemType = {
   id: number,
   name: string,
   animal: Array<AnimalTypesType>
   images: Array<{ id: number, image: string }>,
+  discountproduct: {
+    title: string,
+    discount_amount: number,
+    product_id: number
+  } | null,
   description: string,
   features: string,
   composition: string,
   additives: string,
   analysis: string,
   brand: { id: number, name: string, image: string },
-  category: { id: number, name: string, is_active: true, },
+  category: { id: number, name: string, is_active: boolean, },
   options: Array<OptionType>,
-  discountproduct: {
-    title: string,
-    discount_amount: number,
-    product_id: number
-  } | null,
   chosen_option: OptionType
 }
 export type responseProductItemType = {
@@ -2473,7 +2480,7 @@ export type responseProductItemType = {
   total_products: number,
   total_pages: number,
   max_products_on_page: number,
-  results: Array<resProductItemType>
+  results: Array<ProductItemType>
 }
 export type AxiosResponse<T = any, D = any> = {
   data: T,

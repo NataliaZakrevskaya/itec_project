@@ -1,45 +1,49 @@
 @import "src/styles/Mixins";
 
-.footer{
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 
-  .navbar{
+  .navbar {
     @include flex(row, space-between, center);
-    //height: 24px;
     width: 100%;
     padding-top: 16px;
   }
- & hr {
-   display: block;
-   height: 1px;
-   margin: 16px 0;
-   background-color: #D2D5D8;
-   opacity: 0.25;
- }
-  .address{
+
+  & hr {
+    display: block;
+    height: 1px;
+    margin: 16px 0;
+    background-color: #D2D5D8;
+    opacity: 0.25;
+  }
+
+  .address {
     @include flex(row, space-between, center);
     width: 100%;
     margin-bottom: 18px;
   }
-  .siteInfo{
+
+  .siteInfo {
     @include flex(row, space-between, center);
     @include SFTextRegular();
     font-size: 14px;
     line-height: 20px;
     width: 100%;
     margin-bottom: 18px;
-     & p{
-       color: #8C9196;
-     }
 
-    .designerInfo{
+    & p {
+      color: #8C9196;
+    }
+
+    .designerInfo {
       display: flex;
       flex-direction: row;
       align-items: center;
-      & a{
+
+      & a {
         line-height: 24px;
         color: #2C6ECB;
         margin-left: 6px;
@@ -47,25 +51,28 @@
     }
   }
 }
-.hr{
+
+.hr {
   display: none !important;
   width: 100%;
 }
+
 @media (max-width: 768px) {
   .hr {
     display: block !important;
   }
-  .navbar{
+  .navbar {
     flex-direction: column !important;
   }
-  .address{
+  .address {
     flex-direction: column !important;
     align-items: flex-start !important;
   }
-  .siteInfo{
+  .siteInfo {
     flex-direction: column !important;
     padding-bottom: 16px;
-    & .designerInfo{
+
+    & .designerInfo {
       margin-bottom: 10px;
     }
   }

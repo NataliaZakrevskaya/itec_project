@@ -6,6 +6,8 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
   const [ offset, setOffset ] = useState( 0 );
   const [ isNextDisabled, setIsNextDisabled ] = useState( false );
   const [ isPrevDisabled, setIsPrevDisabled ] = useState( true );
+  const [ x, setX ] = useState<null | number>( null );
+  const [ x2, setX2 ] = useState<null | number>( null );
   const [ width, setWidth ] = useState( 1200 );
   const windowElRef = useRef( null );
 
@@ -21,42 +23,6 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       if ( width < 940 ) setIsNextDisabled( itemsCount <= 2 );
     }
   };
-  /*  let className;
-    const getIsWithGap = () => {
-      if ( blockName === BlockNames.PRODUCTS ) {
-        if ( width > 940 ) {
-          if ( itemsCount <= 4 ) {
-            return className='commonStyle.productsLessThenFive'
-          } else return className='commonStyle.allProductItemsContainer'
-        }
-        if ( width <= 940 && width > 700 ){
-          if ( itemsCount <= 3 ) {
-            return className='commonStyle.productsLessThenFive'
-          } else return className='commonStyle.allProductItemsContainer'
-        }
-        if ( width <= 700 ){
-          if ( itemsCount <= 3 ) {
-            return className='commonStyle.productsLessThenFive'
-          } else return className='commonStyle.allProductItemsContainer'
-        }
-      }
-    };*/
-
-  useEffect( () => {
-    const resizeHandler = () => {
-      // @ts-ignore
-      const _width = windowElRef?.current.offsetWidth;
-      setWidth( _width );
-      getIsNextButtonDisables();
-    };
-    resizeHandler();
-    window.addEventListener( 'resize', resizeHandler );
-
-    return () => {
-      window.removeEventListener( 'resize', resizeHandler );
-    };
-  }, [ width, itemsCount ] );
-
   const getPagesCount = () => {
     if ( blockName === BlockNames.REVIEWS ) return itemsCount;
     if ( blockName === BlockNames.ARTICLES ) {
@@ -79,9 +45,7 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
     }
     return 1;
   };
-
   const pagesCount = getPagesCount();
-
   const onPrevSectionButtonClick = () => {
     setOffset( ( currentOffset ) => {
       const newOffset = currentOffset + width;
@@ -99,14 +63,9 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       return Math.max( newOffset, maxOffset );
     } );
   };
-
-  const [ x, setX ] = useState<null | number>( null );
-  const [ x2, setX2 ] = useState<null | number>( null );
-
   const onTouchStart = ( event: any ) => {
     setX( event.touches[ 0 ].clientX );
   };
-
   const getDiff = () => {
     if ( blockName === BlockNames.PRODUCTS ) {
       if ( width >= 520 ) return width;
@@ -126,8 +85,8 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
   const onTouchEnd = ( event: any ) => {
     if ( !x ) return false;
     else {
-      const x2 = event.changedTouches[ 0 ].clientX
-      setX2( x2);
+      const x2 = event.changedTouches[ 0 ].clientX;
+      setX2( x2 );
       if ( x && x2 ) {
         if ( x2 - x < 0 && Math.abs( x2 - x ) > 10 ) {
           setOffset( ( currentOffset ) => {
@@ -145,6 +104,21 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       }
     }
   };
+
+  useEffect( () => {
+    const resizeHandler = () => {
+      // @ts-ignore
+      const _width = windowElRef?.current.offsetWidth;
+      setWidth( _width );
+      getIsNextButtonDisables();
+    };
+    resizeHandler();
+    window.addEventListener( 'resize', resizeHandler );
+
+    return () => {
+      window.removeEventListener( 'resize', resizeHandler );
+    };
+  }, [ width, itemsCount ] );
 
   return {
     offset,

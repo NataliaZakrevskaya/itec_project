@@ -35,13 +35,13 @@ const rootReducer = combineReducers( {
   reviews: reviewsReducer,
   articles: articlesReducer,
   ordering: orderingReducer,
-  descriptionShop: descriptionShopReducer
+  descriptionShop: descriptionShopReducer,
 } );
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['products', 'productsFromSearch', 'latestProducts', 'popularProducts', 'product' ]
+  blacklist: [ 'products', 'productsFromSearch', 'latestProducts', 'popularProducts', 'product' ],
 };
 
 const persistedReducer = persistReducer( persistConfig, rootReducer );

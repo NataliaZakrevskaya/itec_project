@@ -1,9 +1,9 @@
-export const getGoods = (countOfGoods: number) => {
+export const getGoods = ( countOfGoods: number ) => {
   if ( countOfGoods === 11 || countOfGoods === 12 || countOfGoods === 13 || countOfGoods === 14 ) {
-    return 'товаров'
+    return 'товаров';
   } else {
-    const array = String(countOfGoods).split('');
-    const lastNumber = array[array.length - 1];
+    const array = String( countOfGoods ).split( '' );
+    const lastNumber = array[ array.length - 1 ];
     switch ( +lastNumber ) {
       case 0: {
         return 'товаров';
@@ -39,4 +39,4 @@ export const getGoods = (countOfGoods: number) => {
         return 'товаров';
     }
   }
-}
+};

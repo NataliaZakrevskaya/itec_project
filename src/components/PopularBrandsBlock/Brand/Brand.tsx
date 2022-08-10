@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Brand.module.scss';
+import { BrandPropsType } from './types';
 
 const Brand = ( { id, image, chooseBrand }: BrandPropsType ) => {
   return (
@@ -10,9 +11,3 @@ const Brand = ( { id, image, chooseBrand }: BrandPropsType ) => {
 };
 
 export default Brand;
-
-type BrandPropsType = {
-  id: number
-  image: string
-  chooseBrand: ( id: number ) => void
-}

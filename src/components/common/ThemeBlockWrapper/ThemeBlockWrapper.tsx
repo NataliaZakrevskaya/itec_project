@@ -9,7 +9,6 @@ import OneClickOrder from '../modals/OneClickOrder/OneClickOrder';
 import BasketModal from '../modals/BasketModal/BasketModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementProductQuantity, setProductToBasket } from '../../../redux/reducers/basket-reducer';
-import { ProductItemType } from '../../../redux/reducers/products-reducer';
 import { useCarousel } from '../../../customHooks/useCarousel';
 import { BlockNames } from '../../../customHooks/enums';
 import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
@@ -21,6 +20,8 @@ import { RequestStatus } from '../../../redux/reducers/enums';
 import SuccessOrderModal from '../modals/SuccessOrderModal/SuccessOrderModal';
 import { location } from '../../../enums';
 import { setOneClickOrderRequestStatus } from '../../../redux/reducers/app-reducer';
+import { ThemeBlockWrapperPropsType } from '../types';
+import { ProductItemType } from '../../../mocks';
 
 const ThemeBlockWrapper = ( {
                               title,
@@ -34,19 +35,21 @@ const ThemeBlockWrapper = ( {
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const { block, sectionsBlock, productItem } = blockTheme;
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const productsFromBasket = useSelector( getProductsInBasket );
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const { block, sectionsBlock, productItem } = blockTheme;
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if(isBasketModalActive || isOneClickModalActive){
-      window.document.body.style.overflow = 'hidden'
+  useEffect( () => {
+    if ( isBasketModalActive || isOneClickModalActive ) {
+      window.document.body.style.overflow = 'hidden';
     }
-    return () => {window.document.body.style.overflow = ''}
-  }, [isOneClickModalActive, isBasketModalActive])
+    return () => {
+      window.document.body.style.overflow = '';
+    };
+  }, [ isOneClickModalActive, isBasketModalActive ] );
 
   const {
     onPrevSectionButtonClick,
@@ -72,8 +75,7 @@ const ThemeBlockWrapper = ( {
   };
   const closeSuccessModal = () => {
     dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
-  }
-
+  };
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
     productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.id !== product.chosen_option?.id )
@@ -125,7 +127,7 @@ const ThemeBlockWrapper = ( {
                       openOneClickModal={ openOneClickModal }
                       openBasketModal={ openBasketModal }
                       from={ from }
-                      forCatalog={false}
+                      forCatalog={ false }
                     />,
                   )
               }
@@ -142,7 +144,7 @@ const ThemeBlockWrapper = ( {
               image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
               options={ productForOneClickOrderModal.options }
               chosen_option={ productForOneClickOrderModal.chosen_option }
-              closeOneClickModal={closeOneClickModal}
+              closeOneClickModal={ closeOneClickModal }
             />
           </Modal>
         }
@@ -160,7 +162,7 @@ const ThemeBlockWrapper = ( {
         }
         { isSuccessOneClickOrder &&
           <Modal closeModal={ closeSuccessModal }>
-            <SuccessOrderModal from={location.ONE_CLICK_ORDER}/>
+            <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/>
           </Modal>
         }
       </div>
@@ -169,12 +171,3 @@ const ThemeBlockWrapper = ( {
 };
 
 export default ThemeBlockWrapper;
-
-type ThemeBlockWrapperPropsType = {
-  title: string,
-  onButtonClick: () => void,
-  itemsForBlock: Array<ProductItemType>,
-  blockTheme: any,
-  from: string,
-  withoutButton?: boolean
-}

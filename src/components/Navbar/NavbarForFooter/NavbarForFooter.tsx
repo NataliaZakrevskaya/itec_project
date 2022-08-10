@@ -19,7 +19,8 @@ const NavbarForFooter = () => {
       <NavLink to={ routesPathsEnum.MAIN }>Главная</NavLink>
       <NavLink to={ routesPathsEnum.CATALOG }>Каталог</NavLink>
       <div onClick={ discountLinkHandler } className={ style.scroll }>
-        <HashLink to={ '#discounts' } className={ style.anchor } scroll={(el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' })}>Акции</HashLink>
+        <HashLink to={ '#discounts' } className={ style.anchor }
+                  scroll={ ( el ) => el.scrollIntoView( { behavior: 'smooth', block: 'center' } ) }>Акции</HashLink>
       </div>
       <NavLink to={ routesPathsEnum.ARTICLES }>Статьи</NavLink>
     </div>

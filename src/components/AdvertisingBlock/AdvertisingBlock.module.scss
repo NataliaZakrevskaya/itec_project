@@ -1,20 +1,21 @@
 @import "src/styles/Mixins";
 
 
-.advertisingBlockContainer{
+.advertisingBlockContainer {
   width: 100%;
   background-color: white;
   padding: 24.75px 0 40.75px 0;
   cursor: default;
 
 
-  .advertisingBlock{
+  .advertisingBlock {
     display: flex;
     flex-direction: row;
     overflow: hidden;
   }
 }
-.mainTitle{
+
+.mainTitle {
   padding-top: 42.25px;
   margin-bottom: 32px;
   max-width: 534px;
@@ -22,8 +23,10 @@
   font-size: 42px;
   line-height: 120%;
 }
-.subTitleWrapper{
+
+.subTitleWrapper {
   display: flex;
+
   & p {
     max-width: 254px;
     @include SFTextRegular();
@@ -31,19 +34,22 @@
     line-height: 140%;
     color: #202223;
   }
-  & span{
+
+  & span {
     @include SFDisplayBold();
     font-size: 16px;
     line-height: 130%;
     color: #202223;
   }
+
   margin-bottom: 33px;
 }
 
-.subTitleOne{
+.subTitleOne {
   display: flex;
 }
-.subTitleOne:before{
+
+.subTitleOne:before {
   content: '';
   display: block;
   width: 2px;
@@ -51,10 +57,12 @@
   background: #98C6CD;
   margin-right: 8px;
 }
-.subTitleTwo{
+
+.subTitleTwo {
   display: flex;
 }
-.subTitleTwo:before{
+
+.subTitleTwo:before {
   content: '';
   display: block;
   width: 2px;
@@ -62,43 +70,48 @@
   background: #98C6CD;
   margin-right: 8px;
 }
-.mainImage{
+
+.mainImage {
   min-width: 573px;
   height: 377px;
+
   & img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 }
+
 @media (max-width: 992px) {
-  .mainTitle{
+  .mainTitle {
     width: 267px;
     font-size: 21px;
     line-height: 28px;
     color: #202223;
     padding-top: 0 !important;
   }
-  .subTitleWrapper{
+  .subTitleWrapper {
     flex-direction: column;
     font-size: 15px;
     line-height: 140%;
   }
-  .subTitleOne{
+  .subTitleOne {
     margin-bottom: 16px;
   }
-  .advertisingBlock{
+  .advertisingBlock {
     overflow: hidden;
   }
-  .subTitleWrapper{
-    & p{}
+  .subTitleWrapper {
+    & p {
+    }
 
     font-size: 15px;
     max-width: 183px;
   }
 }
+
 @media (max-width: 768px) {
-  .mainWrapper{
+  .mainWrapper {
     & button {
       width: 137px;
     }

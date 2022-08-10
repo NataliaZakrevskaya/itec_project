@@ -6,9 +6,8 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  //max-width: 611px;
 
-  .discount{
+  .discount {
     position: absolute;
     top: 4px;
     left: 10px;
@@ -28,26 +27,29 @@
     line-height: 28px;
     margin: 0 0 16px;
   }
-   .nextSection{
-     width: 100%;
-     margin: 0 auto 16px;
-     height: 1px;
-     position: relative;
-     & span {
-       display: block;
-       height: 1px;
-       position: relative;
-       &::after {
-         width: 100%;
-         content: '';
-         position: absolute;
-         top: 0;
-         left: 0;
-         bottom: 0;
-         background-color: #8C9196;
-       }
-     }
-   }
+
+  .nextSection {
+    width: 100%;
+    margin: 0 auto 16px;
+    height: 1px;
+    position: relative;
+
+    & span {
+      display: block;
+      height: 1px;
+      position: relative;
+
+      &::after {
+        width: 100%;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #8C9196;
+      }
+    }
+  }
 
   & .setDataParagraph {
     @include SFTextRegular();
@@ -66,7 +68,7 @@
 
   }
 
-  .personalData{
+  .personalData {
     @include SFTextRegular();
     font-size: 12px;
     line-height: 16px;

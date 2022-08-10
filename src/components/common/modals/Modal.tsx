@@ -1,6 +1,7 @@
 import style from './Modal.module.scss';
 import closeIcon from '../../../Images/closeIcon.svg';
 import React from 'react';
+import { ModalPropsType } from './types';
 
 const Modal = ( { closeModal, children }: ModalPropsType ) => {
   return (
@@ -16,8 +17,3 @@ const Modal = ( { closeModal, children }: ModalPropsType ) => {
 };
 
 export default Modal;
-
-type ModalPropsType = {
-  closeModal: () => void
-  children: any
-}

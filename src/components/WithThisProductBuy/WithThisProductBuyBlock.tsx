@@ -2,10 +2,11 @@ import React from 'react';
 import dark from '../../styles/common/DarkBlock.module.scss';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { location } from '../../enums';
-import { ProductItemType } from '../../redux/reducers/products-reducer';
+import { WithThisProductBuyBlockPropsType } from './types';
 
 export const WithThisProductBuyBlock = ( { products }: WithThisProductBuyBlockPropsType ) => {
-  const goToCommonProducts = () => {};
+  const goToCommonProducts = () => {
+  };
 
   return (
     <ThemeBlockWrapper
@@ -14,11 +15,7 @@ export const WithThisProductBuyBlock = ( { products }: WithThisProductBuyBlockPr
       itemsForBlock={ products }
       blockTheme={ dark }
       from={ location.WITH_THIS_PRODUCT_BUY }
-      withoutButton={true}
+      withoutButton={ true }
     />
   );
 };
-
-type WithThisProductBuyBlockPropsType = {
-  products: Array<ProductItemType>
-}

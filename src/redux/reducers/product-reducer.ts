@@ -25,7 +25,6 @@ export const slice = createSlice( {
     },
   },
   extraReducers: ( builder => {
-    // @ts-ignore
     builder.addCase( fetchProductTC.fulfilled, ( state, action ) => {
       return action.payload?.product;
     } );

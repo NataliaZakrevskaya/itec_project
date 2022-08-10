@@ -1,7 +1,7 @@
 import Header from './components/Header/Header';
 import AppRoutes from './routes/routes';
 import Footer from './components/Footer/Footer';
-import React, { useState, Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import HeaderBurger from './components/Header/HeaderBurger/HeaderBurger';
 import FooterBurger from './components/Footer/FooterBurger/FooterBurger';
 import { Wrapper } from './components/common/Wrapper/Wrapper';
@@ -24,13 +24,13 @@ const App = () => {
   const openEditMode = () => {
     setEditMode( true );
   };
-  const {windowElRef, width} = useResize()
-  useEffect(() => {
-    if(width <= 770) setEditMode(false)
-  }, [width])
+  const { windowElRef, width } = useResize();
+  useEffect( () => {
+    if ( width <= 770 ) setEditMode( false );
+  }, [ width ] );
 
   return (
-    <div ref={windowElRef}>
+    <div ref={ windowElRef }>
       { editMode
         ? ( <div>
           <Suspense fallback={ <Loading/> }>

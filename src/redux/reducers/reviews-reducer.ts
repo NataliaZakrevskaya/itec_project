@@ -14,13 +14,16 @@ export const fetchReviewsTC = createAsyncThunk(
   },
 );
 export const sendReviewTC = createAsyncThunk(
-  'reviews/sendReview', async ( param: { nameAuthor: string, phoneNumber: string, nameAnimal: string, bodyOfComment: string }, { dispatch, rejectWithValue } ) => {
+  'reviews/sendReview', async ( param: { nameAuthor: string, phoneNumber: string, nameAnimal: string, bodyOfComment: string }, {
+    dispatch,
+    rejectWithValue,
+  } ) => {
     try {
       await reviewsAPI.sendReview( param.nameAuthor, param.phoneNumber, param.nameAnimal, param.bodyOfComment );
-      dispatch(setSendingReviewRequestStatus({status: RequestStatus.SUCCEEDED}));
+      dispatch( setSendingReviewRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
     } catch ( err ) {
-      dispatch(setSendingReviewRequestStatus({status: RequestStatus.FAILED}));
-      rejectWithValue(null);
+      dispatch( setSendingReviewRequestStatus( { status: RequestStatus.FAILED } ) );
+      rejectWithValue( null );
     }
   },
 );

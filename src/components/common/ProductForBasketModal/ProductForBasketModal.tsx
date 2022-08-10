@@ -1,8 +1,8 @@
 import React from 'react';
-import { OptionType } from '../../../mocks';
 import { stringCutter } from '../../../helpers/stringCutter';
 import style from './ProductForBasketModal.module.scss';
 import { getPrice } from '../../../helpers/getPrice';
+import { ProductForBasketModalPropsType } from '../types';
 
 const ProductForBasketModal = ( {
                                   name,
@@ -33,12 +33,3 @@ const ProductForBasketModal = ( {
 };
 
 export default ProductForBasketModal;
-
-type ProductForBasketModalPropsType = {
-  id: number,
-  name: string,
-  countOfProduct: number,
-  chosenOption: OptionType,
-  image: string,
-  priceWithDiscount?: number
-}

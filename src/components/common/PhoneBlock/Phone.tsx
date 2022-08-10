@@ -1,6 +1,7 @@
 import React from 'react';
 import phoneIcon from '../../../Images/phoneIcon.svg';
 import style from './Phone.module.scss';
+import { PhonePropsType } from '../types';
 
 const Phone = ( { phoneNumber }: PhonePropsType ) => {
   return (
@@ -12,7 +13,3 @@ const Phone = ( { phoneNumber }: PhonePropsType ) => {
 };
 
 export default Phone;
-
-type PhonePropsType = {
-  phoneNumber: string
-}

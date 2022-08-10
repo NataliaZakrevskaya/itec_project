@@ -1,6 +1,5 @@
 import React from 'react';
 import Product from '../../Product/Product';
-import { OptionType } from '../../../../mocks';
 import { useFormik } from 'formik';
 import style from './OneClickOrder.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
@@ -9,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder-reducer';
 import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder-selectors';
 import { AppDispatch } from '../../../../redux/store';
+import { FormikErrorType, OnClickOrderPropsType } from '../types';
 
 const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClickModal }: OnClickOrderPropsType ) => {
 
@@ -22,7 +22,7 @@ const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClick
       phoneNumber: '',
     },
     validate: ( values ) => {
-      const errors: FormikOneClickOrderErrorType = {};
+      const errors: FormikErrorType = {};
       if ( values.name.length < 2 ) {
         errors.name = 'Поле обязательно для заполнения';
       }
@@ -51,7 +51,7 @@ const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClick
 
   return (
     <div className={ style.onClickOrderContent }>
-      {showDiscount && <div className={style.discount}>Акция</div>}
+      { showDiscount && <div className={ style.discount }>Акция</div> }
       <h3>Оформление заказа в 1 клик</h3>
       <Product
         id={ id }
@@ -104,16 +104,3 @@ const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClick
 };
 
 export default OneClickOrder;
-
-type OnClickOrderPropsType = {
-  id: number,
-  options: Array<OptionType>,
-  name: string,
-  image: string,
-  chosen_option: OptionType,
-  closeOneClickModal: () => void
-}
-type FormikOneClickOrderErrorType = {
-  name?: string,
-  phoneNumber?: string
-}

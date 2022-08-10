@@ -13,11 +13,11 @@ const FooterBurger = () => {
     <div className={ style.footerBurger }>
       <Address address={ address } metro={ metro }/>
       <div className={ style.instaBlock }>
-        <Phone phoneNumber={phone_number}/>
+        <Phone phoneNumber={ phone_number }/>
         <div className={ style.instagramIcon }/>
       </div>
       <Schedule forFooterBurger={ true } timeWeekdays={ time_weekdays } timeWeekend={ time_weekend }/>
-      <Callback forHeader={false}/>
+      <Callback forHeader={ false }/>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AnimalTypesType, OptionType } from '../../mocks';
+import { OptionType, ProductItemType } from '../../mocks';
 import { setProductRequest } from './app-reducer';
 import { RequestStatus } from './enums';
 import { productsAPI } from '../../Api/productsApi/productsApi';
@@ -49,24 +49,3 @@ export const slice = createSlice( {
 
 export const productsReducer = slice.reducer;
 export const { setActualPage, setChosenOptionToProduct } = slice.actions;
-
-export type ProductItemType = {
-  id: number,
-  name: string,
-  animal: Array<AnimalTypesType>
-  images: Array<{ id: number, image: string }>,
-  discountproduct: {
-    title: string,
-    discount_amount: number,
-    product_id: number
-  } | null,
-  description: string,
-  features: string,
-  composition: string,
-  additives: string,
-  analysis: string,
-  brand: { id: number, name: string, image: string },
-  category: { id: number, name: string, is_active: boolean, },
-  options: Array<OptionType>,
-  chosen_option: OptionType
-}

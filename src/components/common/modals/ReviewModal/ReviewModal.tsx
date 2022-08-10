@@ -5,8 +5,9 @@ import formStyle from '../../../../styles/common/Form.module.scss';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../redux/store';
 import { sendReviewTC } from '../../../../redux/reducers/reviews-reducer';
+import { FormikReviewErrorType, ReviewModalPropsType } from '../types';
 
-const ReviewModal = ( { closeModal }: ReviewModalType ) => {
+const ReviewModal = ( { closeModal }: ReviewModalPropsType ) => {
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -17,23 +18,23 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
       nameAnimal: '',
       bodyOfComment: '',
     },
-    validate: (values) => {
+    validate: ( values ) => {
       const errors: FormikReviewErrorType = {};
-      if (values.nameAuthor.length < 2){
+      if ( values.nameAuthor.length < 2 ) {
         errors.nameAuthor = 'Поле обязательно для заполнения';
       }
-      if (values.nameAnimal.length < 2){
+      if ( values.nameAnimal.length < 2 ) {
         errors.nameAnimal = 'Поле обязательно для заполнения';
       }
-      if (values.bodyOfComment.length < 2){
+      if ( values.bodyOfComment.length < 2 ) {
         errors.bodyOfComment = 'Поле обязательно для заполнения';
       }
-      if(!values.phoneNumber){
-        errors.phoneNumber = 'Поле обязательно для заполнения'
-      } else if ( values.phoneNumber.length !==13 ){
-        errors.phoneNumber = 'Должно быть 13 символов'
-      } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
-        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567'
+      if ( !values.phoneNumber ) {
+        errors.phoneNumber = 'Поле обязательно для заполнения';
+      } else if ( values.phoneNumber.length !== 13 ) {
+        errors.phoneNumber = 'Должно быть 13 символов';
+      } else if ( !/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test( values.phoneNumber ) ) {
+        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567';
       }
       return errors;
     },
@@ -47,7 +48,7 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
       } ) );
       closeModal();
     },
-  } )
+  } );
 
   return (
     <div className={ style.reviewModal }>
@@ -61,8 +62,8 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
               placeholder={ 'Иванов Иван Иванович' }
               { ...formik.getFieldProps( 'nameAuthor' ) }
             />
-            {formik.touched.nameAuthor && formik.errors.nameAuthor &&
-              <span>{formik.errors.nameAuthor}</span>
+            { formik.touched.nameAuthor && formik.errors.nameAuthor &&
+              <span>{ formik.errors.nameAuthor }</span>
             }
           </div>
           <div className={ formStyle.formInput }>
@@ -72,8 +73,8 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
               placeholder={ '+375291231212' }
               { ...formik.getFieldProps( 'phoneNumber' ) }
             />
-            {formik.touched.phoneNumber && formik.errors.phoneNumber &&
-              <span>{formik.errors.phoneNumber}</span>
+            { formik.touched.phoneNumber && formik.errors.phoneNumber &&
+              <span>{ formik.errors.phoneNumber }</span>
             }
           </div>
           <div className={ formStyle.formInput }>
@@ -83,8 +84,8 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
               placeholder={ 'Собака Шепард' }
               { ...formik.getFieldProps( 'nameAnimal' ) }
             />
-            {formik.touched.nameAnimal && formik.errors.nameAnimal &&
-              <span>{formik.errors.nameAnimal}</span>
+            { formik.touched.nameAnimal && formik.errors.nameAnimal &&
+              <span>{ formik.errors.nameAnimal }</span>
             }
           </div>
           <div className={ formStyle.formTextarea }>
@@ -93,8 +94,8 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
               placeholder={ 'Введите текст...' }
               { ...formik.getFieldProps( 'bodyOfComment' ) }
             />
-            {formik.touched.bodyOfComment && formik.errors.bodyOfComment &&
-              <span>{formik.errors.bodyOfComment}</span>
+            { formik.touched.bodyOfComment && formik.errors.bodyOfComment &&
+              <span>{ formik.errors.bodyOfComment }</span>
             }
           </div>
         </div>
@@ -107,13 +108,3 @@ const ReviewModal = ( { closeModal }: ReviewModalType ) => {
 };
 
 export default ReviewModal;
-
-type ReviewModalType = {
-  closeModal: () => void
-}
-type FormikReviewErrorType = {
-  nameAuthor?: string,
-  phoneNumber?: string,
-  nameAnimal?: string,
-  bodyOfComment?: string
-}

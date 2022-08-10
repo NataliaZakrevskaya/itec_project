@@ -6,16 +6,16 @@ import style from './DiscountBlock.module.scss';
 
 const DiscountBlock = () => {
 
-  const discounts = getDiscounts()
+  const discounts = getDiscounts(); //todo позже приходит с бэка
 
   return (
-      <div className={ `${ commonStyle.container } ${style.discountBlock}`} id={'discounts'}>
-          {discounts.map(discount =>
-              <div className={style.discountBlockWrapper}>
-                  <Discount key={discount.id} title={discount.title} img={discount.img}/>
-              </div>
-          )}
-      </div>
+    <div className={ `${ commonStyle.container } ${ style.discountBlock }` } id={ 'discounts' }>
+      { discounts.map( discount =>
+        <div className={ style.discountBlockWrapper }>
+          <Discount key={ discount.id } title={ discount.title } img={ discount.img }/>
+        </div>,
+      ) }
+    </div>
 
   );
 };

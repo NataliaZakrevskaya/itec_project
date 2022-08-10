@@ -13,14 +13,17 @@
     max-width: 1200px;
 
   }
-  .navigationBlockWrapper{
+
+  .navigationBlockWrapper {
     padding-top: 16px;
     display: flex;
     align-items: center;
-    & img{
+
+    & img {
       margin: 0 14px 0 15px;
     }
   }
+
   .title {
     width: 100%;
     max-width: 1200px;
@@ -28,6 +31,7 @@
     margin-bottom: 40px;
     padding: 0 10px;
     cursor: default;
+
     & h1 {
       @include SFDisplayBold();
       font-size: 42px;
@@ -39,10 +43,11 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-       @media (max-width: 768px) {
-         width: 100%;
-       }
-      & select{
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+
+      & select {
         @include size(268px, 36px);
         background-color: #FFFFFF;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
@@ -69,7 +74,8 @@
       }
     }
   }
-  .catalogFilter{
+
+  .catalogFilter {
     width: 338px;
     height: 36px;
     background: #FFFFFF;
@@ -80,19 +86,22 @@
     margin-top: 14px;
     border: 1px solid #BABFC3;
     display: none;
-    & .catalogFilterText{
+
+    & .catalogFilterText {
       @include SFTextMedium();
       font-size: 15px;
       line-height: 20px;
       color: #202223
     }
-    & .catalogFilterImage{
+
+    & .catalogFilterImage {
       width: 20px;
       height: 20px;
       object-fit: contain;
       margin-right: 8px;
     }
   }
+
   .mainBlock {
     width: 100%;
     max-width: 1200px;
@@ -117,15 +126,18 @@
         flex-wrap: wrap;
         justify-content: space-between;
       }
-      .emptyCatalog{
+
+      .emptyCatalog {
         width: 70%;
         margin: 96px auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        .title{
+
+        .title {
           margin: 24px 0 25px;
-          & h3{
+
+          & h3 {
             @include SFDisplaySemibold();
             font-size: 20px;
             line-height: 28px;
@@ -133,7 +145,8 @@
             color: #202223;
           }
         }
-        & button{
+
+        & button {
           padding: 12px 24px;
           background: #00A0AC;
           box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
@@ -147,7 +160,8 @@
           text-align: center;
           color: #FFFFFF;
           margin-bottom: 9px;
-          &:hover{
+
+          &:hover {
             background: #347C84;
             box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
             border-radius: 4px;
@@ -157,92 +171,100 @@
     }
   }
 }
-.productsType{
+
+.productsType {
   width: 270px;
 }
-.catalogPopularProductsWrapper{
+
+.catalogPopularProductsWrapper {
   margin-bottom: 60px;
 }
+
 @media (max-width: 1199px) {
-  .mainBlock{
+  .mainBlock {
     max-width: 960px !important;
   }
-  .title{
-    max-width: 960px!important;
+  .title {
+    max-width: 960px !important;
   }
 }
+
 @media (max-width: 992px) {
-  .mainBlock{
+  .mainBlock {
     max-width: 720px !important;
-    //.productsBlockContainer{
-    //  padding: 0 !important;
-    //}
   }
-  .productsType{
+  .productsType {
     //position: absolute;
     //left: -1000px;
     width: 220px;
-    & input{
+
+    & input {
       width: 190px !important;
     }
+
     & button {
-      width: 190px!important;
+      width: 190px !important;
     }
   }
-  .title{
+  .title {
     max-width: 720px !important;
-    flex-direction: column!important;
+    flex-direction: column !important;
     align-items: flex-start !important;
+
     & h1 {
       margin-bottom: 16px;
     }
   }
 }
+
 @media (max-width: 768px) {
-  .mainBlock{
+  .mainBlock {
     max-width: 540px !important;
   }
-  .title{
+  .title {
     & h1 {
       font-size: 24px !important;
       line-height: 28px !important;
     }
 
   }
-  .productsType{
+  .productsType {
     display: none !important;
   }
-  .productsBlockContainer{
+  .productsBlockContainer {
     padding: 0 !important;
   }
-  .select{
+  .select {
     flex-direction: column !important;
     align-items: flex-start !important;
-    & select{
+
+    & select {
       width: 100% !important;
     }
+
     & p {
       margin-bottom: 4px;
     }
   }
-  .title{
+  .title {
     max-width: 540px !important;
   }
-  .catalogFilter{
+  .catalogFilter {
     display: flex !important;
     margin: 0 auto;
     margin-top: 14px !important;
     cursor: pointer;
     width: 100% !important;
   }
-  .productsBlock{
+  .productsBlock {
     justify-content: center !important;
     gap: 16px !important;
   }
-  .catalogPopularProductsWrapper{
+  .catalogPopularProductsWrapper {
     width: 100%;
     margin-bottom: 41px;
   }
 }
+
 @media (max-width: 576px) {
 }

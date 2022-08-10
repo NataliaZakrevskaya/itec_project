@@ -7,7 +7,7 @@
   border-radius: 5px;
   position: relative;
 
-  & h3 {
+  & h2 {
     @include SFDisplaySemibold();
     margin-bottom: 18px;
     font-size: 16px;
@@ -30,6 +30,7 @@
     outline: none;
     background: #FFFFFF url("../../Images/searchIcon.svg") no-repeat 5%;
   }
+
   & input::placeholder {
     @include SFTextRegular();
     font-size: 15px;
@@ -79,6 +80,7 @@
           left: -3px;
         }
       }
+
       & p {
         @include SFTextRegular();
         font-size: 15px;
@@ -87,16 +89,19 @@
       }
     }
   }
-  .rejectSearchResultContainer{
+
+  .rejectSearchResultContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     background: #FFFFFF;
-    & img{
+
+    & img {
       margin-bottom: 16px;
     }
-    & p{
+
+    & p {
       @include SFTextMedium();
       font-size: 16px;
       line-height: 130%;

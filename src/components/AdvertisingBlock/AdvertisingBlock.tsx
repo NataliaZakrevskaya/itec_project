@@ -13,27 +13,29 @@ const AdvertisingBlock = () => {
   return (
     <div className={ style.advertisingBlockContainer }>
       <div className={ commonStyle.container }>
-        <div className={style.advertisingBlock}>
-          <div className={style.mainWrapper}>
-            <h1 className={style.mainTitle}>Всё, что нужно вашему питомцу в 9 мин от метро Малиновка</h1>
-            <div className={style.subTitleWrapper}>
-              <div className={style.subTitleOne}>
+        <div className={ style.advertisingBlock }>
+          <div className={ style.mainWrapper }>
+            <h1 className={ style.mainTitle }>Всё, что нужно вашему питомцу в 9 мин от метро Малиновка</h1>
+            <div className={ style.subTitleWrapper }>
+              <div className={ style.subTitleOne }>
                 <p>
                   <span>Более 5000 товаров </span>
                   для животных в наличии
                 </p>
               </div>
-              <div className={style.subTitleTwo}>
+              <div className={ style.subTitleTwo }>
                 <p>
                   <span>Вкусные сюрпризы </span>
                   для ваших питомцев в магазине
                 </p>
               </div>
             </div>
-            <button className={buttonStyle.bigButton} onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать товар</button>
+            <button className={ buttonStyle.bigButton } onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать
+              товар
+            </button>
           </div>
-          <div className={style.mainImage}>
-            <img src={frame} alt="frame"/>
+          <div className={ style.mainImage }>
+            <img src={ frame } alt="frame"/>
           </div>
         </div>
       </div>

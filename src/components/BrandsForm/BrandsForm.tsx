@@ -8,12 +8,13 @@ import Button from '../common/Button/Button';
 import { fetchBrandsTC, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { setActualPage } from '../../redux/reducers/products-reducer';
 import { AppDispatch } from '../../redux/store';
+import { BrandsFormPropsType } from './types';
 
 const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
 
+  const [ value, setValue ] = useState( '' );
   const dispatch = useDispatch<AppDispatch>();
   const brands = useSelector( getBrands );
-  const [ value, setValue ] = useState( '' );
   const filteredBrands = brands.filter( brand => brand.name.toLowerCase().includes( value.toLowerCase() ) );
   const setFilters = () => {
     const pageNumber = 1;
@@ -22,14 +23,14 @@ const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
     dispatch( setActualPage( { pageNumber } ) );
   };
   useEffect( () => {
-    if ( !brands[0] ) {
+    if ( !brands[ 0 ] ) {
       dispatch( fetchBrandsTC() );
     }
   }, [] );
 
   return (
     <div className={ style.brandsFormBlock }>
-      <h3>Бренд</h3>
+      <h2>Бренд</h2>
       <input
         onChange={ ( e ) => setValue( e.target.value ) }
         placeholder={ 'Название бренда' }
@@ -64,7 +65,3 @@ const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
 };
 
 export default BrandsForm;
-
-type BrandsFormPropsType = {
-  closeEditMode: () => void
-}

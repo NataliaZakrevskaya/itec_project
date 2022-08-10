@@ -29,7 +29,8 @@
         margin: 0 0;
       }
     }
-    .articlesLessThenFour{
+
+    .articlesLessThenFour {
       @include flex(row, space-between, stretch);
       width: 100%;
       gap: 0;

@@ -9,31 +9,33 @@ import { getDescriptionShop, getPhoto, getSecondInfo } from '../../redux/selecto
 const GreetingBlock = () => {
 
   const photo = useSelector( getPhoto );
-  const { title, main_info } = useSelector( getDescriptionShop );
   const secondInfoOptions = useSelector( getSecondInfo );
+  const { title, main_info } = useSelector( getDescriptionShop );
 
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect( () => {
     dispatch( fetchDescriptionShopTC() );
   }, [] );
+
   return (
     <div className={ style.greetingBlock }>
       <div className={ commonStyle.container }>
         <div className={ style.greetingBlockContainer }>
           <div className={ style.greetingBlockWrapperText }>
-            <h2 className={ style.greetingBlockTitle } dangerouslySetInnerHTML={{__html: title}}/>
+            <h2 className={ style.greetingBlockTitle } dangerouslySetInnerHTML={ { __html: title } }/>
             <div className={ style.greetingBlockTextWrapper }>
-              <p className={ style.greetingBlockText } dangerouslySetInnerHTML={{__html: main_info}}/>
+              <p className={ style.greetingBlockText } dangerouslySetInnerHTML={ { __html: main_info } }/>
             </div>
-            {secondInfoOptions.map(option =>
-            <div key={option.id} className={ style.greetingBlockWrapper }>
-              <div className={style.greetingOptionWrapper}>
-                <div className={ style.greetingBlockWrapperTitle } dangerouslySetInnerHTML={{__html: option.info_title}}/>
-                <p className={ style.greetingBlockText } dangerouslySetInnerHTML={{__html: option.info_text}}/>
-              </div>
-            </div>
-            )}
+            { secondInfoOptions.map( option =>
+              <div key={ option.id } className={ style.greetingBlockWrapper }>
+                <div className={ style.greetingOptionWrapper }>
+                  <div className={ style.greetingBlockWrapperTitle }
+                       dangerouslySetInnerHTML={ { __html: option.info_title } }/>
+                  <p className={ style.greetingBlockText } dangerouslySetInnerHTML={ { __html: option.info_text } }/>
+                </div>
+              </div>,
+            ) }
           </div>
           <div className={ style.greetingBlockImageWrapper }>
             <img src={ photo } alt="shopPhoto"/>

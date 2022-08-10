@@ -3,7 +3,7 @@ import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import light from '../../styles/common/LightBlock.module.scss';
 import style from './PreviouslyProductsBlock.module.scss';
 import { location } from '../../enums';
-import { ProductItemType } from '../../redux/reducers/products-reducer';
+import { PreviouslyProductsBlockPropsType } from './types';
 
 const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType ) => {
 
@@ -25,7 +25,3 @@ const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType
 };
 
 export default PreviouslyProductsBlock;
-
-type PreviouslyProductsBlockPropsType = {
-  products: Array<ProductItemType>
-}

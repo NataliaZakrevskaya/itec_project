@@ -1,19 +1,19 @@
 @import "src/styles/Mixins";
 
-.popularBrandsBlock{
+.popularBrandsBlock {
   width: 100%;
   padding-top: 56px;
   margin-bottom: 57px;
 
-  .title{
+  .title {
     @include SFDisplaySemibold();
     font-size: 28px;
     line-height: 32px;
     color: #202223;
   }
 
-  .brandsContainer{
-    @include flex (row, space-between, center);
+  .brandsContainer {
+    @include flex(row, space-between, center);
     box-sizing: border-box;
     width: 100%;
     gap: 24px;
@@ -23,16 +23,17 @@
 }
 
 @media (max-width: 768px) {
-  .popularBrandsBlock{
+  .popularBrandsBlock {
     padding-top: 0;
-    .title{
+
+    .title {
       @include SFDisplayBold();
       font-size: 21px;
       line-height: 28px;
       margin-bottom: 16px;
     }
 
-    .brandsContainer{
+    .brandsContainer {
       gap: 8px;
       margin-bottom: 17px;
       margin-top: 0;

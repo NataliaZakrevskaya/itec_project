@@ -5,8 +5,9 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../redux/store';
 import { sendCallbackRequestTC } from '../../../../redux/reducers/basket-reducer';
+import { FormikErrorType } from '../types';
 
-const CallbackModal = (  ) => {
+const CallbackModal = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -15,67 +16,62 @@ const CallbackModal = (  ) => {
       name: '',
       phoneNumber: '',
     },
-    validate: (values) => {
-      const errors: FormikCallbackErrorType = {};
-      if (values.name.length < 2){
+    validate: ( values ) => {
+      const errors: FormikErrorType = {};
+      if ( values.name.length < 2 ) {
         errors.name = 'Поле обязательно для заполнения';
       }
-      if(!values.phoneNumber){
-        errors.phoneNumber = 'Поле обязательно для заполнения'
-      } else if ( values.phoneNumber.length !==13 ){
-        errors.phoneNumber = 'Должно быть 13 символов'
-      } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
-        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567'
+      if ( !values.phoneNumber ) {
+        errors.phoneNumber = 'Поле обязательно для заполнения';
+      } else if ( values.phoneNumber.length !== 13 ) {
+        errors.phoneNumber = 'Должно быть 13 символов';
+      } else if ( !/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test( values.phoneNumber ) ) {
+        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567';
       }
       return errors;
     },
     onSubmit: value => {
       formik.resetForm();
-      dispatch(sendCallbackRequestTC({name: value.name, phoneNumber: value.phoneNumber}));
+      dispatch( sendCallbackRequestTC( { name: value.name, phoneNumber: value.phoneNumber } ) );
     },
   } );
 
   return (
-        <form className={ style.formBlock } onSubmit={ formik.handleSubmit }>
-          <h3>Перезвоним вам в течение 15 минут</h3>
-          <div className={ formStyle.formInfo }>
-            <div className={ formStyle.formInput }>
-              <p>Имя</p>
-              <input
-                type={ 'name' }
-                placeholder={ 'Иванов Иван Иванович' }
-                { ...formik.getFieldProps( 'name' ) }
-              />
-              {formik.touched.name && formik.errors.name &&
-                <span>{formik.errors.name}</span>
-              }
-            </div>
+    <form className={ style.formBlock } onSubmit={ formik.handleSubmit }>
+      <h3>Перезвоним вам в течение 15 минут</h3>
+      <div className={ formStyle.formInfo }>
+        <div className={ formStyle.formInput }>
+          <p>Имя</p>
+          <input
+            type={ 'name' }
+            placeholder={ 'Иванов Иван Иванович' }
+            { ...formik.getFieldProps( 'name' ) }
+          />
+          { formik.touched.name && formik.errors.name &&
+            <span>{ formik.errors.name }</span>
+          }
+        </div>
 
-            <div className={ formStyle.formInput }>
-              <p>Номер телефона</p>
-              <input
-                type={ 'phoneNumber' }
-                placeholder={ '+375291231212' }
-                { ...formik.getFieldProps( 'phoneNumber' ) }
-              />
-              {formik.touched.phoneNumber && formik.errors.phoneNumber &&
-                <span>{formik.errors.phoneNumber}</span>
-              }
-            </div>
+        <div className={ formStyle.formInput }>
+          <p>Номер телефона</p>
+          <input
+            type={ 'phoneNumber' }
+            placeholder={ '+375291231212' }
+            { ...formik.getFieldProps( 'phoneNumber' ) }
+          />
+          { formik.touched.phoneNumber && formik.errors.phoneNumber &&
+            <span>{ formik.errors.phoneNumber }</span>
+          }
+        </div>
 
-          </div>
-          <div className={ formStyle.orderBlock }>
-            <button type="submit">Отправить</button>
-            <p>Нажимая на кнопку вы даёте согласие на обработку
-            <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных</span></p>
-          </div>
-        </form>
+      </div>
+      <div className={ formStyle.orderBlock }>
+        <button type="submit">Отправить</button>
+        <p>Нажимая на кнопку вы даёте согласие на обработку
+          <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных</span></p>
+      </div>
+    </form>
   );
 };
 
 export default CallbackModal;
-
-type FormikCallbackErrorType = {
-  name?: string,
-  phoneNumber?: string
-}

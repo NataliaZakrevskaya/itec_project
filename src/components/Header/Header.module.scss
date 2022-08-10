@@ -27,6 +27,7 @@
       .phoneWrapper {
         display: flex;
         gap: 12px;
+
         .headerInstagram {
           display: block;
           width: 18px;
@@ -70,9 +71,10 @@
         gap: 25px !important;
       }
 
-      .navElements{
+      .navElements {
         gap: 41px;
         @include flex(row, space-between, center);
+
         .searchIcon {
           background: url("../../Images/searchIcon.svg") no-repeat center;
           @include size(16px, 16px);
@@ -94,8 +96,9 @@
     }
   }
 }
+
 @media (max-width: 576px) {
-  .navElements{
+  .navElements {
     gap: 24px !important;
   }
 }

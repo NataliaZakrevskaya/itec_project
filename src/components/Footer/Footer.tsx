@@ -24,9 +24,9 @@ const Footer = () => {
         <hr/>
         <div className={ style.address }>
           <Address address={ address } metro={ metro }/>
-          <Phone phoneNumber={phone_number}/>
-          <Schedule timeWeekend={time_weekend} timeWeekdays={time_weekdays}/>
-          <Callback forHeader={false}/>
+          <Phone phoneNumber={ phone_number }/>
+          <Schedule timeWeekend={ time_weekend } timeWeekdays={ time_weekdays }/>
+          <Callback forHeader={ false }/>
           <hr className={ style.hr }/>
         </div>
         <div className={ style.siteInfo }>

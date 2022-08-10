@@ -2,6 +2,7 @@ import React from 'react';
 import navigateIcon from '../../../Images/navigateIcon.svg';
 import metroIcon from '../../../Images/metroIcon.svg';
 import style from './Address.module.scss';
+import { AddressPropsType } from './types';
 
 const Address = ( { address, metro }: AddressPropsType ) => {
 
@@ -21,7 +22,3 @@ const Address = ( { address, metro }: AddressPropsType ) => {
 
 export default Address;
 
-type AddressPropsType = {
-  address: string,
-  metro: string
-}

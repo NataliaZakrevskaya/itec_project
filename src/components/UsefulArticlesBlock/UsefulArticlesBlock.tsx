@@ -20,21 +20,21 @@ import { AppDispatch } from '../../redux/store';
 const UsefulArticlesBlock = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
     const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
     const articlesFromStore = useSelector( getArticles );
     const getArticlesForBlock = () => {
       if ( chosenAnimalTypeId ) {
-       const articles = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
-       if(articles.length){
-         return articles;
-       }
-       return articlesFromStore;
+        const articles = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
+        if ( articles.length ) {
+          return articles;
+        }
+        return articlesFromStore;
       }
       return articlesFromStore;
     };
     const articles = getArticlesForBlock();
     const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
-    const dispatch = useDispatch<AppDispatch>();
 
     const {
       offset,
@@ -68,10 +68,11 @@ const UsefulArticlesBlock = () => {
               onTouchStart={ onTouchStart }
               onTouchEnd={ onTouchEnd }
             >
-              <div className={ articles.length > 3 ? `${style.allArticlesItemsContainer}` : ` ${style.articlesLessThenFour}` }
-                   style={ {
-                     transform: `translateX(${ offset }px)`,
-                   } }>
+              <div
+                className={ articles.length > 3 ? `${ style.allArticlesItemsContainer }` : ` ${ style.articlesLessThenFour }` }
+                style={ {
+                  transform: `translateX(${ offset }px)`,
+                } }>
                 {
                   articles.map( article => {
                     const { id, title, description, date_added, image, time_read } = { ...article };

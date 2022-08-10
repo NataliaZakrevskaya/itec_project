@@ -26,16 +26,18 @@
   left: 2px;
   top: 42px;
 
-  .rejectResultContainer{
+  .rejectResultContainer {
     @include flex(column, center, center);
     padding: 49px 0;
     width: 80%;
     margin: 0 auto;
+
     .rejectResultImage {
       @include size(132px, 130px);
       margin-bottom: 24px;
     }
-    .textBlock{
+
+    .textBlock {
       text-align: center;
       margin-bottom: 25px;
       @include SFTextMedium();

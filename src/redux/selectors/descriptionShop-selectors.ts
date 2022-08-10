@@ -4,9 +4,6 @@ import { ShopInfoType } from '../../mocks';
 export const getAddress = (state: AppRootStateType): string => {
   return state.descriptionShop.address
 }
-export const getMetro = (state: AppRootStateType): string => {
-  return state.descriptionShop.metro
-}
 export const getPhoto = (state: AppRootStateType): string => {
   return state.descriptionShop.photo
 }

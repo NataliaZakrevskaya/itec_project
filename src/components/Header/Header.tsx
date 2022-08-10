@@ -18,10 +18,11 @@ import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 
 const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
 
+  const { metro, address, phone_number, social, time_weekdays, time_weekend } = useSelector( getInfo );
+
+  const dispatch = useDispatch<AppDispatch>();
   const { width, windowElRef } = useResize();
 
-  const { metro, address, phone_number, social, time_weekdays, time_weekend } = useSelector( getInfo );
-  const dispatch = useDispatch<AppDispatch>();
   useEffect( () => {
     if ( !metro || !address || !phone_number || !social || !time_weekdays || !time_weekend ) dispatch( fetchDescriptionShopTC() );
   }, [ address, metro, phone_number, social, time_weekdays, time_weekend ] );
@@ -39,7 +40,7 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
               <img src={ instagramIcon } alt={ 'instagramIcon' }/>
             </a>
           </div>
-          <Callback forHeader={true}/>
+          <Callback forHeader={ true }/>
         </div>
       </div>
       <div className={ style.navBarContainer }>

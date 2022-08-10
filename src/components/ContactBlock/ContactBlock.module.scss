@@ -8,20 +8,24 @@
     display: flex;
   }
 }
-.contactBlockMapWrapper{
+
+.contactBlockMapWrapper {
   margin-right: 86px;
   width: 670px;
   height: 514px;
-  padding:56px 0;
-  & .map{
+  padding: 56px 0;
+
+  & .map {
     width: 100%;
     height: 100%;
   }
 }
-.contactBlockWrapper{
+
+.contactBlockWrapper {
   padding-top: 70px;
 }
-.contactBlockWrapperTitle{
+
+.contactBlockWrapperTitle {
   @include SFDisplaySemibold();
   max-width: 313px;
   font-size: 20px;
@@ -30,13 +34,16 @@
   margin-bottom: 24px;
 
 }
-.contactBlockWrapperDirection{
+
+.contactBlockWrapperDirection {
   display: flex;
   margin-bottom: 24px;
   gap: 12px;
 }
-.contactBlockWrapperTimeWork{
+
+.contactBlockWrapperTimeWork {
   margin-bottom: 24px;
+
   & .timeWork {
     @include SFDisplaySemibold();
     font-size: 16px;
@@ -45,9 +52,11 @@
     margin-bottom: 8px;
   }
 }
-.contactBlockWrapperTel{
+
+.contactBlockWrapperTel {
   margin-bottom: 24px;
-  & .tel{
+
+  & .tel {
     @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 24px;
@@ -55,18 +64,22 @@
     margin-bottom: 8px;
   }
 }
-.contactBlockWrapperSocial{
+
+.contactBlockWrapperSocial {
 
 }
-.socialTitle{
+
+.socialTitle {
   @include SFDisplaySemibold();
   font-size: 16px;
   line-height: 24px;
   color: #202223;
   margin-bottom: 8px;
 }
-.contactBlockAdressSWrapper{
+
+.contactBlockAdressSWrapper {
   display: flex;
+
   & img {
     width: 12.8px;
     height: 16px;
@@ -74,9 +87,11 @@
     margin-right: 9.6px;
   }
 }
-.contactBlockWrapperMetro{
+
+.contactBlockWrapperMetro {
   display: flex;
   align-items: center;
+
   & img {
     width: 18px;
     height: 12px;
@@ -84,68 +99,78 @@
     margin-right: 6px;
   }
 }
-.scheduleWrapper{
+
+.scheduleWrapper {
   display: flex;
   align-items: center;
 }
-.scheduleWrapperFirst{
+
+.scheduleWrapperFirst {
   display: flex;
+
   & img {
     margin-right: 7.6px;
   }
 }
-.scheduleWrapperLine{
+
+.scheduleWrapperLine {
   width: 1px;
   height: 17px;
   background: #8C9196;
   margin: 0 6px;
 }
+
 @media (max-width: 1199px) {
-  .contactBlockContainer{
+  .contactBlockContainer {
     padding-top: 32px;
   }
-  .contactBlockMapWrapper{
+  .contactBlockMapWrapper {
     padding: 0;
     margin-right: 0;
     width: 100%;
-    & .map{
+
+    & .map {
       width: 100%;
       height: 100%;
     }
-    & .mapTwo{
+
+    & .mapTwo {
       width: 100%;
       height: 100%;
     }
   }
-  .contactBlockMapPhoneWrapper{
+  .contactBlockMapPhoneWrapper {
     display: none;
   }
-  .contactBlock{
+  .contactBlock {
     flex-direction: column;
   }
-  .contactBlockWrapperSocial{
+  .contactBlockWrapperSocial {
     padding-bottom: 32px;
   }
-  .contactBlockWrapper{
+  .contactBlockWrapper {
     padding: 0;
     margin-top: 16px;
   }
 }
+
 @media (max-width: 1199px) {
 }
+
 @media (max-width: 992px) {
-  .contactBlockImageWrapper{
+  .contactBlockImageWrapper {
     max-width: 670px;
   }
 }
+
 @media (max-width: 768px) {
-  .scheduleWrapperLine{
+  .scheduleWrapperLine {
 
   }
-  .scheduleWrapperFirst{
-  display: flex;
+  .scheduleWrapperFirst {
+    display: flex;
   }
-  .contactBlockWrapperDirection{
+  .contactBlockWrapperDirection {
     & p {
       @include SFTextRegular();
       font-size: 14px;
@@ -153,7 +178,7 @@
       color: #202223;
     }
   }
-  .scheduleWrapper{
+  .scheduleWrapper {
 
     & div {
       @include SFTextRegular();

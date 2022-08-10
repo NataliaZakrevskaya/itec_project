@@ -22,16 +22,17 @@ import { setOrderRequestStatus } from '../../redux/reducers/app-reducer';
 import { location } from '../../enums';
 import { getPrice } from '../../helpers/getPrice';
 import { getGoods } from '../../helpers/getGoods';
+import { FormikErrorType } from '../../components/common/modals/types';
 
 const CheckoutPage = () => {
 
-  const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
+  const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const basketCount = useSelector( getTotalSumWithDiscount );
-  const price = getPrice( basketCount );
   const productsCount = useSelector( getTotalProductsCount );
-  const goodsName = getGoods( productsCount );
   const productsInBasket = useSelector( getProductsInBasket );
+  const price = getPrice( basketCount );
+  const goodsName = getGoods( productsCount );
   const orderInfo = productsInBasket.map( product => {
     return ( { article_number: product.chosen_option.article_number, quantity: product.chosen_option.quantity } );
   } );
@@ -62,7 +63,7 @@ const CheckoutPage = () => {
       phoneNumber: '',
     },
     validate: ( values ) => {
-      const errors: FormikOrderErrorType = {};
+      const errors: FormikErrorType = {};
       if ( values.name.length < 2 ) {
         errors.name = 'Поле обязательно для заполнения';
       }
@@ -147,8 +148,3 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
-
-type FormikOrderErrorType = {
-  name?: string,
-  phoneNumber?: string
-}

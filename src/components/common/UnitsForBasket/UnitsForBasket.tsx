@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../../../pages/ProductPage/ProductPage.module.scss';
-import { OptionType } from '../../../mocks';
 import { getPrice } from '../../../helpers/getPrice';
+import { UnitsForBasketPropsType } from '../types';
 
 const UnitsForBasket = ( { option, active, onUnitClick }: UnitsForBasketPropsType ) => {
   const price = getPrice( +option.price );
@@ -18,9 +18,3 @@ const UnitsForBasket = ( { option, active, onUnitClick }: UnitsForBasketPropsTyp
 };
 
 export default UnitsForBasket;
-
-type UnitsForBasketPropsType = {
-  option: OptionType,
-  active: boolean,
-  onUnitClick: ( option: OptionType ) => void,
-}

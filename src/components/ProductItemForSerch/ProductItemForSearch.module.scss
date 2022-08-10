@@ -7,13 +7,14 @@
   gap: 8px;
   cursor: pointer;
 
-  & img{
+  & img {
     @include size(40px, 40px);
     object-fit: contain;
     border: 1px solid #BABFC3;
     border-radius: 3px;
   }
-  & p{
+
+  & p {
     @include SFTextRegular();
     font-size: 15px;
     line-height: 20px;

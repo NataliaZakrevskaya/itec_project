@@ -36,10 +36,10 @@ const BasketPage = () => {
   const { address } = useSelector( getInfo );
   const showDiscount = basketCount !== basketCountWithDiscount;
   const isFullBasket = productsInBasket.length;
-  const navigate = useNavigate();
   const price = getPrice( basketCount );
   const priceWithDiscount = getPrice( basketCountWithDiscount );
   const goodsName = getGoods( productsCount );
+  const navigate = useNavigate();
 
   return (
     <div className={ style.basketPageBlock }>

@@ -18,16 +18,16 @@ const ArticlePage = () => {
   const articleId = Number( useParams().articleId ) - 1;
   const article = useSelector( getArticles )[ articleId ];
   const date = new Date( article.date_added );
-  const currentData = getCurrentAddedDate(date)
+  const currentData = getCurrentAddedDate( date );
   const navigate = useNavigate();
   return (
     <div className={ style.articlePage }>
       <div className={ commonStyle.container }>
         <div className={ navigationStyle.navigationBlock }>
           <div className={ navigationStyle.navigationBlockWrapper }>
-            <p onClick={() => navigate(routesPathsEnum.MAIN)}>Главная</p>
+            <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
             <img src={ nextIcon } alt="nextIcon"/>
-            <p onClick={() => navigate(routesPathsEnum.ARTICLES)}>Статьи</p>
+            <p onClick={ () => navigate( routesPathsEnum.ARTICLES ) }>Статьи</p>
             <img src={ nextIcon } alt="nextIcon"/>
             <p>{ article.title }</p>
           </div>
@@ -51,22 +51,12 @@ const ArticlePage = () => {
           <img src={ article.image } alt="article"/>
         </div>
         <div className={ style.articleTextContainer }>
-          <p className={ style.articleText }>С появлением кошки в доме нужно организовать все бытовые условия для ее
-            комфортного существования:
-            определить место для сна, подобрать посуду для кормления и, конечно же, обустроить туалет, где она сможет
-            справлять свои естественные нужды.
-
-            Для домашних кошек производители выпускают специальные лотки – удобные туалетный аксессуар, легко очищаемый
-            от испражнений животного. В лоток можно засыпать специальные наполнители, нейтрализующие запах. Когда все
-            необходимые аксессуары подготовлены, остается самое главное – приучить домашнего питомца ходить в туалет на
-            лоток.
-
-            В статье мы рассмотрим, как приучить кошку пользоваться лотком, особенности замены наполнителя в лотке, уход
-            за кошачьим туалетом.</p>
+          <p className={ style.articleText }
+             dangerouslySetInnerHTML={ { __html: article.description } }/>
         </div>
       </div>
       <UsefulArticlesBlock/>
-      <PopularProductsBlock fromCatalog={false}/>
+      <PopularProductsBlock fromCatalog={ false }/>
       <ContactBlock/>
     </div>
   );

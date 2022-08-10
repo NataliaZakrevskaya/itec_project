@@ -8,12 +8,13 @@
   background-color: #f6f6f7;
   padding-bottom: 65px;
 
-  .basketWrapper{
+  .basketWrapper {
     margin-top: 24px;
     width: 100%;
     max-width: 1200px;
     padding: 0 10px;
-    & h1{
+
+    & h1 {
       margin-bottom: 24px;
       cursor: default;
     }
@@ -47,18 +48,19 @@
           justify-content: space-between;
           margin-bottom: 24px;
 
-          .priceBlock{
+          .priceBlock {
             display: flex;
             flex-direction: row;
             align-items: center;
 
-            .basketBUN{
+            .basketBUN {
               @include SFDisplayBold();
               font-size: 28px;
               line-height: 32px;
               color: #FFFFFF;
             }
-            .basketBUNWIthDiscount{
+
+            .basketBUNWIthDiscount {
               @include SFDisplayBold();
               font-size: 28px;
               line-height: 32px;
@@ -69,7 +71,7 @@
             }
           }
 
-          & .basketProducts{
+          & .basketProducts {
             @include SFTextMedium();
             font-size: 14px;
             line-height: 20px;
@@ -82,27 +84,32 @@
           display: flex;
           flex-direction: row;
           margin-bottom: 25px;
-          & .basketBoxImage{
+
+          & .basketBoxImage {
             width: 34.23px;
             height: 40px;
             object-fit: contain;
             margin-right: 14.88px;
           }
-          .basketTextWrapper{
-            & h3{
+
+          .basketTextWrapper {
+            & h3 {
               @include SFDisplaySemibold();
               margin-bottom: 6px;
               font-size: 20px;
               line-height: 130%;
               color: #FFFFFF;
             }
+
             .addressInfo {
               display: flex;
               flex-direction: row;
-              & img{
+
+              & img {
                 margin-right: 9.6px;
               }
-              & p{
+
+              & p {
                 @include SFTextRegular();
                 font-size: 14px;
                 line-height: 20px;
@@ -111,7 +118,8 @@
             }
           }
         }
-        .basketButton{
+
+        .basketButton {
           width: 100%;
           background: #FFFFFF;
           box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
@@ -128,22 +136,26 @@
       }
     }
   }
-  .basketTitle{
+
+  .basketTitle {
     @include SFDisplaySemibold();
     font-weight: 600;
     font-size: 28px;
     line-height: 130%;
     color: #202223;
   }
-  .emptyBasket{
+
+  .emptyBasket {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 56px 0 65px;
-    & img{
+
+    & img {
       margin-bottom: 40px;
     }
-    & h2{
+
+    & h2 {
       @include SFDisplaySemibold();
       font-size: 28px;
       line-height: 130%;
@@ -153,44 +165,47 @@
     }
   }
 }
+
 @media (max-width: 1199px) {
-  .basketWrapper{
-    max-width: 960px!important;
+  .basketWrapper {
+    max-width: 960px !important;
   }
 }
+
 @media (max-width: 992px) {
-  .basketWrapper{
+  .basketWrapper {
     max-width: 720px !important;
   }
-  .basketInfoBlockContainer{
-    flex-direction: column!important;
+  .basketInfoBlockContainer {
+    flex-direction: column !important;
     gap: 24px !important;
   }
-  .basketInfoContainer{
+  .basketInfoContainer {
     width: 100% !important;
   }
-  .basketInfoContainer{
+  .basketInfoContainer {
     margin: 0 auto;
   }
 }
+
 @media (max-width: 768px) {
-  .basketWrapper{
+  .basketWrapper {
     max-width: 540px !important;
   }
-  .basketTitle{
+  .basketTitle {
 
   }
-  .emptyBasket{
+  .emptyBasket {
     margin-bottom: 0 !important;
     margin-top: 48px !important;
   }
-  .basketPageBlock{
+  .basketPageBlock {
     padding-bottom: 73px;
   }
-  .pickUpBlock{
+  .pickUpBlock {
     margin-bottom: 17px !important;
   }
-  .productsItemsBlockContainer{
+  .productsItemsBlockContainer {
     width: 100% !important;
 
   }

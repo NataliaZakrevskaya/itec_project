@@ -1,6 +1,6 @@
 @import "src/styles/Mixins";
 
-.bigButton{
+.bigButton {
   cursor: pointer;
   padding: 12px 24px;
   gap: 10px;
@@ -15,10 +15,10 @@
   line-height: 20px;
   text-align: center;
   @media (max-width: 768px) {
-      padding: 8px 16px;
+    padding: 8px 16px;
   }
 
-  &:hover{
+  &:hover {
     background: #347C84;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
     border-radius: 4px;

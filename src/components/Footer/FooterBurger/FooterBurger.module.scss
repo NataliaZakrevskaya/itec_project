@@ -9,6 +9,7 @@
   .instaBlock {
     display: flex;
     flex-direction: row;
+
     .instagramIcon {
       @include size(18px, 18px);
       background: url("../../../Images/instagramIcon.svg") no-repeat center;

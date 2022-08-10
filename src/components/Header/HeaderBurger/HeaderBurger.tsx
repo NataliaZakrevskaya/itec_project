@@ -6,6 +6,7 @@ import NavbarForHeader from '../../Navbar/NavbarForHeader/NavbarForHeader';
 import BasketLink from '../../BasketLink/BasketLink';
 import ProductTypesForm from '../../ProductTypesForm/ProductTypesForm';
 import BrandsForm from '../../BrandsForm/BrandsForm';
+import { HeaderBurgerPropsType } from '../types';
 
 const HeaderBurger = ( { onClickHandler, forFilters }: HeaderBurgerPropsType ) => {
   return (
@@ -19,7 +20,7 @@ const HeaderBurger = ( { onClickHandler, forFilters }: HeaderBurgerPropsType ) =
           ? ( <div className={ style.sortingBlock }>
             <div className={ style.productsType }>
               <ProductTypesForm/>
-              <BrandsForm closeEditMode={onClickHandler}/>
+              <BrandsForm closeEditMode={ onClickHandler }/>
             </div>
           </div> )
           : ( <div className={ style.navBlock }>
@@ -34,8 +35,3 @@ const HeaderBurger = ( { onClickHandler, forFilters }: HeaderBurgerPropsType ) =
 };
 
 export default HeaderBurger;
-
-type HeaderBurgerPropsType = {
-  onClickHandler: () => void,
-  forFilters: boolean
-}

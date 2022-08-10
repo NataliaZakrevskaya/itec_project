@@ -20,4 +20,4 @@ export const useResize = () => {
   }, [ width ] );
 
   return { windowElRef, width };
-}
+};

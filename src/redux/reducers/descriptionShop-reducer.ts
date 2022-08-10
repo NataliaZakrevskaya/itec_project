@@ -27,13 +27,13 @@ export const slice = createSlice( {
     photo: '',
     description_shop: {
       title: '',
-      main_info: ''
+      main_info: '',
     },
-    second_info:[{
+    second_info: [ {
       id: 0,
       info_title: '',
-      info_text: ''
-    }]
+      info_text: '',
+    } ],
   } as ShopInfoType,
   reducers: {},
   extraReducers: builder => {

@@ -15,16 +15,16 @@ const MainPage = () => {
 
   return (
     <div className={ style.mainPage }>
-        <AnimalsTypesList/>
-        <AdvertisingBlock/>
-        <PopularProductsBlock fromCatalog={false}/>
-        <DiscountBlock/>
-        <LatestBlock/>
-        <PopularBrandsBlock/>
-        <ReviewsBlock/>
-        <UsefulArticlesBlock/>
-        <GreetingBlock/>
-        <ContactBlock/>
+      <AnimalsTypesList/>
+      <AdvertisingBlock/>
+      <PopularProductsBlock fromCatalog={ false }/>
+      <DiscountBlock/>
+      <LatestBlock/>
+      <PopularBrandsBlock/>
+      <ReviewsBlock/>
+      <UsefulArticlesBlock/>
+      <GreetingBlock/>
+      <ContactBlock/>
     </div>
   );
 };

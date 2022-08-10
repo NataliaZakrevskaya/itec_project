@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { brandsAPI } from '../../Api/brandsApi/brandsApi';
+import { BrandType } from '../../mocks';
 
 export const fetchBrandsTC = createAsyncThunk(
   'brands/fetchBrands', async ( param, { dispatch } ) => {
@@ -31,9 +32,9 @@ export const slice = createSlice( {
       state.brands = state.brands.map( ( brand: BrandType ) => ( { ...brand, chosen: false } ) );
       state.chosenBrandsId = [];
     },
-    setChosenBrandsId(state, action) {
-      state.chosenBrandsId = state.brands.filter(brand => brand.chosen).map(brand => brand.id)
-    }
+    setChosenBrandsId( state, action ) {
+      state.chosenBrandsId = state.brands.filter( brand => brand.chosen ).map( brand => brand.id );
+    },
   },
   extraReducers: ( builder => {
     builder.addCase( fetchBrandsTC.fulfilled, ( state, action ) => {
@@ -50,10 +51,3 @@ export const {
   removeChosenBrandId,
   setChosenBrandsId,
 } = slice.actions;
-
-export type BrandType = {
-  id: number,
-  name: string,
-  image: string,
-  chosen: boolean
-}

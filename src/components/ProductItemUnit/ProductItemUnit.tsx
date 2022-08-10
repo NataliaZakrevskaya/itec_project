@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './ProductItemUnit.module.scss';
 import { useDispatch } from 'react-redux';
-import { OptionType } from '../../mocks';
 import { setChosenOptionToProduct } from '../../redux/reducers/products-reducer';
 import { location } from '../../enums';
 import { setChosenOptionToPopularProduct } from '../../redux/reducers/popularProducts-reducer';
@@ -11,6 +10,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import { changeChosenOption } from '../../redux/reducers/basket-reducer';
 import { setChosenOptionToOneOrderProduct } from '../../redux/reducers/onClickOrder-reducer';
 import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
+import { ProductItemUnitPropsType } from './types';
 
 const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
   const dispatch = useDispatch();
@@ -22,13 +22,12 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
     if ( from === location.LATEST_PRODUCTS ) dispatch( setChosenOptionToLatestProduct( { productId, option } ) );
     if ( from === location.BASKET ) dispatch(
       changeChosenOption( { productId, option } ) );
-    if (from === location.ONE_CLICK_ORDER) dispatch(setChosenOptionToOneOrderProduct({productId, option}))
+    if ( from === location.ONE_CLICK_ORDER ) dispatch( setChosenOptionToOneOrderProduct( { productId, option } ) );
   };
-
   const onSetWeightClick = () => {
-    dispatch(setWeightSetIsShowed({status: true}));
+    dispatch( setWeightSetIsShowed( { status: true } ) );
     navigate( `${ routesPathsEnum.CATALOG }/${ productId }` );
-  }
+  };
 
   return (
     <>
@@ -43,10 +42,3 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
 };
 
 export default ProductItemUnit;
-
-type ProductItemUnitPropsType = {
-  option: OptionType,
-  productId: number,
-  active: boolean,
-  from: string
-}

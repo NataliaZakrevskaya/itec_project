@@ -3,41 +3,30 @@
 .scheduleBlock {
   display: flex;
   flex-direction: row;
-  //align-items: center;
   position: relative;
   cursor: default;
 
   & img {
-    //@include size(12.8px, 12.8px);
     margin-right: 7.6px;
   }
 
-  .scheduleBlockWrapperOne{
-    display: flex;
-    align-items: center;
-  }
-  .scheduleBlockWrappers{
+  .scheduleBlockWrapperOne {
     display: flex;
     align-items: center;
   }
 
+  .scheduleBlockWrappers {
+    display: flex;
+    align-items: center;
+  }
 
-  //.scheduleText::after {
-  //  content: "";
-  //  position: absolute;
-  //  bottom: 0;
-  //  top: 2px;
-  //  left: 157px;
-  //  width: 1.5px;
-  //  height: 13px;
-  //  background-color: #8C9196;
-  //}
-.headerStrip{
-  width: 1.5px;
-  height: 13px;
-  background: #8C9196;
-  margin: 0 6px;
-}
+  .headerStrip {
+    width: 1.5px;
+    height: 13px;
+    background: #8C9196;
+    margin: 0 6px;
+  }
+
   & p {
     font-size: 14px;
     line-height: 20px;
@@ -45,26 +34,30 @@
     @include SFTextRegular();
   }
 }
+
 @media (max-width: 1199px) {
-    .scheduleBlock{
-      flex-direction: column;
-    }
-  .scheduleBlockWrappers{
+  .scheduleBlock {
+    flex-direction: column;
+  }
+  .scheduleBlockWrappers {
     align-items: center;
     justify-content: flex-end;
   }
-  .headerStrip{
+  .headerStrip {
     display: none;
   }
 }
+
 @media (max-width: 768px) {
-  .scheduleBlock{
+  .scheduleBlock {
     flex-direction: row;
-    margin: 16px 0 ;
+    margin: 16px 0;
+
     & img {
       display: none;
     }
-    & .scheduleBlockWrapperOne{
+
+    & .scheduleBlockWrapperOne {
       margin-right: 8px;
     }
   }

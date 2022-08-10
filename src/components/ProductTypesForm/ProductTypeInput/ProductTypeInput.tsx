@@ -1,4 +1,5 @@
 import React from 'react';
+import { ProductTypeInputPropsType } from './types';
 
 const ProductTypeInput = ( { id, name, isActive, chooseProductType }: ProductTypeInputPropsType ) => {
 
@@ -17,10 +18,3 @@ const ProductTypeInput = ( { id, name, isActive, chooseProductType }: ProductTyp
 };
 
 export default ProductTypeInput;
-
-type ProductTypeInputPropsType = {
-  id: number
-  name: string,
-  isActive: boolean,
-  chooseProductType: ( id: number ) => void
-}

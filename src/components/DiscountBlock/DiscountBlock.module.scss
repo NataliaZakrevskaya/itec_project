@@ -1,21 +1,21 @@
 @import "src/styles/Mixins";
 
-.discountBlockWrapper{
+.discountBlockWrapper {
   margin: 0 auto;
   position: relative;
 }
 
-.discountBlock{
+.discountBlock {
   @include flex(row, space-between, center);
   margin: 57px 0;
   flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
-  .discountBlockWrapper{
+  .discountBlockWrapper {
     width: 100%;
   }
-  .discountBlock{
+  .discountBlock {
     margin: 33px 0;
   }
 }

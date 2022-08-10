@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getProductInitState, OptionType } from '../../mocks';
+import { getProductInitState, OptionType, ProductItemType } from '../../mocks';
 import { RequestStatus } from './enums';
 import { setOneClickOrderRequestStatus } from './app-reducer';
-import { ProductItemType } from './products-reducer';
 import { orderAPI } from '../../Api/orderApi/orderApi';
 
 export const sendOneClickOrderTC = createAsyncThunk(
   'oneClickOrder/sendOneClickOrder', async ( param: {
-    name: string, phoneNumber: string, orderInfo: [{ article_number: string, quantity: number }]
+    name: string, phoneNumber: string, orderInfo: [ { article_number: string, quantity: number } ]
   }, {
                                                dispatch,
                                                rejectWithValue,
@@ -23,23 +22,23 @@ export const sendOneClickOrderTC = createAsyncThunk(
 );
 
 export const slice = createSlice( {
-    name: 'oneClickOrder',
-    initialState: getProductInitState(),
-    reducers: {
-      setProductToState( state, action: PayloadAction<{ product: ProductItemType }> ) {
-        return action.payload.product;
-      },
-      setChosenOptionToOneOrderProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
-        state.chosen_option = action.payload.option;
-      },
-      incrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number }> ) {
-        state.chosen_option.quantity = state.chosen_option.quantity + action.payload.quantity;
-      },
-      decrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number }> ) {
-        state.chosen_option.quantity = state.chosen_option.quantity - action.payload.quantity;
-      },
+  name: 'oneClickOrder',
+  initialState: getProductInitState(),
+  reducers: {
+    setProductToState( state, action: PayloadAction<{ product: ProductItemType }> ) {
+      return action.payload.product;
     },
-  } );
+    setChosenOptionToOneOrderProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+      state.chosen_option = action.payload.option;
+    },
+    incrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number }> ) {
+      state.chosen_option.quantity = state.chosen_option.quantity + action.payload.quantity;
+    },
+    decrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number }> ) {
+      state.chosen_option.quantity = state.chosen_option.quantity - action.payload.quantity;
+    },
+  },
+} );
 
 export const oneClickOrderReducer = slice.reducer;
 export const {

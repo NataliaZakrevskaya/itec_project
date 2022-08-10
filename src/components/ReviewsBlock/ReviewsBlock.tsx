@@ -24,9 +24,9 @@ import { RequestStatus } from '../../redux/reducers/enums';
 
 const ReviewsBlock = () => {
 
-  const reviews = useSelector( getReviews );
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const reviews = useSelector( getReviews );
 
   const {
     windowElRef,
@@ -42,6 +42,11 @@ const ReviewsBlock = () => {
 
   const [ isReviewModalActive, setIsReviewModalActive ] = useState<boolean>( false );
   const isSuccessReview = useSelector( getSendingReviewsRequestStatus ) === RequestStatus.SUCCEEDED;
+  const getCurrentReviewPage = ( offset: number, width: number ) => {
+    if ( offset === 0 ) return 1;
+    else return ( Math.abs( offset ) / width ) + 1;
+  };
+  const currentReviewNumber = getCurrentReviewPage( offset, width );
 
   const closeReviewModal = () => {
     setIsReviewModalActive( false );
@@ -50,26 +55,21 @@ const ReviewsBlock = () => {
     setIsReviewModalActive( true );
   };
   const closeSuccessReviewModal = () => {
-    dispatch(setSendingReviewRequestStatus({status: RequestStatus.IDLE}))
+    dispatch( setSendingReviewRequestStatus( { status: RequestStatus.IDLE } ) );
     navigate( routesPathsEnum.CATALOG );
   };
 
   useEffect( () => {
     dispatch( fetchReviewsTC() );
   }, [] );
-  useEffect(() => {
-    if(isReviewModalActive || isSuccessReview){
-      window.document.body.style.overflow = 'hidden'
+  useEffect( () => {
+    if ( isReviewModalActive || isSuccessReview ) {
+      window.document.body.style.overflow = 'hidden';
     }
-    return () => {window.document.body.style.overflow = ''}
-  }, [isReviewModalActive, isSuccessReview])
-
-  const getCurrentReviewPage = ( offset: number, width: number ) => {
-    if ( offset === 0 ) return 1;
-    else return (Math.abs(offset) / width) + 1
-  };
-
-  const currentReviewNumber = getCurrentReviewPage( offset, width );
+    return () => {
+      window.document.body.style.overflow = '';
+    };
+  }, [ isReviewModalActive, isSuccessReview ] );
 
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>

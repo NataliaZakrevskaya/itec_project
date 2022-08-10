@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './Product.module.scss';
 import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
-import { OptionType } from '../../../mocks';
 import basket from '../../../Images/basket.svg';
 import { useDispatch } from 'react-redux';
 import {
@@ -20,6 +19,7 @@ import {
 } from '../../../redux/reducers/onClickOrder-reducer';
 import { getPrice } from '../../../helpers/getPrice';
 import { setWeightSetIsShowed } from '../../../redux/reducers/app-reducer';
+import { ProductForBasketPropsType } from '../types';
 
 const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
 
@@ -54,7 +54,6 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
 
   return (
     <div className={ style.productForBasketContainer }>
-
       <div className={ style.productWrap }>
         <div className={ style.imageWrapper }>
           <img src={ image } alt="product"/>
@@ -85,7 +84,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
         </div>
       </div>
       <div className={ style.quantityManagementBlockWrapper }>
-        <div className={style.quantityManagementBlockPositionContainer}>
+        <div className={ style.quantityManagementBlockPositionContainer }>
           <div className={ style.quantityManagementBlockContainer }>
             { chosenOption.partial
               ? <div className={ style.quantity }>{ chosenOption.quantity } кг.</div>
@@ -106,7 +105,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
               onClick={ deleteProductFromBasket }
             /> }
           </div>
-          {!isForModal && <div className={style.discount}>Акция</div>}
+          { !isForModal && <div className={ style.discount }>Акция</div> }
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
@@ -120,13 +119,3 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
 };
 
 export default Product;
-
-type ProductForBasketPropsType = {
-  id: number,
-  options: Array<OptionType>,
-  name: string,
-  image: string,
-  isForModal: boolean,
-  chosenOption: OptionType,
-  from: string
-}

@@ -3,32 +3,35 @@
   padding: 10px 0 12px;
 
   .sectionsBlock {
-    & button:last-child{
+    & button:last-child {
       border: none;
       outline: none;
       background-size: 7px 12px;
       background: #F6F6F7 url("../../Images/nextIcon.svg") no-repeat 50% 50%;
     }
-    & button:last-child:hover{
+
+    & button:last-child:hover {
       border: none;
       outline: none;
       background-size: 7px 12px;
       background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
 
     }
-    & button:first-child{
+
+    & button:first-child {
       border: none;
       outline: none;
       background-size: 7px 12px;
       background: #F6F6F7 url("../../Images/prevIcon.svg") no-repeat 50% 50%;
 
-      &:hover{
+      &:hover {
         transform: rotate(-180deg);
         background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
         background-size: 7px 12px;
       }
     }
-    & button:hover{
+
+    & button:hover {
       border: none;
       outline: none;
       background: #00A0AC;
@@ -37,12 +40,12 @@
   }
 }
 
-.productItem{
+.productItem {
   background-color: #FAFBFB;
 }
+
 @media (max-width: 768px) {
   .block {
-    //padding-bottom: 33px;
     background: none;
     padding-top: 0;
   }

@@ -12,9 +12,9 @@ const ProductTypesForm = () => {
   const productsTypes = useSelector( getProductTypes );
   const chosenProductTypeId = useSelector( getChosenProductTypeId );
   const chooseProductType = ( id: number ) => {
-    const pageNumber  = 1;
+    const pageNumber = 1;
     dispatch( setChosenProductTypeId( { id } ) );
-    dispatch(setActualPage({pageNumber}))
+    dispatch( setActualPage( { pageNumber } ) );
   };
   useEffect( () => {
     dispatch( fetchProductTypesTC() );
@@ -22,7 +22,7 @@ const ProductTypesForm = () => {
 
   return (
     <div className={ style.productTypesBlock }>
-      <h3>Тип товара</h3>
+      <h2>Тип товара</h2>
       <div className={ style.radioGroup }>
         {
           productsTypes.map( type =>

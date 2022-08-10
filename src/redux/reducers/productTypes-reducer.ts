@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { productTypesAPI } from '../../Api/productTypesApi/productTypesApi';
+import { ProductTypesType } from './types';
 
 export const fetchProductTypesTC = createAsyncThunk(
   'productTypes/fetchProductTypes', async ( param, { dispatch } ) => {
@@ -37,10 +38,3 @@ export const slice = createSlice( {
 
 export const productTypesReducer = slice.reducer;
 export const { setChosenProductTypeId, removeChosenProductTypeId } = slice.actions;
-
-export type ProductTypesType = {
-  id: number,
-  name: string,
-  is_active: boolean,
-  chosen: boolean
-}

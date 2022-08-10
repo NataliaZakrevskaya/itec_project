@@ -1,6 +1,4 @@
-
-
-export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null) => {
+export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null ) => {
   switch ( chosenAnimalTypeId ) {
     case 1: {
       return 'для собак';
@@ -22,7 +20,7 @@ export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null) => 
   }
 };
 
-export const getTitleForArticlesBlock = ( chosenAnimalTypeId: number | null) => {
+export const getTitleForArticlesBlock = ( chosenAnimalTypeId: number | null ) => {
   switch ( chosenAnimalTypeId ) {
     case 1: {
       return 'про собак';

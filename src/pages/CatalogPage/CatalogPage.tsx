@@ -22,7 +22,7 @@ import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
 import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
 import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket-reducer';
-import { fetchProductsTC, ProductItemType, setActualPage } from '../../redux/reducers/products-reducer';
+import { fetchProductsTC, setActualPage } from '../../redux/reducers/products-reducer';
 import {
   getActualPage,
   getPageSize,
@@ -48,6 +48,8 @@ import { getChosenOrdering } from '../../redux/selectors/ordering-selectors';
 import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 import { useResize } from '../../customHooks/useResize';
 import { PRODUCT_IMAGE } from '../../constants';
+import { CatalogPagePropsType } from './types';
+import { ProductItemType } from '../../mocks';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -77,7 +79,6 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const onPageChanged = ( pageNumber: number ) => {
     dispatch( setActualPage( { pageNumber } ) );
   };
-
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
@@ -110,12 +111,14 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     const brands = chosenBrands.length ? chosenBrands?.join() : null;
     dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands } ) );
   }, [ page, animal, category, chosenOrdering, chosenBrands ] );
-  useEffect(() => {
-    if(isBasketModalActive || isOneClickModalActive || isOneClickOrderSucceeded){
-      window.document.body.style.overflow = 'hidden'
+  useEffect( () => {
+    if ( isBasketModalActive || isOneClickModalActive || isOneClickOrderSucceeded ) {
+      window.document.body.style.overflow = 'hidden';
     }
-    return () => {window.document.body.style.overflow = ''}
-  }, [isOneClickModalActive, isBasketModalActive, isOneClickOrderSucceeded])
+    return () => {
+      window.document.body.style.overflow = '';
+    };
+  }, [ isOneClickModalActive, isBasketModalActive, isOneClickOrderSucceeded ] );
 
   return (
     <div
@@ -190,7 +193,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                     openOneClickModal={ openOneClickModal }
                     openBasketModal={ openBasketModal }
                     from={ location.CATALOG }
-                    forCatalog={true}
+                    forCatalog={ true }
                   />,
                 )
               }
@@ -253,8 +256,3 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
 };
 
 export default CatalogPage;
-
-type CatalogPagePropsType = {
-  openFiltersMode: () => void,
-  closeEditMode: () => void
-}

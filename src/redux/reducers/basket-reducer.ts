@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductItemType } from './products-reducer';
 import { setTotalCount, setTotalSum, setTotalSumWithDiscount } from './helpers';
-import { OptionType } from '../../mocks';
+import { OptionType, ProductItemType } from '../../mocks';
 import { orderAPI } from '../../Api/orderApi/orderApi';
 import { setCallbackRequestStatus, setOrderRequestStatus } from './app-reducer';
 import { RequestStatus } from './enums';
@@ -22,7 +21,8 @@ export const sendOrderTC = createAsyncThunk(
 );
 export const sendCallbackRequestTC = createAsyncThunk(
   'order/sendCallbackRequest', async ( param: {
-    name: string, phoneNumber: string }, { dispatch, rejectWithValue } ) => {
+    name: string, phoneNumber: string
+  }, { dispatch, rejectWithValue } ) => {
     try {
       await orderAPI.sendCallbackRequest( param.name, param.phoneNumber );
       dispatch( setCallbackRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
@@ -39,12 +39,12 @@ export const slice = createSlice( {
     productsInBasket: [] as Array<ProductItemType>,
     totalProductsCount: 0 as number,
     totalSum: 0 as number,
-    totalSumWithDiscount: 0 as number
+    totalSumWithDiscount: 0 as number,
   },
   reducers: {
     setProductToBasket( state, action: PayloadAction<{ product: ProductItemType }> ) {
       state.productsInBasket.unshift( action.payload.product );
-      setTotalSumWithDiscount(state);
+      setTotalSumWithDiscount( state );
       setTotalCount( state );
       setTotalSum( state );
     },
@@ -53,7 +53,7 @@ export const slice = createSlice( {
       state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity + action.payload.quantity;
 
       setTotalCount( state );
-      setTotalSumWithDiscount(state);
+      setTotalSumWithDiscount( state );
       setTotalSum( state );
     },
     decrementProductQuantity( state, action: PayloadAction<{ optionId: number }> ) {
@@ -61,27 +61,27 @@ export const slice = createSlice( {
       state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity - 1;
 
       setTotalCount( state );
-      setTotalSumWithDiscount(state);
+      setTotalSumWithDiscount( state );
       setTotalSum( state );
     },
     removeByChosenOptionArticle( state, action: PayloadAction<{ article_number: string }> ) {
       state.productsInBasket = state.productsInBasket.filter( product => product.chosen_option.article_number !== action.payload.article_number );
       setTotalCount( state );
-      setTotalSumWithDiscount(state);
+      setTotalSumWithDiscount( state );
       setTotalSum( state );
     },
     changeChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
       const index = state.productsInBasket.findIndex( product => product.id === action.payload.productId );
       state.productsInBasket[ index ].chosen_option = action.payload.option;
       setTotalSum( state );
-      setTotalSumWithDiscount(state);
+      setTotalSumWithDiscount( state );
     },
-    changePartialProductQuantity(state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
+    changePartialProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
       const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
       state.productsInBasket[ index ].chosen_option.quantity = action.payload.quantity;
 
       setTotalSum( state );
-      setTotalSumWithDiscount(state);
+      setTotalSumWithDiscount( state );
     },
     clearBasket( state, action ) {
       state.productsInBasket = [];

@@ -1,6 +1,6 @@
 @import "src/styles/Mixins";
 
-.basketModalContainer{
+.basketModalContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
   width: 100%;
   position: relative;
 
-  .discount{
+  .discount {
     position: absolute;
     top: 4px;
     left: 10px;
@@ -20,15 +20,18 @@
     line-height: 20px;
     color: #FFFFFF;
   }
-  .title{
+
+  .title {
     display: flex;
     align-items: center;
     margin-bottom: 48px;
-    & img{
+
+    & img {
       @include size(20px, 20px);
       margin-right: 10px;
     }
-    & h3{
+
+    & h3 {
       @include SFDisplayBold();
       font-size: 20px;
       line-height: 28px;
@@ -36,13 +39,16 @@
       color: #202223;
     }
   }
-  .product{
+
+  .product {
     width: 100%;
   }
-  .buttons{
+
+  .buttons {
     display: flex;
     margin-top: 49px;
-    .basketBtn{
+
+    .basketBtn {
       padding: 8px 16px;
       gap: 10px;
       background: #00A0AC;
@@ -57,13 +63,15 @@
       text-align: center;
       cursor: pointer;
       margin-right: 13px;
-      &:hover{
+
+      &:hover {
         background: #347C84;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
         border-radius: 4px;
       }
     }
-    .catalogBtn{
+
+    .catalogBtn {
       padding: 8px 16px;
       gap: 10px;
       border-radius: 4px;
@@ -79,13 +87,15 @@
     }
   }
 }
+
 @media (max-width: 576px) {
-  .basketModalContainer{
-    & .buttons{
+  .basketModalContainer {
+    & .buttons {
       flex-direction: column;
       gap: 10px;
       width: 100%;
-      .basketBtn{
+
+      .basketBtn {
         margin: 0;
       }
     }

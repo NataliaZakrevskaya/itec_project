@@ -1,9 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeChosenBrandId, setChosenBrandId } from '../../../redux/reducers/brands-reducer';
+import { BrandFormInputPropsType } from '../types';
 
 const BrandFormInput = ( { id, name, chosen }: BrandFormInputPropsType ) => {
   const dispatch = useDispatch();
+
+  const showDiscount = true; //todo позже получать от бэка
+
   const addBrandStatusChosen = () => {
     dispatch( setChosenBrandId( { id } ) );
   };
@@ -11,27 +15,19 @@ const BrandFormInput = ( { id, name, chosen }: BrandFormInputPropsType ) => {
     dispatch( removeChosenBrandId( { id } ) );
   };
 
-  const showDiscount = true; //todo позже получать от бэка
-
   return (
     <label>
       <div>
-      <input type="checkbox" checked={ chosen }/>
-      { chosen
-        ? <span onClick={ removeBrandStatusChosen }/>
-        : <span onClick={ addBrandStatusChosen }/>
-      }
-      { name }
+        <input type="checkbox" checked={ chosen }/>
+        { chosen
+          ? <span onClick={ removeBrandStatusChosen }/>
+          : <span onClick={ addBrandStatusChosen }/>
+        }
+        { name }
       </div>
-      <p>Акция</p>
+      { showDiscount && <p>Акция</p> }
     </label>
   );
 };
 
 export default BrandFormInput;
-
-type BrandFormInputPropsType = {
-  id: number
-  name: string,
-  chosen: boolean
-}
