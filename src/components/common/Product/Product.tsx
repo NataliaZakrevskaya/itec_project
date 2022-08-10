@@ -18,6 +18,8 @@ import {
   decrementOneOrderProductQuantity,
   incrementOneOrderProductQuantity,
 } from '../../../redux/reducers/onClickOrder-reducer';
+import { getPrice } from '../../../helpers/getPrice';
+import { setWeightSetIsShowed } from '../../../redux/reducers/app-reducer';
 
 const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
 
@@ -26,6 +28,8 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
 
   const productName = stringCutter( name, 70 );
   const countOfProduct = chosenOption.quantity;
+  const price = getPrice( +chosenOption.price * countOfProduct );
+  const priceWithDiscount = 112; //todo позже от бэка
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
@@ -41,6 +45,10 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
     dispatch( removeByChosenOptionArticle( { article_number: chosenOption.article_number } ) );
   };
   const onNameClick = () => {
+    navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
+  };
+  const onSetWeightClick = () => {
+    dispatch( setWeightSetIsShowed( { status: true } ) );
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
 
@@ -72,7 +80,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
             }
           </div>
           { options.some( option => option.partial ) &&
-            <p onClick={ () => navigate( `${ routesPathsEnum.CATALOG }/${ id }` ) }>Указать свой вес</p>
+            <p onClick={ onSetWeightClick }>Указать свой вес</p>
           }
         </div>
       </div>
@@ -98,8 +106,9 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
           /> }
         </div>
         { isForModal &&
-          <div>
-            <p>{ +chosenOption.price * countOfProduct } BYN.</p>
+          <div className={ style.priceBlock }>
+            <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
+            { !!priceWithDiscount && <p className={ style.price }>{ priceWithDiscount } BYN.</p> }
           </div>
         }
       </div>

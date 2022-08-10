@@ -129,12 +129,26 @@
       }
     }
 
-    & p {
-      @include SFDisplayBold();
-      font-size: 16px;
-      line-height: 130%;
-      color: #202223;
+    .priceBlock{
+      display: flex;
+      flex-direction: row;
+      .price {
+        @include SFDisplayBold();
+        font-size: 16px;
+        line-height: 130%;
+        color: #202223;
+      }
+      .priceWithDiscount{
+        @include SFDisplayBold();
+        font-size: 16px;
+        line-height: 130%;
+        color: #8C9196;
+        text-decoration: line-through;
+        text-decoration-color: #D72C0D;
+        margin-right: 6px;
+      }
     }
+
   }
   &:last-child{
     margin-bottom: 0;
