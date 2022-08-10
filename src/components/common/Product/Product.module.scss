@@ -7,9 +7,11 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 24px;
-  .productWrap{
+
+  .productWrap {
     display: flex;
   }
+
   .imageWrapper {
     @include size(56px, 56px);
 
@@ -54,91 +56,107 @@
     flex-direction: column;
     align-items: center;
 
-
-    .quantityManagementBlockContainer {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 16px;
+    .quantityManagementBlockPositionContainer {
+      @include flex(column, space-between, flex-end);
 
 
-    .quantityManagementBlock {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      & .minus {
-        @include size(36px, 36px);
-        padding: 8px 8px 8px 7px;
-        border-radius: 4px;
-        background: #FFFFFF;
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+      .quantityManagementBlockContainer {
         display: flex;
-        border: 1px solid #BABFC3;
-        justify-content: center;
+        flex-direction: row;
         align-items: center;
-        cursor: pointer;
-        margin-right: 6px;
+        margin-bottom: 16px;
 
-        & div {
-          background: url("../../../Images/minusIcon.svg") no-repeat;
-          @include size(20px, 20px);
+
+        .quantityManagementBlock {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          & .minus {
+            @include size(36px, 36px);
+            padding: 8px 8px 8px 7px;
+            border-radius: 4px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            border: 1px solid #BABFC3;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 6px;
+
+            & div {
+              background: url("../../../Images/minusIcon.svg") no-repeat;
+              @include size(20px, 20px);
+            }
+          }
+
+          & .countMeaning {
+            @include size(36px, 36px);
+            padding: 8px 8px 8px 7px;
+            border-radius: 4px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            border: 1px solid #BABFC3;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 6px;
+            @include SFTextRegular();
+            font-size: 15px;
+            line-height: 20px;
+            color: #202223;
+          }
+
+          & .plus {
+            @include size(36px, 36px);
+            padding: 8px 8px 8px 7px;
+            border-radius: 4px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            border: 1px solid #BABFC3;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            & div {
+              background: url("../../../Images/plusIcon.svg") no-repeat;
+              @include size(20px, 20px);
+            }
+          }
+        }
+
+        .basketImage {
+          margin-left: 37.75px;
+          cursor: pointer;
         }
       }
 
-      & .countMeaning {
-        @include size(36px, 36px);
-        padding: 8px 8px 8px 7px;
-        border-radius: 4px;
-        background: #FFFFFF;
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
-        display: flex;
-        border: 1px solid #BABFC3;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        margin-right: 6px;
+      .discount{
         @include SFTextRegular();
+        padding: 0 6px;
+        background: #FD5749;
+        border-radius: 2px;
         font-size: 15px;
         line-height: 20px;
-        color: #202223;
-      }
-
-      & .plus {
-        @include size(36px, 36px);
-        padding: 8px 8px 8px 7px;
-        border-radius: 4px;
-        background: #FFFFFF;
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
-        display: flex;
-        border: 1px solid #BABFC3;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-
-        & div {
-          background: url("../../../Images/plusIcon.svg") no-repeat;
-          @include size(20px, 20px);
-        }
+        color: #FFFFFF;
       }
     }
 
-      .basketImage {
-        margin-left: 37.75px;
-        cursor: pointer;
-      }
-    }
-
-    .priceBlock{
+    .priceBlock {
       display: flex;
       flex-direction: row;
+
       .price {
         @include SFDisplayBold();
         font-size: 16px;
         line-height: 130%;
         color: #202223;
       }
-      .priceWithDiscount{
+
+      .priceWithDiscount {
         @include SFDisplayBold();
         font-size: 16px;
         line-height: 130%;
@@ -150,27 +168,31 @@
     }
 
   }
-  &:last-child{
+
+  &:last-child {
     margin-bottom: 0;
   }
 }
-.widthForBasketMainProductInfo{
+
+.widthForBasketMainProductInfo {
   max-width: 471px;
 }
-.widthForModalMainProductInfo{
+
+.widthForModalMainProductInfo {
   max-width: 355px;
 }
 
 @media (max-width: 768px) {
-  .productForBasketContainer{
+  .productForBasketContainer {
     flex-direction: column;
     justify-content: space-between;
     gap: 16px;
-    & .productMainInfo{
+
+    & .productMainInfo {
       margin: 0;
     }
   }
-  .productWrap{
+  .productWrap {
     flex-direction: column;
     gap: 16px;
   }

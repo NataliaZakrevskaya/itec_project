@@ -85,25 +85,28 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
         </div>
       </div>
       <div className={ style.quantityManagementBlockWrapper }>
-        <div className={ style.quantityManagementBlockContainer }>
-          { chosenOption.partial
-            ? <div className={ style.quantity }>{ chosenOption.quantity } кг.</div>
-            : ( <div className={ style.quantityManagementBlock }>
-              <div className={ style.minus } onClick={ onDecrementBtnClick }>
-                <div/>
-              </div>
-              <div className={ style.countMeaning }>
-                { countOfProduct }
-              </div>
-              <div className={ style.plus } onClick={ onIncrementBtnClick }>
-                <div/>
-              </div>
-            </div> ) }
-          { !isForModal && <img
-            className={ style.basketImage }
-            src={ basket } alt="basketIcon"
-            onClick={ deleteProductFromBasket }
-          /> }
+        <div className={style.quantityManagementBlockPositionContainer}>
+          <div className={ style.quantityManagementBlockContainer }>
+            { chosenOption.partial
+              ? <div className={ style.quantity }>{ chosenOption.quantity } кг.</div>
+              : ( <div className={ style.quantityManagementBlock }>
+                <div className={ style.minus } onClick={ onDecrementBtnClick }>
+                  <div/>
+                </div>
+                <div className={ style.countMeaning }>
+                  { countOfProduct }
+                </div>
+                <div className={ style.plus } onClick={ onIncrementBtnClick }>
+                  <div/>
+                </div>
+              </div> ) }
+            { !isForModal && <img
+              className={ style.basketImage }
+              src={ basket } alt="basketIcon"
+              onClick={ deleteProductFromBasket }
+            /> }
+          </div>
+          <div className={style.discount}>Акция</div>
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
