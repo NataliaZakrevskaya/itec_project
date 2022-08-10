@@ -1,13 +1,18 @@
 import React from 'react';
 
-const ProductTypeInput = ({ id, name, isActive, chooseProductType }: ProductTypeInputPropsType) => {
+const ProductTypeInput = ( { id, name, isActive, chooseProductType }: ProductTypeInputPropsType ) => {
+
+  const showDiscount = true; //todo заменить после получения инфы от бэка
 
   return (
-      <label>
-        <input type="radio" checked={ isActive } value={name} onChange={() => chooseProductType(id)}/>
+    <label>
+      <div>
+        <input type="radio" checked={ isActive } value={ name } onChange={ () => chooseProductType( id ) }/>
         <span/>
         { name }
-      </label>
+      </div>
+      { showDiscount && <p>Акция</p> }
+    </label>
   );
 };
 
@@ -17,5 +22,5 @@ type ProductTypeInputPropsType = {
   id: number
   name: string,
   isActive: boolean,
-  chooseProductType: (id: number) => void
+  chooseProductType: ( id: number ) => void
 }
