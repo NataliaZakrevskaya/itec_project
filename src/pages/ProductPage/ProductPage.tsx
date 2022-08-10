@@ -139,7 +139,6 @@ const ProductPage = () => {
   const onApplyButtonClick = () => {
     if ( partialOption ) {
       if ( +weightSetValue <= ( partialOption.stock_balance / 1000 ) ) {
-        debugger
         const sum = +weightSetValue * +partialOption.price;
         const price = sum.toFixed( 2 );
         dispatch( setChosenOptionToProduct( {
