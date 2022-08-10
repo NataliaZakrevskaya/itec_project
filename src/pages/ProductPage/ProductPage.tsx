@@ -46,6 +46,7 @@ const ProductPage = () => {
   const [ selectImageId, setSelectImageId ] = useState<number>( 0 );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
+  const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
 
   const productId = Number( useParams().productId );
   const product = useSelector( getProduct );
@@ -64,7 +65,6 @@ const ProductPage = () => {
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
   const productForBasket = useSelector( getProductsInBasket );
-  const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const weightSetIsShowed = useSelector( getWeightSetValue );

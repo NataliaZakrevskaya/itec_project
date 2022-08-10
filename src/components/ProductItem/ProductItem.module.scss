@@ -4,12 +4,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   max-width: 270px;
   border-radius: 5px;
   padding: 8px;
    &:hover{
      box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
    }
+}
+.discount{
+  position: absolute;
+  @include SFTextRegular;
+  font-size: 15px;
+  line-height: 20px;
+  color: #FFFFFF;
+  padding: 0 6px;
+  border-radius: 2px;
+  background: #FD5749;
 }
 .mainProductItemImage {
   cursor: pointer;
@@ -47,13 +58,20 @@
 }
 .price {
   margin-right: 17px;
-
   @include SFDisplayBold();
-  font-style: normal;
-  font-weight: 700;
   font-size: 16px;
   line-height: 130%;
   color: #202223;
+}
+
+.priceWithDiscount{
+  margin-right: 17px;
+  @include SFDisplayBold();
+  font-size: 16px;
+  line-height: 130%;
+  color: #8C9196;
+  text-decoration: line-through;
+  text-decoration-color: #D72C0D;
 }
 
 .basket {

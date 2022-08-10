@@ -29,8 +29,11 @@ const ProductItem = ( {
   const onProductClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
+  const showDiscount = true; //todo после того, как бэк сделает скидки заменить
+  const priceWithDiscount = 112 //todo после того, как бэк сделает скидки заменить
   return (
     <div className={ `${ forCatalog ? style.productItemForCatalog : style.productItem} ${ classNameForDarkItem }` }>
+      {showDiscount && <div className={style.discount}>Акция</div>}
       <img
         className={ style.mainProductItemImage }
         onClick={ onProductClick }
@@ -51,7 +54,8 @@ const ProductItem = ( {
       </div>
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
-          <p className={ style.price }>{ `${ price } BYN` }</p>
+          <p className={!priceWithDiscount ? style.price : style.priceWithDiscount}>{ `${ price } BYN` }</p>
+          {!!priceWithDiscount && <p className={ style.price }>{ `${ priceWithDiscount } BYN` }</p>}
           <div className={ style.basket } onClick={ () => openBasketModal( product ) }>
             <p>+</p>
             <div className={ style.imageWrapper }>

@@ -74,7 +74,7 @@ const BasketPage = () => {
                 <div className={ style.basketInfoContainer }>
                   <div className={ style.basketInfo }>
                     <p className={!basketCountWithDiscount ? style.basketBUN : style.basketBUNWIthDiscount}>{ price } BYN</p>
-                    {basketCountWithDiscount && <p className={ style.basketBUN }>{ priceWithDiscount } BYN</p>}
+                    {!!basketCountWithDiscount && <p className={ style.basketBUN }>{ priceWithDiscount } BYN</p>}
                     <p className={ style.basketProducts }>{ productsCount } { goodsName }</p>
                   </div>
                   <div className={ style.pickUpBlock }>
