@@ -3,12 +3,12 @@ import { descriptionShopAPI } from '../../Api/descriptionShopApi/descriptionShop
 import { ShopInfoType } from '../../mocks';
 
 export const fetchDescriptionShopTC = createAsyncThunk(
-  'descriptionShop/fetchDescriptionShop', async ( param, { dispatch } ) => {
+  'descriptionShop/fetchDescriptionShop', async ( param, { dispatch, rejectWithValue } ) => {
     const res = await descriptionShopAPI.setShopInfo();
     try {
       return { descriptionShop: res.data };
     } catch ( err ) {
-
+      rejectWithValue(null)
     }
   },
 );

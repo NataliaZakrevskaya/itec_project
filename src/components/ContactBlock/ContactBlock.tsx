@@ -19,7 +19,7 @@ const ContactBlock = () => {
           <div className={ style.contactBlockMapWrapper }>
             <YMaps>
               <Map defaultState={ { center: [ 53.854422, 27.478944 ], zoom: 15 } } className={ style.map }>
-                <Placemark geometry={ [ 53.854422, 27.478944 ] } className={ style.mapTwo }/>
+                <Placemark geometry={ [ 53.854422, 27.478944 ] }/>
               </Map>
             </YMaps>
           </div>
@@ -27,7 +27,7 @@ const ContactBlock = () => {
             <h3 className={ style.contactBlockWrapperTitle }>Бесплатно проконсультируем по любому вопросу связанному с
               вашим любимцем</h3>
             <div className={ style.contactBlockWrapperDirection }>
-              <div className={ style.contactBlockAdressSWrapper }>
+              <div className={ style.contactBlockAddressWrapper }>
                 <img src={ navigationIcon } alt=""/>
                 <p>{ address }</p>
               </div>
@@ -41,12 +41,12 @@ const ContactBlock = () => {
               <div className={ style.scheduleWrapper }>
                 <div className={ style.scheduleWrapperFirst }>
                   <img src={ IconTime } alt="timeIcon"/>
-                  <div>Пон.-Пят. { time_weekdays }</div>
+                  <p>Пон.-Пят. { time_weekdays }</p>
                 </div>
                 <div className={ style.scheduleWrapperLine }/>
-                <div className={ style.scheduleWrapperSecond }>
+                <p className={ style.scheduleWrapperSecond }>
                   Суб.-Вос. { time_weekend }
-                </div>
+                </p>
               </div>
             </div>
             <div className={ style.contactBlockWrapperTel }>
@@ -55,7 +55,7 @@ const ContactBlock = () => {
             </div>
             <div className={ style.contactBlockWrapperSocial }>
               <p className={ style.socialTitle }>Пишите нам в социальных сетях</p>
-              <a href={ social } target={ '_blank' } rel={ 'noreferrer' }>
+              <a href={ social } target={ '_blank' } rel={ 'noreferrer' } className={style.instaIcon}>
                 <img src={ instagramIcon } alt={ 'instagramIcon' }/>
               </a>
             </div>

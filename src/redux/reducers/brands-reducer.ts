@@ -3,12 +3,12 @@ import { brandsAPI } from '../../Api/brandsApi/brandsApi';
 import { BrandType } from '../../mocks';
 
 export const fetchBrandsTC = createAsyncThunk(
-  'brands/fetchBrands', async ( param, { dispatch } ) => {
+  'brands/fetchBrands', async ( param, { dispatch, rejectWithValue } ) => {
     const res = await brandsAPI.setBrands();
     try {
       return { brands: res.data };
     } catch ( err ) {
-
+      rejectWithValue(null)
     }
   },
 );

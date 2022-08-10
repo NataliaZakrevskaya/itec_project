@@ -5,11 +5,12 @@ import { setSendingReviewRequestStatus } from './app-reducer';
 import { RequestStatus } from './enums';
 
 export const fetchReviewsTC = createAsyncThunk(
-  'reviews/fetchReviews', async ( param, { dispatch } ) => {
+  'reviews/fetchReviews', async ( param, { dispatch, rejectWithValue } ) => {
     const res = await reviewsAPI.setReviews();
     try {
       return { reviews: res.data };
     } catch ( err ) {
+      rejectWithValue(null)
     }
   },
 );

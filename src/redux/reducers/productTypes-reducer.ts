@@ -3,12 +3,12 @@ import { productTypesAPI } from '../../Api/productTypesApi/productTypesApi';
 import { ProductTypesType } from './types';
 
 export const fetchProductTypesTC = createAsyncThunk(
-  'productTypes/fetchProductTypes', async ( param, { dispatch } ) => {
+  'productTypes/fetchProductTypes', async ( param, { dispatch, rejectWithValue } ) => {
     const res = await productTypesAPI.setProductTypes();
     try {
       return { productTypes: res.data };
     } catch ( err ) {
-
+      rejectWithValue(null)
     }
   },
 );
