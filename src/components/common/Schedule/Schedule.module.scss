@@ -7,43 +7,51 @@
   position: relative;
   cursor: default;
 
-  & img {
-    margin-right: 7.6px;
-  }
-
   .scheduleBlockWrapperOne {
     display: flex;
     align-items: center;
+
+    & img {
+      @include size(16px, 16px);
+      margin-right: 7.6px;
+    }
+
+    & p {
+      @include fontSize14();
+      @include SFTextRegular();
+    }
   }
 
   .scheduleBlockWrappers {
     display: flex;
     align-items: center;
-  }
 
-  .headerStrip {
-    width: 1.5px;
-    height: 13px;
-    background: #8C9196;
-    margin: 0 6px;
-  }
+    .headerStrip {
+      width: 1.5px;
+      height: 13px;
+      background: #8C9196;
+      margin: 0 6px;
+    }
 
-  & p {
-    @include fontSize14();
-    @include SFTextRegular();
+    & p {
+      @include fontSize14();
+      @include SFTextRegular();
+    }
   }
 }
 
 @media (max-width: 1199px) {
   .scheduleBlock {
     flex-direction: column;
-  }
-  .scheduleBlockWrappers {
-    align-items: center;
-    justify-content: flex-end;
-  }
-  .headerStrip {
-    display: none;
+
+    .scheduleBlockWrappers {
+      align-items: center;
+      justify-content: flex-end;
+
+      .headerStrip {
+        display: none;
+      }
+    }
   }
 }
 
@@ -52,12 +60,12 @@
     flex-direction: row;
     margin: 16px 0;
 
-    & img {
-      display: none;
-    }
-
-    & .scheduleBlockWrapperOne {
+    .scheduleBlockWrapperOne {
       margin-right: 8px;
+
+      & img {
+        display: none;
+      }
     }
   }
 }
