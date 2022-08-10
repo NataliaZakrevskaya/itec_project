@@ -75,9 +75,7 @@
 
         .sum {
           @include SFDisplayBold();
-          font-size: 16px;
-          line-height: 24px;
-          color: $textColor;
+          @include fontSize16();
           margin-right: 16px;
         }
 

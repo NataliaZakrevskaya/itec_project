@@ -28,9 +28,7 @@
 
   & span {
     @include SFDisplaySemibold();
-    font-size: 16px;
-    line-height: 24px;
-    color: $textColor;
+    @include fontSize16();
   }
 
   .animalTypeImageWrapper {

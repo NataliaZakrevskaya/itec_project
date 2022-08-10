@@ -20,9 +20,7 @@
 
     & p {
       @include SFTextRegular();
-      font-size: 14px;
-      line-height: 20px;
-      color: $textColor;
+      @include fontSize14();
       cursor: pointer;
 
       &:last-child {

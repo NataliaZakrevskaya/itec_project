@@ -37,9 +37,7 @@
   border: 1px solid #BABFC3;
   border-radius: 4px;
   @include SFTextMedium();
-  font-size: 14px;
-  line-height: 20px;
-  color: $textColor;
+  @include fontSize14();
   & img {
     @include size(18px, 20px);
     margin-right: 5px;

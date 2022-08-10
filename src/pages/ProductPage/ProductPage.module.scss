@@ -13,14 +13,10 @@
   .mainDescription {
     max-width: 670px;
     @include SFTextRegular();
-    font-size: 14px;
-    line-height: 20px;
-    color: $textColor;
+    @include fontSize14();
     & h3{
       @include SFDisplaySemibold();
-      font-size: 16px;
-      line-height: 24px;
-      color: $textColor;
+      @include fontSize16();
       margin-top: 24px;
       margin-bottom: 12px;
     }
@@ -44,15 +40,11 @@
   .mainAnalysis{
     max-width: 470px;
     @include SFTextRegular();
-    font-size: 14px;
-    line-height: 20px;
-    color: $textColor;
+    @include fontSize14();
 
     & h3{
       @include SFDisplaySemibold();
-      font-size: 16px;
-      line-height: 24px;
-      color: $textColor;
+      @include fontSize16();
       margin-top: 24px;
       margin-bottom: 12px;
       &:first-child{
@@ -282,10 +274,8 @@
             height: 36px;
             border: 1px solid #BABFC3;
             @include SFTextMedium();
-            font-size: 14px;
-            line-height: 20px;
+            @include fontSize14();
             text-align: center;
-            color: $textColor;
             cursor: pointer;
           }
 
@@ -374,9 +364,7 @@
 
           & p {
             @include SFDisplaySemibold();
-            font-size: 16px;
-            line-height: 24px;
-            color: $textColor;
+            @include fontSize16();
             cursor: default;
           }
         }

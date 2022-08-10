@@ -127,10 +127,8 @@
           border-radius: 4px;
           height: 44px;
           border: none;
-          font-size: 14px;
-          line-height: 20px;
           text-align: center;
-          color: $textColor;
+          @include fontSize14();
           @include SFTextMedium();
           cursor: pointer;
         }

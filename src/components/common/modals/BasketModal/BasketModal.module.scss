@@ -81,10 +81,8 @@
       background: white;
       cursor: pointer;
       @include SFTextMedium();
-      font-size: 14px;
-      line-height: 20px;
+      @include fontSize14();
       text-align: center;
-      color: $textColor;
     }
   }
 }

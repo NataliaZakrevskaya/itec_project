@@ -15,9 +15,7 @@
     display: block;
     margin-left: 10.4px;
     @include SFDisplaySemibold();
-    font-size: 14px;
-    line-height: 20px;
-    color: $textColor;
+    @include fontSize14();
     cursor: default;
   }
 }

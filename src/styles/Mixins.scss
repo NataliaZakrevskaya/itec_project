@@ -1,4 +1,5 @@
 @import "fonts";
+@import "src/styles/Variables";
 
 @mixin flex($flexDirection, $justifyContent, $alignItems) {
   display: flex;
@@ -34,4 +35,14 @@
 @mixin size($width, $height) {
   width: $width;
   height: $height;
+}
+@mixin fontSize14() {
+  font-size: 14px;
+  line-height: 20px;
+  color: $textColor;
+}
+@mixin fontSize16() {
+  font-size: 16px;
+  line-height: 24px;
+  color: $textColor;
 }

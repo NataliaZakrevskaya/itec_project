@@ -8,9 +8,7 @@
 
   & a {
     @include SFTextMedium();
-    font-size: 14px;
-    line-height: 20px;
-    color: $textColor;
+    @include fontSize14();
 
     &:hover {
       text-decoration-line: underline;

@@ -44,11 +44,9 @@
 
           .reviewsBlockSubTitle {
             @include SFDisplaySemibold();
-            font-size: 16px;
-            line-height: 24px;
+            @include fontSize16();
             text-align: center;
             margin-bottom: 12px;
-            color: $textColor;
           }
 
           .reviewsBlockText {

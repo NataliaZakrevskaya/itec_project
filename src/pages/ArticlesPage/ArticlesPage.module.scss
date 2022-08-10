@@ -41,9 +41,7 @@
       border-radius: 5px;
       cursor: pointer;
       border: 1px solid deepskyblue;
-      font-size: 14px;
-      line-height: 20px;
-      color: $textColor;
+      @include fontSize14();
       @include SFTextMedium();
       &:hover{
         background: $mainColor;

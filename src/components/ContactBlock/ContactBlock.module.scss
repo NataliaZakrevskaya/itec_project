@@ -46,9 +46,7 @@
 
   & .timeWork {
     @include SFDisplaySemibold();
-    font-size: 16px;
-    line-height: 24px;
-    color: $textColor;
+    @include fontSize16();
     margin-bottom: 8px;
   }
 }
@@ -58,9 +56,7 @@
 
   & .tel {
     @include SFDisplaySemibold();
-    font-size: 16px;
-    line-height: 24px;
-    color: $textColor;
+    @include fontSize16();
     margin-bottom: 8px;
   }
 }
@@ -71,9 +67,7 @@
 
 .socialTitle {
   @include SFDisplaySemibold();
-  font-size: 16px;
-  line-height: 24px;
-  color: $textColor;
+  @include fontSize16();
   margin-bottom: 8px;
 }
 
@@ -173,18 +167,14 @@
   .contactBlockWrapperDirection {
     & p {
       @include SFTextRegular();
-      font-size: 14px;
-      line-height: 20px;
-      color: $textColor;
+      @include fontSize14();
     }
   }
   .scheduleWrapper {
 
     & div {
       @include SFTextRegular();
-      font-size: 14px;
-      line-height: 20px;
-      color: $textColor;
+      @include fontSize14();
     }
   }
 }

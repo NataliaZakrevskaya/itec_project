@@ -42,9 +42,7 @@
     border-radius: 6px;
     background: #FFFFFF;
     @include SFTextMedium();
-    font-size: 14px;
-    line-height: 20px;
-    color: $textColor;
+    @include fontSize14();
 
     &:hover {
       background: $mainColor;
