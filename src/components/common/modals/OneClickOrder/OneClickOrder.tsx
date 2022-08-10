@@ -13,36 +13,45 @@ import { AppDispatch } from '../../../../redux/store';
 const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClickModal }: OnClickOrderPropsType ) => {
 
   const dispatch = useDispatch<AppDispatch>();
-  const productForOneClickOrder = useSelector(getProductForOneClickOrder)
+  const productForOneClickOrder = useSelector( getProductForOneClickOrder );
+  const showDiscount = true; //todo позже узнавать от бэка
 
   const formik = useFormik( {
     initialValues: {
       name: '',
       phoneNumber: '',
     },
-    validate: (values) => {
+    validate: ( values ) => {
       const errors: FormikOneClickOrderErrorType = {};
-      if (values.name.length < 2){
+      if ( values.name.length < 2 ) {
         errors.name = 'Поле обязательно для заполнения';
       }
-      if(!values.phoneNumber){
-        errors.phoneNumber = 'Поле обязательно для заполнения'
-      } else if ( values.phoneNumber.length !==13 ){
-        errors.phoneNumber = 'Должно быть 13 символов'
-      } else if(!/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test(values.phoneNumber)){
-        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567'
+      if ( !values.phoneNumber ) {
+        errors.phoneNumber = 'Поле обязательно для заполнения';
+      } else if ( values.phoneNumber.length !== 13 ) {
+        errors.phoneNumber = 'Должно быть 13 символов';
+      } else if ( !/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test( values.phoneNumber ) ) {
+        errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567';
       }
       return errors;
     },
     onSubmit: value => {
       formik.resetForm();
-      dispatch(sendOneClickOrderTC({name: value.name, phoneNumber: value.phoneNumber, orderInfo: [{article_number: productForOneClickOrder.chosen_option.article_number, quantity: productForOneClickOrder.chosen_option.quantity}]}))
-      closeOneClickModal()
+      dispatch( sendOneClickOrderTC( {
+        name: value.name,
+        phoneNumber: value.phoneNumber,
+        orderInfo: [ {
+          article_number: productForOneClickOrder.chosen_option.article_number,
+          quantity: productForOneClickOrder.chosen_option.quantity,
+        } ],
+      } ) );
+      closeOneClickModal();
     },
   } );
 
   return (
     <div className={ style.onClickOrderContent }>
+      {showDiscount && <div className={style.discount}>Акция</div>}
       <h3>Оформление заказа в 1 клик</h3>
       <Product
         id={ id }
@@ -68,8 +77,8 @@ const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClick
               placeholder={ 'Иванов Иван Иванович' }
               { ...formik.getFieldProps( 'name' ) }
             />
-            {formik.touched.name && formik.errors.name &&
-              <span>{formik.errors.name}</span>
+            { formik.touched.name && formik.errors.name &&
+              <span>{ formik.errors.name }</span>
             }
           </div>
           <div className={ formStyle.formInput }>
@@ -79,8 +88,8 @@ const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClick
               placeholder={ '+375291231212' }
               { ...formik.getFieldProps( 'phoneNumber' ) }
             />
-            {formik.touched.phoneNumber && formik.errors.phoneNumber &&
-              <span>{formik.errors.phoneNumber}</span>
+            { formik.touched.phoneNumber && formik.errors.phoneNumber &&
+              <span>{ formik.errors.phoneNumber }</span>
             }
           </div>
         </div>

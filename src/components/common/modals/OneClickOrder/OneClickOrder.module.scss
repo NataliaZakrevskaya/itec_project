@@ -1,11 +1,26 @@
 @import "src/styles/Mixins";
 
 .onClickOrderContent {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   //max-width: 611px;
+
+  .discount{
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    @include SFTextRegular();
+    padding: 0 6px;
+    text-align: center;
+    background: #FD5749;
+    border-radius: 2px;
+    color: #FFFFFF;
+    font-size: 15px;
+    line-height: 20px;
+  }
 
   & h3 {
     @include SFDisplayBold();
