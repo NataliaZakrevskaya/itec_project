@@ -1,5 +1,5 @@
 @import "src/styles/Mixins";
-
+@import "src/styles/Variables";
 
 .brandsForm {
   margin-top: 24px;
@@ -9,7 +9,7 @@
     @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 24px;
-    color: #202223;
+    color: $textColor;
     margin-bottom: 17px;
   }
 
@@ -17,12 +17,12 @@
     @include SFTextRegular();
     font-size: 14px;
     line-height: 20px;
-    color: #202223;
+    color: $textColor;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     & input{
-      background: #008060;
+      background: $successColor;
       border-radius: 4px;
       width: 18px;
       height: 18px;
@@ -44,6 +44,6 @@
   border-radius: 4px;
   font-size: 15px;
   line-height: 20px;
-  color: #6D7175;
+  color: $opacityColor;
   margin-bottom: 21px;
 }

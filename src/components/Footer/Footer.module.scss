@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .footer {
   display: flex;
@@ -45,7 +46,7 @@
 
       & a {
         line-height: 24px;
-        color: #2C6ECB;
+        color: $callbackColor;
         margin-left: 6px;
       }
     }

@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .articlePage {
   display: flex;
@@ -15,7 +16,7 @@
       @include SFDisplayBold();
       font-size: 42px;
       line-height: 120%;
-      color: #202223;
+      color: $textColor;
 
     }
   }
@@ -43,7 +44,7 @@
           @include SFTextRegular();
           font-size: 16px;
           line-height: 24px;
-          color: #6D7175;
+          color: $opacityColor;
         }
 
         &:last-child {
@@ -75,7 +76,7 @@
       @include SFTextRegular();
       font-size: 20px;
       line-height: 145%;
-      color: #202223;
+      color: $textColor;
     }
   }
 }
@@ -89,14 +90,14 @@
       & p {
         font-size: 15px !important;
         line-height: 24px !important;
-        color: #6D7175 !important;
+        color: $opacityColor !important;
       }
     }
   }
   .articleText {
     font-size: 16px !important;
     line-height: 145% !important;
-    color: #202223 !important;
+    color: $textColor !important;
   }
   .articleReadingWrapper {
     & div {

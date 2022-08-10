@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .catalogPageBlock {
   display: flex;
@@ -36,7 +37,7 @@
       @include SFDisplayBold();
       font-size: 42px;
       line-height: 44px;
-      color: #202223;
+      color: $textColor;
     }
 
     .select {
@@ -53,7 +54,7 @@
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
         border: 1px solid #BABFC3;
         border-radius: 4px;
-        color: #202223;
+        color: $textColor;
         appearance: none;
         background-image: url("../../Images/downArrow.svg");
         background-repeat: no-repeat;
@@ -91,7 +92,7 @@
       @include SFTextMedium();
       font-size: 15px;
       line-height: 20px;
-      color: #202223
+      color: $textColor;
     }
 
     & .catalogFilterImage {
@@ -142,13 +143,13 @@
             font-size: 20px;
             line-height: 28px;
             text-align: center;
-            color: #202223;
+            color: $textColor;
           }
         }
 
         & button {
           padding: 12px 24px;
-          background: #00A0AC;
+          background: $mainColor;
           box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
           border-radius: 4px;
           outline: none;
@@ -162,7 +163,7 @@
           margin-bottom: 9px;
 
           &:hover {
-            background: #347C84;
+            background: $hoverColor;
             box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
             border-radius: 4px;
           }

@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .greetingBlock {
   width: 100%;
@@ -15,7 +16,7 @@
   max-width: 597px;
   font-size: 28px;
   line-height: 32px;
-  color: #202223;
+  color: $textColor;
   margin-bottom: 12px;
 }
 
@@ -24,14 +25,14 @@
   max-width: 597px;
   font-size: 16px;
   line-height: 125%;
-  color: #202223;
+  color: $textColor;
 }
 
 .greetingBlockWrapperTitle {
   @include SFDisplayBold();
   font-size: 16px;
   line-height: 125%;
-  color: #202223;
+  color: $textColor;
   margin-bottom: 8px;
 }
 

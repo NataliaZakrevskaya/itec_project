@@ -1,5 +1,5 @@
 @import "../../styles/Mixins";
-
+@import "../../styles/Variables";
 
 .productTypesBlock {
   background-color: white;
@@ -18,7 +18,7 @@
     margin-bottom: 18px;
     font-size: 16px;
     line-height: 24px;
-    color: #202223;
+    color: $textColor;
     cursor: default;
   }
 
@@ -29,7 +29,7 @@
     margin-bottom: 16px;
     font-size: 14px;
     line-height: 20px;
-    color: #202223;
+    color: $textColor;
 
     & div {
       display: flex;
@@ -64,7 +64,7 @@
       @include SFTextRegular();
       font-size: 15px;
       line-height: 20px;
-      color: #FD5749;
+      color: $discountColor;
     }
   }
 }

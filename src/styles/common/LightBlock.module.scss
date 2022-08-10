@@ -1,3 +1,5 @@
+@import "src/styles/Variables";
+
 .block {
   background-color: white;
   padding: 10px 0 12px;
@@ -14,7 +16,7 @@
       border: none;
       outline: none;
       background-size: 7px 12px;
-      background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
+      background: $mainColor url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
 
     }
 
@@ -26,7 +28,7 @@
 
       &:hover {
         transform: rotate(-180deg);
-        background: #00A0AC url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
+        background: $mainColor url("../../Images/whiteNextArrow.svg") no-repeat 50% 50%;
         background-size: 7px 12px;
       }
     }
@@ -34,7 +36,7 @@
     & button:hover {
       border: none;
       outline: none;
-      background: #00A0AC;
+      background: $mainColor;
       border-radius: 40px;
     }
   }

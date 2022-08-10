@@ -1,5 +1,5 @@
 @import "src/styles/Mixins";
-
+@import "src/styles/Variables";
 
 .contactBlockContainer {
   width: 100%;
@@ -30,7 +30,7 @@
   max-width: 313px;
   font-size: 20px;
   line-height: 130%;
-  color: #202223;
+  color: $textColor;
   margin-bottom: 24px;
 
 }
@@ -48,7 +48,7 @@
     @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 24px;
-    color: #202223;
+    color: $textColor;
     margin-bottom: 8px;
   }
 }
@@ -60,7 +60,7 @@
     @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 24px;
-    color: #202223;
+    color: $textColor;
     margin-bottom: 8px;
   }
 }
@@ -73,7 +73,7 @@
   @include SFDisplaySemibold();
   font-size: 16px;
   line-height: 24px;
-  color: #202223;
+  color: $textColor;
   margin-bottom: 8px;
 }
 
@@ -175,7 +175,7 @@
       @include SFTextRegular();
       font-size: 14px;
       line-height: 20px;
-      color: #202223;
+      color: $textColor;
     }
   }
   .scheduleWrapper {
@@ -184,7 +184,7 @@
       @include SFTextRegular();
       font-size: 14px;
       line-height: 20px;
-      color: #202223;
+      color: $textColor;
     }
   }
 }

@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .basketPageBlock {
   display: flex;
@@ -35,7 +36,7 @@
 
       .basketInfoContainer {
         padding: 16px 24px;
-        background-color: #008060;
+        background-color: $successColor;
         color: white;
         width: 371px;
         border-radius: 8px;
@@ -129,7 +130,7 @@
           font-size: 14px;
           line-height: 20px;
           text-align: center;
-          color: #202223;
+          color: $textColor;
           @include SFTextMedium();
           cursor: pointer;
         }
@@ -142,7 +143,7 @@
     font-weight: 600;
     font-size: 28px;
     line-height: 130%;
-    color: #202223;
+    color: $textColor;
   }
 
   .emptyBasket {

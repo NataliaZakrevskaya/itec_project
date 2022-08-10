@@ -1,18 +1,14 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .articlesPageBlock{
   display: flex;
   flex-direction: column;
-
-  //width: 100%;
-  //width: 80%;
   margin: 0 auto;
 
   background-color: #f6f6f7;
   .navigationBlock{
     width: 80%;
-    //max-width: 1200px;
-    //margin: 0 auto;
   }
   .articlesTitle{
     width: 100%;
@@ -47,10 +43,10 @@
       border: 1px solid deepskyblue;
       font-size: 14px;
       line-height: 20px;
-      color: #202223;
+      color: $textColor;
       @include SFTextMedium();
       &:hover{
-        background: #00A0AC;
+        background: $mainColor;
         color: #FFFFFF;
         border: none;
       }

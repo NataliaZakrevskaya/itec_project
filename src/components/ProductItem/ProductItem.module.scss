@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .productItem {
   display: flex;
@@ -22,7 +23,7 @@
   color: #FFFFFF;
   padding: 0 6px;
   border-radius: 2px;
-  background: #FD5749;
+  background: $discountColor;
 }
 
 .mainProductItemImage {
@@ -37,16 +38,16 @@
   & button {
     width: 100%;
     height: 36px;
-    border: 1px solid #00A0AC;
+    border: 1px solid $mainColor;
     border-radius: 6px;
     background: #FFFFFF;
     @include SFTextMedium();
     font-size: 14px;
     line-height: 20px;
-    color: #202223;
+    color: $textColor;
 
     &:hover {
-      background: #00A0AC;
+      background: $mainColor;
       color: #FFFFFF;
       border: none;
     }
@@ -68,7 +69,7 @@
   @include SFDisplayBold();
   font-size: 16px;
   line-height: 130%;
-  color: #202223;
+  color: $textColor;
 }
 
 .priceWithDiscount {
@@ -114,9 +115,8 @@
   line-height: 130%;
   color: #000000;
   cursor: pointer;
-  //margin-bottom: 16px;
   &:hover {
-    color: #00A0AC;
+    color: $mainColor;
   }
 }
 

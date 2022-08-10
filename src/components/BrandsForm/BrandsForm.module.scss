@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .brandsFormBlock {
   background-color: white;
@@ -12,7 +13,7 @@
     margin-bottom: 18px;
     font-size: 16px;
     line-height: 24px;
-    color: #202223;
+    color: $textColor;
     cursor: default;
   }
 
@@ -35,7 +36,7 @@
     @include SFTextRegular();
     font-size: 15px;
     line-height: 20px;
-    color: #6D7175;
+    color: $opacityColor;
   }
 
   .brandsFormGroup {
@@ -50,7 +51,7 @@
       margin-bottom: 16px;
       font-size: 14px;
       line-height: 20px;
-      color: #202223;
+      color: $textColor;
 
       & div {
         display: flex;
@@ -85,7 +86,7 @@
         @include SFTextRegular();
         font-size: 15px;
         line-height: 20px;
-        color: #FD5749;
+        color: $discountColor;
       }
     }
   }
@@ -105,7 +106,7 @@
       @include SFTextMedium();
       font-size: 16px;
       line-height: 130%;
-      color: #202223;
+      color: $textColor;
       margin-bottom: 16px;
     }
 

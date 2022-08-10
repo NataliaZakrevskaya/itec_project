@@ -1,11 +1,12 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .discount {
   @include flex(row, space-between, center);
   @include SFDisplayBold();
   font-size: 20px;
   line-height: 130%;
-  color: #202223;
+  color: $textColor;
   max-width: 569px;
   background: #FFD79D;
   border-radius: 5px;
@@ -19,7 +20,7 @@
       @include SFDisplayBold;
       font-size: 20px;
       line-height: 130%;
-      color: #202223;
+      color: $textColor;
       margin-bottom: 17px;
 
     }

@@ -29,7 +29,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0px;
+  padding: 12px 0;
 }
 @media (max-width: 768px) {
   .header .contactInfo {

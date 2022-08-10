@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .productPage {
   display: flex;
@@ -14,12 +15,12 @@
     @include SFTextRegular();
     font-size: 14px;
     line-height: 20px;
-    color: #202223;
+    color: $textColor;
     & h3{
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 24px;
-      color: #202223;
+      color: $textColor;
       margin-top: 24px;
       margin-bottom: 12px;
     }
@@ -36,7 +37,7 @@
       width: 3px;
       vertical-align: middle;
       border-radius: 50%;
-      background-color: #202223;
+      background-color: $textColor;
       margin-right: 10px;
     }
   }
@@ -45,13 +46,13 @@
     @include SFTextRegular();
     font-size: 14px;
     line-height: 20px;
-    color: #202223;
+    color: $textColor;
 
     & h3{
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 24px;
-      color: #202223;
+      color: $textColor;
       margin-top: 24px;
       margin-bottom: 12px;
       &:first-child{
@@ -65,7 +66,7 @@
     @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 24px;
-    color: #2C6ECB;
+    color: $callbackColor;
   }
 
   .mainImageWrapper {
@@ -104,7 +105,7 @@
         @include SFDisplaySemibold();
         font-size: 28px;
         line-height: 130%;
-        color: #202223;
+        color: $textColor;
         margin: 24px 0;
         width: 80%;
         cursor: default;
@@ -118,7 +119,7 @@
         color: #FFFFFF;
         padding: 0 6px;
         border-radius: 2px;
-        background: #FD5749;
+        background: $discountColor;
       }
     }
 
@@ -153,7 +154,7 @@
           }
 
           .selectImg {
-            border: 2px solid #008060;
+            border: 2px solid $successColor;
           }
         }
       }
@@ -168,7 +169,7 @@
           @include SFDisplaySemibold();
           font-size: 20px;
           line-height: 28px;
-          color: #202223;
+          color: $textColor;
           cursor: default;
         }
 
@@ -194,12 +195,12 @@
               @include SFTextRegular();
               font-size: 16px;
               line-height: 110%;
-              color: #6D7175;
+              color: $opacityColor;
             }
           }
 
           .unit:hover {
-            background: #008060;
+            background: $successColor;
             color: white;
 
             & .option {
@@ -213,7 +214,7 @@
           .active{
             border-radius: 2px;
             padding: 6px 16px;
-            background: #008060;
+            background: $successColor;
             color: white;
             & .option {
               @include SFDisplayBold();
@@ -235,7 +236,7 @@
           margin-top: 12px;
           font-size: 14px;
           line-height: 20px;
-          color: #2C6ECB;
+          color: $callbackColor;
           cursor: pointer;
         }
 
@@ -246,7 +247,7 @@
             @include SFDisplaySemibold();
             font-size: 20px;
             line-height: 28px;
-            color: #202223;
+            color: $textColor;
             margin-bottom: 9px;
           }
 
@@ -263,13 +264,13 @@
             @include SFTextRegular();
             font-size: 15px;
             line-height: 20px;
-            color: #202223;
+            color: $textColor;
 
             &::placeholder {
               @include SFTextRegular();
               font-size: 15px;
               line-height: 20px;
-              color: #202223;
+              color: $textColor;
             }
           }
 
@@ -284,7 +285,7 @@
             font-size: 14px;
             line-height: 20px;
             text-align: center;
-            color: #202223;
+            color: $textColor;
             cursor: pointer;
           }
 
@@ -318,7 +319,7 @@
             @include SFDisplaySemibold();
             font-size: 20px;
             line-height: 130%;
-            color: #202223;
+            color: $textColor;
             margin-bottom: 6px;
           }
 
@@ -358,7 +359,7 @@
             @include SFDisplayBold();
             font-size: 28px;
             line-height: 32px;
-            color: #202223;
+            color: $textColor;
             cursor: default;
           }
 
@@ -366,7 +367,7 @@
             @include SFDisplayBold();
             font-size: 28px;
             line-height: 32px;
-            color: #202223;
+            color: $textColor;
             cursor: default;
             margin-left: 12px;
           }
@@ -375,7 +376,7 @@
             @include SFDisplaySemibold();
             font-size: 16px;
             line-height: 24px;
-            color: #202223;
+            color: $textColor;
             cursor: default;
           }
         }
@@ -403,7 +404,7 @@
               & div {
                 width: 12px;
                 height: 2px;
-                background: #008060;
+                background: $successColor;
                 border-radius: 10px;
               }
             }
@@ -438,14 +439,14 @@
             & div {
               width: 12px;
               height: 2px;
-              background: #008060;
+              background: $successColor;
               border-radius: 5px;
 
               & span {
                 display: block;
                 height: 1.5px;
                 transform: rotate(90deg);
-                background: #008060;
+                background: $successColor;
                 border-radius: 5px;
               }
             }
@@ -460,7 +461,7 @@
             @include SFTextMedium();
             font-size: 16px;
             line-height: 24px;
-            color: #2C6ECB;
+            color: $callbackColor;
             cursor: pointer;
           }
         }
@@ -470,7 +471,7 @@
       @include SFDisplaySemibold();
       font-size: 28px;
       line-height: 32px;
-      color: #202223;
+      color: $textColor;
       margin-bottom: 24px;
       cursor: default;
     }

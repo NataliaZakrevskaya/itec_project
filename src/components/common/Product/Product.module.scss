@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 
 .productForBasketContainer {
@@ -28,12 +29,12 @@
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 130%;
-      color: #202223;
+      color: $textColor;
       margin-bottom: 8px;
       cursor: pointer;
 
       &:hover {
-        color: #00A0AC;
+        color: $mainColor;
       }
     }
 
@@ -46,7 +47,7 @@
       @include SFTextRegular();
       font-size: 14px;
       line-height: 20px;
-      color: #2C6ECB;
+      color: $callbackColor;
       cursor: pointer;
     }
   }
@@ -106,7 +107,7 @@
             @include SFTextRegular();
             font-size: 15px;
             line-height: 20px;
-            color: #202223;
+            color: $textColor;
           }
 
           & .plus {
@@ -137,7 +138,7 @@
       .discount {
         @include SFTextRegular();
         padding: 0 6px;
-        background: #FD5749;
+        background: $discountColor;
         border-radius: 2px;
         font-size: 15px;
         line-height: 20px;
@@ -153,7 +154,7 @@
         @include SFDisplayBold();
         font-size: 16px;
         line-height: 130%;
-        color: #202223;
+        color: $textColor;
       }
 
       .priceWithDiscount {

@@ -1,4 +1,5 @@
 @import "src/styles/Mixins";
+@import "src/styles/Variables";
 
 .formInfo {
   display: flex;
@@ -16,7 +17,7 @@
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 130%;
-      color: #202223;
+      color: $textColor;
       margin-bottom: 4px;
     }
 
@@ -30,13 +31,13 @@
       @include SFTextRegular();
       font-size: 15px;
       line-height: 20px;
-      color: #202223;
+      color: $textColor;
 
       &::placeholder {
         @include SFTextRegular();
         font-size: 15px;
         line-height: 20px;
-        color: #6D7175;
+        color: $opacityColor;
       }
     }
 
@@ -65,7 +66,7 @@
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 130%;
-      color: #202223;
+      color: $textColor;
       margin-bottom: 4px;
     }
 
@@ -80,13 +81,13 @@
       @include SFTextRegular();
       font-size: 15px;
       line-height: 20px;
-      color: #202223;
+      color: $textColor;
 
       &::placeholder {
         @include SFTextRegular();
         font-size: 15px;
         line-height: 20px;
-        color: #6D7175;
+        color: $opacityColor;
       }
     }
 
@@ -106,7 +107,7 @@
 
   & button {
     padding: 8px 16px;
-    background: #00A0AC;
+    background: $mainColor;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     border: none;
@@ -118,7 +119,7 @@
     color: #FFFFFF;
 
     &:hover {
-      background: #347C84;
+      background: $hoverColor;
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
       border-radius: 4px;
     }
@@ -129,7 +130,7 @@
     font-size: 12px;
     line-height: 16px;
     text-align: center;
-    color: #6D7175;
+    color: $opacityColor;
     margin-top: 17px;
     position: relative;
 

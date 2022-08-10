@@ -1,4 +1,6 @@
 @import "src/styles/Mixins";
+@import "src/styles/fonts";
+@import "src/styles/Variables";
 
 .successModalContainer {
   width: 462px;
@@ -15,7 +17,7 @@
       font-size: 24px;
       line-height: 130%;
       text-align: center;
-      color: #202223;
+      color: $textColor;
     }
   }
 
@@ -35,7 +37,7 @@
       @include SFTextRegular();
       font-size: 14px;
       line-height: 20px;
-      color: #202223;
+      color: $textColor;
     }
 
     .headerStrip {
@@ -49,7 +51,7 @@
   & button {
     padding: 8px 16px;
     gap: 10px;
-    background: #00A0AC;
+    background: $mainColor;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     border: none;
@@ -63,7 +65,7 @@
     margin-right: 13px;
 
     &:hover {
-      background: #347C84;
+      background: $hoverColor;
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
       border-radius: 4px;
     }

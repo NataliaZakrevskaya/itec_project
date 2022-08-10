@@ -1,5 +1,5 @@
 @import "src/styles/Mixins";
-
+@import "src/styles/Variables";
 
 .advertisingBlockContainer {
   width: 100%;
@@ -32,14 +32,14 @@
     @include SFTextRegular();
     font-size: 16px;
     line-height: 140%;
-    color: #202223;
+    color: $textColor;
   }
 
   & span {
     @include SFDisplayBold();
     font-size: 16px;
     line-height: 130%;
-    color: #202223;
+    color: $textColor;
   }
 
   margin-bottom: 33px;
@@ -87,7 +87,7 @@
     width: 267px;
     font-size: 21px;
     line-height: 28px;
-    color: #202223;
+    color: $textColor;
     padding-top: 0 !important;
   }
   .subTitleWrapper {
