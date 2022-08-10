@@ -34,6 +34,7 @@ const BasketPage = () => {
   const productsCount = useSelector( getTotalProductsCount );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const { address } = useSelector( getInfo );
+  const showDiscount = basketCount !== basketCountWithDiscount;
   const isFullBasket = productsInBasket.length;
   const navigate = useNavigate();
   const price = getPrice( basketCount );
@@ -53,7 +54,7 @@ const BasketPage = () => {
         isFullBasket
           ? (
             <div className={ style.basketWrapper }>
-              <h1 className={style.basketTitle}>Моя корзина</h1>
+              <h1 className={ style.basketTitle }>Моя корзина</h1>
               <div className={ style.basketInfoBlockContainer }>
                 <div className={ style.productsItemsBlockContainer }>
                   {
@@ -73,8 +74,11 @@ const BasketPage = () => {
                 </div>
                 <div className={ style.basketInfoContainer }>
                   <div className={ style.basketInfo }>
-                    <p className={!basketCountWithDiscount ? style.basketBUN : style.basketBUNWIthDiscount}>{ price } BYN</p>
-                    {!!basketCountWithDiscount && <p className={ style.basketBUN }>{ priceWithDiscount } BYN</p>}
+                    <div className={ style.priceBlock }>
+                      <p
+                        className={ !showDiscount ? style.basketBUN : style.basketBUNWIthDiscount }>{ price } BYN</p>
+                      { showDiscount && <p className={ style.basketBUN }>{ priceWithDiscount } BYN</p> }
+                    </div>
                     <p className={ style.basketProducts }>{ productsCount } { goodsName }</p>
                   </div>
                   <div className={ style.pickUpBlock }>
