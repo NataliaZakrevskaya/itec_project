@@ -1,6 +1,6 @@
 import React from 'react';
 import style from '../../../Header/SearchResultsBlock/SearchResultsBlock.module.scss';
-import sadDog from '../../../../Images/sadDog.svg';
+import sadDog from '../../../../Images/emtyBrands.jpg';
 import SmallerButton from '../../SmallerButton/SmallerButton';
 
 const RejectSearchResult = ( { requestTitle, onClick }: RejectSearchResultPropsType ) => {

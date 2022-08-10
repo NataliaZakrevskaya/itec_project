@@ -4,7 +4,7 @@ import commonStyle from '../../styles/common/Container.module.scss';
 import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import frame from '../../Images/Frame 119.svg';
+import frame from '../../Images/MainImage.jpg';
 
 const AdvertisingBlock = () => {
 
