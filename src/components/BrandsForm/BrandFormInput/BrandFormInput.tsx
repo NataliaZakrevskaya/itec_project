@@ -11,14 +11,19 @@ const BrandFormInput = ( { id, name, chosen }: BrandFormInputPropsType ) => {
     dispatch( removeChosenBrandId( { id } ) );
   };
 
+  const showDiscount = true; //todo позже получать от бэка
+
   return (
     <label>
+      <div>
       <input type="checkbox" checked={ chosen }/>
       { chosen
         ? <span onClick={ removeBrandStatusChosen }/>
         : <span onClick={ addBrandStatusChosen }/>
       }
       { name }
+      </div>
+      <p>Акция</p>
     </label>
   );
 };

@@ -43,36 +43,47 @@
     align-items: flex-start;
 
     & label {
+      width: 100%;
       @include SFTextRegular();
+      @include flex(row, space-between, center);
       margin-bottom: 16px;
       font-size: 14px;
       line-height: 20px;
       color: #202223;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
 
-      & input {
-        display: none;
+      & div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        & input {
+          display: none;
+        }
+
+        & span {
+          @include size(18px, 18px);
+          border: 2px solid #8C9196;
+          border-radius: 4px;
+          display: inline-block;
+          position: relative;
+          background: #FFFFFF;
+          margin-right: 9px;
+          cursor: pointer;
+        }
+
+        [type=checkbox]:checked + span:before {
+          @include size(20px, 20px);
+          content: url("../../Images/check.svg");
+          position: absolute;
+          top: -3px;
+          left: -3px;
+        }
       }
-
-      & span {
-        @include size(18px, 18px);
-        border: 2px solid #8C9196;
-        border-radius: 4px;
-        display: inline-block;
-        position: relative;
-        background: #FFFFFF;
-        margin-right: 9px;
-        cursor: pointer;
-      }
-
-      [type=checkbox]:checked + span:before {
-        @include size(20px, 20px);
-        content: url("../../Images/check.svg");
-        position: absolute;
-        top: -3px;
-        left: -3px;
+      & p {
+        @include SFTextRegular();
+        font-size: 15px;
+        line-height: 20px;
+        color: #FD5749;
       }
     }
   }
