@@ -31,11 +31,25 @@
   }
 .orderInfoNotPartial{
   width: 100%;
-  //@include flex(row, space-between, center);
   display: flex;
   gap: 40px;
   align-items: center;
   justify-content: center;
+
+  .price{
+    @include SFDisplayBold();
+    font-size: 16px;
+    line-height: 130%;
+    color: #202223;
+  }
+  .priceWithDiscount{
+    @include SFDisplayBold();
+    font-size: 16px;
+    line-height: 130%;
+    color: #8C9196;
+    text-decoration: line-through;
+    text-decoration-color: #D72C0D;
+  }
 }
 .orderInfoPartial{
   @include flex(row, space-between, center);

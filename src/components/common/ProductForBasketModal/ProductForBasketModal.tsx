@@ -2,6 +2,7 @@ import React from 'react';
 import { OptionType } from '../../../mocks';
 import { stringCutter } from '../../../helpers/stringCutter';
 import style from './ProductForBasketModal.module.scss';
+import { getPrice } from '../../../helpers/getPrice';
 
 const ProductForBasketModal = ( {
                                   name,
@@ -11,6 +12,7 @@ const ProductForBasketModal = ( {
                                   priceWithDiscount,
                                 }: ProductForBasketModalPropsType ) => {
   const productName = stringCutter( name, 70 );
+  const price = getPrice( +chosenOption.price * countOfProduct );
   return (
     <div className={ style.ProductForBasketModalContainer }>
       <div className={ style.productName }>
@@ -23,8 +25,8 @@ const ProductForBasketModal = ( {
           : <p>{ chosenOption.size } { chosenOption.units.unit_name }</p>
         }
         { !chosenOption.partial && <p>{ countOfProduct } шт.</p> }
-        { !priceWithDiscount && <p>{ +chosenOption.price * countOfProduct } BYN.</p> }
-        { !!priceWithDiscount && <p>{ priceWithDiscount } BYN.</p> }
+        <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
+        { !!priceWithDiscount && <p className={ style.price }>{ priceWithDiscount } BYN.</p> }
       </div>
     </div>
   );
