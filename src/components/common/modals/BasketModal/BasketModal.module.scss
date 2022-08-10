@@ -6,6 +6,20 @@
   align-items: center;
   padding: 24px 24px 25px;
   width: 100%;
+  position: relative;
+
+  .discount{
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    padding: 0 6px;
+    background: #FD5749;
+    border-radius: 2px;
+    @include SFTextRegular();
+    font-size: 15px;
+    line-height: 20px;
+    color: #FFFFFF;
+  }
   .title{
     display: flex;
     align-items: center;

@@ -24,9 +24,11 @@ const BasketModal = ( {
     navigate( routesPathsEnum.BASKET );
     closeModal();
   };
+  const showDiscount = true; //todo после от бэка
 
   return (
     <div className={ style.basketModalContainer }>
+      {showDiscount && <div className={style.discount}>Акция</div>}
       <div className={ style.title }>
         <img src={ selectIcon } alt="selectIcon"/>
         <h3>Товар добавлен в корзину</h3>
