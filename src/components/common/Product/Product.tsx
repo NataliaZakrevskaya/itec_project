@@ -106,7 +106,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
               onClick={ deleteProductFromBasket }
             /> }
           </div>
-          <div className={style.discount}>Акция</div>
+          {!isForModal && <div className={style.discount}>Акция</div>}
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
