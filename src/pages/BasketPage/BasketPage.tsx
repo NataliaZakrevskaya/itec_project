@@ -46,7 +46,7 @@ const BasketPage = () => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } alt="nextIcon"/>
+          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
           <p>Корзина </p>
         </div>
       </div>
@@ -82,11 +82,11 @@ const BasketPage = () => {
                     <p className={ style.basketProducts }>{ productsCount } { goodsName }</p>
                   </div>
                   <div className={ style.pickUpBlock }>
-                    <img className={ style.basketBoxImage } src={ boxIcon } alt="boxIcon"/>
+                    <img className={ style.basketBoxImage } src={ boxIcon } loading={'lazy'} alt="boxIcon"/>
                     <div className={ style.basketTextWrapper }>
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
-                        <img src={ whiteNavigateIcon } alt={ 'whiteNavigateIcon' }/>
+                        <img src={ whiteNavigateIcon } loading={'lazy'} alt={ 'whiteNavigateIcon' }/>
                         <p>{ address }</p>
                       </div>
                     </div>
@@ -100,7 +100,7 @@ const BasketPage = () => {
           )
           : (
             <div className={ style.emptyBasket }>
-              <img src={ cat } alt="cat"/>
+              <img src={ cat } loading={'lazy'} alt="cat"/>
               <h2>В корзине нет товаров. Выберите нужные товары в нашем каталоге</h2>
               <Button title={ 'Перейти в каталог товаров' } onClick={ () => navigate( routesPathsEnum.CATALOG ) }/>
             </div>

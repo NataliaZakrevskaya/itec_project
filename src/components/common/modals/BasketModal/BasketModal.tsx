@@ -30,7 +30,7 @@ const BasketModal = ( {
     <div className={ style.basketModalContainer }>
       { showDiscount && <div className={ style.discount }>Акция</div> }
       <div className={ style.title }>
-        <img src={ selectIcon } alt="selectIcon"/>
+        <img src={ selectIcon } loading={'lazy'} alt="selectIcon"/>
         <h3>Товар добавлен в корзину</h3>
       </div>
       <div className={ style.product }>

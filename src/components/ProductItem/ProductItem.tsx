@@ -38,6 +38,7 @@ const ProductItem = ( {
         className={ style.mainProductItemImage }
         onClick={ onProductClick }
         src={ image }
+        loading={'lazy'}
         alt={ 'product' }/>
       <p className={ style.title }
          onClick={ onProductClick }>{ nameForCard }</p>
@@ -59,7 +60,7 @@ const ProductItem = ( {
           <div className={ style.basket } onClick={ () => openBasketModal( product ) }>
             <p>+</p>
             <div className={ style.imageWrapper }>
-              <img src={ basketIcon } alt="basketIcon"/>
+              <img src={ basketIcon } loading={'lazy'} alt="basketIcon"/>
             </div>
           </div>
         </div>

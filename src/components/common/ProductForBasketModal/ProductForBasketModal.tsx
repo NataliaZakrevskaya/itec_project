@@ -16,7 +16,7 @@ const ProductForBasketModal = ( {
   return (
     <div className={ style.ProductForBasketModalContainer }>
       <div className={ style.productName }>
-        <img src={ image } alt="product"/>
+        <img src={ image } loading={'lazy'} alt="product"/>
         <p>{ productName }</p>
       </div>
       <div className={ chosenOption.partial ? style.orderInfoPartial : style.orderInfoNotPartial }>

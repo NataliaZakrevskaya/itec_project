@@ -127,7 +127,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } alt="nextIcon"/>
+          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
           <p>Каталог</p>
         </div>
       </div>
@@ -161,7 +161,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
           </select>
         </div>
         <div onClick={ openFiltersMode } className={ style.catalogFilter }>
-          <img className={ style.catalogFilterImage } src={ filterMajor } alt=""/>
+          <img className={ style.catalogFilterImage } loading={'lazy'} src={ filterMajor } alt=""/>
           <div className={ style.catalogFilterText }>
             Фильтры
           </div>
@@ -207,7 +207,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
               />
             </div> )
             : ( <div className={ style.emptyCatalog }>
-              <img src={ sadCat } alt="sadCat"/>
+              <img src={ sadCat } loading={'lazy'} alt="sadCat"/>
               <div className={ style.title }>
                 <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте с нова</h3>
               </div>

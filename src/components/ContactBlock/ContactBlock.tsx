@@ -28,11 +28,11 @@ const ContactBlock = () => {
               вашим любимцем</h3>
             <div className={ style.contactBlockWrapperDirection }>
               <div className={ style.contactBlockAddressWrapper }>
-                <img src={ navigationIcon } alt=""/>
+                <img src={ navigationIcon } loading={'lazy'} alt=""/>
                 <p>{ address }</p>
               </div>
               <div className={ style.contactBlockWrapperMetro }>
-                <img src={ metroIcon } alt=""/>
+                <img src={ metroIcon } loading={'lazy'} alt=""/>
                 <p>{ metro }</p>
               </div>
             </div>
@@ -40,7 +40,7 @@ const ContactBlock = () => {
               <p className={ style.timeWork }>Время работы</p>
               <div className={ style.scheduleWrapper }>
                 <div className={ style.scheduleWrapperFirst }>
-                  <img src={ IconTime } alt="timeIcon"/>
+                  <img src={ IconTime } loading={'lazy'} alt="timeIcon"/>
                   <p>Пон.-Пят. { time_weekdays }</p>
                 </div>
                 <div className={ style.scheduleWrapperLine }/>
@@ -56,7 +56,7 @@ const ContactBlock = () => {
             <div className={ style.contactBlockWrapperSocial }>
               <p className={ style.socialTitle }>Пишите нам в социальных сетях</p>
               <a href={ social } target={ '_blank' } rel={ 'noreferrer' } className={style.instaIcon}>
-                <img src={ instagramIcon } alt={ 'instagramIcon' }/>
+                <img src={ instagramIcon } loading={'lazy'} alt={ 'instagramIcon' }/>
               </a>
             </div>
           </div>

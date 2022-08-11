@@ -6,7 +6,7 @@ import { PhonePropsType } from '../types';
 const Phone = ( { phoneNumber }: PhonePropsType ) => {
   return (
     <div className={ style.phoneBlock }>
-      <img src={ phoneIcon } alt={ 'phoneIcon' }/>
+      <img src={ phoneIcon } loading={'lazy'} alt={ 'phoneIcon' }/>
       <a href="#">{ phoneNumber }</a>
     </div>
   );

@@ -38,7 +38,7 @@ const GreetingBlock = () => {
             ) }
           </div>
           <div className={ style.greetingBlockImageWrapper }>
-            <img src={ photo } alt="shopPhoto"/>
+            <img src={ photo } loading={'lazy'} alt="shopPhoto"/>
           </div>
         </div>
       </div>

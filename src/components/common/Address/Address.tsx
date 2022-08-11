@@ -9,11 +9,11 @@ const Address = ( { address, metro }: AddressPropsType ) => {
   return (
     <div className={ style.addressBlock }>
       <div className={ style.addressBlockWrapperOne }>
-        <img className={ style.navigateIcon } src={ navigateIcon } alt={ 'navigateIcon' }/>
+        <img className={ style.navigateIcon } loading={'lazy'} src={ navigateIcon } alt={ 'navigateIcon' }/>
         <p className={ style.textStyle }>{ address }</p>
       </div>
       <div className={ style.addressBlockWrapperTwo }>
-        <img className={ style.metroIcon } src={ metroIcon } alt={ 'metroIcon' }/>
+        <img className={ style.metroIcon } loading={'lazy'} src={ metroIcon } alt={ 'metroIcon' }/>
         <p>{ metro }</p>
       </div>
     </div>

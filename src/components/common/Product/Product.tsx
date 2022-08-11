@@ -56,7 +56,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
     <div className={ style.productForBasketContainer }>
       <div className={ style.productWrap }>
         <div className={ style.imageWrapper }>
-          <img src={ image } alt="product"/>
+          <img src={ image } loading={'lazy'} alt="product"/>
         </div>
         <div
           className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
@@ -102,6 +102,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
             { !isForModal && <img
               className={ style.basketImage }
               src={ basket } alt="basketIcon"
+              loading={'lazy'}
               onClick={ deleteProductFromBasket }
             /> }
           </div>

@@ -5,7 +5,7 @@ import { ProductItemForSearchPropsType } from './types';
 const ProductItemForSearch = ( { id, name, image, onClick }: ProductItemForSearchPropsType ) => {
   return (
     <div className={ style.productItemFroSearch } onClick={ () => onClick( id ) }>
-      <img src={ image } alt="product"/>
+      <img src={ image } loading={'lazy'} alt="product"/>
       <p>{ name }</p>
     </div>
   );

@@ -7,7 +7,7 @@ const Schedule = ( { forFooterBurger, timeWeekdays, timeWeekend }: ScheduleProps
   return (
     <div className={ style.scheduleBlock }>
       <div className={ style.scheduleBlockWrapperOne }>
-        { !forFooterBurger && <img src={ timeIcon } alt={ 'timeIcon' }/> }
+        { !forFooterBurger && <img src={ timeIcon } loading={'lazy'} alt={ 'timeIcon' }/> }
         <p>Пон.-Пят. { timeWeekdays }</p>
       </div>
       <div className={ style.scheduleBlockWrappers }>

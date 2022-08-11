@@ -30,17 +30,17 @@ const Article = ( {
       onClick={ onArticleClick }
     >
       <div className={ style.articleImageWrapper }>
-        <img src={ image } alt="article"/>
+        <img src={ image } loading={'lazy'} alt="article"/>
       </div>
       <h2>{ title }</h2>
       <p dangerouslySetInnerHTML={ { __html: stringCutter( description, 160 ) } }/>
       <div className={ style.articleInfo }>
         <div>
-          <img src={ grayClock } alt="timeIcon"/>
+          <img src={ grayClock } loading={'lazy'} alt="timeIcon"/>
           <p>Время чтения: { timeForReading }</p>
         </div>
         <div>
-          <img src={ calendarIcon } alt="calendar"/>
+          <img src={ calendarIcon } loading={'lazy'} alt="calendar"/>
           <p>{ currentData }</p>
         </div>
       </div>

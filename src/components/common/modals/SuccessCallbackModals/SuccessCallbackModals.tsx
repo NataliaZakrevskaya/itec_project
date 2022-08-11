@@ -7,7 +7,7 @@ import { SuccessCallbackModalsPropsType } from '../types';
 const SuccessCallbackModals = ( { closeModal }: SuccessCallbackModalsPropsType ) => {
   return (
     <div className={ style.successCallbackModalsContent }>
-      <img src={ checkmarkCircle } alt="checkmarkCircle"/>
+      <img src={ checkmarkCircle } loading={'lazy'} alt="checkmarkCircle"/>
       <h3>Мы получили вашу заявку</h3>
       <p>Ожидайте звонка в течение 15 минут</p>
       <button className={ buttonStyle.smallButton } onClick={ closeModal }>Понятно, жду</button>

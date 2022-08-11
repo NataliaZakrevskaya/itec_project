@@ -8,9 +8,8 @@
   line-height: 130%;
   color: $textColor;
   max-width: 569px;
-  background: #FFD79D;
   border-radius: 5px;
-  padding: 24px;
+  padding: 0 24px;
   margin: 0 auto;
   width: 569px;
 
@@ -38,10 +37,8 @@
   }
 
   .discountImageWrapper {
-    width: 149px;
+    max-width: 196px;
     height: 148.69px;
-    position: absolute;
-    right: 0;
 
     & img {
       width: 100%;
@@ -50,12 +47,6 @@
     }
   }
 }
-
-/* & img {
-   @include size(149px, 149px);
-   object-fit: contain;
- }*/
-
 
 @media (max-width: 1199px) {
   .discount {

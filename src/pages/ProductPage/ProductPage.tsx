@@ -189,9 +189,9 @@ const ProductPage = () => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } alt="nextIcon"/>
+          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
           <p onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Каталог</p>
-          <img src={ nextIcon } alt="nextIcon"/>
+          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
           <p>{ nameForNavigationBlock }</p>
         </div>
       </div>
@@ -209,7 +209,7 @@ const ProductPage = () => {
             <div className={ style.mainImageWrapper }>
               <img
                 src={ images[ selectImageId ] ? images[ selectImageId ].image : `${ PRODUCT_IMAGE }` }
-                alt="product" className={ style.mainImg }/>
+                alt="product"  loading={'lazy'} className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
               {
@@ -218,6 +218,7 @@ const ProductPage = () => {
                     <img
                       src={ img.image }
                       alt="product"
+                      loading={'lazy'}
                       className={ img.id === images[ selectImageId ].id ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
                       onClick={ () => selectImage( index ) }
                     />,
@@ -268,7 +269,7 @@ const ProductPage = () => {
             </div>
             <div className={ style.orderInfo }>
               <div className={ style.orderImageWrapper }>
-                <img src={ boxIcon } alt="boxIcon"/>
+                <img src={ boxIcon } loading={'lazy'} alt="boxIcon"/>
               </div>
               <div>
                 <h3>Самовывоз</h3>

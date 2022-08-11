@@ -1,0 +1,2 @@
+export const FIRST_BACKGROUND = '#FFD79D'
+export const SECOND_BACKGROUND = '#AEE9D1'

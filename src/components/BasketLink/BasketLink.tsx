@@ -20,11 +20,11 @@ const BasketLink = ( { forHeaderBurger, onClickHandler }: BasketLinkPropsType ) 
     <>
       { forHeaderBurger
         ? ( <div className={ style.basketLinkForBurger } onClick={ onBasketClick }>
-          <img src={ basketIcon } alt={ 'basketIcon' }/>
+          <img src={ basketIcon } loading={'lazy'} alt={ 'basketIcon' }/>
           <p>Корзина</p>
         </div> )
         : ( <div className={ style.basketLink } onClick={ () => navigate( routesPathsEnum.BASKET ) }>
-          <img src={ basketIcon } alt={ 'basketIcon' }/>
+          <img src={ basketIcon } loading={'lazy'} alt={ 'basketIcon' }/>
           { productCount }
         </div> )
       }

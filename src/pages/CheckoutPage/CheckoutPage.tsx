@@ -86,9 +86,9 @@ const CheckoutPage = () => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } alt="nextIcon"/>
+          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
           <p onClick={ () => navigate( routesPathsEnum.BASKET ) }>Корзина</p>
-          <img src={ nextIcon } alt="nextIcon"/>
+          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
           <p>Оформление заказа</p>
         </div>
       </div>

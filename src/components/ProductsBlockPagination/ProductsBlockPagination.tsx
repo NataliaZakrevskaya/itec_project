@@ -39,7 +39,7 @@ const ProductsBlockPagination = ( {
   return (
     <div className={ style.paginationBlock }>
       <div className={ style.navigationBlock } onClick={ onPrevButtonClick }>
-        <img className={ style.navigationBlockLeft } src={ prevPage } alt="prevPage"/>
+        <img className={ style.navigationBlockLeft } loading={'lazy'} src={ prevPage } alt="prevPage"/>
         { withWords && <p>Предыдущая</p> }
       </div>
       <div className={ style.pages }>
@@ -60,7 +60,7 @@ const ProductsBlockPagination = ( {
       </div>
       <div className={ style.navigationBlock } onClick={ onNextButtonClick }>
         { withWords && <p>Следующая</p> }
-        <img className={ style.navigationBlockRight } src={ nextPage } alt="nextPage"/>
+        <img className={ style.navigationBlockRight } loading={'lazy'} src={ nextPage } alt="nextPage"/>
       </div>
     </div>
   );

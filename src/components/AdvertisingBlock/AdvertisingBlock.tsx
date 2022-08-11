@@ -35,7 +35,7 @@ const AdvertisingBlock = () => {
             </button>
           </div>
           <div className={ style.mainImage }>
-            <img src={ frame } alt="frame"/>
+            <img src={ frame } loading={'lazy'} alt="frame"/>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ const RejectSearchResult = ( { requestTitle, onClick }: RejectSearchResultPropsT
 
   return (
     <div className={ style.rejectResultContainer }>
-      <img className={ style.rejectResultImage } src={ sadDog } alt="sadDog"/>
+      <img className={ style.rejectResultImage } loading={'lazy'} src={ sadDog } alt="sadDog"/>
       <div className={ style.textBlock }>
         <p>По вашему запросу ничего не найдено. Попробуйте изменить запрос или выбрать { requestTitle } в нашем
           каталоге </p>

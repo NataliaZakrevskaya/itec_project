@@ -5,7 +5,7 @@ import style from './FooterLogo.module.scss';
 const FooterLogo = () => {
   return (
     <div className={ style.logoBlock }>
-      <img src={ logo } alt={ 'logo' }/>
+      <img src={ logo } loading={'lazy'} alt={ 'logo' }/>
       <p>Территория <span>ZOO</span></p>
     </div>
   );

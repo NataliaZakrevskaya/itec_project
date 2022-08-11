@@ -26,13 +26,13 @@ const SuccessOrderModal = ( { from }: SuccessOrderModalPropsType ) => {
 
   return (
     <div className={ style.successModalContainer }>
-      <img src={ checkmarkCircle } alt="checkmarkCircle"/>
+      <img src={ checkmarkCircle } loading={'lazy'} alt="checkmarkCircle"/>
       <div className={ style.title }>
         <h3>Заказ поступил в обработку, ожидайте звонка консультанта</h3>
       </div>
       <Address address={ address } metro={ metro }/>
       <div className={ style.scheduleBlock }>
-        <img src={ grayClock } alt={ 'timeIcon' }/>
+        <img src={ grayClock } loading={'lazy'} alt={ 'timeIcon' }/>
         <p className={ scheduleStyle.scheduleText }>Пон.-Пят. 10:00-21:00</p>
         <div className={ style.headerStrip }/>
         <p>Суб.-Вос. 10:00-20:00</p>

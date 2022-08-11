@@ -56,7 +56,7 @@ const ArticlesPage = () => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } alt="nextIcon"/>
+          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
           <p>Статьи</p>
         </div>
       </div>

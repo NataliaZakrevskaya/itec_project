@@ -1,4 +1,5 @@
 export type DiscountPropsType = {
   title: string,
-  img: string
+  img: string,
+  background: string,
 }

@@ -65,6 +65,7 @@
 
             .reviewsBlockPhoneWrapper {
               display: flex;
+              align-items: center;
               margin-right: 16px;
 
               & p {
@@ -75,6 +76,7 @@
               }
 
               & img {
+                @include size(11.08px, 15.83px);
                 margin-right: 6.55px;
               }
             }

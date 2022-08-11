@@ -8,7 +8,7 @@ const Modal = ( { closeModal, children }: ModalPropsType ) => {
     <div className={ style.callbackModals } onClick={ closeModal }>
       <div className={ style.modalContent } onClick={ e => e.stopPropagation() }>
         <div className={ style.closeIcon } onClick={ closeModal }>
-          <img src={ closeIcon } alt="closeIcon"/>
+          <img src={ closeIcon } loading={'lazy'} alt="closeIcon"/>
         </div>
         { children }
       </div>

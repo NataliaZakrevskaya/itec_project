@@ -10,7 +10,7 @@ const Review = ( { nameAuthor, bodyOfComment, phoneNumber, nameAnimal }: ReviewP
       <p className={ style.reviewsBlockText }>{ bodyOfComment }</p>
       <div className={ style.reviewsBlockWrapper }>
         <div className={ style.reviewsBlockPhoneWrapper }>
-          <img src={ phoneIcon } alt="phoneIcon"/>
+          <img src={ phoneIcon } loading={'lazy'} alt="phoneIcon"/>
           <p>{ phoneNumber }</p>
         </div>
         <p>Питомец: { nameAnimal }</p>
