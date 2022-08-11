@@ -9,23 +9,22 @@
   max-width: 270px;
   border-radius: 5px;
   padding: 8px;
-
-  &:hover {
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
-  }
+   &:hover{
+     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+   }
 }
-
-.discount {
-  position: absolute;
+.discount{
   @include SFTextRegular;
   font-size: 15px;
   line-height: 20px;
   color: #FFFFFF;
+  position: absolute;
+  top: 8px;
+  left: 8px;
   padding: 0 6px;
   border-radius: 2px;
   background: $discountColor;
 }
-
 .mainProductItemImage {
   cursor: pointer;
   width: 254px;
@@ -152,7 +151,12 @@
     max-width: 243px;
     width: 100%;
   }
-  .mainProductItemImage {
+  //.discount{
+  //  position: absolute;
+  //  right: 0;
+  //  top: 0;
+  //}
+  .mainProductItemImage{
     width: 227px !important;
     margin: 0 auto;
   }
