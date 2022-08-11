@@ -22,7 +22,7 @@ import { getSendingReviewsRequestStatus } from '../../redux/selectors/app-select
 import { setSendingReviewRequestStatus } from '../../redux/reducers/app-reducer';
 import { RequestStatus } from '../../redux/reducers/enums';
 
-const ReviewsBlock = () => {
+const ReviewsBlock = React.memo(() => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -123,6 +123,6 @@ const ReviewsBlock = () => {
       }
     </div>
   );
-};
+});
 
 export default ReviewsBlock;

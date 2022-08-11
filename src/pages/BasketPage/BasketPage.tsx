@@ -26,7 +26,7 @@ import { getGoods } from '../../helpers/getGoods';
 import { getPrice } from '../../helpers/getPrice';
 import { PRODUCT_IMAGE } from '../../constants';
 
-const BasketPage = () => {
+const BasketPage = React.memo(() => {
 
   const productsInBasket = useSelector( getProductsInBasket );
   const basketCount = useSelector( getTotalSum );
@@ -112,6 +112,6 @@ const BasketPage = () => {
       <UsefulArticlesBlock/>
     </div>
   );
-};
+});
 
 export default BasketPage;

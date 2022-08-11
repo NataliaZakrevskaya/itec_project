@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import commonStyle from '../../styles/common/Container.module.scss';
 import { AnimalTypesType } from '../../mocks';
@@ -12,7 +12,7 @@ import { useCarousel } from '../../customHooks/useCarousel';
 import { BlockNames } from '../../customHooks/enums';
 import { AppDispatch } from '../../redux/store';
 
-const AnimalsTypesList = () => {
+const AnimalsTypesList = React.memo(() => {
 
   const animalTypes = useSelector( getAnimalTypes );
   const activeAnimalTypeId = useSelector( getChosenAnimalTypeId );
@@ -29,10 +29,10 @@ const AnimalsTypesList = () => {
     dispatch( fetchAnimalTypesTC() );
   }, [] );
 
-  const chooseActiveAnimalType = ( id: number ) => {
+  const chooseActiveAnimalType = useCallback(( id: number ) => {
     dispatch( setChosenAnimalTypeId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
-  };
+  }, []);
 
   return (
     <div className={ commonStyle.container }>
@@ -61,6 +61,6 @@ const AnimalsTypesList = () => {
       </div>
     </div>
   );
-};
+});
 
 export default AnimalsTypesList;

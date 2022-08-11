@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import style from './LatestBlock.module.scss';
@@ -12,17 +12,18 @@ import { location } from '../../enums';
 import { AppDispatch } from '../../redux/store';
 import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 
-const LatestBlock = () => {
+const LatestBlock = React.memo( () => {
 
   const latestProducts = useSelector( getLatestProducts );
+  const [ productsList, setProductsList ] = useState( latestProducts );
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
-  const goToLatestProducts = () => {
+  const goToLatestProducts = useCallback( () => {
     dispatch( setChosenOrdering( { ordering: selectValues.ADDED_DATE } ) );
     navigate( routesPathsEnum.CATALOG );
-  };
+  }, [] );
 
   useEffect( () => {
     dispatch( fetchLatestProductsTC( { ordering: selectValues.ADDED_DATE } ) );
@@ -33,12 +34,12 @@ const LatestBlock = () => {
       <ThemeBlockWrapper
         title={ 'Новинки' }
         onButtonClick={ goToLatestProducts }
-        itemsForBlock={ latestProducts }
+        itemsForBlock={ productsList }
         blockTheme={ light }
         from={ location.LATEST_PRODUCTS }
       />
     </div>
   );
-};
+} );
 
 export default LatestBlock;

@@ -6,8 +6,9 @@ import { routesPathsEnum } from '../../../routes/enums';
 import { getCurrentAddedDate } from '../../../helpers/getDate';
 import { stringCutter } from '../../../helpers/stringCutter';
 import { ArticlePropsType } from './types';
+import React from 'react';
 
-const Article = ( {
+const Article = React.memo(( {
                     id,
                     description,
                     title,
@@ -46,6 +47,6 @@ const Article = ( {
       </div>
     </div>
   );
-};
+});
 
 export default Article;

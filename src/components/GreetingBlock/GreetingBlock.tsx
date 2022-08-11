@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
 import { getDescriptionShop, getPhoto, getSecondInfo } from '../../redux/selectors/descriptionShop-selectors';
 
-const GreetingBlock = () => {
+const GreetingBlock = React.memo(() => {
 
   const photo = useSelector( getPhoto );
   const secondInfoOptions = useSelector( getSecondInfo );
@@ -44,6 +44,6 @@ const GreetingBlock = () => {
       </div>
     </div>
   );
-};
+});
 
 export default GreetingBlock;

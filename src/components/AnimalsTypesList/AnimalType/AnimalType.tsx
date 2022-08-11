@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setActualPage } from '../../../redux/reducers/products-reducer';
 import { AnimalTypePropsType } from './types';
 
-const AnimalType = ( { id, name, image, isActive, checked, chooseActiveAnimalType }: AnimalTypePropsType ) => {
+const AnimalType = React.memo(( { id, name, image, isActive, checked, chooseActiveAnimalType }: AnimalTypePropsType ) => {
   const dispatch = useDispatch();
   const onAnimalTypeClick = () => {
     const pageNumber = 1;
@@ -21,6 +21,6 @@ const AnimalType = ( { id, name, image, isActive, checked, chooseActiveAnimalTyp
       <span>{ name }</span>
     </div>
   );
-};
+});
 
 export default AnimalType;

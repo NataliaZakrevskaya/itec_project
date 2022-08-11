@@ -8,10 +8,12 @@ import { getProductsFromSearch } from '../../redux/selectors/productsFromSearch-
 import { fetchProductsFromSearchTC } from '../../redux/reducers/productsFromSearch-reducer';
 import { AppDispatch } from '../../redux/store';
 import { SearchInputPropsType } from './types';
+import { useDebounce } from '../../customHooks/useDebounce';
 
 const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ) => {
 
   const [ search, setSearch ] = useState( '' );
+  const debouncedSearch = useDebounce(search, 1000);
 
   const resultProductItems = useSelector( getProductsFromSearch )
     .filter( ( item, index ) => index < 6 );
@@ -33,9 +35,9 @@ const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ) => 
 
   useEffect( () => {
     if ( !window.localStorage.getItem( 'productsFromSearch' ) ) {
-      dispatch( fetchProductsFromSearchTC( { search } ) );
+      dispatch( fetchProductsFromSearchTC( { search: debouncedSearch } ) );
     }
-  }, [ search ] );
+  }, [ debouncedSearch ] );
 
   return (
     <div className={ forHeaderBurger ? style.searchInputBlockForHeader : style.searchInputBlock }>

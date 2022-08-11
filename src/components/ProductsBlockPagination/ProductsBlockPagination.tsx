@@ -4,7 +4,7 @@ import prevPage from '../../Images/prevPage.svg';
 import nextPage from '../../Images/nextPage.svg';
 import { ProductsBlockPaginationType } from './types';
 
-const ProductsBlockPagination = ( {
+const ProductsBlockPagination = React.memo(( {
                                     totalProductsCount,
                                     pageSize,
                                     actualPage,
@@ -64,6 +64,6 @@ const ProductsBlockPagination = ( {
       </div>
     </div>
   );
-};
+});
 
 export default ProductsBlockPagination;

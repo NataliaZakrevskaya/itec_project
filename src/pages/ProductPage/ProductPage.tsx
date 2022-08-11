@@ -37,7 +37,7 @@ import { PRODUCT_IMAGE } from '../../constants';
 import { getWeightSetValue } from '../../redux/selectors/app-selectors';
 import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
 
-const ProductPage = () => {
+const ProductPage = React.memo(() => {
 
   const [ countOfProduct, setCountOfProduct ] = useState<number>( 1 );
   const [ weightSetValue, setWeightSetValue ] = useState<string>( '' );
@@ -370,6 +370,6 @@ const ProductPage = () => {
       }
     </div>
   );
-};
+});
 
 export default ProductPage;

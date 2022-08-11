@@ -10,7 +10,7 @@ import IconTime from '../../Images/clock_minorfooter.svg';
 import { useSelector } from 'react-redux';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 
-const ContactBlock = () => {
+const ContactBlock = React.memo(() => {
   const { phone_number, address, metro, time_weekdays, time_weekend, social } = useSelector( getInfo );
   return (
     <div className={ style.contactBlockContainer }>
@@ -64,6 +64,6 @@ const ContactBlock = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ContactBlock;

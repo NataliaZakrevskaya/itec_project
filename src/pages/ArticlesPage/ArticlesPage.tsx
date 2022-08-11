@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { AppDispatch } from '../../redux/store';
 
-const ArticlesPage = () => {
+const ArticlesPage = React.memo(() => {
 
   const [ showAll, setShowAll ] = useState<boolean>( false );
 
@@ -88,6 +88,6 @@ const ArticlesPage = () => {
       <ContactBlock/>
     </div>
   );
-};
+});
 
 export default ArticlesPage;

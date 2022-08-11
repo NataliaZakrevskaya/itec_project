@@ -17,7 +17,7 @@ import { useCarousel } from '../../customHooks/useCarousel';
 import { BlockNames } from '../../customHooks/enums';
 import { AppDispatch } from '../../redux/store';
 
-const UsefulArticlesBlock = () => {
+const UsefulArticlesBlock = React.memo(() => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
@@ -96,7 +96,6 @@ const UsefulArticlesBlock = () => {
         </div>
       </div>
     );
-  }
-;
+  });
 
 export default UsefulArticlesBlock;

@@ -3,7 +3,7 @@ import phoneIcon from '../../../Images/phoneIcon.svg';
 import style from '../ReviewsBlock.module.scss';
 import { ReviewPropsType } from './types';
 
-const Review = ( { nameAuthor, bodyOfComment, phoneNumber, nameAnimal }: ReviewPropsType ) => {
+const Review = React.memo(( { nameAuthor, bodyOfComment, phoneNumber, nameAnimal }: ReviewPropsType ) => {
   return (
     <div className={ style.reviewContainer }>
       <h3 className={ style.reviewsBlockSubTitle }>{ nameAuthor }</h3>
@@ -17,7 +17,7 @@ const Review = ( { nameAuthor, bodyOfComment, phoneNumber, nameAnimal }: ReviewP
       </div>
     </div>
   );
-};
+});
 
 export default Review;
 

@@ -6,10 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import frame from '../../Images/MainImage.jpg';
 
-const AdvertisingBlock = () => {
-
+const AdvertisingBlock = React.memo(() => {
   const navigate = useNavigate();
-
   return (
     <div className={ style.advertisingBlockContainer }>
       <div className={ commonStyle.container }>
@@ -41,6 +39,6 @@ const AdvertisingBlock = () => {
       </div>
     </div>
   );
-};
+});
 
 export default AdvertisingBlock;

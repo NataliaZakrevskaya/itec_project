@@ -11,7 +11,7 @@ import PopularProductsBlock from '../../components/PopularProductsBlock/PopularP
 import GreetingBlock from '../../components/GreetingBlock/GreetingBlock';
 import AdvertisingBlock from '../../components/AdvertisingBlock/AdvertisingBlock';
 
-const MainPage = () => {
+const MainPage = React.memo(() => {
 
   return (
     <div className={ style.mainPage }>
@@ -27,6 +27,6 @@ const MainPage = () => {
       <ContactBlock/>
     </div>
   );
-};
+});
 
 export default MainPage;

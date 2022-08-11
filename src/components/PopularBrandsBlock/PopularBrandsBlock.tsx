@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import style from './PopularBrands.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import Brand from './Brand/Brand';
@@ -10,15 +10,15 @@ import { fetchBrandsTC, setChosenBrandId } from '../../redux/reducers/brands-red
 import { getBrands } from '../../redux/selectors/brands-selectors';
 import { AppDispatch } from '../../redux/store';
 
-const PopularBrandsBlock = () => {
+const PopularBrandsBlock = React.memo(() => {
 
   const brands = useSelector( getBrands );
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const chooseBrand = ( id: number ) => {
+  const chooseBrand = useCallback(( id: number ) => {
     dispatch( setChosenBrandId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
-  };
+  }, []);
   useEffect( () => {
     dispatch( fetchBrandsTC() );
   }, [] );
@@ -43,6 +43,6 @@ const PopularBrandsBlock = () => {
       </div>
     </div>
   );
-};
+});
 
 export default PopularBrandsBlock;

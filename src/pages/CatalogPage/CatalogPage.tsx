@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
@@ -76,9 +76,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const onPageChanged = ( pageNumber: number ) => {
+  const onPageChanged = useCallback(( pageNumber: number ) => {
     dispatch( setActualPage( { pageNumber } ) );
-  };
+  }, []);
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };

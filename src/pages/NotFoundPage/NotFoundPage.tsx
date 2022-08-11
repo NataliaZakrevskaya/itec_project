@@ -5,7 +5,7 @@ import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 
-const NotFoundPage = () => {
+const NotFoundPage = React.memo(() => {
 
   const navigate = useNavigate();
   return (
@@ -26,6 +26,6 @@ const NotFoundPage = () => {
       </div>
     </div>
   );
-};
+});
 
 export default NotFoundPage;

@@ -7,7 +7,7 @@ import firstDiscount from '../../Images/firstDiscount.jpg';
 import secondDiscount from '../../Images/secondDiscount.svg';
 import { FIRST_BACKGROUND, SECOND_BACKGROUND } from './constants';
 
-const DiscountBlock = () => {
+const DiscountBlock = React.memo(() => {
 
   const discounts = getDiscounts(); //todo позже приходит с бэка
 
@@ -18,6 +18,6 @@ const DiscountBlock = () => {
     </div>
 
   );
-};
+});
 
 export default DiscountBlock;

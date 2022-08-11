@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
@@ -15,17 +15,18 @@ import { AppDispatch } from '../../redux/store';
 import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 import { PopularProductsBlockPropsType } from './types';
 
-const PopularProductsBlock = ( { fromCatalog }: PopularProductsBlockPropsType ) => {
+const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlockPropsType ) => {
 
   const popularProducts = useSelector( getPopularProducts );
+  const [ productsList, setProductsList ] = useState( popularProducts );
   const animal = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( animal );
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const goToPopularProducts = () => {
+  const goToPopularProducts = useCallback( () => {
     dispatch( setChosenOrdering( { ordering: selectValues.POPULARITY } ) );
     navigate( routesPathsEnum.CATALOG );
-  };
+  }, [] );
   useEffect( () => {
     dispatch( fetchPopularProductsTC( { ordering: selectValues.POPULARITY, animal } ) );
   }, [ animal ] );
@@ -35,13 +36,13 @@ const PopularProductsBlock = ( { fromCatalog }: PopularProductsBlockPropsType ) 
       <ThemeBlockWrapper
         title={ `Популярные товары ${ subTitle }` }
         onButtonClick={ goToPopularProducts }
-        itemsForBlock={ popularProducts }
+        itemsForBlock={ productsList }
         blockTheme={ dark }
         from={ location.POPULAR_PRODUCTS }
         withoutButton={ fromCatalog }
       />
     </div>
   );
-};
+} );
 
 export default PopularProductsBlock;

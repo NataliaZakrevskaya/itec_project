@@ -14,7 +14,7 @@ import { getArticles } from '../../redux/selectors/articles-selectors';
 import { routesPathsEnum } from '../../routes/enums';
 import { getCurrentAddedDate } from '../../helpers/getDate';
 
-const ArticlePage = () => {
+const ArticlePage = React.memo(() => {
   const articleId = Number( useParams().articleId ) - 1;
   const article = useSelector( getArticles )[ articleId ];
   const date = new Date( article.date_added );
@@ -60,6 +60,6 @@ const ArticlePage = () => {
       <ContactBlock/>
     </div>
   );
-};
+});
 
 export default ArticlePage;

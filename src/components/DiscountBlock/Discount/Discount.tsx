@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../routes/enums';
 import { DiscountPropsType } from '../types';
 
-const Discount = ( { img, title, background }: DiscountPropsType ) => {
+const Discount = React.memo(( { img, title, background }: DiscountPropsType ) => {
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const Discount = ( { img, title, background }: DiscountPropsType ) => {
       </div>
     </div>
   );
-};
+});
 
 export default Discount;
 

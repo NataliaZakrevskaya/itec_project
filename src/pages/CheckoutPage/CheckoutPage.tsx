@@ -24,7 +24,7 @@ import { getPrice } from '../../helpers/getPrice';
 import { getGoods } from '../../helpers/getGoods';
 import { FormikErrorType } from '../../components/common/modals/types';
 
-const CheckoutPage = () => {
+const CheckoutPage = React.memo(() => {
 
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
   const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
@@ -145,6 +145,6 @@ const CheckoutPage = () => {
       }
     </div>
   );
-};
+});
 
 export default CheckoutPage;
