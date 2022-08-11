@@ -370,7 +370,11 @@
         }
 
         .basketInterface {
-          @include flex(row, space-between, center);
+          //@include flex(row, space-between, center);
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 14px;
 
           .quantityManagementBlock {
             display: flex;
@@ -441,7 +445,7 @@
           }
 
           .basketInterfaceButton {
-            width: 189px;
+
             
           }
 
@@ -481,6 +485,14 @@
   .productInfo{
     max-width: 960px !important;
   }
+  .imageBlock{
+    margin-bottom: 32px !important;
+  }
+  .orderBlock{
+    & h3 {
+      margin-bottom: 12px !important;
+    }
+  }
   .descriptionBlock{
     flex-direction: column !important;
   }
@@ -497,6 +509,22 @@
   .productInfo{
     max-width: 540px !important;
   }
+  .imgAndOrderBlock{
+    margin-bottom: 32px !important;
+  }
+  .mainImageWrapper{
+    height: 100% !important;
+  }
+  .imageBlock{
+    margin-bottom: 32px;
+  }
+  .orderBlock{
+    & h3{
+      margin-bottom: 12px;
+      font-size: 17px !important;
+      line-height: 24px !important;
+    }
+  }
   .basketInterface{
     flex-wrap: wrap;
   }
@@ -511,6 +539,6 @@
 }
 @media (max-width: 576px) {
   .basketInterfaceOneClickWrapper{
-    margin-top: 14px;
+
   }
 }
