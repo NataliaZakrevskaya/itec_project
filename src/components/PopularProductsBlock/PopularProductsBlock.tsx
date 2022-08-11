@@ -18,15 +18,14 @@ import { PopularProductsBlockPropsType } from './types';
 const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlockPropsType ) => {
 
   const popularProducts = useSelector( getPopularProducts );
-  const [ productsList, setProductsList ] = useState( popularProducts );
   const animal = useSelector( getChosenAnimalTypeId );
   const subTitle = getTitleForProductsBlock( animal );
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const goToPopularProducts = useCallback( () => {
+  const goToPopularProducts =  () => {
     dispatch( setChosenOrdering( { ordering: selectValues.POPULARITY } ) );
     navigate( routesPathsEnum.CATALOG );
-  }, [] );
+  };
   useEffect( () => {
     dispatch( fetchPopularProductsTC( { ordering: selectValues.POPULARITY, animal } ) );
   }, [ animal ] );
@@ -36,7 +35,7 @@ const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlock
       <ThemeBlockWrapper
         title={ `Популярные товары ${ subTitle }` }
         onButtonClick={ goToPopularProducts }
-        itemsForBlock={ productsList }
+        itemsForBlock={ popularProducts }
         blockTheme={ dark }
         from={ location.POPULAR_PRODUCTS }
         withoutButton={ fromCatalog }

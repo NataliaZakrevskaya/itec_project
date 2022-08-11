@@ -6,14 +6,12 @@ import { location } from '../../enums';
 import { PreviouslyProductsBlockPropsType } from './types';
 
 const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType ) => {
-  const [ productsList, setProductsList ] = useState( products );
-  const onButtonClick = useCallback( () => false, [] );
   return (
     <div className={ style.blockMargin }>
       <ThemeBlockWrapper
         title={ 'Ранее вы смотрели' }
-        onButtonClick={ onButtonClick }
-        itemsForBlock={ productsList }
+        onButtonClick={ () => false }
+        itemsForBlock={ products }
         blockTheme={ light }
         from={ location.PREVIOUSLY_PRODUCTS }
         withoutButton={ true }

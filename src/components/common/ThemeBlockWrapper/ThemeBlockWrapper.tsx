@@ -23,7 +23,7 @@ import { setOneClickOrderRequestStatus } from '../../../redux/reducers/app-reduc
 import { ThemeBlockWrapperPropsType } from '../types';
 import { ProductItemType } from '../../../mocks';
 
-const ThemeBlockWrapper = React.memo(( {
+const ThemeBlockWrapper = ( {
                               title,
                               onButtonClick,
                               itemsForBlock,
@@ -168,6 +168,6 @@ const ThemeBlockWrapper = React.memo(( {
       </div>
     </div>
   );
-});
+};
 
 export default ThemeBlockWrapper;

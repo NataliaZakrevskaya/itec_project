@@ -15,15 +15,14 @@ import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
 const LatestBlock = React.memo( () => {
 
   const latestProducts = useSelector( getLatestProducts );
-  const [ productsList, setProductsList ] = useState( latestProducts );
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
-  const goToLatestProducts = useCallback( () => {
+  const goToLatestProducts = () => {
     dispatch( setChosenOrdering( { ordering: selectValues.ADDED_DATE } ) );
     navigate( routesPathsEnum.CATALOG );
-  }, [] );
+  };
 
   useEffect( () => {
     dispatch( fetchLatestProductsTC( { ordering: selectValues.ADDED_DATE } ) );
@@ -34,7 +33,7 @@ const LatestBlock = React.memo( () => {
       <ThemeBlockWrapper
         title={ 'Новинки' }
         onButtonClick={ goToLatestProducts }
-        itemsForBlock={ productsList }
+        itemsForBlock={ latestProducts }
         blockTheme={ light }
         from={ location.LATEST_PRODUCTS }
       />
