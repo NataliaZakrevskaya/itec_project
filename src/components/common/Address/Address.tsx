@@ -4,7 +4,7 @@ import metroIcon from '../../../Images/metroIcon.svg';
 import style from './Address.module.scss';
 import { AddressPropsType } from './types';
 
-const Address = ( { address, metro }: AddressPropsType ) => {
+const Address = React.memo(( { address, metro }: AddressPropsType ) => {
 
   return (
     <div className={ style.addressBlock }>
@@ -18,7 +18,7 @@ const Address = ( { address, metro }: AddressPropsType ) => {
       </div>
     </div>
   );
-};
+});
 
 export default Address;
 

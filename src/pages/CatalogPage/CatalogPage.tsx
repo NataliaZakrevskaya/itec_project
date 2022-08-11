@@ -127,7 +127,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
           <p>Каталог</p>
         </div>
       </div>
@@ -140,28 +140,22 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             name="select"
             value={ chosenOrdering }
             onChange={ chooseOption }>
-            <option value={ selectValues.POPULARITY }
-                    selected={ chosenOrdering === selectValues.POPULARITY }>популярности
+            <option value={ selectValues.POPULARITY }>популярности
             </option>
-            <option value={ selectValues.NAME_POSITIVE }
-                    selected={ chosenOrdering === selectValues.NAME_POSITIVE }>названию: «от А до Я»
+            <option value={ selectValues.NAME_POSITIVE }>названию: «от А до Я»
             </option>
-            <option value={ selectValues.NAME_NEGATIVE }
-                    selected={ chosenOrdering === selectValues.NAME_NEGATIVE }>названию: «от Я до А»
+            <option value={ selectValues.NAME_NEGATIVE }>названию: «от Я до А»
             </option>
-            <option value={ selectValues.PRICE_POSITIVE }
-                    selected={ chosenOrdering === selectValues.PRICE_POSITIVE }>цене по возр.
+            <option value={ selectValues.PRICE_POSITIVE }>цене по возр.
             </option>
-            <option value={ selectValues.PRICE_NEGATIVE }
-                    selected={ chosenOrdering === selectValues.PRICE_NEGATIVE }>цене по убыв.
+            <option value={ selectValues.PRICE_NEGATIVE }>цене по убыв.
             </option>
-            <option value={ selectValues.ADDED_DATE }
-                    selected={ chosenOrdering === selectValues.ADDED_DATE }>новизне
+            <option value={ selectValues.ADDED_DATE }>новизне
             </option>
           </select>
         </div>
         <div onClick={ openFiltersMode } className={ style.catalogFilter }>
-          <img className={ style.catalogFilterImage } loading={'lazy'} src={ filterMajor } alt=""/>
+          <img className={ style.catalogFilterImage } loading={ 'lazy' } src={ filterMajor } alt=""/>
           <div className={ style.catalogFilterText }>
             Фильтры
           </div>
@@ -207,7 +201,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
               />
             </div> )
             : ( <div className={ style.emptyCatalog }>
-              <img src={ sadCat } loading={'lazy'} alt="sadCat"/>
+              <img src={ sadCat } loading={ 'lazy' } alt="sadCat"/>
               <div className={ style.title }>
                 <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте с нова</h3>
               </div>

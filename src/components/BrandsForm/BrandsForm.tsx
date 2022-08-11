@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import BrandFormInput from './BrandFormInput/BrandFormInput';
 import style from './BrandsForm.module.scss';
 import RejectSearchResult from '../common/modals/RejectSearchResult/RejectSearchResult';
@@ -10,18 +10,20 @@ import { setActualPage } from '../../redux/reducers/products-reducer';
 import { AppDispatch } from '../../redux/store';
 import { BrandsFormPropsType } from './types';
 
-const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
+const BrandsForm = React.memo(( { closeEditMode }: BrandsFormPropsType ) => {
 
   const [ value, setValue ] = useState( '' );
-  const dispatch = useDispatch<AppDispatch>();
+
   const brands = useSelector( getBrands );
   const filteredBrands = brands.filter( brand => brand.name.toLowerCase().includes( value.toLowerCase() ) );
-  const setFilters = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const setFilters = useCallback(() => {
     const pageNumber = 1;
     closeEditMode();
     dispatch( setChosenBrandsId( {} ) );
     dispatch( setActualPage( { pageNumber } ) );
-  };
+  }, []);
+  const clearBrandsForm = useCallback(() => setValue(''), [])
   useEffect( () => {
     if ( !brands[ 0 ] ) {
       dispatch( fetchBrandsTC() );
@@ -55,13 +57,13 @@ const BrandsForm = ( { closeEditMode }: BrandsFormPropsType ) => {
           )
           : (
             <div className={ style.rejectSearchResultContainer }>
-              <RejectSearchResult requestTitle={ 'бренды' } onClick={ () => setValue( '' ) }/>
+              <RejectSearchResult requestTitle={ 'бренды' } onClick={ clearBrandsForm }/>
             </div>
           )
       }
 
     </div>
   );
-};
+});
 
 export default BrandsForm;

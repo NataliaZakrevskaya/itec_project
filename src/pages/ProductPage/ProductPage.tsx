@@ -216,6 +216,7 @@ const ProductPage = () => {
                 images
                   .map( ( img, index ) =>
                     <img
+                      key={img.id}
                       src={ img.image }
                       alt="product"
                       loading={'lazy'}

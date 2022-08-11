@@ -7,7 +7,7 @@ import style from './FooterBurger.module.scss';
 import { useSelector } from 'react-redux';
 import { getInfo } from '../../../redux/selectors/descriptionShop-selectors';
 
-const FooterBurger = () => {
+const FooterBurger = React.memo(() => {
   const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );
   return (
     <div className={ style.footerBurger }>
@@ -20,6 +20,6 @@ const FooterBurger = () => {
       <Callback forHeader={ false }/>
     </div>
   );
-};
+});
 
 export default FooterBurger;

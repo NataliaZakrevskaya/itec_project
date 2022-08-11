@@ -13,7 +13,7 @@ export const fetchProductsFromSearchTC = createAsyncThunk(
       const res = await productsAPI.setProductsByName( param.search );
       dispatch( setSearchProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
-    } catch ( err ) {
+    } catch ( err: any) {
       dispatch( setSearchProductRequest( { status: RequestStatus.FAILED } ) );
       rejectWithValue( null );
     }

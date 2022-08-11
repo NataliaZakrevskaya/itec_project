@@ -4,7 +4,7 @@ import { routesPathsEnum } from '../../../routes/enums';
 import style from './NavbarForFooter.module.scss';
 import { HashLink } from 'react-router-hash-link';
 
-const NavbarForFooter = () => {
+const NavbarForFooter = React.memo(() => {
   const linkRef = useRef( null );
   const navigate = useNavigate();
   const discountLinkHandler = () => {
@@ -25,6 +25,6 @@ const NavbarForFooter = () => {
       <NavLink to={ routesPathsEnum.ARTICLES }>Статьи</NavLink>
     </div>
   );
-};
+});
 
 export default NavbarForFooter;

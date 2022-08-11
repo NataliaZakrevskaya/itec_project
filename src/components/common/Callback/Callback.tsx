@@ -10,7 +10,7 @@ import { AppDispatch } from '../../../redux/store';
 import { setCallbackRequestStatus } from '../../../redux/reducers/app-reducer';
 import { CallbackPropsType } from './types';
 
-const Callback = ( { forHeader }: CallbackPropsType ) => {
+const Callback = React.memo(( { forHeader }: CallbackPropsType ) => {
   const [ isActive, setIsActive ] = useState<boolean>( false );
   const responseIsSuccess = useSelector( getCallbackRequestStatus ) === RequestStatus.SUCCEEDED;
   const responseIsIdle = useSelector( getCallbackRequestStatus ) === RequestStatus.IDLE;
@@ -40,6 +40,6 @@ const Callback = ( { forHeader }: CallbackPropsType ) => {
       }
     </div>
   );
-};
+});
 
 export default Callback;

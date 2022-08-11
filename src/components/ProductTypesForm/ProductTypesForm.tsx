@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import style from './ProductTypesForm.module.scss';
 import ProductTypeInput from './ProductTypeInput/ProductTypeInput';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,15 +7,15 @@ import { fetchProductTypesTC, setChosenProductTypeId } from '../../redux/reducer
 import { setActualPage } from '../../redux/reducers/products-reducer';
 import { AppDispatch } from '../../redux/store';
 
-const ProductTypesForm = () => {
+const ProductTypesForm = React.memo(() => {
   const dispatch = useDispatch<AppDispatch>();
   const productsTypes = useSelector( getProductTypes );
   const chosenProductTypeId = useSelector( getChosenProductTypeId );
-  const chooseProductType = ( id: number ) => {
+  const chooseProductType = useCallback(( id: number ) => {
     const pageNumber = 1;
     dispatch( setChosenProductTypeId( { id } ) );
     dispatch( setActualPage( { pageNumber } ) );
-  };
+  }, []);
   useEffect( () => {
     dispatch( fetchProductTypesTC() );
   }, [] );
@@ -38,6 +38,6 @@ const ProductTypesForm = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ProductTypesForm;

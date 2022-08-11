@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { getTotalProductsCount } from '../../redux/selectors/basket-selectors';
 import { BasketLinkPropsType } from './types';
 
-const BasketLink = ( { forHeaderBurger, onClickHandler }: BasketLinkPropsType ) => {
+const BasketLink = React.memo(( { forHeaderBurger, onClickHandler }: BasketLinkPropsType ) => {
 
   const productCount = useSelector( getTotalProductsCount );
   const navigate = useNavigate();
@@ -30,6 +30,6 @@ const BasketLink = ( { forHeaderBurger, onClickHandler }: BasketLinkPropsType ) 
       }
     </>
   );
-};
+});
 
 export default BasketLink;

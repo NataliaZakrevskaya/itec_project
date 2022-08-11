@@ -5,13 +5,11 @@ import { location } from '../../enums';
 import { WithThisProductBuyBlockPropsType } from './types';
 
 export const WithThisProductBuyBlock = ( { products }: WithThisProductBuyBlockPropsType ) => {
-  const goToCommonProducts = () => {
-  };
 
   return (
     <ThemeBlockWrapper
       title={ 'Вместе с этим товаром покупают' }
-      onButtonClick={ goToCommonProducts }
+      onButtonClick={ () => false }
       itemsForBlock={ products }
       blockTheme={ dark }
       from={ location.WITH_THIS_PRODUCT_BUY }

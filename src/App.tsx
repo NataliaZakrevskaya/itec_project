@@ -1,7 +1,7 @@
 import Header from './components/Header/Header';
 import AppRoutes from './routes/routes';
 import Footer from './components/Footer/Footer';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import HeaderBurger from './components/Header/HeaderBurger/HeaderBurger';
 import FooterBurger from './components/Footer/FooterBurger/FooterBurger';
 import { Wrapper } from './components/common/Wrapper/Wrapper';
@@ -13,17 +13,17 @@ const App = () => {
   const [ editMode, setEditMode ] = useState<boolean>( false );
   const [ forFilters, setForFilters ] = useState<boolean>( false );
 
-  const openFiltersMode = () => {
+  const openFiltersMode = useCallback( () => {
     setEditMode( true );
     setForFilters( true );
-  };
-  const closeEditMode = () => {
+  }, []);
+  const closeEditMode = useCallback(() => {
     setEditMode( false );
     setForFilters( false );
-  };
-  const openEditMode = () => {
+  },[]);
+  const openEditMode = useCallback(() => {
     setEditMode( true );
-  };
+  }, []);
   const { windowElRef, width } = useResize();
   useEffect( () => {
     if ( width <= 770 ) setEditMode( false );

@@ -1,21 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { routesPathsEnum } from '../../../routes/enums';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import style from './NavbarForHeader.module.scss';
 import { NavbarForHeaderPropsType } from '../types';
 
-const NavbarForHeader = ( { forHeaderBurger, closeEditMode }: NavbarForHeaderPropsType ) => {
+const NavbarForHeader = React.memo( ( { forHeaderBurger, closeEditMode }: NavbarForHeaderPropsType ) => {
 
-  const linkRef = useRef( null );
   const navigate = useNavigate();
   const discountLinkHandler = () => {
     forHeaderBurger && closeEditMode();
     navigate( routesPathsEnum.MAIN );
-    if ( linkRef ) {
-      // @ts-ignore
-      linkRef.current.click();
-    }
   };
 
   return (
@@ -35,6 +30,6 @@ const NavbarForHeader = ( { forHeaderBurger, closeEditMode }: NavbarForHeaderPro
                to={ routesPathsEnum.ARTICLES }>Статьи</NavLink>
     </div>
   );
-};
+} );
 
 export default NavbarForHeader;

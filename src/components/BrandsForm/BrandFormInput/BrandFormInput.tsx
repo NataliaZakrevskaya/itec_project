@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { removeChosenBrandId, setChosenBrandId } from '../../../redux/reducers/brands-reducer';
 import { BrandFormInputPropsType } from '../types';
 
-const BrandFormInput = ( { id, name, chosen }: BrandFormInputPropsType ) => {
+const BrandFormInput = React.memo(( { id, name, chosen }: BrandFormInputPropsType ) => {
   const dispatch = useDispatch();
 
   const showDiscount = true; //todo позже получать от бэка
@@ -18,7 +18,7 @@ const BrandFormInput = ( { id, name, chosen }: BrandFormInputPropsType ) => {
   return (
     <label>
       <div>
-        <input type="checkbox" checked={ chosen }/>
+        <input type="checkbox" checked={ chosen } onChange={() => false}/>
         { chosen
           ? <span onClick={ removeBrandStatusChosen }/>
           : <span onClick={ addBrandStatusChosen }/>
@@ -28,6 +28,6 @@ const BrandFormInput = ( { id, name, chosen }: BrandFormInputPropsType ) => {
       { showDiscount && <p>Акция</p> }
     </label>
   );
-};
+});
 
 export default BrandFormInput;

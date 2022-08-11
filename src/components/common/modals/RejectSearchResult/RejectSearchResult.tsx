@@ -4,7 +4,7 @@ import sadDog from '../../../../Images/emtyBrands.jpg';
 import SmallerButton from '../../SmallerButton/SmallerButton';
 import { RejectSearchResultPropsType } from '../types';
 
-const RejectSearchResult = ( { requestTitle, onClick }: RejectSearchResultPropsType ) => {
+const RejectSearchResult = React.memo(( { requestTitle, onClick }: RejectSearchResultPropsType ) => {
 
   return (
     <div className={ style.rejectResultContainer }>
@@ -16,6 +16,6 @@ const RejectSearchResult = ( { requestTitle, onClick }: RejectSearchResultPropsT
       <SmallerButton title={ 'Перейти в каталог' } onClick={ onClick }/>
     </div>
   );
-};
+});
 
 export default RejectSearchResult;

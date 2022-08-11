@@ -19,7 +19,6 @@ import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
 
   const { metro, address, phone_number, social, time_weekdays, time_weekend } = useSelector( getInfo );
-
   const dispatch = useDispatch<AppDispatch>();
   const { width, windowElRef } = useResize();
 

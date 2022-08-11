@@ -7,14 +7,11 @@ import { PreviouslyProductsBlockPropsType } from './types';
 
 const PreviouslyProductsBlock = ( { products }: PreviouslyProductsBlockPropsType ) => {
 
-  const goToProductsCatalog = () => {
-  };
-
   return (
     <div className={ style.blockMargin }>
       <ThemeBlockWrapper
         title={ 'Ранее вы смотрели' }
-        onButtonClick={ goToProductsCatalog }
+        onButtonClick={ () => false }
         itemsForBlock={ products }
         blockTheme={ light }
         from={ location.PREVIOUSLY_PRODUCTS }

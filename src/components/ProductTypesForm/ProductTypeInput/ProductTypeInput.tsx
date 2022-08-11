@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProductTypeInputPropsType } from './types';
 
-const ProductTypeInput = ( { id, name, isActive, chooseProductType }: ProductTypeInputPropsType ) => {
+const ProductTypeInput = React.memo(( { id, name, isActive, chooseProductType }: ProductTypeInputPropsType ) => {
 
   const showDiscount = true; //todo заменить после получения инфы от бэка
 
@@ -15,6 +15,6 @@ const ProductTypeInput = ( { id, name, isActive, chooseProductType }: ProductTyp
       { showDiscount && <p>Акция</p> }
     </label>
   );
-};
+});
 
 export default ProductTypeInput;

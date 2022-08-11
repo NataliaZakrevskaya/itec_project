@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import style from './SearchInput.module.scss';
 import SearchResultsBlock from '../Header/SearchResultsBlock/SearchResultsBlock';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { fetchProductsFromSearchTC } from '../../redux/reducers/productsFromSear
 import { AppDispatch } from '../../redux/store';
 import { SearchInputPropsType } from './types';
 
-const SearchInput = ( { forHeaderBurger }: SearchInputPropsType ) => {
+const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ) => {
 
   const [ search, setSearch ] = useState( '' );
 
@@ -22,14 +22,14 @@ const SearchInput = ( { forHeaderBurger }: SearchInputPropsType ) => {
   const searchInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setSearch( e.target.value );
   };
-  const onRejResultButtonClick = () => {
+  const onRejResultButtonClick = useCallback(() => {
     navigate( routesPathsEnum.CATALOG );
     setSearch( '' );
-  };
-  const onProductItemClick = ( id: number ) => {
+  }, []);
+  const onProductItemClick = useCallback(( id: number ) => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
     setSearch( '' );
-  };
+  }, []);
 
   useEffect( () => {
     if ( !window.localStorage.getItem( 'productsFromSearch' ) ) {
@@ -53,6 +53,6 @@ const SearchInput = ( { forHeaderBurger }: SearchInputPropsType ) => {
       /> }
     </div>
   );
-};
+});
 
 export default SearchInput;

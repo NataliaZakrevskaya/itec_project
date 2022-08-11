@@ -9,7 +9,7 @@ import { SearchResultsBlockType } from '../types';
 import { PRODUCT_IMAGE } from '../../../constants';
 import { ProductItemType } from '../../../mocks';
 
-const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }: SearchResultsBlockType ) => {
+const SearchResultsBlock = React.memo(( { productItems, onButtonClick, onProductItemClick }: SearchResultsBlockType ) => {
 
   const successResult = useSelector( getSearchProductStatus ) === RequestStatus.SUCCEEDED;
 
@@ -40,6 +40,6 @@ const SearchResultsBlock = ( { productItems, onButtonClick, onProductItemClick }
       }
     </div>
   );
-};
+});
 
 export default SearchResultsBlock;

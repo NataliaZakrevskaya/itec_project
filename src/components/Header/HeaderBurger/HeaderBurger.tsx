@@ -8,7 +8,7 @@ import ProductTypesForm from '../../ProductTypesForm/ProductTypesForm';
 import BrandsForm from '../../BrandsForm/BrandsForm';
 import { HeaderBurgerPropsType } from '../types';
 
-const HeaderBurger = ( { onClickHandler, forFilters }: HeaderBurgerPropsType ) => {
+const HeaderBurger = React.memo(( { onClickHandler, forFilters }: HeaderBurgerPropsType ) => {
   return (
     <div className={ style.navBarContainer }>
       <div className={ style.editModeBlock }>
@@ -32,6 +32,6 @@ const HeaderBurger = ( { onClickHandler, forFilters }: HeaderBurgerPropsType ) =
       }
     </div>
   );
-};
+});
 
 export default HeaderBurger;

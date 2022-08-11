@@ -3,7 +3,7 @@ import timeIcon from '../../../Images/clock_minorfooter.svg';
 import style from './Schedule.module.scss';
 import { SchedulePropsType } from '../types';
 
-const Schedule = ( { forFooterBurger, timeWeekdays, timeWeekend }: SchedulePropsType ) => {
+const Schedule = React.memo(( { forFooterBurger, timeWeekdays, timeWeekend }: SchedulePropsType ) => {
   return (
     <div className={ style.scheduleBlock }>
       <div className={ style.scheduleBlockWrapperOne }>
@@ -16,7 +16,7 @@ const Schedule = ( { forFooterBurger, timeWeekdays, timeWeekend }: ScheduleProps
       </div>
     </div>
   );
-};
+});
 
 export default Schedule;
 
