@@ -9,6 +9,7 @@
   max-width: 270px;
   border-radius: 5px;
   padding: 8px;
+  position: relative;
    &:hover{
      box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
    }
@@ -128,6 +129,7 @@
 
 .productItemForCatalog {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-between;
   max-width: 270px;
@@ -139,7 +141,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .productItemForCatalog {
     max-width: 100%;
     width: 100%;
