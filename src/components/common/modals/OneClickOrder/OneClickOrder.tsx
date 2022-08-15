@@ -9,15 +9,12 @@ import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder-red
 import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder-selectors';
 import { AppDispatch } from '../../../../redux/store';
 import { FormikErrorType, OnClickOrderPropsType } from '../types';
-import { PRODUCT_IMAGE } from '../../../../constants';
-import { getPriceWithDiscount } from '../../../../redux/reducers/helpers';
 
 const OneClickOrder = ( { closeOneClickModal }: OnClickOrderPropsType ) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const productForOneClickOrder = useSelector( getProductForOneClickOrder );
-  const { id, options, name, images, chosen_option, max_discount } = productForOneClickOrder;
-  const priceWithDiscount = getPriceWithDiscount( productForOneClickOrder );
+  const { chosen_option, max_discount } = productForOneClickOrder;
   const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
 
   const formik = useFormik( {
@@ -34,7 +31,7 @@ const OneClickOrder = ( { closeOneClickModal }: OnClickOrderPropsType ) => {
         errors.phoneNumber = 'Поле обязательно для заполнения';
       } else if ( values.phoneNumber.length !== 13 ) {
         errors.phoneNumber = 'Должно быть 13 символов';
-      } else if ( !/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test( values.phoneNumber ) ) {
+      } else if ( !/^[+]375(29|25|33|44)[0-9]{7}$/i.test( values.phoneNumber ) ) {
         errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567';
       }
       return errors;
@@ -58,12 +55,7 @@ const OneClickOrder = ( { closeOneClickModal }: OnClickOrderPropsType ) => {
       { showDiscount && <div className={ style.discount }>Акция</div> }
       <h3>Оформление заказа в 1 клик</h3>
       <Product
-        id={ id }
-        options={ options }
-        name={ name }
-        image={ images[ 0 ] ? images[ 0 ].image : `${ PRODUCT_IMAGE }` }
-        chosenOption={ chosen_option }
-        priceWithDiscount={ priceWithDiscount }
+        product={ productForOneClickOrder }
         isForModal={ true }
         from={ location.ONE_CLICK_ORDER }
       />

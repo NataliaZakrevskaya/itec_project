@@ -1,4 +1,4 @@
-import { OptionType, ProductItemType } from '../../../mocks';
+import { OneProductItemType, OptionType, ProductItemType } from '../../../mocks';
 
 export type SectionButtonPropsType = {
   disabled: boolean,
@@ -8,13 +8,8 @@ export type PhonePropsType = {
   phoneNumber: string
 }
 export type ProductForBasketPropsType = {
-  id: number,
-  options: Array<OptionType>,
-  name: string,
-  image: string,
+  product: ProductItemType | OneProductItemType,
   isForModal: boolean,
-  priceWithDiscount?: number,
-  chosenOption: OptionType,
   from: string
 }
 export type ProductForBasketModalPropsType = {
