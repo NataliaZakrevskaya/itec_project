@@ -9,12 +9,16 @@ import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder-red
 import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder-selectors';
 import { AppDispatch } from '../../../../redux/store';
 import { FormikErrorType, OnClickOrderPropsType } from '../types';
+import { PRODUCT_IMAGE } from '../../../../constants';
+import { getPriceWithDiscount } from '../../../../redux/reducers/helpers';
 
-const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClickModal }: OnClickOrderPropsType ) => {
+const OneClickOrder = ( { closeOneClickModal }: OnClickOrderPropsType ) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const productForOneClickOrder = useSelector( getProductForOneClickOrder );
-  const showDiscount = true; //todo позже узнавать от бэка
+  const { id, options, name, images, chosen_option, max_discount } = productForOneClickOrder;
+  const priceWithDiscount = getPriceWithDiscount( productForOneClickOrder );
+  const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
 
   const formik = useFormik( {
     initialValues: {
@@ -57,8 +61,9 @@ const OneClickOrder = ( { id, options, name, image, chosen_option, closeOneClick
         id={ id }
         options={ options }
         name={ name }
-        image={ image }
+        image={ images[ 0 ] ? images[ 0 ].image : `${ PRODUCT_IMAGE }` }
         chosenOption={ chosen_option }
+        priceWithDiscount={ priceWithDiscount }
         isForModal={ true }
         from={ location.ONE_CLICK_ORDER }
       />

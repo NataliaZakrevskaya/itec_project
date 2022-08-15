@@ -41,7 +41,6 @@ import { getChosenBrandsId } from '../../redux/selectors/brands-selectors';
 import { location } from '../../enums';
 import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
 import { AppDispatch } from '../../redux/store';
-import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
 import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
 import { getChosenOrdering } from '../../redux/selectors/ordering-selectors';
@@ -63,7 +62,6 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
   const isOneClickOrderSucceeded = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const chosenBrands = useSelector( getChosenBrandsId );
-  const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const chosenOrdering = useSelector( getChosenOrdering );
   const productsFromBasket = useSelector( getProductsInBasket );
   const { windowElRef, width } = useResize();
@@ -76,9 +74,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const onPageChanged = useCallback(( pageNumber: number ) => {
+  const onPageChanged = useCallback( ( pageNumber: number ) => {
     dispatch( setActualPage( { pageNumber } ) );
-  }, []);
+  }, [] );
   const closeOneClickModal = () => {
     setIsOneClickModalActive( false );
   };
@@ -222,11 +220,6 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
               from={ location.ONE_CLICK_ORDER }
             /> )
             : ( <OneClickOrder
-              id={ productForOneClickOrderModal.id }
-              name={ productForOneClickOrderModal.name }
-              image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
-              options={ productForOneClickOrderModal.options }
-              chosen_option={ productForOneClickOrderModal.chosen_option }
               closeOneClickModal={ closeOneClickModal }
             /> )
           }
@@ -237,10 +230,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
         <Modal closeModal={ closeBasketModal }>
           <BasketModal
             key={ productForBasketModal.id }
-            id={ productForBasketModal.id }
-            image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
-            name={ productForBasketModal.name }
-            chosenOption={ productForBasketModal.chosen_option }
+            product={ productForBasketModal }
             closeModal={ closeBasketModal }
           />
         </Modal>

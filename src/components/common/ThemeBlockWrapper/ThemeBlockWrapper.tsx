@@ -12,7 +12,6 @@ import { incrementProductQuantity, setProductToBasket } from '../../../redux/red
 import { useCarousel } from '../../../customHooks/useCarousel';
 import { BlockNames } from '../../../customHooks/enums';
 import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
-import { getProductForOneClickOrder } from '../../../redux/selectors/oneClickOrder-selectors';
 import { PRODUCT_IMAGE } from '../../../constants';
 import { setProductToState } from '../../../redux/reducers/onClickOrder-reducer';
 import { getOneClickOrderRequestStatus } from '../../../redux/selectors/app-selectors';
@@ -35,7 +34,6 @@ const ThemeBlockWrapper = ( {
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const productsFromBasket = useSelector( getProductsInBasket );
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { block, sectionsBlock, productItem } = blockTheme;
@@ -139,11 +137,6 @@ const ThemeBlockWrapper = ( {
         { isOneClickModalActive && !isSuccessOneClickOrder &&
           <Modal closeModal={ closeOneClickModal }>
             <OneClickOrder
-              id={ productForOneClickOrderModal.id }
-              name={ productForOneClickOrderModal.name }
-              image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
-              options={ productForOneClickOrderModal.options }
-              chosen_option={ productForOneClickOrderModal.chosen_option }
               closeOneClickModal={ closeOneClickModal }
             />
           </Modal>
@@ -152,10 +145,7 @@ const ThemeBlockWrapper = ( {
           <Modal closeModal={ closeBasketModal }>
             <BasketModal
               key={ productForBasketModal.id }
-              id={ productForBasketModal.id }
-              image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
-              name={ productForBasketModal.name }
-              chosenOption={ productForBasketModal.chosen_option }
+              product={ productForBasketModal }
               closeModal={ closeBasketModal }
             />
           </Modal>

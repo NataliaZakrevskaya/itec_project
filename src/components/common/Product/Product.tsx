@@ -21,7 +21,16 @@ import { getPrice } from '../../../helpers/getPrice';
 import { setWeightSetIsShowed } from '../../../redux/reducers/app-reducer';
 import { ProductForBasketPropsType } from '../types';
 
-const Product = ( { id, options, name, image, isForModal, chosenOption, from }: ProductForBasketPropsType ) => {
+const Product = ( {
+                    id,
+                    options,
+                    name,
+                    image,
+                    isForModal,
+                    priceWithDiscount,
+                    chosenOption,
+                    from,
+                  }: ProductForBasketPropsType ) => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -29,7 +38,6 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
   const productName = stringCutter( name, 70 );
   const countOfProduct = chosenOption.quantity;
   const price = getPrice( +chosenOption.price * countOfProduct );
-  const priceWithDiscount = 112; //todo позже от бэка
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
@@ -56,7 +64,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
     <div className={ style.productForBasketContainer }>
       <div className={ style.productWrap }>
         <div className={ style.imageWrapper }>
-          <img src={ image } loading={'lazy'} alt="product"/>
+          <img src={ image } loading={ 'lazy' } alt="product"/>
         </div>
         <div
           className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
@@ -102,7 +110,7 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
             { !isForModal && <img
               className={ style.basketImage }
               src={ basket } alt="basketIcon"
-              loading={'lazy'}
+              loading={ 'lazy' }
               onClick={ deleteProductFromBasket }
             /> }
           </div>
@@ -110,7 +118,8 @@ const Product = ( { id, options, name, image, isForModal, chosenOption, from }: 
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
-            <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
+            { price !== priceWithDiscount &&
+              <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p> }
             { !!priceWithDiscount && <p className={ style.price }>{ priceWithDiscount } BYN.</p> }
           </div>
         }

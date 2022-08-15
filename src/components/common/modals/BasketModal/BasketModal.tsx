@@ -5,16 +5,16 @@ import { routesPathsEnum } from '../../../../routes/enums';
 import style from './BasketModal.module.scss';
 import ProductForBasketModal from '../../ProductForBasketModal/ProductForBasketModal';
 import { BasketModalPropsType } from '../types';
+import { getPriceWithDiscount } from '../../../../redux/reducers/helpers';
+import { PRODUCT_IMAGE } from '../../../../constants';
 
 const BasketModal = ( {
-                        name,
-                        image,
-                        id,
+                        product,
                         closeModal,
-                        chosenOption,
-                        priceWithDiscount,
                         countOfProduct = 1,
                       }: BasketModalPropsType ) => {
+  const { max_discount, chosen_option, name, images, id } = product;
+  const priceWithDiscount = getPriceWithDiscount( product );
   const navigate = useNavigate();
   const continueShopping = () => {
     navigate( routesPathsEnum.CATALOG );
@@ -24,21 +24,21 @@ const BasketModal = ( {
     navigate( routesPathsEnum.BASKET );
     closeModal();
   };
-  const showDiscount = true; //todo после от бэка
+  const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
 
   return (
     <div className={ style.basketModalContainer }>
       { showDiscount && <div className={ style.discount }>Акция</div> }
       <div className={ style.title }>
-        <img src={ selectIcon } loading={'lazy'} alt="selectIcon"/>
+        <img src={ selectIcon } loading={ 'lazy' } alt="selectIcon"/>
         <h3>Товар добавлен в корзину</h3>
       </div>
       <div className={ style.product }>
         <ProductForBasketModal
           name={ name }
-          image={ image }
+          image={ images[ 0 ] ? images[0].image : `${ PRODUCT_IMAGE }`}
           priceWithDiscount={ priceWithDiscount }
-          chosenOption={ chosenOption }
+          chosenOption={ chosen_option }
           countOfProduct={ countOfProduct }
           id={ id }
         />

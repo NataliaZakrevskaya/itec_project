@@ -1,14 +1,10 @@
-import { OptionType } from '../../../../mocks';
+import { OneProductItemType, ProductItemType } from '../../../../mocks';
 import { LocationsType } from '../../../../enums';
 
 export type BasketModalPropsType = {
-  name: string,
-  image: string,
-  id: number,
-  chosenOption: OptionType,
+  product: ProductItemType | OneProductItemType,
   countOfProduct?: number,
   closeModal: () => void,
-  priceWithDiscount?: number
 }
 export type ModalPropsType = {
   closeModal: () => void
@@ -19,11 +15,6 @@ export type FormikErrorType = {
   phoneNumber?: string
 }
 export type OnClickOrderPropsType = {
-  id: number,
-  options: Array<OptionType>,
-  name: string,
-  image: string,
-  chosen_option: OptionType,
   closeOneClickModal: () => void
 }
 export type RejectSearchResultPropsType = {

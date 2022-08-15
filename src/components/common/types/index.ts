@@ -13,6 +13,7 @@ export type ProductForBasketPropsType = {
   name: string,
   image: string,
   isForModal: boolean,
+  priceWithDiscount?: number,
   chosenOption: OptionType,
   from: string
 }

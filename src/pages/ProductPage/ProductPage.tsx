@@ -28,7 +28,6 @@ import { AppDispatch } from '../../redux/store';
 import { getProductItems, OptionType, ProductItemType } from '../../mocks';
 import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/product-reducer';
 import { getProduct } from '../../redux/selectors/product-selector';
-import { getProductForOneClickOrder } from '../../redux/selectors/oneClickOrder-selectors';
 import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
 import { setProductToBlock } from '../../redux/reducers/previouslyProducts-reducer';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
@@ -65,7 +64,6 @@ const ProductPage = React.memo( () => {
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
   const productForBasket = useSelector( getProductsInBasket );
-  const productForOneClickOrderModal = useSelector( getProductForOneClickOrder );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const weightSetIsShowed = useSelector( getWeightSetValue );
   const { address, metro } = useSelector( getInfo );
@@ -360,11 +358,6 @@ const ProductPage = React.memo( () => {
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
           <OneClickOrder
-            id={ productForOneClickOrderModal.id }
-            name={ productForOneClickOrderModal.name }
-            image={ productForOneClickOrderModal.images[ 0 ] ? productForOneClickOrderModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
-            options={ productForOneClickOrderModal.options }
-            chosen_option={ productForOneClickOrderModal.chosen_option }
             closeOneClickModal={ closeOneClickModal }
           />
         </Modal>
@@ -373,11 +366,7 @@ const ProductPage = React.memo( () => {
         <Modal closeModal={ closeBasketModal }>
           <BasketModal
             key={ productForBasketModal.id }
-            id={ productForBasketModal.id }
-            image={ productForBasketModal.images[ 0 ] ? productForBasketModal.images[ 0 ].image : `${ PRODUCT_IMAGE }` }
-            name={ productForBasketModal.name }
-            priceWithDiscount={ priceWithDiscount }
-            chosenOption={ productForBasketModal.chosen_option }
+            product={ productForBasketModal }
             countOfProduct={ countOfProduct }
             closeModal={ closeBasketModal }
           />

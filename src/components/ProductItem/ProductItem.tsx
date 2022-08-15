@@ -7,6 +7,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import { stringCutter } from '../../helpers/stringCutter';
 import { getPrice } from '../../helpers/getPrice';
 import { ProductItemPropsType } from './types';
+import { getPriceWithDiscount } from '../../redux/reducers/helpers';
 
 const ProductItem = ( {
                         product,
@@ -24,8 +25,8 @@ const ProductItem = ( {
 
   const price = getPrice( +chosenOption.price );
   const nameForCard = stringCutter( name, 70 );
-  const showDiscount = true; //todo после того, как бэк сделает скидки заменить
-  const priceWithDiscount = 112; //todo после того, как бэк сделает скидки заменить
+  const showDiscount = !!product.max_discount || !!chosenOption.discount_by_option;
+  const priceWithDiscount = getPriceWithDiscount(product); //todo после того, как бэк сделает скидки заменить
   const navigate = useNavigate();
   const onProductClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
@@ -55,7 +56,7 @@ const ProductItem = ( {
       </div>
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
-          <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ `${ price } BYN` }</p>
+          {priceWithDiscount !== price && <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ `${ price } BYN` }</p>}
           { !!priceWithDiscount && <p className={ style.price }>{ `${ priceWithDiscount } BYN` }</p> }
           <div className={ style.basket } onClick={ () => openBasketModal( product ) }>
             <p>+</p>
