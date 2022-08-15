@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getProductInitState, OptionType, ProductItemType } from '../../mocks';
+import { getProductInitState, OneProductItemType, OptionType, ProductItemType } from '../../mocks';
 import { RequestStatus } from './enums';
 import { setOneClickOrderRequestStatus } from './app-reducer';
 import { orderAPI } from '../../Api/orderApi/orderApi';
@@ -23,9 +23,9 @@ export const sendOneClickOrderTC = createAsyncThunk(
 
 export const slice = createSlice( {
   name: 'oneClickOrder',
-  initialState: getProductInitState(),
+  initialState: getProductInitState() as OneProductItemType | ProductItemType,
   reducers: {
-    setProductToState( state, action: PayloadAction<{ product: ProductItemType }> ) {
+    setProductToState( state, action: PayloadAction<{ product: ProductItemType | OneProductItemType }> ) {
       return action.payload.product;
     },
     setChosenOptionToOneOrderProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {

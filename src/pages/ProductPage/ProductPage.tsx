@@ -37,7 +37,7 @@ import { PRODUCT_IMAGE } from '../../constants';
 import { getWeightSetValue } from '../../redux/selectors/app-selectors';
 import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
 
-const ProductPage = React.memo(() => {
+const ProductPage = React.memo( () => {
 
   const [ countOfProduct, setCountOfProduct ] = useState<number>( 1 );
   const [ weightSetValue, setWeightSetValue ] = useState<string>( '' );
@@ -51,7 +51,6 @@ const ProductPage = React.memo(() => {
   const productId = Number( useParams().productId );
   const product = useSelector( getProduct );
   const {
-    brand,
     name,
     images,
     options,
@@ -60,8 +59,9 @@ const ProductPage = React.memo(() => {
     features,
     composition,
     additives,
-    discountproduct,
     chosen_option,
+    max_discount,
+    brand,
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
   const productForBasket = useSelector( getProductsInBasket );
@@ -113,7 +113,7 @@ const ProductPage = React.memo(() => {
     setIsBasketModalActive( false );
     setProductForBasketModal( null );
   };
-  const showDiscount = !!discountproduct || !!chosen_option.discountproductoption;
+  const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
     productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
@@ -160,13 +160,28 @@ const ProductPage = React.memo(() => {
   };
 
   useEffect( () => {
-    if ( discountproduct ) {
-      setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * discountproduct.discount_amount ) ) * countOfProduct );
+    if ( max_discount && chosen_option.discount_by_option ) {
+      if ( max_discount < chosen_option.discount_by_option ) {
+        setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity );
+      } else {
+        setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * max_discount ) ) * chosen_option.quantity );
+      }
     }
-    if ( chosen_option.discountproductoption ) {
-      setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discountproductoption.discount_amount ) ) * countOfProduct );
-    } else setPriceWithDiscount( 0 );
-  }, [ chosen_option, countOfProduct, discountproduct ] );
+    if ( max_discount && !chosen_option.discount_by_option ) {
+      setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * max_discount ) ) * chosen_option.quantity );
+    }
+    if ( !product.max_discount && chosen_option.discount_by_option ) {
+      setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity );
+    } else {
+      setPriceWithDiscount( 0 );
+    }
+    /* if ( discountproduct ) {
+       setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * discountproduct.discount_amount ) ) * countOfProduct );
+     }
+     if ( chosen_option.discountproductoption ) {
+       setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discountproductoption.discount_amount ) ) * countOfProduct );
+     } else setPriceWithDiscount( 0 );*/
+  }, [ chosen_option.discount_by_option, chosen_option.price, countOfProduct, max_discount ] );
   useEffect( () => {
     if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
   }, [ productId ] );
@@ -189,9 +204,9 @@ const ProductPage = React.memo(() => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
           <p onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Каталог</p>
-          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
           <p>{ nameForNavigationBlock }</p>
         </div>
       </div>
@@ -209,17 +224,17 @@ const ProductPage = React.memo(() => {
             <div className={ style.mainImageWrapper }>
               <img
                 src={ images[ selectImageId ] ? images[ selectImageId ].image : `${ PRODUCT_IMAGE }` }
-                alt="product"  loading={'lazy'} className={ style.mainImg }/>
+                alt="product" loading={ 'lazy' } className={ style.mainImg }/>
             </div>
             <div className={ style.restImagesBlock }>
               {
                 images
                   .map( ( img, index ) =>
                     <img
-                      key={img.id}
+                      key={ img.id }
                       src={ img.image }
                       alt="product"
-                      loading={'lazy'}
+                      loading={ 'lazy' }
                       className={ img.id === images[ selectImageId ].id ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
                       onClick={ () => selectImage( index ) }
                     />,
@@ -270,7 +285,7 @@ const ProductPage = React.memo(() => {
             </div>
             <div className={ style.orderInfo }>
               <div className={ style.orderImageWrapper }>
-                <img src={ boxIcon } loading={'lazy'} alt="boxIcon"/>
+                <img src={ boxIcon } loading={ 'lazy' } alt="boxIcon"/>
               </div>
               <div>
                 <h3>Самовывоз</h3>
@@ -370,6 +385,6 @@ const ProductPage = React.memo(() => {
       }
     </div>
   );
-});
+} );
 
 export default ProductPage;
