@@ -33,7 +33,10 @@ export const setTotalSumWithDiscount = ( state: any ) => {
 export const getPriceWithDiscount = (product: ProductItemType) => {
   if (product.max_discount && product.chosen_option.discount_by_option){
     if(product.max_discount < product.chosen_option.discount_by_option){
-      return (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.chosen_option.discount_by_option)) * product.chosen_option.quantity
+      if(product.chosen_option.partial){
+        return (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.chosen_option.discount_by_option)) * (product.chosen_option.size / 1000)
+      }
+      else return (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.chosen_option.discount_by_option)) * product.chosen_option.quantity
     } else{
       return (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.max_discount)) * product.chosen_option.quantity
     }
@@ -42,7 +45,10 @@ export const getPriceWithDiscount = (product: ProductItemType) => {
     return (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.max_discount)) * product.chosen_option.quantity
   }
   if(!product.max_discount && product.chosen_option.discount_by_option){
-    return (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.chosen_option.discount_by_option)) * product.chosen_option.quantity
+    if(product.chosen_option.partial){
+      return  (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.chosen_option.discount_by_option)) * (product.chosen_option.size / 1000)
+    }
+    else return (+product.chosen_option.price - (+product.chosen_option.price / 100 * product.chosen_option.discount_by_option)) * product.chosen_option.quantity
   } else{
     return +product.chosen_option.price * product.chosen_option.quantity
   }

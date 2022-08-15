@@ -35,6 +35,7 @@ import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 import { PRODUCT_IMAGE } from '../../constants';
 import { getWeightSetValue } from '../../redux/selectors/app-selectors';
 import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
+import { getPrice } from '../../helpers/getPrice';
 
 const ProductPage = React.memo( () => {
 
@@ -67,6 +68,7 @@ const ProductPage = React.memo( () => {
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const weightSetIsShowed = useSelector( getWeightSetValue );
   const { address, metro } = useSelector( getInfo );
+  const priceWithDiscountCropped = getPrice( priceWithDiscount );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
   const products = getProductItems(); //todo позже забирать из детализации товара
@@ -160,7 +162,9 @@ const ProductPage = React.memo( () => {
   useEffect( () => {
     if ( max_discount && chosen_option.discount_by_option ) {
       if ( max_discount < chosen_option.discount_by_option ) {
-        setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity );
+        if ( chosen_option.partial ) {
+          setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity / 1000 );
+        } else setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity );
       } else {
         setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * max_discount ) ) * chosen_option.quantity );
       }
@@ -169,16 +173,12 @@ const ProductPage = React.memo( () => {
       setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * max_discount ) ) * chosen_option.quantity );
     }
     if ( !product.max_discount && chosen_option.discount_by_option ) {
-      setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity );
+      if ( chosen_option.partial ) {
+        setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity / 1000 );
+      } else setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discount_by_option ) ) * chosen_option.quantity );
     } else {
       setPriceWithDiscount( 0 );
     }
-    /* if ( discountproduct ) {
-       setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * discountproduct.discount_amount ) ) * countOfProduct );
-     }
-     if ( chosen_option.discountproductoption ) {
-       setPriceWithDiscount( ( +chosen_option.price - ( +chosen_option.price / 100 * chosen_option.discountproductoption.discount_amount ) ) * countOfProduct );
-     } else setPriceWithDiscount( 0 );*/
   }, [ chosen_option.discount_by_option, chosen_option.price, countOfProduct, max_discount ] );
   useEffect( () => {
     if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
@@ -294,12 +294,12 @@ const ProductPage = React.memo( () => {
             </div>
             <div className={ style.orderInfoForPayment }>
               <div>
-                <h2 className={ !!priceWithDiscount ? style.priceWithDiscount : style.firstPrice }>
+                <h2 className={ !!priceWithDiscountCropped ? style.priceWithDiscount : style.firstPrice }>
                   { +chosen_option.price * countOfProduct } BYN
                 </h2>
-                { !!priceWithDiscount &&
+                { !!priceWithDiscountCropped &&
                   <h2 className={ style.discountPrice }>
-                    { priceWithDiscount } BYN
+                    { priceWithDiscountCropped } BYN
                   </h2>
                 }
               </div>

@@ -21,13 +21,13 @@ const ProductForBasketModal = ( {
       </div>
       <div className={ chosenOption.partial ? style.orderInfoPartial : style.orderInfoNotPartial }>
         { chosenOption.partial
-          ? <p>{ chosenOption.quantity } кг.</p>
+          ? <p>{ chosenOption.size / 1000 } кг.</p>
           : <p>{ chosenOption.size } { chosenOption.units.unit_name }</p>
         }
         { !chosenOption.partial && <p>{ countOfProduct } шт.</p> }
         { price !== priceWithDiscount &&
-          <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p> }
-        { !!priceWithDiscount && <p className={ style.price }>{ priceWithDiscount } BYN.</p> }
+         <p className={ !!priceWithDiscount ? style.priceWithDiscount : style.price }>{ price } BYN.</p> }
+        { !!priceWithDiscount && <p className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed(2) } BYN.</p> }
       </div>
     </div>
   );
