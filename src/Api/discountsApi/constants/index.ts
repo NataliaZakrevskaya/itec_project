@@ -1,0 +1,1 @@
+export const DISCOUNTS_URL = 'discounts/';

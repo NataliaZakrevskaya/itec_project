@@ -1472,7 +1472,7 @@ export const getWithThisProductsBuy = (): Array<ProductItemType> => {
     },
   ];
 };
-export const getDiscounts = (): Array<DiscountType> => {
+export const getDiscounts = (): Array<any> => {
   return [
     {
       id: 0,
@@ -1525,11 +1525,6 @@ export const getProductInitState = (): OneProductItemType => {
   };
 };
 
-export type DiscountType = {
-  id: number,
-  title: string,
-  img: string
-}
 export type BrandType = {
   id: number,
   name: string,
@@ -1640,5 +1635,19 @@ export type ShopInfoType = {
     info_title: string,
     info_text: string
   }>
+}
+export type DiscountType = {
+  title: string,
+  options: [
+    {
+      min_price_for_discount: number,
+      discount_amount: number
+    },
+    {
+      min_price_for_discount: number,
+      discount_amount: number
+    }
+  ],
+  is_active: boolean
 }
 

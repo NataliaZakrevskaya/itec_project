@@ -23,7 +23,7 @@ import { location } from '../../enums';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 import { getGoods } from '../../helpers/getGoods';
-import { getPrice, getPriceForBasket } from '../../helpers/getPrice';
+import { getPriceForBasket } from '../../helpers/getPrice';
 
 const BasketPage = React.memo( () => {
 

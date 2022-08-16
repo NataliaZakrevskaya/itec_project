@@ -18,6 +18,7 @@ import { oneClickOrderReducer } from './reducers/onClickOrder-reducer';
 import { orderingReducer } from './reducers/ordering-reducer';
 import { previouslyProductsReducer } from './reducers/previouslyProducts-reducer';
 import { descriptionShopReducer } from './reducers/descriptionShop-reducer';
+import { discountsReducer } from './reducers/discounts-reducer';
 
 const rootReducer = combineReducers( {
   app: appReducer,
@@ -36,6 +37,7 @@ const rootReducer = combineReducers( {
   articles: articlesReducer,
   ordering: orderingReducer,
   descriptionShop: descriptionShopReducer,
+  discounts: discountsReducer,
 } );
 
 const persistConfig = {
