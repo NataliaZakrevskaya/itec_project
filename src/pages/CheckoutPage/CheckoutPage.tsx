@@ -20,18 +20,18 @@ import { getOrderRequestStatus } from '../../redux/selectors/app-selectors';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { setOrderRequestStatus } from '../../redux/reducers/app-reducer';
 import { location } from '../../enums';
-import { getPrice } from '../../helpers/getPrice';
+import { getPriceForBasket } from '../../helpers/getPrice';
 import { getGoods } from '../../helpers/getGoods';
 import { FormikErrorType } from '../../components/common/modals/types';
 
-const CheckoutPage = React.memo(() => {
+const CheckoutPage = React.memo( () => {
 
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
   const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const basketCount = useSelector( getTotalSumWithDiscount );
   const productsCount = useSelector( getTotalProductsCount );
   const productsInBasket = useSelector( getProductsInBasket );
-  const price = getPrice( basketCount );
+  const price = getPriceForBasket( basketCount );
   const goodsName = getGoods( productsCount );
   const orderInfo = productsInBasket.map( product => {
     return ( { article_number: product.chosen_option.article_number, quantity: product.chosen_option.quantity } );
@@ -86,9 +86,9 @@ const CheckoutPage = React.memo(() => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
           <p onClick={ () => navigate( routesPathsEnum.BASKET ) }>Корзина</p>
-          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
           <p>Оформление заказа</p>
         </div>
       </div>
@@ -145,6 +145,6 @@ const CheckoutPage = React.memo(() => {
       }
     </div>
   );
-});
+} );
 
 export default CheckoutPage;
