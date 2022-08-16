@@ -64,8 +64,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const chosenBrands = useSelector( getChosenBrandsId );
   const chosenOrdering = useSelector( getChosenOrdering );
   const productsFromBasket = useSelector( getProductsInBasket );
-  const { windowElRef, width } = useResize();
-  const withWords = width >= 620;
+  const { windowElRef, width } = useResize(); /*learn the width of the product's display block*/
+  const withWords = width >= 620; /*words in the pagination block are displayed until the width does not exceed 620*/
 
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
@@ -90,7 +90,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   };
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
-    productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.id !== product.chosen_option?.id )
+    /*check basket for the presence of this product with the selected option by the article of the option. If there is one, increase the quantity of the product at the selected option, if the product is new, add to the basket*/
+    productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.article_number !== product.chosen_option?.article_number )
       ? dispatch( setProductToBasket( { product } ) )
       : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1 } ) );
     setIsBasketModalActive( true );
@@ -102,14 +103,16 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     dispatch( setProductRequest( { status: RequestStatus.IDLE } ) );
   };
   const chooseOption = ( e: ChangeEvent<HTMLSelectElement> ) => {
+    /*set chosen value for select for sorting products*/
     dispatch( setChosenOrdering( { ordering: e.currentTarget.value as SelectValuesTypes } ) );
   };
 
   useEffect( () => {
-    const brands = chosenBrands.length ? chosenBrands?.join() : null;
+    const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
     dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands } ) );
   }, [ page, animal, category, chosenOrdering, chosenBrands ] );
   useEffect( () => {
+    /*we turn off scroll when modals are active*/
     if ( isBasketModalActive || isOneClickModalActive || isOneClickOrderSucceeded ) {
       window.document.body.style.overflow = 'hidden';
     }
@@ -201,7 +204,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             : ( <div className={ style.emptyCatalog }>
               <img src={ sadCat } loading={ 'lazy' } alt="sadCat"/>
               <div className={ style.title }>
-                <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте с нова</h3>
+                <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте снова</h3>
               </div>
               <button onClick={ resetFilters }>Сбросить фильтры</button>
             </div> )
