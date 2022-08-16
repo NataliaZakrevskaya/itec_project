@@ -1,3 +1,4 @@
+/*this feature is used for cutting long product names*/
 export const stringCutter = ( string: string, limit: number ) => {
   string = string.trim();
   if ( string.length <= limit ) return string;

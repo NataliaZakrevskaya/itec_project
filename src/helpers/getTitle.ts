@@ -1,3 +1,5 @@
+/*these features are used for showing correct block's titles with different chosen animal types*/
+
 export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null ) => {
   switch ( chosenAnimalTypeId ) {
     case 1: {

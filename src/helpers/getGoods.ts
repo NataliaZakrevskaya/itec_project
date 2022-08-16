@@ -1,3 +1,4 @@
+/*this feature is used to correctly display a word item with different number of products in the basket*/
 export const getGoods = ( countOfGoods: number ) => {
   if ( countOfGoods === 11 || countOfGoods === 12 || countOfGoods === 13 || countOfGoods === 14 ) {
     return 'товаров';

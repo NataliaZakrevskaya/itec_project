@@ -1,3 +1,4 @@
+/*this function is used to display the correct month format for the date*/
 export const getMonth = ( month: number ) => {
   switch ( month ) {
     case 0: {
