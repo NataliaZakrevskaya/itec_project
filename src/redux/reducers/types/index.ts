@@ -12,6 +12,6 @@ export type latestProductsInitialStateType = {
 export type ProductTypesType = {
   id: number,
   name: string,
-  is_active: boolean,
+  discount_by_category: null
   chosen: boolean
 }

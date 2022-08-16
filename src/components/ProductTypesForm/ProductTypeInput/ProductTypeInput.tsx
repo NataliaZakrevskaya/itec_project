@@ -1,9 +1,7 @@
 import React from 'react';
 import { ProductTypeInputPropsType } from './types';
 
-const ProductTypeInput = React.memo(( { id, name, isActive, chooseProductType }: ProductTypeInputPropsType ) => {
-
-  const showDiscount = true; //todo заменить после получения инфы от бэка
+const ProductTypeInput = React.memo(( { id, name, isActive, discount, chooseProductType }: ProductTypeInputPropsType ) => {
 
   return (
     <label>
@@ -12,7 +10,7 @@ const ProductTypeInput = React.memo(( { id, name, isActive, chooseProductType }:
         <span/>
         { name }
       </div>
-      { showDiscount && <p>Акция</p> }
+      { discount && <p>Акция</p> }
     </label>
   );
 });

@@ -30,6 +30,7 @@ const ProductTypesForm = React.memo(() => {
               key={ type.id }
               id={ type.id }
               name={ type.name }
+              discount={!!type.discount_by_category}
               isActive={ chosenProductTypeId === type.id }
               chooseProductType={ chooseProductType }
             />,
