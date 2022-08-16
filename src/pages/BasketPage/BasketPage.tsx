@@ -23,7 +23,7 @@ import { location } from '../../enums';
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 import { getGoods } from '../../helpers/getGoods';
-import { getPrice } from '../../helpers/getPrice';
+import { getPrice, getPriceForBasket } from '../../helpers/getPrice';
 
 const BasketPage = React.memo( () => {
 
@@ -35,8 +35,8 @@ const BasketPage = React.memo( () => {
   const { address } = useSelector( getInfo );
   const showDiscount = basketCount !== basketCountWithDiscount;
   const isFullBasket = productsInBasket.length;
-  const price = getPrice( basketCount );
-  const priceWithDiscount = getPrice( basketCountWithDiscount );
+  const price = getPriceForBasket( basketCount );
+  const priceWithDiscount = getPriceForBasket( basketCountWithDiscount );
   const goodsName = getGoods( productsCount );
   const navigate = useNavigate();
 
