@@ -1,4 +1,5 @@
 import { OneProductItemType, ProductItemType } from '../../../mocks';
+import product from '../../../components/common/Product/Product';
 
 /*this function is used to get the correct total number of products in the basket*/
 export const setTotalCount = ( state: any ) => {
@@ -22,7 +23,7 @@ export const setTotalSumWithDiscount = ( state: any ) => {
         /*if packing - by weight*/
         if ( product.chosen_option.partial ) {
           /*return price with discount of option, taking into account that the cost for grams*/
-          return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.size / 1000 );
+          return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.quantity / 1000 );
         }
         /*return price with discount of option*/
         else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
@@ -41,7 +42,7 @@ export const setTotalSumWithDiscount = ( state: any ) => {
       /*if packing - by weight*/
       if ( product.chosen_option.partial ) {
         /*return price with discount of option, taking into account that the cost for grams*/
-        return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.size / 1000 );
+        return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.quantity / 1000 );
         /*if packing isn't by weight, return price with discount of option*/
       }/*return price with discount of option*/
       else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
@@ -49,7 +50,7 @@ export const setTotalSumWithDiscount = ( state: any ) => {
       /*if we don't have any discounts, we return the full price*/
       /*if chosen option is partial, taking into account that the cost for grams*/
       if ( product.chosen_option.partial ) {
-        return +product.chosen_option.price * ( product.chosen_option.size / 1000 );
+        return +product.chosen_option.price * ( product.chosen_option.quantity / 1000 );
       } /*if we don't have any discounts, we return the full price*/
       else return +product.chosen_option.price * product.chosen_option.quantity;
     }
@@ -66,7 +67,7 @@ export const getPriceWithDiscount = ( product: ProductItemType ) => {
       /*if packing - by weight*/
       if ( product.chosen_option.partial ) {
         /*return price with discount of option, taking into account that the cost for grams*/
-        return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.size / 1000 );
+        return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.quantity / 1000 );
         /*if packing isn't by weight, return price with discount of option*/
       } else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
     } else {
@@ -84,14 +85,14 @@ export const getPriceWithDiscount = ( product: ProductItemType ) => {
     /*if packing - by weight*/
     if ( product.chosen_option.partial ) {
       /*return price with discount of option, taking into account that the cost for grams*/
-      return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.size / 1000 );
+      return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * ( product.chosen_option.quantity / 1000 );
       /*if packing isn't by weight, return price with discount of option*/
     } else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
   } else {
     /*if we don't have any discounts, we return the full price*/
     /*if chosen option is partial, taking into account that the cost for grams*/
     if ( product.chosen_option.partial ) {
-      return +product.chosen_option.price * ( product.chosen_option.size / 1000 );
+      return +product.chosen_option.price * ( product.chosen_option.quantity / 1000 );
     }
     /*if we don't have any discounts, we return the full price*/
     else return +product.chosen_option.price * product.chosen_option.quantity;
@@ -99,6 +100,9 @@ export const getPriceWithDiscount = ( product: ProductItemType ) => {
 };
 /*this function is used to calculate the correct basket total count without any discounts*/
 export const setTotalSum = ( state: any ) => {
-  return state.totalSum = state.productsInBasket.map( ( product: ProductItemType ) => +product.chosen_option.price * product.chosen_option.quantity )
+  return state.totalSum = state.productsInBasket.map( ( product: ProductItemType ) => {
+    if(product.chosen_option.partial){
+       return +product.chosen_option.price * (product.chosen_option.quantity / 1000)
+    } else return +product.chosen_option.price * product.chosen_option.quantity })
     .reduce( ( acc: number, current: number ) => acc + current, 0 ).toFixed( 2 );
 };

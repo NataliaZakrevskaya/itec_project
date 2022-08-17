@@ -34,10 +34,10 @@ const Product = ( {
   const navigate = useNavigate();
 
   const { id, name, chosen_option, max_discount, images, options } = product;
-  const priceWithDiscount = getPriceWithDiscount( product );
+  const priceWithDiscount = (!!max_discount || !!chosen_option.discount_by_option) ? getPriceWithDiscount( product ) : null;;
   const productName = stringCutter( name, 70 );
   const countOfProduct = chosen_option.quantity;
-  const price = getPrice( chosen_option.partial ? ( +chosen_option.price * chosen_option.size / 1000 ) : ( +chosen_option.price * countOfProduct ) );
+  const price = getPrice( chosen_option.partial ? ( +chosen_option.price * countOfProduct / 1000 ) : ( +chosen_option.price * countOfProduct ) );
   const showDiscount = ( !isForModal && !!max_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
 
   const onDecrementBtnClick = () => {
@@ -120,8 +120,7 @@ const Product = ( {
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
-            { price !== priceWithDiscount &&
-              <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p> }
+              <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
             { !!priceWithDiscount && <p
               className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed( 2 ) } BYN.</p> }
           </div>

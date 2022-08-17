@@ -12,7 +12,7 @@ const ProductForBasketModal = ( {
                                   priceWithDiscount,
                                 }: ProductForBasketModalPropsType ) => {
   const productName = stringCutter( name, 70 );
-  const price = getPrice( +chosenOption.price * countOfProduct );
+  const price = getPrice( chosenOption.partial ? ( +chosenOption.price * chosenOption.quantity / 1000 ) : ( +chosenOption.price * countOfProduct ) );
   return (
     <div className={ style.ProductForBasketModalContainer }>
       <div className={ style.productName }>
@@ -21,7 +21,7 @@ const ProductForBasketModal = ( {
       </div>
       <div className={ chosenOption.partial ? style.orderInfoPartial : style.orderInfoNotPartial }>
         { chosenOption.partial
-          ? <p>{ chosenOption.size / 1000 } кг.</p>
+          ? <p>{ chosenOption.quantity / 1000 } кг.</p>
           : <p>{ chosenOption.size } { chosenOption.units.unit_name }</p>
         }
         { !chosenOption.partial && <p>{ countOfProduct } шт.</p> }

@@ -8,12 +8,14 @@ import { BasketModalPropsType } from '../types';
 import { getPriceWithDiscount } from '../../../../redux/reducers/helpers';
 import { PRODUCT_IMAGE } from '../../../../constants';
 
-const BasketModal = ( { product,
+const BasketModal = ( {
+                        product,
                         closeModal,
                       }: BasketModalPropsType ) => {
   const { max_discount, chosen_option, name, images, id } = product;
-  const countOfProduct = chosen_option.quantity;
-  const priceWithDiscount = getPriceWithDiscount( product );
+  const countOfProduct = chosen_option.partial ? 1 : chosen_option.quantity;
+  const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
+  const priceWithDiscount = showDiscount ? getPriceWithDiscount( product ) : null;
   const navigate = useNavigate();
   const continueShopping = () => {
     navigate( routesPathsEnum.CATALOG );
@@ -23,7 +25,7 @@ const BasketModal = ( { product,
     navigate( routesPathsEnum.BASKET );
     closeModal();
   };
-  const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
+
 
   return (
     <div className={ style.basketModalContainer }>
@@ -35,7 +37,7 @@ const BasketModal = ( { product,
       <div className={ style.product }>
         <ProductForBasketModal
           name={ name }
-          image={ images[ 0 ] ? images[0].image : `${ PRODUCT_IMAGE }`}
+          image={ images[ 0 ] ? images[ 0 ].image : `${ PRODUCT_IMAGE }` }
           priceWithDiscount={ priceWithDiscount }
           chosenOption={ chosen_option }
           countOfProduct={ countOfProduct }

@@ -17,7 +17,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import {
-  changePartialProductSize,
+  changePartialProductQuantity,
   incrementProductQuantity,
   setProductToBasket,
 } from '../../redux/reducers/basket-reducer';
@@ -72,6 +72,7 @@ const ProductPage = React.memo( () => {
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
   const products = getProductItems(); //todo позже приходить будет по апи
+  const price = getPrice(product.chosen_option.partial ? ((product.chosen_option.quantity / 1000) * +product.chosen_option.price) : +product.chosen_option.price * countOfProduct);
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -124,9 +125,9 @@ const ProductPage = React.memo( () => {
     /*if the basket already has this product, increase its number, if not, add it to the basket*/
     productsFromBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( { product: productForBasket } ) )
-      : chosen_option.partial ? dispatch( changePartialProductSize( {
+      : chosen_option.partial ? dispatch( changePartialProductQuantity( {
         optionId: product.chosen_option.id,
-        size: ( chosen_option.size / 1000 ),
+        quantity: product.chosen_option.quantity,
       } ) ) : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct } ) );
     setIsBasketModalActive( true );
   };
@@ -138,11 +139,11 @@ const ProductPage = React.memo( () => {
   const onApplyButtonClick = () => {
     if ( partialOption ) {
       if ( +weightSetValue <= ( partialOption.stock_balance / 1000 ) ) {
-        const sum = +weightSetValue * +partialOption.price;
-        const price = sum.toFixed( 2 );
+        /*const sum = +weightSetValue * +partialOption.price;
+        const price = sum.toFixed( 2 );*/
         dispatch( setChosenOptionToProduct( {
           productId,
-          option: { ...partialOption, size: +weightSetValue * 1000, price },
+          option: { ...partialOption, quantity: +weightSetValue * 1000 },
         } ) );
         setWeightSetError( '' );
         setWeightSetValue( '' );
@@ -294,7 +295,7 @@ const ProductPage = React.memo( () => {
             <div className={ style.orderInfoForPayment }>
               <div>
                 <h2 className={ !!priceWithDiscountCropped ? style.priceWithDiscount : style.firstPrice }>
-                  { +chosen_option.price * countOfProduct } BYN
+                  { price } BYN
                 </h2>
                 { !!priceWithDiscountCropped &&
                   <h2 className={ style.discountPrice }>
@@ -304,8 +305,8 @@ const ProductPage = React.memo( () => {
               </div>
               {
                 chosen_option.partial
-                  ? <p>Общий вес: { chosen_option.size / 1000 } кг.</p>
-                  : <p>Общий вес: { chosen_option.quantity * countOfProduct } { chosen_option.units.unit_name }</p>
+                  ? <p>Общий вес: { chosen_option.quantity / 1000 } кг.</p>
+                  : <p>Общий вес: { chosen_option.size * countOfProduct } { chosen_option.units.unit_name }</p>
               }
             </div>
             <div className={ style.basketInterface }>
