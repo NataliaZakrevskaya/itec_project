@@ -26,7 +26,7 @@ const ProductItem = ( {
   const price = getPrice( +chosenOption.price );
   const nameForCard = stringCutter( name, 70 );
   const showDiscount = !!product.max_discount || !!chosenOption.discount_by_option;
-  const priceWithDiscount = getPriceWithDiscount(product); //todo после того, как бэк сделает скидки заменить
+  const priceWithDiscount = getPrice(getPriceWithDiscount(product));
   const navigate = useNavigate();
   const onProductClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
