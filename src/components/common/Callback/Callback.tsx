@@ -9,9 +9,11 @@ import { RequestStatus } from '../../../redux/reducers/enums';
 import { AppDispatch } from '../../../redux/store';
 import { setCallbackRequestStatus } from '../../../redux/reducers/app-reducer';
 import { CallbackPropsType } from './types';
+import PrivacyPolicyModal from '../modals/PrivacyPolicyModal/PrivacyPolicyModal';
 
 const Callback = React.memo(( { forHeader }: CallbackPropsType ) => {
   const [ isActive, setIsActive ] = useState<boolean>( false );
+  const [ isPrivacyModalActive ] = useState<boolean>( true );
   const responseIsSuccess = useSelector( getCallbackRequestStatus ) === RequestStatus.SUCCEEDED;
   const responseIsIdle = useSelector( getCallbackRequestStatus ) === RequestStatus.IDLE;
   const dispatch = useDispatch<AppDispatch>();
@@ -34,8 +36,9 @@ const Callback = React.memo(( { forHeader }: CallbackPropsType ) => {
          className={ forHeader ? `${ style.callback }` : `${ style.callbackForFooter }` }>Обратный звонок</p>
       { isActive &&
         <Modal closeModal={ closeModal }>
-          { responseIsIdle && <CallbackModal/> }
-          { responseIsSuccess && <SuccessCallbackModals closeModal={ closeModal }/> }
+          { responseIsIdle && !isPrivacyModalActive && <CallbackModal/> }
+          {isPrivacyModalActive && <PrivacyPolicyModal/>}
+          { responseIsSuccess && !isPrivacyModalActive && <SuccessCallbackModals closeModal={ closeModal }/> }
         </Modal>
       }
     </div>

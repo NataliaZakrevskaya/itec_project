@@ -1,0 +1,43 @@
+@import "src/styles/Mixins";
+@import "src/styles/Variables";
+
+.modalContainer{
+  max-height: 600px;
+  overflow: auto;
+  padding: 15px 20px;
+  position: relative;
+  & h1{
+    margin: 0 auto 32px;
+    @include SFDisplaySemibold();
+    font-size: 28px;
+    line-height: 32px;
+    color: #202223;
+  }
+  .goBack{
+    @include SFDisplaySemibold();
+    color: $callbackColor;
+    position: absolute;
+    right: 22px;
+    top: 52px;
+    cursor: pointer;
+  }
+  & h2{
+    @include SFDisplaySemibold();
+    font-size: 16px;
+    line-height: 24px;
+    color: #202223;
+    margin-bottom: 12px;
+  }
+  & p{
+    @include SFTextRegular();
+    font-size: 14px;
+    line-height: 140%;
+    color: #202223;
+  }
+  .goBackInTheEnd{
+    @include SFDisplaySemibold();
+    color: $callbackColor;
+    cursor: pointer;
+    margin: 15px auto;
+  }
+}
