@@ -142,7 +142,7 @@ const ProductPage = React.memo( () => {
         const price = sum.toFixed( 2 );
         dispatch( setChosenOptionToProduct( {
           productId,
-          option: { ...partialOption, quantity: +weightSetValue * 1000, price },
+          option: { ...partialOption, size: +weightSetValue * 1000, price },
         } ) );
         setWeightSetError( '' );
         setWeightSetValue( '' );
@@ -304,8 +304,8 @@ const ProductPage = React.memo( () => {
               </div>
               {
                 chosen_option.partial
-                  ? <p>Общий вес: { chosen_option.quantity / 1000 } кг.</p>
-                  : <p>Общий вес: { chosen_option.size * countOfProduct } { chosen_option.units.unit_name }</p>
+                  ? <p>Общий вес: { chosen_option.size / 1000 } кг.</p>
+                  : <p>Общий вес: { chosen_option.quantity * countOfProduct } { chosen_option.units.unit_name }</p>
               }
             </div>
             <div className={ style.basketInterface }>
