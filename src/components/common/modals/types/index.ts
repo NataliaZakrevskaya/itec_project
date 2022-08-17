@@ -3,7 +3,6 @@ import { LocationsType } from '../../../../enums';
 
 export type BasketModalPropsType = {
   product: ProductItemType | OneProductItemType,
-  countOfProduct?: number,
   closeModal: () => void,
 }
 export type ModalPropsType = {

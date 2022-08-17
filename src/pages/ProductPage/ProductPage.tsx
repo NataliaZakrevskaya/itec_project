@@ -64,7 +64,7 @@ const ProductPage = React.memo( () => {
     brand,
   } = product;
   const nameForNavigationBlock = stringCutter( name, 90 );
-  const productForBasket = useSelector( getProductsInBasket );
+  const productsFromBasket = useSelector( getProductsInBasket );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const weightSetIsShowed = useSelector( getWeightSetValue );
   const { address, metro } = useSelector( getInfo );
@@ -118,17 +118,12 @@ const ProductPage = React.memo( () => {
   };
   const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
   const openBasketModal = ( product: ProductItemType ) => {
-    setProductForBasketModal( product );
-    productForBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
-      ? dispatch( setProductToBasket( {
-        product: {
-          ...product,
-          chosen_option: {
-            ...chosen_option,
-            quantity: chosen_option.partial ? ( chosen_option.size / 1000 ) : countOfProduct,
-          },
-        },
-      } ) )
+    /*send to state product with correct quantity*/
+    const productForBasket = product.chosen_option.partial ? product : {...product, chosen_option: {...chosen_option, quantity: countOfProduct }}
+    setProductForBasketModal( productForBasket );
+    /*if the basket already has this product, increase its number, if not, add it to the basket*/
+    productsFromBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
+      ? dispatch( setProductToBasket( { product: productForBasket } ) )
       : chosen_option.partial ? dispatch( changePartialProductSize( {
         optionId: product.chosen_option.id,
         size: ( chosen_option.size / 1000 ),
@@ -371,7 +366,6 @@ const ProductPage = React.memo( () => {
           <BasketModal
             key={ productForBasketModal.id }
             product={ productForBasketModal }
-            countOfProduct={ countOfProduct }
             closeModal={ closeBasketModal }
           />
         </Modal>

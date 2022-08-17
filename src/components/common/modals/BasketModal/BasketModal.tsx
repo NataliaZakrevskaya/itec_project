@@ -8,12 +8,11 @@ import { BasketModalPropsType } from '../types';
 import { getPriceWithDiscount } from '../../../../redux/reducers/helpers';
 import { PRODUCT_IMAGE } from '../../../../constants';
 
-const BasketModal = ( {
-                        product,
+const BasketModal = ( { product,
                         closeModal,
-                        countOfProduct = 1,
                       }: BasketModalPropsType ) => {
   const { max_discount, chosen_option, name, images, id } = product;
+  const countOfProduct = chosen_option.quantity;
   const priceWithDiscount = getPriceWithDiscount( product );
   const navigate = useNavigate();
   const continueShopping = () => {
