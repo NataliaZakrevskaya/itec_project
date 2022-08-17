@@ -11,6 +11,7 @@ import { changeChosenOption } from '../../redux/reducers/basket-reducer';
 import { setChosenOptionToOneOrderProduct } from '../../redux/reducers/onClickOrder-reducer';
 import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
 import { ProductItemUnitPropsType } from './types';
+import { setChosenOptionToPreviouslyProduct } from '../../redux/reducers/previouslyProducts-reducer';
 
 const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
     if ( from === location.BASKET ) dispatch(
       changeChosenOption( { productId, option } ) );
     if ( from === location.ONE_CLICK_ORDER ) dispatch( setChosenOptionToOneOrderProduct( { productId, option } ) );
+    if ( from === location.PREVIOUSLY_PRODUCTS  ) dispatch( setChosenOptionToPreviouslyProduct( { productId, option } ) );
   };
   const onSetWeightClick = () => {
     dispatch( setWeightSetIsShowed( { status: true } ) );

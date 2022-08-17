@@ -26,7 +26,7 @@ const ProductItem = ( {
   const price = getPrice( +chosenOption.price );
   const nameForCard = stringCutter( name, 70 );
   const showDiscount = !!product.max_discount || !!chosenOption.discount_by_option;
-  const priceWithDiscount = getPrice(getPriceWithDiscount(product));
+  const priceWithDiscount = getPrice( getPriceWithDiscount( product ) );
   const navigate = useNavigate();
   const onProductClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
@@ -39,7 +39,7 @@ const ProductItem = ( {
         className={ style.mainProductItemImage }
         onClick={ onProductClick }
         src={ image }
-        loading={'lazy'}
+        loading={ 'lazy' }
         alt={ 'product' }/>
       <p className={ style.title }
          onClick={ onProductClick }>{ nameForCard }</p>
@@ -56,12 +56,13 @@ const ProductItem = ( {
       </div>
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
-          {priceWithDiscount !== price && <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ `${ price } BYN` }</p>}
+          { priceWithDiscount !== price &&
+            <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ `${ price } BYN` }</p> }
           { !!priceWithDiscount && <p className={ style.price }>{ `${ priceWithDiscount } BYN` }</p> }
           <div className={ style.basket } onClick={ () => openBasketModal( product ) }>
             <p>+</p>
             <div className={ style.imageWrapper }>
-              <img src={ basketIcon } loading={'lazy'} alt="basketIcon"/>
+              <img src={ basketIcon } loading={ 'lazy' } alt="basketIcon"/>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductItemType } from '../../mocks';
+import { OptionType, ProductItemType } from '../../mocks';
 
 export const slice = createSlice( {
   name: 'previouslyProducts',
@@ -10,8 +10,12 @@ export const slice = createSlice( {
     setProductToBlock( state, action: PayloadAction<{ product: ProductItemType }> ) {
       state.previouslyProducts.unshift( action.payload.product );
     },
+    setChosenOptionToPreviouslyProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+      const index = state.previouslyProducts.findIndex( product => product.id === action.payload.productId );
+      state.previouslyProducts[ index ].chosen_option = action.payload.option;
+    },
   },
 } );
 
 export const previouslyProductsReducer = slice.reducer;
-export const { setProductToBlock } = slice.actions;
+export const { setProductToBlock, setChosenOptionToPreviouslyProduct } = slice.actions;
