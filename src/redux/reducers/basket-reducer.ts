@@ -77,9 +77,9 @@ export const slice = createSlice( {
       setTotalSumWithDiscount( state );
       setTotalCount( state );
     },
-    changePartialProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
+    changePartialProductSize( state, action: PayloadAction<{ optionId: number, size: number }> ) {
       const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
-      state.productsInBasket[ index ].chosen_option.quantity = action.payload.quantity;
+      state.productsInBasket[ index ].chosen_option.size = action.payload.size;
 
       setTotalSum( state );
       setTotalSumWithDiscount( state );
@@ -100,6 +100,6 @@ export const {
   incrementProductQuantity,
   decrementProductQuantity,
   changeChosenOption,
-  changePartialProductQuantity,
+  changePartialProductSize,
   clearBasket,
 } = slice.actions;

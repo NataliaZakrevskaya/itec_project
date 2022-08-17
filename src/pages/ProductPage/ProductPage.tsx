@@ -17,7 +17,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
 import {
-  changePartialProductQuantity,
+  changePartialProductSize,
   incrementProductQuantity,
   setProductToBasket,
 } from '../../redux/reducers/basket-reducer';
@@ -71,7 +71,7 @@ const ProductPage = React.memo( () => {
   const priceWithDiscountCropped = getPrice( priceWithDiscount );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
-  const products = getProductItems(); //todo позже забирать из детализации товара
+  const products = getProductItems(); //todo позже приходить будет по апи
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -106,7 +106,9 @@ const ProductPage = React.memo( () => {
     setIsOneClickModalActive( false );
   };
   const openOneClickModal = ( product: ProductItemType ) => {
-    dispatch( setProductToState( { product } ) );
+    const productForOneClickState = {...product, chosen_option: { ...chosen_option, quantity: countOfProduct }}
+    dispatch( setProductToState( { product: productForOneClickState } ) );
+    setCountOfProduct(1);
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {
@@ -122,13 +124,13 @@ const ProductPage = React.memo( () => {
           ...product,
           chosen_option: {
             ...chosen_option,
-            quantity: chosen_option.partial ? ( chosen_option.quantity / 1000 ) : countOfProduct,
+            quantity: chosen_option.partial ? ( chosen_option.size / 1000 ) : countOfProduct,
           },
         },
       } ) )
-      : chosen_option.partial ? dispatch( changePartialProductQuantity( {
+      : chosen_option.partial ? dispatch( changePartialProductSize( {
         optionId: product.chosen_option.id,
-        quantity: ( chosen_option.quantity / 1000 ),
+        size: ( chosen_option.size / 1000 ),
       } ) ) : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct } ) );
     setIsBasketModalActive( true );
   };

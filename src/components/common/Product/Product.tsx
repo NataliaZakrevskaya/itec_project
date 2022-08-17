@@ -95,7 +95,7 @@ const Product = ( {
         <div className={ style.quantityManagementBlockPositionContainer }>
           <div className={ style.quantityManagementBlockContainer }>
             { chosen_option.partial
-              ? <div className={ style.quantity }>{ chosen_option.quantity } кг.</div>
+              ? <div className={ style.quantity }>{ chosen_option.quantity / 1000 } кг.</div>
               : ( <div className={ style.quantityManagementBlock }>
                 <div className={ style.minus } onClick={ onDecrementBtnClick }>
                   <div/>
