@@ -26,6 +26,7 @@ import { getPriceWithDiscount } from '../../../redux/reducers/helpers';
 const Product = ( {
                     product,
                     isForModal,
+                    closeOneClickModal,
                     from,
                   }: ProductForBasketPropsType ) => {
 
@@ -36,7 +37,7 @@ const Product = ( {
   const priceWithDiscount = getPriceWithDiscount( product );
   const productName = stringCutter( name, 70 );
   const countOfProduct = chosen_option.quantity;
-  const price = getPrice( chosen_option.partial ? (+chosen_option.price * chosen_option.size / 1000) : (+chosen_option.price * countOfProduct) );
+  const price = getPrice( chosen_option.partial ? ( +chosen_option.price * chosen_option.size / 1000 ) : ( +chosen_option.price * countOfProduct ) );
   const showDiscount = ( !isForModal && !!max_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
 
   const onDecrementBtnClick = () => {
@@ -56,6 +57,7 @@ const Product = ( {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
   const onSetWeightClick = () => {
+    !!closeOneClickModal && closeOneClickModal();
     dispatch( setWeightSetIsShowed( { status: true } ) );
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
@@ -120,7 +122,8 @@ const Product = ( {
           <div className={ style.priceBlock }>
             { price !== priceWithDiscount &&
               <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p> }
-            { !!priceWithDiscount && <p className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed(2) } BYN.</p> }
+            { !!priceWithDiscount && <p
+              className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed( 2 ) } BYN.</p> }
           </div>
         }
       </div>

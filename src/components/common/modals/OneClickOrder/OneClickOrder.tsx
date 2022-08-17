@@ -57,6 +57,7 @@ const OneClickOrder = ( { closeOneClickModal }: OnClickOrderPropsType ) => {
       <Product
         product={ productForOneClickOrder }
         isForModal={ true }
+        closeOneClickModal={closeOneClickModal}
         from={ location.ONE_CLICK_ORDER }
       />
       <div className={ style.nextSection }>

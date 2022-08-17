@@ -10,6 +10,7 @@ export type PhonePropsType = {
 export type ProductForBasketPropsType = {
   product: ProductItemType | OneProductItemType,
   isForModal: boolean,
+  closeOneClickModal?: () => void,
   from: string
 }
 export type ProductForBasketModalPropsType = {

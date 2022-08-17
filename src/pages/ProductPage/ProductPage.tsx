@@ -106,7 +106,8 @@ const ProductPage = React.memo( () => {
     setIsOneClickModalActive( false );
   };
   const openOneClickModal = ( product: ProductItemType ) => {
-    const productForOneClickState = {...product, chosen_option: { ...chosen_option, quantity: countOfProduct }}
+    /*send to state product with correct quantity*/
+    const productForOneClickState = product.chosen_option.partial ? product : {...product, chosen_option: { ...chosen_option, quantity: countOfProduct }}
     dispatch( setProductToState( { product: productForOneClickState } ) );
     setCountOfProduct(1);
     setIsOneClickModalActive( true );
@@ -135,6 +136,7 @@ const ProductPage = React.memo( () => {
     setIsBasketModalActive( true );
   };
   const onUnitClick = ( option: OptionType ) => {
+    dispatch( setWeightSetIsShowed( { status: false } ) );
     setCountOfProduct( 1 );
     dispatch( setChosenOptionToProduct( { productId, option } ) );
   };
