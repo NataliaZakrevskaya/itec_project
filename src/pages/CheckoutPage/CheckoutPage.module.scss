@@ -79,6 +79,16 @@
           margin-right: 16px;
         }
 
+        .discountSum{
+          @include SFDisplayBold();
+          font-size: 16px;
+          line-height: 130%;
+          color: #8C9196;
+          text-decoration: line-through;
+          text-decoration-color: #D72C0D;
+          margin-right: 6px;
+        }
+
         .productsInfo {
           @include SFTextMedium();
           font-size: 14px;

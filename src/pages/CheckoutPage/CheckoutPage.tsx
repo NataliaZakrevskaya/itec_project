@@ -11,7 +11,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsInBasket,
-  getTotalProductsCount,
+  getTotalProductsCount, getTotalSum,
   getTotalSumWithDiscount,
 } from '../../redux/selectors/basket-selectors';
 import { sendOrderTC } from '../../redux/reducers/basket-reducer';
@@ -28,9 +28,11 @@ const CheckoutPage = React.memo( () => {
 
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
   const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
-  const basketCount = useSelector( getTotalSumWithDiscount );
+  const basketCountWithDiscount = useSelector( getTotalSumWithDiscount );
+  const basketCount = useSelector( getTotalSum );
   const productsCount = useSelector( getTotalProductsCount );
   const productsInBasket = useSelector( getProductsInBasket );
+  const priceWithDiscount = getPriceForBasket( basketCountWithDiscount );
   const price = getPriceForBasket( basketCount );
   const goodsName = getGoods( productsCount );
   const orderInfo = productsInBasket.map( product => {
@@ -127,7 +129,8 @@ const CheckoutPage = React.memo( () => {
               </div>
             </div>
             <div className={ style.basketInfo }>
-              <p className={ style.sum }>{ price } BYN</p>
+              <p className={priceWithDiscount !== price ? style.discountSum : style.sum }>{price} BYN</p>
+              {priceWithDiscount !== price && <p className={ style.sum }>{ priceWithDiscount } BYN</p>}
               <p className={ style.productsInfo }>{ productsCount } { goodsName }</p>
             </div>
           </div>
