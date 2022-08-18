@@ -23,10 +23,12 @@ import { location } from '../../enums';
 import { getPriceForBasket } from '../../helpers/getPrice';
 import { getGoods } from '../../helpers/getGoods';
 import { FormikErrorType } from '../../components/common/modals/types';
+import PrivacyPolicyModal from '../../components/common/modals/PrivacyPolicyModal/PrivacyPolicyModal';
 
 const CheckoutPage = React.memo( () => {
 
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
+  const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );
   const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const basketCountWithDiscount = useSelector( getTotalSumWithDiscount );
   const basketCount = useSelector( getTotalSum );
@@ -47,9 +49,13 @@ const CheckoutPage = React.memo( () => {
     navigate( routesPathsEnum.ARTICLES );
     setIsSuccessModalActive( false );
   };
-  const openSuccessModal = () => {
-    setIsSuccessModalActive( true );
-  };
+  const closePrivacyPolicyModal = () => {
+    setIsPrivacyModalActive(false);
+  }
+  const openPrivacyPolicyModal = () => {
+    setIsPrivacyModalActive(true);
+  }
+
   useEffect( () => {
     if ( isSuccessModalActive && orderIsSucceeded ) {
       window.document.body.style.overflow = 'hidden';
@@ -79,8 +85,14 @@ const CheckoutPage = React.memo( () => {
       return errors;
     },
     onSubmit: value => {
-      formik.resetForm();
-      dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo: orderInfo } ) );
+      try{
+        dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo: orderInfo } ) );
+        setIsSuccessModalActive( true );
+        formik.resetForm();
+      } catch ( e ) {
+        console.error(e)
+      }
+
     },
   } );
   return (
@@ -135,17 +147,21 @@ const CheckoutPage = React.memo( () => {
             </div>
           </div>
           <div className={ style.orderBlock }>
-            <button className={ style.orderBtn } type="submit" onClick={ openSuccessModal }>Заказать</button>
-            <p>Нажимая на кнопку вы даёте согласие на обработку <span onClick={ () => alert( 'Переход на pdf файл' ) }>персональных данных</span>
+            <button className={ style.orderBtn } type="submit">Заказать</button>
+            <p>Нажимая на кнопку вы даёте согласие на обработку <span onClick={ openPrivacyPolicyModal }>персональных данных</span>
             </p>
           </div>
         </form>
       </div>
       { isSuccessModalActive && orderIsSucceeded &&
         <Modal closeModal={ closeSuccessModal }>
-          <SuccessOrderModal from={ location.CHECKOUT }/>
+         <SuccessOrderModal from={ location.CHECKOUT }/>
         </Modal>
       }
+      {isPrivacyModalActive &&
+        <Modal closeModal={closePrivacyPolicyModal}>
+        <PrivacyPolicyModal closePrivacyPolicyModal={closePrivacyPolicyModal}/>
+      </Modal>}
     </div>
   );
 } );

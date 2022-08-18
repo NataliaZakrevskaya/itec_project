@@ -26,6 +26,7 @@ const Callback = React.memo(( { forHeader }: CallbackPropsType ) => {
   const closeModal = () => {
     dispatch( setCallbackRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsActive( false );
+    setIsPrivacyModalActive(false);
   };
   useEffect( () => {
     if ( isActive ) {
