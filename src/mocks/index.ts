@@ -1635,6 +1635,7 @@ export type ShopInfoType = {
     info_title: string,
     info_text: string
   }>
+  personal_data_politics: string
 }
 export type DiscountType = {
   title: string,

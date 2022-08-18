@@ -16,3 +16,6 @@ export const getSecondInfo = (state: AppRootStateType): Array<{ id: number, info
 export const getInfo = (state: AppRootStateType): ShopInfoType => {
   return state.descriptionShop
 }
+export const getPrivacyPolicyText = (state: AppRootStateType): string => {
+  return state.descriptionShop.personal_data_politics
+}

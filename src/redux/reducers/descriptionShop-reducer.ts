@@ -34,6 +34,7 @@ export const slice = createSlice( {
       info_title: '',
       info_text: '',
     } ],
+    personal_data_politics: ''
   } as ShopInfoType,
   reducers: {},
   extraReducers: builder => {
