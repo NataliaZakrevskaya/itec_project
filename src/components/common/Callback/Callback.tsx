@@ -13,7 +13,13 @@ import PrivacyPolicyModal from '../modals/PrivacyPolicyModal/PrivacyPolicyModal'
 
 const Callback = React.memo(( { forHeader }: CallbackPropsType ) => {
   const [ isActive, setIsActive ] = useState<boolean>( false );
-  const [ isPrivacyModalActive ] = useState<boolean>( true );
+  const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );
+  const openPrivacyPolicyModal = () => {
+    setIsPrivacyModalActive(true)
+  }
+  const closePrivacyPolicyModal = () => {
+    setIsPrivacyModalActive(false)
+  }
   const responseIsSuccess = useSelector( getCallbackRequestStatus ) === RequestStatus.SUCCEEDED;
   const responseIsIdle = useSelector( getCallbackRequestStatus ) === RequestStatus.IDLE;
   const dispatch = useDispatch<AppDispatch>();
@@ -36,8 +42,8 @@ const Callback = React.memo(( { forHeader }: CallbackPropsType ) => {
          className={ forHeader ? `${ style.callback }` : `${ style.callbackForFooter }` }>Обратный звонок</p>
       { isActive &&
         <Modal closeModal={ closeModal }>
-          { responseIsIdle && !isPrivacyModalActive && <CallbackModal/> }
-          {isPrivacyModalActive && <PrivacyPolicyModal/>}
+          { responseIsIdle && !isPrivacyModalActive && <CallbackModal openPrivacyPolicyModal={openPrivacyPolicyModal}/> }
+          {isPrivacyModalActive && <PrivacyPolicyModal closePrivacyPolicyModal={closePrivacyPolicyModal}/>}
           { responseIsSuccess && !isPrivacyModalActive && <SuccessCallbackModals closeModal={ closeModal }/> }
         </Modal>
       }

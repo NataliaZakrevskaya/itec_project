@@ -1,11 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import style from './PrivacyPolicyModal.module.scss';
+import { PrivacyPolicyModalPropsType } from '../types';
 
-const PrivacyPolicyModal = () => {
-  const navigate = useNavigate();
+const PrivacyPolicyModal = ({closePrivacyPolicyModal}: PrivacyPolicyModalPropsType) => {
+
   const onBackClick = () => {
-    navigate(-1)
+    closePrivacyPolicyModal()
   }
   return (
     <div className={style.modalContainer}>

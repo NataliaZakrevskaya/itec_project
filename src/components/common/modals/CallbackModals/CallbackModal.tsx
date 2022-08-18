@@ -5,9 +5,9 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../redux/store';
 import { sendCallbackRequestTC } from '../../../../redux/reducers/basket-reducer';
-import { FormikErrorType } from '../types';
+import { CallbackModalPropsType, FormikErrorType } from '../types';
 
-const CallbackModal = () => {
+const CallbackModal = ({openPrivacyPolicyModal}: CallbackModalPropsType) => {
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -68,7 +68,7 @@ const CallbackModal = () => {
       <div className={ formStyle.orderBlock }>
         <button type="submit">Отправить</button>
         <p>Нажимая на кнопку вы даёте согласие на обработку
-          <span onClick={ () => alert( 'Переход на pdf файл' ) }> персональных данных</span></p>
+          <span onClick={ openPrivacyPolicyModal }> персональных данных</span></p>
       </div>
     </form>
   );

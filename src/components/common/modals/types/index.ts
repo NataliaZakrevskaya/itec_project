@@ -35,3 +35,9 @@ export type SuccessCallbackModalsPropsType = {
 export type SuccessOrderModalPropsType = {
   from: LocationsType
 }
+export type CallbackModalPropsType = {
+  openPrivacyPolicyModal: () => void
+}
+export type PrivacyPolicyModalPropsType = {
+  closePrivacyPolicyModal: () => void
+}
