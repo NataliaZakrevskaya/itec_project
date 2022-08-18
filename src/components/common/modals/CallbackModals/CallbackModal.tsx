@@ -4,7 +4,7 @@ import formStyle from '../../../../styles/common/Form.module.scss';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../redux/store';
-import { sendCallbackRequestTC } from '../../../../redux/reducers/basket-reducer';
+import { sendCallbackRequestTC } from '../../../../redux/reducers/basket';
 import { CallbackModalPropsType, FormikErrorType } from '../types';
 
 const CallbackModal = ({openPrivacyPolicyModal}: CallbackModalPropsType) => {

@@ -2,42 +2,42 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunkMiddleware from 'redux-thunk';
-import { animalTypesReducer } from './reducers/animalTypes-reducer';
-import { brandsReducer } from './reducers/brands-reducer';
-import { productTypesReducer } from './reducers/productTypes-reducer';
-import { basketReducer } from './reducers/basket-reducer';
-import { productsReducer } from './reducers/products-reducer';
-import { reviewsReducer } from './reducers/reviews-reducer';
-import { articlesReducer } from './reducers/articles-reducer';
-import { appReducer } from './reducers/app-reducer';
-import { productsFromSearchReducer } from './reducers/productsFromSearch-reducer';
-import { latestProductsReducer } from './reducers/latestProducts-reducer';
-import { popularProductsReducer } from './reducers/popularProducts-reducer';
-import { productReducer } from './reducers/product-reducer';
-import { oneClickOrderReducer } from './reducers/onClickOrder-reducer';
-import { orderingReducer } from './reducers/ordering-reducer';
-import { previouslyProductsReducer } from './reducers/previouslyProducts-reducer';
-import { descriptionShopReducer } from './reducers/descriptionShop-reducer';
-import { discountsReducer } from './reducers/discounts-reducer';
+import { animalTypes } from './reducers/animalTypes';
+import { brands } from './reducers/brands';
+import { productTypes } from './reducers/productTypes';
+import { basket } from './reducers/basket';
+import { products } from './reducers/products';
+import { reviews } from './reducers/reviews';
+import { articles } from './reducers/articles';
+import { app } from './reducers/app';
+import { productsFromSearch } from './reducers/productsFromSearch';
+import { latestProducts } from './reducers/latestProducts';
+import { popularProducts } from './reducers/popularProducts';
+import { product } from './reducers/product';
+import { oneClickOrderReducer } from './reducers/onClickOrder';
+import { ordering } from './reducers/ordering';
+import { previouslyProducts } from './reducers/previouslyProducts';
+import { descriptionShop } from './reducers/descriptionShop';
+import { discounts } from './reducers/discounts';
 
 const rootReducer = combineReducers( {
-  app: appReducer,
-  animalTypes: animalTypesReducer,
-  brands: brandsReducer,
-  productTypes: productTypesReducer,
-  basket: basketReducer,
+  app: app,
+  animalTypes: animalTypes,
+  brands: brands,
+  productTypes: productTypes,
+  basket: basket,
   oneClickOrder: oneClickOrderReducer,
-  product: productReducer,
-  products: productsReducer,
-  productsFromSearch: productsFromSearchReducer,
-  latestProducts: latestProductsReducer,
-  popularProducts: popularProductsReducer,
-  previouslyProducts: previouslyProductsReducer,
-  reviews: reviewsReducer,
-  articles: articlesReducer,
-  ordering: orderingReducer,
-  descriptionShop: descriptionShopReducer,
-  discounts: discountsReducer,
+  product: product,
+  products: products,
+  productsFromSearch: productsFromSearch,
+  latestProducts: latestProducts,
+  popularProducts: popularProducts,
+  previouslyProducts: previouslyProducts,
+  reviews: reviews,
+  articles: articles,
+  ordering: ordering,
+  descriptionShop: descriptionShop,
+  discounts: discounts,
 } );
 
 const persistConfig = {

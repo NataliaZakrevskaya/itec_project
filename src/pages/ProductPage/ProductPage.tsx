@@ -15,30 +15,31 @@ import OneClickOrder from '../../components/common/modals/OneClickOrder/OneClick
 import { useDispatch, useSelector } from 'react-redux';
 import { routesPathsEnum } from '../../routes/enums';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
-import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
+import { removeChosenBrandsId, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands';
 import {
   changePartialProductQuantity,
   incrementProductQuantity,
   setProductToBasket,
-} from '../../redux/reducers/basket-reducer';
-import { setActualPage } from '../../redux/reducers/products-reducer';
+} from '../../redux/reducers/basket';
+import { setActualPage } from '../../redux/reducers/products';
 import { stringCutter } from '../../helpers/stringCutter';
-import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
+import { getProductsInBasket } from '../../redux/selectors/basket';
 import { AppDispatch } from '../../redux/store';
-import { getProductItems, OptionType, ProductItemType } from '../../mocks';
-import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/product-reducer';
-import { getProduct } from '../../redux/selectors/product-selector';
-import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
-import { setProductToBlock } from '../../redux/reducers/previouslyProducts-reducer';
-import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
-import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
+import { getProductItems } from '../../mocks';
+import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/product';
+import { getProduct } from '../../redux/selectors/product';
+import { setProductToState } from '../../redux/reducers/onClickOrder';
+import { setProductToBlock } from '../../redux/reducers/previouslyProducts';
+import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts';
+import { getInfo } from '../../redux/selectors/descriptionShop';
 import { PRODUCT_IMAGE } from '../../constants';
-import { getOneClickOrderRequestStatus, getWeightSetValue } from '../../redux/selectors/app-selectors';
-import { setOneClickOrderRequestStatus, setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
+import { getOneClickOrderRequestStatus, getWeightSetValue } from '../../redux/selectors/app';
+import { setOneClickOrderRequestStatus, setWeightSetIsShowed } from '../../redux/reducers/app';
 import { getPrice } from '../../helpers/getPrice';
 import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
 import { location } from '../../enums';
 import { RequestStatus } from '../../redux/reducers/enums';
+import { OptionType, ProductItemType } from '../../types';
 
 const ProductPage = React.memo( () => {
 

@@ -8,8 +8,8 @@ import React, { useEffect, useState } from 'react';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getReviews } from '../../redux/selectors/reviews-selectors';
-import { fetchReviewsTC } from '../../redux/reducers/reviews-reducer';
+import { getReviews } from '../../redux/selectors/reviews';
+import { fetchReviewsTC } from '../../redux/reducers/reviews';
 import { useCarousel } from '../../customHooks/useCarousel';
 import Modal from '../common/modals/Modal';
 import ReviewModal from '../common/modals/ReviewModal/ReviewModal';
@@ -18,8 +18,8 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { BlockNames } from '../../customHooks/enums';
 import { AppDispatch } from '../../redux/store';
-import { getSendingReviewsRequestStatus } from '../../redux/selectors/app-selectors';
-import { setSendingReviewRequestStatus } from '../../redux/reducers/app-reducer';
+import { getSendingReviewsRequestStatus } from '../../redux/selectors/app';
+import { setSendingReviewRequestStatus } from '../../redux/reducers/app';
 import { RequestStatus } from '../../redux/reducers/enums';
 
 const ReviewsBlock = React.memo(() => {

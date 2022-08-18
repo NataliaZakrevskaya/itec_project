@@ -1,6 +1,7 @@
 import { instance } from '../config';
-import { AxiosResponse, OneProductItemType } from '../../mocks';
-import { PRODUCTS_URL } from '../productsApi/constants';
+import { PRODUCTS_URL } from '../productsApi';
+import { OneProductItemType } from '../../types';
+import { AxiosResponse } from '../types';
 
 export const productAPI = {
   async setProduct( productId: number ) {

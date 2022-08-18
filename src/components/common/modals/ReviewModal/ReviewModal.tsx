@@ -4,7 +4,7 @@ import style from './ReviewModal.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../redux/store';
-import { sendReviewTC } from '../../../../redux/reducers/reviews-reducer';
+import { sendReviewTC } from '../../../../redux/reducers/reviews';
 import { FormikReviewErrorType, ReviewModalPropsType } from '../types';
 
 const ReviewModal = ( { closeModal }: ReviewModalPropsType ) => {

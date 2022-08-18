@@ -10,7 +10,7 @@ import colorTimeIcon from '../../Images/colorTimeIcon.svg';
 import colorCalendarIcon from '../../Images/colorCalendarIcon.svg';
 import commonStyle from '../../styles/common/Container.module.scss';
 import { useSelector } from 'react-redux';
-import { getArticles } from '../../redux/selectors/articles-selectors';
+import { getArticles } from '../../redux/selectors/articles';
 import { routesPathsEnum } from '../../routes/enums';
 import { getCurrentAddedDate } from '../../helpers/getDate';
 

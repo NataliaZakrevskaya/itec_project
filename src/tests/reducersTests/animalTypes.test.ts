@@ -1,9 +1,9 @@
-import { AnimalTypesType } from '../../mocks';
 import {
-  animalTypesReducer,
+  animalTypes,
   removeChosenAnimalTypeId,
   setChosenAnimalTypeId,
-} from '../../redux/reducers/animalTypes-reducer';
+} from '../../redux/reducers/animalTypes';
+import { AnimalTypesType } from '../../types';
 
 let startState: InitStateType;
 
@@ -16,11 +16,11 @@ beforeEach( () => {
 
 describe( 'operation with chosenAnimalTypeId', () => {
   test( 'correct animal type id should be added to chosenAnimalTypeId', () => {
-    const endState = animalTypesReducer( startState, setChosenAnimalTypeId( { id: 2 } ) );
+    const endState = animalTypes( startState, setChosenAnimalTypeId( { id: 2 } ) );
     expect( endState.chosenAnimalTypeId ).toBe( 2 );
   } );
   test( 'removeChosenAnimalTypeId should delete animal id successfully', () => {
-    const endState = animalTypesReducer( startState, removeChosenAnimalTypeId( {} ) );
+    const endState = animalTypes( startState, removeChosenAnimalTypeId( {} ) );
     expect( endState.chosenAnimalTypeId ).toBe( null );
   } );
 } );

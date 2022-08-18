@@ -7,11 +7,11 @@ import style from './SuccessOrderModal.module.scss';
 import scheduleStyle from '../../Schedule/Schedule.module.scss';
 import grayClock from '../../../../Images/grayClock.svg';
 import { location } from '../../../../enums';
-import { setOneClickOrderRequestStatus, setOrderRequestStatus } from '../../../../redux/reducers/app-reducer';
+import { setOneClickOrderRequestStatus, setOrderRequestStatus } from '../../../../redux/reducers/app';
 import { RequestStatus } from '../../../../redux/reducers/enums';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../../redux/store';
-import { getInfo } from '../../../../redux/selectors/descriptionShop-selectors';
+import { getInfo } from '../../../../redux/selectors/descriptionShop';
 import { SuccessOrderModalPropsType } from '../types';
 
 const SuccessOrderModal = ( { from }: SuccessOrderModalPropsType ) => {

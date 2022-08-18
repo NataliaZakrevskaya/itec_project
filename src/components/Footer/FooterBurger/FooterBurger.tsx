@@ -5,7 +5,7 @@ import Schedule from '../../common/Schedule/Schedule';
 import Callback from '../../common/Callback/Callback';
 import style from './FooterBurger.module.scss';
 import { useSelector } from 'react-redux';
-import { getInfo } from '../../../redux/selectors/descriptionShop-selectors';
+import { getInfo } from '../../../redux/selectors/descriptionShop';
 
 const FooterBurger = React.memo(() => {
   const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );

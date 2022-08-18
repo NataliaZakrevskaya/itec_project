@@ -13,12 +13,12 @@ import {
   getProductsInBasket,
   getTotalProductsCount, getTotalSum,
   getTotalSumWithDiscount,
-} from '../../redux/selectors/basket-selectors';
-import { sendOrderTC } from '../../redux/reducers/basket-reducer';
+} from '../../redux/selectors/basket';
+import { sendOrderTC } from '../../redux/reducers/basket';
 import { AppDispatch } from '../../redux/store';
-import { getOrderRequestStatus } from '../../redux/selectors/app-selectors';
+import { getOrderRequestStatus } from '../../redux/selectors/app';
 import { RequestStatus } from '../../redux/reducers/enums';
-import { setOrderRequestStatus } from '../../redux/reducers/app-reducer';
+import { setOrderRequestStatus } from '../../redux/reducers/app';
 import { location } from '../../enums';
 import { getPriceForBasket } from '../../helpers/getPrice';
 import { getGoods } from '../../helpers/getGoods';

@@ -1,4 +1,4 @@
-import { OneProductItemType, OptionType, ProductItemType } from '../../../mocks';
+import { OneProductItemType, OptionType, ProductItemType } from '../../../types';
 
 export type SectionButtonPropsType = {
   disabled: boolean,

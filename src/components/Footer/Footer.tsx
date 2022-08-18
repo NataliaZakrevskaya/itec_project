@@ -8,7 +8,7 @@ import Schedule from '../common/Schedule/Schedule';
 import NavbarForFooter from '../Navbar/NavbarForFooter/NavbarForFooter';
 import Callback from '../common/Callback/Callback';
 import { useSelector } from 'react-redux';
-import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
+import { getInfo } from '../../redux/selectors/descriptionShop';
 
 const Footer = () => {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './AnimalType.module.scss';
 import { useDispatch } from 'react-redux';
-import { setActualPage } from '../../../redux/reducers/products-reducer';
+import { setActualPage } from '../../../redux/reducers/products';
 import { AnimalTypePropsType } from './types';
 
 const AnimalType = React.memo(( { id, name, image, isActive, checked, chooseActiveAnimalType }: AnimalTypePropsType ) => {

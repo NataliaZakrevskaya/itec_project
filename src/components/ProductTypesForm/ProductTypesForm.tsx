@@ -2,9 +2,9 @@ import React, { useCallback, useEffect } from 'react';
 import style from './ProductTypesForm.module.scss';
 import ProductTypeInput from './ProductTypeInput/ProductTypeInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChosenProductTypeId, getProductTypes } from '../../redux/selectors/productTypes-selectors';
-import { fetchProductTypesTC, setChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
-import { setActualPage } from '../../redux/reducers/products-reducer';
+import { getChosenProductTypeId, getProductTypes } from '../../redux/selectors/productTypes';
+import { fetchProductTypesTC, setChosenProductTypeId } from '../../redux/reducers/productTypes';
+import { setActualPage } from '../../redux/reducers/products';
 import { AppDispatch } from '../../redux/store';
 
 const ProductTypesForm = React.memo(() => {

@@ -8,19 +8,19 @@ import Modal from '../modals/Modal';
 import OneClickOrder from '../modals/OneClickOrder/OneClickOrder';
 import BasketModal from '../modals/BasketModal/BasketModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { incrementProductQuantity, setProductToBasket } from '../../../redux/reducers/basket-reducer';
+import { incrementProductQuantity, setProductToBasket } from '../../../redux/reducers/basket';
 import { useCarousel } from '../../../customHooks/useCarousel';
 import { BlockNames } from '../../../customHooks/enums';
-import { getProductsInBasket } from '../../../redux/selectors/basket-selectors';
+import { getProductsInBasket } from '../../../redux/selectors/basket';
 import { PRODUCT_IMAGE } from '../../../constants';
-import { setProductToState } from '../../../redux/reducers/onClickOrder-reducer';
-import { getOneClickOrderRequestStatus } from '../../../redux/selectors/app-selectors';
+import { setProductToState } from '../../../redux/reducers/onClickOrder';
+import { getOneClickOrderRequestStatus } from '../../../redux/selectors/app';
 import { RequestStatus } from '../../../redux/reducers/enums';
 import SuccessOrderModal from '../modals/SuccessOrderModal/SuccessOrderModal';
 import { location } from '../../../enums';
-import { setOneClickOrderRequestStatus } from '../../../redux/reducers/app-reducer';
+import { setOneClickOrderRequestStatus } from '../../../redux/reducers/app';
 import { ThemeBlockWrapperPropsType } from '../types';
-import { ProductItemType } from '../../../mocks';
+import { ProductItemType } from '../../../types';
 
 const ThemeBlockWrapper = ( {
                               title,

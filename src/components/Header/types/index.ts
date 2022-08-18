@@ -1,4 +1,4 @@
-import { ProductItemType } from '../../../mocks';
+import { ProductItemType } from '../../../types';
 
 export type SearchResultsBlockType = {
   productItems: Array<ProductItemType>,

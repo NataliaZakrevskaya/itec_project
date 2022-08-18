@@ -1,6 +1,6 @@
 import { instance } from '../config';
-import { ResBrandType } from '../../mocks';
 import { REVIEWS_URL } from './constants';
+import { ResBrandType } from '../../types';
 
 export const reviewsAPI = {
   async setReviews() {

@@ -1,11 +1,11 @@
 import { RequestStatus } from '../../redux/reducers/enums';
 import { RequestStatusType } from '../../redux/reducers/types';
 import {
-  appReducer, setCallbackRequest,
+  app, setCallbackRequest,
   setLatestProductRequestStatus, setOneClickOrderRequestStatus, setOrderRequestStatus,
   setPopularProductRequestStatus, setProductRequest,
   setSearchProductRequest, setSendingReviewRequestStatus, setWeightSetIsShowed,
-} from '../../redux/reducers/app-reducer';
+} from '../../redux/reducers/app';
 
 let startState: InitStateType;
 
@@ -25,39 +25,39 @@ beforeEach( () => {
 
 describe( 'setting correct request statuses', () => {
   test( 'correct status should be set for searchProductStatus', () => {
-    const endState = appReducer( startState, setSearchProductRequest( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setSearchProductRequest( { status: RequestStatus.FAILED } ) );
     expect( endState.searchProductStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct status should be set for latestProductStatus', () => {
-    const endState = appReducer( startState, setLatestProductRequestStatus( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setLatestProductRequestStatus( { status: RequestStatus.FAILED } ) );
     expect( endState.latestProductStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct status should be set for popularProductStatus', () => {
-    const endState = appReducer( startState, setPopularProductRequestStatus( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setPopularProductRequestStatus( { status: RequestStatus.FAILED } ) );
     expect( endState.popularProductStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct status should be set for productRequestStatus', () => {
-    const endState = appReducer( startState, setProductRequest( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setProductRequest( { status: RequestStatus.FAILED } ) );
     expect( endState.productRequestStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct status should be set for callbackRequestStatus', () => {
-    const endState = appReducer( startState, setCallbackRequest( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setCallbackRequest( { status: RequestStatus.FAILED } ) );
     expect( endState.callbackRequestStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct status should be set for orderRequestStatus', () => {
-    const endState = appReducer( startState, setOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setOrderRequestStatus( { status: RequestStatus.FAILED } ) );
     expect( endState.orderRequestStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct status should be set for oneClickOrderRequestStatus', () => {
-    const endState = appReducer( startState, setOneClickOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setOneClickOrderRequestStatus( { status: RequestStatus.FAILED } ) );
     expect( endState.oneClickOrderRequestStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct status should be set for sendingReviewRequestStatus', () => {
-    const endState = appReducer( startState, setSendingReviewRequestStatus( { status: RequestStatus.FAILED } ) );
+    const endState = app( startState, setSendingReviewRequestStatus( { status: RequestStatus.FAILED } ) );
     expect( endState.sendingReviewRequestStatus ).toBe( RequestStatus.FAILED );
   } );
   test( 'correct mode should be set for weightSetIsShowed', () => {
-    const endState = appReducer( startState, setWeightSetIsShowed( { status: true } ) );
+    const endState = app( startState, setWeightSetIsShowed( { status: true } ) );
     expect( endState.weightSetIsShowed ).toBe( true );
   } );
 } );

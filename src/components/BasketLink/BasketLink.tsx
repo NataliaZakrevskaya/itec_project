@@ -4,7 +4,7 @@ import basketIcon from '../../Images/basketIcon.svg';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { useSelector } from 'react-redux';
-import { getTotalProductsCount } from '../../redux/selectors/basket-selectors';
+import { getTotalProductsCount } from '../../redux/selectors/basket';
 import { BasketLinkPropsType } from './types';
 
 const BasketLink = React.memo(( { forHeaderBurger, onClickHandler }: BasketLinkPropsType ) => {

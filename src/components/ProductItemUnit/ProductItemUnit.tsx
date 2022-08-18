@@ -1,17 +1,17 @@
 import React from 'react';
 import style from './ProductItemUnit.module.scss';
 import { useDispatch } from 'react-redux';
-import { setChosenOptionToProduct } from '../../redux/reducers/products-reducer';
+import { setChosenOptionToProduct } from '../../redux/reducers/products';
 import { location } from '../../enums';
-import { setChosenOptionToPopularProduct } from '../../redux/reducers/popularProducts-reducer';
-import { setChosenOptionToLatestProduct } from '../../redux/reducers/latestProducts-reducer';
+import { setChosenOptionToPopularProduct } from '../../redux/reducers/popularProducts';
+import { setChosenOptionToLatestProduct } from '../../redux/reducers/latestProducts';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import { changeChosenOption } from '../../redux/reducers/basket-reducer';
-import { setChosenOptionToOneOrderProduct } from '../../redux/reducers/onClickOrder-reducer';
-import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
+import { changeChosenOption } from '../../redux/reducers/basket';
+import { setChosenOptionToOneOrderProduct } from '../../redux/reducers/onClickOrder';
+import { setWeightSetIsShowed } from '../../redux/reducers/app';
 import { ProductItemUnitPropsType } from './types';
-import { setChosenOptionToPreviouslyProduct } from '../../redux/reducers/previouslyProducts-reducer';
+import { setChosenOptionToPreviouslyProduct } from '../../redux/reducers/previouslyProducts';
 
 const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
   const dispatch = useDispatch();

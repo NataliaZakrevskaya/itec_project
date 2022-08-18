@@ -13,8 +13,8 @@ import instagramIcon from '../../Images/instagramIcon.svg';
 import { useResize } from '../../customHooks/useResize';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
-import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop-reducer';
-import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
+import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop';
+import { getInfo } from '../../redux/selectors/descriptionShop';
 
 const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
 

@@ -11,44 +11,43 @@ import PopularProductsBlock from '../../components/PopularProductsBlock/PopularP
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import ProductsBlockPagination from '../../components/ProductsBlockPagination/ProductsBlockPagination';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
+import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import { getTitleForProductsBlock } from '../../helpers/getTitle';
 import Modal from '../../components/common/modals/Modal';
 import OneClickOrder from '../../components/common/modals/OneClickOrder/OneClickOrder';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
 import sadCat from '../../Images/sadCat.svg';
 import filterMajor from '../../Images/filter_major.svg';
-import { removeChosenBrandsId } from '../../redux/reducers/brands-reducer';
-import { removeChosenProductTypeId } from '../../redux/reducers/productTypes-reducer';
-import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
-import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket-reducer';
-import { fetchProductsTC, setActualPage } from '../../redux/reducers/products-reducer';
+import { removeChosenBrandsId } from '../../redux/reducers/brands';
+import { removeChosenProductTypeId } from '../../redux/reducers/productTypes';
+import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes';
+import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket';
+import { fetchProductsTC, setActualPage } from '../../redux/reducers/products';
 import {
   getActualPage,
   getPageSize,
   getProductItems,
   getTotalProductsCount,
-} from '../../redux/selectors/products-selectors';
+} from '../../redux/selectors/products';
 import { routesPathsEnum } from '../../routes/enums';
 import { useNavigate } from 'react-router-dom';
-import { getChosenProductTypeId } from '../../redux/selectors/productTypes-selectors';
-import { getOneClickOrderRequestStatus, getProductRequestStatus } from '../../redux/selectors/app-selectors';
+import { getChosenProductTypeId } from '../../redux/selectors/productTypes';
+import { getOneClickOrderRequestStatus, getProductRequestStatus } from '../../redux/selectors/app';
 import { RequestStatus } from '../../redux/reducers/enums';
-import { setOneClickOrderRequestStatus, setProductRequest } from '../../redux/reducers/app-reducer';
-import { selectValues } from '../../Api/productsApi/enums';
-import { SelectValuesTypes } from '../../Api/productsApi/types';
-import { getChosenBrandsId } from '../../redux/selectors/brands-selectors';
-import { location } from '../../enums';
-import { getProductsInBasket } from '../../redux/selectors/basket-selectors';
+import { setOneClickOrderRequestStatus, setProductRequest } from '../../redux/reducers/app';
+import { SelectValuesTypes } from '../../Api/productsApi';
+import { getChosenBrandsId } from '../../redux/selectors/brands';
+import { location, selectValues } from '../../enums';
+import { getProductsInBasket } from '../../redux/selectors/basket';
 import { AppDispatch } from '../../redux/store';
-import { setProductToState } from '../../redux/reducers/onClickOrder-reducer';
+import { setProductToState } from '../../redux/reducers/onClickOrder';
 import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
-import { getChosenOrdering } from '../../redux/selectors/ordering-selectors';
-import { setChosenOrdering } from '../../redux/reducers/ordering-reducer';
+import { getChosenOrdering } from '../../redux/selectors/ordering';
+import { setChosenOrdering } from '../../redux/reducers/ordering';
 import { useResize } from '../../customHooks/useResize';
 import { PRODUCT_IMAGE } from '../../constants';
 import { CatalogPagePropsType } from './types';
-import { ProductItemType } from '../../mocks';
+import { ProductItemType } from '../../types';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 

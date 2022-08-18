@@ -6,8 +6,8 @@ import Button from '../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBrandsTC, setChosenBrandId } from '../../redux/reducers/brands-reducer';
-import { getBrands } from '../../redux/selectors/brands-selectors';
+import { fetchBrandsTC, setChosenBrandId } from '../../redux/reducers/brands';
+import { getBrands } from '../../redux/selectors/brands';
 import { AppDispatch } from '../../redux/store';
 
 const PopularBrandsBlock = React.memo(() => {

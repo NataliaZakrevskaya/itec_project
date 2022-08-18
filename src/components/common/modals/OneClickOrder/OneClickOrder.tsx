@@ -5,11 +5,11 @@ import style from './OneClickOrder.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
 import { location } from '../../../../enums';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder-reducer';
-import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder-selectors';
+import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder';
+import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder';
 import { AppDispatch } from '../../../../redux/store';
 import { FormikErrorType, OnClickOrderPropsType } from '../types';
-import { getAddress } from '../../../../redux/selectors/descriptionShop-selectors';
+import { getAddress } from '../../../../redux/selectors/descriptionShop';
 import PrivacyPolicyModal from '../PrivacyPolicyModal/PrivacyPolicyModal';
 
 const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ) => {

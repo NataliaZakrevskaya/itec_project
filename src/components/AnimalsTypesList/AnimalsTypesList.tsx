@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import commonStyle from '../../styles/common/Container.module.scss';
-import { AnimalTypesType } from '../../mocks';
-import AnimalType from './AnimalType/AnimalType';
 import style from './AnimalsTypesList.module.scss';
-import { fetchAnimalTypesTC, setChosenAnimalTypeId } from '../../redux/reducers/animalTypes-reducer';
+import { fetchAnimalTypesTC, setChosenAnimalTypeId } from '../../redux/reducers/animalTypes';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes-selectors';
+import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import { useCarousel } from '../../customHooks/useCarousel';
 import { BlockNames } from '../../customHooks/enums';
 import { AppDispatch } from '../../redux/store';
+import { AnimalTypesType } from '../../types';
+import AnimalType from './AnimalType/AnimalType';
 
 const AnimalsTypesList = React.memo(() => {
 

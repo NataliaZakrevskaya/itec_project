@@ -3,11 +3,11 @@ import style from './SearchResultsBlock.module.scss';
 import ProductItemForSearch from '../../ProductItemForSerch/ProductItemForSearch';
 import RejectSearchResult from '../../common/modals/RejectSearchResult/RejectSearchResult';
 import { useSelector } from 'react-redux';
-import { getSearchProductStatus } from '../../../redux/selectors/app-selectors';
+import { getSearchProductStatus } from '../../../redux/selectors/app';
 import { RequestStatus } from '../../../redux/reducers/enums';
 import { SearchResultsBlockType } from '../types';
 import { PRODUCT_IMAGE } from '../../../constants';
-import { ProductItemType } from '../../../mocks';
+import { ProductItemType } from '../../../types';
 
 const SearchResultsBlock = React.memo(( { productItems, onButtonClick, onProductItemClick }: SearchResultsBlockType ) => {
 

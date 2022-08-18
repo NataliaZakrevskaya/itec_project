@@ -4,8 +4,8 @@ import SearchResultsBlock from '../Header/SearchResultsBlock/SearchResultsBlock'
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsFromSearch } from '../../redux/selectors/productsFromSearch-selectors';
-import { fetchProductsFromSearchTC } from '../../redux/reducers/productsFromSearch-reducer';
+import { getProductsFromSearch } from '../../redux/selectors/productsFromSearch';
+import { fetchProductsFromSearchTC } from '../../redux/reducers/productsFromSearch';
 import { AppDispatch } from '../../redux/store';
 import { SearchInputPropsType } from './types';
 import { useDebounce } from '../../customHooks/useDebounce';

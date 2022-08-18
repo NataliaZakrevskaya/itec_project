@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './PrivacyPolicyModal.module.scss';
 import { PrivacyPolicyModalPropsType } from '../types';
-import { getPrivacyPolicyText } from '../../../../redux/selectors/descriptionShop-selectors';
+import { getPrivacyPolicyText } from '../../../../redux/selectors/descriptionShop';
 import { useSelector } from 'react-redux';
 
 const PrivacyPolicyModal = ({closePrivacyPolicyModal}: PrivacyPolicyModalPropsType) => {

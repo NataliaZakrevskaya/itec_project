@@ -1,6 +1,6 @@
 import { instance } from '../config';
-import { DiscountType } from '../../mocks';
 import { DISCOUNTS_URL } from './constants';
+import { DiscountType } from '../../types';
 
 export const discountsAPI = {
   async setDiscountTypes() {

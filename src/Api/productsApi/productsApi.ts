@@ -1,14 +1,15 @@
 import { PRODUCTS_URL } from './constants';
 import { instance } from '../config';
-import { AxiosResponse, responseProductItemType } from '../../mocks';
+import { responseProductItemType } from '../../types';
+import { AxiosResponse } from '../types';
+import { PageSize } from './enums';
 
 export const productsAPI = {
   async setProducts( animal: number | null, category: number | null, brands?: string | null, page?: number, ordering?: string ) {
-    const page_size = 15;
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {
         page,
-        page_size,
+        page_size: PageSize.CATALOG,
         animal,
         category,
         ordering,
@@ -20,21 +21,19 @@ export const productsAPI = {
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, { params: { search } } );
   },
   async setProductsByOrdering( ordering?: string ) {
-    const page_size = 12;
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {
         ordering,
-        page_size,
+        page_size: PageSize.BLOCK,
       },
     } );
   },
   async setPopularProducts( ordering?: string, animal?: number | null ) {
-    const page_size = 12;
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {
         ordering,
         animal,
-        page_size,
+        page_size: PageSize.BLOCK,
       },
     } );
   },

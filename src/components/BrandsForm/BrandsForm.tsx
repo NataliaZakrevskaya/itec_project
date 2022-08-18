@@ -3,10 +3,10 @@ import BrandFormInput from './BrandFormInput/BrandFormInput';
 import style from './BrandsForm.module.scss';
 import RejectSearchResult from '../common/modals/RejectSearchResult/RejectSearchResult';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBrands } from '../../redux/selectors/brands-selectors';
+import { getBrands } from '../../redux/selectors/brands';
 import Button from '../common/Button/Button';
-import { fetchBrandsTC, setChosenBrandsId } from '../../redux/reducers/brands-reducer';
-import { setActualPage } from '../../redux/reducers/products-reducer';
+import { fetchBrandsTC, setChosenBrandsId } from '../../redux/reducers/brands';
+import { setActualPage } from '../../redux/reducers/products';
 import { AppDispatch } from '../../redux/store';
 import { BrandsFormPropsType } from './types';
 

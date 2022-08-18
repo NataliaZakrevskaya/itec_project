@@ -1,5 +1,4 @@
-import { OneProductItemType, ProductItemType } from '../../../../mocks';
-import { LocationsType } from '../../../../enums';
+import { LocationsType, OneProductItemType, ProductItemType } from '../../../../types';
 
 export type BasketModalPropsType = {
   product: ProductItemType | OneProductItemType,

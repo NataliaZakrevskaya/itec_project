@@ -1,4 +1,4 @@
-import { OptionType } from '../../../mocks';
+import { OptionType } from '../../../types';
 
 export type ProductItemUnitPropsType = {
   option: OptionType,

@@ -6,9 +6,9 @@ import firstDiscount from '../../Images/firstDiscount.jpg';
 import secondDiscount from '../../Images/secondDiscount.svg';
 import { FIRST_BACKGROUND, SECOND_BACKGROUND } from './constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDiscountsTC } from '../../redux/reducers/discounts-reducer';
+import { fetchDiscountsTC } from '../../redux/reducers/discounts';
 import { AppDispatch } from '../../redux/store';
-import { getDiscounts } from '../../redux/selectors/discounts-selectors';
+import { getDiscounts } from '../../redux/selectors/discounts';
 
 const DiscountBlock = React.memo( () => {
 

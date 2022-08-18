@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import style from './GreetingBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
-import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop-reducer';
+import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
-import { getDescriptionShop, getPhoto, getSecondInfo } from '../../redux/selectors/descriptionShop-selectors';
+import { getDescriptionShop, getPhoto, getSecondInfo } from '../../redux/selectors/descriptionShop';
 
 const GreetingBlock = React.memo(() => {
 

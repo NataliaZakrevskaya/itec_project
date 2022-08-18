@@ -1,12 +1,13 @@
-import { OptionType, ProductItemType } from '../../mocks';
+
 import {
-  basketReducer,
+  basket,
   changeChosenOption,
   decrementProductQuantity,
   incrementProductQuantity,
   removeByChosenOptionArticle,
   setProductToBasket,
-} from '../../redux/reducers/basket-reducer';
+} from '../../redux/reducers/basket';
+import { OptionType, ProductItemType } from '../../types';
 
 let product: ProductItemType = {
   id: 1,
@@ -157,7 +158,7 @@ beforeEach( () => {
 
 describe( 'operation with basket', () => {
   test( 'correct product should be added to basket\'s start with correct total sum and product quantity', () => {
-    const endState = basketReducer( startState, setProductToBasket( { product: secondProduct } ) );
+    const endState = basket( startState, setProductToBasket( { product: secondProduct } ) );
     expect( endState.productsInBasket.length ).toBe( 2 );
     expect( endState.productsInBasket[ 1 ].id ).toBe( 1 );
     expect( endState.productsInBasket[ 1 ].name ).toBe( 'Health Nutrition' );
@@ -167,25 +168,25 @@ describe( 'operation with basket', () => {
     expect( endState.totalProductsCount ).toBe( 2 );
   } );
   test( 'correct option should be incremented with correct total sum', () => {
-    const endState = basketReducer( startState, incrementProductQuantity( { optionId: 156, quantity: 1 } ) );
+    const endState = basket( startState, incrementProductQuantity( { optionId: 156, quantity: 1 } ) );
     expect( endState.productsInBasket[ 0 ].chosen_option.quantity ).toBe( 2 );
     expect( endState.totalSum ).toBe( '12.00' );
     expect( endState.totalProductsCount ).toBe( 2 );
   } );
   test( 'correct option should be decremented with correct total sum', () => {
-    const endState = basketReducer( startState, decrementProductQuantity( { optionId: 156 } ) );
+    const endState = basket( startState, decrementProductQuantity( { optionId: 156 } ) );
     expect( endState.productsInBasket[ 0 ].chosen_option.quantity ).toBe( 0 );
     expect( endState.totalSum ).toBe( '0.00' );
     expect( endState.totalProductsCount ).toBe( 0 );
   } );
   test( 'correct product should be deleted from basket with correct total sum and quantity', () => {
-    const endState = basketReducer( startState, removeByChosenOptionArticle( { article_number: '405' } ) );
+    const endState = basket( startState, removeByChosenOptionArticle( { article_number: '405' } ) );
     expect( endState.productsInBasket.length ).toEqual( 0 );
     expect( endState.totalSum ).toBe( '0.00' );
     expect( endState.totalProductsCount ).toBe( 0 );
   } );
   test( 'correct option should be chosen', () => {
-    const endState = basketReducer( startState, changeChosenOption( { productId: 1, option: option } ) );
+    const endState = basket( startState, changeChosenOption( { productId: 1, option: option } ) );
     expect( endState.productsInBasket.length ).toBe( 1 );
     expect( endState.productsInBasket[ 0 ].chosen_option ).toEqual( option );
     expect( endState.totalSum ).toBe( '20.00' );

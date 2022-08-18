@@ -1,6 +1,6 @@
 import { instance } from '../config';
-import { ResBrandType } from '../../mocks';
 import { ARTICLES_URL } from './constants';
+import { ResBrandType } from '../../types';
 
 export const articlesAPI = {
   async setArticles() {

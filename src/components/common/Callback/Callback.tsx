@@ -4,10 +4,10 @@ import style from './Callback.module.scss';
 import Modal from '../modals/Modal';
 import SuccessCallbackModals from '../modals/SuccessCallbackModals/SuccessCallbackModals';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCallbackRequestStatus } from '../../../redux/selectors/app-selectors';
+import { getCallbackRequestStatus } from '../../../redux/selectors/app';
 import { RequestStatus } from '../../../redux/reducers/enums';
 import { AppDispatch } from '../../../redux/store';
-import { setCallbackRequestStatus } from '../../../redux/reducers/app-reducer';
+import { setCallbackRequestStatus } from '../../../redux/reducers/app';
 import { CallbackPropsType } from './types';
 import PrivacyPolicyModal from '../modals/PrivacyPolicyModal/PrivacyPolicyModal';
 

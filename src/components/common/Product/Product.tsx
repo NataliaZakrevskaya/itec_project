@@ -7,7 +7,7 @@ import {
   decrementProductQuantity,
   incrementProductQuantity,
   removeByChosenOptionArticle,
-} from '../../../redux/reducers/basket-reducer';
+} from '../../../redux/reducers/basket';
 import { stringCutter } from '../../../helpers/stringCutter';
 import { AppDispatch } from '../../../redux/store';
 import { routesPathsEnum } from '../../../routes/enums';
@@ -16,9 +16,9 @@ import { location } from '../../../enums';
 import {
   decrementOneOrderProductQuantity,
   incrementOneOrderProductQuantity,
-} from '../../../redux/reducers/onClickOrder-reducer';
+} from '../../../redux/reducers/onClickOrder';
 import { getPrice } from '../../../helpers/getPrice';
-import { setWeightSetIsShowed } from '../../../redux/reducers/app-reducer';
+import { setWeightSetIsShowed } from '../../../redux/reducers/app';
 import { ProductForBasketPropsType } from '../types';
 import { PRODUCT_IMAGE } from '../../../constants';
 import { getPriceWithDiscount } from '../../../redux/reducers/helpers';
@@ -34,7 +34,7 @@ const Product = ( {
   const navigate = useNavigate();
 
   const { id, name, chosen_option, max_discount, images, options } = product;
-  const priceWithDiscount = (!!max_discount || !!chosen_option.discount_by_option) ? getPriceWithDiscount( product ) : null;;
+  const priceWithDiscount = ( !!max_discount || !!chosen_option.discount_by_option ) ? getPriceWithDiscount( product ) : null;
   const productName = stringCutter( name, 70 );
   const countOfProduct = chosen_option.quantity;
   const price = getPrice( chosen_option.partial ? ( +chosen_option.price * countOfProduct / 1000 ) : ( +chosen_option.price * countOfProduct ) );
@@ -120,7 +120,7 @@ const Product = ( {
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
-              <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
+            <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
             { !!priceWithDiscount && <p
               className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed( 2 ) } BYN.</p> }
           </div>

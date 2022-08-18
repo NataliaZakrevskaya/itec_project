@@ -1,4 +1,4 @@
-import { ProductItemType } from '../../../mocks';
+import { ProductItemType } from '../../../types';
 
 export type WithThisProductBuyBlockPropsType = {
   products: Array<ProductItemType>

@@ -1,6 +1,7 @@
-import { OneProductItemType, ProductItemType } from '../../../mocks';
 
 /*this function is used to get the correct total number of products in the basket*/
+import { OneProductItemType, ProductItemType } from '../../../types';
+
 export const setTotalCount = ( state: any ) => {
   return state.totalProductsCount = state.productsInBasket.map( ( product: ProductItemType ) => {
     /*if the selected packing option is by weight, we consider it as one product, otherwise we calculate the number of selected packages*/

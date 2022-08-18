@@ -18,10 +18,10 @@ import {
   getTotalProductsCount,
   getTotalSum,
   getTotalSumWithDiscount,
-} from '../../redux/selectors/basket-selectors';
+} from '../../redux/selectors/basket';
 import { location } from '../../enums';
-import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
-import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
+import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts';
+import { getInfo } from '../../redux/selectors/descriptionShop';
 import { getGoods } from '../../helpers/getGoods';
 import { getPriceForBasket } from '../../helpers/getPrice';
 
