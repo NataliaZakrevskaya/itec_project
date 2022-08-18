@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { routesPathsEnum } from '../../../routes/enums';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import style from './NavbarForHeader.module.scss';
 import { NavbarForHeaderPropsType } from '../types';
 
-const NavbarForHeader = React.memo( ( { forHeaderBurger, closeEditMode }: NavbarForHeaderPropsType ) => {
+const NavbarForHeader = React.memo( ( { forHeaderBurger, closeEditMode }: NavbarForHeaderPropsType ): ReactElement => {
 
   const navigate = useNavigate();
   const discountLinkHandler = () => {

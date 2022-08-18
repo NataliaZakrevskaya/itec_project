@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useFormik } from 'formik';
 import style from './ReviewModal.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
@@ -7,7 +7,7 @@ import { AppDispatch } from '../../../../redux/store';
 import { sendReviewTC } from '../../../../redux/reducers/reviews';
 import { FormikReviewErrorType, ReviewModalPropsType } from '../types';
 
-const ReviewModal = ( { closeModal }: ReviewModalPropsType ) => {
+const ReviewModal = ( { closeModal }: ReviewModalPropsType ): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './SearchResultsBlock.module.scss';
 import ProductItemForSearch from '../../ProductItemForSerch/ProductItemForSearch';
 import RejectSearchResult from '../../common/modals/RejectSearchResult/RejectSearchResult';
@@ -9,7 +9,7 @@ import { SearchResultsBlockType } from '../types';
 import { PRODUCT_IMAGE } from '../../../constants';
 import { ProductItemType } from '../../../types';
 
-const SearchResultsBlock = React.memo(( { productItems, onButtonClick, onProductItemClick }: SearchResultsBlockType ) => {
+const SearchResultsBlock = React.memo(( { productItems, onButtonClick, onProductItemClick }: SearchResultsBlockType ): ReactElement => {
 
   const successResult = useSelector( getSearchProductStatus ) === RequestStatus.SUCCEEDED;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { stringCutter } from '../../../helpers/stringCutter';
 import style from './ProductForBasketModal.module.scss';
 import { getPrice } from '../../../helpers/getPrice';
@@ -10,7 +10,7 @@ const ProductForBasketModal = ( {
                                   image,
                                   countOfProduct,
                                   priceWithDiscount,
-                                }: ProductForBasketModalPropsType ) => {
+                                }: ProductForBasketModalPropsType ): ReactElement => {
   const productName = stringCutter( name, 70 );
   const price = getPrice( chosenOption.partial ? ( +chosenOption.price * chosenOption.quantity / 1000 ) : ( +chosenOption.price * countOfProduct ) );
   return (

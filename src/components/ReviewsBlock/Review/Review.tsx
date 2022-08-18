@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import phoneIcon from '../../../Images/phoneIcon.svg';
 import style from '../ReviewsBlock.module.scss';
 import { ReviewPropsType } from './types';
 
-const Review = React.memo(( { nameAuthor, bodyOfComment, phoneNumber, nameAnimal }: ReviewPropsType ) => {
+const Review = React.memo(( { nameAuthor, bodyOfComment, phoneNumber, nameAnimal }: ReviewPropsType ): ReactElement => {
   return (
     <div className={ style.reviewContainer }>
       <h3 className={ style.reviewsBlockSubTitle }>{ nameAuthor }</h3>

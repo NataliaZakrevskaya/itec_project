@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import navigateIcon from '../../../Images/navigateIcon.svg';
 import metroIcon from '../../../Images/metroIcon.svg';
 import style from './Address.module.scss';
 import { AddressPropsType } from './types';
 
-const Address = React.memo(( { address, metro }: AddressPropsType ) => {
+const Address = React.memo(( { address, metro }: AddressPropsType ): ReactElement => {
 
   return (
     <div className={ style.addressBlock }>

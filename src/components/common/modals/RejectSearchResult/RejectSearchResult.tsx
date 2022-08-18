@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from '../../../Header/SearchResultsBlock/SearchResultsBlock.module.scss';
 import sadDog from '../../../../Images/emtyBrands.jpg';
 import SmallerButton from '../../SmallerButton/SmallerButton';
 import { RejectSearchResultPropsType } from '../types';
 
-const RejectSearchResult = React.memo(( { requestTitle, onClick }: RejectSearchResultPropsType ) => {
+const RejectSearchResult = React.memo(( { requestTitle, onClick }: RejectSearchResultPropsType ): ReactElement => {
 
   return (
     <div className={ style.rejectResultContainer }>

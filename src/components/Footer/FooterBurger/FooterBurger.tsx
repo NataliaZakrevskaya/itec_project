@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Address from '../../common/Address/Address';
 import Phone from '../../common/PhoneBlock/Phone';
 import Schedule from '../../common/Schedule/Schedule';
@@ -7,7 +7,7 @@ import style from './FooterBurger.module.scss';
 import { useSelector } from 'react-redux';
 import { getInfo } from '../../../redux/selectors/descriptionShop';
 
-const FooterBurger = React.memo(() => {
+const FooterBurger = React.memo((): ReactElement => {
   const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );
   return (
     <div className={ style.footerBurger }>

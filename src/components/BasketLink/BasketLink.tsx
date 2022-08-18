@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './BasketLink.module.scss';
 import basketIcon from '../../Images/basketIcon.svg';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { getTotalProductsCount } from '../../redux/selectors/basket';
 import { BasketLinkPropsType } from './types';
 
-const BasketLink = React.memo(( { forHeaderBurger, onClickHandler }: BasketLinkPropsType ) => {
+const BasketLink = React.memo(( { forHeaderBurger, onClickHandler }: BasketLinkPropsType ): ReactElement => {
 
   const productCount = useSelector( getTotalProductsCount );
   const navigate = useNavigate();

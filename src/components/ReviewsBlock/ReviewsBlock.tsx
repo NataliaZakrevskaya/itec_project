@@ -4,7 +4,7 @@ import style from './ReviewsBlock.module.scss';
 import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
 import Review from './Review/Review';
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,7 +22,7 @@ import { getSendingReviewsRequestStatus } from '../../redux/selectors/app';
 import { setSendingReviewRequestStatus } from '../../redux/reducers/app';
 import { RequestStatus } from '../../redux/reducers/enums';
 
-const ReviewsBlock = React.memo(() => {
+const ReviewsBlock = React.memo((): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ const ReviewsBlock = React.memo(() => {
 
   useEffect( () => {
     dispatch( fetchReviewsTC() );
-  }, [] );
+  }, [dispatch] );
   useEffect( () => {
     if ( isReviewModalActive || isSuccessReview ) {
       window.document.body.style.overflow = 'hidden';
@@ -88,13 +88,13 @@ const ReviewsBlock = React.memo(() => {
                      transform: `translateX(${ offset }px)`,
                    } }>
                 {
-                  reviews.map( review =>
+                  reviews.map( ({id, name_author, body_of_comment, phone_number, name_animal}) =>
                     <Review
-                      key={ review.id }
-                      nameAuthor={ review.name_author }
-                      bodyOfComment={ review.body_of_comment }
-                      phoneNumber={ review.phone_number }
-                      nameAnimal={ review.name_animal }
+                      key={ id }
+                      nameAuthor={ name_author }
+                      bodyOfComment={ body_of_comment }
+                      phoneNumber={ phone_number }
+                      nameAnimal={ name_animal }
                     />,
                   )
                 }

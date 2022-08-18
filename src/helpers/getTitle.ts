@@ -1,6 +1,8 @@
 /*these features are used for showing correct block's titles with different chosen animal types*/
 
-export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null ) => {
+import { Nullable } from '../types';
+
+export const getTitleForProductsBlock = ( chosenAnimalTypeId: Nullable<number> ) => {
   switch ( chosenAnimalTypeId ) {
     case 1: {
       return 'для собак';
@@ -22,7 +24,7 @@ export const getTitleForProductsBlock = ( chosenAnimalTypeId: number | null ) =>
   }
 };
 
-export const getTitleForArticlesBlock = ( chosenAnimalTypeId: number | null ) => {
+export const getTitleForArticlesBlock = ( chosenAnimalTypeId: Nullable<number> ) => {
   switch ( chosenAnimalTypeId ) {
     case 1: {
       return 'про собак';

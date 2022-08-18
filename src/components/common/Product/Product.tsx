@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './Product.module.scss';
 import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
 import basket from '../../../Images/basket.svg';
@@ -28,7 +28,7 @@ const Product = ( {
                     isForModal,
                     closeOneClickModal,
                     from,
-                  }: ProductForBasketPropsType ) => {
+                  }: ProductForBasketPropsType ): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();

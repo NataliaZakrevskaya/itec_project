@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './AdvertisingBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import buttonStyle from '../../styles/common/BigButton.module.scss';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import frame from '../../Images/MainImage.jpg';
 
-export const AdvertisingBlock = React.memo(() => {
+export const AdvertisingBlock = React.memo((): ReactElement => {
   const navigate = useNavigate();
   return (
     <div className={ style.advertisingBlockContainer }>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './ContactBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import Phone from '../common/PhoneBlock/Phone';
@@ -10,7 +10,7 @@ import IconTime from '../../Images/clock_minorfooter.svg';
 import { useSelector } from 'react-redux';
 import { getInfo } from '../../redux/selectors/descriptionShop';
 
-const ContactBlock = React.memo(() => {
+const ContactBlock = React.memo((): ReactElement => {
   const { phone_number, address, metro, time_weekdays, time_weekend, social } = useSelector( getInfo );
   return (
     <div className={ style.contactBlockContainer }>

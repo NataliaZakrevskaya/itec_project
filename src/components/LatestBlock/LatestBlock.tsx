@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import style from './LatestBlock.module.scss';
@@ -11,7 +11,7 @@ import { location, selectValues } from '../../enums';
 import { AppDispatch } from '../../redux/store';
 import { setChosenOrdering } from '../../redux/reducers/ordering';
 
-const LatestBlock = React.memo( () => {
+const LatestBlock = React.memo( (): ReactElement => {
 
   const latestProducts = useSelector( getLatestProducts );
 
@@ -25,7 +25,7 @@ const LatestBlock = React.memo( () => {
 
   useEffect( () => {
     dispatch( fetchLatestProductsTC( { ordering: selectValues.ADDED_DATE } ) );
-  }, [] );
+  }, [ dispatch ] );
 
   return (
     <div className={ style.latestBlockWrapper }>

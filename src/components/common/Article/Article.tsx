@@ -6,7 +6,7 @@ import { routesPathsEnum } from '../../../routes/enums';
 import { getCurrentAddedDate } from '../../../helpers/getDate';
 import { stringCutter } from '../../../helpers/stringCutter';
 import { ArticlePropsType } from './types';
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 const Article = React.memo(( {
                     id,
@@ -16,7 +16,7 @@ const Article = React.memo(( {
                     timeForReading,
                     image,
                     forArticlesPage,
-                  }: ArticlePropsType ) => {
+                  }: ArticlePropsType ): ReactElement => {
 
   const navigate = useNavigate();
   const date = new Date( date_added );

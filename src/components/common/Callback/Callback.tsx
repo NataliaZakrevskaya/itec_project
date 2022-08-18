@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import CallbackModal from '../modals/CallbackModals/CallbackModal';
 import style from './Callback.module.scss';
 import Modal from '../modals/Modal';
@@ -11,7 +11,7 @@ import { setCallbackRequestStatus } from '../../../redux/reducers/app';
 import { CallbackPropsType } from './types';
 import PrivacyPolicyModal from '../modals/PrivacyPolicyModal/PrivacyPolicyModal';
 
-const Callback = React.memo(( { forHeader }: CallbackPropsType ) => {
+const Callback = React.memo(( { forHeader }: CallbackPropsType ): ReactElement => {
   const [ isActive, setIsActive ] = useState<boolean>( false );
   const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );
   const openPrivacyPolicyModal = () => {

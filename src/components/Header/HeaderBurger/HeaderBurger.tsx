@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import HeaderLogo from '../../Logo/headerLogo/HeaderLogo';
 import style from './HeaderBurger.module.scss';
 import SearchInput from '../../SearchInput/SearchInput';
@@ -8,7 +8,7 @@ import ProductTypesForm from '../../ProductTypesForm/ProductTypesForm';
 import BrandsForm from '../../BrandsForm/BrandsForm';
 import { HeaderBurgerPropsType } from '../types';
 
-const HeaderBurger = React.memo(( { onClickHandler, forFilters }: HeaderBurgerPropsType ) => {
+const HeaderBurger = React.memo(( { onClickHandler, forFilters }: HeaderBurgerPropsType ): ReactElement => {
   return (
     <div className={ style.navBarContainer }>
       <div className={ style.editModeBlock }>

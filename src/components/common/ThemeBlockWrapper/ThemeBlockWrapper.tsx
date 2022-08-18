@@ -1,7 +1,7 @@
 import commonStyle from '../../../styles/common/Container.module.scss';
 import ProductItem from '../../ProductItem/ProductItem';
 import Button from '../Button/Button';
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import PrevSectionButton from '../prevSectionButton/prevSectionButton';
 import NextSectionButton from '../nextSectionButton/nextSectionButton';
 import Modal from '../modals/Modal';
@@ -29,7 +29,7 @@ const ThemeBlockWrapper = ( {
                               blockTheme,
                               from,
                               withoutButton,
-                            }: ThemeBlockWrapperPropsType ) => {
+                            }: ThemeBlockWrapperPropsType ): ReactElement => {
 
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );

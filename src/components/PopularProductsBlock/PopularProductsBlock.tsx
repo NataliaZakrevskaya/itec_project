@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import ThemeBlockWrapper from '../common/ThemeBlockWrapper/ThemeBlockWrapper';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
@@ -14,7 +14,7 @@ import { AppDispatch } from '../../redux/store';
 import { setChosenOrdering } from '../../redux/reducers/ordering';
 import { PopularProductsBlockPropsType } from './types';
 
-const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlockPropsType ) => {
+const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlockPropsType ): ReactElement => {
 
   const popularProducts = useSelector( getPopularProducts );
   const animal = useSelector( getChosenAnimalTypeId );
@@ -27,7 +27,7 @@ const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlock
   };
   useEffect( () => {
     dispatch( fetchPopularProductsTC( { ordering: selectValues.POPULARITY, animal } ) );
-  }, [ animal ] );
+  }, [ animal, dispatch ] );
 
   return (
     <div className={ style.popularProductsWrapper }>

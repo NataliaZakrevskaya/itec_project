@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import ProductItemUnit from '../ProductItemUnit/ProductItemUnit';
 import basketIcon from '../../Images/basketIcon.svg';
 import style from './ProductItem.module.scss';
@@ -21,7 +21,7 @@ const ProductItem = ( {
                         openOneClickModal,
                         from,
                         forCatalog,
-                      }: ProductItemPropsType ) => {
+                      }: ProductItemPropsType ): ReactElement => {
 
   const price = getPrice( +chosenOption.price );
   const nameForCard = stringCutter( name, 70 );

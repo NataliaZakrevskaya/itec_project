@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './Footer.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import FooterLogo from '../Logo/footerLogo/FooterLogo';
@@ -10,7 +10,7 @@ import Callback from '../common/Callback/Callback';
 import { useSelector } from 'react-redux';
 import { getInfo } from '../../redux/selectors/descriptionShop';
 
-const Footer = () => {
+const Footer = (): ReactElement => {
 
   const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );
 

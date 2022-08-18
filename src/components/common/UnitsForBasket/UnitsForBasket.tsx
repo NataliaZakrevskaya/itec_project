@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from '../../../pages/ProductPage/ProductPage.module.scss';
 import { getPrice } from '../../../helpers/getPrice';
 import { UnitsForBasketPropsType } from '../types';
 
-const UnitsForBasket = ( { option, active, onUnitClick }: UnitsForBasketPropsType ) => {
+const UnitsForBasket = ( { option, active, onUnitClick }: UnitsForBasketPropsType ): ReactElement => {
   const price = getPrice( +option.price );
   return (
     <>

@@ -76,7 +76,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
 
   const onPageChanged = useCallback( ( pageNumber: number ) => {
     dispatch( setActualPage( { pageNumber } ) );
-  }, [] );
+  }, [dispatch] );
   const closeOneClickModal = () => {
     dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsOneClickModalActive( false );
@@ -114,7 +114,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   useEffect( () => {
     const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
     dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands } ) );
-  }, [ page, animal, category, chosenOrdering, chosenBrands ] );
+  }, [ page, animal, category, chosenOrdering, chosenBrands, dispatch ] );
   useEffect( () => {
     /*we turn off scroll when modals are active*/
     if ( isBasketModalActive || isOneClickModalActive || isSuccessOneClickOrder ) {

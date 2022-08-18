@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { AppDispatch } from '../../redux/store';
 
-const ArticlesPage = React.memo(() => {
+const ArticlesPage = React.memo( () => {
 
   const [ showAll, setShowAll ] = useState<boolean>( false );
 
@@ -49,14 +49,14 @@ const ArticlesPage = React.memo(() => {
 
   useEffect( () => {
     dispatch( fetchArticlesTC() );
-  }, [] );
+  }, [ dispatch ] );
 
   return (
     <div className={ style.articlesPageBlock }>
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
           <p>Статьи</p>
         </div>
       </div>
@@ -67,15 +67,15 @@ const ArticlesPage = React.memo(() => {
       <div className={ style.articlesBlockContainer }>
         <div className={ style.articlesBlock }>
           {
-            articles.map( article =>
+            articles.map( ( { id, title, description, time_read, date_added, image } ) =>
               <Article
-                key={ article.id }
-                id={ article.id }
-                title={ article.title }
-                description={ article.description }
-                timeForReading={ article.time_read }
-                date_added={ article.date_added }
-                image={ article.image }
+                key={ id }
+                id={ id }
+                title={ title }
+                description={ description }
+                timeForReading={ time_read }
+                date_added={ date_added }
+                image={ image }
                 forArticlesPage={ true }
               />,
             )
@@ -88,6 +88,6 @@ const ArticlesPage = React.memo(() => {
       <ContactBlock/>
     </div>
   );
-});
+} );
 
 export default ArticlesPage;

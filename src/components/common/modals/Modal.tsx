@@ -1,9 +1,9 @@
 import style from './Modal.module.scss';
 import closeIcon from '../../../Images/closeIcon.svg';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { ModalPropsType } from './types';
 
-const Modal = ( { closeModal, children }: ModalPropsType ) => {
+const Modal = ( { closeModal, children }: ModalPropsType ): ReactElement => {
   return (
     <div className={ style.callbackModals } onClick={ closeModal }>
       <div className={ style.modalContent } onClick={ e => e.stopPropagation() }>

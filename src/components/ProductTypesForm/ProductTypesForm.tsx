@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect } from 'react';
 import style from './ProductTypesForm.module.scss';
 import ProductTypeInput from './ProductTypeInput/ProductTypeInput';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,31 +7,31 @@ import { fetchProductTypesTC, setChosenProductTypeId } from '../../redux/reducer
 import { setActualPage } from '../../redux/reducers/products';
 import { AppDispatch } from '../../redux/store';
 
-const ProductTypesForm = React.memo(() => {
+const ProductTypesForm = React.memo( (): ReactElement => {
   const dispatch = useDispatch<AppDispatch>();
   const productsTypes = useSelector( getProductTypes );
   const chosenProductTypeId = useSelector( getChosenProductTypeId );
-  const chooseProductType = useCallback(( id: number ) => {
+  const chooseProductType = useCallback( ( id: number ) => {
     const pageNumber = 1;
     dispatch( setChosenProductTypeId( { id } ) );
     dispatch( setActualPage( { pageNumber } ) );
-  }, []);
+  }, [ dispatch ] );
   useEffect( () => {
     dispatch( fetchProductTypesTC() );
-  }, [] );
+  }, [ dispatch ] );
 
   return (
     <div className={ style.productTypesBlock }>
       <h2>Тип товара</h2>
       <div className={ style.radioGroup }>
         {
-          productsTypes.map( type =>
+          productsTypes.map( ( { id, name, discount_by_category } ) =>
             <ProductTypeInput
-              key={ type.id }
-              id={ type.id }
-              name={ type.name }
-              discount={!!type.discount_by_category}
-              isActive={ chosenProductTypeId === type.id }
+              key={ id }
+              id={ id }
+              name={ name }
+              discount={ !!discount_by_category }
+              isActive={ chosenProductTypeId === id }
               chooseProductType={ chooseProductType }
             />,
           )
@@ -39,6 +39,6 @@ const ProductTypesForm = React.memo(() => {
       </div>
     </div>
   );
-});
+} );
 
 export default ProductTypesForm;

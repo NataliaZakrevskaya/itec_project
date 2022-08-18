@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './ProductItemUnit.module.scss';
 import { useDispatch } from 'react-redux';
 import { setChosenOptionToProduct } from '../../redux/reducers/products';
@@ -13,7 +13,7 @@ import { setWeightSetIsShowed } from '../../redux/reducers/app';
 import { ProductItemUnitPropsType } from './types';
 import { setChosenOptionToPreviouslyProduct } from '../../redux/reducers/previouslyProducts';
 
-const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ) => {
+const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPropsType ): ReactElement => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import commonStyle from '../../styles/common/Container.module.scss';
 import style from './AnimalsTypesList.module.scss';
@@ -12,7 +12,7 @@ import { AppDispatch } from '../../redux/store';
 import { AnimalTypesType } from '../../types';
 import AnimalType from './AnimalType/AnimalType';
 
-const AnimalsTypesList = React.memo(() => {
+const AnimalsTypesList = React.memo( (): ReactElement => {
 
   const animalTypes = useSelector( getAnimalTypes );
   const activeAnimalTypeId = useSelector( getChosenAnimalTypeId );
@@ -27,12 +27,12 @@ const AnimalsTypesList = React.memo(() => {
 
   useEffect( () => {
     dispatch( fetchAnimalTypesTC() );
-  }, [] );
+  }, [ dispatch ] );
 
-  const chooseActiveAnimalType = useCallback(( id: number ) => {
+  const chooseActiveAnimalType = useCallback( ( id: number ) => {
     dispatch( setChosenAnimalTypeId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
-  }, []);
+  }, [ dispatch, navigate ] );
 
   return (
     <div className={ commonStyle.container }>
@@ -61,6 +61,6 @@ const AnimalsTypesList = React.memo(() => {
       </div>
     </div>
   );
-});
+} );
 
 export default AnimalsTypesList;

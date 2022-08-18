@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import selectIcon from '../../../../Images/checkmarkCircle.svg';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../../routes/enums';
@@ -11,7 +11,7 @@ import { PRODUCT_IMAGE } from '../../../../constants';
 const BasketModal = ( {
                         product,
                         closeModal,
-                      }: BasketModalPropsType ) => {
+                      }: BasketModalPropsType ): ReactElement => {
   const { max_discount, chosen_option, name, images, id } = product;
   const countOfProduct = chosen_option.partial ? 1 : chosen_option.quantity;
   const showDiscount = !!max_discount || !!chosen_option.discount_by_option;

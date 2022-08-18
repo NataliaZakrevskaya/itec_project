@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { setProductRequest } from './app';
 import { RequestStatus } from './enums';
 import { productsAPI } from '../../Api/productsApi';
-import { OptionType, ProductItemType } from '../../types';
+import { Nullable, OptionType, ProductItemType } from '../../types';
 
 export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param: { page?: number, animal: number | null, category: number | null, ordering?: any, brands: string | null }, {
+  'products/fetchProducts', async ( param: { page?: number, animal: Nullable<number>, category: Nullable<number>, ordering?: any, brands: Nullable<string> }, {
     dispatch,
     rejectWithValue,
   } ) => {

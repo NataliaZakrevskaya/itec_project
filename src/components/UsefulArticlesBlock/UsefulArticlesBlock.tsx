@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import Article from '../common/Article/Article';
 import style from './UsefulArticlesBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
@@ -17,7 +17,7 @@ import { useCarousel } from '../../customHooks/useCarousel';
 import { BlockNames } from '../../customHooks/enums';
 import { AppDispatch } from '../../redux/store';
 
-const UsefulArticlesBlock = React.memo(() => {
+const UsefulArticlesBlock = React.memo((): ReactElement => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
@@ -49,7 +49,7 @@ const UsefulArticlesBlock = React.memo(() => {
 
     useEffect( () => {
       dispatch( fetchArticlesTC() );
-    }, [] );
+    }, [dispatch] );
 
     return (
       <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
@@ -74,8 +74,7 @@ const UsefulArticlesBlock = React.memo(() => {
                   transform: `translateX(${ offset }px)`,
                 } }>
                 {
-                  articles.map( article => {
-                    const { id, title, description, date_added, image, time_read } = { ...article };
+                  articles.map( ({ id, title, description, date_added, image, time_read }) => {
                     return ( <Article
                         key={ id }
                         id={ id }

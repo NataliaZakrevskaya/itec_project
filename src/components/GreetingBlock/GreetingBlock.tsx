@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import style from './GreetingBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop';
@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
 import { getDescriptionShop, getPhoto, getSecondInfo } from '../../redux/selectors/descriptionShop';
 
-const GreetingBlock = React.memo(() => {
+const GreetingBlock = React.memo( (): ReactElement => {
 
   const photo = useSelector( getPhoto );
   const secondInfoOptions = useSelector( getSecondInfo );
@@ -16,7 +16,7 @@ const GreetingBlock = React.memo(() => {
 
   useEffect( () => {
     dispatch( fetchDescriptionShopTC() );
-  }, [] );
+  }, [ dispatch ] );
 
   return (
     <div className={ style.greetingBlock }>
@@ -27,23 +27,23 @@ const GreetingBlock = React.memo(() => {
             <div className={ style.greetingBlockTextWrapper }>
               <p className={ style.greetingBlockText } dangerouslySetInnerHTML={ { __html: main_info } }/>
             </div>
-            { secondInfoOptions.map( option =>
-              <div key={ option.id } className={ style.greetingBlockWrapper }>
+            { secondInfoOptions.map( ( { id, info_title, info_text } ) =>
+              <div key={ id } className={ style.greetingBlockWrapper }>
                 <div className={ style.greetingOptionWrapper }>
                   <div className={ style.greetingBlockWrapperTitle }
-                       dangerouslySetInnerHTML={ { __html: option.info_title } }/>
-                  <p className={ style.greetingBlockText } dangerouslySetInnerHTML={ { __html: option.info_text } }/>
+                       dangerouslySetInnerHTML={ { __html: info_title } }/>
+                  <p className={ style.greetingBlockText } dangerouslySetInnerHTML={ { __html: info_text } }/>
                 </div>
               </div>,
             ) }
           </div>
           <div className={ style.greetingBlockImageWrapper }>
-            <img src={ photo } loading={'lazy'} alt="shopPhoto"/>
+            <img src={ photo } loading={ 'lazy' } alt="shopPhoto"/>
           </div>
         </div>
       </div>
     </div>
   );
-});
+} );
 
 export default GreetingBlock;

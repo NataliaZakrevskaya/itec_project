@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect } from 'react';
 import style from './PopularBrands.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import Brand from './Brand/Brand';
@@ -10,18 +10,18 @@ import { fetchBrandsTC, setChosenBrandId } from '../../redux/reducers/brands';
 import { getBrands } from '../../redux/selectors/brands';
 import { AppDispatch } from '../../redux/store';
 
-const PopularBrandsBlock = React.memo(() => {
+const PopularBrandsBlock = React.memo( (): ReactElement => {
 
   const brands = useSelector( getBrands );
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const chooseBrand = useCallback(( id: number ) => {
+  const chooseBrand = useCallback( ( id: number ) => {
     dispatch( setChosenBrandId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
-  }, []);
+  }, [ dispatch, navigate ] );
   useEffect( () => {
     dispatch( fetchBrandsTC() );
-  }, [] );
+  }, [ dispatch ] );
 
   return (
     <div className={ style.popularBrandsBlock }>
@@ -29,11 +29,11 @@ const PopularBrandsBlock = React.memo(() => {
         <h2 className={ style.title }>Популярные бренды</h2>
         <div className={ style.brandsContainer }>
           {
-            brands.map( brand =>
+            brands.map( ( { id, image } ) =>
               <Brand
-                key={ brand.id }
-                id={ brand.id }
-                image={ brand.image }
+                key={ id }
+                id={ id }
+                image={ image }
                 chooseBrand={ chooseBrand }
               />,
             )
@@ -43,6 +43,6 @@ const PopularBrandsBlock = React.memo(() => {
       </div>
     </div>
   );
-});
+} );
 
 export default PopularBrandsBlock;

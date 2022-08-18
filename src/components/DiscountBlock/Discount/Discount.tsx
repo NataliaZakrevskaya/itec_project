@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import style from './Discount.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../routes/enums';
 import { DiscountPropsType } from '../types';
 
-const Discount = React.memo(( { img, title, background }: DiscountPropsType ) => {
+const Discount = React.memo(( { img, title, background }: DiscountPropsType ): ReactElement => {
 
   const navigate = useNavigate();
 

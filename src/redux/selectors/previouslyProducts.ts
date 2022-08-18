@@ -1,5 +1,3 @@
 import { AppRootStateType } from '../store';
 
-export const getPreviouslyProduct = ( state: AppRootStateType ) => {
-  return state.previouslyProducts.previouslyProducts;
-};
+export const getPreviouslyProduct = ( state: AppRootStateType ) => state.previouslyProducts.previouslyProducts;

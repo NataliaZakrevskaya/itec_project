@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import style from './ProductsBlockPagination.module.scss';
 import prevPage from '../../Images/prevPage.svg';
 import nextPage from '../../Images/nextPage.svg';
@@ -11,7 +11,7 @@ const ProductsBlockPagination = React.memo(( {
                                     onPageChanged,
                                     portionSize = 3,
                                     withWords,
-                                  }: ProductsBlockPaginationType ) => {
+                                  }: ProductsBlockPaginationType ): ReactElement => {
 
   const [ portionNumber, setPortionNumber ] = useState( 1 );
   let pagesCount = Math.ceil( totalProductsCount / pageSize );

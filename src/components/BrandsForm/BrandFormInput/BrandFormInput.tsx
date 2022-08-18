@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeChosenBrandId, setChosenBrandId } from '../../../redux/reducers/brands';
 import { BrandFormInputPropsType } from '../types';
 
-const BrandFormInput = React.memo( ( { id, name, chosen }: BrandFormInputPropsType ) => {
+const BrandFormInput = React.memo( ( { id, name, chosen }: BrandFormInputPropsType ): ReactElement => {
   const dispatch = useDispatch();
 
   const addBrandStatusChosen = () => {

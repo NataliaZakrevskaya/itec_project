@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import checkmarkCircle from '../../../../Images/checkmarkCircle.svg';
 import Address from '../../Address/Address';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ import { AppDispatch } from '../../../../redux/store';
 import { getInfo } from '../../../../redux/selectors/descriptionShop';
 import { SuccessOrderModalPropsType } from '../types';
 
-const SuccessOrderModal = ( { from }: SuccessOrderModalPropsType ) => {
+const SuccessOrderModal = ( { from }: SuccessOrderModalPropsType ): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const { metro, address } = useSelector( getInfo );

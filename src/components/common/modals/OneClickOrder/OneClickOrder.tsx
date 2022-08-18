@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import Product from '../../Product/Product';
 import { useFormik } from 'formik';
 import style from './OneClickOrder.module.scss';
@@ -12,7 +12,7 @@ import { FormikErrorType, OnClickOrderPropsType } from '../types';
 import { getAddress } from '../../../../redux/selectors/descriptionShop';
 import PrivacyPolicyModal from '../PrivacyPolicyModal/PrivacyPolicyModal';
 
-const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ) => {
+const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );

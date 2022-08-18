@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React, { ReactElement, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../../routes/enums';
 import style from './NavbarForFooter.module.scss';
 import { HashLink } from 'react-router-hash-link';
 
-const NavbarForFooter = React.memo(() => {
+const NavbarForFooter = React.memo((): ReactElement => {
   const linkRef = useRef( null );
   const navigate = useNavigate();
   const discountLinkHandler = () => {

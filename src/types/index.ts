@@ -7,3 +7,4 @@ export * from './animalTypes';
 export * from './shopInfo';
 export * from './discount';
 export * from './productTypes';
+export * from './nullable';

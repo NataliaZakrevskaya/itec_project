@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import Address from '../common/Address/Address';
 import Schedule from '../common/Schedule/Schedule';
 import Phone from '../common/PhoneBlock/Phone';
@@ -16,7 +16,7 @@ import { AppDispatch } from '../../redux/store';
 import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop';
 import { getInfo } from '../../redux/selectors/descriptionShop';
 
-const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
+const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ): ReactElement => {
 
   const { metro, address, phone_number, social, time_weekdays, time_weekend } = useSelector( getInfo );
   const dispatch = useDispatch<AppDispatch>();
@@ -24,7 +24,7 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ) => {
 
   useEffect( () => {
     if ( !metro || !address || !phone_number || !social || !time_weekdays || !time_weekend ) dispatch( fetchDescriptionShopTC() );
-  }, [ address, metro, phone_number, social, time_weekdays, time_weekend ] );
+  }, [ address, metro, phone_number, social, time_weekdays, time_weekend, dispatch ] );
 
   return (
     <header className={ style.header } ref={ windowElRef }>

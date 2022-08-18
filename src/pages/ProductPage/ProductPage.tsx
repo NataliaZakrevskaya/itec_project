@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
@@ -167,13 +167,13 @@ const ProductPage = React.memo( () => {
       } else setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
     }
   };
-  const addToPreviouslyProducts = () => {
+  const addToPreviouslyProducts = useCallback( () => {
     if ( !previouslyProducts.length ) {
       dispatch( setProductToBlock( { product } ) );
     } else {
       if ( previouslyProducts.every( prod => prod.id !== product.id ) ) dispatch( setProductToBlock( { product } ) );
     }
-  };
+  }, [ dispatch, previouslyProducts, product ] );
 
   useEffect( () => {
     if ( max_discount && chosen_option.discount_by_option ) {
@@ -195,15 +195,15 @@ const ProductPage = React.memo( () => {
     } else {
       setPriceWithDiscount( 0 );
     }
-  }, [ chosen_option.discount_by_option, chosen_option.price, countOfProduct, max_discount ] );
+  }, [ chosen_option.discount_by_option, chosen_option.price, countOfProduct, max_discount, addToPreviouslyProducts, chosen_option.partial, chosen_option.quantity, product.max_discount ] );
   useEffect( () => {
     if ( product.id !== productId ) dispatch( fetchProductTC( { productId } ) );
-  }, [ productId ] );
+  }, [ productId, dispatch, product.id ] );
   useEffect( () => {
     if ( product.id ) {
       addToPreviouslyProducts();
     }
-  }, [ product, addToPreviouslyProducts ] );
+  }, [ product, addToPreviouslyProducts, dispatch ] );
   useEffect( () => {
     if ( isBasketModalActive || isOneClickModalActive ) {
       window.document.body.style.overflow = 'hidden';
@@ -211,7 +211,7 @@ const ProductPage = React.memo( () => {
     return () => {
       window.document.body.style.overflow = '';
     };
-  }, [ isOneClickModalActive, isBasketModalActive ] );
+  }, [ isOneClickModalActive, isBasketModalActive, dispatch ] );
 
   return (
     <div className={ style.productPage }>

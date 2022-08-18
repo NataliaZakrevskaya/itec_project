@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, ReactElement, useCallback, useEffect, useState } from 'react';
 import style from './SearchInput.module.scss';
 import SearchResultsBlock from '../Header/SearchResultsBlock/SearchResultsBlock';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { AppDispatch } from '../../redux/store';
 import { SearchInputPropsType } from './types';
 import { useDebounce } from '../../customHooks/useDebounce';
 
-const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ) => {
+const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ): ReactElement => {
 
   const [ search, setSearch ] = useState( '' );
   const debouncedSearch = useDebounce(search, 1000);
@@ -27,17 +27,17 @@ const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ) => 
   const onRejResultButtonClick = useCallback(() => {
     navigate( routesPathsEnum.CATALOG );
     setSearch( '' );
-  }, []);
+  }, [navigate]);
   const onProductItemClick = useCallback(( id: number ) => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
     setSearch( '' );
-  }, []);
+  }, [navigate]);
 
   useEffect( () => {
     if ( !window.localStorage.getItem( 'productsFromSearch' ) ) {
       dispatch( fetchProductsFromSearchTC( { search: debouncedSearch } ) );
     }
-  }, [ debouncedSearch ] );
+  }, [ debouncedSearch, dispatch ] );
 
   return (
     <div className={ forHeaderBurger ? style.searchInputBlockForHeader : style.searchInputBlock }>

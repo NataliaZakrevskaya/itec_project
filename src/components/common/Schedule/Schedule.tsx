@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import timeIcon from '../../../Images/clock_minorfooter.svg';
 import style from './Schedule.module.scss';
 import { SchedulePropsType } from '../types';
 
-const Schedule = React.memo(( { forFooterBurger, timeWeekdays, timeWeekend }: SchedulePropsType ) => {
+const Schedule = React.memo(( { forFooterBurger, timeWeekdays, timeWeekend }: SchedulePropsType ): ReactElement => {
   return (
     <div className={ style.scheduleBlock }>
       <div className={ style.scheduleBlockWrapperOne }>
