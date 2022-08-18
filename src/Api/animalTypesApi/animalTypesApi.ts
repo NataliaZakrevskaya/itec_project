@@ -1,4 +1,4 @@
-import { instance } from '../configApi/configApi';
+import { instance } from '../config';
 import { ANIMALS_URL } from './constants';
 import { AnimalTypesType } from '../../mocks';
 

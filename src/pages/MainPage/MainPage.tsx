@@ -18,7 +18,7 @@ const MainPage = React.memo(() => {
       <AnimalsTypesList/>
       <AdvertisingBlock/>
       <PopularProductsBlock fromCatalog={ false }/>
-      <DiscountBlock/>
+      {/*<DiscountBlock/>*/}
       <LatestBlock/>
       <PopularBrandsBlock/>
       <ReviewsBlock/>

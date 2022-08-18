@@ -1,4 +1,4 @@
-import { instance } from '../configApi/configApi';
+import { instance } from '../config';
 import { AxiosResponse, ShopInfoType } from '../../mocks';
 import { SHOP_INFO } from './constants';
 

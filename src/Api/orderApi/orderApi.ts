@@ -1,4 +1,4 @@
-import { instance } from '../configApi/configApi';
+import { instance } from '../config';
 import { CALLBACK_URL, ORDER_URL } from './constants';
 
 export const orderAPI = {

@@ -1,4 +1,4 @@
-import { instance } from '../configApi/configApi';
+import { instance } from '../config';
 import { PRODUCT_TYPES_URL } from './constants';
 import { ResBrandType } from '../../mocks';
 

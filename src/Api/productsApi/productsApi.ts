@@ -1,5 +1,5 @@
 import { PRODUCTS_URL } from './constants';
-import { instance } from '../configApi/configApi';
+import { instance } from '../config';
 import { AxiosResponse, responseProductItemType } from '../../mocks';
 
 export const productsAPI = {

@@ -1,4 +1,4 @@
-import { instance } from '../configApi/configApi';
+import { instance } from '../config';
 import { DiscountType } from '../../mocks';
 import { DISCOUNTS_URL } from './constants';
 

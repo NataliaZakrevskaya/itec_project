@@ -1,4 +1,4 @@
-import { instance } from '../configApi/configApi';
+import { instance } from '../config';
 import { AxiosResponse, OneProductItemType } from '../../mocks';
 import { PRODUCTS_URL } from '../productsApi/constants';
 
