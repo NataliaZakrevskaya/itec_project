@@ -79,7 +79,7 @@ const CheckoutPage = React.memo( () => {
         errors.phoneNumber = 'Обязательно';
       } else if ( values.phoneNumber.length !== 13 ) {
         errors.phoneNumber = 'Должно быть 13 символов';
-      } else if ( !/^[+]{1}375(29|25|33|44)[0-9]{7}$/i.test( values.phoneNumber ) ) {
+      } else if ( !/([+]375(29|25|33|44)[0-9]{7})/i.test( values.phoneNumber ) ) {
         errors.phoneNumber = 'Введите, пожалуйста, номер в формате +375291234567';
       }
       return errors;

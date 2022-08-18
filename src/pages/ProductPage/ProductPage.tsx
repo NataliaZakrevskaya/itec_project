@@ -33,9 +33,12 @@ import { setProductToBlock } from '../../redux/reducers/previouslyProducts-reduc
 import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts-selector';
 import { getInfo } from '../../redux/selectors/descriptionShop-selectors';
 import { PRODUCT_IMAGE } from '../../constants';
-import { getWeightSetValue } from '../../redux/selectors/app-selectors';
-import { setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
+import { getOneClickOrderRequestStatus, getWeightSetValue } from '../../redux/selectors/app-selectors';
+import { setOneClickOrderRequestStatus, setWeightSetIsShowed } from '../../redux/reducers/app-reducer';
 import { getPrice } from '../../helpers/getPrice';
+import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/SuccessOrderModal';
+import { location } from '../../enums';
+import { RequestStatus } from '../../redux/reducers/enums';
 
 const ProductPage = React.memo( () => {
 
@@ -45,6 +48,7 @@ const ProductPage = React.memo( () => {
   const [ priceWithDiscount, setPriceWithDiscount ] = useState<number>( 0 );
   const [ selectImageId, setSelectImageId ] = useState<number>( 0 );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
+  const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
 
@@ -67,12 +71,13 @@ const ProductPage = React.memo( () => {
   const productsFromBasket = useSelector( getProductsInBasket );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const weightSetIsShowed = useSelector( getWeightSetValue );
+  const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { address, metro } = useSelector( getInfo );
   const priceWithDiscountCropped = getPrice( priceWithDiscount );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
   const products = getProductItems(); //todo позже приходить будет по апи
-  const price = getPrice(product.chosen_option.partial ? ((product.chosen_option.quantity / 1000) * +product.chosen_option.price) : +product.chosen_option.price * countOfProduct);
+  const price = getPrice( product.chosen_option.partial ? ( ( product.chosen_option.quantity / 1000 ) * +product.chosen_option.price ) : +product.chosen_option.price * countOfProduct );
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -104,13 +109,20 @@ const ProductPage = React.memo( () => {
     setSelectImageId( id );
   };
   const closeOneClickModal = () => {
+    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsOneClickModalActive( false );
+  };
+  const closeOneClickOrderModal = () => {
+    setIsOneClickOrderActive( true );
   };
   const openOneClickModal = ( product: ProductItemType ) => {
     /*send to state product with correct quantity*/
-    const productForOneClickState = product.chosen_option.partial ? product : {...product, chosen_option: { ...chosen_option, quantity: countOfProduct }}
+    const productForOneClickState = product.chosen_option.partial ? product : {
+      ...product,
+      chosen_option: { ...chosen_option, quantity: countOfProduct },
+    };
     dispatch( setProductToState( { product: productForOneClickState } ) );
-    setCountOfProduct(1);
+    setCountOfProduct( 1 );
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {
@@ -120,7 +132,10 @@ const ProductPage = React.memo( () => {
   const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
   const openBasketModal = ( product: ProductItemType ) => {
     /*send to state product with correct quantity*/
-    const productForBasket = product.chosen_option.partial ? product : {...product, chosen_option: {...chosen_option, quantity: countOfProduct }}
+    const productForBasket = product.chosen_option.partial ? product : {
+      ...product,
+      chosen_option: { ...chosen_option, quantity: countOfProduct },
+    };
     setProductForBasketModal( productForBasket );
     /*if the basket already has this product, increase its number, if not, add it to the basket*/
     productsFromBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
@@ -357,9 +372,10 @@ const ProductPage = React.memo( () => {
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          <OneClickOrder
-            closeOneClickModal={ closeOneClickModal }
-          />
+          { isSuccessOneClickOrder
+            ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
+            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal }/> )
+          }
         </Modal>
       }
       { isBasketModalActive &&

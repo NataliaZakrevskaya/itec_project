@@ -34,7 +34,7 @@ import { useNavigate } from 'react-router-dom';
 import { getChosenProductTypeId } from '../../redux/selectors/productTypes-selectors';
 import { getOneClickOrderRequestStatus, getProductRequestStatus } from '../../redux/selectors/app-selectors';
 import { RequestStatus } from '../../redux/reducers/enums';
-import { setProductRequest } from '../../redux/reducers/app-reducer';
+import { setOneClickOrderRequestStatus, setProductRequest } from '../../redux/reducers/app-reducer';
 import { selectValues } from '../../Api/productsApi/enums';
 import { SelectValuesTypes } from '../../Api/productsApi/types';
 import { getChosenBrandsId } from '../../redux/selectors/brands-selectors';
@@ -60,7 +60,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
-  const isOneClickOrderSucceeded = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const chosenBrands = useSelector( getChosenBrandsId );
   const chosenOrdering = useSelector( getChosenOrdering );
   const productsFromBasket = useSelector( getProductsInBasket );
@@ -78,7 +79,11 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     dispatch( setActualPage( { pageNumber } ) );
   }, [] );
   const closeOneClickModal = () => {
+    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsOneClickModalActive( false );
+  };
+  const closeOneClickOrderModal = () => {
+    setIsOneClickOrderActive( true );
   };
   const openOneClickModal = ( product: ProductItemType ) => {
     dispatch( setProductToState( { product } ) );
@@ -113,13 +118,13 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   }, [ page, animal, category, chosenOrdering, chosenBrands ] );
   useEffect( () => {
     /*we turn off scroll when modals are active*/
-    if ( isBasketModalActive || isOneClickModalActive || isOneClickOrderSucceeded ) {
+    if ( isBasketModalActive || isOneClickModalActive || isSuccessOneClickOrder ) {
       window.document.body.style.overflow = 'hidden';
     }
     return () => {
       window.document.body.style.overflow = '';
     };
-  }, [ isOneClickModalActive, isBasketModalActive, isOneClickOrderSucceeded ] );
+  }, [ isOneClickModalActive, isBasketModalActive, isSuccessOneClickOrder ] );
 
   return (
     <div
@@ -218,15 +223,10 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          { isOneClickOrderSucceeded
-            ? ( <SuccessOrderModal
-              from={ location.ONE_CLICK_ORDER }
-            /> )
-            : ( <OneClickOrder
-              closeOneClickModal={ closeOneClickModal }
-            /> )
+          { isSuccessOneClickOrder
+            ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
+            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal }/> )
           }
-
         </Modal>
       }
       { isBasketModalActive &&

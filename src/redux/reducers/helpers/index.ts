@@ -1,5 +1,4 @@
 import { OneProductItemType, ProductItemType } from '../../../mocks';
-import product from '../../../components/common/Product/Product';
 
 /*this function is used to get the correct total number of products in the basket*/
 export const setTotalCount = ( state: any ) => {
@@ -101,8 +100,9 @@ export const getPriceWithDiscount = ( product: ProductItemType ) => {
 /*this function is used to calculate the correct basket total count without any discounts*/
 export const setTotalSum = ( state: any ) => {
   return state.totalSum = state.productsInBasket.map( ( product: ProductItemType ) => {
-    if(product.chosen_option.partial){
-       return +product.chosen_option.price * (product.chosen_option.quantity / 1000)
-    } else return +product.chosen_option.price * product.chosen_option.quantity })
+    if ( product.chosen_option.partial ) {
+      return +product.chosen_option.price * ( product.chosen_option.quantity / 1000 );
+    } else return +product.chosen_option.price * product.chosen_option.quantity;
+  } )
     .reduce( ( acc: number, current: number ) => acc + current, 0 ).toFixed( 2 );
 };

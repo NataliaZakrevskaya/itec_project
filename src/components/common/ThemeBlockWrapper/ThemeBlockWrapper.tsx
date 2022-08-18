@@ -33,6 +33,7 @@ const ThemeBlockWrapper = ( {
 
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
+  const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const productsFromBasket = useSelector( getProductsInBasket );
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
@@ -61,18 +62,20 @@ const ThemeBlockWrapper = ( {
   } = useCarousel( BlockNames.PRODUCTS, itemsForBlock.length );
 
   const closeOneClickModal = () => {
+    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsOneClickModalActive( false );
+  };
+  const closeOneClickOrderModal = () => {
+    setIsOneClickOrderActive( true );
   };
   const openOneClickModal = ( product: ProductItemType ) => {
     dispatch( setProductToState( { product } ) );
     setIsOneClickModalActive( true );
+    setIsOneClickOrderActive( true );
   };
   const closeBasketModal = () => {
     setIsBasketModalActive( false );
     setProductForBasketModal( null );
-  };
-  const closeSuccessModal = () => {
-    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
   };
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
@@ -134,11 +137,12 @@ const ThemeBlockWrapper = ( {
         </div>
         { !withoutButton && <Button title={ 'Смотреть больше товаров' }
                                     onClick={ onButtonClick }/> }
-        { isOneClickModalActive && !isSuccessOneClickOrder &&
+        { isOneClickModalActive &&
           <Modal closeModal={ closeOneClickModal }>
-            <OneClickOrder
-              closeOneClickModal={ closeOneClickModal }
-            />
+            { isSuccessOneClickOrder
+              ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
+              : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal }/> )
+            }
           </Modal>
         }
         { isBasketModalActive &&
@@ -148,11 +152,6 @@ const ThemeBlockWrapper = ( {
               product={ productForBasketModal }
               closeModal={ closeBasketModal }
             />
-          </Modal>
-        }
-        { isSuccessOneClickOrder &&
-          <Modal closeModal={ closeSuccessModal }>
-            <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/>
           </Modal>
         }
       </div>
