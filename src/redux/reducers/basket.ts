@@ -12,7 +12,7 @@ export const sendOrderTC = createAsyncThunk(
     try {
       await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo );
       dispatch( setOrderRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
-      dispatch( clearBasket( {} ) );
+      dispatch( clearBasket( ) );
     } catch ( err ) {
       dispatch( setOrderRequestStatus( { status: RequestStatus.FAILED } ) );
       rejectWithValue( null );
