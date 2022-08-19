@@ -95,7 +95,7 @@ const Product = ( {
           }
         </div>
       </div>
-      <div className={ style.quantityManagementBlockWrapper }>
+      <div className={ from === location.ONE_CLICK_ORDER ? style.quantityManagementBlockWrapperForModal : style.quantityManagementBlockWrapper }>
         <div className={ style.quantityManagementBlockPositionContainer }>
           <div className={ style.quantityManagementBlockContainer }>
             { chosen_option.partial

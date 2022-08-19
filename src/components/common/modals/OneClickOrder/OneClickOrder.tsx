@@ -104,7 +104,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
                 }
               </div>
             </div>
-            <div className={ formStyle.orderBlock }>
+            <div className={ style.orderBlock }>
               <button type="submit">Оформить заказ</button>
             </div>
           </form>

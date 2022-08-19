@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  max-width: 611px;
 
   .discount {
     position: absolute;
@@ -67,6 +68,46 @@
     flex-direction: column;
     justify-content: space-between;
 
+    .orderBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & button {
+        padding: 8px 16px;
+        background: $mainColor;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        @include SFTextMedium();
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF;
+
+        &:hover {
+          background: $hoverColor;
+          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+        }
+      }
+
+      & p {
+        @include SFTextRegular();
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        color: $opacityColor;
+        margin-top: 17px;
+        position: relative;
+
+        & span {
+          color: #2C6ECB;
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   .personalData {
@@ -80,6 +121,26 @@
     & span {
       color: $callbackColor;
       cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 472px) {
+  .onClickOrderContent {
+    padding: 12px 4px;
+    align-items: flex-start;
+
+    .setDataParagraph {
+      font-size: 15px;
+      line-height: 130%;
+    }
+
+    .formBlock {
+      width: 100%;
+
+      .orderBlock {
+        align-items: flex-start;
+      }
     }
   }
 }

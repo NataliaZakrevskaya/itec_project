@@ -52,6 +52,123 @@
     }
   }
 
+  .quantityManagementBlockWrapperForModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .quantityManagementBlockPositionContainer {
+      @include flex(column, space-between, flex-end);
+
+
+      .quantityManagementBlockContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 16px;
+
+
+        .quantityManagementBlock {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          & .minus {
+            @include size(36px, 36px);
+            padding: 8px 8px 8px 7px;
+            border-radius: 4px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            border: 1px solid #BABFC3;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 6px;
+
+            & div {
+              background: url("../../../Images/minusIcon.svg") no-repeat;
+              @include size(20px, 20px);
+            }
+          }
+
+          & .countMeaning {
+            @include size(36px, 36px);
+            padding: 8px 8px 8px 7px;
+            border-radius: 4px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            border: 1px solid #BABFC3;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 6px;
+            @include SFTextRegular();
+            font-size: 15px;
+            line-height: 20px;
+            color: $textColor;
+          }
+
+          & .plus {
+            @include size(36px, 36px);
+            padding: 8px 8px 8px 7px;
+            border-radius: 4px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            display: flex;
+            border: 1px solid #BABFC3;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            & div {
+              background: url("../../../Images/plusIcon.svg") no-repeat;
+              @include size(20px, 20px);
+            }
+          }
+        }
+
+        .basketImage {
+          margin-left: 37.75px;
+          cursor: pointer;
+        }
+      }
+
+      .discount {
+        @include SFTextRegular();
+        padding: 0 6px;
+        background: $discountColor;
+        border-radius: 2px;
+        font-size: 15px;
+        line-height: 20px;
+        color: #FFFFFF;
+      }
+    }
+
+    .priceBlock {
+      display: flex;
+      flex-direction: row;
+
+      .price {
+        @include SFDisplayBold();
+        font-size: 16px;
+        line-height: 130%;
+        color: $textColor;
+      }
+
+      .priceWithDiscount {
+        @include SFDisplayBold();
+        font-size: 16px;
+        line-height: 130%;
+        color: #8C9196;
+        text-decoration: line-through;
+        text-decoration-color: #D72C0D;
+        margin-right: 6px;
+      }
+    }
+  }
+
   .quantityManagementBlockWrapper {
     display: flex;
     flex-direction: column;
@@ -197,6 +314,26 @@
   .productWrap {
     flex-direction: column;
     gap: 16px;
+  }
+}
+
+@media (max-width: 472px) {
+  .productForBasketContainer {
+    .quantityManagementBlockWrapperForModal {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .quantityManagementBlockPositionContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .quantityManagementBlockContainer {
+          margin-bottom: 0;
+          margin-right: 16px;
+        }
+      }
+    }
   }
 }
 
