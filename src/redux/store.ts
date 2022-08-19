@@ -14,11 +14,11 @@ import { productsFromSearch } from './reducers/productsFromSearch';
 import { latestProducts } from './reducers/latestProducts';
 import { popularProducts } from './reducers/popularProducts';
 import { product } from './reducers/product';
-import { oneClickOrderReducer } from './reducers/onClickOrder';
+import { oneClickOrder } from './reducers/onClickOrder';
 import { ordering } from './reducers/ordering';
 import { previouslyProducts } from './reducers/previouslyProducts';
 import { descriptionShop } from './reducers/descriptionShop';
-import { discounts } from './reducers/discounts';
+import { discountForBasket } from './reducers/discountForBasket';
 
 const rootReducer = combineReducers( {
   app: app,
@@ -26,7 +26,7 @@ const rootReducer = combineReducers( {
   brands: brands,
   productTypes: productTypes,
   basket: basket,
-  oneClickOrder: oneClickOrderReducer,
+  oneClickOrder: oneClickOrder,
   product: product,
   products: products,
   productsFromSearch: productsFromSearch,
@@ -37,7 +37,7 @@ const rootReducer = combineReducers( {
   articles: articles,
   ordering: ordering,
   descriptionShop: descriptionShop,
-  discounts: discounts,
+  discountForBasket: discountForBasket,
 } );
 
 const persistConfig = {

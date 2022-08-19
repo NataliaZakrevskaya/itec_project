@@ -21,6 +21,7 @@ import { location } from '../../../enums';
 import { setOneClickOrderRequestStatus } from '../../../redux/reducers/app';
 import { ThemeBlockWrapperPropsType } from '../types';
 import { ProductItemType } from '../../../types';
+import { getDiscountsForBasket } from '../../../redux/selectors/discountForBasket';
 
 const ThemeBlockWrapper = ( {
                               title,
@@ -36,6 +37,7 @@ const ThemeBlockWrapper = ( {
   const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const productsFromBasket = useSelector( getProductsInBasket );
+  const basketDiscount = useSelector( getDiscountsForBasket )[0];
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { block, sectionsBlock, productItem } = blockTheme;
 
@@ -80,8 +82,8 @@ const ThemeBlockWrapper = ( {
   const openBasketModal = ( product: ProductItemType ) => {
     setProductForBasketModal( product );
     productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.id !== product.chosen_option?.id )
-      ? dispatch( setProductToBasket( { product } ) )
-      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1 } ) );
+      ? dispatch( setProductToBasket( { product, basketDiscount } ) )
+      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1, basketDiscount } ) );
     setIsBasketModalActive( true );
   };
 

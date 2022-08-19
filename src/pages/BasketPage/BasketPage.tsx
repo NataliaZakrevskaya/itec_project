@@ -26,7 +26,6 @@ import { getGoods } from '../../helpers/getGoods';
 import { getPriceForBasket } from '../../helpers/getPrice';
 
 const BasketPage = React.memo( () => {
-
   const productsInBasket = useSelector( getProductsInBasket );
   const basketCount = useSelector( getTotalSum );
   const basketCountWithDiscount = useSelector( getTotalSumWithDiscount );

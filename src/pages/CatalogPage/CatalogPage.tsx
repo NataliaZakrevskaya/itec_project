@@ -48,6 +48,7 @@ import { useResize } from '../../customHooks/useResize';
 import { PRODUCT_IMAGE } from '../../constants';
 import { CatalogPagePropsType } from './types';
 import { ProductItemType } from '../../types';
+import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -56,6 +57,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const subTitle = getTitleForProductsBlock( animal );
   const page = useSelector( getActualPage );
   const totalProductsCount = useSelector( getTotalProductsCount );
+  const basketDiscount = useSelector( getDiscountsForBasket )[0];
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
@@ -96,8 +98,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setProductForBasketModal( product );
     /*check basket for the presence of this product with the selected option by the article of the option. If there is one, increase the quantity of the product at the selected option, if the product is new, add to the basket*/
     productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.article_number !== product.chosen_option?.article_number )
-      ? dispatch( setProductToBasket( { product } ) )
-      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1 } ) );
+      ? dispatch( setProductToBasket( { product, basketDiscount } ) )
+      : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: 1, basketDiscount } ) );
     setIsBasketModalActive( true );
   };
   const resetFilters = () => {

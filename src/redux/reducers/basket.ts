@@ -3,7 +3,7 @@ import { setTotalCount, setTotalSum, setTotalSumWithDiscount } from './helpers';
 import { orderAPI } from '../../Api/orderApi';
 import { setCallbackRequestStatus, setOrderRequestStatus } from './app';
 import { RequestStatus } from './enums';
-import { OptionType, ProductItemType } from '../../types';
+import { DiscountType, OptionType, ProductItemType } from '../../types';
 
 export const sendOrderTC = createAsyncThunk(
   'order/sendOrder', async ( param: {
@@ -42,50 +42,50 @@ export const slice = createSlice( {
     totalSumWithDiscount: 0 as number,
   },
   reducers: {
-    setProductToBasket( state, action: PayloadAction<{ product: ProductItemType }> ) {
+    setProductToBasket( state, action: PayloadAction<{ product: ProductItemType, basketDiscount: DiscountType }> ) {
       state.productsInBasket.unshift( action.payload.product );
-      setTotalSumWithDiscount( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
       setTotalCount( state );
       setTotalSum( state );
     },
-    incrementProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
+    incrementProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number, basketDiscount: DiscountType }> ) {
       const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
       state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity + action.payload.quantity;
 
       setTotalCount( state );
-      setTotalSumWithDiscount( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
       setTotalSum( state );
     },
-    decrementProductQuantity( state, action: PayloadAction<{ optionId: number }> ) {
+    decrementProductQuantity( state, action: PayloadAction<{ optionId: number, basketDiscount: DiscountType }> ) {
       const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
       state.productsInBasket[ index ].chosen_option.quantity = state.productsInBasket[ index ].chosen_option.quantity - 1;
 
       setTotalCount( state );
-      setTotalSumWithDiscount( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
       setTotalSum( state );
     },
-    removeByChosenOptionArticle( state, action: PayloadAction<{ article_number: string }> ) {
+    removeByChosenOptionArticle( state, action: PayloadAction<{ article_number: string, basketDiscount: DiscountType }> ) {
       state.productsInBasket = state.productsInBasket.filter( product => product.chosen_option.article_number !== action.payload.article_number );
       setTotalCount( state );
-      setTotalSumWithDiscount( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
       setTotalSum( state );
     },
-    changeChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
+    changeChosenOption( state, action: PayloadAction<{ productId: number, option: OptionType, basketDiscount: DiscountType }> ) {
       const index = state.productsInBasket.findIndex( product => product.id === action.payload.productId );
       state.productsInBasket[ index ].chosen_option = action.payload.option;
       setTotalSum( state );
-      setTotalSumWithDiscount( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
       setTotalCount( state );
     },
-    changePartialProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number }> ) {
+    changePartialProductQuantity( state, action: PayloadAction<{ optionId: number, quantity: number, basketDiscount: DiscountType }> ) {
       const index = state.productsInBasket.findIndex( product => product.chosen_option.id === action.payload.optionId );
       state.productsInBasket[ index ].chosen_option.quantity = action.payload.quantity;
 
       setTotalSum( state );
-      setTotalSumWithDiscount( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
       setTotalCount( state );
     },
-    clearBasket( state, action ) {
+    clearBasket( state ) {
       state.productsInBasket = [];
       state.totalSum = 0;
       state.totalProductsCount = 0;

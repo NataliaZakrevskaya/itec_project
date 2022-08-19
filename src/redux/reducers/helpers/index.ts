@@ -1,6 +1,5 @@
-
 /*this function is used to get the correct total number of products in the basket*/
-import { OneProductItemType, ProductItemType } from '../../../types';
+import { DiscountType, OneProductItemType, ProductItemType } from '../../../types';
 
 export const setTotalCount = ( state: any ) => {
   return state.totalProductsCount = state.productsInBasket.map( ( product: ProductItemType ) => {
@@ -13,9 +12,12 @@ export const setTotalCount = ( state: any ) => {
   } )
     .reduce( ( acc: number, current: number ) => acc + current, 0 );
 };
-/*this function is used to calculate the correct basket total with all discounts*/
-export const setTotalSumWithDiscount = ( state: any ) => {
-  return state.totalSumWithDiscount = state.productsInBasket.map( ( product: ProductItemType | OneProductItemType ) => {
+/*this function is used to calculate the correct basket total with all discountForBasket*/
+export const setTotalSumWithDiscount = ( state: any, basketDiscount: DiscountType ) => {
+
+  const arrayDiscountsForAllBasket = basketDiscount ? basketDiscount.options : null;
+
+  const basketSumWithProductDiscounts = state.productsInBasket.map( ( product: ProductItemType | OneProductItemType ) => {
     /*if we have product discount and option discount*/
     if ( product.max_discount && product.chosen_option.discount_by_option ) {
       /*if the discount on the option is greater than the discount on the product*/
@@ -47,18 +49,33 @@ export const setTotalSumWithDiscount = ( state: any ) => {
       }/*return price with discount of option*/
       else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
     } else {
-      /*if we don't have any discounts, we return the full price*/
+      /*if we don't have any discountForBasket, we return the full price*/
       /*if chosen option is partial, taking into account that the cost for grams*/
       if ( product.chosen_option.partial ) {
         return +product.chosen_option.price * ( product.chosen_option.quantity / 1000 );
-      } /*if we don't have any discounts, we return the full price*/
+      } /*if we don't have any discountForBasket, we return the full price*/
       else return +product.chosen_option.price * product.chosen_option.quantity;
     }
   } )
     .reduce( ( acc: number, current: number ) => acc + current, 0 ).toFixed( 2 );
+  if ( !arrayDiscountsForAllBasket ) {
+    return state.totalSumWithDiscount = basketSumWithProductDiscounts;
+  } else {
+    const discount = arrayDiscountsForAllBasket.find( option => option.min_price_for_discount < basketSumWithProductDiscounts )?.discount_amount; // undefined || option
+    if ( !!discount ) {
+      const sumOfProductsWithoutDiscount = state.productsInBasket.map( ( product: ProductItemType | OneProductItemType ) => {
+        if ( !product.max_discount && !product.chosen_option.discount_by_option ) { // @ts-ignore
+          return product.chosen_option.price * product.chosen_option.quantity;
+        } else return 0;
+      } )
+        .reduce( ( acc: number, current: number ) => acc + current, 0 ).toFixed( 2 );
+      const totalDiscountForBasketWithountProductWithDiscount = sumOfProductsWithoutDiscount / 100 * discount;
+      return state.totalSumWithDiscount = ( basketSumWithProductDiscounts - totalDiscountForBasketWithountProductWithDiscount ).toFixed( 2 );
+    }
+  }
 };
 
-/*this function is used to calculate the correct price of the product with all discounts to display it on the product page*/
+/*this function is used to calculate the correct price of the product with all discountForBasket to display it on the product page*/
 export const getPriceWithDiscount = ( product: ProductItemType ) => {
   /*if we have product discount and option discount*/
   if ( product.max_discount && product.chosen_option.discount_by_option ) {
@@ -89,16 +106,16 @@ export const getPriceWithDiscount = ( product: ProductItemType ) => {
       /*if packing isn't by weight, return price with discount of option*/
     } else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
   } else {
-    /*if we don't have any discounts, we return the full price*/
+    /*if we don't have any discountForBasket, we return the full price*/
     /*if chosen option is partial, taking into account that the cost for grams*/
     if ( product.chosen_option.partial ) {
       return +product.chosen_option.price * ( product.chosen_option.quantity / 1000 );
     }
-    /*if we don't have any discounts, we return the full price*/
+    /*if we don't have any discountForBasket, we return the full price*/
     else return +product.chosen_option.price * product.chosen_option.quantity;
   }
 };
-/*this function is used to calculate the correct basket total count without any discounts*/
+/*this function is used to calculate the correct basket total count without any discountForBasket*/
 export const setTotalSum = ( state: any ) => {
   return state.totalSum = state.productsInBasket.map( ( product: ProductItemType ) => {
     if ( product.chosen_option.partial ) {

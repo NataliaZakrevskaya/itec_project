@@ -41,7 +41,7 @@ export const slice = createSlice( {
   },
 } );
 
-export const oneClickOrderReducer = slice.reducer;
+export const oneClickOrder = slice.reducer;
 export const {
   setProductToState,
   setChosenOptionToOneOrderProduct,

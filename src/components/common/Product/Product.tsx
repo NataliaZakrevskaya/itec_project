@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import style from './Product.module.scss';
 import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
 import basket from '../../../Images/basket.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   decrementProductQuantity,
   incrementProductQuantity,
@@ -22,6 +22,7 @@ import { setWeightSetIsShowed } from '../../../redux/reducers/app';
 import { ProductForBasketPropsType } from '../types';
 import { PRODUCT_IMAGE } from '../../../constants';
 import { getPriceWithDiscount } from '../../../redux/reducers/helpers';
+import { getDiscountsForBasket } from '../../../redux/selectors/discountForBasket';
 
 const Product = ( {
                     product,
@@ -34,6 +35,7 @@ const Product = ( {
   const navigate = useNavigate();
 
   const { id, name, chosen_option, max_discount, images, options } = product;
+  const basketDiscount = useSelector( getDiscountsForBasket )[0];
   const priceWithDiscount = ( !!max_discount || !!chosen_option.discount_by_option ) ? getPriceWithDiscount( product ) : null;
   const productName = stringCutter( name, 70 );
   const countOfProduct = chosen_option.quantity;
@@ -43,15 +45,15 @@ const Product = ( {
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
       if ( from === location.ONE_CLICK_ORDER ) dispatch( decrementOneOrderProductQuantity( { quantity: 1 } ) );
-      else dispatch( decrementProductQuantity( { optionId: chosen_option.id } ) );
+      else dispatch( decrementProductQuantity( { optionId: chosen_option.id, basketDiscount } ) );
     }
   };
   const onIncrementBtnClick = () => {
     if ( from === location.ONE_CLICK_ORDER ) dispatch( incrementOneOrderProductQuantity( { quantity: 1 } ) );
-    else dispatch( incrementProductQuantity( { optionId: chosen_option.id, quantity: 1 } ) );
+    else dispatch( incrementProductQuantity( { optionId: chosen_option.id, quantity: 1, basketDiscount } ) );
   };
   const deleteProductFromBasket = () => {
-    dispatch( removeByChosenOptionArticle( { article_number: chosen_option.article_number } ) );
+    dispatch( removeByChosenOptionArticle( { article_number: chosen_option.article_number, basketDiscount } ) );
   };
   const onNameClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );

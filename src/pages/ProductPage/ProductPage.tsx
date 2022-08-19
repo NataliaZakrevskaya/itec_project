@@ -40,6 +40,7 @@ import SuccessOrderModal from '../../components/common/modals/SuccessOrderModal/
 import { location } from '../../enums';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { OptionType, ProductItemType } from '../../types';
+import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
 
 const ProductPage = React.memo( () => {
 
@@ -72,6 +73,7 @@ const ProductPage = React.memo( () => {
   const productsFromBasket = useSelector( getProductsInBasket );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const weightSetIsShowed = useSelector( getWeightSetValue );
+  const basketDiscount = useSelector( getDiscountsForBasket )[0];
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { address, metro } = useSelector( getInfo );
   const priceWithDiscountCropped = getPrice( priceWithDiscount );
@@ -140,11 +142,12 @@ const ProductPage = React.memo( () => {
     setProductForBasketModal( productForBasket );
     /*if the basket already has this product, increase its number, if not, add it to the basket*/
     productsFromBasket.every( prod => prod.chosen_option?.id !== product.chosen_option?.id )
-      ? dispatch( setProductToBasket( { product: productForBasket } ) )
+      ? dispatch( setProductToBasket( { product: productForBasket, basketDiscount } ) )
       : chosen_option.partial ? dispatch( changePartialProductQuantity( {
         optionId: product.chosen_option.id,
         quantity: product.chosen_option.quantity,
-      } ) ) : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct } ) );
+        basketDiscount
+      } ) ) : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct, basketDiscount } ) );
     setIsBasketModalActive( true );
   };
   const onUnitClick = ( option: OptionType ) => {
