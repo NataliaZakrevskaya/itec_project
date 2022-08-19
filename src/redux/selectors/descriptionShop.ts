@@ -7,3 +7,4 @@ export const getDescriptionShop = ( state: AppRootStateType ): { title: string, 
 export const getSecondInfo = ( state: AppRootStateType ): Array<{ id: number, info_title: string, info_text: string }> => state.descriptionShop.second_info;
 export const getInfo = ( state: AppRootStateType ): ShopInfoType => state.descriptionShop;
 export const getPrivacyPolicyText = ( state: AppRootStateType ): string => state.descriptionShop.personal_data_politics;
+export const getMainInfo = ( state: AppRootStateType ): {  main_title: string, option_one: string, option_two: string, } => state.descriptionShop.info_main_page;

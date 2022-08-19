@@ -19,6 +19,8 @@ export type ShopInfoType = {
   }>
   personal_data_politics: string,
   info_main_page: {
-
+    main_title: string,
+    option_one: string,
+    option_two: string,
   }
 }

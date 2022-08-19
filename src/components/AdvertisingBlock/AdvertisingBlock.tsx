@@ -1,31 +1,42 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import style from './AdvertisingBlock.module.scss';
 import commonStyle from '../../styles/common/Container.module.scss';
 import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import frame from '../../Images/MainImage.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMainInfo } from '../../redux/selectors/descriptionShop';
+import { AppDispatch } from '../../redux/store';
+import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop';
 
-export const AdvertisingBlock = React.memo((): ReactElement => {
+export const AdvertisingBlock = React.memo( (): ReactElement => {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const { main_title, option_one, option_two } = useSelector( getMainInfo );
+  useEffect( () => {
+    dispatch( fetchDescriptionShopTC() );
+  }, [] );
   return (
     <div className={ style.advertisingBlockContainer }>
       <div className={ commonStyle.container }>
         <div className={ style.advertisingBlock }>
           <div className={ style.mainWrapper }>
-            <h1 className={ style.mainTitle }>Всё, что нужно вашему питомцу в 9 мин от метро Малиновка</h1>
+            <h1 className={ style.mainTitle } dangerouslySetInnerHTML={ { __html: main_title } }/>
             <div className={ style.subTitleWrapper }>
               <div className={ style.subTitleOne }>
-                <p>
+                <div dangerouslySetInnerHTML={ { __html: option_one } }/>
+                {/*<p>
                   <span>Более 5000 товаров </span>
                   для животных в наличии
-                </p>
+                </p>*/ }
               </div>
               <div className={ style.subTitleTwo }>
-                <p>
+                <div dangerouslySetInnerHTML={ { __html: option_two } }/>
+               {/* <p>
                   <span>Вкусные сюрпризы </span>
                   для ваших питомцев в магазине
-                </p>
+                </p>*/}
               </div>
             </div>
             <button className={ buttonStyle.bigButton } onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать
@@ -33,10 +44,11 @@ export const AdvertisingBlock = React.memo((): ReactElement => {
             </button>
           </div>
           <div className={ style.mainImage }>
-            <img src={ frame } loading={'lazy'} alt="frame"/>
+            <img src={ frame } loading={ 'lazy' } alt="frame"/>
           </div>
         </div>
       </div>
     </div>
-  );
-});
+  )
+    ;
+} );

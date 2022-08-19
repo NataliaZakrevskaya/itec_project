@@ -47,26 +47,38 @@
 
 .subTitleOne {
   display: flex;
+  position: relative;
+
+  & div {
+    max-width: 222px;
+  }
 }
 
 .subTitleOne:before {
   content: '';
   display: block;
+  align-items: flex-start;
+  top: 0;
   width: 2px;
-  height: 42px;
+  height: 100%;
   background: #98C6CD;
   margin-right: 8px;
 }
 
 .subTitleTwo {
   display: flex;
+  position: relative;
+
+  & div {
+    max-width: 254px;
+  }
 }
 
 .subTitleTwo:before {
   content: '';
   display: block;
   width: 2px;
-  height: 42px;
+  height: 100%;
   background: #98C6CD;
   margin-right: 8px;
 }
@@ -79,6 +91,18 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+@media (max-width: 1199px) {
+  .subTitleOne{
+    margin-right: 5px;
+  }
+  .subTitleOne:before {
+    width: 4.45px;
+  }
+  .subTitleTwo:before {
+    width: 4.45px;
   }
 }
 
@@ -96,7 +120,39 @@
     line-height: 140%;
   }
   .subTitleOne {
+    display: flex;
+    position: relative;
     margin-bottom: 16px;
+    margin-right: 0;
+    & div{
+      margin-left: 6px;
+    }
+  }
+  .subTitleOne:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: #98C6CD;
+    margin-right: 0;
+  }
+  .subTitleTwo {
+    display: flex;
+    position: relative;
+
+    & div {
+      margin-left: 6px;
+    }
+  }
+  .subTitleTwo:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: #98C6CD;
+    margin-right: 0;
   }
   .advertisingBlock {
     overflow: hidden;
