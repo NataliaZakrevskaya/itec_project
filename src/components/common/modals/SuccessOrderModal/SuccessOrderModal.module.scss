@@ -69,3 +69,21 @@
     }
   }
 }
+@media (max-width: 472px) {
+  .successModalContainer {
+    max-width: 100%;
+    padding: 28px 2px 25px;
+    .title {
+      margin: 20px 0 16px;
+
+      & h3 {
+        @include SFDisplayBold();
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+    .scheduleBlock {
+      margin: 0 0 17px;
+    }
+  }
+}
