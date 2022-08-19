@@ -26,7 +26,6 @@ const BasketModal = ( {
     closeModal();
   };
 
-
   return (
     <div className={ style.basketModalContainer }>
       { showDiscount && <div className={ style.discount }>Акция</div> }

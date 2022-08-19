@@ -1,19 +1,22 @@
 @import "src/styles/Mixins";
 @import "src/styles/Variables";
 
-.modalContainer{
+.modalContainer {
   max-height: 600px;
+  max-width: 500px;
   overflow: auto;
   padding: 15px 20px;
   position: relative;
-  & h1{
+
+  & h1 {
     margin: 0 auto 32px;
     @include SFDisplaySemibold();
     font-size: 28px;
     line-height: 32px;
     color: #202223;
   }
-  .goBack{
+
+  .goBack {
     @include SFDisplaySemibold();
     color: $callbackColor;
     position: absolute;
@@ -21,23 +24,54 @@
     top: 52px;
     cursor: pointer;
   }
-  & h2{
+
+  & h2 {
     @include SFDisplaySemibold();
     font-size: 16px;
     line-height: 24px;
     color: #202223;
     margin-bottom: 12px;
   }
-  & p{
+
+  & p {
     @include SFTextRegular();
     font-size: 14px;
     line-height: 140%;
     color: #202223;
   }
-  .goBackInTheEnd{
+
+  .goBackInTheEnd {
     @include SFDisplaySemibold();
     color: $callbackColor;
     cursor: pointer;
     margin: 15px auto;
+  }
+}
+
+@media (max-width: 472px) {
+  .modalContainer {
+    max-height: 465px;
+    padding: 15px 15px;
+
+    & h1 {
+      @include SFDisplaySemibold();
+      font-size: 20px;
+      line-height: 28px;
+      color: #202223;
+    }
+    .goBack {
+      @include SFDisplaySemibold();
+      color: $callbackColor;
+      position: absolute;
+      right: 26px;
+      top: 45px;
+      cursor: pointer;
+    }
+    & div{
+      @include SFTextRegular();
+      font-size: 14px;
+      line-height: 20px;
+      color: #202223;
+    }
   }
 }
