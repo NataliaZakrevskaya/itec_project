@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { discountsAPI } from '../../Api/discountsApi';
-import { DiscountType, Nullable } from '../../types';
+import { DiscountType } from '../../types';
 
 export const fetchDiscountForBasketTC = createAsyncThunk(
   'discountForBasket/fetchDiscountForBasket', async ( param, { rejectWithValue } ) => {
@@ -16,7 +16,7 @@ export const fetchDiscountForBasketTC = createAsyncThunk(
 export const slice = createSlice( {
   name: 'discountForBasket',
   initialState: {
-    discount: [] as Array<Nullable<DiscountType>>,
+    discount: [] as Array<DiscountType>,
   },
   reducers: {},
   extraReducers: builder => {
