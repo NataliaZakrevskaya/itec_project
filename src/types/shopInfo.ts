@@ -16,11 +16,19 @@ export type ShopInfoType = {
     id: number,
     info_title: string,
     info_text: string
-  }>
+  }>,
   personal_data_politics: string,
   info_main_page: {
     main_title: string,
     option_one: string,
     option_two: string,
-  }
+    photo_main_page: string,
+  },
+  banners: [
+    {
+      title: string,
+      color: string,
+      image: string
+    }
+    ],
 }

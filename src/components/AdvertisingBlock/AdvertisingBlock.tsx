@@ -4,7 +4,6 @@ import commonStyle from '../../styles/common/Container.module.scss';
 import buttonStyle from '../../styles/common/BigButton.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
-import frame from '../../Images/MainImage.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMainInfo } from '../../redux/selectors/descriptionShop';
 import { AppDispatch } from '../../redux/store';
@@ -13,10 +12,10 @@ import { fetchDescriptionShopTC } from '../../redux/reducers/descriptionShop';
 export const AdvertisingBlock = React.memo( (): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { main_title, option_one, option_two } = useSelector( getMainInfo );
+  const { main_title, option_one, option_two, photo_main_page } = useSelector( getMainInfo );
   useEffect( () => {
     dispatch( fetchDescriptionShopTC() );
-  }, [] );
+  }, [ dispatch ] );
   return (
     <div className={ style.advertisingBlockContainer }>
       <div className={ commonStyle.container }>
@@ -33,10 +32,10 @@ export const AdvertisingBlock = React.memo( (): ReactElement => {
               </div>
               <div className={ style.subTitleTwo }>
                 <div dangerouslySetInnerHTML={ { __html: option_two } }/>
-               {/* <p>
+                {/* <p>
                   <span>Вкусные сюрпризы </span>
                   для ваших питомцев в магазине
-                </p>*/}
+                </p>*/ }
               </div>
             </div>
             <button className={ buttonStyle.bigButton } onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать
@@ -44,7 +43,7 @@ export const AdvertisingBlock = React.memo( (): ReactElement => {
             </button>
           </div>
           <div className={ style.mainImage }>
-            <img src={ frame } loading={ 'lazy' } alt="frame"/>
+            <img src={ photo_main_page } loading={ 'lazy' } alt="frame"/>
           </div>
         </div>
       </div>

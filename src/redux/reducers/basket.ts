@@ -7,8 +7,7 @@ import { DiscountType, OptionType, ProductItemType } from '../../types';
 
 export const sendOrderTC = createAsyncThunk(
   'order/sendOrder', async ( param: {
-    name: string, phoneNumber: string, orderInfo: Array<{ article_number: string, quantity: number }>
-  }, { dispatch, rejectWithValue } ) => {
+    name: string, phoneNumber: string, orderInfo: any }, { dispatch, rejectWithValue } ) => {
     try {
       await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo );
       dispatch( setOrderRequestStatus( { status: RequestStatus.SUCCEEDED } ) );

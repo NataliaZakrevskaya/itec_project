@@ -7,8 +7,7 @@ import { OneProductItemType, OptionType, ProductItemType } from '../../types';
 
 export const sendOneClickOrderTC = createAsyncThunk(
   'oneClickOrder/sendOneClickOrder', async ( param: {
-    name: string, phoneNumber: string, orderInfo: [ { article_number: string, quantity: number } ]
-  }, {
+    name: string, phoneNumber: string, orderInfo: ProductItemType | OneProductItemType }, {
                                                dispatch,
                                                rejectWithValue,
                                              } ) => {

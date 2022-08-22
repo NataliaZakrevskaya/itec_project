@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './BasketPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
 import nextIcon from '../../Images/nextIcon.svg';
@@ -12,7 +12,7 @@ import Button from '../../components/common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import Product from '../../components/common/Product/Product';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsInBasket,
   getTotalProductsCount,
@@ -24,6 +24,8 @@ import { getPreviouslyProduct } from '../../redux/selectors/previouslyProducts';
 import { getInfo } from '../../redux/selectors/descriptionShop';
 import { getGoods } from '../../helpers/getGoods';
 import { getPriceForBasket } from '../../helpers/getPrice';
+import { AppDispatch } from '../../redux/store';
+import { fetchDiscountForBasketTC } from '../../redux/reducers/discountForBasket';
 
 const BasketPage = React.memo( () => {
   const productsInBasket = useSelector( getProductsInBasket );
@@ -38,6 +40,11 @@ const BasketPage = React.memo( () => {
   const priceWithDiscount = getPriceForBasket( basketCountWithDiscount );
   const goodsName = getGoods( productsCount );
   const navigate = useNavigate();
+
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect( () => {
+    dispatch( fetchDiscountForBasketTC() );
+  }, [ dispatch ] );
 
   return (
     <div className={ style.basketPageBlock }>

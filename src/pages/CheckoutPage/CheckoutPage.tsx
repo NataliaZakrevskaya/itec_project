@@ -37,9 +37,7 @@ const CheckoutPage = React.memo( () => {
   const priceWithDiscount = getPriceForBasket( basketCountWithDiscount );
   const price = getPriceForBasket( basketCount );
   const goodsName = getGoods( productsCount );
-  const orderInfo = productsInBasket.map( product => {
-    return ( { article_number: product.chosen_option.article_number, quantity: product.chosen_option.quantity } );
-  } );
+  const orderInfo = { productsInBasket, productsCount, basketCount, basketCountWithDiscount };
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -86,7 +84,7 @@ const CheckoutPage = React.memo( () => {
     },
     onSubmit: value => {
       try{
-        dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo: orderInfo } ) );
+        dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo } ) );
         setIsSuccessModalActive( true );
         formik.resetForm();
       } catch ( e ) {

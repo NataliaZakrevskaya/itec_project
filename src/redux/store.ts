@@ -21,29 +21,29 @@ import { descriptionShop } from './reducers/descriptionShop';
 import { discountForBasket } from './reducers/discountForBasket';
 
 const rootReducer = combineReducers( {
-  app: app,
-  animalTypes: animalTypes,
-  brands: brands,
-  productTypes: productTypes,
-  basket: basket,
-  oneClickOrder: oneClickOrder,
-  product: product,
-  products: products,
-  productsFromSearch: productsFromSearch,
-  latestProducts: latestProducts,
-  popularProducts: popularProducts,
-  previouslyProducts: previouslyProducts,
-  reviews: reviews,
-  articles: articles,
-  ordering: ordering,
-  descriptionShop: descriptionShop,
-  discountForBasket: discountForBasket,
+  app,
+  animalTypes,
+  brands,
+  productTypes,
+  basket,
+  oneClickOrder,
+  product,
+  products,
+  productsFromSearch,
+  latestProducts,
+  popularProducts,
+  previouslyProducts,
+  reviews,
+  articles,
+  ordering,
+  descriptionShop,
+  discountForBasket,
 } );
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: [ 'products', 'productsFromSearch', 'latestProducts', 'popularProducts', 'product' ],
+  blacklist: [ 'products', 'productsFromSearch', 'latestProducts', 'popularProducts', 'product', 'discountForBasket' ],
 };
 
 const persistedReducer = persistReducer( persistConfig, rootReducer );

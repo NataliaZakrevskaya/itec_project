@@ -52,10 +52,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
       dispatch( sendOneClickOrderTC( {
         name: value.name,
         phoneNumber: value.phoneNumber,
-        orderInfo: [ {
-          article_number: productForOneClickOrder.chosen_option.article_number,
-          quantity: productForOneClickOrder.chosen_option.quantity,
-        } ],
+        orderInfo: productForOneClickOrder,
       } ) );
       closeOneClickOrderModal();
     },

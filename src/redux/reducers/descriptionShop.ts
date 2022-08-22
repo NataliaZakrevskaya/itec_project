@@ -3,12 +3,12 @@ import { descriptionShopAPI } from '../../Api/descriptionShopApi';
 import { ShopInfoType } from '../../types';
 
 export const fetchDescriptionShopTC = createAsyncThunk(
-  'descriptionShop/fetchDescriptionShop', async ( param, { dispatch, rejectWithValue } ) => {
+  'descriptionShop/fetchDescriptionShop', async ( param, { rejectWithValue } ) => {
     const res = await descriptionShopAPI.setShopInfo();
     try {
       return { descriptionShop: res.data };
     } catch ( err ) {
-      rejectWithValue(null)
+      rejectWithValue( null );
     }
   },
 );
@@ -39,7 +39,15 @@ export const slice = createSlice( {
       main_title: '',
       option_one: '',
       option_two: '',
+      photo_main_page: '',
     },
+    banners: [
+      {
+        title: '',
+        color: '',
+        image: '',
+      },
+    ],
   } as ShopInfoType,
   reducers: {},
   extraReducers: builder => {

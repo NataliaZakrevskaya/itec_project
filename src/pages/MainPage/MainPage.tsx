@@ -9,6 +9,7 @@ import LatestBlock from '../../components/LatestBlock/LatestBlock';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import GreetingBlock from '../../components/GreetingBlock/GreetingBlock';
 import { AdvertisingBlock } from '../../components/AdvertisingBlock/AdvertisingBlock';
+import DiscountBlock from '../../components/DiscountBlock/DiscountBlock';
 
 const MainPage = React.memo( () => {
 
@@ -17,7 +18,7 @@ const MainPage = React.memo( () => {
       <AnimalsTypesList/>
       <AdvertisingBlock/>
       <PopularProductsBlock fromCatalog={ false }/>
-      {/*<DiscountBlock/>*/ }
+      <DiscountBlock/>
       <LatestBlock/>
       <PopularBrandsBlock/>
       <ReviewsBlock/>

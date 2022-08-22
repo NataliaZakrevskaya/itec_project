@@ -2,14 +2,11 @@ import { instance } from '../config';
 import { CALLBACK_URL, ORDER_URL } from './constants';
 
 export const orderAPI = {
-  async sendOrder( customerName: string, phoneNumber: string, orderInfo: Array<{
-    article_number: string,
-    quantity: number
-  }> ) {
+  async sendOrder( customerName: string, phoneNumber: string, orderInfo: any) {
     return await instance.post( ORDER_URL, {
       customer_name: customerName,
       phone_number: phoneNumber,
-      items: orderInfo,
+      orderInfo,
     } );
   },
   async sendCallbackRequest( customerName: string, phoneNumber: string ) {
