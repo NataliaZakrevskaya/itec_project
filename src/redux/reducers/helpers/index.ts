@@ -18,7 +18,6 @@ export const setTotalSumWithDiscount = ( state: any, basketDiscount: DiscountTyp
   const arrayDiscountsForAllBasket = basketDiscount ? basketDiscount.options : null;
 
   const basketSumWithProductDiscounts = state.productsInBasket.map( ( product: ProductItemType | OneProductItemType ) => {
-    debugger
     /*if we have product discount and option discount*/
     if ( product.max_discount && product.chosen_option.discount_by_option ) {
       /*if the discount on the option is greater than the discount on the product*/
@@ -62,7 +61,7 @@ export const setTotalSumWithDiscount = ( state: any, basketDiscount: DiscountTyp
   if ( !arrayDiscountsForAllBasket ) {
     return state.totalSumWithDiscount = basketSumWithProductDiscounts;
   } else {
-    const discount = arrayDiscountsForAllBasket.find( option => option.min_price_for_discount <= state.totalSum )?.discount_amount; // undefined || option
+    const discount = arrayDiscountsForAllBasket.find( option => option.min_price_for_discount <= basketSumWithProductDiscounts )?.discount_amount; // undefined || option
     if ( !!discount ) {
       const sumOfProductsWithoutDiscount = state.productsInBasket.map( ( product: ProductItemType | OneProductItemType ) => {
         if ( !product.max_discount && !product.chosen_option.discount_by_option ) { // @ts-ignore
