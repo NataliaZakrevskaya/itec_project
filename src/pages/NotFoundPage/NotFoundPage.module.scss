@@ -4,7 +4,7 @@
 .notFoundPageContainer {
   @include flex(row, flex-start, center);
   position: relative;
-  height: 80vh;
+  min-height: 80vh;
 
   .textContainer {
     width: 30%;
@@ -50,5 +50,64 @@
     top: 0;
     right: -24px;
     background: url('../../Images/notFoundImage.jpg') no-repeat center;
+  }
+}
+
+@media (max-width: 768px) {
+  .notFoundPageContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    z-index: 0;
+    top: 0;
+    position: inherit;
+
+    .textContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: inherit;
+      margin-top: 21px;
+
+      & h1 {
+        @include SFDisplayBold();
+        text-align: center;
+        font-size: 96px;
+        line-height: 120%;
+        margin-bottom: 8px;
+      }
+
+      & h2 {
+        @include SFDisplayBold();
+        font-size: 26px;
+        line-height: 120%;
+        margin-bottom: 16px;
+      }
+
+      & p {
+        @include SFTextRegular();
+        font-size: 16px;
+        line-height: 130%;
+        color: $opacityColor;
+        text-align: center;
+      }
+
+      .lastParagraph {
+        margin: 8px 0 25px;
+      }
+
+      & button {
+        padding: 12px 24px;
+      }
+    }
+    & div {
+      .notFoundImage{
+        @include size(393.51px, 242px);
+        object-fit: contain;
+        position: inherit;
+        background: url('../../Images/notFoundCatSmall.png') no-repeat center;
+      }
+    }
   }
 }
