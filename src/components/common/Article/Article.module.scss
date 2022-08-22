@@ -144,7 +144,24 @@
     margin-bottom: 17px !important;
   }
   .articleForPage {
-    max-width: 100% !important;
     width: 100%;
+    margin: 0 0;
+    padding: 8px;
+
+    .articleImageWrapper{
+      max-height: 138px;
+    }
+
+    .articleInfo{
+
+      & div{
+
+        & p{
+          font-size: 13px;
+          line-height: 20px;
+          color: #8C9196;
+        }
+      }
+    }
   }
 }
