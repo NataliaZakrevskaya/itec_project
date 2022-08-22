@@ -445,7 +445,6 @@
           }
 
           .basketInterfaceButton {
-
             
           }
 
@@ -508,9 +507,15 @@
 @media (max-width: 768px) {
   .productInfo{
     max-width: 540px !important;
+    padding: 0 10px !important;
   }
   .imgAndOrderBlock{
     margin-bottom: 32px !important;
+  }
+  .unitsGroupHeft {
+    @include SFDisplaySemibold();
+    font-size: 17px !important;
+    line-height: 24px !important;
   }
   .mainImageWrapper{
     height: 100% !important;
@@ -527,6 +532,11 @@
   }
   .basketInterface{
     flex-wrap: wrap;
+  }
+  .basketInterfaceButton {
+    & button{
+      padding: 12px 24px;
+    }
   }
   .basketInterfaceOneClickWrapper{
     margin: 0 auto;

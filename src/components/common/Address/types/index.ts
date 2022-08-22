@@ -1,4 +1,5 @@
 export type AddressPropsType = {
   address: string,
-  metro: string
+  metro: string,
+  forProductPage?: boolean
 }

@@ -58,7 +58,9 @@
   }
 
   .orderInfoPartial {
-    @include flex(row, space-between, center);
+    @include flex(row, center, center);
+    min-width: 230px;
+    gap: 16px;
   }
 }
 

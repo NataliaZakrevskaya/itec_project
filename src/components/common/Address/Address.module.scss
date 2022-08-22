@@ -35,6 +35,40 @@
     @include fontSize14();
   }
 }
+.addressBlockForProductPage{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: default;
+
+  .addressBlockWrapperOne {
+    display: flex;
+    align-items: center;
+  }
+
+  .addressBlockWrapperTwo {
+    display: flex;
+    align-items: center;
+  }
+
+  .navigateIcon {
+    width: 12.8px;
+    height: 16px;
+    margin-right: 9.6px;
+  }
+
+  .metroIcon {
+    margin-left: 10px;
+    margin-right: 6px;
+    width: 18px;
+    height: 12px;
+  }
+
+  & p {
+    @include SFTextRegular();
+    @include fontSize14();
+  }
+}
 
 @media (max-width: 1199px) {
   .addressBlock {
@@ -49,6 +83,17 @@
 
     & .addressBlockWrapperOne {
       margin-right: 12px;
+    }
+  }
+
+  .addressBlockForProductPage{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    .metroIcon {
+      margin-left: 0;
     }
   }
 }

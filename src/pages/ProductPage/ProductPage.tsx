@@ -308,7 +308,7 @@ const ProductPage = React.memo( () => {
                 <h3>Самовывоз</h3>
                 <p className={ style.pickUpInfo }>В данный момент товар можно забрать только самовывозом из нашего
                   уютного магазина по адресу:</p>
-                <Address address={ address } metro={ metro }/>
+                <Address address={ address } metro={ metro } forProductPage={true}/>
               </div>
             </div>
             <div className={ style.orderInfoForPayment }>
