@@ -11,7 +11,8 @@ import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getProductsInBasket,
-  getTotalProductsCount, getTotalSum,
+  getTotalProductsCount,
+  getTotalSum,
   getTotalSumWithDiscount,
 } from '../../redux/selectors/basket';
 import { sendOrderTC } from '../../redux/reducers/basket';
@@ -24,6 +25,7 @@ import { getPriceForBasket } from '../../helpers/getPrice';
 import { getGoods } from '../../helpers/getGoods';
 import { FormikErrorType } from '../../components/common/modals/types';
 import PrivacyPolicyModal from '../../components/common/modals/PrivacyPolicyModal/PrivacyPolicyModal';
+import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
 
 const CheckoutPage = React.memo( () => {
 
@@ -35,6 +37,7 @@ const CheckoutPage = React.memo( () => {
   const productsCount = useSelector( getTotalProductsCount );
   const productsInBasket = useSelector( getProductsInBasket );
   const priceWithDiscount = getPriceForBasket( basketCountWithDiscount );
+  const discountForBasket = useSelector( getDiscountsForBasket );
   const price = getPriceForBasket( basketCount );
   const goodsName = getGoods( productsCount );
   const orderInfo = { productsInBasket, productsCount, basketCount, basketCountWithDiscount };
@@ -48,11 +51,11 @@ const CheckoutPage = React.memo( () => {
     setIsSuccessModalActive( false );
   };
   const closePrivacyPolicyModal = () => {
-    setIsPrivacyModalActive(false);
-  }
+    setIsPrivacyModalActive( false );
+  };
   const openPrivacyPolicyModal = () => {
-    setIsPrivacyModalActive(true);
-  }
+    setIsPrivacyModalActive( true );
+  };
 
   useEffect( () => {
     if ( isSuccessModalActive && orderIsSucceeded ) {
@@ -83,12 +86,12 @@ const CheckoutPage = React.memo( () => {
       return errors;
     },
     onSubmit: value => {
-      try{
-        dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo } ) );
+      try {
+        dispatch( sendOrderTC( { name: value.name, phoneNumber: value.phoneNumber, orderInfo, discountForBasket } ) );
         setIsSuccessModalActive( true );
         formik.resetForm();
       } catch ( e ) {
-        console.error(e)
+        console.error( e );
       }
 
     },
@@ -139,8 +142,8 @@ const CheckoutPage = React.memo( () => {
               </div>
             </div>
             <div className={ style.basketInfo }>
-              <p className={priceWithDiscount !== price ? style.discountSum : style.sum }>{price} BYN</p>
-              {priceWithDiscount !== price && <p className={ style.sum }>{ priceWithDiscount } BYN</p>}
+              <p className={ priceWithDiscount !== price ? style.discountSum : style.sum }>{ price } BYN</p>
+              { priceWithDiscount !== price && <p className={ style.sum }>{ priceWithDiscount } BYN</p> }
               <p className={ style.productsInfo }>{ productsCount } { goodsName }</p>
             </div>
           </div>
@@ -153,13 +156,13 @@ const CheckoutPage = React.memo( () => {
       </div>
       { isSuccessModalActive && orderIsSucceeded &&
         <Modal closeModal={ closeSuccessModal }>
-         <SuccessOrderModal from={ location.CHECKOUT }/>
+          <SuccessOrderModal from={ location.CHECKOUT }/>
         </Modal>
       }
-      {isPrivacyModalActive &&
-        <Modal closeModal={closePrivacyPolicyModal}>
-        <PrivacyPolicyModal closePrivacyPolicyModal={closePrivacyPolicyModal}/>
-      </Modal>}
+      { isPrivacyModalActive &&
+        <Modal closeModal={ closePrivacyPolicyModal }>
+          <PrivacyPolicyModal closePrivacyPolicyModal={ closePrivacyPolicyModal }/>
+        </Modal> }
     </div>
   );
 } );

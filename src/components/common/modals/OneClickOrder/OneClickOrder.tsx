@@ -11,22 +11,24 @@ import { AppDispatch } from '../../../../redux/store';
 import { FormikErrorType, OnClickOrderPropsType } from '../types';
 import { getAddress } from '../../../../redux/selectors/descriptionShop';
 import PrivacyPolicyModal from '../PrivacyPolicyModal/PrivacyPolicyModal';
+import { getDiscountsForBasket } from '../../../../redux/selectors/discountForBasket';
 
 const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );
   const productForOneClickOrder = useSelector( getProductForOneClickOrder );
+  const discountForBasket = useSelector( getDiscountsForBasket );
   const address = useSelector( getAddress );
   const { chosen_option, max_discount } = productForOneClickOrder;
   const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
   const closePrivacyModalContent = () => {
-    setIsPrivacyModalActive(false);
-  }
+    setIsPrivacyModalActive( false );
+  };
   const openPrivacyModalContent = () => {
     debugger
-    setIsPrivacyModalActive(true);
-  }
+    setIsPrivacyModalActive( true );
+  };
 
   const formik = useFormik( {
     initialValues: {
@@ -53,6 +55,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
         name: value.name,
         phoneNumber: value.phoneNumber,
         orderInfo: productForOneClickOrder,
+        discountForBasket
       } ) );
       closeOneClickOrderModal();
     },
@@ -60,22 +63,23 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
 
   return (
     <>
-      {isPrivacyModalActive
-      ? <PrivacyPolicyModal closePrivacyPolicyModal={closePrivacyModalContent}/>
-      : (<div className={ style.onClickOrderContent }>
+      { isPrivacyModalActive
+        ? <PrivacyPolicyModal closePrivacyPolicyModal={ closePrivacyModalContent }/>
+        : ( <div className={ style.onClickOrderContent }>
           { showDiscount && <div className={ style.discount }>Акция</div> }
           <h3>Оформление заказа в 1 клик</h3>
           <Product
             product={ productForOneClickOrder }
             isForModal={ true }
-            closeOneClickModal={closeOneClickOrderModal}
+            closeOneClickModal={ closeOneClickOrderModal }
             from={ location.ONE_CLICK_ORDER }
           />
           <div className={ style.nextSection }>
             <span/>
           </div>
-          <p className={ style.setDataParagraph }>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать вас
-            по адресу: {address}</p>
+          <p className={ style.setDataParagraph }>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать
+            вас
+            по адресу: { address }</p>
           <form className={ style.formBlock } onSubmit={ formik.handleSubmit }>
             <div className={ formStyle.formInfo }>
               <div className={ formStyle.formInput }>
@@ -107,7 +111,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
           </form>
           <p className={ style.personalData }>Нажимая на кнопку вы даёте согласие на обработку
             <span onClick={ openPrivacyModalContent }> персональных данных </span></p>
-        </div>)}
+        </div> ) }
     </>
   );
 };

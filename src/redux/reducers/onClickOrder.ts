@@ -3,16 +3,16 @@ import { getProductInitState } from '../../mocks';
 import { RequestStatus } from './enums';
 import { setOneClickOrderRequestStatus } from './app';
 import { orderAPI } from '../../Api/orderApi';
-import { OneProductItemType, OptionType, ProductItemType } from '../../types';
+import { DiscountType, OneProductItemType, OptionType, ProductItemType } from '../../types';
 
 export const sendOneClickOrderTC = createAsyncThunk(
   'oneClickOrder/sendOneClickOrder', async ( param: {
-    name: string, phoneNumber: string, orderInfo: ProductItemType | OneProductItemType }, {
+    name: string, phoneNumber: string, orderInfo: ProductItemType | OneProductItemType, discountForBasket: Array<DiscountType> }, {
                                                dispatch,
                                                rejectWithValue,
                                              } ) => {
     try {
-      await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo );
+      await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo, param.discountForBasket );
       dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
     } catch ( err ) {
       dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.FAILED } ) );
