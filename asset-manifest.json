@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/itec_project/static/css/main.5f64c915.css",
-    "main.js": "/itec_project/static/js/main.baf16759.js",
+    "main.js": "/itec_project/static/js/main.85851c0c.js",
     "static/css/341.5b92b7d1.chunk.css": "/itec_project/static/css/341.5b92b7d1.chunk.css",
     "static/js/341.570a4350.chunk.js": "/itec_project/static/js/341.570a4350.chunk.js",
     "static/css/836.c7ed2345.chunk.css": "/itec_project/static/css/836.c7ed2345.chunk.css",
     "static/js/836.cc6ed0b4.chunk.js": "/itec_project/static/js/836.cc6ed0b4.chunk.js",
     "static/css/625.2ef42d3d.chunk.css": "/itec_project/static/css/625.2ef42d3d.chunk.css",
     "static/js/625.cebba653.chunk.js": "/itec_project/static/js/625.cebba653.chunk.js",
-    "static/css/82.3975ceb7.chunk.css": "/itec_project/static/css/82.3975ceb7.chunk.css",
+    "static/css/82.50c31226.chunk.css": "/itec_project/static/css/82.50c31226.chunk.css",
     "static/js/82.bc794a96.chunk.js": "/itec_project/static/js/82.bc794a96.chunk.js",
     "static/css/409.5ae7be32.chunk.css": "/itec_project/static/css/409.5ae7be32.chunk.css",
     "static/js/409.e696088c.chunk.js": "/itec_project/static/js/409.e696088c.chunk.js",
@@ -19,7 +19,7 @@
     "static/css/309.26dd8c05.chunk.css": "/itec_project/static/css/309.26dd8c05.chunk.css",
     "static/js/309.fa2f4dfc.chunk.js": "/itec_project/static/js/309.fa2f4dfc.chunk.js",
     "static/js/405.659379c2.chunk.js": "/itec_project/static/js/405.659379c2.chunk.js",
-    "static/css/517.65a808d8.chunk.css": "/itec_project/static/css/517.65a808d8.chunk.css",
+    "static/css/517.61c501f9.chunk.css": "/itec_project/static/css/517.61c501f9.chunk.css",
     "static/js/517.0622540c.chunk.js": "/itec_project/static/js/517.0622540c.chunk.js",
     "static/media/cat.svg": "/itec_project/static/media/cat.3f557dff0130974da9328bfa7c6f5a05.svg",
     "static/media/notFoundImage.jpg": "/itec_project/static/media/notFoundImage.5798f698194ea3b8ad8e.jpg",
@@ -65,14 +65,14 @@
     "static/media/minusIcon.svg": "/itec_project/static/media/minusIcon.7be582755f9c1f0e71e4.svg",
     "static/media/radio.svg": "/itec_project/static/media/radio.87668a1c5f01c03a846c.svg",
     "main.5f64c915.css.map": "/itec_project/static/css/main.5f64c915.css.map",
-    "main.baf16759.js.map": "/itec_project/static/js/main.baf16759.js.map",
+    "main.85851c0c.js.map": "/itec_project/static/js/main.85851c0c.js.map",
     "341.5b92b7d1.chunk.css.map": "/itec_project/static/css/341.5b92b7d1.chunk.css.map",
     "341.570a4350.chunk.js.map": "/itec_project/static/js/341.570a4350.chunk.js.map",
     "836.c7ed2345.chunk.css.map": "/itec_project/static/css/836.c7ed2345.chunk.css.map",
     "836.cc6ed0b4.chunk.js.map": "/itec_project/static/js/836.cc6ed0b4.chunk.js.map",
     "625.2ef42d3d.chunk.css.map": "/itec_project/static/css/625.2ef42d3d.chunk.css.map",
     "625.cebba653.chunk.js.map": "/itec_project/static/js/625.cebba653.chunk.js.map",
-    "82.3975ceb7.chunk.css.map": "/itec_project/static/css/82.3975ceb7.chunk.css.map",
+    "82.50c31226.chunk.css.map": "/itec_project/static/css/82.50c31226.chunk.css.map",
     "82.bc794a96.chunk.js.map": "/itec_project/static/js/82.bc794a96.chunk.js.map",
     "409.5ae7be32.chunk.css.map": "/itec_project/static/css/409.5ae7be32.chunk.css.map",
     "409.e696088c.chunk.js.map": "/itec_project/static/js/409.e696088c.chunk.js.map",
@@ -83,11 +83,11 @@
     "309.26dd8c05.chunk.css.map": "/itec_project/static/css/309.26dd8c05.chunk.css.map",
     "309.fa2f4dfc.chunk.js.map": "/itec_project/static/js/309.fa2f4dfc.chunk.js.map",
     "405.659379c2.chunk.js.map": "/itec_project/static/js/405.659379c2.chunk.js.map",
-    "517.65a808d8.chunk.css.map": "/itec_project/static/css/517.65a808d8.chunk.css.map",
+    "517.61c501f9.chunk.css.map": "/itec_project/static/css/517.61c501f9.chunk.css.map",
     "517.0622540c.chunk.js.map": "/itec_project/static/js/517.0622540c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5f64c915.css",
-    "static/js/main.baf16759.js"
+    "static/js/main.85851c0c.js"
   ]
 }
