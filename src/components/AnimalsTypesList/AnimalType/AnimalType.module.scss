@@ -50,9 +50,30 @@
   opacity: 0.6;
 }
 
+@media (max-width: 992px) {
+  .animalType {
+    min-width: 173px;
+    height: 73px;
+    gap: 10px;
+
+    & .animalTypeImageWrapper {
+      @include size(73px, 71px);
+    }
+    & span {
+      @include fontSize14();
+    }
+    &:hover {
+
+      & span {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+}
 @media (max-width: 768px) {
   .animalType {
-    width: 137.88px;
+    min-width: 137.88px;
     height: 56px;
 
     & .animalTypeImageWrapper {

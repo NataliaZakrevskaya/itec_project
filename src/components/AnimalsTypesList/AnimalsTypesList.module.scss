@@ -14,8 +14,19 @@
     transition-timing-function: ease-in-out;
   }
 }
+
+@media (max-width: 992px) {
+  .window {
+    .animalTypesBlock {
+      gap: 12px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
-  .animalTypesBlock{
-    gap: 8px !important;
+  .window {
+    .animalTypesBlock {
+      gap: 8px !important;
+    }
   }
 }
