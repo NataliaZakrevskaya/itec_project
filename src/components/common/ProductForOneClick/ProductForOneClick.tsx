@@ -1,53 +1,60 @@
+import { ProductForOneClickPropType } from '../types';
 import React, { ReactElement } from 'react';
-import style from './Product.module.scss';
-import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
-import basket from '../../../Images/basket.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  decrementProductQuantity,
-  incrementProductQuantity,
-  removeByChosenOptionArticle,
-} from '../../../redux/reducers/basket';
-import { stringCutter } from '../../../helpers/stringCutter';
 import { AppDispatch } from '../../../redux/store';
-import { routesPathsEnum } from '../../../routes/enums';
 import { useNavigate } from 'react-router-dom';
-import { location } from '../../../enums';
-import { getPrice } from '../../../helpers/getPrice';
-import { setWeightSetIsShowed } from '../../../redux/reducers/app';
-import { ProductForBasketPropsType } from '../types';
-import { PRODUCT_IMAGE } from '../../../constants';
-import { getPriceWithDiscount } from '../../../redux/reducers/helpers';
+import {
+  getPriceWithDiscount,
+  getPriceWithoutDiscount,
+  getProductCount,
+  getProductForOneClickOrder,
+} from '../../../redux/selectors/oneClickOrder';
 import { getDiscountsForBasket } from '../../../redux/selectors/discountForBasket';
+import { stringCutter } from '../../../helpers/stringCutter';
+import { location } from '../../../enums';
+import {
+  decrementOneOrderProductQuantity,
+  incrementOneOrderProductQuantity,
+} from '../../../redux/reducers/onClickOrder';
+import { routesPathsEnum } from '../../../routes/enums';
+import { setWeightSetIsShowed } from '../../../redux/reducers/app';
+import style from '../Product/Product.module.scss';
+import { PRODUCT_IMAGE } from '../../../constants';
+import ProductItemUnit from '../../ProductItemUnit/ProductItemUnit';
+import { getPriceForBasket } from '../../../helpers/getPrice';
 
-const Product = ( {
-                    product,
-                    isForModal,
-                    closeOneClickModal,
-                    from,
-                  }: ProductForBasketPropsType ): ReactElement => {
+const ProductForOneClick = ( {
+                               isForModal,
+                               closeOneClickModal,
+                               from,
+                             }: ProductForOneClickPropType ): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const { id, name, chosen_option, max_discount, images, options } = product;
+  const { id, name, chosen_option, max_discount, images, options } = useSelector( getProductForOneClickOrder );
+  const countOfProduct = useSelector( getProductCount );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
-  const priceWithDiscount = ( !!max_discount || !!chosen_option.discount_by_option ) ? getPriceWithDiscount( product ) : null;
   const productName = stringCutter( name, 70 );
-  const countOfProduct = chosen_option.quantity;
-  const price = getPrice( chosen_option.partial ? ( +chosen_option.price * countOfProduct / 1000 ) : ( +chosen_option.price * countOfProduct ) );
+  const priceWithoutDiscount = useSelector( getPriceWithoutDiscount );
+  const price = getPriceForBasket( priceWithoutDiscount );
+  const priceWithDiscountFromStore = useSelector( getPriceWithDiscount );
+  const priceWithDiscount = getPriceForBasket( priceWithDiscountFromStore );
   const showDiscount = ( !isForModal && !!max_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {
-      dispatch( decrementProductQuantity( { optionId: chosen_option.id, basketDiscount } ) );
+      dispatch( decrementOneOrderProductQuantity( {
+        quantity: 1,
+        basketDiscount,
+      } ) );
     }
   };
   const onIncrementBtnClick = () => {
-    dispatch( incrementProductQuantity( { optionId: chosen_option.id, quantity: 1, basketDiscount } ) );
-  };
-  const deleteProductFromBasket = () => {
-    dispatch( removeByChosenOptionArticle( { article_number: chosen_option.article_number, basketDiscount } ) );
+    dispatch( incrementOneOrderProductQuantity( {
+      quantity: 1,
+      basketDiscount,
+    } ) );
   };
   const onNameClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
@@ -106,12 +113,6 @@ const Product = ( {
                   <div/>
                 </div>
               </div> ) }
-            { !isForModal && <img
-              className={ style.basketImage }
-              src={ basket } alt="basketIcon"
-              loading={ 'lazy' }
-              onClick={ deleteProductFromBasket }
-            /> }
           </div>
           { showDiscount && <div className={ style.discount }>Акция</div> }
         </div>
@@ -127,4 +128,4 @@ const Product = ( {
   );
 };
 
-export default Product;
+export default ProductForOneClick;

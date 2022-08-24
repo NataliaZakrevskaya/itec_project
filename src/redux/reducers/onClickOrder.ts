@@ -1,13 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getProductInitState } from '../../mocks';
 import { RequestStatus } from './enums';
 import { setOneClickOrderRequestStatus } from './app';
 import { orderAPI } from '../../Api/orderApi';
 import { DiscountType, OneProductItemType, OptionType, ProductItemType } from '../../types';
+import { setTotalCount, setTotalSum, setTotalSumWithDiscount } from './helpers';
+import { OrderInfoType } from '../../types/order';
 
 export const sendOneClickOrderTC = createAsyncThunk(
   'oneClickOrder/sendOneClickOrder', async ( param: {
-    name: string, phoneNumber: string, orderInfo: ProductItemType | OneProductItemType, discountForBasket: Array<DiscountType> }, {
+    name: string, phoneNumber: string, orderInfo: OrderInfoType, discountForBasket: Array<DiscountType>
+  }, {
                                                dispatch,
                                                rejectWithValue,
                                              } ) => {
@@ -23,19 +25,41 @@ export const sendOneClickOrderTC = createAsyncThunk(
 
 export const slice = createSlice( {
   name: 'oneClickOrder',
-  initialState: getProductInitState() as OneProductItemType | ProductItemType,
+  initialState: {
+    productsInBasket: [] as Array<ProductItemType | OneProductItemType>,
+    totalProductsCount: 0 as number,
+    totalSum: 0 as number,
+    totalSumWithDiscount: 0 as number,
+  }
+  /*getProductInitState() as OneProductItemType | ProductItemType*/,
   reducers: {
-    setProductToState( state, action: PayloadAction<{ product: ProductItemType | OneProductItemType }> ) {
-      return action.payload.product;
+    setProductToState( state, action: PayloadAction<{ product: ProductItemType | OneProductItemType, basketDiscount: DiscountType }> ) {
+      state.productsInBasket = [];
+      state.productsInBasket.unshift( action.payload.product );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
+      setTotalCount( state );
+      setTotalSum( state );
     },
-    setChosenOptionToOneOrderProduct( state, action: PayloadAction<{ productId: number, option: OptionType }> ) {
-      state.chosen_option = action.payload.option;
+    setChosenOptionToOneOrderProduct( state, action: PayloadAction<{ option: OptionType, basketDiscount: DiscountType }> ) {
+
+      state.productsInBasket[ 0 ].chosen_option = action.payload.option;
+      setTotalSum( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
+      setTotalCount( state );
     },
-    incrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number }> ) {
-      state.chosen_option.quantity = state.chosen_option.quantity + action.payload.quantity;
+    incrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number, basketDiscount: DiscountType }> ) {
+      state.productsInBasket[ 0 ].chosen_option.quantity = state.productsInBasket[ 0 ].chosen_option.quantity + action.payload.quantity;
+
+      setTotalSum( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
+      setTotalCount( state );
     },
-    decrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number }> ) {
-      state.chosen_option.quantity = state.chosen_option.quantity - action.payload.quantity;
+    decrementOneOrderProductQuantity( state, action: PayloadAction<{ quantity: number, basketDiscount: DiscountType }> ) {
+      state.productsInBasket[ 0 ].chosen_option.quantity = state.productsInBasket[ 0 ].chosen_option.quantity - action.payload.quantity;
+
+      setTotalSum( state );
+      setTotalSumWithDiscount( state, action.payload.basketDiscount );
+      setTotalCount( state );
     },
   },
 } );

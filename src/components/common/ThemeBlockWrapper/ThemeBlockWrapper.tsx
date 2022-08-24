@@ -71,7 +71,7 @@ const ThemeBlockWrapper = ( {
     setIsOneClickOrderActive( true );
   };
   const openOneClickModal = ( product: ProductItemType ) => {
-    dispatch( setProductToState( { product } ) );
+    dispatch( setProductToState( { product, basketDiscount } ) );
     setIsOneClickModalActive( true );
     setIsOneClickOrderActive( true );
   };

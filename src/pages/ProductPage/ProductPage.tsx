@@ -124,7 +124,7 @@ const ProductPage = React.memo( () => {
       ...product,
       chosen_option: { ...chosen_option, quantity: countOfProduct },
     };
-    dispatch( setProductToState( { product: productForOneClickState } ) );
+    dispatch( setProductToState( { product: productForOneClickState, basketDiscount } ) );
     setCountOfProduct( 1 );
     setIsOneClickModalActive( true );
   };

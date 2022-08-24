@@ -1,27 +1,37 @@
 import React, { ReactElement, useState } from 'react';
-import Product from '../../Product/Product';
 import { useFormik } from 'formik';
 import style from './OneClickOrder.module.scss';
 import formStyle from '../../../../styles/common/Form.module.scss';
 import { location } from '../../../../enums';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendOneClickOrderTC } from '../../../../redux/reducers/onClickOrder';
-import { getProductForOneClickOrder } from '../../../../redux/selectors/oneClickOrder';
+import {
+  getPriceWithDiscount,
+  getPriceWithoutDiscount,
+  getProductCount,
+  getProductForOneClickOrder, getProductsArrayForOneClickOrder,
+} from '../../../../redux/selectors/oneClickOrder';
 import { AppDispatch } from '../../../../redux/store';
 import { FormikErrorType, OnClickOrderPropsType } from '../types';
 import { getAddress } from '../../../../redux/selectors/descriptionShop';
 import PrivacyPolicyModal from '../PrivacyPolicyModal/PrivacyPolicyModal';
 import { getDiscountsForBasket } from '../../../../redux/selectors/discountForBasket';
+import ProductForOneClick from '../../ProductForOneClick/ProductForOneClick';
 
 const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );
   const productForOneClickOrder = useSelector( getProductForOneClickOrder );
+  const productsInBasket = useSelector( getProductsArrayForOneClickOrder );
+  const productsCount = useSelector( getProductCount );
+  const basketCount = useSelector( getPriceWithoutDiscount );
+  const basketCountWithDiscount = useSelector( getPriceWithDiscount );
   const discountForBasket = useSelector( getDiscountsForBasket );
   const address = useSelector( getAddress );
   const { chosen_option, max_discount } = productForOneClickOrder;
   const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
+  const orderInfo = { productsInBasket, productsCount, basketCount, basketCountWithDiscount };
   const closePrivacyModalContent = () => {
     setIsPrivacyModalActive( false );
   };
@@ -54,8 +64,8 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
       dispatch( sendOneClickOrderTC( {
         name: value.name,
         phoneNumber: value.phoneNumber,
-        orderInfo: productForOneClickOrder,
-        discountForBasket
+        orderInfo,
+        discountForBasket,
       } ) );
       closeOneClickOrderModal();
     },
@@ -68,8 +78,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
         : ( <div className={ style.onClickOrderContent }>
           { showDiscount && <div className={ style.discount }>Акция</div> }
           <h3>Оформление заказа в 1 клик</h3>
-          <Product
-            product={ productForOneClickOrder }
+          <ProductForOneClick
             isForModal={ true }
             closeOneClickModal={ closeOneClickOrderModal }
             from={ location.ONE_CLICK_ORDER }

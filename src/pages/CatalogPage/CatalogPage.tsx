@@ -87,7 +87,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setIsOneClickOrderActive( true );
   };
   const openOneClickModal = ( product: ProductItemType ) => {
-    dispatch( setProductToState( { product } ) );
+    dispatch( setProductToState( { product, basketDiscount } ) );
     setIsOneClickModalActive( true );
   };
   const closeBasketModal = () => {

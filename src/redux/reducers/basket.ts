@@ -3,11 +3,12 @@ import { setTotalCount, setTotalSum, setTotalSumWithDiscount } from './helpers';
 import { orderAPI } from '../../Api/orderApi';
 import { setCallbackRequestStatus, setOrderRequestStatus } from './app';
 import { RequestStatus } from './enums';
-import { DiscountType, OptionType, ProductItemType } from '../../types';
+import { DiscountType, OneProductItemType, OptionType, ProductItemType } from '../../types';
+import { OrderInfoType } from '../../types/order';
 
 export const sendOrderTC = createAsyncThunk(
   'order/sendOrder', async ( param: {
-    name: string, phoneNumber: string, orderInfo: any, discountForBasket: Array<DiscountType> }, { dispatch, rejectWithValue } ) => {
+    name: string, phoneNumber: string, orderInfo: OrderInfoType, discountForBasket: Array<DiscountType> }, { dispatch, rejectWithValue } ) => {
     try {
       await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo, param.discountForBasket );
       dispatch( setOrderRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
@@ -35,7 +36,7 @@ export const sendCallbackRequestTC = createAsyncThunk(
 export const slice = createSlice( {
   name: 'basket',
   initialState: {
-    productsInBasket: [] as Array<ProductItemType>,
+    productsInBasket: [] as Array<ProductItemType | OneProductItemType>,
     totalProductsCount: 0 as number,
     totalSum: 0 as number,
     totalSumWithDiscount: 0 as number,
@@ -88,6 +89,7 @@ export const slice = createSlice( {
       state.productsInBasket = [];
       state.totalSum = 0;
       state.totalProductsCount = 0;
+      state.totalSumWithDiscount = 0;
     },
   },
 } );

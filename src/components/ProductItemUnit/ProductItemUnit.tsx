@@ -26,7 +26,7 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
     if ( from === location.LATEST_PRODUCTS ) dispatch( setChosenOptionToLatestProduct( { productId, option } ) );
     if ( from === location.BASKET ) dispatch(
       changeChosenOption( { productId, option, basketDiscount } ) );
-    if ( from === location.ONE_CLICK_ORDER ) dispatch( setChosenOptionToOneOrderProduct( { productId, option } ) );
+    if ( from === location.ONE_CLICK_ORDER ) dispatch( setChosenOptionToOneOrderProduct( { option, basketDiscount } ) );
     if ( from === location.PREVIOUSLY_PRODUCTS ) dispatch( setChosenOptionToPreviouslyProduct( {
       productId,
       option,
