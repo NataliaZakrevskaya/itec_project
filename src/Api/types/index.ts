@@ -8,3 +8,7 @@ export type AxiosResponse<T = any, D = any> = {
   config: AxiosRequestConfig<D>;
   request?: any;
 }
+export type AuthResponseType = {
+  access: string
+  refresh: string
+}

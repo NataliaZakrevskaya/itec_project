@@ -10,6 +10,7 @@ import { useResize } from './customHooks/useResize';
 import { fetchDiscountForBasketTC } from './redux/reducers/discountForBasket';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux/store';
+import { fetchAuthTC } from './redux/reducers/auth';
 
 const App = () => {
 
@@ -34,6 +35,9 @@ const App = () => {
   }, [ width ] );
   useEffect( () => {
     dispatch( fetchDiscountForBasketTC() );
+  }, [ dispatch ] );
+  useEffect( () => {
+    dispatch( fetchAuthTC() );
   }, [ dispatch ] );
 
   return (
