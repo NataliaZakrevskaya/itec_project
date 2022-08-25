@@ -37,8 +37,8 @@ const ProductForOneClick = ( {
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const productName = stringCutter( name, 70 );
   const priceWithoutDiscount = useSelector( getPriceWithoutDiscount );
-  const price = getPriceForBasket( priceWithoutDiscount );
   const priceWithDiscountFromStore = useSelector( getPriceWithDiscount );
+  const price = getPriceForBasket( priceWithoutDiscount );
   const priceWithDiscount = getPriceForBasket( priceWithDiscountFromStore );
   const showDiscount = ( !isForModal && !!max_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
 
@@ -118,8 +118,9 @@ const ProductForOneClick = ( {
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
-            <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
-            { !!priceWithDiscount && <p
+            <p
+              className={ priceWithDiscount === price ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
+            { priceWithDiscount !== price && <p
               className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed( 2 ) } BYN.</p> }
           </div>
         }
