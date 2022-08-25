@@ -12,9 +12,8 @@ const ProductTypesForm = React.memo( (): ReactElement => {
   const productsTypes = useSelector( getProductTypes );
   const chosenProductTypeId = useSelector( getChosenProductTypeId );
   const chooseProductType = useCallback( ( id: number ) => {
-    const pageNumber = 1;
     dispatch( setChosenProductTypeId( { id } ) );
-    dispatch( setActualPage( { pageNumber } ) );
+    dispatch( setActualPage( { pageNumber: 1 } ) );
   }, [ dispatch ] );
   useEffect( () => {
     dispatch( fetchProductTypesTC() );

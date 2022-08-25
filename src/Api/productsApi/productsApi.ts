@@ -1,9 +1,8 @@
-import { PRODUCTS_URL } from './constants';
+import { ACCOMPANYING_PRODUCTS_URL, PRODUCTS_URL } from './constants';
 import { instance } from '../config';
 import { ProductItemType, responseProductItemType } from '../../types';
 import { AxiosResponse } from '../types';
 import { PageSize } from './enums';
-import { ACCOMPANYING_PRODUCTS_URL } from '../accompanyingProductsApi/constants';
 
 export const productsAPI = {
   async setProducts( animal: number | null, category: number | null, brands?: string | null, page?: number, ordering?: string ) {

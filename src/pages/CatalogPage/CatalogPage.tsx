@@ -23,12 +23,7 @@ import { removeChosenProductTypeId } from '../../redux/reducers/productTypes';
 import { removeChosenAnimalTypeId } from '../../redux/reducers/animalTypes';
 import { incrementProductQuantity, setProductToBasket } from '../../redux/reducers/basket';
 import { fetchProductsTC, setActualPage } from '../../redux/reducers/products';
-import {
-  getActualPage,
-  getPageSize,
-  getProductItems,
-  getTotalProductsCount,
-} from '../../redux/selectors/products';
+import { getActualPage, getPageSize, getProductItems, getTotalProductsCount } from '../../redux/selectors/products';
 import { routesPathsEnum } from '../../routes/enums';
 import { useNavigate } from 'react-router-dom';
 import { getChosenProductTypeId } from '../../redux/selectors/productTypes';
@@ -57,7 +52,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const subTitle = getTitleForProductsBlock( animal );
   const page = useSelector( getActualPage );
   const totalProductsCount = useSelector( getTotalProductsCount );
-  const basketDiscount = useSelector( getDiscountsForBasket )[0];
+  const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
@@ -78,7 +73,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
 
   const onPageChanged = useCallback( ( pageNumber: number ) => {
     dispatch( setActualPage( { pageNumber } ) );
-  }, [dispatch] );
+  }, [ dispatch ] );
   const closeOneClickModal = () => {
     dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsOneClickModalActive( false );
