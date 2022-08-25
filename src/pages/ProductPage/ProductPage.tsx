@@ -40,6 +40,9 @@ import { location } from '../../enums';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { OptionType, ProductItemType } from '../../types';
 import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
+import { WithThisProductBuyBlock } from '../../components/WithThisProductBuy/WithThisProductBuyBlock';
+import { getAccompanyingProducts } from '../../redux/selectors/accompanyingProducts';
+import { fetchAccompanyingProductsTC } from '../../redux/reducers/accompanyingProducts';
 
 const ProductPage = React.memo( () => {
 
@@ -75,6 +78,7 @@ const ProductPage = React.memo( () => {
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { address, metro } = useSelector( getInfo );
+  const accompanyingProducts = useSelector( getAccompanyingProducts );
   const priceWithDiscountCropped = getPrice( priceWithDiscount );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
@@ -210,6 +214,9 @@ const ProductPage = React.memo( () => {
       addToPreviouslyProducts();
     }
   }, [ product, addToPreviouslyProducts, dispatch ] );
+  useEffect( () => {
+    dispatch( fetchAccompanyingProductsTC( { productId } ) );
+  }, [ productId, dispatch ] );
   useEffect( () => {
     if ( isBasketModalActive || isOneClickModalActive ) {
       window.document.body.style.overflow = 'hidden';
@@ -373,9 +380,10 @@ const ProductPage = React.memo( () => {
       <div className={ style.productPageButtonWrappers }>
         <PopularProductsBlock fromCatalog={ false }/>
       </div>
-      <div className={ style.productPageButtonWithWrappers }>
-        {/*<WithThisProductBuyBlock productId={ productId }/>*/ }
+      { accompanyingProducts.length > 0 && <div className={ style.productPageButtonWithWrappers }>
+        <WithThisProductBuyBlock products={ accompanyingProducts }/>
       </div>
+      }
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>

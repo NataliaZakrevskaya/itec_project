@@ -1,8 +1,9 @@
 import { PRODUCTS_URL } from './constants';
 import { instance } from '../config';
-import { responseProductItemType } from '../../types';
+import { ProductItemType, responseProductItemType } from '../../types';
 import { AxiosResponse } from '../types';
 import { PageSize } from './enums';
+import { ACCOMPANYING_PRODUCTS_URL } from '../accompanyingProductsApi/constants';
 
 export const productsAPI = {
   async setProducts( animal: number | null, category: number | null, brands?: string | null, page?: number, ordering?: string ) {
@@ -36,5 +37,8 @@ export const productsAPI = {
         page_size: PageSize.BLOCK,
       },
     } );
+  },
+  async setAccompanyingProducts( productId: number ) {
+    return await instance.get<Array<ProductItemType>>( `${ PRODUCTS_URL }/${ productId }/${ ACCOMPANYING_PRODUCTS_URL }` );
   },
 };

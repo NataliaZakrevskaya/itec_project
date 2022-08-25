@@ -1,3 +1,5 @@
+import { ProductItemType } from '../../../types';
+
 export type WithThisProductBuyBlockPropsType = {
-  productId: number
+  products: Array<ProductItemType>
 }

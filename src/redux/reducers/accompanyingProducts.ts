@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { setAccompanyingProductRequestStatus } from './app';
 import { RequestStatus } from './enums';
 import { OptionType, ProductItemType } from '../../types';
-import { accompanyingProductsApi } from '../../Api/accompanyingProductsApi/accompanyingProducts';
+import { productsAPI } from '../../Api/productsApi';
 
 export const fetchAccompanyingProductsTC = createAsyncThunk(
   'accompanyingProducts/fetchAccompanyingProducts', async ( param: { productId: number }, {
@@ -10,7 +10,7 @@ export const fetchAccompanyingProductsTC = createAsyncThunk(
     rejectWithValue,
   } ) => {
     try {
-      const res = await accompanyingProductsApi.setAccompanyingProducts( param.productId );
+      const res = await productsAPI.setAccompanyingProducts( param.productId );
       dispatch( setAccompanyingProductRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
       return { accompanyingProducts: res.data };
     } catch ( err ) {
