@@ -15,7 +15,7 @@ export const Wrapper = ( { children }: any ): ReactElement => {
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const chosenOrderingId = useSelector( getChosenOrdering );
   useLayoutEffect( () => {
-    document.documentElement.scrollTo( 0, 100 );
+    document.documentElement.scrollTo( 0, 0 );
   }, [ location.pathname, pageNumber, chosenProductTypeId, chosenBrandsId, chosenAnimalTypeId, chosenOrderingId ] );
   return children;
 };
