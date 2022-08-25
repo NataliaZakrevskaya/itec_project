@@ -10,7 +10,7 @@ import { HeaderBurgerPropsType } from '../types';
 
 const HeaderBurger = React.memo(( { onClickHandler, forFilters }: HeaderBurgerPropsType ): ReactElement => {
   return (
-    <div className={ style.navBarContainer }>
+    <header className={ style.navBarContainer }>
       <div className={ style.editModeBlock }>
         <HeaderLogo/>
         <div onClick={ () => onClickHandler() } className={ style.burgerButton }/>
@@ -30,7 +30,7 @@ const HeaderBurger = React.memo(( { onClickHandler, forFilters }: HeaderBurgerPr
             <BasketLink forHeaderBurger={ true } onClickHandler={ onClickHandler }/>
           </div> )
       }
-    </div>
+    </header>
   );
 });
 

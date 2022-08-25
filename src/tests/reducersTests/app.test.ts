@@ -13,6 +13,7 @@ beforeEach( () => {
   startState = {
     searchProductStatus: RequestStatus.IDLE,
     latestProductStatus: RequestStatus.IDLE,
+    accompanyingProductStatus: RequestStatus.IDLE,
     popularProductStatus: RequestStatus.IDLE,
     productRequestStatus: RequestStatus.IDLE,
     callbackRequestStatus: RequestStatus.IDLE,
@@ -65,6 +66,7 @@ describe( 'setting correct request statuses', () => {
 type InitStateType = {
   searchProductStatus: RequestStatusType,
   latestProductStatus: RequestStatusType,
+  accompanyingProductStatus: RequestStatusType,
   popularProductStatus: RequestStatusType,
   productRequestStatus: RequestStatusType,
   callbackRequestStatus: RequestStatusType,

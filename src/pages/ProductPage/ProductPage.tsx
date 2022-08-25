@@ -3,7 +3,6 @@ import PopularProductsBlock from '../../components/PopularProductsBlock/PopularP
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import style from './ProductPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
-import { WithThisProductBuyBlock } from '../../components/WithThisProductBuy/WithThisProductBuyBlock';
 import nextIcon from '../../Images/nextIcon.svg';
 import { useNavigate, useParams } from 'react-router-dom';
 import UnitsForBasket from '../../components/common/UnitsForBasket/UnitsForBasket';
@@ -73,7 +72,7 @@ const ProductPage = React.memo( () => {
   const productsFromBasket = useSelector( getProductsInBasket );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const weightSetIsShowed = useSelector( getWeightSetValue );
-  const basketDiscount = useSelector( getDiscountsForBasket )[0];
+  const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { address, metro } = useSelector( getInfo );
   const priceWithDiscountCropped = getPrice( priceWithDiscount );
@@ -146,8 +145,12 @@ const ProductPage = React.memo( () => {
       : chosen_option.partial ? dispatch( changePartialProductQuantity( {
         optionId: product.chosen_option.id,
         quantity: product.chosen_option.quantity,
-        basketDiscount
-      } ) ) : dispatch( incrementProductQuantity( { optionId: product.chosen_option.id, quantity: countOfProduct, basketDiscount } ) );
+        basketDiscount,
+      } ) ) : dispatch( incrementProductQuantity( {
+        optionId: product.chosen_option.id,
+        quantity: countOfProduct,
+        basketDiscount,
+      } ) );
     setIsBasketModalActive( true );
   };
   const onUnitClick = ( option: OptionType ) => {
@@ -308,7 +311,7 @@ const ProductPage = React.memo( () => {
                 <h3>Самовывоз</h3>
                 <p className={ style.pickUpInfo }>В данный момент товар можно забрать только самовывозом из нашего
                   уютного магазина по адресу:</p>
-                <Address address={ address } metro={ metro } forProductPage={true}/>
+                <Address address={ address } metro={ metro } forProductPage={ true }/>
               </div>
             </div>
             <div className={ style.orderInfoForPayment }>
@@ -371,7 +374,7 @@ const ProductPage = React.memo( () => {
         <PopularProductsBlock fromCatalog={ false }/>
       </div>
       <div className={ style.productPageButtonWithWrappers }>
-        <WithThisProductBuyBlock products={ products }/>
+        {/*<WithThisProductBuyBlock productId={ productId }/>*/ }
       </div>
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&

@@ -15,7 +15,7 @@ const Footer = (): ReactElement => {
   const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );
 
   return (
-    <div className={ style.footer }>
+    <footer className={ style.footer }>
       <div className={ commonStyle.container }>
         <div className={ style.navbar }>
           <FooterLogo/>
@@ -36,7 +36,7 @@ const Footer = (): ReactElement => {
           <p>© Все права защищены 2022</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

@@ -19,6 +19,7 @@ import { ordering } from './reducers/ordering';
 import { previouslyProducts } from './reducers/previouslyProducts';
 import { descriptionShop } from './reducers/descriptionShop';
 import { discountForBasket } from './reducers/discountForBasket';
+import { accompanyingProducts } from './reducers/accompanyingProducts';
 
 const rootReducer = combineReducers( {
   app,
@@ -31,6 +32,7 @@ const rootReducer = combineReducers( {
   products,
   productsFromSearch,
   latestProducts,
+  accompanyingProducts,
   popularProducts,
   previouslyProducts,
   reviews,

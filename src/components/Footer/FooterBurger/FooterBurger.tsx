@@ -10,7 +10,7 @@ import { getInfo } from '../../../redux/selectors/descriptionShop';
 const FooterBurger = React.memo((): ReactElement => {
   const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );
   return (
-    <div className={ style.footerBurger }>
+    <footer className={ style.footerBurger }>
       <Address address={ address } metro={ metro }/>
       <div className={ style.instaBlock }>
         <Phone phoneNumber={ phone_number }/>
@@ -18,7 +18,7 @@ const FooterBurger = React.memo((): ReactElement => {
       </div>
       <Schedule forFooterBurger={ true } timeWeekdays={ time_weekdays } timeWeekend={ time_weekend }/>
       <Callback forHeader={ false }/>
-    </div>
+    </footer>
   );
 });
 
