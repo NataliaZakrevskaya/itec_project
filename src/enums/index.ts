@@ -14,5 +14,5 @@ export enum selectValues {
   NAME_NEGATIVE = '-name',
   PRICE_POSITIVE = 'min_price',
   PRICE_NEGATIVE = '-min_price',
-  POPULARITY = 'popular',
+  POPULARITY = '-popular',
 }

@@ -30,14 +30,20 @@ export const setTotalSumWithDiscount = ( state: any, basketDiscount: DiscountTyp
         /*return price with discount of option*/
         else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
       } else {
+        if(product.chosen_option.partial){
+          return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * ( product.chosen_option.quantity / 1000 );
+        }
         /*if the discount on the product is greater than discount on the option, return price with discount of product*/
-        return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
+        else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
       }
     }
     /*if we have only product discount*/
     if ( product.max_discount && !product.chosen_option.discount_by_option ) {
       /*return price with discount of product*/
-      return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
+      if(product.chosen_option.partial){
+        return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * ( product.chosen_option.quantity / 1000 );
+      }
+      else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
     }
     /*if we have only option discount*/
     if ( !product.max_discount && product.chosen_option.discount_by_option ) {
@@ -94,14 +100,19 @@ export const getPriceWithDiscount = ( product: ProductItemType ) => {
         /*if packing isn't by weight, return price with discount of option*/
       } else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.chosen_option.discount_by_option ) ) * product.chosen_option.quantity;
     } else {
-      /*return price with discount of product*/
-      return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
+      if(product.chosen_option.partial){
+        return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * ( product.chosen_option.quantity / 1000 );
+      }
+      /*if the discount on the product is greater than discount on the option, return price with discount of product*/
+      else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
     }
   }
   /*if we have only product discount*/
   if ( product.max_discount && !product.chosen_option.discount_by_option ) {
-    /*return price with discount of product*/
-    return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
+    if(product.chosen_option.partial){
+      return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * ( product.chosen_option.quantity / 1000 );
+    }
+    else return ( +product.chosen_option.price - ( +product.chosen_option.price / 100 * product.max_discount ) ) * product.chosen_option.quantity;
   }
   /*if we have only option discount*/
   if ( !product.max_discount && product.chosen_option.discount_by_option ) {
