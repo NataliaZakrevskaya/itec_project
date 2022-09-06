@@ -13,6 +13,7 @@
     .instagramIcon {
       @include size(18px, 18px);
       background: url("../../../Images/instagramIcon.svg") no-repeat center;
+      margin-left: 12px;
     }
   }
 }
