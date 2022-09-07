@@ -6,9 +6,10 @@ import Button from '../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { routesPathsEnum } from '../../routes/enums';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBrandsTC, setChosenBrandId } from '../../redux/reducers/brands';
+import { fetchBrandsTC, setChosenBrandId, setChosenBrandsId } from '../../redux/reducers/brands';
 import { getBrands } from '../../redux/selectors/brands';
 import { AppDispatch } from '../../redux/store';
+import { setActualPage } from '../../redux/reducers/products';
 
 const PopularBrandsBlock = React.memo( (): ReactElement => {
 
@@ -16,7 +17,10 @@ const PopularBrandsBlock = React.memo( (): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const chooseBrand = useCallback( ( id: number ) => {
+    const pageNumber = 1;
+    dispatch( setActualPage( { pageNumber } ) );
     dispatch( setChosenBrandId( { id } ) );
+    dispatch( setChosenBrandsId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
   }, [ dispatch, navigate ] );
   useEffect( () => {
