@@ -38,7 +38,7 @@
         padding: 16px 24px;
         background-color: $successColor;
         color: white;
-        width: 371px;
+        min-width: 371px;
         border-radius: 8px;
         cursor: default;
 
@@ -47,6 +47,7 @@
           flex-direction: row;
           align-items: center;
           justify-content: space-between;
+          gap: 8px;
           margin-bottom: 24px;
 
           .priceBlock {
