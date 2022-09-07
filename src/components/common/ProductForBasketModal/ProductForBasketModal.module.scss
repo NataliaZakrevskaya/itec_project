@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   gap: 25px;
   align-items: center;
   @include SFTextRegular();
@@ -28,7 +28,7 @@
     }
 
     & p {
-      max-width: 232px;
+      max-width: 395px;
     }
   }
 
@@ -40,15 +40,22 @@
     align-items: center;
     justify-content: center;
 
+    & p{
+      @include SFTextMedium();
+      font-size: 16px;
+      line-height: 130%;
+      color: $textColor;
+    }
+
     .price {
-      @include SFDisplayBold();
+      @include SFTextMedium();
       font-size: 16px;
       line-height: 130%;
       color: $textColor;
     }
 
     .priceWithDiscount {
-      @include SFDisplayBold();
+      @include SFTextMedium();
       font-size: 16px;
       line-height: 130%;
       color: #8C9196;
@@ -61,12 +68,5 @@
     @include flex(row, center, center);
     min-width: 230px;
     gap: 16px;
-  }
-}
-
-@media (max-width: 577px) {
-  .ProductForBasketModalContainer {
-    display: flex;
-    flex-direction: column;
   }
 }
