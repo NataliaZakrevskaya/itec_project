@@ -15,7 +15,7 @@ export type ProductForBasketPropsType = {
 }
 export type ProductForOneClickPropType = {
   isForModal: boolean,
-  closeOneClickModal?: () => void,
+  closeOneClickModal: () => void,
   from: string
 }
 export type ProductForBasketModalPropsType = {

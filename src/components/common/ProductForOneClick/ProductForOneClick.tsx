@@ -60,9 +60,10 @@ const ProductForOneClick = ( {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
   const onSetWeightClick = () => {
-    !!closeOneClickModal && closeOneClickModal();
+    closeOneClickModal();
     dispatch( setWeightSetIsShowed( { status: true } ) );
-    navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
+    if(from === 'oneClickOrder') document.documentElement.scrollTo( 0, 0 );
+    else navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
   };
 
   return (

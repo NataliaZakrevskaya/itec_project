@@ -296,7 +296,7 @@ const ProductPage = React.memo( () => {
                         type="text"
                         value={ weightSetValue }
                         onChange={ onWeightSetInputChange }
-                        autoFocus={ weightSetIsShowed }
+                        autoFocus={ true }
                         placeholder={ 'Например: 1.2 кг' }
                       />
                       <button onClick={ onApplyButtonClick }>Применить</button>

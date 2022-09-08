@@ -34,6 +34,7 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
   };
   const onSetWeightClick = () => {
     dispatch( setWeightSetIsShowed( { status: true } ) );
+    document.documentElement.scrollTo( 0, 0 );
     navigate( `${ routesPathsEnum.CATALOG }/${ productId }` );
   };
 
