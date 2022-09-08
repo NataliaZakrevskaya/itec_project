@@ -82,8 +82,7 @@ const ProductPage = React.memo( () => {
   const priceWithDiscountCropped = getPrice( priceWithDiscount );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
-  const products = getProductItems(); //todo позже приходить будет по апи
-  const price = getPrice( product.chosen_option.partial ? ( ( product.chosen_option.quantity / 1000 ) * +product.chosen_option.price ) : +product.chosen_option.price * countOfProduct );
+   const price = getPrice( product.chosen_option.partial ? ( ( product.chosen_option.quantity / 1000 ) * +product.chosen_option.price ) : +product.chosen_option.price * countOfProduct );
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
