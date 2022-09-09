@@ -1,7 +1,7 @@
 import Header from './components/Header/Header';
 import AppRoutes from './routes/routes';
 import Footer from './components/Footer/Footer';
-import React, { Suspense, useCallback, useEffect, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import HeaderBurger from './components/Header/HeaderBurger/HeaderBurger';
 import FooterBurger from './components/Footer/FooterBurger/FooterBurger';
 import { Wrapper } from './components/common/Wrapper/Wrapper';
@@ -29,7 +29,8 @@ const App = () => {
   const openEditMode = useCallback( () => {
     setEditMode( true );
   }, [] );
-  const { windowElRef, width } = useResize();
+  const windowElRef = useRef( null );
+  const { width } = useResize(windowElRef);
   useEffect( () => {
     if ( width <= 770 ) setEditMode( false );
   }, [ width ] );

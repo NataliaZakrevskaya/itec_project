@@ -33,7 +33,9 @@ const ProductItem = ( {
   };
 
   return (
-    <div className={ `${ forCatalog ? style.productItemForCatalog : style.productItem } ${ classNameForDarkItem }` }>
+    <div className={ `${ forCatalog ? style.productItemForCatalog : style.productItem } ${ classNameForDarkItem }` }
+    style={{width: '375px'}}
+    >
       { showDiscount && <div className={ style.discount }>Акция</div> }
       <img
         className={ style.mainProductItemImage }

@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useRef } from 'react';
 import Address from '../common/Address/Address';
 import Schedule from '../common/Schedule/Schedule';
 import Phone from '../common/PhoneBlock/Phone';
@@ -20,7 +20,8 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ): ReactElemen
 
   const { metro, address, phone_number, social, time_weekdays, time_weekend } = useSelector( getInfo );
   const dispatch = useDispatch<AppDispatch>();
-  const { width, windowElRef } = useResize();
+  const windowElRef = useRef( null );
+  const { width } = useResize( windowElRef );
 
   useEffect( () => {
     if ( !metro || !address || !phone_number || !social || !time_weekdays || !time_weekend ) dispatch( fetchDescriptionShopTC() );
@@ -36,7 +37,7 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ): ReactElemen
             <Phone phoneNumber={ phone_number }/>
             <a className={ style.headerInstagram } href={ social } target={ '_blank' }
                rel={ 'noreferrer' }>
-              <img src={ instagramIcon } loading={'lazy'} alt={ 'instagramIcon' }/>
+              <img src={ instagramIcon } loading={ 'lazy' } alt={ 'instagramIcon' }/>
             </a>
           </div>
           <Callback forHeader={ true }/>

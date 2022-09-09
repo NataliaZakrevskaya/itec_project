@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import nextIcon from '../../Images/nextIcon.svg';
 import style from './CatalogPage.module.scss';
 import navigationStyle from '../../styles/common/NavigationBlock.module.scss';
@@ -61,8 +61,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const chosenBrands = useSelector( getChosenBrandsId );
   const chosenOrdering = useSelector( getChosenOrdering );
   const productsFromBasket = useSelector( getProductsInBasket );
-  const { windowElRef, width } = useResize(); /*learn the width of the product's display block*/
-  const withWords = width >= 620; /*words in the pagination block are displayed until the width does not exceed 620*/
+  const windowElRef = useRef( null );
+  const { width } = useResize( windowElRef );
+  const withWords = width > 450;
 
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
