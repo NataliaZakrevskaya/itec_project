@@ -24,7 +24,6 @@ import { setActualPage } from '../../redux/reducers/products';
 import { stringCutter } from '../../helpers/stringCutter';
 import { getProductsInBasket } from '../../redux/selectors/basket';
 import { AppDispatch } from '../../redux/store';
-import { getProductItems } from '../../mocks';
 import { fetchProductTC, setChosenOptionToProduct } from '../../redux/reducers/product';
 import { getProduct } from '../../redux/selectors/product';
 import { setProductToState } from '../../redux/reducers/onClickOrder';
@@ -82,7 +81,7 @@ const ProductPage = React.memo( () => {
   const priceWithDiscountCropped = getPrice( priceWithDiscount );
   const partialOption = options.filter( option => option.partial )[ 0 ];
   const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;
-   const price = getPrice( product.chosen_option.partial ? ( ( product.chosen_option.quantity / 1000 ) * +product.chosen_option.price ) : +product.chosen_option.price * countOfProduct );
+  const price = getPrice( product.chosen_option.partial ? ( ( product.chosen_option.quantity / 1000 ) * +product.chosen_option.price ) : +product.chosen_option.price * countOfProduct );
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -172,7 +171,7 @@ const ProductPage = React.memo( () => {
         } ) );
         setWeightSetError( '' );
         setWeightSetValue( '' );
-        setWeightSetIsShowed( { status: false } );
+        dispatch( setWeightSetIsShowed( { status: false } ) );
       } else setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
     }
   };
