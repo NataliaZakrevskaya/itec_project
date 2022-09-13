@@ -39,7 +39,7 @@ const ArticlePage = React.memo(() => {
           <div className={ style.articleReadingWrapper }>
             <div>
               <img src={ colorTimeIcon } loading={'lazy'} alt="timeIcon"/>
-              <p>Время чтения: { article.time_read } мин.</p>
+              <p>Время чтения: { article.time_read }</p>
             </div>
             <div>
               <img src={ colorCalendarIcon } loading={'lazy'} alt="calendar"/>
