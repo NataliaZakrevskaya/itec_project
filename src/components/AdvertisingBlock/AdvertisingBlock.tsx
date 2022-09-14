@@ -25,17 +25,9 @@ export const AdvertisingBlock = React.memo( (): ReactElement => {
             <div className={ style.subTitleWrapper }>
               <div className={ style.subTitleOne }>
                 <div dangerouslySetInnerHTML={ { __html: option_one } }/>
-                {/*<p>
-                  <span>Более 5000 товаров </span>
-                  для животных в наличии
-                </p>*/ }
               </div>
               <div className={ style.subTitleTwo }>
                 <div dangerouslySetInnerHTML={ { __html: option_two } }/>
-                {/* <p>
-                  <span>Вкусные сюрпризы </span>
-                  для ваших питомцев в магазине
-                </p>*/ }
               </div>
             </div>
             <button className={ buttonStyle.bigButton } onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Выбрать

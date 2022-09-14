@@ -172,7 +172,7 @@ const ProductPage = React.memo( () => {
         setWeightSetError( '' );
         setWeightSetValue( '' );
         dispatch( setWeightSetIsShowed( { status: false } ) );
-      } else setWeightSetError( `К сожалению, в наличие нет указанного количества товара.` );
+      } else setWeightSetError( `К сожалению, в наличии нет указанного количества товара.` );
     }
   };
   const addToPreviouslyProducts = useCallback( () => {
