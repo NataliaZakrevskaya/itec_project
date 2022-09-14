@@ -39,7 +39,7 @@ const BrandsForm = React.memo( ( { closeEditMode }: BrandsFormPropsType ): React
         value={ value }
       />
       {
-        filteredBrands.length
+        !!filteredBrands.length
           ? (
             <div className={ style.brandsFormGroup }>
               {
