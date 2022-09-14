@@ -67,7 +67,7 @@ const CallbackModal = ({openPrivacyPolicyModal}: CallbackModalPropsType): ReactE
       </div>
       <div className={ formStyle.orderBlock }>
         <button type="submit">Отправить</button>
-        <p>Нажимая на кнопку вы даёте согласие на обработку
+        <p>Нажимая на кнопку, вы даёте согласие на обработку
           <span onClick={ openPrivacyPolicyModal }> персональных данных</span></p>
       </div>
     </form>

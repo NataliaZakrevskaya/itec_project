@@ -118,7 +118,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
               <button type="submit">Оформить заказ</button>
             </div>
           </form>
-          <p className={ style.personalData }>Нажимая на кнопку вы даёте согласие на обработку
+          <p className={ style.personalData }>Нажимая на кнопку, вы даёте согласие на обработку
             <span onClick={ openPrivacyModalContent }> персональных данных </span></p>
         </div> ) }
     </>

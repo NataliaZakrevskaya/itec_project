@@ -149,7 +149,7 @@ const CheckoutPage = React.memo( () => {
           </div>
           <div className={ style.orderBlock }>
             <button className={ style.orderBtn } type="submit">Заказать</button>
-            <p>Нажимая на кнопку вы даёте согласие на обработку <span onClick={ openPrivacyPolicyModal }>персональных данных</span>
+            <p>Нажимая на кнопку, вы даёте согласие на обработку <span onClick={ openPrivacyPolicyModal }>персональных данных</span>
             </p>
           </div>
         </form>
