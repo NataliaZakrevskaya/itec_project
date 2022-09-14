@@ -37,11 +37,11 @@ const ContactBlock = React.memo( (): ReactElement => {
               <div className={ style.scheduleWrapper }>
                 <div className={ style.scheduleWrapperFirst }>
                   <img src={ IconTime } loading={ 'lazy' } alt="timeIcon"/>
-                  <p>Пон.-Пят. { time_weekdays }</p>
+                  <p>Пн.-Пт. { time_weekdays }</p>
                 </div>
                 <div className={ style.scheduleWrapperLine }/>
                 <p className={ style.scheduleWrapperSecond }>
-                  Суб.-Вос. { time_weekend }
+                  Сб.-Вс. { time_weekend }
                 </p>
               </div>
             </div>
