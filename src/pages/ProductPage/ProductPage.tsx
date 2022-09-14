@@ -163,15 +163,17 @@ const ProductPage = React.memo( () => {
   const onApplyButtonClick = () => {
     if ( partialOption ) {
       if ( +weightSetValue <= ( partialOption.stock_balance / 1000 ) ) {
-        /*const sum = +weightSetValue * +partialOption.price;
-        const price = sum.toFixed( 2 );*/
-        dispatch( setChosenOptionToProduct( {
-          productId,
-          option: { ...partialOption, quantity: +weightSetValue * 1000 },
-        } ) );
-        setWeightSetError( '' );
-        setWeightSetValue( '' );
-        dispatch( setWeightSetIsShowed( { status: false } ) );
+        if ( +weightSetValue === 0 ) {
+          setWeightSetError( `Минимальный вес заказа должен составлять: 0.001` );
+        } else {
+          dispatch( setChosenOptionToProduct( {
+            productId,
+            option: { ...partialOption, quantity: +weightSetValue * 1000 },
+          } ) );
+          setWeightSetError( '' );
+          setWeightSetValue( '' );
+          dispatch( setWeightSetIsShowed( { status: false } ) );
+        }
       } else setWeightSetError( `К сожалению, в наличии нет указанного количества товара.` );
     }
   };
