@@ -21,13 +21,21 @@ const ReviewModal = ( { closeModal }: ReviewModalPropsType ): ReactElement => {
     validate: ( values ) => {
       const errors: FormikReviewErrorType = {};
       if ( values.nameAuthor.length < 2 ) {
-        errors.nameAuthor = 'Поле обязательно для заполнения';
+        errors.nameAuthor = 'Минимально допустимое количество символов: 2';
+      } else if (!/(^(?!~!"№;%\?.*\(\)#\$%\^&=\+-_@$)([A-Za-z]{1}[a-z]{1,18}( [A-Za-z]{1})?([a-z]{1,18})?)$)|(^[А-Яа-я]{1}[а-я]{1,18}( [А-Яа-я]{1})?([а-я]{1,18})?$)/i.test(values.nameAuthor)){
+        errors.nameAuthor = 'Допустимые символы: A-z А-я';
+      } else if (values.nameAuthor.length > 30) {
+        errors.nameAuthor = 'Максимально допустимое количество символов: 30';
       }
       if ( values.nameAnimal.length < 2 ) {
-        errors.nameAnimal = 'Поле обязательно для заполнения';
+        errors.nameAnimal = 'Минимально допустимое количество символов: 2';
+      } else if (!/(^(?!~!"№;%\?.*\(\)#\$%\^&=\+-_@$)([A-Za-z]{1}[a-z]{1,18}( [A-Za-z]{1})?([a-z]{1,18})?)$)|(^[А-Яа-я]{1}[а-я]{1,18}( [А-Яа-я]{1})?([а-я]{1,18})?$)/i.test(values.nameAuthor)){
+        errors.nameAnimal = 'Допустимые символы: A-z А-я';
+      } else if (values.nameAuthor.length > 30) {
+        errors.nameAnimal = 'Максимально допустимое количество символов: 30';
       }
       if ( values.bodyOfComment.length < 2 ) {
-        errors.bodyOfComment = 'Поле обязательно для заполнения';
+        errors.bodyOfComment = 'Минимально допустимое количество символов: 2';
       }
       if ( !values.phoneNumber ) {
         errors.phoneNumber = 'Поле обязательно для заполнения';
@@ -59,7 +67,7 @@ const ReviewModal = ( { closeModal }: ReviewModalPropsType ): ReactElement => {
             <p>Имя</p>
             <input
               type={ 'nameAuthor' }
-              placeholder={ 'Иванов Иван Иванович' }
+              placeholder={ 'Иванов Иван' }
               { ...formik.getFieldProps( 'nameAuthor' ) }
             />
             { formik.touched.nameAuthor && formik.errors.nameAuthor &&
