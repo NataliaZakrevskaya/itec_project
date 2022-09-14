@@ -58,12 +58,13 @@ const ProductForOneClick = ( {
   };
   const onNameClick = () => {
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
+    closeOneClickModal();
   };
   const onSetWeightClick = () => {
     closeOneClickModal();
     dispatch( setWeightSetIsShowed( { status: true } ) );
-    if(from === 'oneClickOrder') document.documentElement.scrollTo( 0, 0 );
-    else navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
+    navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
+    if ( from === 'oneClickOrder' ) document.documentElement.scrollTo( 0, 0 );
   };
 
   return (
