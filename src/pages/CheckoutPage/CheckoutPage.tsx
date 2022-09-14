@@ -165,7 +165,7 @@ const CheckoutPage = React.memo( () => {
       }
       { isPrivacyModalActive &&
         <Modal closeModal={ closePrivacyPolicyModal }>
-          <PrivacyPolicyModal closePrivacyPolicyModal={ closePrivacyPolicyModal }/>
+          <PrivacyPolicyModal/>
         </Modal> }
     </div>
   );

@@ -17,7 +17,7 @@ const ContactBlock = React.memo( (): ReactElement => {
         <div className={ style.contactBlock }>
           <div className={ style.contactBlockMapWrapper }>
             <iframe
-              src={ 'https://yandex.ru/map-widget/v1/?um=constructor%3A307d8210dae731adf4771a9c037df320f6541a30d1ec9cc639b10f3058a32d07&amp;source=constructor' }
+              src={ maps }
               className={ style.map } frameBorder="0"/>
           </div>
           <div className={ style.contactBlockWrapper }>

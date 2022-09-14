@@ -78,7 +78,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
   return (
     <>
       { isPrivacyModalActive
-        ? <PrivacyPolicyModal closePrivacyPolicyModal={ closePrivacyModalContent }/>
+        ? <PrivacyPolicyModal/>
         : ( <div className={ style.onClickOrderContent }>
           { showDiscount && <div className={ style.discount }>Акция</div> }
           <h3>Оформление заказа в 1 клик</h3>

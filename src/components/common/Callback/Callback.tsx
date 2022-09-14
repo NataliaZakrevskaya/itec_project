@@ -17,9 +17,7 @@ const Callback = React.memo(( { forHeader }: CallbackPropsType ): ReactElement =
   const openPrivacyPolicyModal = () => {
     setIsPrivacyModalActive(true)
   }
-  const closePrivacyPolicyModal = () => {
-    setIsPrivacyModalActive(false)
-  }
+
   const responseIsSuccess = useSelector( getCallbackRequestStatus ) === RequestStatus.SUCCEEDED;
   const responseIsIdle = useSelector( getCallbackRequestStatus ) === RequestStatus.IDLE;
   const dispatch = useDispatch<AppDispatch>();
@@ -44,7 +42,7 @@ const Callback = React.memo(( { forHeader }: CallbackPropsType ): ReactElement =
       { isActive &&
         <Modal closeModal={ closeModal }>
           { responseIsIdle && !isPrivacyModalActive && <CallbackModal openPrivacyPolicyModal={openPrivacyPolicyModal}/> }
-          {isPrivacyModalActive && <PrivacyPolicyModal closePrivacyPolicyModal={closePrivacyPolicyModal}/>}
+          {isPrivacyModalActive && <PrivacyPolicyModal/>}
           { responseIsSuccess && !isPrivacyModalActive && <SuccessCallbackModals closeModal={ closeModal }/> }
         </Modal>
       }
