@@ -25,7 +25,7 @@ const PopularBrandsBlock = React.memo( (): ReactElement => {
   }, [ dispatch, navigate ] );
   useEffect( () => {
     dispatch( fetchBrandsTC() );
-  }, [ dispatch ] );
+  }, [dispatch] );
 
   return (
     <div className={ style.popularBrandsBlock }>

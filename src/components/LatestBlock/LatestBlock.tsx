@@ -25,7 +25,7 @@ const LatestBlock = React.memo( (): ReactElement => {
 
   useEffect( () => {
     dispatch( fetchLatestProductsTC( { ordering: selectValues.ADDED_DATE } ) );
-  }, [ dispatch ] );
+  }, [dispatch] );
 
   return (
     <div className={ style.latestBlockWrapper }>

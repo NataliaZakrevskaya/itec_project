@@ -22,7 +22,7 @@ import { getSendingReviewsRequestStatus } from '../../redux/selectors/app';
 import { setSendingReviewRequestStatus } from '../../redux/reducers/app';
 import { RequestStatus } from '../../redux/reducers/enums';
 
-const ReviewsBlock = React.memo((): ReactElement => {
+const ReviewsBlock = React.memo( (): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ const ReviewsBlock = React.memo((): ReactElement => {
 
   useEffect( () => {
     dispatch( fetchReviewsTC() );
-  }, [dispatch] );
+  }, [ dispatch ] );
   useEffect( () => {
     if ( isReviewModalActive || isSuccessReview ) {
       window.document.body.style.overflow = 'hidden';
@@ -88,7 +88,7 @@ const ReviewsBlock = React.memo((): ReactElement => {
                      transform: `translateX(${ offset }px)`,
                    } }>
                 {
-                  reviews.map( ({id, name_author, body_of_comment, phone_number, name_animal}) =>
+                  reviews.map( ( { id, name_author, body_of_comment, phone_number, name_animal } ) =>
                     <Review
                       key={ id }
                       nameAuthor={ name_author }
@@ -123,6 +123,6 @@ const ReviewsBlock = React.memo((): ReactElement => {
       }
     </div>
   );
-});
+} );
 
 export default ReviewsBlock;

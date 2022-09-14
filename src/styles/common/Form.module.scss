@@ -116,6 +116,7 @@
     line-height: 20px;
     text-align: center;
     color: #FFFFFF;
+    cursor: pointer;
 
     &:hover {
       background: $hoverColor;
@@ -139,6 +140,7 @@
     }
   }
 }
+
 /*
 @media (max-width: 472px) {
   .formInfo {
