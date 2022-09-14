@@ -10,11 +10,12 @@
   border-radius: 5px;
   padding: 8px;
 
-  &:hover{
-     box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
-   }
+  &:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
 }
-.discount{
+
+.discount {
   @include SFTextRegular;
   font-size: 15px;
   line-height: 20px;
@@ -26,6 +27,7 @@
   border-radius: 2px;
   background: $discountColor;
 }
+
 .mainProductItemImage {
   cursor: pointer;
   width: 254px;
@@ -43,6 +45,7 @@
     background: #FFFFFF;
     @include SFTextMedium();
     @include fontSize14();
+    cursor: pointer;
 
     &:hover {
       background: $mainColor;
@@ -109,6 +112,7 @@
   line-height: 130%;
   color: #000000;
   cursor: pointer;
+
   &:hover {
     color: $mainColor;
   }
