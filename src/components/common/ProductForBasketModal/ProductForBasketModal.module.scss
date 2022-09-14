@@ -23,7 +23,7 @@
 
     & img {
       @include size(56px, 56px);
-      object-fit: cover;
+      object-fit: contain;
       margin-right: 10px;
     }
 
