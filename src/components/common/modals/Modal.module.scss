@@ -22,14 +22,12 @@
     align-items: center;
     position: relative;
     max-width: 100%;
-    /*max-width: 611px;
-    width: 100%;*/
 
     .closeIcon {
       cursor: pointer;
       position: absolute;
       z-index: 5;
-      top: 3px;
+      top: 4px;
       right: 4px;
     }
   }
