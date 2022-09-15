@@ -67,9 +67,9 @@ const ThemeBlockWrapper = ( {
     dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsOneClickModalActive( false );
   };
- /* const closeOneClickOrderModal = () => {
+  const closeOneClickOrderModal = () => {
     setIsOneClickOrderActive( false );
-  };*/
+  };
   const openOneClickModal = ( product: ProductItemType ) => {
     dispatch( setProductToState( { product, basketDiscount } ) );
     setIsOneClickModalActive( true );
@@ -143,7 +143,7 @@ const ThemeBlockWrapper = ( {
           <Modal closeModal={ closeOneClickModal }>
             { isSuccessOneClickOrder
               ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
-              : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickModal }/> )
+              : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
             }
           </Modal>
         }

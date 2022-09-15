@@ -19,7 +19,7 @@ import PrivacyPolicyModal from '../PrivacyPolicyModal/PrivacyPolicyModal';
 import { getDiscountsForBasket } from '../../../../redux/selectors/discountForBasket';
 import ProductForOneClick from '../../ProductForOneClick/ProductForOneClick';
 
-const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): ReactElement => {
+const OneClickOrder = ( { closeOneClickOrderModal, closeModal }: OnClickOrderPropsType ): ReactElement => {
 
   const dispatch = useDispatch<AppDispatch>();
   const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );
@@ -33,9 +33,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
   const { chosen_option, max_discount } = productForOneClickOrder;
   const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
   const orderInfo = { productsInBasket, productsCount, basketCount, basketCountWithDiscount };
-  const closePrivacyModalContent = () => {
-    setIsPrivacyModalActive( false );
-  };
+
   const openPrivacyModalContent = () => {
     debugger
     setIsPrivacyModalActive( true );
@@ -85,7 +83,7 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
           <h3>Оформление заказа в 1 клик</h3>
           <ProductForOneClick
             isForModal={ true }
-            closeOneClickModal={ closeOneClickOrderModal }
+            closeOneClickModal={ closeModal }
             from={ location.ONE_CLICK_ORDER }
           />
           <div className={ style.nextSection }>

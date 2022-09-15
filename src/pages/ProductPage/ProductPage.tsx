@@ -163,8 +163,8 @@ const ProductPage = React.memo( () => {
   const onApplyButtonClick = () => {
     if ( partialOption ) {
       if ( +weightSetValue <= ( partialOption.stock_balance / 1000 ) ) {
-        if ( +weightSetValue === 0 ) {
-          setWeightSetError( `Минимальный вес заказа должен составлять: 0.001` );
+        if ( +weightSetValue <= 0 ) {
+          setWeightSetError( `Минимальный вес заказа должен составлять: 0.01 кг.` );
         } else {
           dispatch( setChosenOptionToProduct( {
             productId,
@@ -389,7 +389,7 @@ const ProductPage = React.memo( () => {
         <Modal closeModal={ closeOneClickModal }>
           { isSuccessOneClickOrder
             ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
-            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal }/> )
+            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={closeOneClickModal}/> )
           }
         </Modal>
       }

@@ -14,6 +14,7 @@ export type FormikErrorType = {
 }
 export type OnClickOrderPropsType = {
   closeOneClickOrderModal: () => void
+  closeModal: () => void
 }
 export type RejectSearchResultPropsType = {
   requestTitle: string

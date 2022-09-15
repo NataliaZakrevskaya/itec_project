@@ -222,7 +222,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
         <Modal closeModal={ closeOneClickModal }>
           { isSuccessOneClickOrder
             ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
-            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal }/> )
+            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
           }
         </Modal>
       }
