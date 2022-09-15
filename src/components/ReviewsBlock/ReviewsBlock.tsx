@@ -88,12 +88,11 @@ const ReviewsBlock = React.memo( (): ReactElement => {
                      transform: `translateX(${ offset }px)`,
                    } }>
                 {
-                  reviews.map( ( { id, name_author, body_of_comment, phone_number, name_animal } ) =>
+                  reviews.map( ( { id, name_author, body_of_comment, name_animal } ) =>
                     <Review
                       key={ id }
                       nameAuthor={ name_author }
                       bodyOfComment={ body_of_comment }
-                      phoneNumber={ phone_number }
                       nameAnimal={ name_animal }
                     />,
                   )
