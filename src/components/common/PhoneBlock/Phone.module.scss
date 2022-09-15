@@ -11,7 +11,7 @@
     @include size(11.2px, 16px)
   }
 
-  & a {
+  & p {
     display: block;
     margin-left: 10.4px;
     @include SFDisplaySemibold();
@@ -22,7 +22,7 @@
 
 @media (max-width: 768px) {
   .phoneBlock {
-    & a {
+    & p {
       font-size: 14px;
     }
   }

@@ -7,7 +7,7 @@ const Phone = React.memo(( { phoneNumber }: PhonePropsType ): ReactElement => {
   return (
     <div className={ style.phoneBlock }>
       <img src={ phoneIcon } loading={'lazy'} alt={ 'phoneIcon' }/>
-      <a href="#">{ phoneNumber }</a>
+      <p>{ phoneNumber }</p>
     </div>
   );
 });
