@@ -199,7 +199,6 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                 pageSize={ pageSize }
                 actualPage={ page }
                 onPageChanged={ onPageChanged }
-                portionSize={ 3 }
                 withWords={ withWords }
               />
             </div> )

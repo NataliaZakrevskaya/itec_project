@@ -4,18 +4,16 @@ import prevPage from '../../Images/prevPage.svg';
 import nextPage from '../../Images/nextPage.svg';
 import { ProductsBlockPaginationType } from './types';
 
-const ProductsBlockPagination = React.memo(( {
-                                    totalProductsCount,
-                                    pageSize,
-                                    actualPage,
-                                    onPageChanged,
-                                    portionSize = 3,
-                                    withWords,
-                                  }: ProductsBlockPaginationType ): ReactElement => {
+const ProductsBlockPagination = React.memo( ( {
+                                                totalProductsCount,
+                                                pageSize,
+                                                actualPage,
+                                                onPageChanged,
+                                                withWords,
+                                              }: ProductsBlockPaginationType ): ReactElement => {
 
   const [ portionNumber, setPortionNumber ] = useState( 1 );
   let pagesCount = Math.ceil( totalProductsCount / pageSize );
-  const portionCount = Math.ceil( pagesCount / portionSize );
   const leftPortionPageNumber = actualPage === pagesCount ? actualPage - 2 : actualPage - 1;
   const rightPortionPageNumber = actualPage === 1 ? actualPage + 2 : actualPage + 1;
   let pages = [] as Array<number>;
@@ -24,7 +22,7 @@ const ProductsBlockPagination = React.memo(( {
   }
 
   const onPrevButtonClick = () => {
-    if ( portionCount > 1 ) {
+    if ( actualPage > 1 ) {
       onPageChanged( actualPage - 1 );
       setPortionNumber( portionNumber - 1 );
     }
@@ -38,8 +36,9 @@ const ProductsBlockPagination = React.memo(( {
 
   return (
     <div className={ style.paginationBlock }>
-      <div className={ style.navigationBlock } onClick={ onPrevButtonClick }>
-        <img className={ style.navigationBlockLeft } loading={'lazy'} src={ prevPage } alt="prevPage"/>
+      <div className={ actualPage !== 1 ? style.navigationBlock : `${ style.navigationBlock } ${ style.opacity }` }
+           onClick={ onPrevButtonClick }>
+        <img className={ style.navigationBlockLeft } loading={ 'lazy' } src={ prevPage } alt="prevPage"/>
         { withWords && <p>Предыдущая</p> }
       </div>
       <div className={ style.pages }>
@@ -58,12 +57,14 @@ const ProductsBlockPagination = React.memo(( {
             );
           } ) }
       </div>
-      <div className={ style.navigationBlock } onClick={ onNextButtonClick }>
+      <div
+        className={ pagesCount !== actualPage ? style.navigationBlock : `${ style.navigationBlock } ${ style.opacity }` }
+        onClick={ onNextButtonClick }>
         { withWords && <p>Следующая</p> }
-        <img className={ style.navigationBlockRight } loading={'lazy'} src={ nextPage } alt="nextPage"/>
+        <img className={ style.navigationBlockRight } loading={ 'lazy' } src={ nextPage } alt="nextPage"/>
       </div>
     </div>
   );
-});
+} );
 
 export default ProductsBlockPagination;
