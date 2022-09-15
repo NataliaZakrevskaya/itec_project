@@ -35,7 +35,8 @@
     @include size(85px, 81px);
 
     & img {
-      @include size(100%, 100%);
+      @include size(100%, 98%);
+      margin-top: 1%;
       object-fit: contain;
     }
   }
@@ -59,9 +60,11 @@
     & .animalTypeImageWrapper {
       @include size(73px, 71px);
     }
+
     & span {
       @include fontSize14();
     }
+
     &:hover {
 
       & span {
@@ -71,6 +74,7 @@
     }
   }
 }
+
 @media (max-width: 768px) {
   .animalType {
     min-width: 137.88px;
