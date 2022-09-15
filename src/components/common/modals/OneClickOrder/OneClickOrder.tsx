@@ -9,7 +9,8 @@ import {
   getPriceWithDiscount,
   getPriceWithoutDiscount,
   getProductCount,
-  getProductForOneClickOrder, getProductsArrayForOneClickOrder,
+  getProductForOneClickOrder,
+  getProductsArrayForOneClickOrder,
 } from '../../../../redux/selectors/oneClickOrder';
 import { AppDispatch } from '../../../../redux/store';
 import { FormikErrorType, OnClickOrderPropsType } from '../types';
@@ -49,9 +50,9 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
       const errors: FormikErrorType = {};
       if ( values.name.length < 2 ) {
         errors.name = 'Минимально допустимое количество символов: 2';
-      } else if (!/(^(?!~!"№;%\?.*\(\)#\$%\^&=\+-_@$)([A-Za-z]{1}[a-z]{1,18}( [A-Za-z]{1})?([a-z]{1,18})?)$)|(^[А-Яа-я]{1}[а-я]{1,18}( [А-Яа-я]{1})?([а-я]{1,18})?$)/i.test(values.name)){
+      } else if ( !/(^(?!~!"№;%\?.*\(\)#\$%\^&=\+-_@$)([A-Za-z]{1}[a-z]{1,18}( [A-Za-z]{1})?([a-z]{1,18})?)$)|(^[А-Яа-я]{1}[а-я]{1,18}( [А-Яа-я]{1})?([а-я]{1,18})?$)/i.test( values.name ) ) {
         errors.name = 'Допустимые символы: A-z А-я';
-      } else if (values.name.length > 30) {
+      } else if ( values.name.length > 30 ) {
         errors.name = 'Максимально допустимое количество символов: 30';
       }
       if ( !values.phoneNumber ) {
@@ -90,7 +91,8 @@ const OneClickOrder = ( { closeOneClickOrderModal }: OnClickOrderPropsType ): Re
           <div className={ style.nextSection }>
             <span/>
           </div>
-          <p className={ style.setDataParagraph }>Заполните данные и нажмите кнопку «Оформить заказ». Товар будет ждать
+          <p className={ style.setDataParagraph }>Заполните данные и нажмите кнопку «Оформить заказ».<br/>Товар будет
+            ждать
             вас
             по адресу: { address }</p>
           <form className={ style.formBlock } onSubmit={ formik.handleSubmit }>
