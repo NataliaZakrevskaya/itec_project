@@ -38,7 +38,7 @@ const ProductsBlockPagination = React.memo( ( {
     <div className={ style.paginationBlock }>
       <div className={ actualPage !== 1 ? style.navigationBlock : `${ style.navigationBlock } ${ style.opacity }` }
            onClick={ onPrevButtonClick }>
-        <img className={ style.navigationBlockLeft } loading={ 'lazy' } src={ prevPage } alt="prevPage"/>
+        <img className={ style.navigationBlockLeft } loading={ 'lazy' } src={ prevPage } alt="prevPage" draggable="false"/>
         { withWords && <p>Предыдущая</p> }
       </div>
       <div className={ style.pages }>
@@ -61,7 +61,7 @@ const ProductsBlockPagination = React.memo( ( {
         className={ pagesCount !== actualPage ? style.navigationBlock : `${ style.navigationBlock } ${ style.opacity }` }
         onClick={ onNextButtonClick }>
         { withWords && <p>Следующая</p> }
-        <img className={ style.navigationBlockRight } loading={ 'lazy' } src={ nextPage } alt="nextPage"/>
+        <img className={ style.navigationBlockRight } loading={ 'lazy' } src={ nextPage } alt="nextPage" draggable="false"/>
       </div>
     </div>
   );

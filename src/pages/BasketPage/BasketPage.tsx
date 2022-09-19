@@ -51,7 +51,7 @@ const BasketPage = React.memo( () => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
           <p>Корзина </p>
         </div>
       </div>
@@ -83,11 +83,11 @@ const BasketPage = React.memo( () => {
                     <p className={ style.basketProducts }>{ productsCount } { goodsName }</p>
                   </div>
                   <div className={ style.pickUpBlock }>
-                    <img className={ style.basketBoxImage } src={ boxIcon } loading={ 'lazy' } alt="boxIcon"/>
+                    <img className={ style.basketBoxImage } src={ boxIcon } loading={ 'lazy' } alt="boxIcon" draggable="false"/>
                     <div className={ style.basketTextWrapper }>
                       <h3>Самовывоз</h3>
                       <div className={ style.addressInfo }>
-                        <img src={ whiteNavigateIcon } loading={ 'lazy' } alt={ 'whiteNavigateIcon' }/>
+                        <img src={ whiteNavigateIcon } loading={ 'lazy' } alt={ 'whiteNavigateIcon' } draggable="false"/>
                         <p>{ address }</p>
                       </div>
                     </div>
@@ -101,7 +101,7 @@ const BasketPage = React.memo( () => {
           )
           : (
             <div className={ style.emptyBasket }>
-              <img src={ cat } loading={ 'lazy' } alt="cat"/>
+              <img src={ cat } loading={ 'lazy' } alt="cat" draggable="false"/>
               <h2>В корзине нет товаров. Выберите нужные товары в нашем каталоге</h2>
               <Button title={ 'Перейти в каталог товаров' } onClick={ () => navigate( routesPathsEnum.CATALOG ) }/>
             </div>

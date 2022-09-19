@@ -35,7 +35,7 @@ export const AdvertisingBlock = React.memo( (): ReactElement => {
             </button>
           </div>
           <div className={ style.mainImage }>
-            <img src={ photo_main_page } loading={ 'lazy' } alt="frame"/>
+            <img src={ photo_main_page } loading={ 'lazy' } alt="frame" draggable="false"/>
           </div>
         </div>
       </div>

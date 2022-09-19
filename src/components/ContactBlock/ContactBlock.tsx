@@ -25,11 +25,11 @@ const ContactBlock = React.memo( (): ReactElement => {
               вашим любимцем</h3>
             <div className={ style.contactBlockWrapperDirection }>
               <div className={ style.contactBlockAddressWrapper }>
-                <img src={ navigationIcon } loading={ 'lazy' } alt=""/>
+                <img src={ navigationIcon } loading={ 'lazy' } alt="" draggable="false"/>
                 <p>{ address }</p>
               </div>
               <div className={ style.contactBlockWrapperMetro }>
-                <img src={ metroIcon } loading={ 'lazy' } alt=""/>
+                <img src={ metroIcon } loading={ 'lazy' } alt="" draggable="false"/>
                 <p>{ metro }</p>
               </div>
             </div>
@@ -37,7 +37,7 @@ const ContactBlock = React.memo( (): ReactElement => {
               <p className={ style.timeWork }>Время работы</p>
               <div className={ style.scheduleWrapper }>
                 <div className={ style.scheduleWrapperFirst }>
-                  <img src={ IconTime } loading={ 'lazy' } alt="timeIcon"/>
+                  <img src={ IconTime } loading={ 'lazy' } alt="timeIcon" draggable="false"/>
                   <p>Пн.-Пт. { time_weekdays }</p>
                 </div>
                 <div className={ style.scheduleWrapperLine }/>
@@ -53,7 +53,7 @@ const ContactBlock = React.memo( (): ReactElement => {
             <div className={ style.contactBlockWrapperSocial }>
               <p className={ style.socialTitle }>Пишите нам в социальных сетях</p>
               <a href={ social } target={ '_blank' } rel={ 'noreferrer' } className={ style.instaIcon }>
-                <img src={ instagramIcon } loading={ 'lazy' } alt={ 'instagramIcon' }/>
+                <img src={ instagramIcon } loading={ 'lazy' } alt={ 'instagramIcon' } draggable="false"/>
               </a>
             </div>
           </div>

@@ -15,7 +15,7 @@ const Discount = React.memo(( { img, title, background }: DiscountPropsType ): R
         <button onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Перейти к выбору товара</button>
       </div>
       <div className={ style.discountImageWrapper }>
-        <img src={ img } loading={'lazy'} alt="animalImg"/>
+        <img src={ img } loading={'lazy'} alt="animalImg" draggable="false"/>
       </div>
     </div>
   );

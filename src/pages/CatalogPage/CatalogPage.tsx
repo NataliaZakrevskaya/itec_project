@@ -130,7 +130,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
           <p>Каталог</p>
         </div>
       </div>
@@ -158,7 +158,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
           </select>
         </div>
         <div onClick={ openFiltersMode } className={ style.catalogFilter }>
-          <img className={ style.catalogFilterImage } loading={ 'lazy' } src={ filterMajor } alt=""/>
+          <img className={ style.catalogFilterImage } loading={ 'lazy' } src={ filterMajor } alt="" draggable="false"/>
           <div className={ style.catalogFilterText }>
             Фильтры
           </div>
@@ -203,7 +203,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
               />
             </div> )
             : ( <div className={ style.emptyCatalog }>
-              <img src={ sadCat } loading={ 'lazy' } alt="sadCat"/>
+              <img src={ sadCat } loading={ 'lazy' } alt="sadCat" draggable="false"/>
               <div className={ style.title }>
                 <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте снова</h3>
               </div>

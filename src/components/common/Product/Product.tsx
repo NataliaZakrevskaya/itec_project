@@ -62,7 +62,7 @@ const Product = ( {
     <div className={ style.productForBasketContainer }>
       <div className={ style.productWrap }>
         <div className={ style.imageWrapper }>
-          <img src={ images[ 0 ] ? images[ 0 ].image : `${ PRODUCT_IMAGE }` } loading={ 'lazy' } alt="product"/>
+          <img src={ images[ 0 ] ? images[ 0 ].image : `${ PRODUCT_IMAGE }` } loading={ 'lazy' } alt="product" draggable="false"/>
         </div>
         <div
           className={ isForModal ? `${ style.productMainInfo } ${ style.widthForModalMainProductInfo }` : `${ style.productMainInfo } ${ style.widthForBasketMainProductInfo }` }>
@@ -111,6 +111,7 @@ const Product = ( {
               src={ basket } alt="basketIcon"
               loading={ 'lazy' }
               onClick={ deleteProductFromBasket }
+              draggable="false"
             /> }
           </div>
           { showDiscount && <div className={ style.discount }>Акция</div> }

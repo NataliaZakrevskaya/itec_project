@@ -20,11 +20,11 @@ const BasketLink = React.memo(( { forHeaderBurger, onClickHandler }: BasketLinkP
     <>
       { forHeaderBurger
         ? ( <div className={ style.basketLinkForBurger } onClick={ onBasketClick }>
-          <img src={ basketIcon } loading={'lazy'} alt={ 'basketIcon' }/>
+          <img src={ basketIcon } loading={'lazy'} alt={ 'basketIcon' } draggable="false"/>
           <p>Корзина</p>
         </div> )
         : ( <div className={ style.basketLink } onClick={ () => navigate( routesPathsEnum.BASKET ) }>
-          <img src={ basketIcon } loading={'lazy'} alt={ 'basketIcon' }/>
+          <img src={ basketIcon } loading={'lazy'} alt={ 'basketIcon' } draggable="false"/>
           { productCount }
         </div> )
       }

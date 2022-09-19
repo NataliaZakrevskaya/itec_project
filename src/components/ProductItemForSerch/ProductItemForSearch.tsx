@@ -5,7 +5,7 @@ import { ProductItemForSearchPropsType } from './types';
 const ProductItemForSearch = React.memo(( { id, name, image, onClick }: ProductItemForSearchPropsType ): ReactElement => {
   return (
     <div className={ style.productItemForSearch } onClick={ () => onClick( id ) }>
-      <img src={ image } loading={'lazy'} alt="product"/>
+      <img src={ image } loading={'lazy'} alt="product" draggable="false"/>
       <p>{ name }</p>
     </div>
   );

@@ -26,9 +26,9 @@ const ArticlePage = React.memo(() => {
         <div className={ navigationStyle.navigationBlock }>
           <div className={ navigationStyle.navigationBlockWrapper }>
             <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-            <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+            <img src={ nextIcon } loading={'lazy'} alt="nextIcon" draggable="false"/>
             <p onClick={ () => navigate( routesPathsEnum.ARTICLES ) }>Статьи</p>
-            <img src={ nextIcon } loading={'lazy'} alt="nextIcon"/>
+            <img src={ nextIcon } loading={'lazy'} alt="nextIcon" draggable="false"/>
             <p>{ article.title }</p>
           </div>
         </div>
@@ -38,17 +38,17 @@ const ArticlePage = React.memo(() => {
         <div className={ style.articleInfo }>
           <div className={ style.articleReadingWrapper }>
             <div>
-              <img src={ colorTimeIcon } loading={'lazy'} alt="timeIcon"/>
+              <img src={ colorTimeIcon } loading={'lazy'} alt="timeIcon" draggable="false"/>
               <p>Время чтения: { article.time_read }</p>
             </div>
             <div>
-              <img src={ colorCalendarIcon } loading={'lazy'} alt="calendar"/>
+              <img src={ colorCalendarIcon } loading={'lazy'} alt="calendar" draggable="false"/>
               <p>{ currentData }</p>
             </div>
           </div>
         </div>
         <div className={ style.articleImage }>
-          <img src={ article.image } loading={'lazy'} alt="article"/>
+          <img src={ article.image } loading={'lazy'} alt="article" draggable="false"/>
         </div>
         <div className={ style.articleTextContainer }>
           <p className={ style.articleText }

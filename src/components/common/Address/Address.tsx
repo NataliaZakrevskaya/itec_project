@@ -13,7 +13,7 @@ const Address = React.memo(( { address, metro , forProductPage}: AddressPropsTyp
         <p className={ style.textStyle }>{ address }</p>
       </div>
       <div className={ style.addressBlockWrapperTwo }>
-        <img className={ style.metroIcon } loading={'lazy'} src={ metroIcon } alt={ 'metroIcon' }/>
+        <img className={ style.metroIcon } loading={'lazy'} src={ metroIcon } alt={ 'metroIcon' } draggable="false"/>
         <p>{ metro }</p>
       </div>
     </div>
