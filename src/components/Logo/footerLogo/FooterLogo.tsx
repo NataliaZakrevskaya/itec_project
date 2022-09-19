@@ -11,7 +11,7 @@ const FooterLogo = React.memo((): ReactElement => {
   };
   return (
     <div className={ style.logoBlock } onClick={onLogoClick}>
-      <img src={ logo } loading={'lazy'} alt={ 'logo' }/>
+      <img src={ logo } loading={'lazy'} alt={ 'logo' } draggable="false"/>
       <p>Территория <span>ZOO</span></p>
     </div>
   );

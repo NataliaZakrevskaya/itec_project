@@ -231,9 +231,9 @@ const ProductPage = React.memo( () => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
           <p onClick={ () => navigate( routesPathsEnum.CATALOG ) }>Каталог</p>
-          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
           <p>{ nameForNavigationBlock }</p>
         </div>
       </div>
@@ -251,7 +251,8 @@ const ProductPage = React.memo( () => {
             <div className={ style.mainImageWrapper }>
               <img
                 src={ images[ selectImageId ] ? images[ selectImageId ].image : `${ PRODUCT_IMAGE }` }
-                alt="product" loading={ 'lazy' } className={ style.mainImg }/>
+                alt="product" loading={ 'lazy' } className={ style.mainImg }
+                draggable="false"/>
             </div>
             <div className={ style.restImagesBlock }>
               {
@@ -264,6 +265,7 @@ const ProductPage = React.memo( () => {
                       loading={ 'lazy' }
                       className={ img.id === images[ selectImageId ].id ? `${ style.restImage } ${ style.selectImg }` : style.restImage }
                       onClick={ () => selectImage( index ) }
+                      draggable="false"
                     />,
                   )
               }
@@ -312,7 +314,7 @@ const ProductPage = React.memo( () => {
             </div>
             <div className={ style.orderInfo }>
               <div className={ style.orderImageWrapper }>
-                <img src={ boxIcon } loading={ 'lazy' } alt="boxIcon"/>
+                <img src={ boxIcon } loading={ 'lazy' } alt="boxIcon" draggable="false"/>
               </div>
               <div>
                 <h3>Самовывоз</h3>

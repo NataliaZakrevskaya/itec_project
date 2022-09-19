@@ -31,17 +31,17 @@ const Article = React.memo(( {
       onClick={ onArticleClick }
     >
       <div className={ style.articleImageWrapper }>
-        <img src={ image } loading={'lazy'} alt="article"/>
+        <img src={ image } loading={'lazy'} alt="article" draggable="false"/>
       </div>
       <h2>{ title }</h2>
       <p dangerouslySetInnerHTML={ { __html: stringCutter( description, 160 ) } }/>
       <div className={ style.articleInfo }>
         <div>
-          <img src={ grayClock } loading={'lazy'} alt="timeIcon"/>
+          <img src={ grayClock } loading={'lazy'} alt="timeIcon" draggable="false"/>
           <p>Время чтения: { timeForReading }</p>
         </div>
         <div>
-          <img src={ calendarIcon } loading={'lazy'} alt="calendar"/>
+          <img src={ calendarIcon } loading={'lazy'} alt="calendar" draggable="false"/>
           <p>{ currentData }</p>
         </div>
       </div>

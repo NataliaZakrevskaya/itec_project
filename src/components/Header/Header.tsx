@@ -37,7 +37,7 @@ const Header = ( { openEditMode, closeEditMode }: HeaderPropsType ): ReactElemen
             <Phone phoneNumber={ phone_number }/>
             <a className={ style.headerInstagram } href={ social } target={ '_blank' }
                rel={ 'noreferrer' }>
-              <img src={ instagramIcon } loading={ 'lazy' } alt={ 'instagramIcon' }/>
+              <img src={ instagramIcon } loading={ 'lazy' } alt={ 'instagramIcon' } draggable="false"/>
             </a>
           </div>
           <Callback forHeader={ true }/>

@@ -38,7 +38,7 @@ const GreetingBlock = React.memo( (): ReactElement => {
             ) }
           </div>
           <div className={ style.greetingBlockImageWrapper }>
-            <img src={ photo } loading={ 'lazy' } alt="shopPhoto"/>
+            <img src={ photo } loading={ 'lazy' } alt="shopPhoto" draggable="false"/>
           </div>
         </div>
       </div>

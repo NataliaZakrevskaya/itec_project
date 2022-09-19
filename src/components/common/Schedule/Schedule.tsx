@@ -7,7 +7,7 @@ const Schedule = React.memo(( { forFooterBurger, timeWeekdays, timeWeekend }: Sc
   return (
     <div className={ style.scheduleBlock }>
       <div className={ style.scheduleBlockWrapperOne }>
-        { !forFooterBurger && <img src={ timeIcon } loading={'lazy'} alt={ 'timeIcon' }/> }
+        { !forFooterBurger && <img src={ timeIcon } loading={'lazy'} alt={ 'timeIcon' } draggable="false"/> }
         <p>Пн.-Пт. { timeWeekdays }</p>
       </div>
       <div className={ style.scheduleBlockWrappers }>

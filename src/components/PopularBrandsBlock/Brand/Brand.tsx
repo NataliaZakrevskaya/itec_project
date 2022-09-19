@@ -5,7 +5,7 @@ import { BrandPropsType } from './types';
 const Brand = React.memo(( { id, image, chooseBrand }: BrandPropsType ): ReactElement => {
   return (
     <div className={ style.brand } onClick={ () => chooseBrand( id ) }>
-      <img src={ image } loading={'lazy'} alt={ 'brand' }/>
+      <img src={ image } loading={'lazy'} alt={ 'brand' } draggable="false"/>
     </div>
   );
 });

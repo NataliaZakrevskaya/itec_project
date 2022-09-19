@@ -105,9 +105,9 @@ const CheckoutPage = React.memo( () => {
       <div className={ navigationStyle.navigationBlock }>
         <div className={ navigationStyle.navigationBlockWrapper }>
           <p onClick={ () => navigate( routesPathsEnum.MAIN ) }>Главная</p>
-          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
           <p onClick={ () => navigate( routesPathsEnum.BASKET ) }>Корзина</p>
-          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon"/>
+          <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
           <p>Оформление заказа</p>
         </div>
       </div>

@@ -42,7 +42,9 @@ const ProductItem = ( {
         onClick={ onProductClick }
         src={ image }
         loading={ 'lazy' }
-        alt={ 'product' }/>
+        alt={ 'product' }
+        draggable="false"
+      />
       <p className={ style.title }
          onClick={ onProductClick }>{ nameForCard }</p>
       <div className={ style.unitGroup }>
@@ -64,7 +66,7 @@ const ProductItem = ( {
           <div className={ style.basket } onClick={ () => openBasketModal( product ) }>
             <p>+</p>
             <div className={ style.imageWrapper }>
-              <img src={ basketIcon } loading={ 'lazy' } alt="basketIcon"/>
+              <img src={ basketIcon } loading={ 'lazy' } alt="basketIcon" draggable="false"/>
             </div>
           </div>
         </div>

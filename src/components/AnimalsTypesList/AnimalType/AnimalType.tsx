@@ -16,7 +16,7 @@ const AnimalType = React.memo(( { id, name, image, isActive, checked, chooseActi
       className={ checked ? isActive ? `${ style.animalType } ${ style.active }` : `${ style.animalType } ${ style.restTypes }` : style.animalType }
       onClick={ onAnimalTypeClick }>
       <div className={ style.animalTypeImageWrapper }>
-        <img src={ image } loading={'lazy'} alt={ 'animal img' }/>
+        <img src={ image } loading={'lazy'} alt={ 'animal img' } draggable="false"/>
       </div>
       <span>{ name }</span>
     </div>
