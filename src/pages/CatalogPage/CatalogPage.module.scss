@@ -30,7 +30,7 @@
     max-width: 1200px;
     @include flex(row, space-between, center);
     margin-bottom: 40px;
-    padding: 0 10px;
+    padding: 0 8px;
     cursor: default;
 
     & h1 {
