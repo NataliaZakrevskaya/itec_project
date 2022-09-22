@@ -366,15 +366,15 @@ const ProductPage = React.memo( () => {
         <div className={ style.descriptionBlock }>
           <div className={ style.mainDescription }>
             <p dangerouslySetInnerHTML={ { __html: description } }/>
-            <h3>Ключевые особенности:</h3>
+            { !!features.length && <h3>Ключевые особенности:</h3> }
             <div dangerouslySetInnerHTML={ { __html: features } }/>
-            <h3>Состав:</h3>
+            { !!composition.length && <h3>Состав:</h3> }
             <div dangerouslySetInnerHTML={ { __html: composition } }/>
           </div>
           <div className={ style.mainAnalysis }>
-            <h3>Гарантированный анализ:</h3>
+            { !!analysis.length && <h3>Гарантированный анализ:</h3> }
             <div dangerouslySetInnerHTML={ { __html: analysis } }/>
-            <h3>Пищевые добавки:</h3>
+            { !!additives.length && <h3>Пищевые добавки:</h3> }
             <div dangerouslySetInnerHTML={ { __html: additives } }/>
           </div>
         </div>
@@ -391,7 +391,7 @@ const ProductPage = React.memo( () => {
         <Modal closeModal={ closeOneClickModal }>
           { isSuccessOneClickOrder
             ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
-            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={closeOneClickModal}/> )
+            : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
           }
         </Modal>
       }
