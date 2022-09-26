@@ -4,9 +4,7 @@
 .ProductForBasketModalContainer {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  gap: 25px;
   align-items: center;
   @include SFTextRegular();
   font-weight: 600;
