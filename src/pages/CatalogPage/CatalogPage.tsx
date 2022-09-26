@@ -205,7 +205,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
             : ( <div className={ style.emptyCatalog }>
               <img src={ sadCat } loading={ 'lazy' } alt="sadCat" draggable="false"/>
               <div className={ style.title }>
-                <h3>По вашему запросу ничего не найдено. сбросьте фильтр и попробуйте снова</h3>
+                <h3>По вашему запросу ничего не найдено. Сбросьте фильтр и попробуйте снова</h3>
               </div>
               <button onClick={ resetFilters }>Сбросить фильтры</button>
             </div> )
