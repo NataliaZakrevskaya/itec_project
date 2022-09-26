@@ -18,10 +18,9 @@ const BrandFormInput = React.memo( ( { id, name, chosen }: BrandFormInputPropsTy
       <div>
         <input type="checkbox" checked={ chosen } onChange={ () => false }/>
         { chosen
-          ? <span onClick={ removeBrandStatusChosen }/>
-          : <span onClick={ addBrandStatusChosen }/>
+          ? <div onClick={ removeBrandStatusChosen }><span/>{ name }</div>
+          : <div onClick={ addBrandStatusChosen }><span/>{ name }</div>
         }
-        { name }
       </div>
     </label>
   );
