@@ -26,6 +26,7 @@ const ArticlePage = React.memo( () => {
   useEffect( () => {
     dispatch( fetchArticleTC( { id: articleId } ) );
   }, [] );
+  console.log( article.title );
 
   return (
     <div className={ style.articlePage }>
@@ -36,11 +37,11 @@ const ArticlePage = React.memo( () => {
             <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
             <p onClick={ () => navigate( routesPathsEnum.ARTICLES ) }>Статьи</p>
             <img src={ nextIcon } loading={ 'lazy' } alt="nextIcon" draggable="false"/>
-            <p>{ article.title }</p>
+            <p dangerouslySetInnerHTML={ { __html: article.title } }/>
           </div>
         </div>
         <div className={ style.articleTitle }>
-          <h1>{ article.title }</h1>
+          <h1 dangerouslySetInnerHTML={ { __html: article.title } }/>
         </div>
         <div className={ style.articleInfo }>
           <div className={ style.articleReadingWrapper }>
