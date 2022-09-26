@@ -132,8 +132,9 @@
     align-items: flex-start;
 
     .setDataParagraph {
-      font-size: 15px;
+      font-size: 13px;
       line-height: 130%;
+      margin-bottom: 10px;
     }
 
     .formBlock {
@@ -141,7 +142,15 @@
 
       .orderBlock {
         align-items: flex-start;
+
+        & p {
+          margin-top: 10px;
+        }
       }
+    }
+
+    .personalData {
+      margin-top: 10px;
     }
   }
 }
