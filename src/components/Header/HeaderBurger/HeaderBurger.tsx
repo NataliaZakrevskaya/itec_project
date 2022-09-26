@@ -24,7 +24,7 @@ const HeaderBurger = React.memo(( { onClickHandler, forFilters }: HeaderBurgerPr
             </div>
           </div> )
           : ( <div className={ style.navBlock }>
-            <SearchInput forHeaderBurger={ true }/>
+            <SearchInput forHeaderBurger={ true } closeBurgerNuv={onClickHandler}/>
             <NavbarForHeader forHeaderBurger={ true }
                              closeEditMode={ onClickHandler }/>
             <BasketLink forHeaderBurger={ true } onClickHandler={ onClickHandler }/>

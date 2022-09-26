@@ -10,10 +10,10 @@ import { AppDispatch } from '../../redux/store';
 import { SearchInputPropsType } from './types';
 import { useDebounce } from '../../customHooks/useDebounce';
 
-const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ): ReactElement => {
+const SearchInput = React.memo( ( { forHeaderBurger, closeBurgerNuv }: SearchInputPropsType ): ReactElement => {
 
   const [ search, setSearch ] = useState( '' );
-  const debouncedSearch = useDebounce(search, 1000);
+  const debouncedSearch = useDebounce( search, 1000 );
 
   const resultProductItems = useSelector( getProductsFromSearch )
     .filter( ( item, index ) => index < 6 );
@@ -24,14 +24,15 @@ const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ): Re
   const searchInputChange = ( e: ChangeEvent<HTMLInputElement> ) => {
     setSearch( e.target.value );
   };
-  const onRejResultButtonClick = useCallback(() => {
+  const onRejResultButtonClick = useCallback( () => {
     navigate( routesPathsEnum.CATALOG );
     setSearch( '' );
-  }, [navigate]);
-  const onProductItemClick = useCallback(( id: number ) => {
+  }, [ navigate ] );
+  const onProductItemClick = useCallback( ( id: number ) => {
+    if ( !!closeBurgerNuv ) closeBurgerNuv();
     navigate( `${ routesPathsEnum.CATALOG }/${ id }` );
     setSearch( '' );
-  }, [navigate]);
+  }, [ navigate ] );
 
   useEffect( () => {
     if ( !window.localStorage.getItem( 'productsFromSearch' ) ) {
@@ -55,6 +56,6 @@ const SearchInput = React.memo(( { forHeaderBurger }: SearchInputPropsType ): Re
       /> }
     </div>
   );
-});
+} );
 
 export default SearchInput;
