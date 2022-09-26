@@ -210,3 +210,18 @@
 
   }
 }
+
+@media (max-width: 371px) {
+  .basketPageBlock {
+
+    .basketWrapper {
+
+      .basketInfoBlockContainer {
+
+        .basketInfoContainer {
+          min-width: 100%;
+        }
+      }
+    }
+  }
+}
