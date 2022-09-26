@@ -20,6 +20,7 @@ import { previouslyProducts } from './reducers/previouslyProducts';
 import { descriptionShop } from './reducers/descriptionShop';
 import { discountForBasket } from './reducers/discountForBasket';
 import { accompanyingProducts } from './reducers/accompanyingProducts';
+import { article } from './reducers/article';
 
 const rootReducer = combineReducers( {
   app,
@@ -37,6 +38,7 @@ const rootReducer = combineReducers( {
   previouslyProducts,
   reviews,
   articles,
+  article,
   ordering,
   descriptionShop,
   discountForBasket,
@@ -45,7 +47,7 @@ const rootReducer = combineReducers( {
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: [ 'products', 'productsFromSearch', 'latestProducts', 'popularProducts', 'product', 'discountForBasket' ],
+  blacklist: [ 'products', 'productsFromSearch', 'latestProducts', 'popularProducts', 'product', 'discountForBasket', 'oneClickOrder', 'product', 'accompanyingProducts', 'previouslyProducts', 'articles', 'article', 'reviews', 'app'],
 };
 
 const persistedReducer = persistReducer( persistConfig, rootReducer );

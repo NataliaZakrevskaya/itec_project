@@ -1,1 +1,1 @@
-export const ARTICLES_URL = 'articles'
+export const ARTICLES_URL = 'articles/';

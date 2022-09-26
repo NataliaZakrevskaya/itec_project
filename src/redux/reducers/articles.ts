@@ -15,14 +15,11 @@ export const fetchArticlesTC = createAsyncThunk(
 
 export const slice = createSlice( {
   name: 'articles',
-  initialState: {
-    articles: [] as Array<ArticleType>,
-  },
+  initialState: [] as Array<ArticleType>,
   reducers: {},
   extraReducers: ( builder => {
     builder.addCase( fetchArticlesTC.fulfilled, ( state, action ) => {
-      // @ts-ignore
-      state.articles = action.payload.articles;
+      if ( action.payload ) return action.payload.articles;
     } );
   } ),
 } );
