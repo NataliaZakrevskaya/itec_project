@@ -35,7 +35,6 @@ const OneClickOrder = ( { closeOneClickOrderModal, closeModal }: OnClickOrderPro
   const orderInfo = { productsInBasket, productsCount, basketCount, basketCountWithDiscount };
 
   const openPrivacyModalContent = () => {
-    debugger
     setIsPrivacyModalActive( true );
   };
 
