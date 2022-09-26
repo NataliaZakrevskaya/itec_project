@@ -222,3 +222,12 @@
     height: 94px;
   }
 }
+@media (max-width: 328px) {
+  .mainImage {
+    position: absolute;
+    top: 163px;
+    left: 200px;
+    min-width: 96px;
+    height: 75px;
+  }
+}
