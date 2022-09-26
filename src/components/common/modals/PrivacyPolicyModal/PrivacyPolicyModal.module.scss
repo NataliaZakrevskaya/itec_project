@@ -21,31 +21,55 @@
       line-height: 32px;
       color: #202223;
       text-align: center;
+      max-width: 460px;
     }
 
     & > div {
       margin-bottom: 20px;
+      max-width: 460px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hideScroll {
+    .modalContainer {
+      width: calc(100% + 7px);
+
+      & > div {
+        max-width: 460px;
+      }
     }
   }
 }
 
 @media (max-width: 472px) {
-  .modalContainer {
-    max-height: 465px;
-    padding: 15px 15px;
+  .hideScroll {
+    overflow: hidden;
+    max-height: 600px;
+    position: relative;
+    max-width: 320px;
 
-    & h1 {
-      @include SFDisplaySemibold();
-      font-size: 20px;
-      line-height: 28px;
-      color: #202223;
-    }
+    .modalContainer {
+      max-height: 465px;
+      max-width: 293px;
+      padding: 15px 15px;
 
-    & div {
-      @include SFTextRegular();
-      font-size: 14px;
-      line-height: 20px;
-      color: #202223;
+      & h1 {
+        @include SFDisplaySemibold();
+        font-size: 20px;
+        line-height: 28px;
+        color: #202223;
+        margin-bottom: 10px;
+      }
+
+      & div {
+        @include SFTextRegular();
+        font-size: 14px;
+        line-height: 20px;
+        color: #202223;
+        max-width: 260px;
+      }
     }
   }
 }
