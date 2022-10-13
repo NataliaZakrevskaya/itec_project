@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AppRoutesPropsType } from './types';
 
 const MainPage = React.lazy( () => import('../pages/MainPage/MainPage') );
+const BrandsPage = React.lazy( () => import('../pages/BrandsPage/BrandsPage') );
 const CatalogPage = React.lazy( () => import('../pages/CatalogPage/CatalogPage') );
 const ProductPage = React.lazy( () => import('../pages/ProductPage/ProductPage') );
 const ArticlesPage = React.lazy( () => import('../pages/ArticlesPage/ArticlesPage') );
@@ -22,6 +23,7 @@ const AppRoutes = ( { openFiltersMode, closeEditMode }: AppRoutesPropsType ) => 
       <Route path={ routesPathsEnum.ARTICLES } element={ <ArticlesPage/> }/>
       <Route path={ routesPathsEnum.ARTICLE_WITH_ID } element={ <ArticlePage/> }/>
       <Route path={ routesPathsEnum.BASKET } element={ <BasketPage/> }/>
+      <Route path={ routesPathsEnum.BRANDS } element={ <BrandsPage/> }/>
       <Route path={ routesPathsEnum.CHECKOUT } element={ <CheckoutPage/> }/>
       <Route path={ '*' } element={ <NotFoundPage/> }/>
     </Routes>

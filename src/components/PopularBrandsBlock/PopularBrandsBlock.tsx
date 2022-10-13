@@ -39,11 +39,12 @@ const PopularBrandsBlock = React.memo( (): ReactElement => {
                 id={ id }
                 image={ image }
                 chooseBrand={ chooseBrand }
+                forBlock={true}
               />,
             )
           }
         </div>
-        <Button title={ 'Смотреть больше брендов' } onClick={ () => navigate( routesPathsEnum.CATALOG ) }/>
+        <Button title={ 'Смотреть больше брендов' } onClick={ () => navigate( routesPathsEnum.BRANDS ) }/>
       </div>
     </div>
   );

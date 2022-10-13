@@ -1,0 +1,48 @@
+@import "src/styles/Mixins";
+
+.brandsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #f6f6f7;
+
+  & h1 {
+    @include SFDisplayBold();
+    font-size: 42px;
+    line-height: 44px;
+  }
+
+  .brandsPageInfo {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px 8px 72.08px;
+
+    .brandsContainer {
+      @include flex(row, space-between, center);
+      box-sizing: border-box;
+      width: 100%;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin: 40px 0 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .brandsPage {
+    & h1 {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    .brandsPageInfo {
+      padding: 32px 8px 64.36px;
+
+      .brandsContainer {
+        gap: 15px;
+        margin: 32px 0 0;
+      }
+    }
+  }
+}
