@@ -175,6 +175,62 @@
   width: 270px;
 }
 
+.discountBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #FFFFFF;
+  padding: 18px 16px 18px 17px;
+  border-radius: 5px;
+  gap: 4px;
+  margin-bottom: 24px;
+
+  & label {
+    width: 100%;
+    @include SFTextMedium();
+    @include flex(row, space-between, center);
+    @include fontSize14();
+    color: #1A1C1D;
+
+    & div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+
+      & input {
+        display: none;
+      }
+
+      & span {
+        @include size(18px, 18px);
+        border: 2px solid #8C9196;
+        border-radius: 4px;
+        display: inline-block;
+        position: relative;
+        background: #FFFFFF;
+        margin-right: 9px;
+        cursor: pointer;
+      }
+
+      [type=checkbox]:checked + div span:before {
+        @include size(20px, 20px);
+        content: url("../../Images/check.svg");
+        position: absolute;
+        top: -3px;
+        left: -3px;
+      }
+    }
+
+    & p {
+      @include SFTextRegular();
+      font-size: 15px;
+      line-height: 20px;
+      color: $discountColor;
+    }
+  }
+}
+
 .catalogPopularProductsWrapper {
   margin-bottom: 60px;
   width: 100%;

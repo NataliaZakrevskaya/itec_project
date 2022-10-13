@@ -44,6 +44,8 @@ import { PRODUCT_IMAGE } from '../../constants';
 import { CatalogPagePropsType } from './types';
 import { ProductItemType } from '../../types';
 import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
+import { getDiscountFilterStatus } from '../../redux/selectors/discountFilter';
+import { setChosenDiscountFilterStatus } from '../../redux/reducers/discountFilter';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -57,6 +59,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const discountFilterStatus = useSelector( getDiscountFilterStatus )
   const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const chosenBrands = useSelector( getChosenBrandsId );
   const chosenOrdering = useSelector( getChosenOrdering );
@@ -108,6 +111,12 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     /*set chosen value for select for sorting products*/
     dispatch( setChosenOrdering( { ordering: e.currentTarget.value as SelectValuesTypes } ) );
   };
+  const setDiscountFilterStatusFalse = () => {
+    dispatch(setChosenDiscountFilterStatus({filterStatus: false}))
+  }
+  const setDiscountFilterStatusTrue = () => {
+    dispatch(setChosenDiscountFilterStatus({filterStatus: true}))
+  }
 
   useEffect( () => {
     const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
@@ -167,6 +176,17 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <div className={ style.mainBlock }>
         <div className={ style.sortingBlock }>
           <div className={ style.productsType }>
+            <div className={ style.discountBlock }>
+              <label>
+                <div>
+                  <input type="checkbox" checked={ discountFilterStatus } onChange={ () => false }/>
+                  { discountFilterStatus
+                    ? <div onClick={ setDiscountFilterStatusFalse }><span/>Только акционные товары</div>
+                    : <div onClick={ setDiscountFilterStatusTrue }><span/>Только акционные товары</div>
+                  }
+                </div>
+              </label>
+            </div>
             <ProductTypesForm/>
             <BrandsForm closeEditMode={ closeEditMode }/>
           </div>
