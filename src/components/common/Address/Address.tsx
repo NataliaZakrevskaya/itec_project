@@ -4,21 +4,22 @@ import metroIcon from '../../../Images/metroIcon.svg';
 import style from './Address.module.scss';
 import { AddressPropsType } from './types';
 
-const Address = React.memo(( { address, metro , forProductPage}: AddressPropsType ): ReactElement => {
+const Address = React.memo( ( { address, metro, forProductPage, forBurger }: AddressPropsType ): ReactElement => {
 
   return (
-    <div className={ !forProductPage ? style.addressBlock : style.addressBlockForProductPage }>
+    <div
+      className={ !forProductPage ? forBurger ? `${ style.addressBlock } ${ style.forBurger }` : style.addressBlock : style.addressBlockForProductPage }>
       <div className={ style.addressBlockWrapperOne }>
-        <img className={ style.navigateIcon } loading={'lazy'} src={ navigateIcon } alt={ 'navigateIcon' }/>
+        <img className={ style.navigateIcon } loading={ 'lazy' } src={ navigateIcon } alt={ 'navigateIcon' }/>
         <p className={ style.textStyle }>{ address }</p>
       </div>
       <div className={ style.addressBlockWrapperTwo }>
-        <img className={ style.metroIcon } loading={'lazy'} src={ metroIcon } alt={ 'metroIcon' } draggable="false"/>
+        <img className={ style.metroIcon } loading={ 'lazy' } src={ metroIcon } alt={ 'metroIcon' } draggable="false"/>
         <p>{ metro }</p>
       </div>
     </div>
   );
-});
+} );
 
 export default Address;
 

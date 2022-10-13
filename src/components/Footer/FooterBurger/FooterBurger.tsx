@@ -11,7 +11,7 @@ const FooterBurger = React.memo((): ReactElement => {
   const { address, metro, time_weekdays, time_weekend, phone_number } = useSelector( getInfo );
   return (
     <footer className={ style.footerBurger }>
-      <Address address={ address } metro={ metro }/>
+      <Address address={ address } metro={ metro } forBurger={true}/>
       <div className={ style.instaBlock }>
         <Phone phoneNumber={ phone_number }/>
         <div className={ style.instagramIcon }/>

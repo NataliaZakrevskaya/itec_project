@@ -35,6 +35,11 @@
     @include fontSize14();
   }
 }
+.forBurger {
+  & .addressBlockWrapperOne {
+
+  }
+}
 .addressBlockForProductPage{
   display: flex;
   flex-direction: row;
@@ -94,6 +99,11 @@
 
     .metroIcon {
       margin-left: 0;
+    }
+  }
+  .forBurger {
+    & .addressBlockWrapperOne {
+      margin-right: 0;
     }
   }
 }

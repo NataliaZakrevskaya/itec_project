@@ -221,13 +221,6 @@
         left: -3px;
       }
     }
-
-    & p {
-      @include SFTextRegular();
-      font-size: 15px;
-      line-height: 20px;
-      color: $discountColor;
-    }
   }
 }
 

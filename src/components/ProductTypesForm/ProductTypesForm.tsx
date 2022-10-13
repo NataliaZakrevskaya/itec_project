@@ -7,7 +7,7 @@ import { fetchProductTypesTC, setChosenProductTypeId } from '../../redux/reducer
 import { setActualPage } from '../../redux/reducers/products';
 import { AppDispatch } from '../../redux/store';
 
-const ProductTypesForm = React.memo( (): ReactElement => {
+const ProductTypesForm = React.memo( ( { forBurger }: { forBurger: boolean } ): ReactElement => {
   const dispatch = useDispatch<AppDispatch>();
   const productsTypes = useSelector( getProductTypes );
   const chosenProductTypeId = useSelector( getChosenProductTypeId );
@@ -20,7 +20,7 @@ const ProductTypesForm = React.memo( (): ReactElement => {
   }, [ dispatch ] );
 
   return (
-    <div className={ style.productTypesBlock }>
+    <div className={ forBurger ? `${style.productTypesBlock} ${style.forBurger}` : style.productTypesBlock }>
       <h2>Тип товара</h2>
       <div className={ style.radioGroup }>
         {

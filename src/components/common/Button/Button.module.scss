@@ -28,8 +28,19 @@
   }
 }
 
+.forBurger {
+  & button {
+
+  }
+}
+
 @media (max-width: 768px) {
   .button {
     padding: 8px 16px;
+  }
+  .forBurger {
+    & button {
+      min-width: 270px;
+    }
   }
 }

@@ -109,3 +109,10 @@
 
   }
 }
+
+.forBurger{
+  padding: 0;
+  & h2 {
+    margin-bottom: 9px;
+  }
+}

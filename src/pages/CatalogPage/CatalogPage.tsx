@@ -59,7 +59,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const category = useSelector( getChosenProductTypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
-  const discountFilterStatus = useSelector( getDiscountFilterStatus )
+  const discountFilterStatus = useSelector( getDiscountFilterStatus );
   const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const chosenBrands = useSelector( getChosenBrandsId );
   const chosenOrdering = useSelector( getChosenOrdering );
@@ -111,12 +111,12 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     /*set chosen value for select for sorting products*/
     dispatch( setChosenOrdering( { ordering: e.currentTarget.value as SelectValuesTypes } ) );
   };
-  const setDiscountFilterStatusFalse = () => {
-    dispatch(setChosenDiscountFilterStatus({filterStatus: false}))
-  }
+ const setDiscountFilterStatusFalse = () => {
+    dispatch( setChosenDiscountFilterStatus( { filterStatus: false } ) );
+  };
   const setDiscountFilterStatusTrue = () => {
-    dispatch(setChosenDiscountFilterStatus({filterStatus: true}))
-  }
+    dispatch( setChosenDiscountFilterStatus( { filterStatus: true } ) );
+  };
 
   useEffect( () => {
     const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
@@ -187,8 +187,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                 </div>
               </label>
             </div>
-            <ProductTypesForm/>
-            <BrandsForm closeEditMode={ closeEditMode }/>
+            <ProductTypesForm forBurger={false}/>
+            <BrandsForm closeEditMode={ closeEditMode } forBurger={false}/>
           </div>
         </div>
         <div className={ style.productsBlockContainer }>

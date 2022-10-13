@@ -10,7 +10,7 @@ import { setActualPage } from '../../redux/reducers/products';
 import { AppDispatch } from '../../redux/store';
 import { BrandsFormPropsType } from './types';
 
-const BrandsForm = React.memo( ( { closeEditMode }: BrandsFormPropsType ): ReactElement => {
+const BrandsForm = React.memo( ( { closeEditMode, forBurger }: BrandsFormPropsType ): ReactElement => {
 
   const [ value, setValue ] = useState( '' );
 
@@ -31,7 +31,7 @@ const BrandsForm = React.memo( ( { closeEditMode }: BrandsFormPropsType ): React
   }, [ dispatch, brands ] );
 
   return (
-    <div className={ style.brandsFormBlock }>
+    <div className={ forBurger ? `${style.brandsFormBlock} ${style.forBurger}` : style.brandsFormBlock }>
       <h2>Бренд</h2>
       <input
         onChange={ ( e ) => setValue( e.target.value ) }
@@ -52,7 +52,7 @@ const BrandsForm = React.memo( ( { closeEditMode }: BrandsFormPropsType ): React
                   />,
                 )
               }
-              <Button title={ 'Применить фильтры' } onClick={ setFilters }/>
+              <Button title={ 'Применить фильтры' } onClick={ setFilters } forBurger={true}/>
             </div>
           )
           : (
