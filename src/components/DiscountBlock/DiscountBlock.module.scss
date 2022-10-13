@@ -7,8 +7,14 @@
 
 .discountBlock {
   @include flex(row, space-between, center);
-  margin: 57px 0;
+  margin: 56px 0 1px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 1199px) {
+  .discountBlock {
+    gap: 16px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -16,6 +22,6 @@
     width: 100%;
   }
   .discountBlock {
-    margin: 33px 0;
+    margin: 0 0;
   }
 }

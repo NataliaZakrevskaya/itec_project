@@ -176,58 +176,73 @@
 }
 
 @media (max-width: 768px) {
-  .advertisingBlock {
-    position: relative;
-  }
-  .mainWrapper {
-    & button {
-      width: 137px;
+  .advertisingBlockContainer {
+    padding: 24.75px 0 25px 0;
+
+    .advertisingBlock {
+      position: relative;
     }
-  }
-  .mainImage {
-    position: absolute;
-    top: 70px;
-    left: 200px;
-    min-width: 306px;
-    height: 211px;
+
+    .mainWrapper {
+      & button {
+        width: 137px;
+      }
+    }
+
+    .mainImage {
+      position: absolute;
+      top: 70px;
+      left: 200px;
+      min-width: 306px;
+      height: 211px;
+    }
   }
 }
 
 @media (max-width: 528px) {
-  .mainImage {
-    position: absolute;
-    top: 100px;
-    left: 200px;
-    min-width: 214px;
-    height: 152px;
+  .advertisingBlockContainer {
+    .mainImage {
+      position: absolute;
+      top: 100px;
+      left: 200px;
+      min-width: 214px;
+      height: 152px;
+    }
   }
 }
 
 @media (max-width: 440px) {
-  .mainImage {
-    position: absolute;
-    top: 146px;
-    left: 200px;
-    min-width: 165px;
-    height: 118px;
+  .advertisingBlockContainer {
+    .mainImage {
+      position: absolute;
+      top: 146px;
+      left: 200px;
+      min-width: 165px;
+      height: 118px;
+    }
   }
 }
 
 @media (max-width: 381px) {
-  .mainImage {
-    position: absolute;
-    top: 163px;
-    left: 200px;
-    min-width: 132px;
-    height: 94px;
+  .advertisingBlockContainer {
+    .mainImage {
+      position: absolute;
+      top: 163px;
+      left: 200px;
+      min-width: 132px;
+      height: 94px;
+    }
   }
 }
+
 @media (max-width: 328px) {
-  .mainImage {
-    position: absolute;
-    top: 163px;
-    left: 200px;
-    min-width: 96px;
-    height: 75px;
+  .advertisingBlockContainer {
+    .mainImage {
+      position: absolute;
+      top: 163px;
+      left: 200px;
+      min-width: 96px;
+      height: 75px;
+    }
   }
 }
