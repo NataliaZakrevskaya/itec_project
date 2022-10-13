@@ -36,9 +36,16 @@
     text-decoration-line: underline;
   }
 
-  .scroll {
-    scroll-behavior: smooth;
+  & div {
+    @include SFTextMedium();
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
 
+  & div:hover {
+    text-decoration-line: underline;
   }
 }
 
@@ -69,9 +76,15 @@
     text-decoration-line: underline;
   }
 
-  .scroll {
-    scroll-behavior: smooth;
+  & div {
+    @include SFDisplaySemibold();
+    font-size: 20px;
+    line-height: 28px;
+    color: $textColor;
+  }
 
+  & div:hover {
+    text-decoration-line: underline;
   }
 }
 
