@@ -41,6 +41,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    overflow: auto;
+    max-height: 350px;
+    margin-bottom: 10px;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      background-color: #fff;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $mainColor;
+      border-radius: 9em;
+      box-shadow: inset 1px 1px 10px #f3faf7;
+    }
 
     & label {
       width: 100%;
@@ -108,6 +121,11 @@
     }
 
   }
+}
+
+.scroll{
+  min-height: 350px;
+  overflow: hidden;
 }
 
 .forBurger{
