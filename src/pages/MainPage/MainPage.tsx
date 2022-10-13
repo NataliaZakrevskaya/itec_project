@@ -17,8 +17,8 @@ const MainPage = React.memo( () => {
     <div className={ style.mainPage }>
       <AnimalsTypesList/>
       <AdvertisingBlock/>
-      <PopularProductsBlock fromCatalog={ false }/>
       <DiscountBlock/>
+      <PopularProductsBlock fromCatalog={ false }/>
       <LatestBlock/>
       <PopularBrandsBlock/>
       <ReviewsBlock/>
