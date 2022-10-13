@@ -41,6 +41,45 @@
     }
   }
 }
+.animalType6 {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  @include size(214px, 84px);
+  background-color: white;
+  margin: 24px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 5px 5px 0;
+
+  &:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+
+    & span {
+      @include SFDisplaySemibold();
+      font-size: 16px;
+      line-height: 24px;
+      color: $mainColor;
+    }
+  }
+
+  & span {
+    @include SFDisplaySemibold();
+    @include fontSize16();
+  }
+
+  .animalTypeImageWrapper {
+    @include size(85px, 81px);
+
+    & img {
+      @include size(100%, 98%);
+      margin-top: 1%;
+      object-fit: contain;
+    }
+  }
+}
 
 .active {
   box-sizing: border-box;
@@ -51,9 +90,23 @@
   opacity: 0.6;
 }
 
+@media (max-width: 1199px) {
+  .animalType6 {
+    min-width: 145px;
+    max-width: 145px;
+    height: 73px;
+    gap: 0;
+
+    & .animalTypeImageWrapper {
+      @include size(73px, 71px);
+    }
+  }
+}
+
 @media (max-width: 992px) {
   .animalType {
-    min-width: 173px;
+    min-width: 167px;
+    max-width: 167px;
     height: 73px;
     gap: 10px;
 

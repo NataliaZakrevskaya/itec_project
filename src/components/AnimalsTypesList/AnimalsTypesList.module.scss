@@ -3,30 +3,36 @@
 .window {
   width: 100%;
   overflow: hidden;
-
-  .animalTypesBlock {
-    gap: 24px;
-    @include flex(row, space-between, stretch);
-    width: 100%;
-    transition: translate;
-    transition-property: transform;
-    transition-duration: 500ms;
-    transition-timing-function: ease-in-out;
-  }
+}
+.animalTypesBlock {
+  gap: 24px;
+  @include flex(row, space-between, stretch);
+  width: 100%;
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
 }
 
+.forSix{
+  gap: 24px;
+}
+
+@media (max-width: 1199px) {
+  .forSix{
+    gap: 14px;
+  }
+}
 @media (max-width: 992px) {
-  .window {
+
     .animalTypesBlock {
       gap: 12px;
     }
-  }
 }
 
 @media (max-width: 768px) {
-  .window {
+
     .animalTypesBlock {
       gap: 8px !important;
     }
-  }
 }

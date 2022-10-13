@@ -6,12 +6,15 @@ export enum BlockNames {
 }
 
 export enum AnimalCardWidth {
-  width940_700 = 173,
-  widthLess700 = 137
+  width940_700 = 167,
+  widthLess700 = 137,
+  width940_700__6items = 145,
+  widthLess700__6items = 145,
 }
 export enum AnimalListGap {
   width940_700 = 10,
-  widthLess700= 6
+  widthLess700= 6,
+  widthLess700__6items= 7,
 }
 export enum ProductsCount {
   widthMore940 = 4,

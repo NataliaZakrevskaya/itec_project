@@ -33,7 +33,6 @@ const AnimalsTypesList = React.memo( (): ReactElement => {
     dispatch( setChosenAnimalTypeId( { id } ) );
     navigate( routesPathsEnum.CATALOG );
   }, [ dispatch, navigate ] );
-
   return (
     <div className={ commonStyle.container }>
       <div
@@ -42,7 +41,7 @@ const AnimalsTypesList = React.memo( (): ReactElement => {
         onTouchStart={ onTouchStart }
         onTouchEnd={ onTouchEnd }
       >
-        <div className={ style.animalTypesBlock }
+        <div className={ animalTypes.length > 5 ? `${style.animalTypesBlock} ${style.forSix}` : style.animalTypesBlock }
              style={ {
                transform: `translateX(${ offset }px)`,
              } }>
@@ -55,6 +54,7 @@ const AnimalsTypesList = React.memo( (): ReactElement => {
               isActive={ activeAnimalTypeId === type.id }
               checked={ !!activeAnimalTypeId || activeAnimalTypeId === 0 }
               chooseActiveAnimalType={ chooseActiveAnimalType }
+              sixTypes={animalTypes.length > 5}
             />,
           ) }
         </div>

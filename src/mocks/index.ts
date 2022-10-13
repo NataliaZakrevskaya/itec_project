@@ -743,7 +743,7 @@ export const getProductInitState = (): OneProductItemType => {
     discount_by_product: null,
     discount_by_category: null,
     name: '',
-    brand: { id: 0, name: "", image: "" },
+    brand: { id: 0, name: '', image: '' },
     options: [ {
       id: 0,
       discount_by_option: null,

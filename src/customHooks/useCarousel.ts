@@ -40,9 +40,15 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       else return ( ( ProductCardWidth.WidthLess704 * itemsCount ) + ( ProductListGap.WidthLess404 * ( itemsCount - 1 ) ) ) / width;
     }
     if ( blockName === BlockNames.ANIMALS ) {
-      if ( width >= 940 ) return 1;
-      if ( width < 940 && width >= 700 ) return itemsCount / ( width / ( AnimalCardWidth.width940_700 + AnimalListGap.width940_700 ) );
-      else return itemsCount / ( width / ( AnimalCardWidth.widthLess700 + AnimalListGap.widthLess700 ) );
+      if(itemsCount > 5){
+        if ( width >= 940 ) return 1;
+        if ( width < 940 && width >= 700 ) return itemsCount / ( width / ( AnimalCardWidth.width940_700__6items + AnimalListGap.width940_700 ) );
+        else return itemsCount / ( width / ( AnimalCardWidth.widthLess700__6items + AnimalListGap.widthLess700__6items ) );
+      } else {
+        if ( width >= 940 ) return 1;
+        if ( width < 940 && width >= 700 ) return itemsCount / ( width / ( AnimalCardWidth.width940_700 + AnimalListGap.width940_700 ) );
+        else return itemsCount / ( width / ( AnimalCardWidth.widthLess700 + AnimalListGap.widthLess700 ) );
+      }
     }
     return 1;
   };
@@ -80,10 +86,15 @@ export const useCarousel = ( blockName: BlockNameType, itemsCount: number ) => {
       else return 280 + ( width * 0.03 );
     }
     if ( blockName === BlockNames.ANIMALS ) {
-
-      if ( width >= 940 ) return width;
-      if ( width < 940 && width >= 704 ) return AnimalCardWidth.width940_700 + AnimalListGap.width940_700;
-      else return AnimalCardWidth.widthLess700 + AnimalListGap.widthLess700;
+      if ( itemsCount > 5 ) {
+        if ( width >= 940 ) return width;
+        if ( width < 940 && width >= 704 ) return AnimalCardWidth.width940_700__6items + AnimalListGap.width940_700;
+        else return AnimalCardWidth.widthLess700__6items + AnimalListGap.widthLess700;
+      } else {
+        if ( width >= 940 ) return width;
+        if ( width < 940 && width >= 704 ) return AnimalCardWidth.width940_700 + AnimalListGap.width940_700;
+        else return AnimalCardWidth.widthLess700 + AnimalListGap.widthLess700;
+      }
     } else return width;
   };
   const onTouchEnd = ( event: any ) => {

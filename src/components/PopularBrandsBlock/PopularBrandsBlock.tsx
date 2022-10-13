@@ -25,7 +25,7 @@ const PopularBrandsBlock = React.memo( (): ReactElement => {
   }, [ dispatch, navigate ] );
   useEffect( () => {
     dispatch( fetchBrandsTC() );
-  }, [dispatch] );
+  }, [ dispatch ] );
 
   return (
     <div className={ style.popularBrandsBlock }>
@@ -33,15 +33,17 @@ const PopularBrandsBlock = React.memo( (): ReactElement => {
         <h2 className={ style.title }>Популярные бренды</h2>
         <div className={ style.brandsContainer }>
           {
-            brands.map( ( { id, image } ) =>
-              <Brand
-                key={ id }
-                id={ id }
-                image={ image }
-                chooseBrand={ chooseBrand }
-                forBlock={true}
-              />,
-            )
+            brands
+              .filter( ( brand, index ) => index < 18 )
+              .map( ( { id, image } ) =>
+                <Brand
+                  key={ id }
+                  id={ id }
+                  image={ image }
+                  chooseBrand={ chooseBrand }
+                  forBlock={ true }
+                />,
+              )
           }
         </div>
         <Button title={ 'Смотреть больше брендов' } onClick={ () => navigate( routesPathsEnum.BRANDS ) }/>

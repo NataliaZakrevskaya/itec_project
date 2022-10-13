@@ -5,4 +5,5 @@ export type AnimalTypePropsType = {
   isActive: boolean,
   checked: boolean
   chooseActiveAnimalType: ( id: number ) => void
+  sixTypes: boolean
 }
