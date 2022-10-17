@@ -46,6 +46,7 @@ import { ProductItemType } from '../../types';
 import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
 import { getDiscountFilterStatus } from '../../redux/selectors/discountFilter';
 import { setChosenDiscountFilterStatus } from '../../redux/reducers/discountFilter';
+import ChooseAnimalTypeForm from '../../components/ChooseAnimalTypeForm/ChooseAnimalTypeForm';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -111,7 +112,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     /*set chosen value for select for sorting products*/
     dispatch( setChosenOrdering( { ordering: e.currentTarget.value as SelectValuesTypes } ) );
   };
- const setDiscountFilterStatusFalse = () => {
+  const setDiscountFilterStatusFalse = () => {
     dispatch( setChosenDiscountFilterStatus( { filterStatus: false } ) );
   };
   const setDiscountFilterStatusTrue = () => {
@@ -187,8 +188,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                 </div>
               </label>
             </div>
-            <ProductTypesForm forBurger={false}/>
-            <BrandsForm closeEditMode={ closeEditMode } forBurger={false}/>
+            { animal ? <ProductTypesForm forBurger={ false }/> : <ChooseAnimalTypeForm forBurger={ false }/> }
+            <BrandsForm closeEditMode={ closeEditMode } forBurger={ false }/>
           </div>
         </div>
         <div className={ style.productsBlockContainer }>

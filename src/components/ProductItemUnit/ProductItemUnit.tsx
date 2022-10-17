@@ -38,7 +38,6 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
     document.documentElement.scrollTo( 0, 0 );
     navigate( `${ routesPathsEnum.CATALOG }/${ productId }` );
   };
-  console.log(option);
 
   return (
     <>
@@ -47,16 +46,16 @@ const ProductItemUnit = ( { option, productId, active, from }: ProductItemUnitPr
           <span onClick={ onUnitClick } className={ active ? style.active : style.oneUnitBlock }>
       { +option.size } { option.units.unit_name }
     </span>
-          {option.discount_by_option && <div className={ style.svg }>
+          { option.discount_by_option && <div className={ style.svg }>
             <Discount/>
-          </div>}
+          </div> }
         </div> )
         : ( <div className={ style.spanContainer }>
           <span className={ style.oneUnitBlock }
                 onClick={ onSetWeightClick }>Задать вес</span>
-            {option.discount_by_option && <div className={ style.svg }>
+            { option.discount_by_option && <div className={ style.svg }>
               <Discount/>
-            </div>}
+            </div> }
           </div>
         ) }
     </>

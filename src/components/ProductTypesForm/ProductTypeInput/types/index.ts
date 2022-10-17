@@ -1,5 +1,5 @@
 export type ProductTypeInputPropsType = {
-  id: number
+  id: number,
   name: string,
   discount: boolean,
   isActive: boolean,
