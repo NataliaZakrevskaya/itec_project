@@ -44,7 +44,7 @@
 
     .productsType{
       width: 270px;
-      & label {
+      & > label {
         width: 100%;
         @include SFTextMedium();
         @include flex(row, space-between, center);

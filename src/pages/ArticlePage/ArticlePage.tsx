@@ -26,7 +26,6 @@ const ArticlePage = React.memo( () => {
   useEffect( () => {
     dispatch( fetchArticleTC( { id: articleId } ) );
   }, [] );
-  console.log( article.title );
 
   return (
     <div className={ style.articlePage }>
