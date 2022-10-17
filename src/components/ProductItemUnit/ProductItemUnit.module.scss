@@ -1,6 +1,20 @@
 @import "src/styles/Mixins";
 @import "src/styles/Variables";
 
+.spanContainer {
+  position: relative;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-bottom: 6px;
+}
+
+.svg {
+  position: absolute;
+  top: -13px;
+  right: -5px;
+  z-index: 2;
+}
+
 .oneUnitBlock {
   padding: 2px 8px;
   background: #E4E5E7;
@@ -8,8 +22,7 @@
   @include SFTextMedium();
   @include fontSize14();
   cursor: pointer;
-  margin-right: 4px;
-  margin-bottom: 6px;
+
 
   &:hover {
     color: #FFFFFF;
@@ -24,8 +37,8 @@
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
-  margin-right: 4px;
-  margin-bottom: 6px;
+  /*margin-right: 4px;
+  margin-bottom: 6px;*/
   color: #FFFFFF;
   background: #449DA7;
 }
