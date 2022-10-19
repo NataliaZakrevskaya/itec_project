@@ -1,4 +1,4 @@
-import { ProductItemType } from '../../../types';
+import { ProductItemType, SubcategoryType } from '../../../types';
 
 export type RequestStatusType = 'idle' | 'succeeded' | 'failed';
 export type latestProductsInitialStateType = {
@@ -12,6 +12,6 @@ export type latestProductsInitialStateType = {
 export type ProductTypesType = {
   id: number,
   name: string,
-  discount_by_category: null
+  subcategory: SubcategoryType[],
   chosen: boolean
 }

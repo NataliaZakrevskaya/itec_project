@@ -1,10 +1,10 @@
 import { instance } from '../config';
 import { PRODUCT_TYPES_URL } from './constants';
-import { ResBrandType } from '../../types';
+import { ResProductType } from '../../types';
 
 export const productTypesAPI = {
-  async setProductTypes() {
-    return await instance.get<Array<ResBrandType>>( PRODUCT_TYPES_URL );
+  async setProductTypes( animalId: number ) {
+    return await instance.get<Array<ResProductType>>( `${ PRODUCT_TYPES_URL }/?animal=${ animalId }` );
   },
 };
 

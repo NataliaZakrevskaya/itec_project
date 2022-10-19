@@ -26,7 +26,7 @@ import { fetchProductsTC, setActualPage } from '../../redux/reducers/products';
 import { getActualPage, getPageSize, getProductItems, getTotalProductsCount } from '../../redux/selectors/products';
 import { routesPathsEnum } from '../../routes/enums';
 import { useNavigate } from 'react-router-dom';
-import { getChosenProductTypeId } from '../../redux/selectors/productTypes';
+import { getChosenProductSubtypeId, getChosenProductTypeId } from '../../redux/selectors/productTypes';
 import { getOneClickOrderRequestStatus, getProductRequestStatus } from '../../redux/selectors/app';
 import { RequestStatus } from '../../redux/reducers/enums';
 import { setOneClickOrderRequestStatus, setProductRequest } from '../../redux/reducers/app';
@@ -58,6 +58,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const pageSize = useSelector( getPageSize );
   const category = useSelector( getChosenProductTypeId );
+  const chosenSubCategories = useSelector( getChosenProductSubtypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const discountFilterStatus = useSelector( getDiscountFilterStatus );
@@ -121,8 +122,9 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
 
   useEffect( () => {
     const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
-    dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands } ) );
-  }, [ page, animal, category, chosenOrdering, chosenBrands, dispatch ] );
+    const subCategories = !!chosenSubCategories.length ? chosenSubCategories?.join() : null; // we don't add subcategories to the params unless one of them is selected
+    dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands, subCategories } ) );
+  }, [ page, animal, category, chosenSubCategories, chosenOrdering, chosenBrands, dispatch ] );
   useEffect( () => {
     /*we turn off scroll when modals are active*/
     if ( isBasketModalActive || isOneClickModalActive || isSuccessOneClickOrder ) {

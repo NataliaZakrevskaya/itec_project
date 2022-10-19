@@ -5,12 +5,12 @@ import { productsAPI } from '../../Api/productsApi';
 import { Nullable, OptionType, ProductItemType } from '../../types';
 
 export const fetchProductsTC = createAsyncThunk(
-  'products/fetchProducts', async ( param: { page?: number, animal: Nullable<number>, category: Nullable<number>, ordering?: any, brands: Nullable<string> }, {
+  'products/fetchProducts', async ( param: { page?: number, animal: Nullable<number>, category: Nullable<number>, ordering?: any, brands: Nullable<string>, subCategories: Nullable<string> }, {
     dispatch,
     rejectWithValue,
   } ) => {
     try {
-      const res = await productsAPI.setProducts( param.animal, param.category, param.brands, param.page, param.ordering );
+      const res = await productsAPI.setProducts( param.animal, param.category, param.subCategories, param.brands, param.page, param.ordering );
       dispatch( setProductRequest( { status: RequestStatus.SUCCEEDED } ) );
       return { products: res.data };
     } catch ( err ) {

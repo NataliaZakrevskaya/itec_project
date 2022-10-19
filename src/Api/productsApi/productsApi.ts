@@ -5,7 +5,7 @@ import { AxiosResponse } from '../types';
 import { PageSize } from './enums';
 
 export const productsAPI = {
-  async setProducts( animal: number | null, category: number | null, brands?: string | null, page?: number, ordering?: string ) {
+  async setProducts( animal: number | null, category: number | null, subCategories?: string | null, brands?: string | null, page?: number, ordering?: string ) {
     return await instance.get<responseProductItemType, AxiosResponse<responseProductItemType>>( PRODUCTS_URL, {
       params: {
         page,
@@ -14,6 +14,7 @@ export const productsAPI = {
         category,
         ordering,
         brand: brands,
+        subcategory: subCategories
       },
     } );
   },

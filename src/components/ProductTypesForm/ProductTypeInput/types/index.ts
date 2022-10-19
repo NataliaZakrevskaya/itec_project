@@ -1,7 +1,9 @@
+import { SubcategoryType } from '../../../../types';
+
 export type ProductTypeInputPropsType = {
   id: number,
   name: string,
-  discount: boolean,
+  subcategory: SubcategoryType[],
   isActive: boolean,
   chooseProductType: ( id: number ) => void
 }
