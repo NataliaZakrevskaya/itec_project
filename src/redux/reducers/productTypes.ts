@@ -26,7 +26,7 @@ export const slice = createSlice( {
       state.chosenProductTypeId = action.payload.id;
       state.chosenProductSubTypesId = [];
     },
-    removeChosenProductTypeId( state ) {
+    removeChosenProductTypeId( state, action ) {
       state.chosenProductTypeId = null;
       state.chosenProductSubTypesId = [];
     },
