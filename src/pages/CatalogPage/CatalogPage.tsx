@@ -95,7 +95,11 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setIsBasketModalActive( false );
     setProductForBasketModal( null );
   };
-  const openBasketModal = ( product: ProductItemType ) => {
+  const openBasketModal = ( productItem: ProductItemType ) => {
+    const product = productItem.chosen_option.partial ? {
+      ...productItem,
+      chosen_option: { ...productItem.chosen_option, quantity: 1000 },
+    } : productItem;
     setProductForBasketModal( product );
     /*check basket for the presence of this product with the selected option by the article of the option. If there is one, increase the quantity of the product at the selected option, if the product is new, add to the basket*/
     productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.article_number !== product.chosen_option?.article_number )
@@ -124,7 +128,15 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
     const subCategories = !!chosenSubCategories.length ? chosenSubCategories?.join() : null; // we don't add subcategories to the params
     const discount = discountFilterStatus ? 1 : null;
-    dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands, subCategories, discount } ) );
+    dispatch( fetchProductsTC( {
+      page,
+      animal,
+      category,
+      ordering: chosenOrdering,
+      brands,
+      subCategories,
+      discount,
+    } ) );
   }, [ page, animal, category, chosenSubCategories, chosenOrdering, chosenBrands, dispatch, discountFilterStatus ] );
   useEffect( () => {
     /*we turn off scroll when modals are active*/
