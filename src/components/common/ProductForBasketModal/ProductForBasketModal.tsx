@@ -14,7 +14,6 @@ const ProductForBasketModal = ( {
                                 }: ProductForBasketModalPropsType ): ReactElement => {
   const productName = stringCutter( name, 70 );
   const price = getPrice( chosenOption.partial ? ( +chosenOption.price * chosenOption.quantity / 1000 ) : ( +chosenOption.price * countOfProduct ) );
-  console.log(showDiscount)
   return (
     <div className={ style.ProductForBasketModalContainer }>
       <div className={ style.productName }>
