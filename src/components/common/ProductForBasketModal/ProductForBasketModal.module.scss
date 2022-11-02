@@ -66,6 +66,28 @@
     @include flex(row, center, center);
     min-width: 230px;
     gap: 16px;
+    & p{
+      @include SFTextMedium();
+      font-size: 16px;
+      line-height: 130%;
+      color: $textColor;
+    }
+
+    .price {
+      @include SFTextMedium();
+      font-size: 16px;
+      line-height: 130%;
+      color: $textColor;
+    }
+
+    .priceWithDiscount {
+      @include SFTextMedium();
+      font-size: 16px;
+      line-height: 130%;
+      color: #8C9196;
+      text-decoration: line-through;
+      text-decoration-color: #D72C0D;
+    }
   }
 }
 

@@ -5,17 +5,17 @@ import { routesPathsEnum } from '../../../../routes/enums';
 import style from './BasketModal.module.scss';
 import ProductForBasketModal from '../../ProductForBasketModal/ProductForBasketModal';
 import { BasketModalPropsType } from '../types';
-import { getPriceWithDiscount } from '../../../../redux/reducers/helpers';
+import { getPriceWithDiscountForProductPage } from '../../../../redux/reducers/helpers';
 import { PRODUCT_IMAGE } from '../../../../constants';
 
 const BasketModal = ( {
                         product,
                         closeModal,
                       }: BasketModalPropsType ): ReactElement => {
-  const { max_discount, chosen_option, name, images, id } = product;
+  const { greatest_discount, chosen_option, name, images, id } = product;
   const countOfProduct = chosen_option.partial ? 1 : chosen_option.quantity;
-  const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
-  const priceWithDiscount = showDiscount ? getPriceWithDiscount( product ) : null;
+  const showDiscount = !!greatest_discount || !!chosen_option.discount_by_option;
+  const priceWithDiscount = showDiscount ? getPriceWithDiscountForProductPage( product ) : null;
   const navigate = useNavigate();
   const continueShopping = () => {
     navigate( routesPathsEnum.CATALOG );
@@ -41,6 +41,7 @@ const BasketModal = ( {
           chosenOption={ chosen_option }
           countOfProduct={ countOfProduct }
           id={ id }
+          showDiscount={showDiscount}
         />
       </div>
       <div className={ style.buttons }>
