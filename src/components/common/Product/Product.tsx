@@ -30,13 +30,13 @@ const Product = ( {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const { id, name, chosen_option, max_discount, images, options } = product;
+  const { id, name, chosen_option, greatest_discount, images, options } = product;
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
-  const priceWithDiscount = ( !!max_discount || !!chosen_option.discount_by_option ) ? getPriceWithDiscount( product ) : null;
+  const priceWithDiscount = ( !!greatest_discount || !!chosen_option.discount_by_option ) ? getPriceWithDiscount( product ) : null;
   const productName = stringCutter( name, 70 );
   const countOfProduct = chosen_option.quantity;
   const price = getPrice( chosen_option.partial ? ( +chosen_option.price * countOfProduct / 1000 ) : ( +chosen_option.price * countOfProduct ) );
-  const showDiscount = ( !isForModal && !!max_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
+  const showDiscount = ( !isForModal && !!greatest_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {

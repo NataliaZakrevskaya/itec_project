@@ -11,7 +11,7 @@ export type OptionType = {
 }
 export type ProductItemType = {
   id: number,
-  max_discount: number | null,
+  greatest_discount: number | null,
   discount_by_product: number | null,
   discount_by_category: number | null,
   name: string,
@@ -21,7 +21,7 @@ export type ProductItemType = {
 }
 export type OneProductItemType = {
   id: number,
-  max_discount: number | null,
+  greatest_discount: number | null,
   discount_by_product: number | null,
   discount_by_category: number | null,
   brand: { id: number, name: string, image: string },

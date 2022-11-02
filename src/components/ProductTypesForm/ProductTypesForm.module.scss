@@ -20,7 +20,7 @@
     cursor: default;
   }
 
-  .categoryContainer{
+  .categoryContainer {
     width: 100%;
     @include SFTextRegular();
     display: flex;
@@ -57,12 +57,20 @@
         left: -3px;
       }
     }
+
+    .subcategoryContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 11px 0 18px 15px;
+    }
   }
 }
 
 .forBurger {
   padding: 0;
   margin-bottom: 0;
+
   & h2 {
     margin-bottom: 10px;
   }

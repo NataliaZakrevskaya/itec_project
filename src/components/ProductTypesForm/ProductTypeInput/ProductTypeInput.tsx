@@ -23,7 +23,7 @@ const ProductTypeInput = React.memo( ( {
         { name }
       </div>
       { isActive &&
-        <div>
+        <div className={style.subcategoryContainer}>
           { subcategory.map( ( category: SubcategoryType ) =>
             <ProductSubtypeInput
               key={ category.id }

@@ -34,7 +34,7 @@ export const slice = createSlice( {
     // @ts-ignore
     builder.addCase( fetchAccompanyingProductsTC.fulfilled, ( state, action ) => {
       if ( action.payload ) {
-        return action.payload.accompanyingProducts;
+        state.results = action.payload.accompanyingProducts;
       }
     } );
   } ),

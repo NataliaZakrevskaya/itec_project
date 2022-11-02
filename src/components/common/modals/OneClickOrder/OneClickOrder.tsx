@@ -30,8 +30,8 @@ const OneClickOrder = ( { closeOneClickOrderModal, closeModal }: OnClickOrderPro
   const basketCountWithDiscount = useSelector( getPriceWithDiscount );
   const discountForBasket = useSelector( getDiscountsForBasket );
   const address = useSelector( getAddress );
-  const { chosen_option, max_discount } = productForOneClickOrder;
-  const showDiscount = !!max_discount || !!chosen_option.discount_by_option;
+  const { chosen_option, greatest_discount } = productForOneClickOrder;
+  const showDiscount = !!greatest_discount || !!chosen_option.discount_by_option;
   const orderInfo = { productsInBasket, productsCount, basketCount, basketCountWithDiscount };
 
   const openPrivacyModalContent = () => {

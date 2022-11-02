@@ -122,9 +122,10 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
 
   useEffect( () => {
     const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
-    const subCategories = !!chosenSubCategories.length ? chosenSubCategories?.join() : null; // we don't add subcategories to the params unless one of them is selected
-    dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands, subCategories } ) );
-  }, [ page, animal, category, chosenSubCategories, chosenOrdering, chosenBrands, dispatch ] );
+    const subCategories = !!chosenSubCategories.length ? chosenSubCategories?.join() : null; // we don't add subcategories to the params
+    const discount = discountFilterStatus ? 1 : null;
+    dispatch( fetchProductsTC( { page, animal, category, ordering: chosenOrdering, brands, subCategories, discount } ) );
+  }, [ page, animal, category, chosenSubCategories, chosenOrdering, chosenBrands, dispatch, discountFilterStatus ] );
   useEffect( () => {
     /*we turn off scroll when modals are active*/
     if ( isBasketModalActive || isOneClickModalActive || isSuccessOneClickOrder ) {

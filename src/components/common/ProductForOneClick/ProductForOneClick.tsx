@@ -32,7 +32,7 @@ const ProductForOneClick = ( {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const { id, name, chosen_option, max_discount, images, options } = useSelector( getProductForOneClickOrder );
+  const { id, name, chosen_option, greatest_discount, images, options } = useSelector( getProductForOneClickOrder );
   const countOfProduct = useSelector( getProductCount );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const productName = stringCutter( name, 70 );
@@ -40,7 +40,7 @@ const ProductForOneClick = ( {
   const priceWithDiscountFromStore = useSelector( getPriceWithDiscount );
   const price = getPriceForBasket( priceWithoutDiscount );
   const priceWithDiscount = getPriceForBasket( priceWithDiscountFromStore );
-  const showDiscount = ( !isForModal && !!max_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
+  const showDiscount = ( !isForModal && !!greatest_discount ) || ( !isForModal && !!chosen_option.discount_by_option );
 
   const onDecrementBtnClick = () => {
     if ( countOfProduct > 1 ) {

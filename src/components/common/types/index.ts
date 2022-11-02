@@ -24,7 +24,8 @@ export type ProductForBasketModalPropsType = {
   countOfProduct: number,
   chosenOption: OptionType,
   image: string,
-  priceWithDiscount?: number | null
+  priceWithDiscount?: number | null,
+  showDiscount: boolean
 }
 export type SchedulePropsType = {
   forFooterBurger?: boolean,

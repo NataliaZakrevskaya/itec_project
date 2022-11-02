@@ -42,7 +42,7 @@ let product: ProductItemType = {
       stock_balance: 12,
     },
   ],
-  max_discount: null,
+  greatest_discount: null,
   discount_by_product: null,
   discount_by_category: null,
   chosen_option: {
@@ -117,7 +117,7 @@ let secondProduct: ProductItemType = {
       stock_balance: 12,
     },
   ],
-  max_discount: null,
+  greatest_discount: null,
   discount_by_product: null,
   discount_by_category: null,
   chosen_option: {

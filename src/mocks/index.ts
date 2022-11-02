@@ -4,7 +4,7 @@ export const getProductItems = (): Array<ProductItemType> => {
   return [
     {
       id: 1,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -65,7 +65,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 2,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -126,7 +126,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 3,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -187,7 +187,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 4,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -248,7 +248,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 5,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -309,7 +309,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 6,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -370,7 +370,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 7,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -431,7 +431,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 8,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -492,7 +492,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 9,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -553,7 +553,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 10,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -614,7 +614,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 11,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -675,7 +675,7 @@ export const getProductItems = (): Array<ProductItemType> => {
     },
     {
       id: 12,
-      max_discount: null,
+      greatest_discount: null,
       discount_by_product: null,
       discount_by_category: null,
       name: 'Health Nutrition',
@@ -739,7 +739,7 @@ export const getProductItems = (): Array<ProductItemType> => {
 export const getProductInitState = (): OneProductItemType => {
   return {
     id: 0,
-    max_discount: null,
+    greatest_discount: null,
     discount_by_product: null,
     discount_by_category: null,
     name: '',
