@@ -27,7 +27,15 @@ export const slice = createSlice( {
   },
   extraReducers: ( builder => {
     builder.addCase( fetchProductTC.fulfilled, ( state, action ) => {
-      return action.payload?.product;
+      if ( action.payload ) {
+        return { ...action.payload.product,
+          options: action.payload.product.options.map( option => option.partial ? {
+            ...option,
+            quantity: 1000,
+          } : option ),
+          chosen_option: action.payload.product.chosen_option.partial ? {...action.payload.product.chosen_option, quantity: 1000} : action.payload.product.chosen_option
+        };
+      }
     } );
   } ),
 } );
