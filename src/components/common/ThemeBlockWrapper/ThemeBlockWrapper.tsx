@@ -70,7 +70,11 @@ const ThemeBlockWrapper = ( {
   const closeOneClickOrderModal = () => {
     setIsOneClickOrderActive( false );
   };
-  const openOneClickModal = ( product: ProductItemType ) => {
+  const openOneClickModal = ( productItem: ProductItemType ) => {
+    const product = productItem.chosen_option.partial ? {
+      ...productItem,
+      chosen_option: { ...productItem.chosen_option, quantity: 1000 },
+    } : productItem;
     dispatch( setProductToState( { product, basketDiscount } ) );
     setIsOneClickModalActive( true );
     setIsOneClickOrderActive( true );
@@ -79,7 +83,11 @@ const ThemeBlockWrapper = ( {
     setIsBasketModalActive( false );
     setProductForBasketModal( null );
   };
-  const openBasketModal = ( product: ProductItemType ) => {
+  const openBasketModal = ( productItem: ProductItemType ) => {
+    const product = productItem.chosen_option.partial ? {
+      ...productItem,
+      chosen_option: { ...productItem.chosen_option, quantity: 1000 },
+    } : productItem;
     setProductForBasketModal( product );
     productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( { product, basketDiscount } ) )
