@@ -22,6 +22,7 @@ import { setOneClickOrderRequestStatus } from '../../../redux/reducers/app';
 import { ThemeBlockWrapperPropsType } from '../types';
 import { ProductItemType } from '../../../types';
 import { getDiscountsForBasket } from '../../../redux/selectors/discountForBasket';
+import { GetPartialProductForOrdering } from '../../../helpers/getPartialProductForOrdering';
 
 const ThemeBlockWrapper = ( {
                               title,
@@ -37,7 +38,7 @@ const ThemeBlockWrapper = ( {
   const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const productsFromBasket = useSelector( getProductsInBasket );
-  const basketDiscount = useSelector( getDiscountsForBasket )[0];
+  const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { block, sectionsBlock, productItem } = blockTheme;
 
@@ -71,10 +72,7 @@ const ThemeBlockWrapper = ( {
     setIsOneClickOrderActive( false );
   };
   const openOneClickModal = ( productItem: ProductItemType ) => {
-    const product = productItem.chosen_option.partial ? {
-      ...productItem,
-      chosen_option: { ...productItem.chosen_option, quantity: 1000 },
-    } : productItem;
+    const product = GetPartialProductForOrdering( productItem );
     dispatch( setProductToState( { product, basketDiscount } ) );
     setIsOneClickModalActive( true );
     setIsOneClickOrderActive( true );
@@ -84,10 +82,7 @@ const ThemeBlockWrapper = ( {
     setProductForBasketModal( null );
   };
   const openBasketModal = ( productItem: ProductItemType ) => {
-    const product = productItem.chosen_option.partial ? {
-      ...productItem,
-      chosen_option: { ...productItem.chosen_option, quantity: 1000 },
-    } : productItem;
+    const product = GetPartialProductForOrdering( productItem );
     setProductForBasketModal( product );
     productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.id !== product.chosen_option?.id )
       ? dispatch( setProductToBasket( { product, basketDiscount } ) )
@@ -151,7 +146,8 @@ const ThemeBlockWrapper = ( {
           <Modal closeModal={ closeOneClickModal }>
             { isSuccessOneClickOrder
               ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
-              : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
+              : (
+                <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
             }
           </Modal>
         }

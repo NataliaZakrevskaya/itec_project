@@ -47,6 +47,7 @@ import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
 import { getDiscountFilterStatus } from '../../redux/selectors/discountFilter';
 import { setChosenDiscountFilterStatus } from '../../redux/reducers/discountFilter';
 import ChooseAnimalTypeForm from '../../components/ChooseAnimalTypeForm/ChooseAnimalTypeForm';
+import { GetPartialProductForOrdering } from '../../helpers/getPartialProductForOrdering';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -87,7 +88,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const closeOneClickOrderModal = () => {
     setIsOneClickOrderActive( true );
   };
-  const openOneClickModal = ( product: ProductItemType ) => {
+  const openOneClickModal = ( productItem: ProductItemType ) => {
+    const product = GetPartialProductForOrdering( productItem );
     dispatch( setProductToState( { product, basketDiscount } ) );
     setIsOneClickModalActive( true );
   };
@@ -96,10 +98,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     setProductForBasketModal( null );
   };
   const openBasketModal = ( productItem: ProductItemType ) => {
-    const product = productItem.chosen_option.partial ? {
-      ...productItem,
-      chosen_option: { ...productItem.chosen_option, quantity: 1000 },
-    } : productItem;
+    const product = GetPartialProductForOrdering( productItem );
     setProductForBasketModal( product );
     /*check basket for the presence of this product with the selected option by the article of the option. If there is one, increase the quantity of the product at the selected option, if the product is new, add to the basket*/
     productsFromBasket.every( ( prod: ProductItemType ) => prod.chosen_option?.article_number !== product.chosen_option?.article_number )
