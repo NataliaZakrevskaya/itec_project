@@ -13,7 +13,6 @@
     @include SFDisplayBold();
     font-size: 24px;
     line-height: 130%;
-    color: $textColor;
   }
 
   .product {
@@ -41,6 +40,39 @@
     text-align: center;
     font-size: 12px;
     line-height: 130%;
-    color: $textColor;
+  }
+}
+
+@media (max-width: 472px) {
+  .rejectOrderModalContainer {
+    max-width: 100%;
+    padding: 28px 2px 25px;
+    & h3 {
+      margin: 20px 0 16px;
+      @include SFDisplayBold();
+      font-size: 20px;
+      line-height: 28px;
+    }
+    .product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+
+      & p {
+        @include SFDisplaySemibold();
+        font-size: 12px;
+        line-height: 130%;
+      }
+
+      .name {
+        max-width: 90%;
+        min-width: 90%;
+      }
+    }
+    & > p {
+      font-size: 10px;
+    }
   }
 }
