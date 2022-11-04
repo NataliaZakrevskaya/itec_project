@@ -38,14 +38,14 @@ const ThemeBlockWrapper = ( {
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
-  const [ isRejectedOneClickOrderModalActive, setIsRejectedOneClickOrderModalActive ] = useState<boolean>( false );
+  const [ isRejectedOneClickOrderModal, setIsRejectedOneClickOrderModal ] = useState<boolean>( false );
   const productsFromBasket = useSelector( getProductsInBasket );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const orderStatus = useSelector( getOneClickOrderRequestStatus );
   const { block, sectionsBlock, productItem } = blockTheme;
   const closeRejectedModal = () => {
     dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
-    setIsRejectedOneClickOrderModalActive( false );
+    setIsRejectedOneClickOrderModal( false );
     setIsOneClickModalActive( true );
   };
 
@@ -61,7 +61,7 @@ const ThemeBlockWrapper = ( {
   }, [ isOneClickModalActive, isBasketModalActive ] );
   useEffect( () => {
     if ( orderStatus === RequestStatus.FAILED ) {
-      setIsRejectedOneClickOrderModalActive( true );
+      setIsRejectedOneClickOrderModal( true );
       setIsOneClickModalActive( false );
     }
   }, [ orderStatus ] );
@@ -164,7 +164,7 @@ const ThemeBlockWrapper = ( {
             }
           </Modal>
         }
-        { isRejectedOneClickOrderModalActive && orderStatus === RequestStatus.FAILED &&
+        { isRejectedOneClickOrderModal && orderStatus === RequestStatus.FAILED &&
           <Modal closeModal={ closeRejectedModal }>
             <RejectOrderModal onBtnClick={ closeRejectedModal } forCheckoutPage={false}/>
           </Modal>

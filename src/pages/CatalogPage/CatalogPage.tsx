@@ -48,6 +48,7 @@ import { getDiscountFilterStatus } from '../../redux/selectors/discountFilter';
 import { setChosenDiscountFilterStatus } from '../../redux/reducers/discountFilter';
 import ChooseAnimalTypeForm from '../../components/ChooseAnimalTypeForm/ChooseAnimalTypeForm';
 import { GetPartialProductForOrdering } from '../../helpers/getPartialProductForOrdering';
+import RejectOrderModal from '../../components/common/modals/RejectOrderModal/RejectOrderModal';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -61,9 +62,8 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const category = useSelector( getChosenProductTypeId );
   const chosenSubCategories = useSelector( getChosenProductSubtypeId );
   const isRejectResponse = useSelector( getProductRequestStatus ) === RequestStatus.FAILED;
-  const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const oneClickOrderStatus = useSelector( getOneClickOrderRequestStatus );
   const discountFilterStatus = useSelector( getDiscountFilterStatus );
-  const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const chosenBrands = useSelector( getChosenBrandsId );
   const chosenOrdering = useSelector( getChosenOrdering );
   const productsFromBasket = useSelector( getProductsInBasket );
@@ -71,9 +71,11 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const { width } = useResize( windowElRef );
   const withWords = width > 450;
 
+  const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
+  const [ isRejectedOneClickOrderModal, setIsRejectedOneClickOrderModal ] = useState<boolean>( false );
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -81,6 +83,11 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const onPageChanged = useCallback( ( pageNumber: number ) => {
     dispatch( setActualPage( { pageNumber } ) );
   }, [ dispatch ] );
+  const closeRejectedModal = () => {
+    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
+    setIsRejectedOneClickOrderModal( false );
+    setIsOneClickModalActive( true );
+  };
   const closeOneClickModal = () => {
     dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     setIsOneClickModalActive( false );
@@ -139,13 +146,19 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   }, [ page, animal, category, chosenSubCategories, chosenOrdering, chosenBrands, dispatch, discountFilterStatus ] );
   useEffect( () => {
     /*we turn off scroll when modals are active*/
-    if ( isBasketModalActive || isOneClickModalActive || isSuccessOneClickOrder ) {
+    if ( isBasketModalActive || isOneClickModalActive || oneClickOrderStatus === RequestStatus.SUCCEEDED ) {
       window.document.body.style.overflow = 'hidden';
     }
     return () => {
       window.document.body.style.overflow = '';
     };
-  }, [ isOneClickModalActive, isBasketModalActive, isSuccessOneClickOrder ] );
+  }, [ isOneClickModalActive, isBasketModalActive, oneClickOrderStatus ] );
+  useEffect( () => {
+    if ( oneClickOrderStatus === RequestStatus.FAILED ) {
+      setIsRejectedOneClickOrderModal( true );
+      setIsOneClickModalActive( false );
+    }
+  }, [ oneClickOrderStatus ] );
 
   return (
     <div
@@ -254,10 +267,15 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <UsefulArticlesBlock/>
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          { isSuccessOneClickOrder
+          { oneClickOrderStatus === RequestStatus.SUCCEEDED
             ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
             : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
           }
+        </Modal>
+      }
+      { isRejectedOneClickOrderModal && oneClickOrderStatus === RequestStatus.FAILED &&
+        <Modal closeModal={ closeRejectedModal }>
+          <RejectOrderModal onBtnClick={ closeRejectedModal } forCheckoutPage={false}/>
         </Modal>
       }
       { isBasketModalActive &&
