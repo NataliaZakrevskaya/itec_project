@@ -16,7 +16,6 @@
       @include SFDisplayBold();
       font-size: 42px;
       line-height: 120%;
-      color: $textColor;
 
     }
   }
@@ -76,7 +75,6 @@
       @include SFTextRegular();
       font-size: 20px;
       line-height: 145%;
-      color: $textColor;
     }
   }
 }

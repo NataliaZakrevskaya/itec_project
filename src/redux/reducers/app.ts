@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RequestStatus } from './enums';
 import { RequestStatusType } from './types';
+import { ProductItemType } from '../../types';
 
 export const slice = createSlice( {
   name: 'app',
@@ -15,6 +16,7 @@ export const slice = createSlice( {
     oneClickOrderRequestStatus: RequestStatus.IDLE as RequestStatusType,
     sendingReviewRequestStatus: RequestStatus.IDLE as RequestStatusType,
     weightSetIsShowed: false,
+    badProductsList: [] as ProductItemType[],
   },
   reducers: {
     setSearchProductRequest( state, action: PayloadAction<{
@@ -28,8 +30,9 @@ export const slice = createSlice( {
     setCallbackRequest( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.callbackRequestStatus = action.payload.status;
     },
-    setOrderRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
+    setOrderRequestStatus( state, action: PayloadAction<{ status: RequestStatusType, productList?: ProductItemType[] }> ) {
       state.orderRequestStatus = action.payload.status;
+      action.payload.status === RequestStatus.FAILED && action.payload.productList ? state.badProductsList = action.payload.productList : state.badProductsList = [];
     },
     setLatestProductRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.latestProductStatus = action.payload.status;

@@ -6,6 +6,7 @@ import {
   setPopularProductRequestStatus, setProductRequest,
   setSearchProductRequest, setSendingReviewRequestStatus, setWeightSetIsShowed,
 } from '../../redux/reducers/app';
+import { ProductItemType } from '../../types';
 
 let startState: InitStateType;
 
@@ -21,6 +22,7 @@ beforeEach( () => {
     oneClickOrderRequestStatus: RequestStatus.IDLE,
     sendingReviewRequestStatus: RequestStatus.IDLE,
     weightSetIsShowed: false,
+    badProductsList: [],
   };
 } );
 
@@ -73,5 +75,6 @@ type InitStateType = {
   orderRequestStatus: RequestStatusType,
   oneClickOrderRequestStatus: RequestStatusType,
   sendingReviewRequestStatus: RequestStatusType,
-  weightSetIsShowed: boolean
+  weightSetIsShowed: boolean,
+  badProductsList: ProductItemType[],
 }

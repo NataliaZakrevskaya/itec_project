@@ -14,9 +14,9 @@ postInstance.interceptors.request.use( ( config ) => {
   }
 } );
 postInstance.interceptors.response.use( function ( response ) {
-  // что-то делаем с данными ответа
-  return response;
-}, async ( error ) => {
+    // что-то делаем с данными ответа
+    return response;
+  }, async ( error ) => {
     const originalRequest = error.config;
     if ( error.response.status === 401 && error.config && !error.config._isRetry ) {
       originalRequest._isRetry = true;
@@ -29,7 +29,6 @@ postInstance.interceptors.response.use( function ( response ) {
       }
     }
     throw error;
-  }
-)
-  ;
+  },
+);
 

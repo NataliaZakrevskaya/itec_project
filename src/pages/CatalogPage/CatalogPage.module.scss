@@ -37,7 +37,6 @@
       @include SFDisplayBold();
       font-size: 42px;
       line-height: 44px;
-      color: $textColor;
     }
 
     .select {
@@ -90,7 +89,6 @@
       @include SFTextMedium();
       font-size: 15px;
       line-height: 20px;
-      color: $textColor;
     }
 
     & .catalogFilterImage {
@@ -141,7 +139,6 @@
             font-size: 20px;
             line-height: 28px;
             text-align: center;
-            color: $textColor;
           }
         }
 

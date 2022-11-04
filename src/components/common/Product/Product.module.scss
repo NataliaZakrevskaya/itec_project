@@ -30,7 +30,6 @@
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 130%;
-      color: $textColor;
       margin-bottom: 8px;
       cursor: pointer;
 
@@ -108,7 +107,6 @@
             @include SFTextRegular();
             font-size: 15px;
             line-height: 20px;
-            color: $textColor;
           }
 
           & .plus {
@@ -155,7 +153,6 @@
         @include SFDisplayBold();
         font-size: 16px;
         line-height: 130%;
-        color: $textColor;
       }
 
       .priceWithDiscount {
@@ -225,7 +222,6 @@
             @include SFTextRegular();
             font-size: 15px;
             line-height: 20px;
-            color: $textColor;
           }
 
           & .plus {

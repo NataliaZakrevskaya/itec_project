@@ -16,7 +16,6 @@
     font-size: 20px;
     line-height: 28px;
     text-align: center;
-    color: $textColor;
     margin: 12px 0;
     white-space: nowrap;
   }
@@ -25,7 +24,6 @@
     @include SFTextRegular();
     font-size: 15px;
     line-height: 20px;
-    color: $textColor;
     margin-bottom: 13px;
     white-space: nowrap;
   }

@@ -8,13 +8,18 @@ import { OrderInfoType } from '../../types/order';
 
 export const sendOrderTC = createAsyncThunk(
   'order/sendOrder', async ( param: {
-    name: string, phoneNumber: string, orderInfo: OrderInfoType, discountForBasket: Array<DiscountType> }, { dispatch, rejectWithValue } ) => {
+    name: string, phoneNumber: string, orderInfo: OrderInfoType, discountForBasket: Array<DiscountType>
+  }, { dispatch, rejectWithValue } ) => {
     try {
       await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo, param.discountForBasket );
       dispatch( setOrderRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
-      dispatch( clearBasket( ) );
-    } catch ( err ) {
-      dispatch( setOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+      dispatch( clearBasket() );
+    } catch ( err: any ) {
+      if ( err.response.status === 402 ) {
+        dispatch( setOrderRequestStatus( { status: RequestStatus.FAILED, productList: err.response.data } ) );
+      } else {
+        dispatch( setOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+      }
       rejectWithValue( null );
     }
   },

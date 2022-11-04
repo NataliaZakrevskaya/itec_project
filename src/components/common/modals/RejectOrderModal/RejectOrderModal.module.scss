@@ -1,0 +1,46 @@
+@import "src/styles/Mixins";
+
+.rejectOrderModalContainer {
+  width: 462px;
+  padding: 24px 56px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & h3 {
+    margin: 20px 0 16px;
+    text-align: center;
+    @include SFDisplayBold();
+    font-size: 24px;
+    line-height: 130%;
+    color: $textColor;
+  }
+
+  .product {
+    width: 100%;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    & p {
+      @include SFDisplaySemibold();
+      font-size: 12px;
+      line-height: 130%;
+    }
+
+    .name {
+      max-width: 200px;
+      min-width: 200px;
+    }
+  }
+
+  & > p {
+    margin: 20px 0 16px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 130%;
+    color: $textColor;
+  }
+}

@@ -26,12 +26,14 @@ import { getGoods } from '../../helpers/getGoods';
 import { FormikErrorType } from '../../components/common/modals/types';
 import PrivacyPolicyModal from '../../components/common/modals/PrivacyPolicyModal/PrivacyPolicyModal';
 import { getDiscountsForBasket } from '../../redux/selectors/discountForBasket';
+import RejectOrderModal from '../../components/common/modals/RejectOrderModal/RejectOrderModal';
 
 const CheckoutPage = React.memo( () => {
 
   const [ isSuccessModalActive, setIsSuccessModalActive ] = useState( false );
   const [ isPrivacyModalActive, setIsPrivacyModalActive ] = useState<boolean>( false );
-  const orderIsSucceeded = useSelector( getOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const [ isRejectOrderModalActive, setIsRejectOrderModalActive ] = useState<boolean>( false );
+  const orderStatus = useSelector( getOrderRequestStatus );
   const basketCountWithDiscount = useSelector( getTotalSumWithDiscount );
   const basketCount = useSelector( getTotalSum );
   const productsCount = useSelector( getTotalProductsCount );
@@ -41,7 +43,6 @@ const CheckoutPage = React.memo( () => {
   const price = getPriceForBasket( basketCount );
   const goodsName = getGoods( productsCount );
   const orderInfo = { productsInBasket, productsCount, basketCount, basketCountWithDiscount };
-
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -49,6 +50,11 @@ const CheckoutPage = React.memo( () => {
     dispatch( setOrderRequestStatus( { status: RequestStatus.IDLE } ) );
     navigate( routesPathsEnum.ARTICLES );
     setIsSuccessModalActive( false );
+  };
+  const closeRejectedModal = () => {
+    dispatch( setOrderRequestStatus( { status: RequestStatus.IDLE } ) );
+    navigate( routesPathsEnum.BASKET );
+    setIsRejectOrderModalActive( false );
   };
   const closePrivacyPolicyModal = () => {
     setIsPrivacyModalActive( false );
@@ -58,13 +64,16 @@ const CheckoutPage = React.memo( () => {
   };
 
   useEffect( () => {
-    if ( isSuccessModalActive && orderIsSucceeded ) {
+    if ( isSuccessModalActive && orderStatus === RequestStatus.SUCCEEDED ) {
       window.document.body.style.overflow = 'hidden';
     }
     return () => {
       window.document.body.style.overflow = '';
     };
-  }, [ isSuccessModalActive, orderIsSucceeded ] );
+  }, [ isSuccessModalActive, orderStatus ] );
+  useEffect( () => {
+    orderStatus === RequestStatus.FAILED && setIsRejectOrderModalActive( true );
+  }, [ orderStatus ] );
 
   const formik = useFormik( {
     initialValues: {
@@ -75,9 +84,9 @@ const CheckoutPage = React.memo( () => {
       const errors: FormikErrorType = {};
       if ( values.name.length < 2 ) {
         errors.name = 'Минимально допустимое количество символов: 2';
-      } else if (!/(^(?!~!"№;%\?.*\(\)#\$%\^&=\+-_@$)([A-Za-z]{1}[a-z]{1,18}( [A-Za-z]{1})?([a-z]{1,18})?)$)|(^[А-Яа-я]{1}[а-я]{1,18}( [А-Яа-я]{1})?([а-я]{1,18})?$)/i.test(values.name)){
+      } else if ( !/(^(?!~!"№;%\?.*\(\)#\$%\^&=\+-_@$)([A-Za-z]{1}[a-z]{1,18}( [A-Za-z]{1})?([a-z]{1,18})?)$)|(^[А-Яа-я]{1}[а-я]{1,18}( [А-Яа-я]{1})?([а-я]{1,18})?$)/i.test( values.name ) ) {
         errors.name = 'Допустимые символы: A-z А-я';
-      } else if (values.name.length > 30) {
+      } else if ( values.name.length > 30 ) {
         errors.name = 'Максимально допустимое количество символов: 30';
       }
       if ( !values.phoneNumber ) {
@@ -95,7 +104,7 @@ const CheckoutPage = React.memo( () => {
         setIsSuccessModalActive( true );
         formik.resetForm();
       } catch ( e ) {
-        console.error( e );
+        console.warn( e );
       }
 
     },
@@ -158,14 +167,19 @@ const CheckoutPage = React.memo( () => {
           </div>
         </form>
       </div>
-      { isSuccessModalActive && orderIsSucceeded &&
+      { isSuccessModalActive && orderStatus === RequestStatus.SUCCEEDED &&
         <Modal closeModal={ closeSuccessModal }>
           <SuccessOrderModal from={ location.CHECKOUT }/>
         </Modal>
       }
+      { isRejectOrderModalActive && orderStatus === RequestStatus.FAILED &&
+        <Modal closeModal={ closeRejectedModal }>
+          <RejectOrderModal onBtnClick={closeRejectedModal}/>
+        </Modal>
+      }
       { isPrivacyModalActive &&
         <Modal closeModal={ closePrivacyPolicyModal }>
-          <PrivacyPolicyModal/>
+          <PrivacyPolicyModal />
         </Modal> }
     </div>
   );

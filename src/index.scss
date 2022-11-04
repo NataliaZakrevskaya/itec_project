@@ -1,9 +1,11 @@
 @import "styles/fonts";
+@import "styles/Variables";
 
 
 body {
   margin: 0;
   font-family: "SF Text Regular", sans-serif;
+  color: $textColor;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

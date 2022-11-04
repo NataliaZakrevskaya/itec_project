@@ -162,7 +162,6 @@ const ProductPage = React.memo( () => {
   };
   const onApplyButtonClick = () => {
     if ( /^[0-9]{1,4}(\.[0-9]{1,3})?$/.test( weightSetValue ) ) {
-      console.log( 'click' );
       if ( +weightSetValue < 0.01 ) {
         setWeightSetError( `Минимальный вес заказа должен составлять: 0.01 кг.` );
       } else {

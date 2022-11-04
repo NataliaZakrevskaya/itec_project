@@ -7,3 +7,4 @@ export const getOrderRequestStatus = ( state: AppRootStateType ) => state.app.or
 export const getSendingReviewsRequestStatus = ( state: AppRootStateType ) => state.app.sendingReviewRequestStatus;
 export const getOneClickOrderRequestStatus = ( state: AppRootStateType ) => state.app.oneClickOrderRequestStatus;
 export const getWeightSetValue = ( state: AppRootStateType ) => state.app.weightSetIsShowed;
+export const getBadProductsList = ( state: AppRootStateType ) => state.app.badProductsList;

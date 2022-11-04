@@ -26,16 +26,16 @@ const SuccessOrderModal = ( { from }: SuccessOrderModalPropsType ): ReactElement
 
   return (
     <div className={ style.successModalContainer }>
-      <img src={ checkmarkCircle } loading={'lazy'} alt="checkmarkCircle" draggable="false"/>
+      <img src={ checkmarkCircle } loading={ 'lazy' } alt="checkmarkCircle" draggable="false"/>
       <div className={ style.title }>
         <h3>Заказ поступил в обработку, ожидайте звонка консультанта</h3>
       </div>
       <Address address={ address } metro={ metro }/>
       <div className={ style.scheduleBlock }>
-        <img src={ grayClock } loading={'lazy'} alt={ 'timeIcon' } draggable="false"/>
-        <p className={ scheduleStyle.scheduleText }>Пн.-Пт. {time_weekdays}</p>
+        <img src={ grayClock } loading={ 'lazy' } alt={ 'timeIcon' } draggable="false"/>
+        <p className={ scheduleStyle.scheduleText }>Пн.-Пт. { time_weekdays }</p>
         <div className={ style.headerStrip }/>
-        <p>Сб.-Вс. {time_weekend}</p>
+        <p>Сб.-Вс. { time_weekend }</p>
       </div>
       <button onClick={ onCloseButtonClick }>Читать полезные статьи</button>
     </div>

@@ -16,7 +16,6 @@
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 130%;
-      color: $textColor;
       margin-bottom: 4px;
     }
 
@@ -30,7 +29,6 @@
       @include SFTextRegular();
       font-size: 15px;
       line-height: 20px;
-      color: $textColor;
 
       &::placeholder {
         @include SFTextRegular();
@@ -65,7 +63,6 @@
       @include SFDisplaySemibold();
       font-size: 16px;
       line-height: 130%;
-      color: $textColor;
       margin-bottom: 4px;
     }
 
@@ -80,7 +77,6 @@
       @include SFTextRegular();
       font-size: 15px;
       line-height: 20px;
-      color: $textColor;
 
       &::placeholder {
         @include SFTextRegular();

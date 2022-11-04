@@ -19,7 +19,6 @@
       @include SFDisplaySemibold();
       font-size: 28px;
       line-height: 32px;
-      color: #202223;
       text-align: center;
       max-width: 460px;
     }
@@ -59,7 +58,6 @@
         @include SFDisplaySemibold();
         font-size: 20px;
         line-height: 28px;
-        color: #202223;
         margin-bottom: 10px;
       }
 
@@ -67,7 +65,6 @@
         @include SFTextRegular();
         font-size: 14px;
         line-height: 20px;
-        color: #202223;
         max-width: 260px;
       }
     }
