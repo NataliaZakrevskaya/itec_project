@@ -16,8 +16,12 @@ export const sendOneClickOrderTC = createAsyncThunk(
     try {
       await orderAPI.sendOrder( param.name, param.phoneNumber, param.orderInfo, param.discountForBasket );
       dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.SUCCEEDED } ) );
-    } catch ( err ) {
-      dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+    } catch ( err: any ) {
+      if ( err.response.status === 402 ) {
+        dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.FAILED, productList: err.response.data } ) );
+      } else {
+        dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.FAILED } ) );
+      }
       rejectWithValue( null );
     }
   },

@@ -43,8 +43,9 @@ export const slice = createSlice( {
     setPopularProductRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.popularProductStatus = action.payload.status;
     },
-    setOneClickOrderRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
+    setOneClickOrderRequestStatus( state, action: PayloadAction<{ status: RequestStatusType, productList?: ProductItemType[] }> ) {
       state.oneClickOrderRequestStatus = action.payload.status;
+      action.payload.status === RequestStatus.FAILED && action.payload.productList ? state.badProductsList = action.payload.productList : state.badProductsList = [];
     },
     setCallbackRequestStatus( state, action: PayloadAction<{ status: RequestStatusType }> ) {
       state.callbackRequestStatus = action.payload.status;

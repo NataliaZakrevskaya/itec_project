@@ -23,6 +23,7 @@ import { ThemeBlockWrapperPropsType } from '../types';
 import { ProductItemType } from '../../../types';
 import { getDiscountsForBasket } from '../../../redux/selectors/discountForBasket';
 import { GetPartialProductForOrdering } from '../../../helpers/getPartialProductForOrdering';
+import RejectOrderModal from '../modals/RejectOrderModal/RejectOrderModal';
 
 const ThemeBlockWrapper = ( {
                               title,
@@ -37,10 +38,16 @@ const ThemeBlockWrapper = ( {
   const [ isOneClickModalActive, setIsOneClickModalActive ] = useState<boolean>( false );
   const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
+  const [ isRejectedOneClickOrderModalActive, setIsRejectedOneClickOrderModalActive ] = useState<boolean>( false );
   const productsFromBasket = useSelector( getProductsInBasket );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
-  const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const orderStatus = useSelector( getOneClickOrderRequestStatus );
   const { block, sectionsBlock, productItem } = blockTheme;
+  const closeRejectedModal = () => {
+    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
+    setIsRejectedOneClickOrderModalActive( false );
+    setIsOneClickModalActive( true );
+  };
 
   const dispatch = useDispatch();
 
@@ -52,6 +59,12 @@ const ThemeBlockWrapper = ( {
       window.document.body.style.overflow = '';
     };
   }, [ isOneClickModalActive, isBasketModalActive ] );
+  useEffect( () => {
+    if ( orderStatus === RequestStatus.FAILED ) {
+      setIsRejectedOneClickOrderModalActive( true );
+      setIsOneClickModalActive( false );
+    }
+  }, [ orderStatus ] );
 
   const {
     onPrevSectionButtonClick,
@@ -144,11 +157,16 @@ const ThemeBlockWrapper = ( {
                                     onClick={ onButtonClick }/> }
         { isOneClickModalActive &&
           <Modal closeModal={ closeOneClickModal }>
-            { isSuccessOneClickOrder
+            { orderStatus === RequestStatus.SUCCEEDED
               ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
               : (
                 <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
             }
+          </Modal>
+        }
+        { isRejectedOneClickOrderModalActive && orderStatus === RequestStatus.FAILED &&
+          <Modal closeModal={ closeRejectedModal }>
+            <RejectOrderModal onBtnClick={ closeRejectedModal } forCheckoutPage={false}/>
           </Modal>
         }
         { isBasketModalActive &&

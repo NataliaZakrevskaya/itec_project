@@ -1,3 +1,4 @@
 export type CloseRejectedModalPropsType = {
-  onBtnClick: () => void
+  onBtnClick: () => void,
+  forCheckoutPage: boolean
 }

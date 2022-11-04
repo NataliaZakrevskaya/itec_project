@@ -174,7 +174,7 @@ const CheckoutPage = React.memo( () => {
       }
       { isRejectOrderModalActive && orderStatus === RequestStatus.FAILED &&
         <Modal closeModal={ closeRejectedModal }>
-          <RejectOrderModal onBtnClick={closeRejectedModal}/>
+          <RejectOrderModal onBtnClick={closeRejectedModal} forCheckoutPage={true}/>
         </Modal>
       }
       { isPrivacyModalActive &&
