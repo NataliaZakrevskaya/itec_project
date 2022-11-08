@@ -11,8 +11,7 @@ import PopularProductsBlock from '../../components/PopularProductsBlock/PopularP
 import UsefulArticlesBlock from '../../components/UsefulArticlesBlock/UsefulArticlesBlock';
 import ProductsBlockPagination from '../../components/ProductsBlockPagination/ProductsBlockPagination';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
-import { getTitleForProductsBlock } from '../../helpers/getTitle';
+import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import Modal from '../../components/common/modals/Modal';
 import OneClickOrder from '../../components/common/modals/OneClickOrder/OneClickOrder';
 import BasketModal from '../../components/common/modals/BasketModal/BasketModal';
@@ -53,8 +52,9 @@ import RejectOrderModal from '../../components/common/modals/RejectOrderModal/Re
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
   const products = useSelector( getProductItems );
-  const animal = useSelector( getChosenAnimalTypeId );
-  const subTitle = getTitleForProductsBlock( animal );
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const animalTypes = useSelector( getAnimalTypes );
+  const chosenAnimalTypeName = chosenAnimalTypeId ? animalTypes.filter( type => type.id === chosenAnimalTypeId )[ 0 ].name : null;
   const page = useSelector( getActualPage );
   const totalProductsCount = useSelector( getTotalProductsCount );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
@@ -136,14 +136,14 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     const discount = discountFilterStatus ? 1 : null;
     dispatch( fetchProductsTC( {
       page,
-      animal,
+      animal: chosenAnimalTypeId,
       category,
       ordering: chosenOrdering,
       brands,
       subCategories,
       discount,
     } ) );
-  }, [ page, animal, category, chosenSubCategories, chosenOrdering, chosenBrands, dispatch, discountFilterStatus ] );
+  }, [ page, chosenAnimalTypeId, category, chosenSubCategories, chosenOrdering, chosenBrands, dispatch, discountFilterStatus ] );
   useEffect( () => {
     /*we turn off scroll when modals are active*/
     if ( isBasketModalActive || isOneClickModalActive || oneClickOrderStatus === RequestStatus.SUCCEEDED ) {
@@ -173,7 +173,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       </div>
       <AnimalsTypesList/>
       <div className={ style.title }>
-        <h1>{ `Каталог товаров ${ subTitle }` }</h1>
+        <h2>{ chosenAnimalTypeName ? `Каталог товаров: ${ chosenAnimalTypeName }` : 'Каталог товаров' }</h2>
         <div className={ style.select }>
           <p>Сортировать по: </p>
           <select
@@ -215,7 +215,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
                 </div>
               </label>
             </div>
-            { animal ? <ProductTypesForm forBurger={ false }/> : <ChooseAnimalTypeForm forBurger={ false }/> }
+            { chosenAnimalTypeId ? <ProductTypesForm forBurger={ false }/> : <ChooseAnimalTypeForm forBurger={ false }/> }
             <BrandsForm closeEditMode={ closeEditMode } forBurger={ false }/>
           </div>
         </div>
@@ -275,7 +275,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       }
       { isRejectedOneClickOrderModal && oneClickOrderStatus === RequestStatus.FAILED &&
         <Modal closeModal={ closeRejectedModal }>
-          <RejectOrderModal onBtnClick={ closeRejectedModal } forCheckoutPage={false}/>
+          <RejectOrderModal onBtnClick={ closeRejectedModal } forCheckoutPage={ false }/>
         </Modal>
       }
       { isBasketModalActive &&

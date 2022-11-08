@@ -5,8 +5,7 @@ import { routesPathsEnum } from '../../routes/enums';
 import dark from '../../styles/common/DarkBlock.module.scss';
 import style from './PopularProductsBlock.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTitleForProductsBlock } from '../../helpers/getTitle';
-import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
+import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import { getPopularProducts } from '../../redux/selectors/popularProducts';
 import { fetchPopularProductsTC } from '../../redux/reducers/popularProducts';
 import { location, selectValues } from '../../enums';
@@ -17,8 +16,9 @@ import { PopularProductsBlockPropsType } from './types';
 const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlockPropsType ): ReactElement => {
 
   const popularProducts = useSelector( getPopularProducts );
-  const animal = useSelector( getChosenAnimalTypeId );
-  const subTitle = getTitleForProductsBlock( animal );
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const animalTypes = useSelector( getAnimalTypes );
+  const chosenAnimalTypeName = chosenAnimalTypeId ? animalTypes.filter( type => type.id === chosenAnimalTypeId )[ 0 ].name : null;
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const goToPopularProducts = () => {
@@ -26,13 +26,13 @@ const PopularProductsBlock = React.memo( ( { fromCatalog }: PopularProductsBlock
     navigate( routesPathsEnum.CATALOG );
   };
   useEffect( () => {
-    dispatch( fetchPopularProductsTC( { ordering: selectValues.POPULARITY, animal } ) );
-  }, [ animal, dispatch ] );
+    dispatch( fetchPopularProductsTC( { ordering: selectValues.POPULARITY, animal: chosenAnimalTypeId } ) );
+  }, [ chosenAnimalTypeId, dispatch ] );
 
   return (
     <div className={ style.popularProductsWrapper }>
       <ThemeBlockWrapper
-        title={ `Популярные товары ${ subTitle }` }
+        title={ chosenAnimalTypeName ? `${chosenAnimalTypeName} - популярные товары` : 'Популярные товары' }
         onButtonClick={ goToPopularProducts }
         itemsForBlock={ popularProducts }
         blockTheme={ dark }

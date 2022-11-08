@@ -8,7 +8,6 @@ import PopularProductsBlock from '../../components/PopularProductsBlock/PopularP
 import ContactBlock from '../../components/ContactBlock/ContactBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
-import { getTitleForArticlesBlock } from '../../helpers/getTitle';
 import { getArticles } from '../../redux/selectors/articles';
 import { fetchArticlesTC } from '../../redux/reducers/articles';
 import { useNavigate } from 'react-router-dom';
@@ -63,7 +62,7 @@ const ArticlesPage = React.memo( () => {
       </div>
       <AnimalsTypesList/>
       <div className={ style.articlesTitle }>
-        <h2>{ chosenAnimalTypeName ? `${chosenAnimalTypeName} - полезные статьи` : 'Полезные статьи' }</h2>
+        <h2>{ chosenAnimalTypeName ? `${ chosenAnimalTypeName } - полезные статьи` : 'Полезные статьи' }</h2>
       </div>
       <div className={ style.articlesBlockContainer }>
         <div className={ style.articlesBlock }>
