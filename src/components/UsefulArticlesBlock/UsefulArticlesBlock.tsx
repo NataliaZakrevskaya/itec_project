@@ -9,8 +9,7 @@ import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
-import { getTitleForArticlesBlock } from '../../helpers/getTitle';
+import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import { getArticles } from '../../redux/selectors/articles';
 import { fetchArticlesTC } from '../../redux/reducers/articles';
 import { useCarousel } from '../../customHooks/useCarousel';
@@ -22,6 +21,8 @@ const UsefulArticlesBlock = React.memo( (): ReactElement => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const animalTypes = useSelector( getAnimalTypes );
+  const chosenAnimalTypeName = chosenAnimalTypeId ? animalTypes.filter( type => type.id === chosenAnimalTypeId )[ 0 ].name : null;
   const articlesFromStore = useSelector( getArticles );
   const getArticlesForBlock = () => {
     if ( chosenAnimalTypeId ) {
@@ -34,7 +35,6 @@ const UsefulArticlesBlock = React.memo( (): ReactElement => {
     return articlesFromStore;
   };
   const articles = getArticlesForBlock();
-  const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
 
   const {
     offset,
@@ -55,7 +55,7 @@ const UsefulArticlesBlock = React.memo( (): ReactElement => {
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
       <div className={ commonStyle.container }>
         <div className={ commonStyle.navigationInfoBlock }>
-          <h2>{ `Полезные статьи ${ subTitle }` }</h2>
+          <h2>{ chosenAnimalTypeName ? `${chosenAnimalTypeName} - полезные статьи` : 'Полезные статьи' }</h2>
           <div className={ `${ commonStyle.sectionsBlock } ${ themeStyle.sectionsBlock }` }>
             <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
             <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>

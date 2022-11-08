@@ -7,7 +7,7 @@ import Article from '../../components/common/Article/Article';
 import PopularProductsBlock from '../../components/PopularProductsBlock/PopularProductsBlock';
 import ContactBlock from '../../components/ContactBlock/ContactBlock';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
+import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import { getTitleForArticlesBlock } from '../../helpers/getTitle';
 import { getArticles } from '../../redux/selectors/articles';
 import { fetchArticlesTC } from '../../redux/reducers/articles';
@@ -21,6 +21,8 @@ const ArticlesPage = React.memo( () => {
 
   const articlesFromStore = useSelector( getArticles );
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const animalTypes = useSelector( getAnimalTypes );
+  const chosenAnimalTypeName = chosenAnimalTypeId ? animalTypes.filter( type => type.id === chosenAnimalTypeId )[ 0 ].name : null;
   const articlesByAnimalTypeSorting = articlesFromStore.filter( article => article.animals === chosenAnimalTypeId );
   const getArticlesForBlock = () => {
     if ( chosenAnimalTypeId ) {
@@ -42,7 +44,6 @@ const ArticlesPage = React.memo( () => {
     return articlesFromStore;
   };
   const articles = getArticlesForBlock();
-  const subTitle = getTitleForArticlesBlock( chosenAnimalTypeId );
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ const ArticlesPage = React.memo( () => {
       </div>
       <AnimalsTypesList/>
       <div className={ style.articlesTitle }>
-        <h1>{ `Полезные статьи ${ subTitle }` }</h1>
+        <h2>{ chosenAnimalTypeName ? `${chosenAnimalTypeName} - полезные статьи` : 'Полезные статьи' }</h2>
       </div>
       <div className={ style.articlesBlockContainer }>
         <div className={ style.articlesBlock }>
