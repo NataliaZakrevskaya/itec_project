@@ -46,7 +46,7 @@ const ProductItem = ( {
         draggable="false"
       />
       <p className={ style.title }
-         onClick={ onProductClick } translate={'no'}>{ nameForCard }</p>
+         onClick={ onProductClick }>{ nameForCard }</p>
       <div className={ style.unitGroup }>
         { options.map( option =>
           <ProductItemUnit
@@ -60,8 +60,8 @@ const ProductItem = ( {
       </div>
       <div className={ style.priceBlockWrapper }>
         <div className={ style.priceBlock }>
-            <p className={ !showDiscount ? style.price : style.priceWithDiscount } translate={'no'}>{ `${ price } BYN` }</p>
-          { showDiscount && <p className={ style.price } translate={'no'}>{ `${ priceWithDiscount } BYN` }</p> }
+            <p className={ !showDiscount ? style.price : style.priceWithDiscount }>{ `${ price } BYN` }</p>
+          { showDiscount && <p className={ style.price }>{ `${ priceWithDiscount } BYN` }</p> }
           <div className={ style.basket } onClick={ () => openBasketModal( product ) }>
             <p>+</p>
             <div className={ style.imageWrapper }>
