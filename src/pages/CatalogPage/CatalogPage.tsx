@@ -48,6 +48,8 @@ import { setChosenDiscountFilterStatus } from '../../redux/reducers/discountFilt
 import ChooseAnimalTypeForm from '../../components/ChooseAnimalTypeForm/ChooseAnimalTypeForm';
 import { GetPartialProductForOrdering } from '../../helpers/getPartialProductForOrdering';
 import RejectOrderModal from '../../components/common/modals/RejectOrderModal/RejectOrderModal';
+import { getArticles } from '../../redux/selectors/articles';
+import { fetchArticlesTC } from '../../redux/reducers/articles';
 
 const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType ) => {
 
@@ -55,6 +57,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const animalTypes = useSelector( getAnimalTypes );
   const chosenAnimalTypeName = chosenAnimalTypeId ? animalTypes.filter( type => type.id === chosenAnimalTypeId )[ 0 ].name : null;
+  const articlesFromStore = useSelector( getArticles );
   const page = useSelector( getActualPage );
   const totalProductsCount = useSelector( getTotalProductsCount );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
@@ -160,6 +163,10 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       setIsOneClickModalActive( false );
     }
   }, [ oneClickOrderStatus ] );
+  useEffect( () => {
+    const chosenAnimalId = chosenAnimalTypeId ? chosenAnimalTypeId : null;
+    dispatch( fetchArticlesTC( { chosenAnimalId } ) );
+  }, [ dispatch, chosenAnimalTypeId ] );
 
   return (
     <div
@@ -265,7 +272,7 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
       <div className={ style.catalogPopularProductsWrapper }>
         <PopularProductsBlock fromCatalog={ true }/>
       </div>
-      <UsefulArticlesBlock/>
+      { !!articlesFromStore.length && <UsefulArticlesBlock/> }
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
           { oneClickOrderStatus === RequestStatus.SUCCEEDED

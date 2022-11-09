@@ -26,6 +26,9 @@ import { getGoods } from '../../helpers/getGoods';
 import { getPriceForBasket } from '../../helpers/getPrice';
 import { AppDispatch } from '../../redux/store';
 import { fetchDiscountForBasketTC } from '../../redux/reducers/discountForBasket';
+import { fetchArticlesTC } from '../../redux/reducers/articles';
+import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
+import { getArticles } from '../../redux/selectors/articles';
 
 const BasketPage = React.memo( () => {
   const productsInBasket = useSelector( getProductsInBasket );
@@ -34,6 +37,8 @@ const BasketPage = React.memo( () => {
   const productsCount = useSelector( getTotalProductsCount );
   const previouslyProducts = useSelector( getPreviouslyProduct );
   const { address } = useSelector( getInfo );
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const articlesFromStore = useSelector( getArticles );
   const showDiscount = basketCount !== basketCountWithDiscount;
   const isFullBasket = productsInBasket.length;
   const price = getPriceForBasket( basketCount );
@@ -45,6 +50,10 @@ const BasketPage = React.memo( () => {
   useEffect( () => {
     dispatch( fetchDiscountForBasketTC() );
   }, [ dispatch ] );
+  useEffect( () => {
+    const chosenAnimalId = chosenAnimalTypeId ? chosenAnimalTypeId : null;
+    dispatch( fetchArticlesTC( { chosenAnimalId } ) );
+  }, [ dispatch, chosenAnimalTypeId ] );
 
   return (
     <div className={ style.basketPageBlock }>
@@ -110,7 +119,7 @@ const BasketPage = React.memo( () => {
 
       <PopularProductsBlock fromCatalog={ false }/>
       { !!previouslyProducts.length && <PreviouslyProductsBlock products={ previouslyProducts }/> }
-      <UsefulArticlesBlock/>
+      { !!articlesFromStore.length && <UsefulArticlesBlock/> }
     </div>
   );
 } );

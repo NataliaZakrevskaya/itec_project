@@ -43,6 +43,9 @@ import { WithThisProductBuyBlock } from '../../components/WithThisProductBuy/Wit
 import { getAccompanyingProducts } from '../../redux/selectors/accompanyingProducts';
 import { fetchAccompanyingProductsTC } from '../../redux/reducers/accompanyingProducts';
 import { getPriceWithDiscountForProductPage } from '../../redux/reducers/helpers';
+import { fetchArticlesTC } from '../../redux/reducers/articles';
+import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
+import { getArticles } from '../../redux/selectors/articles';
 
 const ProductPage = React.memo( () => {
 
@@ -73,14 +76,14 @@ const ProductPage = React.memo( () => {
   const nameForNavigationBlock = stringCutter( name, 90 );
   const productsFromBasket = useSelector( getProductsInBasket );
   const previouslyProducts = useSelector( getPreviouslyProduct );
+  const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
+  const articlesFromStore = useSelector( getArticles );
   const weightSetIsShowed = useSelector( getWeightSetValue );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
   const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
   const { address, metro } = useSelector( getInfo );
   const accompanyingProducts = useSelector( getAccompanyingProducts );
-  /* const priceWithDiscountCropped = getPrice( priceWithDiscount );*/
   const partialOption = options.filter( option => option.partial )[ 0 ];
-  /*  const stockBalanceInfo = `Максимальный размер заказа может составить: ${ partialOption ? ( partialOption.stock_balance / 1000 ) : 0 } кг.`;*/
   const price = getPrice( product.chosen_option.partial ? ( ( product.chosen_option.quantity / 1000 ) * +product.chosen_option.price ) : +product.chosen_option.price * countOfProduct );
   const priceWithDiscountCropped = getPrice( getPriceWithDiscountForProductPage( product ) );
   const navigate = useNavigate();
@@ -203,6 +206,10 @@ const ProductPage = React.memo( () => {
       window.document.body.style.overflow = '';
     };
   }, [ isOneClickModalActive, isBasketModalActive, dispatch ] );
+  useEffect( () => {
+    const chosenAnimalId = chosenAnimalTypeId ? chosenAnimalTypeId : null;
+    dispatch( fetchArticlesTC( { chosenAnimalId } ) );
+  }, [ dispatch, chosenAnimalTypeId ] );
 
   return (
     <div className={ style.productPage }>
@@ -363,7 +370,7 @@ const ProductPage = React.memo( () => {
         <WithThisProductBuyBlock products={ accompanyingProducts }/>
       </div>
       }
-      <UsefulArticlesBlock/>
+      { !!articlesFromStore.length && <UsefulArticlesBlock/> }
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
           { isSuccessOneClickOrder

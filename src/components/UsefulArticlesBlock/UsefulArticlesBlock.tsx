@@ -8,18 +8,15 @@ import { routesPathsEnum } from '../../routes/enums';
 import PrevSectionButton from '../common/prevSectionButton/prevSectionButton';
 import NextSectionButton from '../common/nextSectionButton/nextSectionButton';
 import themeStyle from '../../styles/common/DarkBlock.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getAnimalTypes, getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import { getArticles } from '../../redux/selectors/articles';
-import { fetchArticlesTC } from '../../redux/reducers/articles';
 import { useCarousel } from '../../customHooks/useCarousel';
 import { BlockNames } from '../../customHooks/enums';
-import { AppDispatch } from '../../redux/store';
 
 const UsefulArticlesBlock = React.memo( (): ReactElement => {
 
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
   const chosenAnimalTypeId = useSelector( getChosenAnimalTypeId );
   const animalTypes = useSelector( getAnimalTypes );
   const chosenAnimalTypeName = chosenAnimalTypeId ? animalTypes.filter( type => type.id === chosenAnimalTypeId )[ 0 ].name : null;
@@ -47,10 +44,7 @@ const UsefulArticlesBlock = React.memo( (): ReactElement => {
     windowElRef,
   } = useCarousel( BlockNames.ARTICLES, articles.length );
 
-  useEffect( () => {
-    const chosenAnimalId = chosenAnimalTypeId ? chosenAnimalTypeId : null;
-    dispatch( fetchArticlesTC( { chosenAnimalId } ) );
-  }, [ dispatch, chosenAnimalTypeId ] );
+
 
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
