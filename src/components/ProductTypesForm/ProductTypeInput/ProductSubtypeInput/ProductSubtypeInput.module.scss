@@ -24,7 +24,8 @@
     }
 
     & div span {
-      @include size(18px, 18px);
+      min-width: 18px;
+      min-height: 18px;
       border: 2px solid #8C9196;
       border-radius: 4px;
       display: inline-block;
