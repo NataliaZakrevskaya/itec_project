@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export const slice = createSlice( {
   name: 'discountFilter',
   initialState: {
-    discountFilterStatus: true,
+    discountFilterStatus: false,
   },
   reducers: {
     setChosenDiscountFilterStatus( state, action: PayloadAction<{ filterStatus: boolean }> ) {
