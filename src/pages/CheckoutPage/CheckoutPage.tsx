@@ -155,8 +155,8 @@ const CheckoutPage = React.memo( () => {
               </div>
             </div>
             <div className={ style.basketInfo }>
-              <p className={ priceWithDiscount !== price ? style.discountSum : style.sum }>{ price } BYN</p>
-              { priceWithDiscount !== price && <p className={ style.sum }>{ priceWithDiscount } BYN</p> }
+              <p className={ priceWithDiscount !== price ? style.discountSum : style.sum } translate={ 'no' }>{ price } BYN</p>
+              { priceWithDiscount !== price && <p className={ style.sum } translate={ 'no' }>{ priceWithDiscount } BYN</p> }
               <p className={ style.productsInfo }>{ productsCount } { goodsName }</p>
             </div>
           </div>

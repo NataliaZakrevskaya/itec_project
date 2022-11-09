@@ -121,9 +121,9 @@ const ProductForOneClick = ( {
         { isForModal &&
           <div className={ style.priceBlock }>
             <p
-              className={ priceWithDiscount === price ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
+              className={ priceWithDiscount === price ? style.price : style.priceWithDiscount } translate={ 'no' }>{ price } BYN.</p>
             { priceWithDiscount !== price && <p
-              className={ style.price }>{ priceWithDiscount } BYN.</p> }
+              className={ style.price } translate={ 'no' }>{ priceWithDiscount } BYN.</p> }
           </div>
         }
       </div>

@@ -26,8 +26,8 @@ const ProductForBasketModal = ( {
           : <p>{ chosenOption.size } { chosenOption.units.unit_name }</p>
         }
         { !chosenOption.partial && <p>{ countOfProduct } шт.</p> }
-         <p className={ showDiscount ? style.priceWithDiscount : style.price }>{ price } BYN.</p>
-        { !!priceWithDiscount && <p className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed(2) } BYN.</p> }
+         <p className={ showDiscount ? style.priceWithDiscount : style.price } translate={ 'no' }>{ price } BYN.</p>
+        { !!priceWithDiscount && <p className={ style.price } translate={ 'no' }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed(2) } BYN.</p> }
       </div>
     </div>
   );
