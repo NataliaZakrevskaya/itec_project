@@ -35,11 +35,10 @@ const PopularBrandsBlock = React.memo( (): ReactElement => {
           {
             brands
               .filter( ( brand, index ) => index < 18 )
-              .map( ( { id, image, name } ) =>
+              .map( ( { id, image } ) =>
                 <Brand
                   key={ id }
                   id={ id }
-                  name={name}
                   image={ image }
                   chooseBrand={ chooseBrand }
                   forBlock={ true }
