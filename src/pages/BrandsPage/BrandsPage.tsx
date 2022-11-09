@@ -38,11 +38,10 @@ const BrandsPage = () => {
         <h1>Все бренды</h1>
         <div className={ style.brandsContainer }>
           {
-            brands.map( ( { id, image, name } ) =>
+            brands.map( ( { id, image } ) =>
               <Brand
                 key={ id }
                 id={ id }
-                name={name}
                 image={ image }
                 chooseBrand={ chooseBrand }
                 forBlock={false}
