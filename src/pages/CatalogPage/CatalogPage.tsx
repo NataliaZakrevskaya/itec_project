@@ -134,10 +134,11 @@ const CatalogPage = ( { openFiltersMode, closeEditMode }: CatalogPagePropsType )
     const brands = !!chosenBrands.length ? chosenBrands?.join() : null; // we don't add brands to the params unless one of them is selected
     const subCategories = !!chosenSubCategories.length ? chosenSubCategories?.join() : null; // we don't add subcategories to the params
     const discount = discountFilterStatus ? 1 : null;
+    const categoryForResponse = subCategories ? null : category
     dispatch( fetchProductsTC( {
       page,
       animal: chosenAnimalTypeId,
-      category,
+      category: categoryForResponse,
       ordering: chosenOrdering,
       brands,
       subCategories,
