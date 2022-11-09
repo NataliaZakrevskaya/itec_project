@@ -77,10 +77,10 @@ const BasketPage = React.memo( () => {
                   <div className={ style.basketInfo }>
                     <div className={ style.priceBlock }>
                       <p
-                        className={ !showDiscount ? style.basketBUN : style.basketBUNWIthDiscount }>{ price } BYN</p>
-                      { showDiscount && <p className={ style.basketBUN }>{ priceWithDiscount } BYN</p> }
+                        className={ !showDiscount ? style.basketBUN : style.basketBUNWIthDiscount } translate={ 'no' }>{ price } BYN</p>
+                      { showDiscount && <p className={ style.basketBUN } translate={ 'no' }>{ priceWithDiscount } BYN</p> }
                     </div>
-                    <p className={ style.basketProducts }>{ productsCount } { goodsName }</p>
+                    <p className={ style.basketProducts } translate={ 'no' }>{ productsCount } { goodsName }</p>
                   </div>
                   <div className={ style.pickUpBlock }>
                     <img className={ style.basketBoxImage } src={ boxIcon } loading={ 'lazy' } alt="boxIcon" draggable="false"/>
