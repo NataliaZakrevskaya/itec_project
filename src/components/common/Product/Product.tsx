@@ -118,9 +118,9 @@ const Product = ( {
         </div>
         { isForModal &&
           <div className={ style.priceBlock }>
-            <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount } translate={ 'no' }>{ price } BYN.</p>
+            <p className={ !priceWithDiscount ? style.price : style.priceWithDiscount }>{ price } BYN.</p>
             { !!priceWithDiscount && <p
-              className={ style.price } translate={ 'no' }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed( 2 ) } BYN.</p> }
+              className={ style.price }>{ priceWithDiscount % 1 === 0 ? priceWithDiscount : priceWithDiscount.toFixed( 2 ) } BYN.</p> }
           </div>
         }
       </div>

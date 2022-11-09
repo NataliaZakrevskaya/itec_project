@@ -10,7 +10,7 @@ const UnitsForBasket = ( { option, active, onUnitClick }: UnitsForBasketPropsTyp
       { !option.partial &&
         <div onClick={ () => onUnitClick( option ) } className={ active ? style.active : style.unit }>
           <p className={ style.option }>{ option.size } { option.units.unit_name }</p>
-          <p className={ style.price } translate={ 'no' }>{ price } BYN</p>
+          <p className={ style.price }>{ price } BYN</p>
         </div>
       }
     </>

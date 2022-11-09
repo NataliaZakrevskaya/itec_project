@@ -302,11 +302,11 @@ const ProductPage = React.memo( () => {
             </div>
             <div className={ style.orderInfoForPayment }>
               <div>
-                <h2 className={ showDiscount ? style.priceWithDiscount : style.firstPrice } translate={ 'no' }>
+                <h2 className={ showDiscount ? style.priceWithDiscount : style.firstPrice }>
                   { price } BYN
                 </h2>
                 { showDiscount &&
-                  <h2 className={ style.discountPrice } translate={ 'no' }>
+                  <h2 className={ style.discountPrice }>
                     { priceWithDiscountCropped } BYN
                   </h2>
                 }
