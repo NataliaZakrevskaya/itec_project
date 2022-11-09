@@ -48,14 +48,15 @@ const UsefulArticlesBlock = React.memo( (): ReactElement => {
   } = useCarousel( BlockNames.ARTICLES, articles.length );
 
   useEffect( () => {
-    dispatch( fetchArticlesTC() );
-  }, [ dispatch ] );
+    const chosenAnimalId = chosenAnimalTypeId ? chosenAnimalTypeId : null;
+    dispatch( fetchArticlesTC( { chosenAnimalId } ) );
+  }, [ dispatch, chosenAnimalTypeId ] );
 
   return (
     <div className={ `${ commonStyle.block } ${ themeStyle.block }` }>
       <div className={ commonStyle.container }>
         <div className={ commonStyle.navigationInfoBlock }>
-          <h2>{ chosenAnimalTypeName ? `${chosenAnimalTypeName} - полезные статьи` : 'Полезные статьи' }</h2>
+          <h2>{ chosenAnimalTypeName ? `${ chosenAnimalTypeName } - полезные статьи` : 'Полезные статьи' }</h2>
           <div className={ `${ commonStyle.sectionsBlock } ${ themeStyle.sectionsBlock }` }>
             <PrevSectionButton disabled={ isPrevDisabled } onClick={ onPrevSectionButtonClick }/>
             <NextSectionButton disabled={ isNextDisabled } onClick={ onNextSectionButtonClick }/>

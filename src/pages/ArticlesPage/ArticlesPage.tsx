@@ -48,8 +48,9 @@ const ArticlesPage = React.memo( () => {
   const navigate = useNavigate();
 
   useEffect( () => {
-    dispatch( fetchArticlesTC() );
-  }, [ dispatch ] );
+    const chosenAnimalId = chosenAnimalTypeId ? chosenAnimalTypeId : null
+    dispatch( fetchArticlesTC( { chosenAnimalId } ) );
+  }, [ dispatch, chosenAnimalTypeId ] );
 
   return (
     <div className={ style.articlesPageBlock }>

@@ -3,8 +3,8 @@ import { articlesAPI } from '../../Api/articlesApi';
 import { ArticleType } from '../../types';
 
 export const fetchArticlesTC = createAsyncThunk(
-  'articles/fetchArticles', async ( param, { dispatch } ) => {
-    const res = await articlesAPI.setArticles();
+  'articles/fetchArticles', async ( param: { chosenAnimalId?: number | null }, { dispatch } ) => {
+    const res = await articlesAPI.setArticles( param.chosenAnimalId );
     try {
       return { articles: res.data };
     } catch ( err ) {
