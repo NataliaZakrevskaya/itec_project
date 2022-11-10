@@ -19,7 +19,6 @@
     }
 
     & p {
-      @include SFTextRegular();
       @include fontSize14();
       cursor: pointer;
 

@@ -3,7 +3,6 @@
 
 .callback {
   cursor: pointer;
-  @include SFTextRegular();
   font-size: 14px;
   line-height: 20px;
   color: $callbackColor;

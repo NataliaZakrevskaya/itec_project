@@ -18,7 +18,6 @@
 
     & p {
       @include fontSize14();
-      @include SFTextRegular();
     }
   }
 
@@ -35,7 +34,6 @@
 
     & p {
       @include fontSize14();
-      @include SFTextRegular();
     }
   }
 }

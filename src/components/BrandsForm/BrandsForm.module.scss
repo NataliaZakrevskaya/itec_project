@@ -56,7 +56,6 @@
 
     & label {
       width: 100%;
-      @include SFTextRegular();
       @include flex(row, space-between, center);
       @include fontSize14();
       margin-bottom: 16px;
@@ -92,7 +91,6 @@
       }
 
       & p {
-        @include SFTextRegular();
         font-size: 15px;
         line-height: 20px;
         color: $discountColor;

@@ -28,7 +28,6 @@
     }
 
     & p {
-      @include SFTextRegular();
       font-size: 16px;
       line-height: 130%;
       color: $opacityColor;
@@ -85,7 +84,6 @@
       }
 
       & p {
-        @include SFTextRegular();
         font-size: 16px;
         line-height: 130%;
         color: $opacityColor;

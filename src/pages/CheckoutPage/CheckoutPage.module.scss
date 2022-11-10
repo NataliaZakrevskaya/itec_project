@@ -37,7 +37,6 @@
         margin: 17px 0 18px 16px;
         display: flex;
         flex-direction: column;
-        @include SFTextRegular();
         font-size: 14px;
         line-height: 20px;
         color: #8C9196;
@@ -125,7 +124,6 @@
       }
 
       & p {
-        @include SFTextRegular();
         font-size: 12px;
         line-height: 16px;
         text-align: center;

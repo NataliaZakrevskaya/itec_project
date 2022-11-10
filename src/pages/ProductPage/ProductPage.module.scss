@@ -12,7 +12,6 @@
 
   .mainDescription {
     max-width: 670px;
-    @include SFTextRegular();
     @include fontSize14();
     & h3{
       @include SFDisplaySemibold();
@@ -39,7 +38,6 @@
   }
   .mainAnalysis{
     max-width: 470px;
-    @include SFTextRegular();
     @include fontSize14();
 
     & h3{
@@ -186,7 +184,6 @@
             }
 
             & .price {
-              @include SFTextRegular();
               font-size: 16px;
               line-height: 110%;
               color: $opacityColor;
@@ -219,7 +216,6 @@
             }
 
             & .price {
-              @include SFTextRegular();
               font-size: 16px;
               line-height: 110%;
             }
@@ -227,7 +223,6 @@
         }
 
         .unitsGroupHeft {
-          @include SFTextRegular();
           margin-top: 12px;
           font-size: 14px;
           line-height: 20px;
@@ -289,7 +284,6 @@
             align-items: flex-start;
 
             & span{
-              @include SFTextRegular();
               font-size: .8em;
               line-height: 130%;
               color: #b42b33;
@@ -317,7 +311,6 @@
           }
 
           & .pickUpInfo {
-            @include SFTextRegular();
             font-size: 14px;
             line-height: 130%;
             color: #5C5C5C;

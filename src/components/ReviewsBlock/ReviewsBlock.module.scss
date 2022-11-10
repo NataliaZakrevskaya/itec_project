@@ -50,7 +50,6 @@
           }
 
           .reviewsBlockText {
-            @include SFTextRegular();
             font-size: 14px;
             line-height: 140%;
             text-align: center;
@@ -69,7 +68,6 @@
               margin-right: 16px;
 
               & p {
-                @include SFTextRegular();
                 font-size: 16px;
                 line-height: 24px;
                 color: $opacityColor;
@@ -82,7 +80,6 @@
             }
 
             & p {
-              @include SFTextRegular();
               font-size: 16px;
               line-height: 24px;
               color: $opacityColor;
@@ -100,7 +97,6 @@
 
     & p {
       margin: 0 32px 0 48px;
-      @include SFTextRegular();
       font-size: 16px;
       line-height: 24px;
       color: #916A00;

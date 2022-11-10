@@ -29,7 +29,6 @@
 
   .siteInfo {
     @include flex(row, space-between, center);
-    @include SFTextRegular();
     font-size: 14px;
     line-height: 20px;
     width: 100%;

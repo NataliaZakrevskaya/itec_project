@@ -39,7 +39,6 @@
     }
 
     & span {
-      @include SFTextRegular();
       font-size: .8em;
       line-height: 130%;
       color: #b42b33;
@@ -87,7 +86,6 @@
     }
 
     & span {
-      @include SFTextRegular();
       font-size: .8em;
       line-height: 130%;
       color: #b42b33;

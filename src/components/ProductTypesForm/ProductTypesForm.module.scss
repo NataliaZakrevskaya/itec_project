@@ -21,7 +21,6 @@
 
   .categoryContainer {
     width: 100%;
-    @include SFTextRegular();
     display: flex;
     flex-direction: column;
     @include fontSize14();
