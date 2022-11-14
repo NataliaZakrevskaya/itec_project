@@ -15,7 +15,7 @@ const RejectOrderModal = ( { onBtnClick, forCheckoutPage }: CloseRejectedModalPr
       { badProductsList.map( product => <div className={ style.product }
                                              key={ product.id }><p className={ style.name }>{ product.name }</p>
         <p>осталось</p> <p>{ `${product.chosen_option.stock_balance} ${product.chosen_option.partial ? 'гр.' : 'шт.'}` }</p></div> ) }
-      <p>{ `Измените количество товара ${forCheckoutPage ? 'в корзине' : '' }и повторите заказ.` }</p>
+      <p>{ `Измените количество товара ${forCheckoutPage ? 'в корзине' : '' } и повторите заказ.` }</p>
       <Button title={ `Вернуться в ${forCheckoutPage ? 'корзину' : 'заказ'}` } onClick={ onBtnClick }/>
     </div>
   );
