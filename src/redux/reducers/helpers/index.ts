@@ -16,7 +16,6 @@ export const setTotalCount = ( state: any ) => {
 export const setTotalSumWithDiscount = ( state: any, basketDiscount: DiscountType ) => {
 
   const arrayDiscountsForAllBasket = basketDiscount ? basketDiscount.options : null;
-
   const basketSumWithProductDiscounts = state.productsInBasket.map( ( product: ProductItemType | OneProductItemType ) => {
     /*if we have product discount and option discount*/
     if ( product.greatest_discount && product.chosen_option.discount_by_option ) {
@@ -76,10 +75,11 @@ export const setTotalSumWithDiscount = ( state: any, basketDiscount: DiscountTyp
     } else return 0;
   } )
     .reduce( ( acc: number, current: number ) => acc + current, 0 ).toFixed( 2 );
-  if ( !arrayDiscountsForAllBasket ) {
+  if ( !arrayDiscountsForAllBasket?.length ) {
     return state.totalSumWithDiscount = basketSumWithProductDiscounts;
   } else {
     const discount = arrayDiscountsForAllBasket.find( option => option.min_price_for_discount <= basketSumWithoutDiscount )?.discount_amount; // undefined || option
+    debugger
     if ( !!discount ) {
       const totalDiscountForBasketWithountProductWithDiscount = basketSumWithoutDiscount / 100 * discount;
       return state.totalSumWithDiscount = ( basketSumWithProductDiscounts - totalDiscountForBasketWithountProductWithDiscount ).toFixed( 2 );
