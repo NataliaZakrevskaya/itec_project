@@ -46,6 +46,7 @@ import { getPriceWithDiscountForProductPage } from '../../redux/reducers/helpers
 import { fetchArticlesTC } from '../../redux/reducers/articles';
 import { getChosenAnimalTypeId } from '../../redux/selectors/animalTypes';
 import { getArticles } from '../../redux/selectors/articles';
+import RejectOrderModal from '../../components/common/modals/RejectOrderModal/RejectOrderModal';
 
 const ProductPage = React.memo( () => {
 
@@ -57,6 +58,7 @@ const ProductPage = React.memo( () => {
   const [ isOneClickOrderActive, setIsOneClickOrderActive ] = useState<boolean>( false );
   const [ isBasketModalActive, setIsBasketModalActive ] = useState<boolean>( false );
   const [ productForBasketModal, setProductForBasketModal ] = useState<any>( null );
+  const [ isRejectedOneClickOrderModal, setIsRejectedOneClickOrderModal ] = useState<boolean>( false );
 
   const productId = Number( useParams().productId );
   const product = useSelector( getProduct );
@@ -80,7 +82,7 @@ const ProductPage = React.memo( () => {
   const articlesFromStore = useSelector( getArticles );
   const weightSetIsShowed = useSelector( getWeightSetValue );
   const basketDiscount = useSelector( getDiscountsForBasket )[ 0 ];
-  const isSuccessOneClickOrder = useSelector( getOneClickOrderRequestStatus ) === RequestStatus.SUCCEEDED;
+  const orderStatus = useSelector( getOneClickOrderRequestStatus );
   const { address, metro } = useSelector( getInfo );
   const accompanyingProducts = useSelector( getAccompanyingProducts );
   const partialOption = options.filter( option => option.partial )[ 0 ];
@@ -114,6 +116,11 @@ const ProductPage = React.memo( () => {
   };
   const selectImage = ( id: number ) => {
     setSelectImageId( id );
+  };
+  const closeRejectedModal = () => {
+    dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
+    setIsRejectedOneClickOrderModal( false );
+    setIsOneClickModalActive( true );
   };
   const closeOneClickModal = () => {
     dispatch( setOneClickOrderRequestStatus( { status: RequestStatus.IDLE } ) );
@@ -206,6 +213,12 @@ const ProductPage = React.memo( () => {
       window.document.body.style.overflow = '';
     };
   }, [ isOneClickModalActive, isBasketModalActive, dispatch ] );
+  useEffect( () => {
+    if ( orderStatus === RequestStatus.FAILED ) {
+      setIsRejectedOneClickOrderModal( true );
+      setIsOneClickModalActive( false );
+    }
+  }, [ orderStatus ] );
   useEffect( () => {
     const chosenAnimalId = chosenAnimalTypeId ? chosenAnimalTypeId : null;
     dispatch( fetchArticlesTC( { chosenAnimalId } ) );
@@ -373,10 +386,15 @@ const ProductPage = React.memo( () => {
       { !!articlesFromStore.length && <UsefulArticlesBlock/> }
       { isOneClickModalActive &&
         <Modal closeModal={ closeOneClickModal }>
-          { isSuccessOneClickOrder
+          { orderStatus === RequestStatus.SUCCEEDED
             ? ( <SuccessOrderModal from={ location.ONE_CLICK_ORDER }/> )
             : ( <OneClickOrder closeOneClickOrderModal={ closeOneClickOrderModal } closeModal={ closeOneClickModal }/> )
           }
+        </Modal>
+      }
+      { isRejectedOneClickOrderModal && orderStatus === RequestStatus.FAILED &&
+        <Modal closeModal={ closeRejectedModal }>
+          <RejectOrderModal onBtnClick={ closeRejectedModal } forCheckoutPage={false}/>
         </Modal>
       }
       { isBasketModalActive &&
